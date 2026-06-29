@@ -7,7 +7,13 @@ from torch.utils.data.distributed import DistributedSampler
 from torch.nn.parallel import DistributedDataParallel as DDP
 
 from macarons.utility.render_utils import *
-from macarons.trainers.train_macarons import recompute_mapping
+# NOTE (jiahui): removed circular import. macarons_utils <-> train_macarons import
+# each other; train_macarons does `from ..utility.macarons_utils import *`, so when
+# macarons_utils loads first the wildcard pulls a half-initialized module and every
+# name (setup_device, load_scene, ...) goes missing -> NameError in run_training.
+# `recompute_mapping` is only referenced here inside a commented-out block, so this
+# import was dead weight. Dropping it breaks the cycle with zero behavior change.
+# from macarons.trainers.train_macarons import recompute_mapping
 
 from pytorch3d.io import load_objs_as_meshes
 from pytorch3d.datasets import collate_batched_meshes
@@ -670,6 +676,9 @@ def save_surface_scene_in_memory(surface_dir_path, surface_scene, surface_file_n
     dict_to_save['scene_parameters']['mirrored_axis'] = surface_scene.mirrored_axis
 
     path_to_save = os.path.join(surface_dir_path, surface_file_name)
+    # the per-trajectory 'surface' dir is not created alongside frames/occupancy/depths,
+    # so ensure it exists before saving (torch.save needs the parent dir to exist).
+    os.makedirs(surface_dir_path, exist_ok=True)
     torch.save(dict_to_save, path_to_save)
 
 
@@ -4126,7 +4135,11 @@ class Camera:
                 raise NameError("Wrong input_type argument. Please select between 'idx' and 'key'.")
 
             X_key = '[' + ','.join(pose_key[1:-1].split(',')[:3]) + ']'
-            is_occupied = self.pose_is_occupied[X_key]
+            # occupied_pose.pt can be generated on a smaller pose grid than settings.json
+            # (e.g. pantheon: occupied covers up to [7,3,6] but the grid is 10x6x13), so a
+            # randomly drawn pose key may be absent. Treat unknown positions as not-occupied;
+            # the empty-fov / proxy-in-fov checks in get_random_valid_pose still filter them.
+            is_occupied = self.pose_is_occupied.get(X_key, False)
         else:
             is_occupied = False
 
@@ -5342,7 +5355,12 @@ class Memory:
             max_alpha = 0
         n_alpha = len(alphas)
 
-        replace = n_sample <= len(self.scene_memory_paths)
+        # Backwards condition in the original: np.random.choice needs replace=True only
+        # when we draw MORE samples than the population (n_sample > #scenes). The original
+        # `n_sample <= len` gave replace=False for a small scene pool -> ValueError when
+        # n_memory_samples (e.g. 4) exceeds the number of train scenes; and replace=True
+        # for large pools (sampling duplicate scenes, not intended). Correct it:
+        replace = n_sample > len(self.scene_memory_paths)
         sample_memory_paths = np.random.choice(self.scene_memory_paths, size=n_sample, replace=replace)
 
         batch_images = []

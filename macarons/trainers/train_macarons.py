@@ -45,10 +45,12 @@ def setup_scene(params,
                      mirrored_axis=mirrored_axis)  # We use colors as features
 
     # We fill gt_scene with points sampled on the surface of the ground truth mesh
-    gt_surface = get_scene_gt_surface(gt_scene=gt_scene,
-                                      verts=mesh.verts_list()[0],
-                                      faces=mesh.faces_list()[0],
-                                      n_surface_points=params.n_gt_surface_points)
+    # get_scene_gt_surface now returns (gt_surface, gt_normals); training setup_scene
+    # was not updated for that refactor (test path magician_planning.py:306 unpacks it).
+    gt_surface, gt_normals = get_scene_gt_surface(gt_scene=gt_scene,
+                                                  verts=mesh.verts_list()[0],
+                                                  faces=mesh.faces_list()[0],
+                                                  n_surface_points=params.n_gt_surface_points)
     gt_scene.fill_cells(gt_surface)
 
     # Initialize surface_scene: we store in this scene the surface points computed by the depth module from RGB images
@@ -1562,7 +1564,9 @@ def run_training(ddp_rank=None, params=None):
             print("Current depth learning rate set to", optimizer.depth._rate)
             print("Current scone learning rate set to", optimizer.scone._rate)
 
-        train_dataloader.sampler.set_epoch(t)
+        # set_epoch only exists on DistributedSampler (ddp/jz); single-GPU uses RandomSampler.
+        if params.ddp or params.jz:
+            train_dataloader.sampler.set_epoch(t)
 
         # Update Memory
         memory.current_epoch = t

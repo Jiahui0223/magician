@@ -1,5 +1,5 @@
 {
-  "numGPU": 1,
+  "numGPU": 0,
   "dataset_path": "./data/Macarons++",
   "test_scenes": [
     "neuschwanstein",
