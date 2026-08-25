@@ -99,6 +99,12 @@ import numpy as np
 import math
 from collections import defaultdict
 
+# stage_3 Phase 0: set MAGICIAN_BETA_ASSERT=1 to check, every carving update, that the
+# three-way evidence split is exactly conservative w.r.t. the original two-way counter.
+# Off by default (it is a full-tensor comparison over 800k proxy points per frame).
+BETA_ASSERT = os.environ.get("MAGICIAN_BETA_ASSERT", "0") not in ("0", "", "false")
+
+
 def setup_device(params, ddp_rank=None):
 
     if params.ddp:
@@ -697,6 +703,11 @@ def save_occupancy_field_in_memory(occupancy_dir_path, proxy_scene, occupancy_fi
     dict_to_save['proxy_probas'] = ((proxy_scene.proxy_supervision_occ > 0.) * (proxy_scene.out_of_field < 1.)).float()
     dict_to_save['proxy_n_inside_fov'] = proxy_scene.proxy_n_inside_fov
     dict_to_save['proxy_n_behind_depth'] = proxy_scene.proxy_n_behind_depth
+    # stage_3 Phase 0: the three-way evidence split. Needed as Beta-Binomial supervision
+    # targets in Phase 1, which trains on the raw counts instead of the 0.95-thresholded label.
+    dict_to_save['proxy_n_surface'] = proxy_scene.proxy_n_surface
+    dict_to_save['proxy_n_free'] = proxy_scene.proxy_n_free
+    dict_to_save['proxy_n_occluded'] = proxy_scene.proxy_n_occluded
     # todo: What about out of field?
 
     dict_to_save['scene_parameters'] = {}
@@ -760,6 +771,11 @@ def load_occupancy_field_from_memory(occupancy_dir_path, device, occupancy_file_
     proxy_scene.proxy_supervision_occ = occ_field_dict['proxy_probas']
     proxy_scene.proxy_n_inside_fov = occ_field_dict['proxy_n_inside_fov']
     proxy_scene.proxy_n_behind_depth = occ_field_dict['proxy_n_behind_depth']
+    # stage_3 Phase 0: three-way counters. .get() so memory files written before this change
+    # still load; initialize_proxy_points() above already left zeros in place for them.
+    for _k in ('proxy_n_surface', 'proxy_n_free', 'proxy_n_occluded'):
+        if occ_field_dict.get(_k) is not None:
+            setattr(proxy_scene, _k, occ_field_dict[_k])
     # We keep oof at 1 such that the scene can be directly use for training iteration after filling it with a partial pc
     # proxy_scene.out_of_field = # We leave at 1.
 
@@ -4766,6 +4782,15 @@ class Scene:
         self.proxy_n_behind_depth = None  # For each point p, number of images for which p is behind the depth map
         self.score_threshold = score_threshold
 
+        # stage_3 Phase 0: three-way split of the carving outcome. n_behind_depth conflates
+        # "the ray stopped ON this point" (evidence FOR occupancy) with "something else was in
+        # the way" (no evidence at all); both are 'do not carve', which is all the carver needs,
+        # but it makes the counter unreadable as a probability. Split them, keeping the exact
+        # invariant  n_surface + n_occluded == n_behind_depth  so behaviour is unchanged.
+        self.proxy_n_surface = None    # |signed distance| <= tol : point lies on the observed surface
+        self.proxy_n_free = None       # signed distance < -tol   : point is in front of it (free space)
+        self.proxy_n_occluded = None   # signed distance > tol    : point is behind it (no information)
+
         # Out Of Field values for Proxy Points
         self.out_of_field = None
 
@@ -4901,6 +4926,11 @@ class Scene:
         self.proxy_n_inside_fov = torch.zeros(n_proxy_points, 1, device=self.device)
         self.proxy_n_behind_depth = torch.zeros(n_proxy_points, 1, device=self.device)
 
+        # stage_3 Phase 0: three-way evidence counters (see __init__ for semantics).
+        self.proxy_n_surface = torch.zeros(n_proxy_points, 1, device=self.device)
+        self.proxy_n_free = torch.zeros(n_proxy_points, 1, device=self.device)
+        self.proxy_n_occluded = torch.zeros(n_proxy_points, 1, device=self.device)
+
     def get_proxy_indices_from_mask(self, proxy_mask):
         # all_indices = torch.linspace(start=0,
         #                              end=self.n_proxy_points - 1,
@@ -5011,6 +5041,32 @@ class Scene:
 
         self.proxy_n_inside_fov[proxy_mask] += 1
         self.proxy_n_behind_depth[proxy_mask] += (signed_distances.view(-1, 1) >= -tol).float()
+
+        # --- stage_3 Phase 0 -------------------------------------------------------------
+        # Same signed distance, split three ways instead of two. Carving only needs to know
+        # "can I remove this point", so it lumps "the ray stopped ON the point" together with
+        # "something else blocked the view"; as evidence about occupancy those are opposites
+        # (positive vs none). Split is exactly conservative:
+        #     n_surface + n_occluded == n_behind_depth      (both are sgn >= -tol)
+        #     n_free                 == n_inside_fov - n_behind_depth
+        # so nothing downstream changes. These are the Beta likelihood counts.
+        _sgn = signed_distances.view(-1, 1)
+        if self.proxy_n_surface is None:  # scenes restored from older memory files
+            self.proxy_n_surface = torch.zeros_like(self.proxy_n_inside_fov)
+            self.proxy_n_free = torch.zeros_like(self.proxy_n_inside_fov)
+            self.proxy_n_occluded = torch.zeros_like(self.proxy_n_inside_fov)
+        self.proxy_n_surface[proxy_mask] += ((_sgn >= -tol) & (_sgn <= tol)).float()
+        self.proxy_n_free[proxy_mask] += (_sgn < -tol).float()
+        self.proxy_n_occluded[proxy_mask] += (_sgn > tol).float()
+        if BETA_ASSERT:
+            assert torch.equal(self.proxy_n_surface + self.proxy_n_occluded,
+                               self.proxy_n_behind_depth), \
+                "[BETA] invariant broken: n_surface + n_occluded != n_behind_depth"
+            assert torch.equal(self.proxy_n_free,
+                               self.proxy_n_inside_fov - self.proxy_n_behind_depth), \
+                "[BETA] invariant broken: n_free != n_inside_fov - n_behind_depth"
+        # ---------------------------------------------------------------------------------
+
         self.proxy_supervision_occ[proxy_mask] = ((self.proxy_n_behind_depth[proxy_mask]
                                                    / self.proxy_n_inside_fov[proxy_mask])
                                                   >= self.score_threshold).float()

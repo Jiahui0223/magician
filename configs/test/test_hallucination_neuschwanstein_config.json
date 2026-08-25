@@ -1,0 +1,19 @@
+{
+  "numGPU": 0,
+  "dataset_path": "./data/Macarons++",
+  "test_scenes": [
+    "neuschwanstein"
+  ],
+  "params_name": "macarons_default_training_config.json",
+  "model_name": "trained_macarons.pth",
+  "results_json_name": "results_hallucination_neusch.json",
+  "test_resolution": 0.05,
+  "use_perfect_depth_map": true,
+  "compute_collision": false,
+  "load_json": false,
+  "random_seed": 8,
+  "torch_seed": 9,
+  "lmdb_dir_name": "exp3_lmdb",
+  "beam_width": 10,
+  "beam_steps": 10
+}
