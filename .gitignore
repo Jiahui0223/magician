@@ -1,11 +1,22 @@
 *.pyc
 __pycache__/
+
+# 数据集 / 权重 / 运行产物：都在本地，不上传
 data/
 media/
 weights/
 results/
 scene_complete/
-RaDe-GS/
 work_dir/
-jiahui/log/
 Magician.pdf
+
+# RaDe-GS 是 submodule（见 .gitmodules），只上传指针，不上传内容。
+# 这里不能写 "RaDe-GS/"：那会与 submodule 登记互相矛盾。
+# 编译产物造成的脏状态由 .gitmodules 的 ignore = dirty 屏蔽。
+
+# jiahui/ = 本地工作区（stage_1..3 实验日志、LMDB、dump、论文素材，约 7.8 GB），不上传。
+# 例外：根目录下长期维护的文档与分析工具随代码一起上传。
+jiahui/*
+!jiahui/*.md
+!jiahui/*.py
+!jiahui/pip_freeze.txt
