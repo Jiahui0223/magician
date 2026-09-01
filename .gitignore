@@ -1,1 +1,22 @@
+# dataset
+data/ShapeNetCore.v1/train_categories/*/
+data/ShapeNetCore.v1/test_categories/*/
+data/ShapeSplatsV1/
+data/scenes/*/*.obj
+data/scenes/*/*.mtl
+data/scenes/*/*.jpg
+data/scenes/*/*.png
+
+**/tensors/
+*.zip
+*.tar
+*.tar.gz
+*.ply
 *.pyc
+
+# weights
+weights/**/*.pth
+weights/**/*.pt
+
+__pycache__/
+.ipynb_checkpoints/
