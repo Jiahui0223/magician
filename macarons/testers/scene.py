@@ -640,6 +640,11 @@ def run_test(params_name,
     params.anomaly_detection = False
     params.memory_dir_name = "test_memory_" + str(numGPU)
 
+    # Testing walks a single trajectory on one device, so the DDP flag inherited from the
+    # training config has to be cleared here as well: setup_device would otherwise open a
+    # process group, and predict_coverage_gain_for_single_camera would look for the
+    # `.module` attribute of a model that was never wrapped in DDP.
+    params.ddp = False
     params.jz = False
     params.numGPU = numGPU
     params.WORLD_SIZE = 1
