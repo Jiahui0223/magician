@@ -2,21 +2,33 @@
 data/ShapeNetCore.v1/train_categories/*/
 data/ShapeNetCore.v1/test_categories/*/
 data/ShapeSplatsV1/
+data/shapenetcore.v2
+
+# scene meshes: symlinks into the shared store under ~/scratch/data/scenes
 data/scenes/*/*.obj
 data/scenes/*/*.mtl
 data/scenes/*/*.jpg
+data/scenes/*/*.jpeg
 data/scenes/*/*.png
-
-**/tensors/
-*.zip
-*.tar
-*.tar.gz
-*.ply
-*.pyc
 
 # weights
 weights/**/*.pth
 weights/**/*.pt
 
+# run artifacts
+data/scenes/*/test_memory_*/
+data/scenes/*/macarons_memory*/
+results/scene_exploration/repro_*.json
+results/scene_exploration/smoke_*.json
+configs/test/_auto_gpu*.json
+configs/macarons/macarons_test_singlegpu_config.json
+work_dirs/
+**/tensors/
+
+*.zip
+*.tar
+*.tar.gz
+*.ply
+*.pyc
 __pycache__/
 .ipynb_checkpoints/
