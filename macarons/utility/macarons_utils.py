@@ -454,12 +454,12 @@ def get_scene_gt_surface(gt_scene, verts, faces, n_surface_points, return_colors
     :return: (Tensor) Has shape (n_surface_points, 3)
     """
     _, inside_mask = gt_scene.get_pts_in_bounding_box(verts, return_mask=True)
-    inside_faces = faces[torch.gather(input=inside_mask.view(-1, 1).expand(-1, 3), dim=0, index=faces).prod(-1).bool()]
+    inside_faces = faces[torch.gather(input=inside_mask.view(-1, 1).expand(-1, 3), dim=0, index=faces).all(-1).bool()]
 
     texture_face_indices = None
     if return_colors:
         texture_face_indices = torch.arange(len(faces), device=verts.device)[
-            torch.gather(input=inside_mask.view(-1, 1).expand(-1, 3), dim=0, index=faces).prod(-1).bool()]
+            torch.gather(input=inside_mask.view(-1, 1).expand(-1, 3), dim=0, index=faces).all(-1).bool()]
 
     gt_surface = sample_points_on_mesh_surface(verts, inside_faces, n_surface_points,
                                                return_colors=return_colors, mesh=mesh,
@@ -2681,8 +2681,10 @@ class Scene:
         :param return_mask: (bool) If True, return the mask to compute the result from pts.
         :return: (Tensor) or (Tensor, Tensor)
         """
+        # .all() instead of .prod(): identical on boolean masks, and prod() goes through the
+        # nvrtc runtime JIT, which fails on GPUs newer than the torch build (sm_89 and up).
         pts_mask = (pts >= self.x_min) * (pts <= self.x_max)
-        pts_mask = pts_mask.prod(dim=-1).bool()
+        pts_mask = pts_mask.all(dim=-1).bool()
         if return_mask:
             return pts[pts_mask], pts_mask
         else:
@@ -2957,7 +2959,7 @@ class Scene:
         """
 
         in_bbox = (X_cam >= self.x_min) * (X_cam <= self.x_max)
-        in_bbox = in_bbox.prod(dim=-1).bool().item()
+        in_bbox = in_bbox.all(dim=-1).bool().item()
 
         if not in_bbox:
             return False

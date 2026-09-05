@@ -1021,8 +1021,10 @@ def filter_proxy_points(view_cameras, X, pc, filter_tol=0.01):
     max_proj = torch.max(pc_proj, dim=-2, keepdim=True)[0].expand(-1, X_proj.shape[-2], -1)
     min_proj = torch.min(pc_proj, dim=-2, keepdim=True)[0].expand(-1, X_proj.shape[-2], -1)
 
-    filter_mask = torch.prod((X_proj < max_proj + filter_tol) * (X_proj > min_proj - filter_tol), dim=0)
-    filter_mask = torch.prod(filter_mask, dim=-1).bool()
+    # .all() instead of .prod(): identical on boolean masks, and prod() goes through the
+    # nvrtc runtime JIT, which fails on GPUs newer than the torch build (sm_89 and up).
+    filter_mask = ((X_proj < max_proj + filter_tol) * (X_proj > min_proj - filter_tol)).all(dim=0)
+    filter_mask = filter_mask.all(dim=-1).bool()
 
     return X[filter_mask], filter_mask
 

@@ -207,7 +207,9 @@ def main(params):
                 ortho_zbuf = ortho_zbuf.view(params.n_ortho_camera, -1, 1)
 
                 # Compute GT occupancy by carving with all depth maps
-                occ = ((X_zbuf - ortho_zbuf) > 0.).float().prod(dim=0)
+                # .all() instead of .prod(): identical here (the operand is a 0/1 mask), and
+                # prod() goes through the nvrtc runtime JIT, which fails on sm_89 and up.
+                occ = ((X_zbuf - ortho_zbuf) > 0.).all(dim=0).float()
 
                 X_world = X_world.view(-1, 3)
 
