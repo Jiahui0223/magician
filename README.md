@@ -226,6 +226,29 @@ Useful inference options:
 - `--task.overwrite` regenerates existing scene outputs.
 - `--task.backend blender` uses Blender rendering instead of the faster `pyrender` backend.
 
+## Uni3D evaluation
+
+The Uni3D evaluation adapter is included in this repository. It additionally
+requires `pointnet2_ops` and the official Uni3D-B checkpoint. Download the
+checkpoint and either place it at `checkpoints/uni3d-b.pt` or pass its path with
+`--uni3d-ckpt` (the `UNI3D_CKPT` environment variable is also supported):
+
+```bash
+mkdir -p checkpoints
+curl -L \
+  https://huggingface.co/BAAI/Uni3D/resolve/main/modelzoo/uni3d-b/model.pt \
+  -o checkpoints/uni3d-b.pt
+
+python -m seen2scene.eval.compute_uni3d \
+  --export-dir /path/to/generated/meshes \
+  --gt-mesh-dir /path/to/ground-truth/meshes
+```
+
+The Seen2Scene Hugging Face repository includes the original `config.yaml` next
+to each released VAE, generator, and ControlNet checkpoint. The documented
+`hf download MQ66/seen2scene --local-dir .` command installs both together in
+the directory structure expected by `opt.py`.
+
 ## BibTeX
 
 ```bibtex

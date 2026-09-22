@@ -10,3 +10,7 @@ and remain available under the Apache License 2.0:
 Their original copyright and license notices are retained in the source files.
 The Apache License 2.0 is available at
 <https://www.apache.org/licenses/LICENSE-2.0>.
+
+`seen2scene/eval/uni3d_eval.py` contains model components adapted from
+[`BAAI-Vision/Uni3D`](https://github.com/baaivision/Uni3D), available under the
+MIT License. Copyright (c) 2023 BAAI-Vision.

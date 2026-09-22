@@ -4,7 +4,9 @@ Meshes are loaded and preprocessed identically to compute_cov_mmd_nna.py
 (ceiling clip, renormalization per method), then sampled to 10K-point clouds
 and scored via Uni3D embeddings.
 
-Requires the ``uni3d`` conda environment (PyTorch 2.4.1+cu121, pointnet2_ops).
+Requires the ``uni3d`` conda environment (PyTorch 2.4.1+cu121, pointnet2_ops)
+and the Uni3D-B checkpoint. Pass it with ``--uni3d-ckpt``, set ``UNI3D_CKPT``,
+or place it at ``checkpoints/uni3d-b.pt``.
 
 Usage:
     conda activate uni3d
@@ -39,19 +41,14 @@ Usage:
         --method nksr
 """
 
-import sys
 import os
+import sys
 
 # Ensure the project root is on sys.path so `seen2scene` is importable
 # even when running as `python seen2scene/eval/compute_uni3d.py`.
 _PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 if _PROJECT_ROOT not in sys.path:
     sys.path.insert(0, _PROJECT_ROOT)
-
-# Uni3D lives outside this repo; set UNI3D_ROOT so we can import uni3d_eval.
-_UNI3D_ROOT = os.environ.get("UNI3D_ROOT")
-if _UNI3D_ROOT and _UNI3D_ROOT not in sys.path:
-    sys.path.insert(0, _UNI3D_ROOT)
 
 import dataclasses
 import glob
@@ -72,7 +69,7 @@ from seen2scene.tools.renorm import (
     renorm_lt3sd_sg,
     renorm_worldgrow,
 )
-from uni3d_eval import compute_uni3d_fd, extract_features
+from seen2scene.eval.uni3d_eval import compute_uni3d_fd, extract_features
 
 UNI3D_NUM_POINTS = 10_000  # Uni3D expects 10K-point clouds
 
@@ -96,6 +93,9 @@ class Config:
     device: str = "cuda:0"
     batch_size: int = 32
     """Batch size for Uni3D feature extraction."""
+
+    uni3d_ckpt: Optional[str] = None
+    """Uni3D checkpoint. Defaults to UNI3D_CKPT or checkpoints/uni3d-b.pt."""
 
     max_samples: Optional[int] = None
     """Cap the number of samples used from each set (gen and GT). None = use all."""
@@ -330,8 +330,18 @@ def main():
     # Extract features
     print(f"Extracting Uni3D features (batch_size={cfg.batch_size})...")
     t0 = time.time()
-    gen_feats = extract_features(gen_pcs, device=cfg.device, batch_size=cfg.batch_size)
-    gt_feats = extract_features(gt_pcs, device=cfg.device, batch_size=cfg.batch_size)
+    gen_feats = extract_features(
+        gen_pcs,
+        ckpt_path=cfg.uni3d_ckpt,
+        device=cfg.device,
+        batch_size=cfg.batch_size,
+    )
+    gt_feats = extract_features(
+        gt_pcs,
+        ckpt_path=cfg.uni3d_ckpt,
+        device=cfg.device,
+        batch_size=cfg.batch_size,
+    )
     print(f"  Features extracted in {time.time() - t0:.1f}s")
     print(f"  Gen features: {gen_feats.shape}, GT features: {gt_feats.shape}")
 
