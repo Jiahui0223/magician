@@ -38,7 +38,7 @@ from PIL import Image
 from scipy.linalg import sqrtm
 from tqdm import tqdm
 
-from seen2scene.configs.opt import LOG_ROOT
+from seen2scene import EXP_DIR as LOG_ROOT
 from seen2scene.eval.compute_fid import (
     ExportGtImages,
     ExportGtMesh_For_SG_Ablation_And_SC,

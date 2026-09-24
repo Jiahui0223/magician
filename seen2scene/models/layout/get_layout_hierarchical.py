@@ -32,7 +32,6 @@ from typing import Tuple, List, Optional, Dict, Any
 import tyro
 
 from seen2scene.configs.dataset import Dataset, LLMsLayout
-from seen2scene.configs.opt import LOG_ROOT
 from seen2scene.models.layout.hierarchical_utils import hierarchical_to_meta
 from seen2scene.tools.vis_utils import plot_layout
 import matplotlib.pyplot as plt
