@@ -4,11 +4,18 @@ set -euo pipefail
 # Installs ASWF OpenVDB fVDB v0.2.1 from the tagged repository.
 # This package installs the Python module imported as `fvdb`.
 #
+# The tag is patched with env/patches/fvdb_v0.2.1_multi_gpu.patch: unpatched v0.2.1 cannot
+# build grids on cuda:1+, which breaks multi-GPU (DDP) training on every rank except rank 0.
+# The patched build reports fvdb.__version__ == "0.2.1+multigpu"; any other installed fvdb is
+# rebuilt. Set FVDB_FORCE_REINSTALL=1 to rebuild regardless.
+#
 # Expected environment for fvdb_v0.2.1:
 #   Linux, Python 3.10-3.12, PyTorch 2.4.x, CUDA/nvcc 12.0-12.4.
 
 FVDB_REPO="${FVDB_REPO:-https://github.com/AcademySoftwareFoundation/openvdb.git}"
 FVDB_TAG="${FVDB_TAG:-fvdb_v0.2.1}"
+FVDB_PATCH="${FVDB_PATCH:-$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/patches/fvdb_v0.2.1_multi_gpu.patch}"
+FVDB_FORCE_REINSTALL="${FVDB_FORCE_REINSTALL:-0}"
 TORCH_CUDA_ARCH_LIST="${TORCH_CUDA_ARCH_LIST:-7.0;7.5;8.0;8.6+PTX}"
 MAX_JOBS="${MAX_JOBS:-$(nproc)}"
 export TORCH_CUDA_ARCH_LIST MAX_JOBS
@@ -76,16 +83,27 @@ PY
 
 python -m pip install --upgrade pip setuptools wheel ninja packaging
 
-if python - <<'PY'
+# The patch sets fvdb.__version__ to "0.2.1+multigpu"; an unpatched 0.2.1 install is rebuilt.
+if [[ "${FVDB_FORCE_REINSTALL}" != "1" ]] && python - <<'PY'
+import sys
+
 import fvdb
-print("Installed fvdb", getattr(fvdb, "__version__", "unknown"), "from", fvdb.__file__)
+
+version = getattr(fvdb, "__version__", "unknown")
+print("Installed fvdb", version, "from", fvdb.__file__)
+sys.exit(0 if version.endswith("+multigpu") else 1)
 PY
 then
   exit 0
 fi
 
-python -m pip install --no-build-isolation --no-cache-dir \
-  "git+${FVDB_REPO}@${FVDB_TAG}#subdirectory=fvdb"
+tmp_dir="$(mktemp -d)"
+trap 'rm -rf "${tmp_dir}"' EXIT
+git clone --depth 1 --branch "${FVDB_TAG}" "${FVDB_REPO}" "${tmp_dir}/openvdb"
+(cd "${tmp_dir}/openvdb" && git apply "${FVDB_PATCH}")
+
+python -m pip install --no-build-isolation --no-cache-dir --force-reinstall --no-deps \
+  "${tmp_dir}/openvdb/fvdb"
 
 python - <<'PY'
 import fvdb

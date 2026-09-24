@@ -1,0 +1,65 @@
+fVDB v0.2.1: allow grid construction on CUDA devices other than cuda:0.
+
+The NanoVDB CUDA tools bundled with the fvdb_v0.2.1 tag (tools/cuda/PointsToGrid.cuh,
+tools/cuda/IndexToGrid.cuh, cuda/GridHandle.cuh, cuda/NodeManager.cuh) call
+BufferT::create(size, &pool, device, stream) with the int device ordinal returned by
+cudaGetDevice(). TorchDeviceBuffer only provides create(..., bool host, ...), so the ordinal
+is converted to `host`: cuda:0 works by accident, and every other device fails with
+
+    RuntimeError: Invalid guide buffer device for host argument to TorchDeviceBuffer::create
+
+This breaks single-node multi-GPU (DDP) training on every rank except rank 0. The patch adds an
+int-device overload that maps a negative ordinal to host and otherwise allocates on the guide
+buffer's device. Calls that pass a bool keep resolving to the original overload.
+It also sets fvdb.__version__ to "0.2.1+multigpu" so a patched install can be told apart.
+
+Apply from the root of the openvdb repository: git apply fvdb_v0.2.1_multi_gpu.patch
+
+diff --git a/fvdb/fvdb/__init__.py b/fvdb/fvdb/__init__.py
+index 861f331..5c67518 100644
+--- a/fvdb/fvdb/__init__.py
++++ b/fvdb/fvdb/__init__.py
+@@ -61,7 +61,7 @@ def jcat(things_to_cat, dim=None):
+         raise ValueError("jcat() can only cat GridBatch, JaggedTensor, or VDBTensor")
+ 
+ 
+-__version__ = "0.2.1"
++__version__ = "0.2.1+multigpu"
+ __version_info__ = (0, 2, 1)
+ 
+ __all__ = [
+diff --git a/fvdb/src/detail/TorchDeviceBuffer.cpp b/fvdb/src/detail/TorchDeviceBuffer.cpp
+index ba1df44..88904a5 100644
+--- a/fvdb/src/detail/TorchDeviceBuffer.cpp
++++ b/fvdb/src/detail/TorchDeviceBuffer.cpp
+@@ -282,6 +282,11 @@ TorchDeviceBuffer::create(uint64_t size, const TorchDeviceBuffer *proto, bool ho
+     return TorchDeviceBuffer(size, nullptr, host, host ? -1 : deviceId);
+ }
+ 
++TorchDeviceBuffer
++TorchDeviceBuffer::create(uint64_t size, const TorchDeviceBuffer *proto, int device, void *stream) {
++    return create(size, proto, device < 0, stream);
++}
++
+ void
+ TorchDeviceBuffer::copyDeviceToHostAndFreeDevice(void *streamPtr /* = 0*/,
+                                                  bool  blocking /* = true*/) {
+diff --git a/fvdb/src/detail/TorchDeviceBuffer.h b/fvdb/src/detail/TorchDeviceBuffer.h
+index 1688a51..5bf6673 100644
+--- a/fvdb/src/detail/TorchDeviceBuffer.h
++++ b/fvdb/src/detail/TorchDeviceBuffer.h
+@@ -144,6 +144,14 @@ class TorchDeviceBuffer {
+     static TorchDeviceBuffer create(uint64_t size, const TorchDeviceBuffer *guide = nullptr,
+                                     bool host = true, void *stream = nullptr);
+ 
++    /// @brief Overload for the NanoVDB CUDA tools (PointsToGrid, IndexToGrid, cuda::GridHandle,
++    ///        cuda::NodeManager), which pass the device ordinal from cudaGetDevice() instead of a
++    ///        host flag. Without it the ordinal converts to `bool host`, so every device except
++    ///        cuda:0 is treated as a host allocation and grid construction fails. A negative
++    ///        ordinal (cudaCpuDeviceId) means host; otherwise the buffer goes on guide's device.
++    static TorchDeviceBuffer create(uint64_t size, const TorchDeviceBuffer *guide, int device,
++                                    void *stream = nullptr);
++
+ }; // TorchDeviceBuffer class
+ 
+ } // namespace detail
