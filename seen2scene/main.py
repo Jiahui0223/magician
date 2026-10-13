@@ -28,6 +28,14 @@ from seen2scene.tools.slurm_utils import submit_jobs
 
 def main(args: Union[VAE, Generator, Control]):
     import torch
+    if getattr(getattr(args, "task", None), "world_seeding", False):
+        # exp2-task1: with the default GPU kernels a world also depended on which patches the
+        # process had handled before (float atomics whose summation order follows the memory
+        # layout). Deterministic algorithms remove this; cuBLAS needs a fixed workspace for them.
+        # Must run before the first CUDA/cuBLAS call.
+        os.environ.setdefault("CUBLAS_WORKSPACE_CONFIG", ":4096:8")
+        torch.use_deterministic_algorithms(True, warn_only=True)
+        print(f"[world_seeding] deterministic algorithms on, CUBLAS_WORKSPACE_CONFIG={os.environ['CUBLAS_WORKSPACE_CONFIG']}", flush=True)
     from seen2scene.tools.common_utils import get_obj_from_str
     from seen2scene.tools.log_utils import get_logger
     from seen2scene.tools.lightning import (

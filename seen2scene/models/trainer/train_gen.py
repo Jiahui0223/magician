@@ -34,6 +34,21 @@ from .base import Net as BaseTrainer
 logger = get_logger(file_name=__file__, debug="train_gen")
 
 
+
+def _modules_incl_dicts(root: torch.nn.Module):
+    """All submodules, including modules stored in plain-dict attributes (e.g. ControlNet `base`)."""
+    seen, stack = set(), [root]
+    while stack:
+        m = stack.pop()
+        if id(m) in seen:
+            continue
+        seen.add(id(m))
+        yield m
+        stack.extend(m.children())
+        for v in vars(m).values():
+            if isinstance(v, dict):
+                stack.extend(x for x in v.values() if isinstance(x, torch.nn.Module))
+
 class Net(BaseTrainer):
     """PyTorch Lightning module for training flow matching generators on 3D scenes.
 
@@ -646,8 +661,25 @@ class Net(BaseTrainer):
             self.export_field(field_i, key, scene_names)
 
         fields_gen = []
+        if getattr(self.task, "world_seeding", False):
+            # exp2-task1: the conditioner caches CLIP embeddings of object names that are not in
+            # its precomputed table. A name is first encoded in a batch with the other new names
+            # of the same patch, and the batch composition changes the bf16 numerics slightly, so
+            # without this a world would depend on which patches the process handled before.
+            # Clearing the cache per patch makes every patch behave as in a fresh process.
+            # The ControlNet keeps the base generator in a plain dict (`Net.base`), outside
+            # self.modules(), so modules held in dict attributes are searched as well.
+            for m in _modules_incl_dicts(self):
+                if isinstance(getattr(m, "_embedding_cache", None), dict):
+                    m._embedding_cache.clear()
         for i in range(self.task.repeat_num):
-            field_gen_i = self.generate_patch(batch)
+            if getattr(self.task, "world_seeding", False):
+                from seen2scene.tools.seeding import seed_world, world_rng
+
+                with world_rng(seed_world(scene_names[0], 0, 0, i)):
+                    field_gen_i = self.generate_patch(batch)
+            else:
+                field_gen_i = self.generate_patch(batch)
             fields_gen.append(field_gen_i)
             self.export_field(field_gen_i, f"tsdf (Generation)_{i}", scene_names)
 

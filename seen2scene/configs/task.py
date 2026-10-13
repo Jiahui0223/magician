@@ -185,6 +185,7 @@ class Generation:
     repeat_num: int = 1
     num_variations: int = 1
     guidance_scale: float = 3.0
+    world_seeding: bool = False  # exp1-task5: seed repeat i with seed_world(scene, 0, 0, i)
     backend: Literal["pyrender", "blender"] = "pyrender"
     scene_shape: Tuple[int, int, int] = (256, 256, 256)
     overwrite: bool = False
