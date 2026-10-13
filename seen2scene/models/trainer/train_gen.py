@@ -15,6 +15,7 @@ warnings.filterwarnings("ignore", message=".*torch.cuda.amp.autocast.*is depreca
 
 from seen2scene.configs.opt import Generator
 from seen2scene.tools import vis_utils, common_utils, vdb_utils, gif_utils
+from seen2scene.tools.lightning import log_image
 from seen2scene.tools.log_utils import get_logger
 from seen2scene.models.fields import (
     Patch,
@@ -448,9 +449,7 @@ class Net(BaseTrainer):
             images, titles = vis_utils.batch2row_types2column(images_dict)
             image_grid = vis_utils.make_image_grid(images, titles)
             if self.trainer.is_global_zero:
-                self.logger.log_image(
-                    f"Validation_batch_{batch_idx}", [image_grid], step=self.global_step
-                )
+                log_image(self, f"Validation_batch_{batch_idx}", image_grid, self.global_step)
 
     @torch.no_grad()
     def export_field(self, field: Patch, field_name: str, scene_names):

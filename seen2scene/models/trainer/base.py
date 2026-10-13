@@ -2,6 +2,7 @@ import os
 import math
 import torch
 import pytorch_lightning as pl
+from pytorch_lightning.loggers import TensorBoardLogger, WandbLogger
 
 import wandb
 from seen2scene.tools.log_utils import get_logger
@@ -125,24 +126,40 @@ class Net(pl.LightningModule):
         return loss
 
     def on_before_optimizer_step(self, optimizer):
-        # Create and log plot every 10x frequency
-        if self.monitor_gradients and self.global_step % self.monitor_grad_freq == 0:
-            fig = create_gradient_distribution_plot(
-                self,
-                gradient_clip_val=self.trainer.gradient_clip_val,
-                step=self.global_step,
-            )
-
-            # Log as interactive Plotly (now small enough)
-            self.logger.experiment.log(
-                {
-                    "charts/gradient_distribution": wandb.Plotly(fig),
-                    "trainer/global_step": self.global_step,
-                }
-            )
+        if not (
+            self.monitor_gradients and self.global_step % self.monitor_grad_freq == 0
+        ):
+            return
+        for lg in self.loggers:
+            if isinstance(lg, WandbLogger):
+                fig = create_gradient_distribution_plot(
+                    self,
+                    gradient_clip_val=self.trainer.gradient_clip_val,
+                    step=self.global_step,
+                )
+                lg.experiment.log(
+                    {
+                        "charts/gradient_distribution": wandb.Plotly(fig),
+                        "trainer/global_step": self.global_step,
+                    }
+                )
+            elif isinstance(lg, TensorBoardLogger):
+                grads = [p.grad.detach().flatten() for p in self.parameters() if p.grad is not None]
+                if not grads:
+                    continue
+                writer = lg.experiment
+                writer.add_scalar(
+                    "gradients/global_norm",
+                    torch.linalg.vector_norm(torch.stack([g.norm() for g in grads])).item(),
+                    self.global_step,
+                )
+                values = torch.cat(grads)
+                if values.numel() > 1_000_000:  # subsample: histograms of 300M values are slow
+                    values = values[torch.randint(0, values.numel(), (1_000_000,), device=values.device)]
+                writer.add_histogram("gradients/values", values.float().cpu(), self.global_step)
 
     def log_semantic_distribution(self, ins_mask, object_names, latent_tgt):
-        """Log semantic class distribution to WandB.
+        """Log semantic class distribution (W&B: Plotly chart, TensorBoard: scalars).
 
         Args:
             ins_mask: Instance mask [N, M] where N is voxels, M is objects
@@ -155,17 +172,25 @@ class Net(pl.LightningModule):
         ):
             return
 
-        # Update tracker and create plot
         self.semantic_tracker.update(ins_mask, object_names, latent_tgt.grid.jidx)
-        fig = self.semantic_tracker.create_plot(self.global_step)
-
-        # Log Plotly figure directly (interactive, small size)
-        self.logger.experiment.log(
-            {
-                "charts/semantic_distribution": wandb.Plotly(fig),
-                "trainer/global_step": self.global_step,
-            }
-        )
+        for lg in self.loggers:
+            if isinstance(lg, WandbLogger):
+                fig = self.semantic_tracker.create_plot(self.global_step)
+                lg.experiment.log(
+                    {
+                        "charts/semantic_distribution": wandb.Plotly(fig),
+                        "trainer/global_step": self.global_step,
+                    }
+                )
+            elif isinstance(lg, TensorBoardLogger):
+                # Accumulated voxel share of the top-k classes (incl. "empty")
+                counts = self.semantic_tracker.class_counts
+                total = max(sum(counts.values()), 1)
+                top = sorted(counts.items(), key=lambda kv: -kv[1])
+                for name, count in top[: self.semantic_tracker.top_k]:
+                    lg.experiment.add_scalar(
+                        f"semantic_distribution/{name}", count / total, self.global_step
+                    )
 
     def on_test_batch_start(self, batch, batch_idx, dataloader_idx=0):
         if not hasattr(self.task, "num_samples"):

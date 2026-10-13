@@ -6,6 +6,7 @@ from typing import *
 import pytorch_lightning as pl
 from torch.utils.data import DataLoader, Subset
 from pytorch_lightning.callbacks import Callback, TQDMProgressBar
+from pytorch_lightning.loggers import CSVLogger, Logger, TensorBoardLogger, WandbLogger
 import torch.distributed as dist
 from contextlib import contextmanager
 from torch.utils.data import DistributedSampler
@@ -188,27 +189,48 @@ def launch_logger(
     job_name: str = "",
     project: str = "sc_1st_stage",
     task_name: str = "",
-    logger: Optional[str] = None,
-):
+    training: bool = False,
+    use_wandb: bool = False,
+) -> List[Logger]:
+    """Create the loggers for a run.
+
+    Training/validation runs always log to TensorBoard ({save_dir}/{task_name}/tensorboard)
+    and additionally to W&B when use_wandb is set; other tasks get a CSV logger. The
+    first logger's save_dir is where the run exports its files (see Net.setup).
+    """
     name = f"{job_name}_{task_name}"[:128]
     save_dir = os.path.join(save_dir, task_name)
     os.makedirs(save_dir, exist_ok=True)
 
-    if logger == "wandb":
-        from pytorch_lightning.loggers import WandbLogger
+    if not training:
+        return [CSVLogger(save_dir=save_dir, name=name, version=name)]
 
-        return WandbLogger(
-            name=name,
-            project=project,
-            save_dir=save_dir,
-            id=name,
-            version=name,
-            log_model=False,
+    loggers = [
+        TensorBoardLogger(
+            save_dir=save_dir, name="tensorboard", version="", default_hp_metric=False
         )
-    else:
-        from pytorch_lightning.loggers import CSVLogger
+    ]
+    if use_wandb:
+        loggers.append(
+            WandbLogger(
+                name=name,
+                project=project,
+                save_dir=save_dir,
+                id=name,
+                version=name,
+                log_model=False,
+            )
+        )
+    return loggers
 
-        return CSVLogger(save_dir=save_dir, name=name, version=name)
+
+def log_image(pl_module: pl.LightningModule, key: str, image, step: int) -> None:
+    """Log a [3, H, W] image in [0, 1] to every attached logger that supports images."""
+    for lg in pl_module.loggers:
+        if isinstance(lg, TensorBoardLogger):
+            lg.experiment.add_image(key, image, global_step=step)
+        elif isinstance(lg, WandbLogger):
+            lg.log_image(key, [image], step=step)
 
 
 class ModelCheckpoint(Callback):

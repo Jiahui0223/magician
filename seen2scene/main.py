@@ -51,14 +51,16 @@ def main(args: Union[VAE, Generator, Control]):
         )
 
     # Logger --------------------------------------------------------------
-    train_logger = launch_logger(
+    train_loggers = launch_logger(
         save_dir=args.log_dir,
         job_name=args.job_name,
         project=args.name,
         task_name=args.task.name,
-        logger="wandb" if any(s in args.task.name for s in ["train", "val"]) else "csv",
+        training=any(s in args.task.name for s in ["train", "val"]),
+        use_wandb=args.use_wandb,
     )
-    train_logger.log_hyperparams(dataclasses.asdict(args))
+    for train_logger in train_loggers:
+        train_logger.log_hyperparams(dataclasses.asdict(args))
 
     # Callbacks --------------------------------------------------------------
     callbacks = [
@@ -81,7 +83,7 @@ def main(args: Union[VAE, Generator, Control]):
         strategy=args.strategy,
         check_val_every_n_epoch=args.check_val_every_n_epoch,
         callbacks=callbacks,
-        logger=train_logger,
+        logger=train_loggers,
         profiler=args.profiler,
         precision=args.precision,
         accumulate_grad_batches=args.accumulate_grad_batches,

@@ -9,6 +9,7 @@ from seen2scene.models.fields import TSDFPatch, MeshPatch
 from seen2scene.models.trainer.common import Normalizer
 from .base import Net as BaseTrainer
 from seen2scene.tools import vis_utils
+from seen2scene.tools.lightning import log_image
 
 logger = get_logger(file_name=__file__, debug="trian_vae")
 
@@ -166,9 +167,7 @@ class Net(BaseTrainer):
             images, titles = vis_utils.batch2row_types2column(images_dict)
             image_grid = vis_utils.make_image_grid(images, titles)
             if self.trainer.is_global_zero:
-                self.logger.log_image(
-                    f"Validation_batch_{batch_idx}", [image_grid], step=self.global_step
-                )
+                log_image(self, f"Validation_batch_{batch_idx}", image_grid, self.global_step)
 
     @torch.no_grad()
     def test_step(self, batch, batch_idx):
