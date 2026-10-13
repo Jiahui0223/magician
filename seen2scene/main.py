@@ -69,6 +69,7 @@ def main(args: Union[VAE, Generator, Control]):
             dirpath=os.path.join(args.log_dir, "checkpoint"),
             save_last=True,
             every_n_epochs=1,
+            keep_every_n_epochs=args.ckpt_every_n_epochs,
         ),
         CustomProgressBar(timestamp=args.timestamp, task_name=args.task.name),
     ]

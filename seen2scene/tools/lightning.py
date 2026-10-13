@@ -240,8 +240,10 @@ class ModelCheckpoint(Callback):
         save_last: bool = True,
         every_n_epochs: int = 1,
         weights_only: bool = False,
+        keep_every_n_epochs: Optional[int] = None,
     ):
         super().__init__()
+        self.keep_every_n_epochs = keep_every_n_epochs
         self.dirpath = dirpath
         with rank_zero_only_context():
             os.makedirs(self.dirpath, exist_ok=True)
@@ -256,6 +258,9 @@ class ModelCheckpoint(Callback):
         if trainer.current_epoch % self.every_n_epochs == 0:
             checkpoint_path = os.path.join(self.dirpath, f"vxl_{voxel_size}_last.ckpt")
             trainer.save_checkpoint(checkpoint_path, weights_only=self.weights_only)
+        if self.keep_every_n_epochs and (trainer.current_epoch + 1) % self.keep_every_n_epochs == 0:
+            numbered = os.path.join(self.dirpath, f"vxl_{voxel_size}_epoch{trainer.current_epoch:04d}.ckpt")
+            trainer.save_checkpoint(numbered, weights_only=self.weights_only)
 
 
 class CustomProgressBar(TQDMProgressBar):

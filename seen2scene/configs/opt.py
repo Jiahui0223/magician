@@ -71,6 +71,8 @@ class Base:
             exports); a timestamped folder is created inside it. None nests the run
             under its parent experiment inside log_root (upstream behaviour).
         use_wandb: Also log training runs to Weights & Biases. TensorBoard is always on.
+        ckpt_every_n_epochs: Also keep a numbered checkpoint every N epochs
+            (checkpoint/vxl_<voxel>_epoch<NNNN>.ckpt). None keeps only the rolling last.ckpt.
         log_dir: Directory for current experiment logs, created within run_root.
         slurm_folder: Directory for SLURM job scripts and outputs.
         job_name: Human-readable name for the training job.
@@ -121,6 +123,7 @@ class Base:
     log_root: str = str(EXP_DIR)
     run_root: Optional[str] = str(RUN_DIR)
     use_wandb: bool = False
+    ckpt_every_n_epochs: Optional[int] = None
     log_dir: str = "./log"
     slurm_folder: str = "./log"
     job_name: str = "unnamed_job"
