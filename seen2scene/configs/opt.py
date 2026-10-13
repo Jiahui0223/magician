@@ -11,7 +11,7 @@ from .dataset import *
 from .autoencoder import *
 from .generator import *
 from .task import *
-from seen2scene import EXP_DIR
+from seen2scene import EXP_DIR, RUN_DIR
 from seen2scene.tools.common_utils import float2str
 from seen2scene.tools.log_utils import get_logger
 from seen2scene.tools.slurm_utils import Slurm
@@ -65,8 +65,12 @@ class Base:
         accelerator: Hardware accelerator type. Options: "gpu", "cpu".
         seed: Random seed for reproducibility across runs.
         profiler: PyTorch Lightning profiler type. Options: 'advanced', 'simple', or None.
-        log_root: Root directory for all experiment logs.
-        log_dir: Directory for current experiment logs, created within log_root.
+        log_root: Weights root. Parent experiments given by name (ae_log, gen_log,
+            ckpt_path) are looked up under {log_root}/auto_encoder/...
+        run_root: Root for this run's outputs (logs, TensorBoard, checkpoints,
+            exports); a timestamped folder is created inside it. None nests the run
+            under its parent experiment inside log_root (upstream behaviour).
+        log_dir: Directory for current experiment logs, created within run_root.
         slurm_folder: Directory for SLURM job scripts and outputs.
         job_name: Human-readable name for the training job.
         timestamp: Timestamp string for the current run, auto-generated in format
@@ -114,6 +118,7 @@ class Base:
     seed: int = 23
     profiler: Optional[str] = "simple"  # ['advanced', 'simple', None]
     log_root: str = str(EXP_DIR)
+    run_root: Optional[str] = str(RUN_DIR)
     log_dir: str = "./log"
     slurm_folder: str = "./log"
     job_name: str = "unnamed_job"
@@ -159,6 +164,13 @@ class Base:
     ckpt_path: Optional[str] = None
     ignore_keys: Optional[Tuple[str, ...]] = None
 
+    @staticmethod
+    def resolve_run_dir(name_or_path: str, parent_dir: str) -> str:
+        """Experiment folder given by name (looked up in parent_dir) or by path."""
+        if os.path.isabs(name_or_path) or os.sep in name_or_path:
+            return name_or_path
+        return os.path.join(parent_dir, name_or_path)
+
     def update_slurm_config(self) -> None:
         """Update SLURM job configuration based on training parameters.
 
@@ -179,6 +191,8 @@ class Base:
         skip_params = [
             "slurm",
             "log_dir",
+            "log_root",
+            "run_root",
             "resume",
             "ckpt_path",
             "patch_shape",
@@ -186,6 +200,7 @@ class Base:
             "logdir_ae",
         ]
         job_name = create_slurm_job_name_from_tyro(sys.argv, skip_params=skip_params)
+        job_name = job_name.replace(os.sep, "-")  # path-valued args must not add folders
         self.slurm.cpus_per_task = self.num_workers
         self.slurm.slurm_job_name = self.job_name = f"{self.timestamp}_{job_name}"[:100]
         self.slurm_folder = self.log_dir
@@ -362,12 +377,11 @@ class VAE(Base):
         """
         voxel_size = float2str(self.data.voxel_size)
         if self.ckpt_path is not None:
+            run_dir = self.resolve_run_dir(
+                self.ckpt_path, os.path.join(self.log_root, "auto_encoder")
+            )
             self.ckpt_path = os.path.join(
-                self.log_root,
-                "auto_encoder",
-                self.ckpt_path,
-                "checkpoint",
-                f"vxl_{voxel_size}_last.ckpt",
+                run_dir, "checkpoint", f"vxl_{voxel_size}_last.ckpt"
             )
         self.model.known_ratio = self.data.known_ratio
 
@@ -377,10 +391,10 @@ class VAE(Base):
         Automatically called after the dataclass __init__. Sets up the output
         directory structure and executes all configuration updates.
 
-        The output directory is placed under {log_root}/auto_encoder/, keeping
-        autoencoder experiments organized separately from other model types.
+        The output directory is run_root, or {log_root}/auto_encoder/ when
+        run_root is None.
         """
-        out_dir = os.path.join(self.log_root, "auto_encoder")
+        out_dir = self.run_root or os.path.join(self.log_root, "auto_encoder")
         self.update_and_log_configs(out_dir)
 
 
@@ -429,6 +443,7 @@ class Generator(Base):
     vae_cfg: Annotated[Optional[Dict[str, Any]], tyro.conf.Suppress] = None
     vae_ckpt: Optional[str] = None
     norm_by: Literal["minmax", "std"] = "std"
+    ae_dir: Annotated[Optional[str], tyro.conf.Suppress] = None
 
     def resume_ae_from_yaml(self) -> None:
         """Load VAE configuration and checkpoint path from autoencoder experiment.
@@ -449,7 +464,10 @@ class Generator(Base):
             - self.vae_cfg: Set to the model configuration from the AE experiment
             - self.vae_ckpt: Set to the path of the VAE checkpoint file
         """
-        ae_dir = os.path.join(self.log_root, "auto_encoder", self.ae_log)
+        ae_dir = self.resolve_run_dir(
+            self.ae_log, os.path.join(self.log_root, "auto_encoder")
+        )
+        self.ae_dir = ae_dir
         with open(os.path.join(ae_dir, "config.yaml"), "r") as yaml_file:
             model_cfg = yaml.unsafe_load(yaml_file)["model"]
             self.vae_cfg = model_cfg
@@ -513,14 +531,11 @@ class Generator(Base):
         """
         if self.ckpt_path is not None:
             vxl_size = float2str(self.data.voxel_size)
+            run_dir = self.resolve_run_dir(
+                self.ckpt_path, os.path.join(self.ae_dir, "generator")
+            )
             self.ckpt_path = os.path.join(
-                self.log_root,
-                "auto_encoder",
-                self.ae_log,
-                "generator",
-                self.ckpt_path,
-                "checkpoint",
-                f"vxl_{vxl_size}_last.ckpt",
+                run_dir, "checkpoint", f"vxl_{vxl_size}_last.ckpt"
             )
 
         self.model.model_cfg.in_channels = self.model.model_cfg.out_channels = (
@@ -533,13 +548,11 @@ class Generator(Base):
         Automatically called after the dataclass __init__. Loads the VAE configuration,
         sets up the output directory structure, and executes all configuration updates.
 
-        The output directory is nested under the autoencoder experiment:
-        {log_root}/auto_encoder/{ae_log}/generator/
-
-        This organization keeps generator experiments associated with their VAE.
+        The output directory is run_root, or the nested
+        {ae_dir}/generator/ when run_root is None.
         """
-        out_dir = os.path.join(self.log_root, "auto_encoder", self.ae_log, "generator")
         self.resume_ae_from_yaml()
+        out_dir = self.run_root or os.path.join(self.ae_dir, "generator")
         self.update_and_log_configs(out_dir)
 
 
@@ -567,6 +580,7 @@ class Control(Generator):
     src_key: Optional[str]
     name: str = "control"
     gen_log: Optional[str] = None
+    gen_dir: Annotated[Optional[str], tyro.conf.Suppress] = None
 
     def update_model_config(self) -> None:
         """Update ControlNet model configuration by loading base generator config.
@@ -587,9 +601,7 @@ class Control(Generator):
             - self.model.gen_cfg: Set to the generator model configuration
             - self.model.gen_ckpt: Set to the path of the generator checkpoint
         """
-        gen_dir = os.path.join(
-            self.log_root, "auto_encoder", self.ae_log, "generator", self.gen_log
-        )
+        gen_dir = self.gen_dir
         with open(os.path.join(gen_dir, "config.yaml"), "r") as yaml_file:
             model_cfg = yaml.unsafe_load(yaml_file)["model"]
             self.model.gen_cfg = model_cfg
@@ -601,12 +613,11 @@ class Control(Generator):
 
         if self.ckpt_path is not None:
             vxl_size = float2str(self.data.voxel_size)
+            run_dir = self.resolve_run_dir(
+                self.ckpt_path, os.path.join(gen_dir, "control")
+            )
             self.ckpt_path = os.path.join(
-                gen_dir,
-                "control",
-                self.ckpt_path,
-                "checkpoint",
-                f"vxl_{vxl_size}_last.ckpt",
+                run_dir, "checkpoint", f"vxl_{vxl_size}_last.ckpt"
             )
 
     def update_data_config(self) -> None:
@@ -655,19 +666,12 @@ class Control(Generator):
         generator configurations, sets up the output directory structure, and
         executes all configuration updates.
 
-        The output directory is nested under the generator experiment:
-        {log_root}/auto_encoder/{ae_log}/generator/{gen_log}/control/
-
-        This organization keeps ControlNet experiments associated with their
-        base generator and VAE.
+        The output directory is run_root, or the nested {gen_dir}/control/ when
+        run_root is None.
         """
-        out_dir = os.path.join(
-            self.log_root,
-            "auto_encoder",
-            self.ae_log,
-            "generator",
-            self.gen_log,
-            "control",
-        )
         self.resume_ae_from_yaml()
+        self.gen_dir = self.resolve_run_dir(
+            self.gen_log, os.path.join(self.ae_dir, "generator")
+        )
+        out_dir = self.run_root or os.path.join(self.gen_dir, "control")
         self.update_and_log_configs(out_dir)

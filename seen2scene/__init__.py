@@ -9,7 +9,13 @@ def _path_from_env(name: str, default: Path) -> Path:
     return Path(os.environ.get(name, default)).expanduser()
 
 
-EXP_DIR = _path_from_env("SEEN2SCENE_EXP_DIR", Path("experiments"))
+# Weights root: experiment folders referenced by name (--ae-log, --gen-log, --ckpt-path)
+# are resolved under EXP_DIR/auto_encoder/... . The released checkpoints live here.
+EXP_DIR = _path_from_env(
+    "SEEN2SCENE_EXP_DIR", PROJECT_ROOT / "work_dirs" / "weights" / "official"
+)
+# Where new runs write their outputs (logs, TensorBoard, checkpoints, exports).
+RUN_DIR = _path_from_env("SEEN2SCENE_RUN_DIR", PROJECT_ROOT / "work_dirs" / "runs")
 DATA_ROOT = _path_from_env("SEEN2SCENE_DATA_ROOT", PROJECT_ROOT / "data")
 
 FRONT3D_RAW_DIR = _path_from_env("SEEN2SCENE_FRONT3D_RAW_DIR", DATA_ROOT / "3D-FRONT")
