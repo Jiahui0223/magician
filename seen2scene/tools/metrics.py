@@ -542,6 +542,7 @@ class Metrics(nn.ModuleDict):
         super().__init__()
         self.curr_metrics = {}
         self.metrics_list = metrics_list
+        self.num_updates = 0  # exp1-task5: lets epoch-end hooks skip compute when nothing was added
 
         for metric_str in metrics_list:
             assert metric_str in metrics_dict, f"Metric {metric_str} not implemented"
@@ -557,6 +558,7 @@ class Metrics(nn.ModuleDict):
     ):
         from seen2scene.models.fields import TSDFPatch
 
+        self.num_updates += 1
         if not isinstance(field_pred, list):
             field_pred = [field_pred]
         device = field_pred[0].device
@@ -657,6 +659,7 @@ class Metrics(nn.ModuleDict):
                 json.dump(metrics_i, f, indent=2)
 
     def reset(self):
+        self.num_updates = 0
         for metric in self.values():
             metric.reset()
 

@@ -101,12 +101,9 @@ class Net(pl.LightningModule):
         }
 
     def training_step(self, batch, batch_idx):
-        try:
-            loss_dict, stats_dict = self.losses(batch)
-        except torch.OutOfMemoryError:
-            logger.warning(f"OOM, skipping scenes: {batch['scene_names']}")
-            loss_dict = {"loss": 0.0}
-            stats_dict = {}
+        # exp1-task5: the former OOM branch set a float loss, which crashed at torch.isnan
+        # and would hang DDP if a single rank skipped a step. Let OOM raise instead.
+        loss_dict, stats_dict = self.losses(batch)
 
         for k, v in loss_dict.items():
             assert not torch.isnan(v), f"NaN loss detected for {k}"
@@ -203,6 +200,10 @@ class Net(pl.LightningModule):
             self.trainer.should_stop = True
 
     def on_validation_epoch_end(self):
+        if getattr(self.metrics["model"], "num_updates", 1) == 0:
+            logger.warning("No metric updates in this validation epoch; metrics not computed.")
+            self.metrics["model"].reset()
+            return
         self.log_dict(
             self.metrics["model"].compute(prefix="val/"),
             on_epoch=True,
@@ -212,6 +213,12 @@ class Net(pl.LightningModule):
         self.metrics["model"].reset()
 
     def on_test_epoch_end(self):
+        # exp1-task5: test_step never calls metrics.update() for generation, and FID then
+        # raised "More than one sample is required" after all exports were written.
+        if getattr(self.metrics["model"], "num_updates", 1) == 0:
+            logger.warning("No metric updates in this test epoch; metrics not computed.")
+            self.metrics["model"].reset()
+            return
         self.log_dict(
             self.metrics["model"].compute(prefix="test/"),
             on_epoch=True,
