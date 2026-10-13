@@ -1,4 +1,5 @@
 import torch
+import json
 import os
 import copy
 import math
@@ -661,6 +662,10 @@ class Net(BaseTrainer):
             self.export_field(field_i, key, scene_names)
 
         fields_gen = []
+        if getattr(self.task, "num_inference_steps", None) is not None:  # exp2-task4 (opt-in)
+            for m in _modules_incl_dicts(self):
+                if hasattr(m, "num_inference_steps") and not isinstance(m, type(self)):
+                    m.num_inference_steps = int(self.task.num_inference_steps)
         if getattr(self.task, "world_seeding", False):
             # exp2-task1: the conditioner caches CLIP embeddings of object names that are not in
             # its precomputed table. A name is first encoded in a batch with the other new names
@@ -672,16 +677,39 @@ class Net(BaseTrainer):
             for m in _modules_incl_dicts(self):
                 if isinstance(getattr(m, "_embedding_cache", None), dict):
                     m._embedding_cache.clear()
-        for i in range(self.task.repeat_num):
-            if getattr(self.task, "world_seeding", False):
-                from seen2scene.tools.seeding import seed_world, world_rng
+        try:
+            for i in range(self.task.repeat_num):
+                if getattr(self.task, "world_seeding", False):
+                    from seen2scene.tools.seeding import seed_world, world_rng
 
-                with world_rng(seed_world(scene_names[0], 0, 0, i)):
+                    with world_rng(seed_world(scene_names[0], 0, 0, i)):
+                        field_gen_i = self.generate_patch(batch)
+                else:
                     field_gen_i = self.generate_patch(batch)
-            else:
-                field_gen_i = self.generate_patch(batch)
-            fields_gen.append(field_gen_i)
-            self.export_field(field_gen_i, f"tsdf (Generation)_{i}", scene_names)
+                fields_gen.append(field_gen_i)
+                self.export_field(field_gen_i, f"tsdf (Generation)_{i}", scene_names)
+        except Exception as e:  # exp2-task3: record the failure and continue (opt-in)
+            if not getattr(self.task, "record_failures", False):
+                raise
+            import traceback
+
+            for scene_name, bbox_world_i in zip(scene_names, batch[self.latent_key].bbox_world):
+                out_dir = os.path.join(self.log_dir, f"{scene_name}_{common_utils.bbox2str(bbox_world_i)}")
+                os.makedirs(out_dir, exist_ok=True)
+                with open(os.path.join(out_dir, "failure.json"), "w") as f:
+                    json.dump({"scene": scene_name, "worlds_done": len(fields_gen), "error": repr(e),
+                               "traceback": traceback.format_exc()}, f, indent=1)
+            logger.warning(f"{scene_names}: generation failed ({e!r}); recorded in failure.json")
+            torch.cuda.empty_cache()
+            return
+
+        # exp2-task3: visualization is not used by any metric; skip it for bulk runs (opt-in)
+        if getattr(self.task, "skip_render", False) and not set(scene_names) & set(self.task.render_scenes):
+            for scene_name, bbox_world_i in zip(scene_names, fields_gen[0].bbox_world):
+                out_dir = os.path.join(self.log_dir, f"{scene_name}_{common_utils.bbox2str(bbox_world_i)}")
+                with open(os.path.join(out_dir, "completed.json"), "w") as f:  # completion marker for eval
+                    json.dump({"scene": scene_name, "worlds": len(fields_gen)}, f)
+            return
 
         # Export images ------------------------------------------------------------
         images_dict = self.render_outputs(

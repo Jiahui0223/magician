@@ -186,6 +186,13 @@ class Generation:
     num_variations: int = 1
     guidance_scale: float = 3.0
     world_seeding: bool = False  # exp1-task5: seed repeat i with seed_world(scene, 0, 0, i)
+    # exp2-task3: skip the image grid / gif (visualization only) except for these scenes
+    skip_render: bool = False
+    render_scenes: Tuple[str, ...] = ()
+    # exp2-task3: if generation fails for a patch, write failure.json and continue with the next patch
+    record_failures: bool = False
+    # exp2-task4: override the number of flow sampling steps (None keeps the generator config, 50)
+    num_inference_steps: Optional[int] = None
     backend: Literal["pyrender", "blender"] = "pyrender"
     scene_shape: Tuple[int, int, int] = (256, 256, 256)
     overwrite: bool = False
