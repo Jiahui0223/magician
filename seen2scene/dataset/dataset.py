@@ -1,3 +1,4 @@
+import hashlib
 import csv
 import os
 import torch
@@ -186,6 +187,8 @@ class Dataset(torch.utils.data.Dataset):
         csv_slice: Optional[Tuple[int, int]] = None,
         patch_names: Optional[str] = None,
         max_scene_volume: Optional[float] = None,
+        sample_seed: Optional[int] = None,
+        patch_cache_dir: Optional[str] = None,
     ):
         """Initialize the 3D scene dataset.
 
@@ -247,6 +250,13 @@ class Dataset(torch.utils.data.Dataset):
         self.known_ratio = known_ratio
         self.truncation = voxel_size * 3 if truncation is None else truncation
         self.use_semantic_mapping = use_semantic_mapping
+        # exp1-task5. With persistent workers the epoch is not visible in the workers, so
+        # train sampling is seeded by (sample_seed, rank, worker, per-worker draw counter).
+        # It is deterministic for a fixed seed, world size and num_workers, and every epoch
+        # still gets fresh patches.
+        self.sample_seed = sample_seed
+        self._draws = 0
+        self.patch_cache_dir = patch_cache_dir
 
         self.file_paths, self.scene_metas = self.load_files()
 
@@ -534,6 +544,32 @@ class Dataset(torch.utils.data.Dataset):
 
         return patch_kwargs
 
+    def _load_cropped(self, file_path: str, data_key: str, bbox_min, patch_shape) -> torch.Tensor:
+        """Crop and clamp a TSDF patch from its VDB, optionally through a cache (exp1-task5).
+
+        The cache stores the clamped crop BEFORE augmentation, keyed by the absolute file
+        path, the patch shape and the bbox, as a compressed float32 array. So the returned
+        tensor is bitwise identical to a fresh crop, and augmentation still runs per sample.
+        """
+        cache = None
+        if self.patch_cache_dir is not None:
+            key = hashlib.sha1(
+                (f"{os.path.abspath(file_path)}|{list(patch_shape)}|" + "|".join(f"{x:.6f}" for x in bbox_min)).encode()
+            ).hexdigest()
+            cache = os.path.join(self.patch_cache_dir, key[:2], key + ".npz")
+            if os.path.exists(cache):
+                return torch.from_numpy(np.load(cache)["v"])
+        volume = loadvdb(file_path)[0]["tsdf"]
+        volume = crop_vdb(volume, bbox_min, patch_shape, cell_center=True)
+        volume = torch.from_numpy(volume).float()  # [H, W, D]
+        volume = torch.clamp(volume, min=-self.truncation, max=self.truncation)
+        if cache is not None:
+            os.makedirs(os.path.dirname(cache), exist_ok=True)
+            tmp = f"{cache[:-4]}.{os.getpid()}.tmp.npz"
+            np.savez_compressed(tmp, v=volume.numpy())
+            os.replace(tmp, cache)  # atomic: concurrent workers never read a partial file
+        return volume
+
     def get_patch_data(
         self,
         file_paths: Dict[str, str],
@@ -595,10 +631,7 @@ class Dataset(torch.utils.data.Dataset):
             bbox_min = bbox_world.tolist()[:3]
             if not all(isinstance(x, (int, float)) for x in bbox_min):
                 raise ValueError(f"Invalid bbox_min values: {bbox_min}")
-            volume = loadvdb(file_path)[0]["tsdf"]
-            volume = crop_vdb(volume, bbox_min, patch_shape, cell_center=True)
-            volume = torch.from_numpy(volume).float()  # [H, W, D]
-            volume = torch.clamp(volume, min=-self.truncation, max=self.truncation)
+            volume = self._load_cropped(file_path, data_key, bbox_min, patch_shape)
             if aug_func is not None:
                 volume = aug_func.update_volume(volume)
 
@@ -681,6 +714,11 @@ class Dataset(torch.utils.data.Dataset):
                 idx = idx % len(self.file_paths)
             if self.split in ["val", "test"]:
                 rng = np.random.default_rng(seed=0)
+            elif self.sample_seed is not None:
+                info = torch.utils.data.get_worker_info()
+                rank = int(os.environ.get("RANK", os.environ.get("LOCAL_RANK", 0)))
+                self._draws += 1
+                rng = np.random.default_rng([self.sample_seed, rank, (info.id + 1) if info else 0, self._draws])
             else:
                 rng = np.random.default_rng()
             file_path = self.file_paths[idx]

@@ -361,6 +361,10 @@ class Dataset:
         None  # e.g. "478011_2.2_-1.2_76.1"; bypasses split
     )
     scene_names: Optional[Tuple[str, ...]] = None
+    # exp1-task5: None keeps the original unseeded training sampling
+    sample_seed: Optional[int] = None
+    # exp1-task5: cache cropped TSDF patches (before augmentation) here; None disables
+    patch_cache_dir: Optional[str] = None
 
     def __post_init__(self) -> None:
         """Validate dataset configuration after initialization.
