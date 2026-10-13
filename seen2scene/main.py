@@ -62,6 +62,11 @@ def main(args: Union[VAE, Generator, Control]):
     for train_logger in train_loggers:
         train_logger.log_hyperparams(dataclasses.asdict(args))
 
+    # Code version of this run (exp1-task5) -----------------------------------
+    from seen2scene.tools.run_info import write_git_state
+
+    write_git_state(args.log_dir)
+
     # Callbacks --------------------------------------------------------------
     callbacks = [
         LearningRateMonitor(logging_interval="step"),
