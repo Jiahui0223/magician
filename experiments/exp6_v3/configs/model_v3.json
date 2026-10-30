@@ -1,0 +1,58 @@
+{
+ "version": "v3_model_v1",
+ "note": "Shared by T0 (xattn.enabled = false) and T1 (true); every other field identical. Frozen 2026-10-30 06:30 (protocol.md v1.0).",
+ "input": {
+  "factor": 4,
+  "pad_to": 8,
+  "channels": [
+   "sdf",
+   "band",
+   "free"
+  ],
+  "valid_channel": true
+ },
+ "vae": {
+  "in_ch": 4,
+  "ch": [
+   32,
+   64
+  ],
+  "latent_ch": 16,
+  "groups": 8,
+  "act_ckpt": true,
+  "latent_stride_fine_voxels": 8
+ },
+ "ray": {
+  "n_points": 32,
+  "hidden": 64,
+  "out_ch": 64
+ },
+ "proj_ch": 11,
+ "flow": {
+  "x_ch": 2,
+  "euler_steps": 10,
+  "K": 4
+ },
+ "unet": {
+  "ch": [
+   64,
+   128,
+   192,
+   256
+  ],
+  "blocks_per_level": 2,
+  "attn_levels": [
+   3
+  ],
+  "heads": 4,
+  "t_emb": 256,
+  "groups": 16
+ },
+ "xattn": {
+  "enabled": false,
+  "heads": 4,
+  "budget": 512,
+  "n_freq": 8,
+  "fov_margin_deg": 10.0
+ }
+}
