@@ -10,6 +10,23 @@
 - **Task 0**：用 MP3D 室内场景和 Macarons++ 室外场景，在匹配的极低覆盖条件下诊断冻结 Seen2Scene 和 T1-C。
 - **Task 1（V2）**：对每个合法候选相机，直接预测 K 个可能的未来深度和命中情况，接上冻结的 DistP1 + Greedy，在 Dev-3 上跑 100 步闭环。
 
+## 归档索引（V2，2026-10-29 归档到 git）
+
+| 内容 | 位置 | 入口 |
+|---|---|---|
+| V2 模型与评分（包） | `seen2scene/futureview/`（`model.py`、`geometry.py`、`rays.py`、`scoring.py`、`predictor.py`） | 单元测试 `tests/futureview/`（`pytest tests/futureview`，13 passed） |
+| Task 0 低覆盖诊断、MAGICIAN 对照、网格对齐 | `task0/` | `task0/TASK0_FINAL_REPORT.md`、`task0/reports/` |
+| Task 1 V2（数据构建、训练、评分、Dev-3 闭环） | `task1/` | `task1/TASK1_FINAL_REPORT.md`；训练 `task1/scripts/t12_train.py`，冻结值 `task1/scripts/v2_frozen.py` |
+| Task 2 V2-Mix + 最终对照 | `task2/` | `task2/reports/TASK2_FINAL_REPORT.md`；训练 `task2/scripts/t22_train_mix.py`，配置 `task2/configs/`，闭环 `t23_in_sim.py` / `t24_out_sim.py` |
+| 消融 A1 / A2 | `ablation_study/` | `ablation_study/reports/ABLATION_SUMMARY.md` |
+| Task 3 E1 全深度 P1、B2 闭环 | `task3_full_depth_p1/` | `reports/T3_E1_DECISION.md`；`scripts/p1_full.py` |
+| Task 3 E1.2 密度消融 | `task3_full_depth_p1/density_ablation/` | `reports/T3_E12_FINAL_DECISION.md` |
+| Task 3 E2 微调 Pilot（G1 / G2 / G3） | `task3_full_depth_p1/e2_pilot/` | `reports/E2_G12_REPORT.md`、`reports/E2_G3_REPORT.md`；训练 `scripts/e2_train.py` |
+
+- **权重（不进 git）**：V2 Original `work_dirs/weights/W20-1`（EMA@60k）；V2-Mix `work_dirs/weights/W21_exp5_v2mix/W21-1_V2Mix_best/ema_017500.pt`（sha256 `343f41ab…`）；E2 微调 `work_dirs/exp5_future_view/task3_full_depth_p1/e2/training/{s10,d100}/`。
+- **不在 git 的大文件**：`ablation_study/A1_prediction_scoring/results/a1_{candidates_indoor,candidates_outdoor,states_outdoor}.csv`、`ablation_study/A2_stochastic_future_views/results/a2_states_outdoor.csv`、`.../figures/v2/{diag_gray_outdoor_success,outdoor_success_V2O_best_j5}.png`、`task3_full_depth_p1/density_ablation/analysis/e12_{states,summary}.json`。
+- **环境路径**：脚本中的 `/bsuscratch/jiahuizhang/envs/{seen2scene,magician}` 等是本集群的环境路径，换机器时需要改。
+
 ## 进度（每次状态变化立即更新）
 
 | 任务 | 状态 | 文件 | 最近更新 |
@@ -27,7 +44,7 @@
 - **基线**：EXP4 的 B0（abl_1 A2）、B1、B2 和 MAGICIAN T7a 只引用已冻结的结果并记录哈希，不重跑。
 - **冻结代码**：不修改任何 EXP3b / EXP4 的冻结代码和结果。
 - **偏差**：只追加到 `DEVIATIONS.md`，不改已冻结的文字。
-- **git**：可复用的代码放在仓库包里，提交前缀 `[exp5][类型] 描述`；实验目录和 `work_dirs/` 不进 git。
+- **git**（2026-10-29 更新）：V2 归档已按你的指示提交到 `origin/seen2scene`（提交前缀 `[V2][类型] 描述`）：仓库包 `seen2scene/futureview/`、`tests/futureview/`，以及本目录的脚本、配置、协议、报告、≤ 1 MB 的图表与分析表。`work_dirs/`、`data/` 和本目录 8 个超过 1 MB 的结果文件仍不进 git（列在 `.gitignore`）。
 - **运行输出**：`work_dirs/exp5_future_view/`，到实际运行时才建立。
 
 ## 决策与修改记录
