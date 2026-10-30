@@ -1,13 +1,13 @@
 # EXP6 — V3 Combined Report: Simple 3D VAE vs 3D VAE + Cross-Attention
 
-> STATUS（2026-10-30）：**IN PROGRESS** — Phase 1 / 2 完成，G0 进行中，训练未开始。本文件按 `../EXP6_V3_REPORT_TEMPLATE.md` 结构填写，每一节标注 `Completed / Running / Failed / Not Run / Exploratory`；所有数字只来自真实日志（路径随数字给出）。
+> STATUS（2026-10-30 06:25）：**IN PROGRESS** — Phase 1 / 2 / 3（G0）完成，协议 v1.0 已冻结（06:10，提交 `7de02cc`），T0 训练运行中（06:19 起，gpu117 4 × L40S），T1 待 `train_chain.sh` 启动。本文件按 `../EXP6_V3_REPORT_TEMPLATE.md` 结构填写，每一节标注 `Completed / Running / Failed / Not Run / Exploratory`；所有数字只来自真实日志（路径随数字给出）。
 > 真相来源：`../protocol.md`、run manifests（`work_dirs/exp6_v3/task*/runs/*/run_*.json`）、checkpoints、G1/G2/G3 原始结果。
 
 ## 1. Executive Summary
 - 问题 1：从零训练的 3D VAE partial-TSDF 表示能否改善未来视角生成与闭环 NBV？ — **Not Run**
 - 问题 2：同预算下一处 Camera-Ray Cross-Attention 是否有可测收益？ — **Not Run**
 - 总体结论：**Not Run**
-- 负面结果与协议偏差：见 `V3_DEVIATIONS.md`（#1–#6，均为工程偏差）。
+- 负面结果与协议偏差：见 `V3_DEVIATIONS.md`（#1–#8，均为训练前的工程偏差）。
 
 ## 2. Experimental Protocol and Data Provenance（Completed：数据审计；训练数据构建 Running）
 | Split | Scene / house IDs | 轨迹 | 候选视角 | 独立性 |
@@ -35,10 +35,10 @@
 | DistP1 评分 | P1_10，固定 | P1_10，固定 |
 | 优化 | L_FM + λ L_recon + β KL | 完全相同 |
 
-参数：T0 23,539,622（推理 22,954,434；Decoder 585,188 仅训练）；T1 = T0 + Cross-Attn ⟨待填⟩。KL 调度、优化器、步数等：`../protocol.md` v1.0（G0 后冻结）。
+参数：T0 23,539,622（推理 22,954,434；Decoder 585,188 仅训练）；T1 = T0 + Cross-Attn 191,364 = 23,730,986；公共模块初始化 sha256 `6a9d6071a225…` 两组相同。训练：`../protocol.md` v1.0（2026-10-30 06:10 冻结）—— 40,000 步、全局 64 视角 / 步（32 + 32）、lr 1e-4（预热 1k、余弦）、λ_rec 1.0、β 0.02（5k 预热）、EMA 0.999、每 5k 步评估，选择规则与早停规则见协议 §3。
 
-## 4. G0（Running）
-见 `../task0_vae/report/T0_G0_TESTS.md`、`../task1_xattn/report/T1_G0_TESTS.md`。
+## 4. G0（Completed，2026-10-30 06:18）
+见 `../task0_vae/report/T0_G0_TESTS.md`、`../task1_xattn/report/T1_G0_TESTS.md`。要点：无泄漏（417 / 417 条轨迹的粗网格逐位 = E2 分片）；三态 / 对齐 / 分割 / 梯度 / XAttn 单元测试 6 passed；tiny overfit T0 −83% / T1 −84%（第 1 步损失相同）；干净 4 卡 profile T0 0.94 / T1 0.96 s/步，峰值 15.8 GB；dunnottar 单进程 1.83 s / 27.4 GB；DDP resume 通过（第 1 次发现 RNG 恢复 bug，偏差 #8）。
 
 ## 5. G1 — Not Run
 ## 6. G2 — Not Run

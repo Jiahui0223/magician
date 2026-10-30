@@ -1,5 +1,6 @@
 #!/bin/bash
 # train_arm.sh t0|t1 : formal V3 run of one arm on the 4 GPUs of the node it runs on (torchrun, 4 ranks)
+# Tracked copy of the launcher; the running copy is work_dirs/exp6_v3/train_arm.sh (identical content).
 R=/bsuscratch/jiahuizhang/projects/occupancy/seen2scene
 S2E=/bsuscratch/jiahuizhang/envs/seen2scene
 W=$R/work_dirs/exp6_v3
