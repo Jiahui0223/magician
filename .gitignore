@@ -9,6 +9,19 @@ __pycache__/
 *.blend1
 
 # Folder
-experiments/
 work_dirs/
 checkpoints/
+# experiments/: design docs stay local, except the archived EXP5 (V2) tree, the EXP6 V3 tree and the index (2026-10-29)
+experiments/*
+!experiments/README.md
+!experiments/exp5_future_view/
+!experiments/exp6_v3/
+# EXP5 derived result files above 1 MB stay in the working tree only
+experiments/exp5_future_view/ablation_study/A1_prediction_scoring/results/a1_candidates_indoor.csv
+experiments/exp5_future_view/ablation_study/A1_prediction_scoring/results/a1_candidates_outdoor.csv
+experiments/exp5_future_view/ablation_study/A1_prediction_scoring/results/a1_states_outdoor.csv
+experiments/exp5_future_view/ablation_study/A2_stochastic_future_views/figures/v2/diag_gray_outdoor_success.png
+experiments/exp5_future_view/ablation_study/A2_stochastic_future_views/figures/v2/outdoor_success_V2O_best_j5.png
+experiments/exp5_future_view/ablation_study/A2_stochastic_future_views/results/a2_states_outdoor.csv
+experiments/exp5_future_view/task3_full_depth_p1/density_ablation/analysis/e12_states.json
+experiments/exp5_future_view/task3_full_depth_p1/density_ablation/analysis/e12_summary.json
