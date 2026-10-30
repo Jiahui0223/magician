@@ -1,0 +1,52 @@
+{
+ "version": "eval_outdoor_v1",
+ "protocol": "task2/protocol.md \u00a74",
+ "budget": {
+  "frames": 101,
+  "moves": 100
+ },
+ "scenes": {
+  "test": [
+   "alhambra",
+   "bridge",
+   "neuschwanstein"
+  ],
+  "dev": [
+   "barts",
+   "pantheon",
+   "colosseum"
+  ]
+ },
+ "starts": [
+  0,
+  1,
+  2,
+  3,
+  4
+ ],
+ "groups": {
+  "V2O": {
+   "name": "G0 V2 Original + DistP1 + Greedy-NV",
+   "score": "distp1",
+   "K": 4,
+   "checkpoint": "work_dirs/weights/W20_exp5_v2/W20-1_V2_original_ema60k/ema_060000.pt",
+   "sha256": "a379c0fb9d7d80266a430ab6f48f39315fad54fb650c6c3740a999a02db079fc"
+  },
+  "V2M": {
+   "name": "G1 V2-Mix + DistP1 + Greedy-NV",
+   "score": "distp1",
+   "K": 4,
+   "checkpoint": "work_dirs/weights/W21_exp5_v2mix/W21-1_V2Mix_best/ema_017500.pt",
+   "sha256": "343f41ab8d566c52007c881b5f32375c3253dd8f1c7a0d8a906d412a165e4516",
+   "step": 17500
+  },
+  "MAG-G": {
+   "name": "G2 MAGICIAN official e697009, beam 1x1"
+  },
+  "MAG-B": {
+   "name": "G3 MAGICIAN official e697009, beam 10x10"
+  }
+ },
+ "environment": "frozen M-protocol EpisodeSim (official settings grid, get_neighboring_poses -> get_valid_neighbors -> GT segment test, hover)",
+ "sensor": "MAGICIAN default 456 x 256, 60 deg, range 70 runtime"
+}

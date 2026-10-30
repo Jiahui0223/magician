@@ -1,0 +1,6253 @@
+{
+ "indoor": {
+  "n_states": 368,
+  "n_states_by_source": {
+   "V2O": 100,
+   "V2M": 90,
+   "MAG-G": 90,
+   "MAG-B": 88
+  },
+  "repro_max_abs_diff": 0.0,
+  "repro_states": 200,
+  "bins": {
+   "max_gain_pp": [
+    0.09789770525105915,
+    0.44831188637834846
+   ],
+   "cov_t": [
+    0.14950629951723327,
+    0.3388275771895772
+   ]
+  },
+  "spearman_undefined": {
+   "V2O": 5,
+   "V2M": 5,
+   "GTD": 13,
+   "GTDn": 13
+  },
+  "fallback": {
+   "V2O": 0,
+   "V2M": 0,
+   "GTD": 8,
+   "GTDn": 8
+  },
+  "scorers": {
+   "V2O": {
+    "spearman": {
+     "mean": 0.4282464560383984,
+     "ci95": [
+      0.3291189902442389,
+      0.500043639852523
+     ],
+     "scenes": 5
+    },
+    "top1": {
+     "mean": 0.4134722222222222,
+     "ci95": [
+      0.35055555555555556,
+      0.4772222222222222
+     ],
+     "scenes": 5
+    },
+    "top1_strict": {
+     "mean": 0.33729166666666666,
+     "ci95": [
+      0.24277777777777776,
+      0.43180555555555555
+     ],
+     "scenes": 5
+    },
+    "pairwise": {
+     "mean": 0.6928273811139813,
+     "ci95": [
+      0.6526928597069326,
+      0.720188038807995
+     ],
+     "scenes": 5
+    },
+    "regret": {
+     "mean": 0.20967363496838942,
+     "ci95": [
+      0.1504310407162709,
+      0.28990495979519987
+     ],
+     "scenes": 5
+    },
+    "nregret": {
+     "mean": 0.4110160917852205,
+     "ci95": [
+      0.37197772699975523,
+      0.45683953046879466
+     ],
+     "scenes": 5
+    },
+    "fidelity": {
+     "mean": 0.6117476375718967,
+     "ci95": [
+      0.5261967510792115,
+      0.6932821006774396
+     ],
+     "scenes": 5
+    },
+    "regret_minus_gtd": {
+     "mean": 0.1452152132255399,
+     "ci95": [
+      0.11128263987882876,
+      0.20588325556716916
+     ],
+     "scenes": 5
+    },
+    "agree_pred_gtd": {
+     "mean": 0.4805555555555555,
+     "ci95": [
+      0.41319444444444436,
+      0.5497916666666667
+     ],
+     "scenes": 5
+    },
+    "agree_pred_oracle": {
+     "mean": 0.4134722222222222,
+     "ci95": [
+      0.35055555555555556,
+      0.4772222222222222
+     ],
+     "scenes": 5
+    },
+    "agree_gtd_oracle": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "fair_es": {
+     "mean": 27.81370103489067,
+     "ci95": [
+      21.692474117896555,
+      34.29679081692956
+     ],
+     "scenes": 5
+    },
+    "brier": {
+     "mean": 0.21422636659087138,
+     "ci95": [
+      0.2034251126385785,
+      0.2262769367153569
+     ],
+     "scenes": 5
+    },
+    "false_surface": {
+     "mean": 0.35050490524597144,
+     "ci95": [
+      0.3080655158542139,
+      0.39972038891475076
+     ],
+     "scenes": 5
+    },
+    "missed_surface": {
+     "mean": 0.2579834504600954,
+     "ci95": [
+      0.2382635589353022,
+      0.28415404931809163
+     ],
+     "scenes": 5
+    },
+    "depth_rel_err": {
+     "mean": 0.25351345976465955,
+     "ci95": [
+      0.15624826582150972,
+      0.3507786537078093
+     ],
+     "scenes": 5
+    },
+    "regret_official": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "top1_official": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    }
+   },
+   "V2M": {
+    "spearman": {
+     "mean": 0.5521028373865242,
+     "ci95": [
+      0.475725996419199,
+      0.6102897102770404
+     ],
+     "scenes": 5
+    },
+    "top1": {
+     "mean": 0.5553472222222222,
+     "ci95": [
+      0.5093055555555555,
+      0.6070833333333334
+     ],
+     "scenes": 5
+    },
+    "top1_strict": {
+     "mean": 0.4736111111111111,
+     "ci95": [
+      0.41680555555555554,
+      0.5365277777777778
+     ],
+     "scenes": 5
+    },
+    "pairwise": {
+     "mean": 0.762949977435193,
+     "ci95": [
+      0.7353224328288596,
+      0.7877334643648444
+     ],
+     "scenes": 5
+    },
+    "regret": {
+     "mean": 0.11876108401703371,
+     "ci95": [
+      0.08386554425931936,
+      0.15252172815678713
+     ],
+     "scenes": 5
+    },
+    "nregret": {
+     "mean": 0.2816268701262158,
+     "ci95": [
+      0.2617456932197667,
+      0.2928250065979329
+     ],
+     "scenes": 5
+    },
+    "fidelity": {
+     "mean": 0.8069881520131574,
+     "ci95": [
+      0.7483198133181165,
+      0.8641956479368634
+     ],
+     "scenes": 5
+    },
+    "regret_minus_gtd": {
+     "mean": 0.05430266227418419,
+     "ci95": [
+      0.02235285484080011,
+      0.08164547720044182
+     ],
+     "scenes": 5
+    },
+    "agree_pred_gtd": {
+     "mean": 0.6680555555555555,
+     "ci95": [
+      0.593125,
+      0.7490277777777777
+     ],
+     "scenes": 5
+    },
+    "agree_pred_oracle": {
+     "mean": 0.5553472222222222,
+     "ci95": [
+      0.5093055555555555,
+      0.6070833333333334
+     ],
+     "scenes": 5
+    },
+    "agree_gtd_oracle": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "fair_es": {
+     "mean": 10.72302873206728,
+     "ci95": [
+      8.612064476065413,
+      12.875741058511121
+     ],
+     "scenes": 5
+    },
+    "brier": {
+     "mean": 0.10698435723046992,
+     "ci95": [
+      0.0921128577725635,
+      0.12185585668837635
+     ],
+     "scenes": 5
+    },
+    "false_surface": {
+     "mean": 0.2698150539484271,
+     "ci95": [
+      0.23385482604035754,
+      0.3131453515185611
+     ],
+     "scenes": 5
+    },
+    "missed_surface": {
+     "mean": 0.13673857878914875,
+     "ci95": [
+      0.12055547590273943,
+      0.15654360751165128
+     ],
+     "scenes": 5
+    },
+    "depth_rel_err": {
+     "mean": 0.19200955842564804,
+     "ci95": [
+      0.115139065845376,
+      0.2688800510059201
+     ],
+     "scenes": 5
+    },
+    "regret_official": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "top1_official": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    }
+   },
+   "GTD": {
+    "spearman": {
+     "mean": 0.6574330631749963,
+     "ci95": [
+      0.6036970784281529,
+      0.6916609723062144
+     ],
+     "scenes": 5
+    },
+    "top1": {
+     "mean": 0.6925694444444445,
+     "ci95": [
+      0.6361163194444445,
+      0.7479166666666666
+     ],
+     "scenes": 5
+    },
+    "top1_strict": {
+     "mean": 0.6077777777777778,
+     "ci95": [
+      0.5176388888888889,
+      0.6979166666666666
+     ],
+     "scenes": 5
+    },
+    "pairwise": {
+     "mean": 0.8238828178548634,
+     "ci95": [
+      0.8093561297601954,
+      0.8354072672636079
+     ],
+     "scenes": 5
+    },
+    "regret": {
+     "mean": 0.06445842174284953,
+     "ci95": [
+      0.03271253522340965,
+      0.10246074786158847
+     ],
+     "scenes": 5
+    },
+    "nregret": {
+     "mean": 0.1835921378595478,
+     "ci95": [
+      0.14775260909624563,
+      0.21289401676770364
+     ],
+     "scenes": 5
+    },
+    "fidelity": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "regret_minus_gtd": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "agree_pred_gtd": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "agree_pred_oracle": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "agree_gtd_oracle": {
+     "mean": 0.6925694444444445,
+     "ci95": [
+      0.6361163194444445,
+      0.7479166666666666
+     ],
+     "scenes": 5
+    },
+    "fair_es": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "brier": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "false_surface": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "missed_surface": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "depth_rel_err": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "regret_official": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "top1_official": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    }
+   },
+   "GTDn": {
+    "spearman": {
+     "mean": 0.5399233471242172,
+     "ci95": [
+      0.4653642295185646,
+      0.5840374373007511
+     ],
+     "scenes": 5
+    },
+    "top1": {
+     "mean": 0.5520833333333334,
+     "ci95": [
+      0.5043055555555556,
+      0.599861111111111
+     ],
+     "scenes": 5
+    },
+    "top1_strict": {
+     "mean": 0.4533333333333333,
+     "ci95": [
+      0.40048611111111104,
+      0.48777777777777775
+     ],
+     "scenes": 5
+    },
+    "pairwise": {
+     "mean": 0.7596920135108368,
+     "ci95": [
+      0.7309735261962147,
+      0.780779452098354
+     ],
+     "scenes": 5
+    },
+    "regret": {
+     "mean": 0.16988628563655056,
+     "ci95": [
+      0.09269341712616361,
+      0.27094656902844105
+     ],
+     "scenes": 5
+    },
+    "nregret": {
+     "mean": 0.28940857791709623,
+     "ci95": [
+      0.2671003648677074,
+      0.31512870089678024
+     ],
+     "scenes": 5
+    },
+    "fidelity": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "regret_minus_gtd": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "agree_pred_gtd": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "agree_pred_oracle": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "agree_gtd_oracle": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "fair_es": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "brier": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "false_surface": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "missed_surface": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "depth_rel_err": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "regret_official": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "top1_official": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    }
+   },
+   "Random": {
+    "spearman": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "top1": {
+     "mean": 0.2624487985008818,
+     "ci95": [
+      0.2306175595238095,
+      0.28803185626102296
+     ],
+     "scenes": 5
+    },
+    "top1_strict": {
+     "mean": 0.16398776455026454,
+     "ci95": [
+      0.15426306216931218,
+      0.17112070105820104
+     ],
+     "scenes": 5
+    },
+    "pairwise": {
+     "mean": 0.5,
+     "ci95": [
+      0.5,
+      0.5
+     ],
+     "scenes": 5
+    },
+    "regret": {
+     "mean": 0.352138356485492,
+     "ci95": [
+      0.2087137072508177,
+      0.5255116097875322
+     ],
+     "scenes": 5
+    },
+    "nregret": {
+     "mean": 0.6143323516273153,
+     "ci95": [
+      0.5922735391253345,
+      0.6358845028372508
+     ],
+     "scenes": 5
+    },
+    "fidelity": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "regret_minus_gtd": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "agree_pred_gtd": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "agree_pred_oracle": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "agree_gtd_oracle": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "fair_es": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "brier": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "false_surface": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "missed_surface": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "depth_rel_err": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "regret_official": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "top1_official": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    }
+   },
+   "Exec:V2O": {
+    "spearman": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "top1": {
+     "mean": 0.29000000000000004,
+     "ci95": [
+      0.16,
+      0.43
+     ],
+     "scenes": 5
+    },
+    "top1_strict": {
+     "mean": 0.22000000000000003,
+     "ci95": [
+      0.11000000000000001,
+      0.37
+     ],
+     "scenes": 5
+    },
+    "pairwise": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "regret": {
+     "mean": 0.2738636579808981,
+     "ci95": [
+      0.18279034414365086,
+      0.3757073034197966
+     ],
+     "scenes": 5
+    },
+    "nregret": {
+     "mean": 0.4605311605978505,
+     "ci95": [
+      0.36958815958654656,
+      0.5486426343793558
+     ],
+     "scenes": 5
+    },
+    "fidelity": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "regret_minus_gtd": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "agree_pred_gtd": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "agree_pred_oracle": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "agree_gtd_oracle": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "fair_es": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "brier": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "false_surface": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "missed_surface": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "depth_rel_err": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "regret_official": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "top1_official": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    }
+   },
+   "Exec:V2M": {
+    "spearman": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "top1": {
+     "mean": 0.5,
+     "ci95": [
+      0.2833333333333333,
+      0.7166666666666666
+     ],
+     "scenes": 5
+    },
+    "top1_strict": {
+     "mean": 0.45,
+     "ci95": [
+      0.2444444444444444,
+      0.6555555555555556
+     ],
+     "scenes": 5
+    },
+    "pairwise": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "regret": {
+     "mean": 0.30713011242522964,
+     "ci95": [
+      0.07523893004996514,
+      0.5392986491874758
+     ],
+     "scenes": 5
+    },
+    "nregret": {
+     "mean": 0.23591972259946342,
+     "ci95": [
+      0.17299289984932828,
+      0.2988465453495985
+     ],
+     "scenes": 5
+    },
+    "fidelity": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "regret_minus_gtd": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "agree_pred_gtd": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "agree_pred_oracle": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "agree_gtd_oracle": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "fair_es": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "brier": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "false_surface": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "missed_surface": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "depth_rel_err": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "regret_official": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "top1_official": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    }
+   },
+   "Exec:MAG-G": {
+    "spearman": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "top1": {
+     "mean": 0.16111111111111112,
+     "ci95": [
+      0.12777777777777777,
+      0.19999999999999998
+     ],
+     "scenes": 5
+    },
+    "top1_strict": {
+     "mean": 0.11666666666666665,
+     "ci95": [
+      0.11111111111111112,
+      0.12777777777777777
+     ],
+     "scenes": 5
+    },
+    "pairwise": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "regret": {
+     "mean": 0.6403326913397736,
+     "ci95": [
+      0.4354166885335326,
+      0.8193693505993671
+     ],
+     "scenes": 5
+    },
+    "nregret": {
+     "mean": 0.5228159392300981,
+     "ci95": [
+      0.43936857539207763,
+      0.6062633030681186
+     ],
+     "scenes": 5
+    },
+    "fidelity": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "regret_minus_gtd": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "agree_pred_gtd": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "agree_pred_oracle": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "agree_gtd_oracle": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "fair_es": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "brier": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "false_surface": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "missed_surface": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "depth_rel_err": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "regret_official": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "top1_official": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    }
+   },
+   "Exec:MAG-B": {
+    "spearman": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "top1": {
+     "mean": 0.11111111111111112,
+     "ci95": [
+      0.07222222222222223,
+      0.16944444444444445
+     ],
+     "scenes": 5
+    },
+    "top1_strict": {
+     "mean": 0.057777777777777775,
+     "ci95": [
+      0.02,
+      0.10222222222222221
+     ],
+     "scenes": 5
+    },
+    "pairwise": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "regret": {
+     "mean": 0.7911647132747591,
+     "ci95": [
+      0.4717844754860535,
+      1.1105449510634648
+     ],
+     "scenes": 5
+    },
+    "nregret": {
+     "mean": 0.5497398152851269,
+     "ci95": [
+      0.478552896534047,
+      0.6167321365562227
+     ],
+     "scenes": 5
+    },
+    "fidelity": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "regret_minus_gtd": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "agree_pred_gtd": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "agree_pred_oracle": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "agree_gtd_oracle": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "fair_es": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "brier": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "false_surface": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "missed_surface": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "depth_rel_err": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "regret_official": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "top1_official": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    }
+   }
+  },
+  "paired_V2M_minus_V2O": {
+   "fair_es": {
+    "mean": -17.090672302823386,
+    "ci95": [
+     -21.364321181071187,
+     -13.019600313863853
+    ],
+    "scenes": 5,
+    "per_scene": {
+     "2azQ1b91cZZ_L0": -21.859580145241566,
+     "QUCTc6BB5sX_L1": -23.17651123151935,
+     "TbHJrupSAjP_L1": -9.268643119507123,
+     "Z6MFQCViBuw_L0": -15.71613495229257,
+     "oLBMNvg9in8_L1": -15.432492065556328
+    }
+   },
+   "brier": {
+    "mean": -0.1072420093604014,
+    "ci95": [
+     -0.12962363269318294,
+     -0.0914381714212237
+    ],
+    "scenes": 5,
+    "per_scene": {
+     "2azQ1b91cZZ_L0": -0.1117574077573961,
+     "QUCTc6BB5sX_L1": -0.14841564302080282,
+     "TbHJrupSAjP_L1": -0.09488313494149779,
+     "Z6MFQCViBuw_L0": -0.09111382664611023,
+     "oLBMNvg9in8_L1": -0.0900400344362001
+    }
+   },
+   "false_surface": {
+    "mean": -0.0806898512975443,
+    "ci95": [
+     -0.13104770914201844,
+     -0.03971040554014975
+    ],
+    "scenes": 5,
+    "per_scene": {
+     "2azQ1b91cZZ_L0": -0.07941934820631391,
+     "QUCTc6BB5sX_L1": -0.17964903737700927,
+     "TbHJrupSAjP_L1": -0.03147690242188356,
+     "Z6MFQCViBuw_L0": -0.0848145311571809,
+     "oLBMNvg9in8_L1": -0.028089437325333866
+    }
+   },
+   "spearman": {
+    "mean": 0.12385638134812582,
+    "ci95": [
+     0.10815316596102705,
+     0.1451817231315582
+    ],
+    "scenes": 5,
+    "per_scene": {
+     "2azQ1b91cZZ_L0": 0.10744289436582238,
+     "QUCTc6BB5sX_L1": 0.16544998078963533,
+     "TbHJrupSAjP_L1": 0.10452484138860196,
+     "Z6MFQCViBuw_L0": 0.125033831900283,
+     "oLBMNvg9in8_L1": 0.11683035829628652
+    }
+   },
+   "top1": {
+    "mean": 0.14187500000000003,
+    "ci95": [
+     0.09597222222222225,
+     0.1973611111111111
+    ],
+    "scenes": 5,
+    "per_scene": {
+     "2azQ1b91cZZ_L0": 0.07256944444444441,
+     "QUCTc6BB5sX_L1": 0.24444444444444452,
+     "TbHJrupSAjP_L1": 0.1659722222222222,
+     "Z6MFQCViBuw_L0": 0.11805555555555564,
+     "oLBMNvg9in8_L1": 0.10833333333333339
+    }
+   },
+   "pairwise": {
+    "mean": 0.07012259632121161,
+    "ci95": [
+     0.06002884490803806,
+     0.08478891939482894
+    ],
+    "scenes": 5,
+    "per_scene": {
+     "2azQ1b91cZZ_L0": 0.06171513081682212,
+     "QUCTc6BB5sX_L1": 0.09770453062128259,
+     "TbHJrupSAjP_L1": 0.07197877330626923,
+     "Z6MFQCViBuw_L0": 0.060362315057656435,
+     "oLBMNvg9in8_L1": 0.058852231804027655
+    }
+   },
+   "regret": {
+    "mean": -0.09091255095135568,
+    "ci95": [
+     -0.13434094246843636,
+     -0.05070229664585833
+    ],
+    "scenes": 5,
+    "per_scene": {
+     "2azQ1b91cZZ_L0": -0.04653473619504131,
+     "QUCTc6BB5sX_L1": -0.09124357557910744,
+     "TbHJrupSAjP_L1": -0.11069284995529818,
+     "Z6MFQCViBuw_L0": -0.03459921763005079,
+     "oLBMNvg9in8_L1": -0.17149237539728074
+    }
+   },
+   "nregret": {
+    "mean": -0.12938922165900474,
+    "ci95": [
+     -0.17018862266063908,
+     -0.0864454143172521
+    ],
+    "scenes": 5,
+    "per_scene": {
+     "2azQ1b91cZZ_L0": -0.05735099576233793,
+     "QUCTc6BB5sX_L1": -0.20282308853690878,
+     "TbHJrupSAjP_L1": -0.14429817630330788,
+     "Z6MFQCViBuw_L0": -0.10415801624882676,
+     "oLBMNvg9in8_L1": -0.13831583144364235
+    }
+   },
+   "fidelity": {
+    "mean": 0.19524051444126075,
+    "ci95": [
+     0.16701202400999754,
+     0.22740499720973123
+    ],
+    "scenes": 5,
+    "per_scene": {
+     "2azQ1b91cZZ_L0": 0.21083468894804314,
+     "QUCTc6BB5sX_L1": 0.2542875450073755,
+     "TbHJrupSAjP_L1": 0.16332766207848648,
+     "Z6MFQCViBuw_L0": 0.160652119720616,
+     "oLBMNvg9in8_L1": 0.1871005564517827
+    }
+   }
+  },
+  "per_scene": {
+   "V2O": {
+    "spearman": {
+     "2azQ1b91cZZ_L0": 0.43614386812030986,
+     "QUCTc6BB5sX_L1": 0.24392165337513108,
+     "TbHJrupSAjP_L1": 0.5332569278204953,
+     "Z6MFQCViBuw_L0": 0.4502237079005647,
+     "oLBMNvg9in8_L1": 0.47768612297549107
+    },
+    "top1": {
+     "2azQ1b91cZZ_L0": 0.43506944444444445,
+     "QUCTc6BB5sX_L1": 0.33749999999999997,
+     "TbHJrupSAjP_L1": 0.3267361111111111,
+     "Z6MFQCViBuw_L0": 0.42777777777777776,
+     "oLBMNvg9in8_L1": 0.5402777777777777
+    },
+    "regret": {
+     "2azQ1b91cZZ_L0": 0.1521973576022773,
+     "QUCTc6BB5sX_L1": 0.15124350875473525,
+     "TbHJrupSAjP_L1": 0.2443581503177756,
+     "Z6MFQCViBuw_L0": 0.14827041292162657,
+     "oLBMNvg9in8_L1": 0.3522987452455324
+    },
+    "pairwise": {
+     "2azQ1b91cZZ_L0": 0.7014325249667573,
+     "QUCTc6BB5sX_L1": 0.6168624374641838,
+     "TbHJrupSAjP_L1": 0.7321452301127518,
+     "Z6MFQCViBuw_L0": 0.7022522518508596,
+     "oLBMNvg9in8_L1": 0.7114444611753543
+    },
+    "fair_es": {
+     "2azQ1b91cZZ_L0": 35.18698637091327,
+     "QUCTc6BB5sX_L1": 37.36230652849835,
+     "TbHJrupSAjP_L1": 17.733110186201593,
+     "Z6MFQCViBuw_L0": 24.210048128239468,
+     "oLBMNvg9in8_L1": 24.57605396060066
+    },
+    "brier": {
+     "2azQ1b91cZZ_L0": 0.198350441923274,
+     "QUCTc6BB5sX_L1": 0.23699144463097782,
+     "TbHJrupSAjP_L1": 0.2051097522522095,
+     "Z6MFQCViBuw_L0": 0.2204750193059699,
+     "oLBMNvg9in8_L1": 0.21020517484192547
+    },
+    "fidelity": {
+     "2azQ1b91cZZ_L0": 0.6055860876959479,
+     "QUCTc6BB5sX_L1": 0.4563072378962353,
+     "TbHJrupSAjP_L1": 0.7347828205599489,
+     "Z6MFQCViBuw_L0": 0.5949943492774066,
+     "oLBMNvg9in8_L1": 0.6670676924299446
+    },
+    "nregret": {
+     "2azQ1b91cZZ_L0": 0.34953385619710686,
+     "QUCTc6BB5sX_L1": 0.49214778828061356,
+     "TbHJrupSAjP_L1": 0.43330069192758214,
+     "Z6MFQCViBuw_L0": 0.3993753224370377,
+     "oLBMNvg9in8_L1": 0.38072280008376236
+    }
+   },
+   "V2M": {
+    "spearman": {
+     "2azQ1b91cZZ_L0": 0.5435867624861322,
+     "QUCTc6BB5sX_L1": 0.4093716341647664,
+     "TbHJrupSAjP_L1": 0.6377817692090972,
+     "Z6MFQCViBuw_L0": 0.5752575398008477,
+     "oLBMNvg9in8_L1": 0.5945164812717776
+    },
+    "top1": {
+     "2azQ1b91cZZ_L0": 0.5076388888888889,
+     "QUCTc6BB5sX_L1": 0.5819444444444445,
+     "TbHJrupSAjP_L1": 0.4927083333333333,
+     "Z6MFQCViBuw_L0": 0.5458333333333334,
+     "oLBMNvg9in8_L1": 0.6486111111111111
+    },
+    "regret": {
+     "2azQ1b91cZZ_L0": 0.10566262140723598,
+     "QUCTc6BB5sX_L1": 0.05999993317562781,
+     "TbHJrupSAjP_L1": 0.13366530036247742,
+     "Z6MFQCViBuw_L0": 0.11367119529157578,
+     "oLBMNvg9in8_L1": 0.18080636984825166
+    },
+    "pairwise": {
+     "2azQ1b91cZZ_L0": 0.7631476557835795,
+     "QUCTc6BB5sX_L1": 0.7145669680854664,
+     "TbHJrupSAjP_L1": 0.804124003419021,
+     "Z6MFQCViBuw_L0": 0.762614566908516,
+     "oLBMNvg9in8_L1": 0.770296692979382
+    },
+    "fair_es": {
+     "2azQ1b91cZZ_L0": 13.327406225671702,
+     "QUCTc6BB5sX_L1": 14.185795296979004,
+     "TbHJrupSAjP_L1": 8.46446706669447,
+     "Z6MFQCViBuw_L0": 8.493913175946897,
+     "oLBMNvg9in8_L1": 9.143561895044332
+    },
+    "brier": {
+     "2azQ1b91cZZ_L0": 0.08659303416587791,
+     "QUCTc6BB5sX_L1": 0.088575801610175,
+     "TbHJrupSAjP_L1": 0.11022661731071172,
+     "Z6MFQCViBuw_L0": 0.12936119265985968,
+     "oLBMNvg9in8_L1": 0.12016514040572537
+    },
+    "fidelity": {
+     "2azQ1b91cZZ_L0": 0.816420776643991,
+     "QUCTc6BB5sX_L1": 0.7105947829036108,
+     "TbHJrupSAjP_L1": 0.8981104826384354,
+     "Z6MFQCViBuw_L0": 0.7556464689980226,
+     "oLBMNvg9in8_L1": 0.8541682488817273
+    },
+    "nregret": {
+     "2azQ1b91cZZ_L0": 0.29218286043476893,
+     "QUCTc6BB5sX_L1": 0.2893246997437048,
+     "TbHJrupSAjP_L1": 0.28900251562427426,
+     "Z6MFQCViBuw_L0": 0.29521730618821096,
+     "oLBMNvg9in8_L1": 0.24240696864012
+    }
+   },
+   "GTD": {
+    "spearman": {
+     "2azQ1b91cZZ_L0": 0.6749783719233999,
+     "QUCTc6BB5sX_L1": 0.554649465941585,
+     "TbHJrupSAjP_L1": 0.6753050386222453,
+     "Z6MFQCViBuw_L0": 0.6795586223926091,
+     "oLBMNvg9in8_L1": 0.7026738169951422
+    },
+    "top1": {
+     "2azQ1b91cZZ_L0": 0.7586805555555556,
+     "QUCTc6BB5sX_L1": 0.6305555555555555,
+     "TbHJrupSAjP_L1": 0.5972222222222223,
+     "Z6MFQCViBuw_L0": 0.7458333333333332,
+     "oLBMNvg9in8_L1": 0.7305555555555556
+    },
+    "regret": {
+     "2azQ1b91cZZ_L0": 0.03023167540586024,
+     "QUCTc6BB5sX_L1": 0.030007855576196858,
+     "TbHJrupSAjP_L1": 0.1315515501614128,
+     "Z6MFQCViBuw_L0": 0.04308361415293407,
+     "oLBMNvg9in8_L1": 0.08741741341784373
+    },
+    "pairwise": {
+     "2azQ1b91cZZ_L0": 0.8153438638994461,
+     "QUCTc6BB5sX_L1": 0.7993740343078728,
+     "TbHJrupSAjP_L1": 0.8323560458159565,
+     "Z6MFQCViBuw_L0": 0.8390254632731288,
+     "oLBMNvg9in8_L1": 0.8333146819779129
+    },
+    "fair_es": {},
+    "brier": {},
+    "fidelity": {},
+    "nregret": {
+     "2azQ1b91cZZ_L0": 0.11660916407264876,
+     "QUCTc6BB5sX_L1": 0.21218451245153805,
+     "TbHJrupSAjP_L1": 0.22768508697363374,
+     "Z6MFQCViBuw_L0": 0.18473088498817447,
+     "oLBMNvg9in8_L1": 0.17675104081174392
+    }
+   },
+   "GTDn": {
+    "spearman": {
+     "2azQ1b91cZZ_L0": 0.5619955225231434,
+     "QUCTc6BB5sX_L1": 0.3931066492284647,
+     "TbHJrupSAjP_L1": 0.5855056773842855,
+     "Z6MFQCViBuw_L0": 0.590166945249992,
+     "oLBMNvg9in8_L1": 0.5688419412352005
+    },
+    "top1": {
+     "2azQ1b91cZZ_L0": 0.5170138888888889,
+     "QUCTc6BB5sX_L1": 0.4722222222222222,
+     "TbHJrupSAjP_L1": 0.6156249999999999,
+     "Z6MFQCViBuw_L0": 0.5430555555555556,
+     "oLBMNvg9in8_L1": 0.6125
+    },
+    "regret": {
+     "2azQ1b91cZZ_L0": 0.08349319264780583,
+     "QUCTc6BB5sX_L1": 0.08768517776025495,
+     "TbHJrupSAjP_L1": 0.20009424319279384,
+     "Z6MFQCViBuw_L0": 0.12111034481469644,
+     "oLBMNvg9in8_L1": 0.35704846976720184
+    },
+    "pairwise": {
+     "2azQ1b91cZZ_L0": 0.7566600967785617,
+     "QUCTc6BB5sX_L1": 0.704502818338979,
+     "TbHJrupSAjP_L1": 0.7819010288695515,
+     "Z6MFQCViBuw_L0": 0.7846990791855748,
+     "oLBMNvg9in8_L1": 0.7706970443815169
+    },
+    "fair_es": {},
+    "brier": {},
+    "fidelity": {},
+    "nregret": {
+     "2azQ1b91cZZ_L0": 0.2693953455751409,
+     "QUCTc6BB5sX_L1": 0.3390934788055156,
+     "TbHJrupSAjP_L1": 0.2579204420379734,
+     "Z6MFQCViBuw_L0": 0.29166590067463766,
+     "oLBMNvg9in8_L1": 0.2889677224922136
+    }
+   },
+   "Random": {
+    "spearman": {},
+    "top1": {
+     "2azQ1b91cZZ_L0": 0.20242972883597882,
+     "QUCTc6BB5sX_L1": 0.2750909391534392,
+     "TbHJrupSAjP_L1": 0.2521891534391534,
+     "Z6MFQCViBuw_L0": 0.2889247134038801,
+     "oLBMNvg9in8_L1": 0.2936094576719577
+    },
+    "regret": {
+     "2azQ1b91cZZ_L0": 0.22882133064728186,
+     "QUCTc6BB5sX_L1": 0.15605385533050237,
+     "TbHJrupSAjP_L1": 0.41724555142315445,
+     "Z6MFQCViBuw_L0": 0.27381816429852,
+     "oLBMNvg9in8_L1": 0.6847528807280014
+    },
+    "pairwise": {
+     "2azQ1b91cZZ_L0": 0.5,
+     "QUCTc6BB5sX_L1": 0.5,
+     "TbHJrupSAjP_L1": 0.5,
+     "Z6MFQCViBuw_L0": 0.5,
+     "oLBMNvg9in8_L1": 0.5
+    },
+    "fair_es": {},
+    "brier": {},
+    "fidelity": {},
+    "nregret": {
+     "2azQ1b91cZZ_L0": 0.6052158050172691,
+     "QUCTc6BB5sX_L1": 0.5728601402874325,
+     "TbHJrupSAjP_L1": 0.6077491114774947,
+     "Z6MFQCViBuw_L0": 0.6441506812024276,
+     "oLBMNvg9in8_L1": 0.6416860201519523
+    }
+   },
+   "Exec:V2O": {
+    "spearman": {},
+    "top1": {
+     "2azQ1b91cZZ_L0": 0.15000000000000002,
+     "QUCTc6BB5sX_L1": 0.35,
+     "TbHJrupSAjP_L1": 0.3,
+     "Z6MFQCViBuw_L0": 0.1,
+     "oLBMNvg9in8_L1": 0.55
+    },
+    "regret": {
+     "2azQ1b91cZZ_L0": 0.20713736265581909,
+     "QUCTc6BB5sX_L1": 0.1250451064512249,
+     "TbHJrupSAjP_L1": 0.44192505807494187,
+     "Z6MFQCViBuw_L0": 0.3456239802183384,
+     "oLBMNvg9in8_L1": 0.24958678250416635
+    },
+    "pairwise": {},
+    "fair_es": {},
+    "brier": {},
+    "fidelity": {},
+    "nregret": {
+     "2azQ1b91cZZ_L0": 0.5632447900814816,
+     "QUCTc6BB5sX_L1": 0.39040813645525674,
+     "TbHJrupSAjP_L1": 0.4863519250322591,
+     "Z6MFQCViBuw_L0": 0.5651858333507782,
+     "oLBMNvg9in8_L1": 0.29746511806947673
+    }
+   },
+   "Exec:V2M": {
+    "spearman": {},
+    "top1": {
+     "2azQ1b91cZZ_L0": 0.2222222222222222,
+     "QUCTc6BB5sX_L1": 0.75,
+     "TbHJrupSAjP_L1": 0.25,
+     "Z6MFQCViBuw_L0": 0.8055555555555556,
+     "oLBMNvg9in8_L1": 0.4722222222222222
+    },
+    "regret": {
+     "2azQ1b91cZZ_L0": 0.21198562763757367,
+     "QUCTc6BB5sX_L1": 0.019193444677587254,
+     "TbHJrupSAjP_L1": 0.696010878063196,
+     "Z6MFQCViBuw_L0": 0.06291106662853875,
+     "oLBMNvg9in8_L1": 0.5455495451192526
+    },
+    "pairwise": {},
+    "fair_es": {},
+    "brier": {},
+    "fidelity": {},
+    "nregret": {
+     "2azQ1b91cZZ_L0": 0.32621427212882464,
+     "QUCTc6BB5sX_L1": 0.1393935606721073,
+     "TbHJrupSAjP_L1": 0.2758368478775345,
+     "Z6MFQCViBuw_L0": 0.15517026501244618,
+     "oLBMNvg9in8_L1": 0.28298366730640434
+    }
+   },
+   "Exec:MAG-G": {
+    "spearman": {},
+    "top1": {
+     "2azQ1b91cZZ_L0": 0.1388888888888889,
+     "QUCTc6BB5sX_L1": 0.1388888888888889,
+     "TbHJrupSAjP_L1": 0.1111111111111111,
+     "Z6MFQCViBuw_L0": 0.2222222222222222,
+     "oLBMNvg9in8_L1": 0.19444444444444445
+    },
+    "regret": {
+     "2azQ1b91cZZ_L0": 0.30430420679361725,
+     "QUCTc6BB5sX_L1": 0.45581646760428696,
+     "TbHJrupSAjP_L1": 0.8469496160133471,
+     "Z6MFQCViBuw_L0": 0.786238811605092,
+     "oLBMNvg9in8_L1": 0.8083543546825246
+    },
+    "pairwise": {},
+    "fair_es": {},
+    "brier": {},
+    "fidelity": {},
+    "nregret": {
+     "2azQ1b91cZZ_L0": 0.46511437737922245,
+     "QUCTc6BB5sX_L1": 0.6519278312679606,
+     "TbHJrupSAjP_L1": 0.3870913601009457,
+     "Z6MFQCViBuw_L0": 0.6175147254023099,
+     "oLBMNvg9in8_L1": 0.49243140200005175
+    }
+   },
+   "Exec:MAG-B": {
+    "spearman": {},
+    "top1": {
+     "2azQ1b91cZZ_L0": 0.06944444444444445,
+     "QUCTc6BB5sX_L1": 0.1111111111111111,
+     "TbHJrupSAjP_L1": 0.06944444444444445,
+     "Z6MFQCViBuw_L0": 0.08333333333333333,
+     "oLBMNvg9in8_L1": 0.2222222222222222
+    },
+    "regret": {
+     "2azQ1b91cZZ_L0": 0.3740759277858582,
+     "QUCTc6BB5sX_L1": 0.3666244930628877,
+     "TbHJrupSAjP_L1": 1.3303697344450802,
+     "Z6MFQCViBuw_L0": 0.8775215357327757,
+     "oLBMNvg9in8_L1": 1.0072318753471938
+    },
+    "pairwise": {},
+    "fair_es": {},
+    "brier": {},
+    "fidelity": {},
+    "nregret": {
+     "2azQ1b91cZZ_L0": 0.5794488987384139,
+     "QUCTc6BB5sX_L1": 0.5641726750400671,
+     "TbHJrupSAjP_L1": 0.5156626838051575,
+     "Z6MFQCViBuw_L0": 0.6679417746452964,
+     "oLBMNvg9in8_L1": 0.4214730441967003
+    }
+   }
+  },
+  "strata": {
+   "t_bin": {
+    "early": {
+     "V2O": {
+      "states": 128,
+      "spearman": 0.4204023572591574,
+      "top1": 0.296875,
+      "regret": 0.4130692935629953,
+      "nregret": 0.39083211755936775,
+      "pairwise": 0.674304217502186,
+      "fair_es": 50.63723955683092
+     },
+     "V2M": {
+      "states": 128,
+      "spearman": 0.6445995604704959,
+      "top1": 0.515625,
+      "regret": 0.2020102524864733,
+      "nregret": 0.1982430431617453,
+      "pairwise": 0.7821330644844744,
+      "fair_es": 20.24445294798832
+     },
+     "GTD": {
+      "states": 128,
+      "spearman": 0.7684513597129201,
+      "top1": 0.7109375,
+      "regret": 0.12219043479225455,
+      "nregret": 0.1048445824039369,
+      "pairwise": 0.85118783634848,
+      "fair_es": null
+     },
+     "Random": {
+      "states": 128,
+      "spearman": null,
+      "top1": 0.17269965277777777,
+      "regret": 0.7058564425638694,
+      "nregret": 0.5669163679085955,
+      "pairwise": 0.5,
+      "fair_es": null
+     }
+    },
+    "late": {
+     "V2O": {
+      "states": 160,
+      "spearman": 0.4099053715032983,
+      "top1": 0.51875,
+      "regret": 0.07773825165290657,
+      "nregret": 0.44422489890020833,
+      "pairwise": 0.6902536713129392,
+      "fair_es": 14.013912436878439
+     },
+     "V2M": {
+      "states": 160,
+      "spearman": 0.4905595901691016,
+      "top1": 0.61875,
+      "regret": 0.05320430561757393,
+      "nregret": 0.34393711172471286,
+      "pairwise": 0.7474574598944863,
+      "fair_es": 5.220061689466862
+     },
+     "GTD": {
+      "states": 160,
+      "spearman": 0.5723280628785343,
+      "top1": 0.725,
+      "regret": 0.02374606191255145,
+      "nregret": 0.240599410180288,
+      "pairwise": 0.799868674668772,
+      "fair_es": null
+     },
+     "Random": {
+      "states": 160,
+      "spearman": null,
+      "top1": 0.36281001984126987,
+      "regret": 0.10844251055382519,
+      "nregret": 0.65220353411416,
+      "pairwise": 0.5,
+      "fair_es": null
+     }
+    },
+    "mid": {
+     "V2O": {
+      "states": 80,
+      "spearman": 0.4681260249751457,
+      "top1": 0.375,
+      "regret": 0.15809357103567442,
+      "nregret": 0.4151158726618849,
+      "pairwise": 0.7172167128574451,
+      "fair_es": 19.22558898983191
+     },
+     "V2M": {
+      "states": 80,
+      "spearman": 0.5216663439712659,
+      "top1": 0.4875,
+      "regret": 0.11707323522263029,
+      "nregret": 0.3252234296101427,
+      "pairwise": 0.7491753693821861,
+      "fair_es": 6.741280791519861
+     },
+     "GTD": {
+      "states": 80,
+      "spearman": 0.6426188709237964,
+      "top1": 0.6,
+      "regret": 0.05756352640755822,
+      "nregret": 0.22368458130896862,
+      "pairwise": 0.8100911349056092,
+      "fair_es": null
+     },
+     "Random": {
+      "states": 80,
+      "spearman": null,
+      "top1": 0.20091269841269838,
+      "regret": 0.27894307352623066,
+      "nregret": 0.620941222411085,
+      "pairwise": 0.5,
+      "fair_es": null
+     }
+    }
+   },
+   "stale": {
+    "refresh": {
+     "V2O": {
+      "states": 170,
+      "spearman": 0.4400624298930681,
+      "top1": 0.40588235294117647,
+      "regret": 0.200496252946683,
+      "nregret": 0.4125199553454284,
+      "pairwise": 0.7027743820471988,
+      "fair_es": 24.384630111809596
+     },
+     "V2M": {
+      "states": 170,
+      "spearman": 0.550000258755951,
+      "top1": 0.5529411764705883,
+      "regret": 0.11059588780910445,
+      "nregret": 0.2874619362276426,
+      "pairwise": 0.760904000692926,
+      "fair_es": 9.109697781050377
+     },
+     "GTD": {
+      "states": 170,
+      "spearman": 0.6494657057506994,
+      "top1": 0.7,
+      "regret": 0.06222991453227583,
+      "nregret": 0.1929202945194069,
+      "pairwise": 0.8220311080930508,
+      "fair_es": null
+     },
+     "Random": {
+      "states": 170,
+      "spearman": null,
+      "top1": 0.26030112044817927,
+      "regret": 0.33996444079246413,
+      "nregret": 0.6215679102012348,
+      "pairwise": 0.5,
+      "fair_es": null
+     }
+    },
+    "stale5": {
+     "V2O": {
+      "states": 198,
+      "spearman": 0.4144010637676296,
+      "top1": 0.41414141414141414,
+      "regret": 0.22158642688104194,
+      "nregret": 0.4211204052131464,
+      "pairwise": 0.6796858292914342,
+      "fair_es": 30.891175016938536
+     },
+     "V2M": {
+      "states": 198,
+      "spearman": 0.5530648077401721,
+      "top1": 0.5555555555555556,
+      "regret": 0.1259321167037529,
+      "nregret": 0.28116833059441637,
+      "pairwise": 0.7612832362241093,
+      "fair_es": 12.20784691010216
+     },
+     "GTD": {
+      "states": 198,
+      "spearman": 0.6662332544560042,
+      "top1": 0.6868686868686869,
+      "regret": 0.0680087989976494,
+      "nregret": 0.17805478482340797,
+      "pairwise": 0.8217059091899364,
+      "fair_es": null
+     },
+     "Random": {
+      "states": 198,
+      "spearman": null,
+      "top1": 0.2625100208433541,
+      "regret": 0.3647571580008428,
+      "nregret": 0.6045587549100723,
+      "pairwise": 0.5,
+      "fair_es": null
+     }
+    }
+   },
+   "source": {
+    "MAG-B": {
+     "V2O": {
+      "states": 88,
+      "spearman": 0.41911088959834836,
+      "top1": 0.48863636363636365,
+      "regret": 0.21198094332068199,
+      "nregret": 0.39388017626415744,
+      "pairwise": 0.6868045777333747,
+      "fair_es": 29.31992675655496
+     },
+     "V2M": {
+      "states": 88,
+      "spearman": 0.502687076571206,
+      "top1": 0.625,
+      "regret": 0.09204619772511205,
+      "nregret": 0.2784140918762045,
+      "pairwise": 0.7406788821908709,
+      "fair_es": 10.302739787988509
+     },
+     "GTD": {
+      "states": 88,
+      "spearman": 0.6366664397569053,
+      "top1": 0.75,
+      "regret": 0.03676404615435089,
+      "nregret": 0.17850164431099966,
+      "pairwise": 0.8211187554310271,
+      "fair_es": null
+     },
+     "Random": {
+      "states": 88,
+      "spearman": null,
+      "top1": 0.2757936507936508,
+      "regret": 0.4219552204932452,
+      "nregret": 0.6338415007631639,
+      "pairwise": 0.5,
+      "fair_es": null
+     }
+    },
+    "MAG-G": {
+     "V2O": {
+      "states": 90,
+      "spearman": 0.4895297652804231,
+      "top1": 0.5222222222222223,
+      "regret": 0.1861542405391104,
+      "nregret": 0.3624172917165116,
+      "pairwise": 0.7296313398137673,
+      "fair_es": 25.37457783079153
+     },
+     "V2M": {
+      "states": 90,
+      "spearman": 0.6121014743470143,
+      "top1": 0.6333333333333333,
+      "regret": 0.0955857135921358,
+      "nregret": 0.2511372514594086,
+      "pairwise": 0.798474180668894,
+      "fair_es": 10.152562209724561
+     },
+     "GTD": {
+      "states": 90,
+      "spearman": 0.7160734463389056,
+      "top1": 0.6888888888888889,
+      "regret": 0.0853860958934943,
+      "nregret": 0.1830794917307447,
+      "pairwise": 0.8519772559422597,
+      "fair_es": null
+     },
+     "Random": {
+      "states": 90,
+      "spearman": null,
+      "top1": 0.2863536155202822,
+      "regret": 0.37431364501682524,
+      "nregret": 0.6353566824070177,
+      "pairwise": 0.5,
+      "fair_es": null
+     }
+    },
+    "V2M": {
+     "V2O": {
+      "states": 90,
+      "spearman": 0.3869650208108636,
+      "top1": 0.35555555555555557,
+      "regret": 0.16848783405058493,
+      "nregret": 0.438372227953356,
+      "pairwise": 0.6774607515219273,
+      "fair_es": 24.872817736544253
+     },
+     "V2M": {
+      "states": 90,
+      "spearman": 0.5304720801913881,
+      "top1": 0.5,
+      "regret": 0.15765947795075347,
+      "nregret": 0.3044072936717086,
+      "pairwise": 0.7526777597863727,
+      "fair_es": 9.446975012421474
+     },
+     "GTD": {
+      "states": 90,
+      "spearman": 0.6274843176445979,
+      "top1": 0.6555555555555556,
+      "regret": 0.04295009429936987,
+      "nregret": 0.21284329371652383,
+      "pairwise": 0.8050727259284797,
+      "fair_es": null
+     },
+     "Random": {
+      "states": 90,
+      "spearman": null,
+      "top1": 0.2741093474426808,
+      "regret": 0.2571206387427164,
+      "nregret": 0.5669108705512522,
+      "pairwise": 0.5,
+      "fair_es": null
+     }
+    },
+    "V2O": {
+     "V2O": {
+      "states": 100,
+      "spearman": 0.41169234408911926,
+      "top1": 0.29,
+      "regret": 0.2738636579808981,
+      "nregret": 0.46365977503934486,
+      "pairwise": 0.6721088404914574,
+      "fair_es": 31.594206167244042
+     },
+     "V2M": {
+      "states": 100,
+      "spearman": 0.559969297364319,
+      "top1": 0.47,
+      "regret": 0.12843727396220936,
+      "nregret": 0.29839992304861956,
+      "pairwise": 0.7541848775151717,
+      "fair_es": 12.952028596426599
+     },
+     "GTD": {
+      "states": 100,
+      "spearman": 0.6546389961146255,
+      "top1": 0.68,
+      "regret": 0.09259334493080822,
+      "nregret": 0.16703915738037348,
+      "pairwise": 0.8121556966645069,
+      "fair_es": null
+     },
+     "Random": {
+      "states": 100,
+      "spearman": null,
+      "top1": 0.21516666666666664,
+      "regret": 0.36054727277121434,
+      "nregret": 0.6159361731750649,
+      "pairwise": 0.5,
+      "fair_es": null
+     }
+    }
+   },
+   "split": {
+    "mp3d_val": {
+     "V2O": {
+      "states": 368,
+      "spearman": 0.4262773985033697,
+      "top1": 0.41032608695652173,
+      "regret": 0.21184368348745222,
+      "nregret": 0.4171273392031345,
+      "pairwise": 0.6904375135597902,
+      "fair_es": 27.885434164025707
+     },
+     "V2M": {
+      "states": 368,
+      "spearman": 0.5516465040780532,
+      "top1": 0.5543478260869565,
+      "regret": 0.11884744574698596,
+      "nregret": 0.28409036178127145,
+      "pairwise": 0.7611066369916776,
+      "fair_es": 10.776636714616282
+     },
+     "GTD": {
+      "states": 368,
+      "spearman": 0.658487119279469,
+      "top1": 0.6929347826086957,
+      "regret": 0.06533920563049313,
+      "nregret": 0.18495662861083603,
+      "pairwise": 0.8218573450970583,
+      "fair_es": null
+     },
+     "Random": {
+      "states": 368,
+      "spearman": null,
+      "top1": 0.26148960489993095,
+      "regret": 0.3533040005947983,
+      "nregret": 0.6124558627238262,
+      "pairwise": 0.5,
+      "fair_es": null
+     }
+    }
+   },
+   "primary_t": {
+    "brief_t": {
+     "V2O": {
+      "states": 170,
+      "spearman": 0.4400624298930681,
+      "top1": 0.40588235294117647,
+      "regret": 0.200496252946683,
+      "nregret": 0.4125199553454284,
+      "pairwise": 0.7027743820471988,
+      "fair_es": 24.384630111809596
+     },
+     "V2M": {
+      "states": 170,
+      "spearman": 0.550000258755951,
+      "top1": 0.5529411764705883,
+      "regret": 0.11059588780910445,
+      "nregret": 0.2874619362276426,
+      "pairwise": 0.760904000692926,
+      "fair_es": 9.109697781050377
+     },
+     "GTD": {
+      "states": 170,
+      "spearman": 0.6494657057506994,
+      "top1": 0.7,
+      "regret": 0.06222991453227583,
+      "nregret": 0.1929202945194069,
+      "pairwise": 0.8220311080930508,
+      "fair_es": null
+     },
+     "Random": {
+      "states": 170,
+      "spearman": null,
+      "top1": 0.26030112044817927,
+      "regret": 0.33996444079246413,
+      "nregret": 0.6215679102012348,
+      "pairwise": 0.5,
+      "fair_es": null
+     }
+    },
+    "t+5": {
+     "V2O": {
+      "states": 198,
+      "spearman": 0.4144010637676296,
+      "top1": 0.41414141414141414,
+      "regret": 0.22158642688104194,
+      "nregret": 0.4211204052131464,
+      "pairwise": 0.6796858292914342,
+      "fair_es": 30.891175016938536
+     },
+     "V2M": {
+      "states": 198,
+      "spearman": 0.5530648077401721,
+      "top1": 0.5555555555555556,
+      "regret": 0.1259321167037529,
+      "nregret": 0.28116833059441637,
+      "pairwise": 0.7612832362241093,
+      "fair_es": 12.20784691010216
+     },
+     "GTD": {
+      "states": 198,
+      "spearman": 0.6662332544560042,
+      "top1": 0.6868686868686869,
+      "regret": 0.0680087989976494,
+      "nregret": 0.17805478482340797,
+      "pairwise": 0.8217059091899364,
+      "fair_es": null
+     },
+     "Random": {
+      "states": 198,
+      "spearman": null,
+      "top1": 0.2625100208433541,
+      "regret": 0.3647571580008428,
+      "nregret": 0.6045587549100723,
+      "pairwise": 0.5,
+      "fair_es": null
+     }
+    }
+   },
+   "max_gain": {
+    "high": {
+     "V2O": {
+      "states": 123,
+      "spearman": 0.425982148428724,
+      "top1": 0.3008130081300813,
+      "regret": 0.5244109310879701,
+      "nregret": 0.4311357907379065,
+      "pairwise": 0.6725866533085442,
+      "fair_es": 47.993878753201784
+     },
+     "V2M": {
+      "states": 123,
+      "spearman": 0.6721970676575775,
+      "top1": 0.5365853658536586,
+      "regret": 0.26960594030479546,
+      "nregret": 0.21785256543378176,
+      "pairwise": 0.7908608253671054,
+      "fair_es": 19.65839864859738
+     },
+     "GTD": {
+      "states": 123,
+      "spearman": 0.7950891819894556,
+      "top1": 0.7642276422764228,
+      "regret": 0.13843496634338812,
+      "nregret": 0.09239728232949959,
+      "pairwise": 0.8567745338070542,
+      "fair_es": null
+     },
+     "Random": {
+      "states": 123,
+      "spearman": null,
+      "top1": 0.1441992515163247,
+      "regret": 0.8936925220272748,
+      "nregret": 0.621958568083325,
+      "pairwise": 0.5,
+      "fair_es": null
+     }
+    },
+    "low": {
+     "V2O": {
+      "states": 123,
+      "spearman": 0.4303480605850269,
+      "top1": 0.6016260162601627,
+      "regret": 0.014482899123632317,
+      "nregret": 0.41661234056575275,
+      "pairwise": 0.716496361586661,
+      "fair_es": 8.939407985368476
+     },
+     "V2M": {
+      "states": 123,
+      "spearman": 0.4552142054527643,
+      "top1": 0.6991869918699187,
+      "regret": 0.010303097598901424,
+      "nregret": 0.3207202882188923,
+      "pairwise": 0.7545043704718627,
+      "fair_es": 3.3031970580057206
+     },
+     "GTD": {
+      "states": 123,
+      "spearman": 0.5382094246810919,
+      "top1": 0.7398373983739838,
+      "regret": 0.008950692908405306,
+      "nregret": 0.2738814995166175,
+      "pairwise": 0.8236993815915384,
+      "fair_es": null
+     },
+     "Random": {
+      "states": 123,
+      "spearman": null,
+      "top1": 0.47425151632468704,
+      "regret": 0.020496761123725223,
+      "nregret": 0.6131366109626865,
+      "pairwise": 0.5,
+      "fair_es": null
+     }
+    },
+    "mid": {
+     "V2O": {
+      "states": 122,
+      "spearman": 0.42263787090948335,
+      "top1": 0.32786885245901637,
+      "regret": 0.09569290497832221,
+      "nregret": 0.40338820262300956,
+      "pairwise": 0.6892109519899944,
+      "fair_es": 26.713487733748526
+     },
+     "V2M": {
+      "states": 122,
+      "spearman": 0.5233784050411895,
+      "top1": 0.4262295081967213,
+      "regret": 0.07628728174373871,
+      "nregret": 0.32354876870682653,
+      "pairwise": 0.735979086308118,
+      "fair_es": 9.356770812021399
+     },
+     "GTD": {
+      "states": 122,
+      "spearman": 0.6322973181852882,
+      "top1": 0.5737704918032787,
+      "regret": 0.0484950129840236,
+      "nregret": 0.2119454510713137,
+      "pairwise": 0.7852950705410527,
+      "fair_es": null
+     },
+     "Random": {
+      "states": 122,
+      "spearman": null,
+      "top1": 0.16523549310434557,
+      "regret": 0.14402123271567838,
+      "nregret": 0.6023674951094441,
+      "pairwise": 0.5,
+      "fair_es": null
+     }
+    }
+   },
+   "coverage": {
+    "high": {
+     "V2O": {
+      "states": 123,
+      "spearman": 0.48464214991123206,
+      "top1": 0.43902439024390244,
+      "regret": 0.1998539503607667,
+      "nregret": 0.4564907366452515,
+      "pairwise": 0.7124944364317,
+      "fair_es": 14.448380471500817
+     },
+     "V2M": {
+      "states": 123,
+      "spearman": 0.5784917474636834,
+      "top1": 0.5772357723577236,
+      "regret": 0.12172513270335661,
+      "nregret": 0.33055948527079215,
+      "pairwise": 0.7712729276439282,
+      "fair_es": 5.880679552306481
+     },
+     "GTD": {
+      "states": 123,
+      "spearman": 0.6588892529543692,
+      "top1": 0.6829268292682927,
+      "regret": 0.04532064123719014,
+      "nregret": 0.23280256830343485,
+      "pairwise": 0.8234918037560657,
+      "fair_es": null
+     },
+     "Random": {
+      "states": 123,
+      "spearman": null,
+      "top1": 0.2959188282359014,
+      "regret": 0.31844706005839524,
+      "nregret": 0.6511112135211616,
+      "pairwise": 0.5,
+      "fair_es": null
+     }
+    },
+    "low": {
+     "V2O": {
+      "states": 123,
+      "spearman": 0.4197938451049827,
+      "top1": 0.3252032520325203,
+      "regret": 0.2846639307479581,
+      "nregret": 0.3897373758029458,
+      "pairwise": 0.6871544486842334,
+      "fair_es": 49.12459658687806
+     },
+     "V2M": {
+      "states": 123,
+      "spearman": 0.6130708055129498,
+      "top1": 0.5284552845528455,
+      "regret": 0.14125783877689038,
+      "nregret": 0.21662329345620315,
+      "pairwise": 0.780574469703675,
+      "fair_es": 19.1248552103022
+     },
+     "GTD": {
+      "states": 123,
+      "spearman": 0.7478384891610328,
+      "top1": 0.6747967479674797,
+      "regret": 0.09408434859417017,
+      "nregret": 0.14289033785403138,
+      "pairwise": 0.844153658020019,
+      "fair_es": null
+     },
+     "Random": {
+      "states": 123,
+      "spearman": null,
+      "top1": 0.18252677764872885,
+      "regret": 0.47130329169056095,
+      "nregret": 0.5782798580286858,
+      "pairwise": 0.5,
+      "fair_es": null
+     }
+    },
+    "mid": {
+     "V2O": {
+      "states": 122,
+      "spearman": 0.37363321487017853,
+      "top1": 0.4672131147540984,
+      "regret": 0.15051455858204307,
+      "nregret": 0.4091752823344238,
+      "pairwise": 0.6718063348207348,
+      "fair_es": 20.019373722793908
+     },
+     "V2M": {
+      "states": 122,
+      "spearman": 0.46086109629525074,
+      "top1": 0.5573770491803278,
+      "regret": 0.09335208641656106,
+      "nregret": 0.3154701088624476,
+      "pairwise": 0.7279415272453303,
+      "fair_es": 7.296078157196101
+     },
+     "GTD": {
+      "states": 122,
+      "spearman": 0.5632259631684408,
+      "top1": 0.7213114754098361,
+      "regret": 0.056541097727575054,
+      "nregret": 0.18547208347856156,
+      "pairwise": 0.7940732158966973,
+      "fair_es": null
+     },
+     "Random": {
+      "states": 122,
+      "spearman": null,
+      "top1": 0.3063882383554515,
+      "regret": 0.26948015535872255,
+      "nregret": 0.6130929008576695,
+      "pairwise": 0.5,
+      "fair_es": null
+     }
+    }
+   },
+   "n_cand": {
+    "7": {
+     "V2O": {
+      "states": 126,
+      "spearman": 0.42661514238874076,
+      "top1": 0.40476190476190477,
+      "regret": 0.21910313146749824,
+      "nregret": 0.4323080131148388,
+      "pairwise": 0.6952390585791087,
+      "fair_es": 26.637688869056777
+     },
+     "V2M": {
+      "states": 126,
+      "spearman": 0.5338039219821319,
+      "top1": 0.5476190476190477,
+      "regret": 0.1181293004100541,
+      "nregret": 0.29810636906034155,
+      "pairwise": 0.7568832084105117,
+      "fair_es": 10.391667589013068
+     },
+     "GTD": {
+      "states": 126,
+      "spearman": 0.6523045126795878,
+      "top1": 0.6666666666666666,
+      "regret": 0.08848849385533994,
+      "nregret": 0.19746351125006995,
+      "pairwise": 0.8077698977119816,
+      "fair_es": null
+     },
+     "Random": {
+      "states": 126,
+      "spearman": null,
+      "top1": 0.24376417233560085,
+      "regret": 0.37315451451549175,
+      "nregret": 0.6160180591134672,
+      "pairwise": 0.5,
+      "fair_es": null
+     }
+    },
+    "<=6": {
+     "V2O": {
+      "states": 121,
+      "spearman": 0.4236783551841275,
+      "top1": 0.4793388429752066,
+      "regret": 0.14258788334641395,
+      "nregret": 0.3952981846497528,
+      "pairwise": 0.6942999842038303,
+      "fair_es": 29.93420670883674
+     },
+     "V2M": {
+      "states": 121,
+      "spearman": 0.5775715481900432,
+      "top1": 0.6363636363636364,
+      "regret": 0.07110793571222518,
+      "nregret": 0.2476525605441191,
+      "pairwise": 0.7877446805331421,
+      "fair_es": 11.621607725329817
+     },
+     "GTD": {
+      "states": 121,
+      "spearman": 0.6602776634488041,
+      "top1": 0.743801652892562,
+      "regret": 0.02278503847761165,
+      "nregret": 0.16070230433283436,
+      "pairwise": 0.8433674498578345,
+      "fair_es": null
+     },
+     "Random": {
+      "states": 121,
+      "spearman": null,
+      "top1": 0.3414600550964187,
+      "regret": 0.2529640314470068,
+      "nregret": 0.5838282588010948,
+      "pairwise": 0.5,
+      "fair_es": null
+     }
+    },
+    ">=8": {
+     "V2O": {
+      "states": 121,
+      "spearman": 0.42844161406270825,
+      "top1": 0.34710743801652894,
+      "regret": 0.2735400584591863,
+      "nregret": 0.4215176314427377,
+      "pairwise": 0.6821011990448239,
+      "fair_es": 27.135966637116212
+     },
+     "V2M": {
+      "states": 121,
+      "spearman": 0.5450109057382791,
+      "top1": 0.4793388429752066,
+      "regret": 0.16733477654582457,
+      "nregret": 0.3027427280251654,
+      "pairwise": 0.7412767342708336,
+      "fair_es": 10.332542644613538
+     },
+     "GTD": {
+      "states": 121,
+      "spearman": 0.6629316709875812,
+      "top1": 0.6694214876033058,
+      "regret": 0.08378750240047629,
+      "nregret": 0.19419500222084507,
+      "pairwise": 0.8166146755453035,
+      "fair_es": null
+     },
+     "Random": {
+      "states": 121,
+      "spearman": null,
+      "top1": 0.19997704315886133,
+      "regret": 0.4329731866516196,
+      "nregret": 0.6345597939890482,
+      "pairwise": 0.5,
+      "fair_es": null
+     }
+    }
+   }
+  },
+  "state_rho_dES_dregret": 0.20369490658167347,
+  "state_frac_regret_lower_V2M": 0.28532608695652173,
+  "state_frac_regret_higher_V2M": 0.11141304347826086
+ },
+ "outdoor": {
+  "n_states": 1093,
+  "n_states_by_source": {
+   "V2O": 300,
+   "V2M": 260,
+   "MAG-G": 270,
+   "MAG-B": 263
+  },
+  "repro_max_abs_diff": 0.0,
+  "repro_states": 600,
+  "bins": {
+   "max_gain_pp": [
+    0.36615450762230467,
+    2.1263679903909556
+   ],
+   "cov_t": [
+    0.4832098506443345,
+    0.8127727092423641
+   ]
+  },
+  "spearman_undefined": {
+   "V2O": 41,
+   "V2M": 40,
+   "GTD": 40,
+   "GTDn": 40
+  },
+  "fallback": {
+   "V2O": 7,
+   "V2M": 6,
+   "GTD": 19,
+   "GTDn": 19
+  },
+  "scorers": {
+   "V2O": {
+    "spearman": {
+     "mean": 0.5220830007873084,
+     "ci95": [
+      0.46917896852055235,
+      0.5736028772315722
+     ],
+     "scenes": 6
+    },
+    "top1": {
+     "mean": 0.4896891534391535,
+     "ci95": [
+      0.429457671957672,
+      0.5465178571428572
+     ],
+     "scenes": 6
+    },
+    "top1_strict": {
+     "mean": 0.4435251322751323,
+     "ci95": [
+      0.39108134920634924,
+      0.49596891534391535
+     ],
+     "scenes": 6
+    },
+    "pairwise": {
+     "mean": 0.7368300286057488,
+     "ci95": [
+      0.7127043360195459,
+      0.7598480609210321
+     ],
+     "scenes": 6
+    },
+    "regret": {
+     "mean": 0.6067982400427717,
+     "ci95": [
+      0.34469569294164204,
+      0.9362752314080404
+     ],
+     "scenes": 6
+    },
+    "nregret": {
+     "mean": 0.29630062639069077,
+     "ci95": [
+      0.2610968544122111,
+      0.3362811779472734
+     ],
+     "scenes": 6
+    },
+    "fidelity": {
+     "mean": 0.6145459682870956,
+     "ci95": [
+      0.5526339100309369,
+      0.6764580265432548
+     ],
+     "scenes": 6
+    },
+    "regret_minus_gtd": {
+     "mean": 0.4467348025484755,
+     "ci95": [
+      0.19215866790157843,
+      0.7645063074030389
+     ],
+     "scenes": 6
+    },
+    "agree_pred_gtd": {
+     "mean": 0.5051554232804233,
+     "ci95": [
+      0.4724603174603174,
+      0.5395238095238096
+     ],
+     "scenes": 6
+    },
+    "agree_pred_oracle": {
+     "mean": 0.4896891534391535,
+     "ci95": [
+      0.429457671957672,
+      0.5465178571428572
+     ],
+     "scenes": 6
+    },
+    "agree_gtd_oracle": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "fair_es": {
+     "mean": 16.20788610496678,
+     "ci95": [
+      13.129735425472129,
+      19.156391208893364
+     ],
+     "scenes": 6
+    },
+    "brier": {
+     "mean": 0.17093050314133684,
+     "ci95": [
+      0.12709779008085123,
+      0.22215622749325278
+     ],
+     "scenes": 6
+    },
+    "false_surface": {
+     "mean": 0.20361961401691875,
+     "ci95": [
+      0.1880610937252211,
+      0.21633289235720973
+     ],
+     "scenes": 6
+    },
+    "missed_surface": {
+     "mean": 0.2816281506082242,
+     "ci95": [
+      0.17652180446053686,
+      0.3923002796856287
+     ],
+     "scenes": 6
+    },
+    "depth_rel_err": {
+     "mean": 0.2470520715753861,
+     "ci95": [
+      0.13277444487419435,
+      0.3640284551212289
+     ],
+     "scenes": 6
+    },
+    "regret_official": {
+     "mean": 0.6071570734055985,
+     "ci95": [
+      0.34972950249667073,
+      0.9294344918702687
+     ],
+     "scenes": 6
+    },
+    "top1_official": {
+     "mean": 0.45687830687830694,
+     "ci95": [
+      0.41243716931216934,
+      0.5035449735449736
+     ],
+     "scenes": 6
+    },
+    "spearman@test": {
+     "mean": 0.568340395408878,
+     "ci95": [
+      0.5183661472160482,
+      0.6062977120722882
+     ],
+     "scenes": 3
+    },
+    "top1@test": {
+     "mean": 0.48988095238095236,
+     "ci95": [
+      0.3633730158730158,
+      0.5934920634920635
+     ],
+     "scenes": 3
+    },
+    "regret@test": {
+     "mean": 0.5343078899412163,
+     "ci95": [
+      0.25983081121985996,
+      0.8234250857880788
+     ],
+     "scenes": 3
+    },
+    "pairwise@test": {
+     "mean": 0.7594766653730769,
+     "ci95": [
+      0.7402153462829171,
+      0.7765553399311288
+     ],
+     "scenes": 3
+    },
+    "fair_es@test": {
+     "mean": 19.42267733669229,
+     "ci95": [
+      17.932010285474362,
+      20.981747361853394
+     ],
+     "scenes": 3
+    },
+    "brier@test": {
+     "mean": 0.16291281439850355,
+     "ci95": [
+      0.12664887214814474,
+      0.23172870861936815
+     ],
+     "scenes": 3
+    },
+    "spearman@dev": {
+     "mean": 0.47582560616573893,
+     "ci95": [
+      0.43461542270502457,
+      0.5569070743905182
+     ],
+     "scenes": 3
+    },
+    "top1@dev": {
+     "mean": 0.4894973544973545,
+     "ci95": [
+      0.43263888888888885,
+      0.5434920634920635
+     ],
+     "scenes": 3
+    },
+    "regret@dev": {
+     "mean": 0.6792885901443272,
+     "ci95": [
+      0.2563359335995242,
+      1.339407532081643
+     ],
+     "scenes": 3
+    },
+    "pairwise@dev": {
+     "mean": 0.7141833918384206,
+     "ci95": [
+      0.6912076958964923,
+      0.7455027270398701
+     ],
+     "scenes": 3
+    },
+    "fair_es@dev": {
+     "mean": 12.993094873241269,
+     "ci95": [
+      10.38527540469608,
+      16.33429351868083
+     ],
+     "scenes": 3
+    },
+    "brier@dev": {
+     "mean": 0.17894819188417013,
+     "ci95": [
+      0.11906851932806302,
+      0.27839186393377824
+     ],
+     "scenes": 3
+    }
+   },
+   "V2M": {
+    "spearman": {
+     "mean": 0.6067369559486716,
+     "ci95": [
+      0.549957059550925,
+      0.6639817540109395
+     ],
+     "scenes": 6
+    },
+    "top1": {
+     "mean": 0.5469642857142857,
+     "ci95": [
+      0.5112202380952381,
+      0.5869014550264551
+     ],
+     "scenes": 6
+    },
+    "top1_strict": {
+     "mean": 0.5016898148148149,
+     "ci95": [
+      0.4578935185185185,
+      0.5424338624338625
+     ],
+     "scenes": 6
+    },
+    "pairwise": {
+     "mean": 0.7786660896168001,
+     "ci95": [
+      0.7482512987575182,
+      0.8050391398219139
+     ],
+     "scenes": 6
+    },
+    "regret": {
+     "mean": 0.48231074908424776,
+     "ci95": [
+      0.2814110096058333,
+      0.7693737277214464
+     ],
+     "scenes": 6
+    },
+    "nregret": {
+     "mean": 0.2491541851958093,
+     "ci95": [
+      0.22421810058394934,
+      0.2771727158350651
+     ],
+     "scenes": 6
+    },
+    "fidelity": {
+     "mean": 0.7090267632367611,
+     "ci95": [
+      0.6469279002790204,
+      0.7711256261945016
+     ],
+     "scenes": 6
+    },
+    "regret_minus_gtd": {
+     "mean": 0.3222473115899515,
+     "ci95": [
+      0.1277914052564227,
+      0.5856234058702576
+     ],
+     "scenes": 6
+    },
+    "agree_pred_gtd": {
+     "mean": 0.5652910052910052,
+     "ci95": [
+      0.5420800264550264,
+      0.5888048115079356
+     ],
+     "scenes": 6
+    },
+    "agree_pred_oracle": {
+     "mean": 0.5469642857142857,
+     "ci95": [
+      0.5112202380952381,
+      0.5869014550264551
+     ],
+     "scenes": 6
+    },
+    "agree_gtd_oracle": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "fair_es": {
+     "mean": 9.569462304233033,
+     "ci95": [
+      7.928487815970656,
+      11.140290033360861
+     ],
+     "scenes": 6
+    },
+    "brier": {
+     "mean": 0.12594340511874794,
+     "ci95": [
+      0.09700359719700112,
+      0.1587931363285616
+     ],
+     "scenes": 6
+    },
+    "false_surface": {
+     "mean": 0.2609698817564452,
+     "ci95": [
+      0.173680575021961,
+      0.38921858547336113
+     ],
+     "scenes": 6
+    },
+    "missed_surface": {
+     "mean": 0.2059023776272542,
+     "ci95": [
+      0.13488513949704442,
+      0.28527904781549146
+     ],
+     "scenes": 6
+    },
+    "depth_rel_err": {
+     "mean": 0.18517993913477201,
+     "ci95": [
+      0.09608008785884026,
+      0.2887449699707884
+     ],
+     "scenes": 6
+    },
+    "regret_official": {
+     "mean": 0.4860555689865251,
+     "ci95": [
+      0.2845560253828758,
+      0.772647628833019
+     ],
+     "scenes": 6
+    },
+    "top1_official": {
+     "mean": 0.5175892857142858,
+     "ci95": [
+      0.4676431051587301,
+      0.558756779100529
+     ],
+     "scenes": 6
+    },
+    "spearman@test": {
+     "mean": 0.6462782377617455,
+     "ci95": [
+      0.5734475229383396,
+      0.7302830132359214
+     ],
+     "scenes": 3
+    },
+    "top1@test": {
+     "mean": 0.5447089947089947,
+     "ci95": [
+      0.49486111111111103,
+      0.6245833333333334
+     ],
+     "scenes": 3
+    },
+    "regret@test": {
+     "mean": 0.40363618067556434,
+     "ci95": [
+      0.22641819985034858,
+      0.5117130239921183
+     ],
+     "scenes": 3
+    },
+    "pairwise@test": {
+     "mean": 0.7983523210514226,
+     "ci95": [
+      0.768917089479571,
+      0.8253532116785566
+     ],
+     "scenes": 3
+    },
+    "fair_es@test": {
+     "mean": 11.460046062748068,
+     "ci95": [
+      10.990294283195674,
+      12.298706472614684
+     ],
+     "scenes": 3
+    },
+    "brier@test": {
+     "mean": 0.11808757075842165,
+     "ci95": [
+      0.08966270470400785,
+      0.16855246534839427
+     ],
+     "scenes": 3
+    },
+    "spearman@dev": {
+     "mean": 0.5671956741355977,
+     "ci95": [
+      0.4919607360632339,
+      0.6251633666923576
+     ],
+     "scenes": 3
+    },
+    "top1@dev": {
+     "mean": 0.5492195767195768,
+     "ci95": [
+      0.505,
+      0.5897420634920636
+     ],
+     "scenes": 3
+    },
+    "regret@dev": {
+     "mean": 0.5609853174929312,
+     "ci95": [
+      0.23112229222302952,
+      1.1465218125790655
+     ],
+     "scenes": 3
+    },
+    "pairwise@dev": {
+     "mean": 0.7589798581821775,
+     "ci95": [
+      0.7156056826146674,
+      0.8011027677535493
+     ],
+     "scenes": 3
+    },
+    "fair_es@dev": {
+     "mean": 7.678878545717997,
+     "ci95": [
+      6.555776877272585,
+      8.678413864185655
+     ],
+     "scenes": 3
+    },
+    "brier@dev": {
+     "mean": 0.13379923947907418,
+     "ci95": [
+      0.1018246917577987,
+      0.19140431709287645
+     ],
+     "scenes": 3
+    }
+   },
+   "GTD": {
+    "spearman": {
+     "mean": 0.7499848098599857,
+     "ci95": [
+      0.6837130978211725,
+      0.8131943328325186
+     ],
+     "scenes": 6
+    },
+    "top1": {
+     "mean": 0.6907638888888888,
+     "ci95": [
+      0.627225529100529,
+      0.7549669312169313
+     ],
+     "scenes": 6
+    },
+    "top1_strict": {
+     "mean": 0.6534854497354498,
+     "ci95": [
+      0.577688492063492,
+      0.7292824074074075
+     ],
+     "scenes": 6
+    },
+    "pairwise": {
+     "mean": 0.8587154815624894,
+     "ci95": [
+      0.8224439573955032,
+      0.892022135131105
+     ],
+     "scenes": 6
+    },
+    "regret": {
+     "mean": 0.16006343749429638,
+     "ci95": [
+      0.09381225250884208,
+      0.22682655420495537
+     ],
+     "scenes": 6
+    },
+    "nregret": {
+     "mean": 0.13788000820280036,
+     "ci95": [
+      0.10254330166583553,
+      0.17679477307986743
+     ],
+     "scenes": 6
+    },
+    "fidelity": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "regret_minus_gtd": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "agree_pred_gtd": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "agree_pred_oracle": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "agree_gtd_oracle": {
+     "mean": 0.6907638888888888,
+     "ci95": [
+      0.627225529100529,
+      0.7549669312169313
+     ],
+     "scenes": 6
+    },
+    "fair_es": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "brier": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "false_surface": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "missed_surface": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "depth_rel_err": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "regret_official": {
+     "mean": 0.16650943162697665,
+     "ci95": [
+      0.10298382570576624,
+      0.23160731382550392
+     ],
+     "scenes": 6
+    },
+    "top1_official": {
+     "mean": 0.6541435185185186,
+     "ci95": [
+      0.5735449735449736,
+      0.7336541005291006
+     ],
+     "scenes": 6
+    },
+    "spearman@test": {
+     "mean": 0.7807768521300137,
+     "ci95": [
+      0.7060441419869748,
+      0.8497653517517204
+     ],
+     "scenes": 3
+    },
+    "top1@test": {
+     "mean": 0.7120105820105822,
+     "ci95": [
+      0.6461111111111111,
+      0.797400793650794
+     ],
+     "scenes": 3
+    },
+    "regret@test": {
+     "mean": 0.12365673178443821,
+     "ci95": [
+      0.03729310492852176,
+      0.23255185495988603
+     ],
+     "scenes": 3
+    },
+    "pairwise@test": {
+     "mean": 0.878761690184953,
+     "ci95": [
+      0.8539796286512518,
+      0.8930006410210044
+     ],
+     "scenes": 3
+    },
+    "fair_es@test": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "brier@test": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "spearman@dev": {
+     "mean": 0.7191927675899578,
+     "ci95": [
+      0.6306570258139634,
+      0.8435350444266753
+     ],
+     "scenes": 3
+    },
+    "top1@dev": {
+     "mean": 0.6695171957671958,
+     "ci95": [
+      0.5634722222222222,
+      0.7934126984126987
+     ],
+     "scenes": 3
+    },
+    "regret@dev": {
+     "mean": 0.19647014320415454,
+     "ci95": [
+      0.11110235186490507,
+      0.2761007042425846
+     ],
+     "scenes": 3
+    },
+    "pairwise@dev": {
+     "mean": 0.8386692729400256,
+     "ci95": [
+      0.7922252304784424,
+      0.9117831938079973
+     ],
+     "scenes": 3
+    },
+    "fair_es@dev": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "brier@dev": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    }
+   },
+   "GTDn": {
+    "spearman": {
+     "mean": 0.6827232221629567,
+     "ci95": [
+      0.6086818257271899,
+      0.7545451331795531
+     ],
+     "scenes": 6
+    },
+    "top1": {
+     "mean": 0.5813789682539683,
+     "ci95": [
+      0.4952017195767196,
+      0.6733101851851853
+     ],
+     "scenes": 6
+    },
+    "top1_strict": {
+     "mean": 0.5466699735449736,
+     "ci95": [
+      0.46506944444444454,
+      0.6400992063492064
+     ],
+     "scenes": 6
+    },
+    "pairwise": {
+     "mean": 0.8194229026927923,
+     "ci95": [
+      0.7802134026397981,
+      0.8550883366336492
+     ],
+     "scenes": 6
+    },
+    "regret": {
+     "mean": 0.36850279491617427,
+     "ci95": [
+      0.23176225351574006,
+      0.4889628585082297
+     ],
+     "scenes": 6
+    },
+    "nregret": {
+     "mean": 0.20779648590603197,
+     "ci95": [
+      0.1603017538367502,
+      0.2538654692225795
+     ],
+     "scenes": 6
+    },
+    "fidelity": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "regret_minus_gtd": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "agree_pred_gtd": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "agree_pred_oracle": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "agree_gtd_oracle": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "fair_es": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "brier": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "false_surface": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "missed_surface": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "depth_rel_err": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "regret_official": {
+     "mean": 0.380264116601353,
+     "ci95": [
+      0.2476092007931504,
+      0.5011739663283376
+     ],
+     "scenes": 6
+    },
+    "top1_official": {
+     "mean": 0.5338558201058201,
+     "ci95": [
+      0.44038690476190473,
+      0.6357109788359788
+     ],
+     "scenes": 6
+    },
+    "spearman@test": {
+     "mean": 0.7179478871327408,
+     "ci95": [
+      0.6656762942162571,
+      0.765834055397916
+     ],
+     "scenes": 3
+    },
+    "top1@test": {
+     "mean": 0.5803703703703705,
+     "ci95": [
+      0.47468253968253976,
+      0.7254563492063494
+     ],
+     "scenes": 3
+    },
+    "regret@test": {
+     "mean": 0.38130891971537934,
+     "ci95": [
+      0.09054983462392148,
+      0.5641031977135071
+     ],
+     "scenes": 3
+    },
+    "pairwise@test": {
+     "mean": 0.8401846059693341,
+     "ci95": [
+      0.8249421878828617,
+      0.8487506750204933
+     ],
+     "scenes": 3
+    },
+    "fair_es@test": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "brier@test": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "spearman@dev": {
+     "mean": 0.6474985571931724,
+     "ci95": [
+      0.5409407371550194,
+      0.80379654114059
+     ],
+     "scenes": 3
+    },
+    "top1@dev": {
+     "mean": 0.582387566137566,
+     "ci95": [
+      0.4822222222222223,
+      0.7542460317460317
+     ],
+     "scenes": 3
+    },
+    "regret@dev": {
+     "mean": 0.35569667011696926,
+     "ci95": [
+      0.24006670834596266,
+      0.46533132555664053
+     ],
+     "scenes": 3
+    },
+    "pairwise@dev": {
+     "mean": 0.7986611994162501,
+     "ci95": [
+      0.7461083590616916,
+      0.8806127634366998
+     ],
+     "scenes": 3
+    },
+    "fair_es@dev": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "brier@dev": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    }
+   },
+   "Random": {
+    "spearman": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "top1": {
+     "mean": 0.22845311056521375,
+     "ci95": [
+      0.19023362307886116,
+      0.2750797797514067
+     ],
+     "scenes": 6
+    },
+    "top1_strict": {
+     "mean": 0.18251872716679263,
+     "ci95": [
+      0.15717226080246913,
+      0.22318511957252038
+     ],
+     "scenes": 6
+    },
+    "pairwise": {
+     "mean": 0.5,
+     "ci95": [
+      0.5,
+      0.5
+     ],
+     "scenes": 6
+    },
+    "regret": {
+     "mean": 1.2676205538183145,
+     "ci95": [
+      0.9886897465954378,
+      1.612751699089235
+     ],
+     "scenes": 6
+    },
+    "nregret": {
+     "mean": 0.6058399269138621,
+     "ci95": [
+      0.5787525167879993,
+      0.6462491056386368
+     ],
+     "scenes": 6
+    },
+    "fidelity": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "regret_minus_gtd": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "agree_pred_gtd": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "agree_pred_oracle": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "agree_gtd_oracle": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "fair_es": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "brier": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "false_surface": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "missed_surface": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "depth_rel_err": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "regret_official": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "top1_official": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "spearman@test": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "top1@test": {
+     "mean": 0.21104007096665825,
+     "ci95": [
+      0.16604359567901233,
+      0.24029051713277902
+     ],
+     "scenes": 3
+    },
+    "regret@test": {
+     "mean": 1.2006811489751055,
+     "ci95": [
+      0.9138166637236512,
+      1.4854058732018747
+     ],
+     "scenes": 3
+    },
+    "pairwise@test": {
+     "mean": 0.5,
+     "ci95": [
+      0.5,
+      0.5
+     ],
+     "scenes": 3
+    },
+    "fair_es@test": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "brier@test": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "spearman@dev": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "top1@dev": {
+     "mean": 0.2458661501637692,
+     "ci95": [
+      0.1858634259259259,
+      0.33461801618795667
+     ],
+     "scenes": 3
+    },
+    "regret@dev": {
+     "mean": 1.3345599586615238,
+     "ci95": [
+      0.9003017362926359,
+      2.029327225013703
+     ],
+     "scenes": 3
+    },
+    "pairwise@dev": {
+     "mean": 0.5,
+     "ci95": [
+      0.5,
+      0.5
+     ],
+     "scenes": 3
+    },
+    "fair_es@dev": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "brier@dev": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    }
+   },
+   "Exec:V2O": {
+    "spearman": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "top1": {
+     "mean": 0.41999999999999993,
+     "ci95": [
+      0.29,
+      0.5299999999999999
+     ],
+     "scenes": 6
+    },
+    "top1_strict": {
+     "mean": 0.37000000000000005,
+     "ci95": [
+      0.26333333333333336,
+      0.47000000000000003
+     ],
+     "scenes": 6
+    },
+    "pairwise": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "regret": {
+     "mean": 0.9426426456293592,
+     "ci95": [
+      0.40501002675425096,
+      1.7119491093359562
+     ],
+     "scenes": 6
+    },
+    "nregret": {
+     "mean": 0.3596402061916432,
+     "ci95": [
+      0.2732414602116675,
+      0.4647803274546844
+     ],
+     "scenes": 6
+    },
+    "fidelity": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "regret_minus_gtd": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "agree_pred_gtd": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "agree_pred_oracle": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "agree_gtd_oracle": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "fair_es": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "brier": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "false_surface": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "missed_surface": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "depth_rel_err": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "regret_official": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "top1_official": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "spearman@test": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "top1@test": {
+     "mean": 0.3999999999999999,
+     "ci95": [
+      0.13999999999999999,
+      0.6199999999999999
+     ],
+     "scenes": 3
+    },
+    "regret@test": {
+     "mean": 0.70552652801118,
+     "ci95": [
+      0.33751074947822507,
+      1.2230897052257599
+     ],
+     "scenes": 3
+    },
+    "pairwise@test": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "fair_es@test": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "brier@test": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "spearman@dev": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "top1@dev": {
+     "mean": 0.44,
+     "ci95": [
+      0.32,
+      0.5
+     ],
+     "scenes": 3
+    },
+    "regret@dev": {
+     "mean": 1.1797587632475384,
+     "ci95": [
+      0.3268637174627236,
+      2.7219207013325666
+     ],
+     "scenes": 3
+    },
+    "pairwise@dev": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "fair_es@dev": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "brier@dev": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    }
+   },
+   "Exec:V2M": {
+    "spearman": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "top1": {
+     "mean": 0.5466269841269841,
+     "ci95": [
+      0.4682539682539683,
+      0.6199074074074075
+     ],
+     "scenes": 6
+    },
+    "top1_strict": {
+     "mean": 0.5102182539682539,
+     "ci95": [
+      0.44497354497354497,
+      0.5718584656084656
+     ],
+     "scenes": 6
+    },
+    "pairwise": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "regret": {
+     "mean": 0.7618456413667053,
+     "ci95": [
+      0.2856458769026556,
+      1.5913921722485365
+     ],
+     "scenes": 6
+    },
+    "nregret": {
+     "mean": 0.24249041844645094,
+     "ci95": [
+      0.17980619617267923,
+      0.3281832039231562
+     ],
+     "scenes": 6
+    },
+    "fidelity": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "regret_minus_gtd": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "agree_pred_gtd": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "agree_pred_oracle": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "agree_gtd_oracle": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "fair_es": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "brier": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "false_surface": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "missed_surface": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "depth_rel_err": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "regret_official": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "top1_official": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "spearman@test": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "top1@test": {
+     "mean": 0.5481481481481482,
+     "ci95": [
+      0.4333333333333333,
+      0.6402777777777777
+     ],
+     "scenes": 3
+    },
+    "regret@test": {
+     "mean": 0.32069279425826086,
+     "ci95": [
+      0.2175082609530322,
+      0.5152221444582896
+     ],
+     "scenes": 3
+    },
+    "pairwise@test": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "fair_es@test": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "brier@test": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "spearman@dev": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "top1@dev": {
+     "mean": 0.5451058201058201,
+     "ci95": [
+      0.40059523809523806,
+      0.6458333333333334
+     ],
+     "scenes": 3
+    },
+    "regret@dev": {
+     "mean": 1.20299848847515,
+     "ci95": [
+      0.34735876580969755,
+      2.776992964232073
+     ],
+     "scenes": 3
+    },
+    "pairwise@dev": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "fair_es@dev": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "brier@dev": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    }
+   },
+   "Exec:MAG-G": {
+    "spearman": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "top1": {
+     "mean": 0.29074074074074074,
+     "ci95": [
+      0.2611111111111111,
+      0.3185185185185185
+     ],
+     "scenes": 6
+    },
+    "top1_strict": {
+     "mean": 0.2740740740740741,
+     "ci95": [
+      0.2333333333333333,
+      0.3092592592592593
+     ],
+     "scenes": 6
+    },
+    "pairwise": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "regret": {
+     "mean": 1.6784073468301786,
+     "ci95": [
+      1.2287043281727013,
+      2.2031259699368073
+     ],
+     "scenes": 6
+    },
+    "nregret": {
+     "mean": 0.4114260955056847,
+     "ci95": [
+      0.3678662744968842,
+      0.4556032865721806
+     ],
+     "scenes": 6
+    },
+    "fidelity": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "regret_minus_gtd": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "agree_pred_gtd": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "agree_pred_oracle": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "agree_gtd_oracle": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "fair_es": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "brier": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "false_surface": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "missed_surface": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "depth_rel_err": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "regret_official": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "top1_official": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "spearman@test": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "top1@test": {
+     "mean": 0.2962962962962963,
+     "ci95": [
+      0.24444444444444446,
+      0.32222222222222224
+     ],
+     "scenes": 3
+    },
+    "regret@test": {
+     "mean": 1.3482892875206307,
+     "ci95": [
+      0.9871349849317594,
+      1.6422767044770907
+     ],
+     "scenes": 3
+    },
+    "pairwise@test": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "fair_es@test": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "brier@test": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "spearman@dev": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "top1@dev": {
+     "mean": 0.2851851851851852,
+     "ci95": [
+      0.2333333333333333,
+      0.32222222222222224
+     ],
+     "scenes": 3
+    },
+    "regret@dev": {
+     "mean": 2.0085254061397264,
+     "ci95": [
+      1.170111560771278,
+      2.839582079171207
+     ],
+     "scenes": 3
+    },
+    "pairwise@dev": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "fair_es@dev": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "brier@dev": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    }
+   },
+   "Exec:MAG-B": {
+    "spearman": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "top1": {
+     "mean": 0.3193026495109828,
+     "ci95": [
+      0.22752525252525255,
+      0.41100990059323395
+     ],
+     "scenes": 6
+    },
+    "top1_strict": {
+     "mean": 0.2980309042809043,
+     "ci95": [
+      0.20981541606541607,
+      0.38803862033028697
+     ],
+     "scenes": 6
+    },
+    "pairwise": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "regret": {
+     "mean": 1.7376863006453975,
+     "ci95": [
+      1.1040366868930755,
+      2.4526120442539217
+     ],
+     "scenes": 6
+    },
+    "nregret": {
+     "mean": 0.42200040931949195,
+     "ci95": [
+      0.36221955783818055,
+      0.5011372708639142
+     ],
+     "scenes": 6
+    },
+    "fidelity": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "regret_minus_gtd": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "agree_pred_gtd": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "agree_pred_oracle": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "agree_gtd_oracle": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "fair_es": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "brier": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "false_surface": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "missed_surface": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "depth_rel_err": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "regret_official": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "top1_official": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "spearman@test": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "top1@test": {
+     "mean": 0.34939373897707227,
+     "ci95": [
+      0.13333333333333333,
+      0.5
+     ],
+     "scenes": 3
+    },
+    "regret@test": {
+     "mean": 1.4031652922664826,
+     "ci95": [
+      1.0182642993898168,
+      2.0088096397579522
+     ],
+     "scenes": 3
+    },
+    "pairwise@test": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "fair_es@test": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "brier@test": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "spearman@dev": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "top1@dev": {
+     "mean": 0.2892115600448934,
+     "ci95": [
+      0.2601010101010101,
+      0.3181818181818182
+     ],
+     "scenes": 3
+    },
+    "regret@dev": {
+     "mean": 2.0722073090243125,
+     "ci95": [
+      0.7797254122105978,
+      3.1883812289153135
+     ],
+     "scenes": 3
+    },
+    "pairwise@dev": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "fair_es@dev": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    },
+    "brier@dev": {
+     "mean": null,
+     "ci95": [
+      null,
+      null
+     ],
+     "scenes": 0
+    }
+   }
+  },
+  "paired_V2M_minus_V2O": {
+   "fair_es": {
+    "mean": -6.638423800733746,
+    "ci95": [
+     -8.382384912845032,
+     -4.940658594550804
+    ],
+    "scenes": 6,
+    "per_scene": {
+     "alhambra": -8.363980079553432,
+     "barts": -3.8294985274234943,
+     "bridge": -9.890609929419549,
+     "colosseum": -4.457270800651148,
+     "neuschwanstein": -5.633303812859678,
+     "pantheon": -7.655879654495175
+    }
+   },
+   "brier": {
+    "mean": -0.044987098022588934,
+    "ci95": [
+     -0.06442830823365381,
+     -0.027933992586534017
+    ],
+    "scenes": 6,
+    "per_scene": {
+     "alhambra": -0.040698157723989895,
+     "barts": -0.08698754684090179,
+     "bridge": -0.03060132992528189,
+     "colosseum": -0.017243827570264325,
+     "neuschwanstein": -0.0631762432709739,
+     "pantheon": -0.031215482804121772
+    }
+   },
+   "false_surface": {
+    "mean": 0.05735026773952645,
+    "ci95": [
+     -0.026676378273195116,
+     0.18227862885043725
+    ],
+    "scenes": 6,
+    "per_scene": {
+     "alhambra": -0.028628146236751306,
+     "barts": 0.3513628994269918,
+     "bridge": -0.05337357169674864,
+     "colosseum": 0.035637908593819045,
+     "neuschwanstein": -0.018216221574730018,
+     "pantheon": 0.05731873792457784
+    }
+   },
+   "spearman": {
+    "mean": 0.08465395516136313,
+    "ci95": [
+     0.04600461780003118,
+     0.13439706632664505
+    ],
+    "scenes": 6,
+    "per_scene": {
+     "alhambra": 0.12398530116363327,
+     "barts": 0.19054794398733305,
+     "bridge": 0.054746850172678,
+     "colosseum": 0.05600641466155998,
+     "neuschwanstein": 0.055081375722291326,
+     "pantheon": 0.02755584526068322
+    }
+   },
+   "top1": {
+    "mean": 0.05727513227513229,
+    "ci95": [
+     0.018518518518518545,
+     0.10060515873015874
+    ],
+    "scenes": 6,
+    "per_scene": {
+     "alhambra": 0.15130952380952378,
+     "barts": 0.046250000000000124,
+     "bridge": -0.017916666666666692,
+     "colosseum": 0.0723611111111111,
+     "neuschwanstein": 0.031091269841269864,
+     "pantheon": 0.060555555555555585
+    }
+   },
+   "pairwise": {
+    "mean": 0.04183606101105123,
+    "ci95": [
+     0.021864305495817898,
+     0.06706933542649762
+    ],
+    "scenes": 6,
+    "per_scene": {
+     "alhambra": 0.06369390177337142,
+     "barts": 0.09526301517464975,
+     "bridge": 0.024231322065010996,
+     "colosseum": 0.024397986718174947,
+     "neuschwanstein": 0.028701743196654084,
+     "pantheon": 0.014728397138446203
+    }
+   },
+   "regret": {
+    "mean": -0.12448749095852392,
+    "ci95": [
+     -0.226781314727182,
+     -0.03942664147413324
+    ],
+    "scenes": 6,
+    "per_scene": {
+     "alhambra": -0.35064776760385274,
+     "barts": -0.1928857195025775,
+     "bridge": -0.007954748823591484,
+     "colosseum": -0.13681045707511574,
+     "neuschwanstein": -0.033412611369511375,
+     "pantheon": -0.025213641376494678
+    }
+   },
+   "nregret": {
+    "mean": -0.04714644119488145,
+    "ci95": [
+     -0.07459139942112807,
+     -0.022113509408041816
+    ],
+    "scenes": 6,
+    "per_scene": {
+     "alhambra": -0.10445008131417202,
+     "barts": -0.06326721329999935,
+     "bridge": -0.006356415396304632,
+     "colosseum": -0.05846034019947499,
+     "neuschwanstein": -0.025071670920913836,
+     "pantheon": -0.02527292603842382
+    }
+   },
+   "fidelity": {
+    "mean": 0.09448079494966533,
+    "ci95": [
+     0.06604117153920537,
+     0.1339342906134877
+    ],
+    "scenes": 6,
+    "per_scene": {
+     "alhambra": 0.10642472317340335,
+     "barts": 0.1843189556169178,
+     "bridge": 0.07801757629005468,
+     "colosseum": 0.05300834713117464,
+     "neuschwanstein": 0.06620657736671465,
+     "pantheon": 0.07890859011972684
+    }
+   }
+  },
+  "per_scene": {
+   "V2O": {
+    "spearman": {
+     "alhambra": 0.6062977120722882,
+     "barts": 0.43461542270502457,
+     "bridge": 0.5803573269382977,
+     "colosseum": 0.435954321401674,
+     "neuschwanstein": 0.5183661472160482,
+     "pantheon": 0.5569070743905182
+    },
+    "top1": {
+     "alhambra": 0.36337301587301585,
+     "barts": 0.5434920634920635,
+     "bridge": 0.5127777777777778,
+     "colosseum": 0.4326388888888889,
+     "neuschwanstein": 0.5934920634920635,
+     "pantheon": 0.49236111111111114
+    },
+    "regret": {
+     "alhambra": 0.8234250857880789,
+     "barts": 1.339407532081643,
+     "bridge": 0.5196677728157097,
+     "colosseum": 0.44212230475181435,
+     "neuschwanstein": 0.25983081121985996,
+     "pantheon": 0.2563359335995242
+    },
+    "pairwise": {
+     "alhambra": 0.761659309905185,
+     "barts": 0.7058397525788994,
+     "bridge": 0.7765553399311288,
+     "colosseum": 0.6912076958964923,
+     "neuschwanstein": 0.7402153462829171,
+     "pantheon": 0.7455027270398701
+    },
+    "fair_es": {
+     "alhambra": 19.354274362749106,
+     "barts": 10.38527540469608,
+     "bridge": 20.981747361853394,
+     "colosseum": 12.259715696346898,
+     "neuschwanstein": 17.932010285474362,
+     "pantheon": 16.33429351868083
+    },
+    "brier": {
+     "alhambra": 0.13036086242799774,
+     "barts": 0.27839186393377824,
+     "bridge": 0.12664887214814474,
+     "colosseum": 0.11906851932806303,
+     "neuschwanstein": 0.23172870861936817,
+     "pantheon": 0.13938419239066915
+    },
+    "fidelity": {
+     "alhambra": 0.7125943570956154,
+     "barts": 0.5142767052389259,
+     "bridge": 0.7095411712458481,
+     "colosseum": 0.5783832519950044,
+     "neuschwanstein": 0.5363864735655839,
+     "pantheon": 0.6360938505815967
+    },
+    "nregret": {
+     "alhambra": 0.3170300780363552,
+     "barts": 0.3685450580391993,
+     "bridge": 0.24814630831176707,
+     "colosseum": 0.3398843805705814,
+     "neuschwanstein": 0.24906049842713568,
+     "pantheon": 0.255137434959106
+    }
+   },
+   "V2M": {
+    "spearman": {
+     "alhambra": 0.7302830132359215,
+     "barts": 0.6251633666923576,
+     "bridge": 0.6351041771109757,
+     "colosseum": 0.491960736063234,
+     "neuschwanstein": 0.5734475229383396,
+     "pantheon": 0.5844629196512015
+    },
+    "top1": {
+     "alhambra": 0.5146825396825396,
+     "barts": 0.5897420634920636,
+     "bridge": 0.4948611111111111,
+     "colosseum": 0.505,
+     "neuschwanstein": 0.6245833333333334,
+     "pantheon": 0.5529166666666667
+    },
+    "regret": {
+     "alhambra": 0.4727773181842262,
+     "barts": 1.1465218125790655,
+     "bridge": 0.5117130239921183,
+     "colosseum": 0.3053118476766986,
+     "neuschwanstein": 0.22641819985034858,
+     "pantheon": 0.23112229222302955
+    },
+    "pairwise": {
+     "alhambra": 0.8253532116785565,
+     "barts": 0.8011027677535492,
+     "bridge": 0.8007866619961398,
+     "colosseum": 0.7156056826146673,
+     "neuschwanstein": 0.7689170894795712,
+     "pantheon": 0.7602311241783163
+    },
+    "fair_es": {
+     "alhambra": 10.990294283195674,
+     "barts": 6.555776877272585,
+     "bridge": 11.091137432433845,
+     "colosseum": 7.80244489569575,
+     "neuschwanstein": 12.298706472614684,
+     "pantheon": 8.678413864185655
+    },
+    "brier": {
+     "alhambra": 0.08966270470400785,
+     "barts": 0.19140431709287645,
+     "bridge": 0.09604754222286285,
+     "colosseum": 0.10182469175779871,
+     "neuschwanstein": 0.16855246534839427,
+     "pantheon": 0.10816870958654738
+    },
+    "fidelity": {
+     "alhambra": 0.8190190802690187,
+     "barts": 0.6985956608558437,
+     "bridge": 0.7875587475359028,
+     "colosseum": 0.631391599126179,
+     "neuschwanstein": 0.6025930509322985,
+     "pantheon": 0.7150024407013236
+    },
+    "nregret": {
+     "alhambra": 0.21257999672218317,
+     "barts": 0.30527784473919994,
+     "bridge": 0.24178989291546243,
+     "colosseum": 0.2814240403711064,
+     "neuschwanstein": 0.22398882750622184,
+     "pantheon": 0.2298645089206822
+    }
+   },
+   "GTD": {
+    "spearman": {
+     "alhambra": 0.8497653517517204,
+     "barts": 0.8435350444266752,
+     "bridge": 0.7060441419869747,
+     "colosseum": 0.6833862325292344,
+     "neuschwanstein": 0.7865210626513457,
+     "pantheon": 0.6306570258139634
+    },
+    "top1": {
+     "alhambra": 0.6925198412698413,
+     "barts": 0.7934126984126986,
+     "bridge": 0.6461111111111111,
+     "colosseum": 0.5634722222222222,
+     "neuschwanstein": 0.7974007936507939,
+     "pantheon": 0.6516666666666666
+    },
+    "regret": {
+     "alhambra": 0.10112523546490688,
+     "barts": 0.20220737350497392,
+     "bridge": 0.232551854959886,
+     "colosseum": 0.2761007042425846,
+     "neuschwanstein": 0.03729310492852176,
+     "pantheon": 0.11110235186490505
+    },
+    "pairwise": {
+     "alhambra": 0.8930006410210044,
+     "barts": 0.9117831938079973,
+     "bridge": 0.8539796286512518,
+     "colosseum": 0.8119993945336368,
+     "neuschwanstein": 0.8893048008826027,
+     "pantheon": 0.7922252304784425
+    },
+    "fair_es": {},
+    "brier": {},
+    "fidelity": {},
+    "nregret": {
+     "alhambra": 0.09139674529970301,
+     "barts": 0.09994272723448713,
+     "bridge": 0.15000137255323298,
+     "colosseum": 0.21241403089829625,
+     "neuschwanstein": 0.09126110980394347,
+     "pantheon": 0.1822640634271393
+    }
+   },
+   "GTDn": {
+    "spearman": {
+     "alhambra": 0.765834055397916,
+     "barts": 0.8037965411405901,
+     "bridge": 0.6656762942162571,
+     "colosseum": 0.5977583932839076,
+     "neuschwanstein": 0.7223333117840494,
+     "pantheon": 0.5409407371550194
+    },
+    "top1": {
+     "alhambra": 0.4746825396825397,
+     "barts": 0.7542460317460317,
+     "bridge": 0.5409722222222222,
+     "colosseum": 0.5106944444444446,
+     "neuschwanstein": 0.7254563492063494,
+     "pantheon": 0.4822222222222222
+    },
+    "regret": {
+     "alhambra": 0.48927372680870923,
+     "barts": 0.36169197644830453,
+     "bridge": 0.5641031977135071,
+     "colosseum": 0.4653313255566406,
+     "neuschwanstein": 0.0905498346239215,
+     "pantheon": 0.24006670834596266
+    },
+    "pairwise": {
+     "alhambra": 0.8468609550046476,
+     "barts": 0.8806127634366998,
+     "bridge": 0.8249421878828616,
+     "colosseum": 0.7692624757503588,
+     "neuschwanstein": 0.8487506750204933,
+     "pantheon": 0.7461083590616916
+    },
+    "fair_es": {},
+    "brier": {},
+    "fidelity": {},
+    "nregret": {
+     "alhambra": 0.19649559811676381,
+     "barts": 0.144754435126276,
+     "bridge": 0.22896320811129636,
+     "colosseum": 0.2801243688522864,
+     "neuschwanstein": 0.12371142439469329,
+     "pantheon": 0.2727298808348761
+    }
+   },
+   "Random": {
+    "spearman": {},
+    "top1": {
+     "alhambra": 0.16604359567901233,
+     "barts": 0.33461801618795667,
+     "bridge": 0.22678610008818345,
+     "colosseum": 0.21711700837742504,
+     "neuschwanstein": 0.24029051713277902,
+     "pantheon": 0.18586342592592592
+    },
+    "regret": {
+     "alhambra": 1.2028209099997906,
+     "barts": 2.029327225013703,
+     "bridge": 1.485405873201875,
+     "colosseum": 1.074050914678232,
+     "neuschwanstein": 0.9138166637236511,
+     "pantheon": 0.9003017362926359
+    },
+    "pairwise": {
+     "alhambra": 0.5,
+     "barts": 0.5,
+     "bridge": 0.5,
+     "colosseum": 0.5,
+     "neuschwanstein": 0.5,
+     "pantheon": 0.5
+    },
+    "fair_es": {},
+    "brier": {},
+    "fidelity": {},
+    "nregret": {
+     "alhambra": 0.5710722046184914,
+     "barts": 0.7026081610760456,
+     "bridge": 0.6111928831697356,
+     "colosseum": 0.5874050628154572,
+     "neuschwanstein": 0.5868130282362821,
+     "pantheon": 0.5759482215671609
+    }
+   },
+   "Exec:V2O": {
+    "spearman": {},
+    "top1": {
+     "alhambra": 0.13999999999999999,
+     "barts": 0.32,
+     "bridge": 0.43999999999999995,
+     "colosseum": 0.5,
+     "neuschwanstein": 0.6199999999999999,
+     "pantheon": 0.5
+    },
+    "regret": {
+     "alhambra": 1.2230897052257599,
+     "barts": 2.721920701332567,
+     "bridge": 0.5559791293295551,
+     "colosseum": 0.49049187094732466,
+     "neuschwanstein": 0.33751074947822507,
+     "pantheon": 0.3268637174627236
+    },
+    "pairwise": {},
+    "fair_es": {},
+    "brier": {},
+    "fidelity": {},
+    "nregret": {
+     "alhambra": 0.4606692596727351,
+     "barts": 0.5799952756739778,
+     "bridge": 0.24668363436194554,
+     "colosseum": 0.3147458566063688,
+     "neuschwanstein": 0.26058006997919075,
+     "pantheon": 0.2951671408556411
+    }
+   },
+   "Exec:V2M": {
+    "spearman": {},
+    "top1": {
+     "alhambra": 0.4333333333333333,
+     "barts": 0.40059523809523806,
+     "bridge": 0.5708333333333334,
+     "colosseum": 0.5888888888888888,
+     "neuschwanstein": 0.6402777777777777,
+     "pantheon": 0.6458333333333334
+    },
+    "regret": {
+     "alhambra": 0.5152221444582896,
+     "barts": 2.7769929642320728,
+     "bridge": 0.22934797736346066,
+     "colosseum": 0.34735876580969755,
+     "neuschwanstein": 0.21750826095303216,
+     "pantheon": 0.484643735383679
+    },
+    "pairwise": {},
+    "fair_es": {},
+    "brier": {},
+    "fidelity": {},
+    "nregret": {
+     "alhambra": 0.25936286980636497,
+     "barts": 0.44278766390348123,
+     "bridge": 0.14476648675505915,
+     "colosseum": 0.19714091926916552,
+     "neuschwanstein": 0.22665212819167216,
+     "pantheon": 0.18423244275296263
+    }
+   },
+   "Exec:MAG-G": {
+    "spearman": {},
+    "top1": {
+     "alhambra": 0.32222222222222224,
+     "barts": 0.2333333333333333,
+     "bridge": 0.3222222222222222,
+     "colosseum": 0.32222222222222224,
+     "neuschwanstein": 0.24444444444444446,
+     "pantheon": 0.30000000000000004
+    },
+    "regret": {
+     "alhambra": 0.9871349849317594,
+     "barts": 2.839582079171207,
+     "bridge": 1.4154561731530415,
+     "colosseum": 2.015882578476694,
+     "neuschwanstein": 1.6422767044770907,
+     "pantheon": 1.170111560771278
+    },
+    "pairwise": {},
+    "fair_es": {},
+    "brier": {},
+    "fidelity": {},
+    "nregret": {
+     "alhambra": 0.33755650261586706,
+     "barts": 0.48309961115228733,
+     "bridge": 0.4445580375565239,
+     "colosseum": 0.35666323726741045,
+     "neuschwanstein": 0.4716941336534292,
+     "pantheon": 0.3749850507885902
+    }
+   },
+   "Exec:MAG-B": {
+    "spearman": {},
+    "top1": {
+     "alhambra": 0.41484788359788355,
+     "barts": 0.28935185185185186,
+     "bridge": 0.5,
+     "colosseum": 0.2601010101010101,
+     "neuschwanstein": 0.13333333333333333,
+     "pantheon": 0.3181818181818182
+    },
+    "regret": {
+     "alhambra": 1.0182642993898168,
+     "barts": 3.1883812289153135,
+     "bridge": 1.1824219376516791,
+     "colosseum": 2.248515285947026,
+     "neuschwanstein": 2.0088096397579522,
+     "pantheon": 0.7797254122105979
+    },
+    "pairwise": {},
+    "fair_es": {},
+    "brier": {},
+    "fidelity": {},
+    "nregret": {
+     "alhambra": 0.32246438875801303,
+     "barts": 0.4664560218802749,
+     "bridge": 0.3774001876720212,
+     "colosseum": 0.3915448876738509,
+     "neuschwanstein": 0.5920936634376275,
+     "pantheon": 0.3820433064951638
+    }
+   }
+  },
+  "strata": {
+   "t_bin": {
+    "early": {
+     "V2O": {
+      "states": 373,
+      "spearman": 0.6090121937796011,
+      "top1": 0.4262734584450402,
+      "regret": 1.262928186423816,
+      "nregret": 0.2667042530350203,
+      "pairwise": 0.7557114434227167,
+      "fair_es": 29.34066687352677
+     },
+     "V2M": {
+      "states": 373,
+      "spearman": 0.6908226299418955,
+      "top1": 0.4906166219839142,
+      "regret": 1.0245011537606612,
+      "nregret": 0.22314129988119305,
+      "pairwise": 0.7920503883188202,
+      "fair_es": 18.719284766199934
+     },
+     "GTD": {
+      "states": 373,
+      "spearman": 0.8542453479276328,
+      "top1": 0.6997319034852547,
+      "regret": 0.29223269133802077,
+      "nregret": 0.08501614052306375,
+      "pairwise": 0.884747383639133,
+      "fair_es": null
+     },
+     "Random": {
+      "states": 373,
+      "spearman": null,
+      "top1": 0.14617430528958678,
+      "regret": 2.6090227107126056,
+      "nregret": 0.5838985739998385,
+      "pairwise": 0.5,
+      "fair_es": null
+     }
+    },
+    "late": {
+     "V2O": {
+      "states": 240,
+      "spearman": 0.3533953673778989,
+      "top1": 0.6291666666666667,
+      "regret": 0.030361506998357303,
+      "nregret": 0.3720125303743256,
+      "pairwise": 0.6992572067537508,
+      "fair_es": 4.4614338693841145
+     },
+     "V2M": {
+      "states": 240,
+      "spearman": 0.4036057763157401,
+      "top1": 0.6666666666666666,
+      "regret": 0.026087992869798467,
+      "nregret": 0.33890494111878067,
+      "pairwise": 0.7239618995111061,
+      "fair_es": 1.7807599448518017
+     },
+     "GTD": {
+      "states": 240,
+      "spearman": 0.4902782444336477,
+      "top1": 0.7083333333333334,
+      "regret": 0.016794799739356502,
+      "nregret": 0.28457258145999526,
+      "pairwise": 0.7813781580424934,
+      "fair_es": null
+     },
+     "Random": {
+      "states": 240,
+      "spearman": null,
+      "top1": 0.4233382936507937,
+      "regret": 0.07371000532960004,
+      "nregret": 0.636520536068822,
+      "pairwise": 0.5,
+      "fair_es": null
+     }
+    },
+    "mid": {
+     "V2O": {
+      "states": 480,
+      "spearman": 0.5363728919234152,
+      "top1": 0.46458333333333335,
+      "regret": 0.4143645415645823,
+      "nregret": 0.29227442671827497,
+      "pairwise": 0.7383115149959261,
+      "fair_es": 12.120408538138795
+     },
+     "V2M": {
+      "states": 480,
+      "spearman": 0.6318327444041869,
+      "top1": 0.5270833333333333,
+      "regret": 0.30800265781730424,
+      "nregret": 0.2276015948754004,
+      "pairwise": 0.7879606041741162,
+      "fair_es": 6.527075404361613
+     },
+     "GTD": {
+      "states": 480,
+      "spearman": 0.784173890719433,
+      "top1": 0.6791666666666667,
+      "regret": 0.12865615082213072,
+      "nregret": 0.12313663476427043,
+      "pairwise": 0.8655591975247012,
+      "fair_es": null
+     },
+     "Random": {
+      "states": 480,
+      "spearman": null,
+      "top1": 0.19133432539682538,
+      "regret": 0.8554726298757139,
+      "nregret": 0.6057266409553451,
+      "pairwise": 0.5,
+      "fair_es": null
+     }
+    }
+   },
+   "stale": {
+    "refresh": {
+     "V2O": {
+      "states": 506,
+      "spearman": 0.5277206598745233,
+      "top1": 0.5019762845849802,
+      "regret": 0.608443185039091,
+      "nregret": 0.2865114970024659,
+      "pairwise": 0.7390266560285444,
+      "fair_es": 14.997906753103138
+     },
+     "V2M": {
+      "states": 506,
+      "spearman": 0.6165700901418255,
+      "top1": 0.5711462450592886,
+      "regret": 0.47292559673905415,
+      "nregret": 0.23321106847067716,
+      "pairwise": 0.7819801770399989,
+      "fair_es": 8.57779613683395
+     },
+     "GTD": {
+      "states": 506,
+      "spearman": 0.7664951634070174,
+      "top1": 0.6956521739130435,
+      "regret": 0.15929775516802025,
+      "nregret": 0.13480835061262866,
+      "pairwise": 0.859003123411732,
+      "fair_es": null
+     },
+     "Random": {
+      "states": 506,
+      "spearman": null,
+      "top1": 0.22630654369784803,
+      "regret": 1.265784032769214,
+      "nregret": 0.606802331353502,
+      "pairwise": 0.5,
+      "fair_es": null
+     }
+    },
+    "stale5": {
+     "V2O": {
+      "states": 587,
+      "spearman": 0.5230665574375661,
+      "top1": 0.4752981260647359,
+      "regret": 0.6292703637766754,
+      "nregret": 0.30592412448870376,
+      "pairwise": 0.7367796620752607,
+      "fair_es": 17.450882715015517
+     },
+     "V2M": {
+      "states": 587,
+      "spearman": 0.5985505357356317,
+      "top1": 0.5229982964224872,
+      "regret": 0.5058619632773815,
+      "nregret": 0.2562687572729586,
+      "pairwise": 0.7748949214422014,
+      "fair_es": 10.56611065317309
+     },
+     "GTD": {
+      "states": 587,
+      "spearman": 0.7357535187390227,
+      "top1": 0.6899488926746167,
+      "regret": 0.16044946181623818,
+      "nregret": 0.14000416953764325,
+      "pairwise": 0.8566962429700478,
+      "fair_es": null
+     },
+     "Random": {
+      "states": 587,
+      "spearman": null,
+      "top1": 0.2273485032854709,
+      "regret": 1.296415696991527,
+      "nregret": 0.5999715728257634,
+      "pairwise": 0.5,
+      "fair_es": null
+     }
+    }
+   },
+   "source": {
+    "MAG-B": {
+     "V2O": {
+      "states": 263,
+      "spearman": 0.5701874264304622,
+      "top1": 0.5133079847908745,
+      "regret": 0.46516829077373534,
+      "nregret": 0.2648367460006,
+      "pairwise": 0.7612856337419587,
+      "fair_es": 16.220504813476495
+     },
+     "V2M": {
+      "states": 263,
+      "spearman": 0.6379441790418816,
+      "top1": 0.5475285171102662,
+      "regret": 0.40916403459860157,
+      "nregret": 0.22781303316050888,
+      "pairwise": 0.7935248891887232,
+      "fair_es": 10.097926099390772
+     },
+     "GTD": {
+      "states": 263,
+      "spearman": 0.7570326459588597,
+      "top1": 0.6996197718631179,
+      "regret": 0.12281865266376199,
+      "nregret": 0.12447436859410194,
+      "pairwise": 0.8622304521142286,
+      "fair_es": null
+     },
+     "Random": {
+      "states": 263,
+      "spearman": null,
+      "top1": 0.22106192286800652,
+      "regret": 1.3049552342273478,
+      "nregret": 0.600915679230846,
+      "pairwise": 0.5,
+      "fair_es": null
+     }
+    },
+    "MAG-G": {
+     "V2O": {
+      "states": 270,
+      "spearman": 0.5844311632779139,
+      "top1": 0.5185185185185185,
+      "regret": 0.6339094841020189,
+      "nregret": 0.2622429020810773,
+      "pairwise": 0.755851793830962,
+      "fair_es": 16.625485583675065
+     },
+     "V2M": {
+      "states": 270,
+      "spearman": 0.6470151719945951,
+      "top1": 0.5814814814814815,
+      "regret": 0.48696720975746083,
+      "nregret": 0.2210167680716361,
+      "pairwise": 0.7855232293791201,
+      "fair_es": 10.134143622638051
+     },
+     "GTD": {
+      "states": 270,
+      "spearman": 0.7413471046962612,
+      "top1": 0.6481481481481481,
+      "regret": 0.24933916995947858,
+      "nregret": 0.15753951063019514,
+      "pairwise": 0.8411767646199939,
+      "fair_es": null
+     },
+     "Random": {
+      "states": 270,
+      "spearman": null,
+      "top1": 0.2035890652557319,
+      "regret": 1.3823922411156824,
+      "nregret": 0.6035221690165914,
+      "pairwise": 0.5,
+      "fair_es": null
+     }
+    },
+    "V2M": {
+     "V2O": {
+      "states": 260,
+      "spearman": 0.4742151007485487,
+      "top1": 0.5076923076923077,
+      "regret": 0.38833207806478226,
+      "nregret": 0.2925940714518154,
+      "pairwise": 0.7186478454138671,
+      "fair_es": 14.010142931481766
+     },
+     "V2M": {
+      "states": 260,
+      "spearman": 0.551180677114359,
+      "top1": 0.5538461538461539,
+      "regret": 0.3175003916126077,
+      "nregret": 0.255075097516776,
+      "pairwise": 0.7582448775490809,
+      "fair_es": 7.49260400822783
+     },
+     "GTD": {
+      "states": 260,
+      "spearman": 0.7066191180054563,
+      "top1": 0.6615384615384615,
+      "regret": 0.15713467584535243,
+      "nregret": 0.16757820291626518,
+      "pairwise": 0.8380434191467417,
+      "fair_es": null
+     },
+     "Random": {
+      "states": 260,
+      "spearman": null,
+      "top1": 0.26404914529914525,
+      "regret": 0.8575344303073462,
+      "nregret": 0.5836746166227407,
+      "pairwise": 0.5,
+      "fair_es": null
+     }
+    },
+    "V2O": {
+     "V2O": {
+      "states": 300,
+      "spearman": 0.47489727542048493,
+      "top1": 0.42,
+      "regret": 0.9426426456293591,
+      "nregret": 0.36086721553144013,
+      "pairwise": 0.7162226965798086,
+      "fair_es": 18.11699311687483
+     },
+     "V2M": {
+      "states": 300,
+      "spearman": 0.5899711530698251,
+      "top1": 0.5033333333333333,
+      "regret": 0.7153331161351989,
+      "nregret": 0.2761364857463855,
+      "pairwise": 0.7742109425155499,
+      "fair_es": 10.675404714197665
+     },
+     "GTD": {
+      "states": 300,
+      "spearman": 0.787754448830219,
+      "top1": 0.7533333333333333,
+      "regret": 0.11436866980576606,
+      "nregret": 0.10627556440371425,
+      "pairwise": 0.8852549736983021,
+      "fair_es": null
+     },
+     "Random": {
+      "states": 300,
+      "spearman": null,
+      "top1": 0.22067857142857142,
+      "regret": 1.540248837107706,
+      "nregret": 0.6207750652438555,
+      "pairwise": 0.5,
+      "fair_es": null
+     }
+    }
+   },
+   "split": {
+    "dev": {
+     "V2O": {
+      "states": 547,
+      "spearman": 0.4793350900951509,
+      "top1": 0.48628884826325414,
+      "regret": 0.6963962596752293,
+      "nregret": 0.3224867362191076,
+      "pairwise": 0.7158540085545015,
+      "fair_es": 13.118046822834286
+     },
+     "V2M": {
+      "states": 547,
+      "spearman": 0.5647396200189774,
+      "top1": 0.546617915904936,
+      "regret": 0.5742523744886795,
+      "nregret": 0.2679599909653836,
+      "pairwise": 0.7568124517631939,
+      "fair_es": 7.764222857738352
+     },
+     "GTD": {
+      "states": 547,
+      "spearman": 0.7165292737555061,
+      "top1": 0.6727605118829981,
+      "regret": 0.19613787389504084,
+      "nregret": 0.16662590363505836,
+      "pairwise": 0.8359059782574595,
+      "fair_es": null
+     },
+     "Random": {
+      "states": 547,
+      "spearman": null,
+      "top1": 0.2434694292098314,
+      "regret": 1.3493239653527915,
+      "nregret": 0.6180901254766255,
+      "pairwise": 0.5,
+      "fair_es": null
+     }
+    },
+    "test": {
+     "V2O": {
+      "states": 546,
+      "spearman": 0.5690600929409111,
+      "top1": 0.489010989010989,
+      "regret": 0.5427201485793739,
+      "nregret": 0.27233620650694695,
+      "pairwise": 0.7589733287463878,
+      "fair_es": 19.51838344083139
+     },
+     "V2M": {
+      "states": 546,
+      "spearman": 0.6470743458918036,
+      "top1": 0.5439560439560439,
+      "regret": 0.4068228489898839,
+      "nregret": 0.2240603888908267,
+      "pairwise": 0.7987463550127853,
+      "fair_es": 11.530479662028764
+     },
+     "GTD": {
+      "states": 546,
+      "spearman": 0.7819833832740126,
+      "top1": 0.7124542124542125,
+      "regret": 0.12362835381055444,
+      "nregret": 0.10964579246331971,
+      "pairwise": 0.8788139359642066,
+      "fair_es": null
+     },
+     "Random": {
+      "states": 546,
+      "spearman": null,
+      "top1": 0.21023242630385489,
+      "regret": 1.2150229407825488,
+      "nregret": 0.5887289282154078,
+      "pairwise": 0.5,
+      "fair_es": null
+     }
+    }
+   },
+   "primary_t": {
+    "brief_t": {
+     "V2O": {
+      "states": 506,
+      "spearman": 0.5277206598745233,
+      "top1": 0.5019762845849802,
+      "regret": 0.608443185039091,
+      "nregret": 0.2865114970024659,
+      "pairwise": 0.7390266560285444,
+      "fair_es": 14.997906753103138
+     },
+     "V2M": {
+      "states": 506,
+      "spearman": 0.6165700901418255,
+      "top1": 0.5711462450592886,
+      "regret": 0.47292559673905415,
+      "nregret": 0.23321106847067716,
+      "pairwise": 0.7819801770399989,
+      "fair_es": 8.57779613683395
+     },
+     "GTD": {
+      "states": 506,
+      "spearman": 0.7664951634070174,
+      "top1": 0.6956521739130435,
+      "regret": 0.15929775516802025,
+      "nregret": 0.13480835061262866,
+      "pairwise": 0.859003123411732,
+      "fair_es": null
+     },
+     "Random": {
+      "states": 506,
+      "spearman": null,
+      "top1": 0.22630654369784803,
+      "regret": 1.265784032769214,
+      "nregret": 0.606802331353502,
+      "pairwise": 0.5,
+      "fair_es": null
+     }
+    },
+    "t+5": {
+     "V2O": {
+      "states": 587,
+      "spearman": 0.5230665574375661,
+      "top1": 0.4752981260647359,
+      "regret": 0.6292703637766754,
+      "nregret": 0.30592412448870376,
+      "pairwise": 0.7367796620752607,
+      "fair_es": 17.450882715015517
+     },
+     "V2M": {
+      "states": 587,
+      "spearman": 0.5985505357356317,
+      "top1": 0.5229982964224872,
+      "regret": 0.5058619632773815,
+      "nregret": 0.2562687572729586,
+      "pairwise": 0.7748949214422014,
+      "fair_es": 10.56611065317309
+     },
+     "GTD": {
+      "states": 587,
+      "spearman": 0.7357535187390227,
+      "top1": 0.6899488926746167,
+      "regret": 0.16044946181623818,
+      "nregret": 0.14000416953764325,
+      "pairwise": 0.8566962429700478,
+      "fair_es": null
+     },
+     "Random": {
+      "states": 587,
+      "spearman": null,
+      "top1": 0.2273485032854709,
+      "regret": 1.296415696991527,
+      "nregret": 0.5999715728257634,
+      "pairwise": 0.5,
+      "fair_es": null
+     }
+    }
+   },
+   "max_gain": {
+    "high": {
+     "V2O": {
+      "states": 364,
+      "spearman": 0.5961120615106115,
+      "top1": 0.4065934065934066,
+      "regret": 1.5640507841124562,
+      "nregret": 0.2880967213448798,
+      "pairwise": 0.7520844627278982,
+      "fair_es": 28.138815287746723
+     },
+     "V2M": {
+      "states": 364,
+      "spearman": 0.7129381683296978,
+      "top1": 0.4807692307692308,
+      "regret": 1.2245532013336549,
+      "nregret": 0.22507250781380156,
+      "pairwise": 0.8042587743426378,
+      "fair_es": 17.49816791204244
+     },
+     "GTD": {
+      "states": 364,
+      "spearman": 0.8836144019977825,
+      "top1": 0.7032967032967034,
+      "regret": 0.36275937503367384,
+      "nregret": 0.08559174074175961,
+      "pairwise": 0.9004664110389964,
+      "fair_es": null
+     },
+     "Random": {
+      "states": 364,
+      "spearman": null,
+      "top1": 0.13741387580673295,
+      "regret": 3.1595242053378136,
+      "nregret": 0.6132658902880451,
+      "pairwise": 0.5,
+      "fair_es": null
+     }
+    },
+    "low": {
+     "V2O": {
+      "states": 365,
+      "spearman": 0.36116515170378366,
+      "top1": 0.5643835616438356,
+      "regret": 0.03265239614999671,
+      "nregret": 0.3926814418180863,
+      "pairwise": 0.6947488055948674,
+      "fair_es": 5.008487558954852
+     },
+     "V2M": {
+      "states": 365,
+      "spearman": 0.4126365253993677,
+      "top1": 0.6164383561643836,
+      "regret": 0.025960940382807253,
+      "nregret": 0.3402441029985777,
+      "pairwise": 0.7234345964086023,
+      "fair_es": 2.250569285563503
+     },
+     "GTD": {
+      "states": 365,
+      "spearman": 0.5308821846590027,
+      "top1": 0.6931506849315069,
+      "regret": 0.018180949285552896,
+      "nregret": 0.2614037268658886,
+      "pairwise": 0.7882923463943683,
+      "fair_es": null
+     },
+     "Random": {
+      "states": 365,
+      "spearman": null,
+      "top1": 0.39184714068275717,
+      "regret": 0.05973536033348325,
+      "nregret": 0.6277024810537886,
+      "pairwise": 0.5,
+      "fair_es": null
+     }
+    },
+    "mid": {
+     "V2O": {
+      "states": 364,
+      "spearman": 0.6003578757396406,
+      "top1": 0.49175824175824173,
+      "regret": 0.26379490427199365,
+      "nregret": 0.23187102432035853,
+      "pairwise": 0.7568045780357385,
+      "fair_es": 15.829621557763643
+     },
+     "V2M": {
+      "states": 364,
+      "spearman": 0.6742661348863518,
+      "top1": 0.5384615384615384,
+      "regret": 0.22260498865002545,
+      "nregret": 0.19305563085419142,
+      "pairwise": 0.7943474578236682,
+      "fair_es": 9.208463981968286
+     },
+     "GTD": {
+      "states": 364,
+      "spearman": 0.8119430874838892,
+      "top1": 0.6813186813186813,
+      "regret": 0.09919790988919222,
+      "nregret": 0.09403274380820062,
+      "pairwise": 0.8686920312308585,
+      "fair_es": null
+     },
+     "Random": {
+      "states": 364,
+      "spearman": null,
+      "top1": 0.15088413570556425,
+      "regret": 0.6308036193696791,
+      "nregret": 0.5740332416832039,
+      "pairwise": 0.5,
+      "fair_es": null
+     }
+    }
+   },
+   "coverage": {
+    "high": {
+     "V2O": {
+      "states": 364,
+      "spearman": 0.37591688290089137,
+      "top1": 0.5467032967032966,
+      "regret": 0.12825888651548129,
+      "nregret": 0.3816798113967628,
+      "pairwise": 0.6934651517956165,
+      "fair_es": 4.513529789163429
+     },
+     "V2M": {
+      "states": 364,
+      "spearman": 0.4513097028626319,
+      "top1": 0.5989010989010989,
+      "regret": 0.10133317833549581,
+      "nregret": 0.3213889930761631,
+      "pairwise": 0.7338526384409606,
+      "fair_es": 2.255369081040471
+     },
+     "GTD": {
+      "states": 364,
+      "spearman": 0.5896831284088638,
+      "top1": 0.7032967032967034,
+      "regret": 0.042342270461620854,
+      "nregret": 0.22460501953861725,
+      "pairwise": 0.8146910109241003,
+      "fair_es": null
+     },
+     "Random": {
+      "states": 364,
+      "spearman": null,
+      "top1": 0.3529511163439735,
+      "regret": 0.2183984814256316,
+      "nregret": 0.6390713289120439,
+      "pairwise": 0.5,
+      "fair_es": null
+     }
+    },
+    "low": {
+     "V2O": {
+      "states": 365,
+      "spearman": 0.6248846724936422,
+      "top1": 0.4273972602739726,
+      "regret": 1.1207519973753761,
+      "nregret": 0.2596803240437291,
+      "pairwise": 0.763290846405969,
+      "fair_es": 30.31478847351279
+     },
+     "V2M": {
+      "states": 365,
+      "spearman": 0.6960781158253715,
+      "top1": 0.5095890410958904,
+      "regret": 0.8340194412701445,
+      "nregret": 0.20968794729547577,
+      "pairwise": 0.7993470760333165,
+      "fair_es": 19.09857156862976
+     },
+     "GTD": {
+      "states": 365,
+      "spearman": 0.8652246655241468,
+      "top1": 0.7315068493150685,
+      "regret": 0.24801047946546717,
+      "nregret": 0.07257269357920561,
+      "pairwise": 0.8942782905933551,
+      "fair_es": null
+     },
+     "Random": {
+      "states": 365,
+      "spearman": null,
+      "top1": 0.15279191128506195,
+      "regret": 2.3659662944433544,
+      "nregret": 0.586195359044698,
+      "pairwise": 0.5,
+      "fair_es": null
+     }
+    },
+    "mid": {
+     "V2O": {
+      "states": 364,
+      "spearman": 0.5618659541975694,
+      "top1": 0.489010989010989,
+      "regret": 0.6084979160248383,
+      "nregret": 0.26524655937090563,
+      "pairwise": 0.7482870724306069,
+      "fair_es": 14.079083337078673
+     },
+     "V2M": {
+      "states": 364,
+      "spearman": 0.6595574420448838,
+      "top1": 0.5274725274725275,
+      "regret": 0.5355465698243437,
+      "nregret": 0.21990091686794486,
+      "pairwise": 0.7930221216793736,
+      "fair_es": 7.556974809346122
+     },
+     "GTD": {
+      "states": 364,
+      "spearman": 0.7806879172925392,
+      "top1": 0.6428571428571429,
+      "regret": 0.1891540844731444,
+      "nregret": 0.13251188178240775,
+      "pairwise": 0.8558503605870605,
+      "fair_es": null
+     },
+     "Random": {
+      "states": 364,
+      "spearman": null,
+      "top1": 0.17505886970172685,
+      "regret": 1.2593626099024566,
+      "nregret": 0.5908574515200763,
+      "pairwise": 0.5,
+      "fair_es": null
+     }
+    }
+   },
+   "n_cand": {
+    "7": {
+     "V2O": {
+      "states": 387,
+      "spearman": 0.5593440798296124,
+      "top1": 0.4754521963824289,
+      "regret": 0.676155854476096,
+      "nregret": 0.28177709300971965,
+      "pairwise": 0.7530302530828423,
+      "fair_es": 14.087471886761545
+     },
+     "V2M": {
+      "states": 387,
+      "spearman": 0.6440972069830557,
+      "top1": 0.5426356589147286,
+      "regret": 0.5265548062910024,
+      "nregret": 0.22164655398938157,
+      "pairwise": 0.7918740396971026,
+      "fair_es": 8.281219463795882
+     },
+     "GTD": {
+      "states": 387,
+      "spearman": 0.773273004290601,
+      "top1": 0.6795865633074936,
+      "regret": 0.16039730054574775,
+      "nregret": 0.11994256390480568,
+      "pairwise": 0.8618576384291641,
+      "fair_es": null
+     },
+     "Random": {
+      "states": 387,
+      "spearman": null,
+      "top1": 0.20524178663713544,
+      "regret": 1.1806642389707735,
+      "nregret": 0.5945259784101329,
+      "pairwise": 0.5,
+      "fair_es": null
+     }
+    },
+    "<=6": {
+     "V2O": {
+      "states": 308,
+      "spearman": 0.44129931112066123,
+      "top1": 0.5422077922077922,
+      "regret": 0.47059857157229296,
+      "nregret": 0.3448986707159624,
+      "pairwise": 0.7092579621714961,
+      "fair_es": 15.235517140237606
+     },
+     "V2M": {
+      "states": 308,
+      "spearman": 0.5135993975524735,
+      "top1": 0.5811688311688312,
+      "regret": 0.386804110270946,
+      "nregret": 0.2918906910028736,
+      "pairwise": 0.7508349732973794,
+      "fair_es": 8.86538918374824
+     },
+     "GTD": {
+      "states": 308,
+      "spearman": 0.6494017938851173,
+      "top1": 0.7012987012987013,
+      "regret": 0.10840985709640832,
+      "nregret": 0.19099894265079495,
+      "pairwise": 0.8311627491138769,
+      "fair_es": null
+     },
+     "Random": {
+      "states": 308,
+      "spearman": null,
+      "top1": 0.3200757575757576,
+      "regret": 0.9102412795119879,
+      "nregret": 0.608244327100869,
+      "pairwise": 0.5,
+      "fair_es": null
+     }
+    },
+    ">=8": {
+     "V2O": {
+      "states": 398,
+      "spearman": 0.5550432458656879,
+      "top1": 0.457286432160804,
+      "regret": 0.6799931644225456,
+      "nregret": 0.2778308444815749,
+      "pairwise": 0.7432311240668417,
+      "fair_es": 19.317130832699483
+     },
+     "V2M": {
+      "states": 398,
+      "spearman": 0.6406327183710341,
+      "top1": 0.5201005025125628,
+      "regret": 0.5360023829038065,
+      "nregret": 0.23614634763190775,
+      "pairwise": 0.7841842928910248,
+      "fair_es": 11.576130647153565
+     },
+     "GTD": {
+      "states": 398,
+      "spearman": 0.8022986292253597,
+      "top1": 0.6984924623115578,
+      "regret": 0.19930780629209024,
+      "nregret": 0.11707144194480076,
+      "pairwise": 0.8725304048468481,
+      "fair_es": null
+     },
+     "Random": {
+      "states": 398,
+      "spearman": null,
+      "top1": 0.17576074818537132,
+      "regret": 1.6688727641805705,
+      "nregret": 0.6078473758865598,
+      "pairwise": 0.5,
+      "fair_es": null
+     }
+    }
+   }
+  },
+  "state_rho_dES_dregret": 0.06177713039147242,
+  "state_frac_regret_lower_V2M": 0.19121683440073192,
+  "state_frac_regret_higher_V2M": 0.11344922232387923
+ }
+}

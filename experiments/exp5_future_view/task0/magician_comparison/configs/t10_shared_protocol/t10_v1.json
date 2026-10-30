@@ -1,0 +1,20 @@
+{
+ "note": "Record of the frozen T0.10 settings (protocol v1.2 §11-§16). The code reads these values from adapters/*.py, not from this file.",
+ "episodes": "W/manifests/cl_episodes.txt (22 levels, first start), 100 moves, 1 repeat",
+ "simulator": "scripts/t10_sim.py = frozen t06_sim.py + planner switch (test E2: bitwise replay of T0.6)",
+ "groups": {
+  "MAG-G": {"beam_width": 1, "beam_steps": 1},
+  "MAG-B": {"beam_width": 10, "beam_steps": 10, "replan_every": 1},
+  "V2K4-NV": {"base": "t06_planner V2K4", "choice": "argmax DistP1 over unvisited legal poses (all legal if none)"}
+ },
+ "magician": {"official_commit": "e697009", "config": "macarons_default_training_config.json (456 x 256, sensor_range 70, zfar 750)",
+              "weights": "trained_macarons.pth sha256 34c5247f13bedda08bb57e7e7e7a5baba53af6da7faf3d5f6bb57a27c2dbb59c",
+              "scene_grid": {"grid_w": 1, "horizontal_cell_m": 1.40, "cell_capacity": 1000, "cell_resolution": 0.05},
+              "n_proxy_points": 800000,
+              "layer0_candidates": "environment-legal list of the service record",
+              "deeper_candidates": "rotations (elev +-1 in 3 bins, azim +-1 mod 8) + moves keeping the orientation to stations within 3.0 m (card centres)",
+              "validity": "official get_valid_neighbors: prefer poses not visited by the real trajectory",
+              "collision_deeper": "official line_segment_intersects_point_cloud_region on predicted occupancy, threshold 1 runtime unit",
+              "seeds": "sha256('exp5-T0.10|MAG|<episode>') at setup, sha256('exp5-T0.10|MAG|<episode>|<t>') per step (shared by MAG-G / MAG-B)"},
+ "timing": {"exclusive": "first 20 steps of 8194nk5LbLH_L1_S2 and 2azQ1b91cZZ_L0_S60, V2K4 (t06_sim) / MAG-G / MAG-B, one idle L40S"}
+}

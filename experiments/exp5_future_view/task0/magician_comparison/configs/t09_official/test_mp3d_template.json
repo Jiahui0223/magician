@@ -1,0 +1,23 @@
+{
+  "numGPU": 0,
+  "dataset_path": "<run data dir>",
+  "test_scenes": [
+    "GdvgFV5R1Z5",
+    "gZ6f7yhEvPG",
+    "HxpKQynjfin",
+    "pLe4wQe7qrG",
+    "YmJkqBEsHnH"
+  ],
+  "params_name": "/bsuscratch/jiahuizhang/projects/occupancy/seen2scene/experiments/exp5_future_view/task0/magician_comparison/configs/t09_official/macarons_mp3d_formal.json",
+  "model_name": "trained_macarons.pth",
+  "results_json_name": "results.json",
+  "test_resolution": 0.05,
+  "use_perfect_depth_map": true,
+  "compute_collision": false,
+  "load_json": false,
+  "random_seed": 8,
+  "torch_seed": 9,
+  "lmdb_dir_name": "<run lmdb dir>",
+  "beam_width": 10,
+  "beam_steps": 10
+}

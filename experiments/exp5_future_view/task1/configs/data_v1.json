@@ -1,0 +1,27 @@
+{
+ "version": "data_v1",
+ "protocol": "protocol.md v1.0 §2",
+ "dataset_root": "data/macaronspp_belief/v1",
+ "scenes_train6": ["bannerman", "dunnottar", "fushimi", "liberty", "pisa", "redeemer"],
+ "decision_steps": [0, 99],
+ "keyframes_l3": [0, 1, 2, 3, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
+ "jitter_px_range": [-2.0, 2.0],
+ "jitter_seed_key": "exp5-V2|jitter|{scene}|{traj}|{t}|{a}",
+ "holdout_seed_key": "exp5-V2|holdout|{scene}",
+ "holdout_A_starts": 1,
+ "holdout_B_starts": 2,
+ "loso_scene": "pisa",
+ "coarse_block_vox": 8,
+ "coarse_pad_multiple": 4,
+ "label_tol_vox": 1.0,
+ "near_clip_runtime": 0.5,
+ "state_weight_t_le": 20,
+ "state_weight_factor": 2.0,
+ "max_cands_per_state": 8,
+ "checks": {
+  "TL3_frames_per_scene": 50, "TL3_hit_agree_min": 0.99, "TL3_rel_z_median_max": 0.001,
+  "TL4_hit_agree_min": 0.95, "TL4_rel_z_median_max": 0.01,
+  "silhouette_rel_jump": 0.05,
+  "infeasible_discuss_frac": 0.10
+ }
+}

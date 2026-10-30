@@ -1,0 +1,42 @@
+{
+ "outdoor|success": {
+  "rays_true_surface": 7296,
+  "t_known_found": 0.3112664473684211,
+  "free_space_end_found": 1.0,
+  "free_space_end_minus_true_median": -0.3156406958108162,
+  "free_space_end_abs_err_p90": 6.1933078793862855,
+  "n_seg_ge2": 0.7632949561403509,
+  "d_lo_median": 0.0,
+  "voxel": 0.13110677246004343,
+  "coarse_cell": 1.0488541796803474,
+  "unit": "scene units",
+  "slice_counts": {
+   "EMPTY": 53466,
+   "BAND": 448,
+   "UNKNOWN": 440294
+  },
+  "sid": "6f5145e2268fc866",
+  "scene": "colosseum",
+  "t": 0
+ },
+ "indoor|stochastic_nondegenerate": {
+  "rays_true_surface": 7177,
+  "t_known_found": 0.5428451999442664,
+  "free_space_end_found": 1.0,
+  "free_space_end_minus_true_median": -0.03966274878987086,
+  "free_space_end_abs_err_p90": 0.45812066692865355,
+  "n_seg_ge2": 0.6355022990107287,
+  "d_lo_median": 0.0,
+  "voxel": 0.017578125000000003,
+  "coarse_cell": 0.14062500000000003,
+  "unit": "m",
+  "slice_counts": {
+   "EMPTY": 83320,
+   "BAND": 1673,
+   "UNKNOWN": 465407
+  },
+  "sid": "b19d571ca892e69f",
+  "scene": "Z6MFQCViBuw_L0",
+  "t": 5
+ }
+}

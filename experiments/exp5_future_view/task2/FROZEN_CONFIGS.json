@@ -1,0 +1,104 @@
+{
+ "note": "EXP5 Task 2 freeze records (append-only)",
+ "stage_freezes": [
+  {
+   "stage": "T2.1 training (protocol \u00a71-\u00a73, before the formal V2-Mix run)",
+   "time": "2026-10-26 20:57:37",
+   "files": {
+    "experiments/exp5_future_view/task2/protocol.md": "dcd9d7a6c6c92be291b07408b2e9f8bcb9b302ffe2d5b0838559741b0340ce11",
+    "experiments/exp5_future_view/task2/configs/train_mix_v1.json": "9ce5b68aab5b8003893df44a615230130bdb6348e58e85ea04d514051a1d6234",
+    "experiments/exp5_future_view/task2/scripts/t2_common.py": "601f0be29e559d948af5d1f42c07a4a7affa38704b4cb8004e7c1e5548fcfab9",
+    "experiments/exp5_future_view/task2/scripts/t21_levels.py": "c99717210471dbf03cc4022302bd22efb20449a65d68d16854905399ecf9e7ff",
+    "experiments/exp5_future_view/task2/scripts/t21_traj.py": "065a2c2ee54e9cffbfbc61fc6bbcc378f3046752862197a9c625282a5f52e9d9",
+    "experiments/exp5_future_view/task2/scripts/t21_labels.py": "8a76dd683a1eac1155adf38602ff826e9402a3638c9b0cf98ee394c6fd2d0e0b",
+    "experiments/exp5_future_view/task2/scripts/t21_build.py": "b4352c2b244084b48ce10445bb7770e57605bc2245741c8f0a0a49ef8824f6e2",
+    "experiments/exp5_future_view/task2/scripts/t22_data.py": "57b2746f66849315530fee758cb66a1ea81a74fbfa30dabba7db0a2e911b882f",
+    "experiments/exp5_future_view/task2/scripts/t22_train_mix.py": "f2b4a65537ec0cd17213230c01982f67d48662950f0e3958b0e408df6f64bd8d",
+    "experiments/exp5_future_view/task2/scripts/t22_select.py": "3b36fa0af2d1007866a1c963271c933fd7f241d6a040df3ea91ac6094176a6ce",
+    "experiments/exp5_future_view/task1/scripts/t12_train.py": "23ce11cca90999ef1d6224298094fb9f7c66d72001d7a170b630e5fdae28d145",
+    "experiments/exp5_future_view/task1/scripts/v2_data.py": "a8f84acd5ed8d6bd33050a4d24e756be045686a5cb6de40fb1f42cfc48421ba8",
+    "experiments/exp5_future_view/task1/configs/model_v1.json": "bdbec9fe8c80261ce3c0ec3d6c53f8937ee999658d89d52bd9aa309dc24ca32d",
+    "experiments/exp5_future_view/task1/configs/data_v1.json": "b5a3472296a110ad8f0c579f243dd33bd52bf33d6eaf54a5a5281e8759307882",
+    "seen2scene/futureview/model.py": "0e501e74a8da099a4943fd12b282f492d06b9e92e855fa978ca62b550b534fde",
+    "seen2scene/futureview/geometry.py": "3557907af8f3e3ebd8955010dfe93997dcca0827fc97695a3e74dd293a4b069e",
+    "seen2scene/futureview/rays.py": "709547effce57954eb8a824d6b07eb63f396be46bf284ba4dabc98e288267318",
+    "seen2scene/futureview/predictor.py": "4d8cf90946e02fe32d0da0c41b91c81ef2918a70afa8528b1e63cc9dbae245d4",
+    "work_dirs/exp5_future_view/task2/mp3d/manifests/traj_jobs.json": "9815342ea3d1b72f0451288e1ca77640f39623946f0217c0156dc847f63d168c"
+   },
+   "smoke": {
+    "overfit": "200 steps: loss 0.274 -> 0.160 (-42 %), sign agreement 0.91, gradient check pass (lr 2e-5 fine-tuning; the Task 1 from-scratch thresholds 90 % / 95 % are not applicable and were not used as a gate)",
+    "short": "1k steps: first100 0.2006 -> last100 0.1551, no NaN"
+   }
+  },
+  {
+   "stage": "T2.1 addendum: t21_build.py scheduling only (cross-node claims, worker loop); build() unchanged",
+   "time": "2026-10-26 23:25:03",
+   "files": {
+    "experiments/exp5_future_view/task2/scripts/t21_build.py": "9f4765010a0b178041246a5c7b8170353b75b9bc60891c37f7153776a4b3e263"
+   }
+  },
+  {
+   "stage": "T2.2-T2.4 evaluation (protocol \u00a74-\u00a76, before any formal episode). V2M checkpoint path / sha256 are filled into the two eval configs only by t22_select.py (frozen rule); that update is recorded as an addendum",
+   "time": "2026-10-26 23:25:03",
+   "files": {
+    "experiments/exp5_future_view/task2/protocol.md": "dcd9d7a6c6c92be291b07408b2e9f8bcb9b302ffe2d5b0838559741b0340ce11",
+    "experiments/exp5_future_view/task2/configs/eval_indoor_v1.json": "925a6184c4caba51380150a7d0db4f0d42b85e2586920b0562bfbc00e680819a",
+    "experiments/exp5_future_view/task2/configs/eval_outdoor_v1.json": "c0e5c6777f07da39835554b64ecffb1fb32d75fdd1752a7fd13eda081d6409b8",
+    "experiments/exp5_future_view/task2/scripts/t2_common.py": "601f0be29e559d948af5d1f42c07a4a7affa38704b4cb8004e7c1e5548fcfab9",
+    "experiments/exp5_future_view/task2/scripts/t23_in_sim.py": "507d33638972031c20083379e9b7417c1fc899a8a6133c4eb70238ef3aa34cc4",
+    "experiments/exp5_future_view/task2/scripts/t23_v2_in_planner.py": "9b71aeb92e9879fa27abcefba72d103dae44fb3a29ea039e4ca8209f23f7990d",
+    "experiments/exp5_future_view/task2/scripts/t24_out_sim.py": "8a626a94400f79d27d24cc9d836f4d6f74eb440d0529288614a2b58d20125e01",
+    "experiments/exp5_future_view/task2/scripts/t24_v2_out_planner.py": "977a41addfccba6df7b44741a65444530dbc89ad557d894eadc815cfe5ecc1fa",
+    "experiments/exp5_future_view/task2/scripts/t24_mag_out_planner.py": "7654b32c01fd8dd8241b2e20f2d311927f286ad3cea27f7193e6f4e63192ebc5",
+    "experiments/exp5_future_view/task2/scripts/t25_out_cov.py": "125549f955d556cf256965d5884adef41b0ef6caaffd09d09008de4544d0a7ca",
+    "experiments/exp5_future_view/task2/scripts/t25_in_metrics.py": "e374dd9bd64c3a4e4ce5775d1fce4225bcb1d63d3118018bc1f8a59375d20b52",
+    "experiments/exp5_future_view/task2/scripts/t26_analyze.py": "79dd3c2b1403a583aadd428fb24e631d242b968d5c9daeb34f9fd82d5c4a0f05",
+    "experiments/exp5_future_view/task0/magician_comparison/adapters/magician_core.py": "2f58f03eec17faa9aabdea737b6d3511df9acae1bf45b7ba17acf523ab2c56e6",
+    "experiments/exp5_future_view/task0/magician_comparison/adapters/magician_planner.py": "02573cc515616ac295260a1fee676785fae63a95f55cd933b6a7913eb5042be5",
+    "experiments/exp5_future_view/task0/magician_comparison/adapters/magician_planner_grid.py": "becc509c157fb63ac51fb9310798dbd1174c27c7b5602e6a80abbd6d88952ffd",
+    "experiments/exp5_future_view/task0/magician_comparison/adapters/grid_env.py": "7664da25be825b739a501353457cbd1e72dfa7d08fc616d3c8663291395ba01c",
+    "experiments/exp5_future_view/task0/magician_comparison/adapters/v2nv_planner.py": "43bc23b51d1110905594e625d64b4a2a621c421ae931b7e759691c256d989dad",
+    "experiments/exp5_future_view/task0/magician_comparison/scripts/t12_sim.py": "5436ae3bbad95d1bfb1125adfa6c72bfec4252b6c05e6e1fb44f2882a9557861",
+    "experiments/exp5_future_view/task0/magician_comparison/scripts/t08_metrics.py": "3f4a5e77396be6be46e7f10c95e52a57b06b02c9653714c1b234646a8802f18a",
+    "experiments/exp5_future_view/task0/magician_comparison/scripts/mc_common.py": "d93bb305a2bdbd9534c7ab3f011aae62bbb7e6cba8ce480df0b0789ce710a859",
+    "experiments/exp5_future_view/task0/scripts/mp3d_sim.py": "03ef801b376cfa9510868202145a482f46aabc3216f5ea6fd281e763593bca88",
+    "experiments/exp5_future_view/task0/scripts/mp3d_frame.py": "cdf8d504dee224f527a2e2200936abdf9347f22ce9000c3443dd333becead9c1",
+    "experiments/exp5_future_view/task0/scripts/t06_planner.py": "b5a7ec0222db149edbcfa6232613ca72b93ad3de9a3632f2ddf94f66d613cd7d",
+    "experiments/exp5_future_view/task1/scripts/v2_sim.py": "167e06253b6e611b69467e58b5da825eb95916047b7814ed03c774e511eac60a",
+    "experiments/exp5_future_view/task1/scripts/v2_planner.py": "1e52f535b866bc5220057bb0842a3d46b66f9d413f2d5449baa7fc5b3fbe27e0",
+    "experiments/exp5_future_view/task1/scripts/v2_common.py": "89088679ffce96e2c5d5ded83d8f7de6709416877d4ae4afdd3212866b8de342",
+    "experiments/exp5_future_view/task1/scripts/v2_plan_core.py": "e4b013307b8eb4953d0a45dda87908d6c57fea4f8a9a2ee1df9b7a0a056e3f2a",
+    "experiments/exp3b_macaronspp_transfer/m_t6_sim.py": "9d7a5b342176ceaa4fcf479745c6161b88f5e518a94319fe667b8a3dd4e71489",
+    "experiments/exp3b_macaronspp_transfer/m_magician_replay.py": "6c3f3ee450080db8f08736723241681fb6c08ee0a1e8131d4d0826f13cd4c8e0"
+   }
+  },
+  {
+   "stage": "T2.1 addendum 2 (before any formal training step): in-RAM zlib compression of coarse grids (lossless, tensors bitwise equal) + per-rank sharding of the training trajectories (host memory: 128 GB cgroup)",
+   "time": "2026-10-27 01:24:19",
+   "files": {
+    "experiments/exp5_future_view/task2/scripts/t22_data.py": "504b87f2dfa2bca90523061b5b61619a173363f74d820ac474098038bf5a59df",
+    "experiments/exp5_future_view/task2/scripts/t22_train_mix.py": "4502952e933e88e0b6f7bcf87475567b1db49ca306fdb9c4d0b50c0b8dba8233"
+   }
+  },
+  {
+   "stage": "Evaluation addendum: V2M checkpoint filled by t22_select.py (frozen rule), before any V2M episode",
+   "time": "2026-10-27 17:12:40",
+   "files": {
+    "experiments/exp5_future_view/task2/configs/eval_indoor_v1.json": "e1dddab38dff74c517d315b1735e86964dba63ab8673495000b593f2e2ba9415",
+    "experiments/exp5_future_view/task2/configs/eval_outdoor_v1.json": "fca5716fd399aaf27172e2ab7617e2ef826b60639c77def90fedf29180235d16"
+   },
+   "selection": {
+    "step": 17500,
+    "score": 1.4086531693393232,
+    "es_in_val": 5.996219516892884,
+    "es_out_sc": 3.15048954629567,
+    "brier_in_val": 0.09066659504838633,
+    "brier_out_sc": 0.0339415446492925,
+    "false_wall_in_val": 0.15713587156299297,
+    "false_wall_out_sc": 0.009640677229365274,
+    "fm_in_val": 0.18760030181078266,
+    "fm_out_sc": 0.07487392325168908
+   }
+  }
+ ]
+}

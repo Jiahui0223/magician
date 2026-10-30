@@ -1,0 +1,253 @@
+{
+ "created": "2026-10-22 20:19:55",
+ "stage_freezes": [
+  {
+   "stage": "protocol_v1.0",
+   "time": "2026-10-22 20:19:55",
+   "files": {
+    "protocol.md": "34b49388d3e6b85af17cb1982bf3e7da7134b80c0f9acfe553cd2c213b163005",
+    "architecture.md": "42058921110b2fd4fe86b59066a6d992737f792f26ad107ba7a87512fc5f7c9e",
+    "EXPERIMENTS.md": "d42821137b9695d04a9efeac98c17dd48b37553b7689e46badaed844f063d130",
+    "TASK1_V2_PLAN.md": "35cce1d055ba72d81e36d8230ecd8c24b79a8f82b41951de855d2ac5f98e4a56",
+    "configs/closed_loop_v1.json": "d30b76c5625ce20f115ebc7ba547f75c098606dae15e0ff440fb644d958d1645",
+    "configs/data_v1.json": "b5a3472296a110ad8f0c579f243dd33bd52bf33d6eaf54a5a5281e8759307882",
+    "configs/model_v1.json": "bdbec9fe8c80261ce3c0ec3d6c53f8937ee999658d89d52bd9aa309dc24ca32d",
+    "configs/scoring_v1.json": "d579b844f2f9d41fdb839622220226f2f91c206081a7ca592d8a6f2f75ecc8ee",
+    "configs/train_loso_pisa.json": "0ae6b25f308e19d798a603205e7467b8920e78cd19ce60613955dd19aad8b6c1",
+    "configs/train_main.json": "1fcbc77facb6697b7c0054edd1037960ce0eef1bef25753d3262fa99af5c63e9"
+   },
+   "repo_head": "757ce5179a0434a299f46ec49674d2d723f787ad"
+  },
+  {
+   "stage": "T1.1",
+   "time": "2026-10-22 21:38:55",
+   "snapshot": "work_dirs/exp5_future_view/task1/snapshots/T1.1",
+   "files": {
+    "seen2scene/futureview/__init__.py": "b0dcdba6f0cfec87088754a20ba10e35907aff13ace8e455a86fd256941ba562",
+    "seen2scene/futureview/rays.py": "709547effce57954eb8a824d6b07eb63f396be46bf284ba4dabc98e288267318",
+    "seen2scene/futureview/geometry.py": "3557907af8f3e3ebd8955010dfe93997dcca0827fc97695a3e74dd293a4b069e",
+    "tests/futureview/test_geometry.py": "abe9265613eb7e2798af6a6ba1431a084bf1ed20bb8c53529b07742b933062cd",
+    "experiments/exp5_future_view/task1/scripts/t11_split.py": "91a97e3973a27d7474be432e17883954aee4dddd4890e9825528d424403d3ce1",
+    "experiments/exp5_future_view/task1/scripts/t11_labels.py": "55e7fbdef152b002e667e7f9eea7e387659157830ef7a2910fad64be1654e541",
+    "experiments/exp5_future_view/task1/scripts/t11_build.py": "38744c5b23b3a9eb3ee9b03ca363af10e5d3b8b099b4fe389223305b1afc2f6a",
+    "experiments/exp5_future_view/task1/scripts/t11_report.py": "7f542b23ce257fee28b85561d30b5839de090eda697f3d88f41ce3ac384a0f39",
+    "experiments/exp5_future_view/task1/scripts/v2_frozen.py": "44ee99e211ab99843f3e4267506d55fd4a44db5bc05bb2435bbb05258657a67d",
+    "work_dirs/exp5_future_view/task1/data/run_labels.sh": "789f6adae5491adbe6b4dce31c6e0ff73d81061cc8c6953766fd8d00dc5a18ae",
+    "work_dirs/exp5_future_view/task1/data/run_build.sh": "11f5269abe5936ad65d71260db9971e72f6baf805d9a16385d74bf6185339926",
+    "work_dirs/exp5_future_view/task1/data/run_build2.sh": "614cc5876ce23d988f3a5fd69d3f72132f7b0e181f6f057bd149ad53ee8c3350"
+   },
+   "extra": {
+    "data_manifest": {
+     "path": "work_dirs/exp5_future_view/task1/data/data_manifest.json",
+     "sha256": "9e7c47eb85a487d04fd36c7e2b221fab17a3f2a2977ce12c8a3f647176e9ef99"
+    },
+    "data_summary": {
+     "path": "work_dirs/exp5_future_view/task1/data/summary.json",
+     "sha256": "321693c3fd7c424fd575ec9bcc79c1fe556b0dd1ff6c9195fa8265d7d7bff057"
+    }
+   },
+   "repo_head": "757ce5179a0434a299f46ec49674d2d723f787ad",
+   "frozen_files_sha256_ok": true,
+   "note": "geometry.py / rays.py were extended after the build started (channels_from_stats refactor, model_rays_torch); the functions used by T1.1 (march_range, unknown_samples, ray_stats, project, encode_labels, coarse_grid, grid_uv, jitter_of, label_intrinsics) are unchanged"
+  },
+  {
+   "stage": "T1.4_closed_loop",
+   "time": "2026-10-23 02:45:41",
+   "snapshot": "work_dirs/exp5_future_view/task1/snapshots/T1.4_closed_loop",
+   "files": {
+    "experiments/exp5_future_view/task1/scripts/v2_common.py": "89088679ffce96e2c5d5ded83d8f7de6709416877d4ae4afdd3212866b8de342",
+    "experiments/exp5_future_view/task1/scripts/v2_frozen.py": "44ee99e211ab99843f3e4267506d55fd4a44db5bc05bb2435bbb05258657a67d",
+    "experiments/exp5_future_view/task1/scripts/v2_plan_core.py": "e4b013307b8eb4953d0a45dda87908d6c57fea4f8a9a2ee1df9b7a0a056e3f2a",
+    "experiments/exp5_future_view/task1/scripts/v2_planner.py": "1e52f535b866bc5220057bb0842a3d46b66f9d413f2d5449baa7fc5b3fbe27e0",
+    "experiments/exp5_future_view/task1/scripts/v2_sim.py": "167e06253b6e611b69467e58b5da825eb95916047b7814ed03c774e511eac60a",
+    "experiments/exp5_future_view/task1/scripts/v2_run.py": "bc731d6188ed5f73d9d6653c594d646b55c92aa5a4fa5e1648f70e5e1708997f",
+    "experiments/exp5_future_view/task1/scripts/t14_analyze.py": "dae172cb001f71b4d8ce3c3dd554293dbf085a062f548f5c658f00e1960fe657",
+    "seen2scene/futureview/__init__.py": "b0dcdba6f0cfec87088754a20ba10e35907aff13ace8e455a86fd256941ba562",
+    "seen2scene/futureview/geometry.py": "3557907af8f3e3ebd8955010dfe93997dcca0827fc97695a3e74dd293a4b069e",
+    "seen2scene/futureview/model.py": "0e501e74a8da099a4943fd12b282f492d06b9e92e855fa978ca62b550b534fde",
+    "seen2scene/futureview/predictor.py": "4d8cf90946e02fe32d0da0c41b91c81ef2918a70afa8528b1e63cc9dbae245d4",
+    "seen2scene/futureview/rays.py": "709547effce57954eb8a824d6b07eb63f396be46bf284ba4dabc98e288267318",
+    "seen2scene/futureview/scoring.py": "d35a8c75f4e5e693a00aac1b15d5ae928fcab2cb6c4fced03db7528ddd796889",
+    "experiments/exp5_future_view/task1/configs/closed_loop_v1.json": "d30b76c5625ce20f115ebc7ba547f75c098606dae15e0ff440fb644d958d1645",
+    "experiments/exp5_future_view/task1/configs/scoring_v1.json": "d579b844f2f9d41fdb839622220226f2f91c206081a7ca592d8a6f2f75ecc8ee",
+    "experiments/exp5_future_view/task1/configs/model_v1.json": "bdbec9fe8c80261ce3c0ec3d6c53f8937ee999658d89d52bd9aa309dc24ca32d"
+   },
+   "extra": {
+    "checkpoint": {
+     "path": "work_dirs/exp5_future_view/task1/training/main/ema_060000.pt",
+     "sha256": "a379c0fb9d7d80266a430ab6f48f39315fad54fb650c6c3740a999a02db079fc"
+    },
+    "frozen_values": {
+     "path": "experiments/exp5_future_view/task1/frozen_values.json",
+     "sha256": "1fcbc896db7eb2c3e5b3125591200cf574444f22b3e71a1b97f71ec9fdab6d63"
+    },
+    "calibration": {
+     "path": "work_dirs/exp5_future_view/task1/fixed_state/calibration/calibration.json",
+     "sha256": "edde882eee98c49f9648eef2bbe9fba7daa18c9e41ba123cb8f7348de77691c2"
+    },
+    "smoke_check": {
+     "path": "work_dirs/exp5_future_view/task1/closed_loop/smoke/smoke_check.json",
+     "sha256": "0e41d5d90c95b0f1861e28c51886ab6167c6bbc5ecf00a9fb5ab5eece53c02b7"
+    }
+   },
+   "repo_head": "757ce5179a0434a299f46ec49674d2d723f787ad",
+   "frozen_files_sha256_ok": true,
+   "note": "code of the E1-E6 closed loop, frozen before the first Dev 100-step episode; scoring values frozen_values.json[scoring] (delta 4, lambda 2)"
+  },
+  {
+   "stage": "T1.2",
+   "time": "2026-10-23 06:10:25",
+   "snapshot": "work_dirs/exp5_future_view/task1/snapshots/T1.2",
+   "files": {
+    "experiments/exp5_future_view/task1/scripts/t12_train.py": "23ce11cca90999ef1d6224298094fb9f7c66d72001d7a170b630e5fdae28d145",
+    "experiments/exp5_future_view/task1/scripts/v2_data.py": "f984c5144705bf45ca8403f6bc3dbab373bd2404a37bb2d07e5fcc77cf85e679",
+    "experiments/exp5_future_view/task1/scripts/v2_frozen.py": "44ee99e211ab99843f3e4267506d55fd4a44db5bc05bb2435bbb05258657a67d",
+    "experiments/exp5_future_view/task1/scripts/t12_eval_sc.py": "9a79beba8f614a81a72f1a31e270cf0da7945c6405ba20e3f94f8308bc735fe7",
+    "experiments/exp5_future_view/task1/scripts/t12_eval_sets.py": "9e4d2996f13a0a8580e52d549254dc78efae446d4e60641874cee591d14fd43b",
+    "experiments/exp5_future_view/task1/scripts/t12_analyze.py": "ae67bb999b0a2d1434c59cff69f4042365996afd44a39f4aff7ede0091b1ba83",
+    "experiments/exp5_future_view/task1/scripts/v2_plan_core.py": "e4b013307b8eb4953d0a45dda87908d6c57fea4f8a9a2ee1df9b7a0a056e3f2a",
+    "seen2scene/futureview/__init__.py": "b0dcdba6f0cfec87088754a20ba10e35907aff13ace8e455a86fd256941ba562",
+    "seen2scene/futureview/geometry.py": "3557907af8f3e3ebd8955010dfe93997dcca0827fc97695a3e74dd293a4b069e",
+    "seen2scene/futureview/model.py": "0e501e74a8da099a4943fd12b282f492d06b9e92e855fa978ca62b550b534fde",
+    "seen2scene/futureview/rays.py": "709547effce57954eb8a824d6b07eb63f396be46bf284ba4dabc98e288267318",
+    "seen2scene/futureview/predictor.py": "4d8cf90946e02fe32d0da0c41b91c81ef2918a70afa8528b1e63cc9dbae245d4",
+    "seen2scene/futureview/scoring.py": "d35a8c75f4e5e693a00aac1b15d5ae928fcab2cb6c4fced03db7528ddd796889",
+    "tests/futureview/test_geometry.py": "abe9265613eb7e2798af6a6ba1431a084bf1ed20bb8c53529b07742b933062cd",
+    "experiments/exp5_future_view/task1/configs/train_main.json": "1fcbc77facb6697b7c0054edd1037960ce0eef1bef25753d3262fa99af5c63e9",
+    "experiments/exp5_future_view/task1/configs/train_loso_pisa.json": "0ae6b25f308e19d798a603205e7467b8920e78cd19ce60613955dd19aad8b6c1",
+    "work_dirs/exp5_future_view/task1/training/run_ddp.sh": "faf6c94d5fede86237c0390e44b5e5371d59d4e1cb56ea87889a3d772dfab875",
+    "work_dirs/exp5_future_view/task1/training/run_train.sh": "276998d45979f9416524def18e01f9c9029eed0928e8f3e17827c9a436be37a7",
+    "work_dirs/exp5_future_view/task1/eval_sc/run_eval_sc.sh": "cc55acd2352a195fd513829cd2c5885bb20e13cccb1f1ca70d04a48650dac960",
+    "work_dirs/exp5_future_view/task1/eval_sets/run_eval_sets.sh": "3f1872047c6b1f2e35b0b99ed56a75730f6784c199064305e42e5af630cfa536"
+   },
+   "extra": {
+    "main_ckpt": {
+     "path": "work_dirs/exp5_future_view/task1/training/main/ema_060000.pt",
+     "sha256": "a379c0fb9d7d80266a430ab6f48f39315fad54fb650c6c3740a999a02db079fc"
+    },
+    "loso_ckpt": {
+     "path": "work_dirs/exp5_future_view/task1/training/loso_pisa/ema_060000.pt",
+     "sha256": "db4f84fb789151b8be473dd96e9a0916d559d7f7ca1359a1391f516878357927"
+    },
+    "main_run": {
+     "path": "work_dirs/exp5_future_view/task1/training/main/run_none.json",
+     "sha256": "5eca14b712dc147eae7911d36dde5ea000a0a216de8c8a30b9601a27b1645122"
+    },
+    "loso_run": {
+     "path": "work_dirs/exp5_future_view/task1/training/loso_pisa/run_none.json",
+     "sha256": "3ce998dcf935c205b720ab443cb5a9dfc05a62d56cf71d5a71e0815cdfd366aa"
+    }
+   },
+   "repo_head": "757ce5179a0434a299f46ec49674d2d723f787ad",
+   "frozen_files_sha256_ok": true,
+   "note": "training + S-c evaluation code of M-MAIN / M-LOSO (sha equal to both run records); taken before any M-SCALE3 change"
+  },
+  {
+   "stage": "M-SCALE3 config (conditional, triggered)",
+   "time": "2026-10-23 06:21:17",
+   "files": {
+    "experiments/exp5_future_view/task1/configs/train_scale3.json": "2b2a05e3051c9eabdd9fcdd1ae099d138092aeea6d68c28421ac5e8b8488079e",
+    "experiments/exp5_future_view/task1/scripts/v2_data.py": "a8f84acd5ed8d6bd33050a4d24e756be045686a5cb6de40fb1f42cfc48421ba8"
+   },
+   "note": "generated only after the \u00a73.6 trigger fired (t12_loso.json degradation 4.03 > 0.25); identical to train_loso_pisa.json except version and train_set; v2_data.load_split gains the train3 branch (other sets unchanged)",
+   "repo_head": "757ce5179a0434a299f46ec49674d2d723f787ad",
+   "frozen_files_sha256_ok": true
+  },
+  {
+   "stage": "T1.3",
+   "time": "2026-10-23 06:48:59",
+   "snapshot": "work_dirs/exp5_future_view/task1/snapshots/T1.3",
+   "files": {
+    "experiments/exp5_future_view/task1/scripts/t13_calibrate.py": "c8e069534f839ea18f2993fcda841385f3ce9e8b0980733b3672ceddd075e497",
+    "experiments/exp5_future_view/task1/scripts/t13_fixed_state.py": "8a0962dd8783ba2e422688628ad3ea9759cea9444077b93600dd68d316c62eac",
+    "experiments/exp5_future_view/task1/scripts/t13_sc_gain.py": "c5c5d16d7305df25b9e91270b111fabecf09c2dcf84809507ed2e12ef8271a20",
+    "experiments/exp5_future_view/task1/scripts/t13_dev_tstar.py": "231b5f75a8f6c645f0bd013c8bb32a9d32ea809ebf5eb67b30ca5ea4c80f6227",
+    "experiments/exp5_future_view/task1/scripts/t13_timing.py": "997a797540d8339e0fa629eedfdf7c0e0e0063d6bd2586925b92169ae6cbe113",
+    "experiments/exp5_future_view/task1/scripts/t13_analyze.py": "305aa9d60cd2e9acce5fbbf8b305ddc4e7afed4b4f4c9f8a9051bbd692a0893f",
+    "experiments/exp5_future_view/task1/scripts/t13_latent.py": "18475ead25ecb7ba0e9a4e1d27ff7a2099ff7aa8bccfce73d362dda3f68c5cbf",
+    "experiments/exp5_future_view/task1/scripts/v2_plan_core.py": "e4b013307b8eb4953d0a45dda87908d6c57fea4f8a9a2ee1df9b7a0a056e3f2a",
+    "experiments/exp5_future_view/task1/scripts/v2_common.py": "89088679ffce96e2c5d5ded83d8f7de6709416877d4ae4afdd3212866b8de342",
+    "seen2scene/futureview/scoring.py": "d35a8c75f4e5e693a00aac1b15d5ae928fcab2cb6c4fced03db7528ddd796889",
+    "seen2scene/futureview/predictor.py": "4d8cf90946e02fe32d0da0c41b91c81ef2918a70afa8528b1e63cc9dbae245d4",
+    "work_dirs/exp5_future_view/task1/_sbatch/aux_t13.sh": "bf5d902b7ff8ba2ad03d1ced5aab3885997751585bb833ae08ef9155bb836081",
+    "work_dirs/exp5_future_view/task1/_sbatch/aux2.sh": "99cab39ae9b12ea1766b7cd6b1f7c5ff50b8c9e8590569bce2e59839125a58ef",
+    "work_dirs/exp5_future_view/task1/_sbatch/aux2_chains.sh": "d42c5cfd36517d9f106a328a5092e8263ea1550deab0979eec2c53f24f99ad53",
+    "work_dirs/exp5_future_view/task1/fixed_state/run_fs.sh": "de26d0bed2d46bf21b58583fe0ca4c71e63342ed9d4eb3e998ec99cf9f9cc6ec",
+    "work_dirs/exp5_future_view/task1/fixed_state/run_latent.sh": "514e18c030eb64d0244cf2406d40ff9c85038df38cb99196b511ff406d2faef7",
+    "work_dirs/exp5_future_view/task1/timing/run_timing_v2.sh": "fac0c043380037c6630e3b6ac52922c91dc870fc3e1b62a34d724848b8908d32"
+   },
+   "extra": {
+    "calibration": {
+     "path": "work_dirs/exp5_future_view/task1/fixed_state/calibration/calibration.json",
+     "sha256": "edde882eee98c49f9648eef2bbe9fba7daa18c9e41ba123cb8f7348de77691c2"
+    },
+    "t13": {
+     "path": "work_dirs/exp5_future_view/task1/analysis/t13.json",
+     "sha256": "525d37cabb93639ba24553ae80c742ee12dc8aa57374e8e23a36649e6c08a13f"
+    },
+    "latent": {
+     "path": "work_dirs/exp5_future_view/task1/fixed_state/latent/latent.json",
+     "sha256": "b28b7659ed0a15145298b7d9b2cbf50f47ed4aa9910db77b3d8f571e631caa77"
+    }
+   },
+   "repo_head": "757ce5179a0434a299f46ec49674d2d723f787ad",
+   "frozen_files_sha256_ok": true,
+   "note": "scoring / diagnostics / timing code of T1.3; analysis scripts as of report time"
+  },
+  {
+   "stage": "T1_final",
+   "time": "2026-10-23 10:19:11",
+   "snapshot": "work_dirs/exp5_future_view/task1/snapshots/T1_final",
+   "files": {
+    "experiments/exp5_future_view/task1/scripts/t12_analyze.py": "2931063b673435579a65f2bc02e87118e224ca8be5bd87625d927b09ab41180f",
+    "experiments/exp5_future_view/task1/scripts/t12_loso.py": "671ba30d9542a16d0352ad7d48371cc4d098529e2ce71cc88530c2885c157d9e",
+    "experiments/exp5_future_view/task1/scripts/t13_analyze.py": "305aa9d60cd2e9acce5fbbf8b305ddc4e7afed4b4f4c9f8a9051bbd692a0893f",
+    "experiments/exp5_future_view/task1/scripts/t13_latent.py": "18475ead25ecb7ba0e9a4e1d27ff7a2099ff7aa8bccfce73d362dda3f68c5cbf",
+    "experiments/exp5_future_view/task1/scripts/t14_analyze.py": "4ed8e208e1ad8c7e832472443c766d77ff9f7d893cdf9e720c77da2b5ff74f2a",
+    "experiments/exp5_future_view/task1/scripts/v2_data.py": "a8f84acd5ed8d6bd33050a4d24e756be045686a5cb6de40fb1f42cfc48421ba8",
+    "experiments/exp5_future_view/task1/scripts/t1_snapshot.py": "8888db116387b6a3966aa151b052c98d8738ada48f4dd141d5573ad022f0ba6d",
+    "experiments/exp5_future_view/task1/configs/train_scale3.json": "2b2a05e3051c9eabdd9fcdd1ae099d138092aeea6d68c28421ac5e8b8488079e",
+    "experiments/exp5_future_view/task1/TASK1_FINAL_REPORT.md": "ba7983fdbc3b58eacb9476d38ff681e44538aa717ecc0c90f9fde599c7443e89",
+    "experiments/exp5_future_view/task1/reports/T1.1_report.md": "ca90e39e27785f9a3449da386a6d6fb9bb19ca18fed607910434afa9812817d6",
+    "experiments/exp5_future_view/task1/reports/T1.2_report.md": "4469e20ca70a09ed3e0d6e8149c1594a7a17fba94d0465de9cfacabd81922070",
+    "experiments/exp5_future_view/task1/reports/T1.3_report.md": "13bfb04e79feb85593bc24c29381f1dfabfff0283e9ada145669a1f8f78524bb",
+    "experiments/exp5_future_view/task1/reports/T1.4_report.md": "ea979e1ea911ca3afe38be47d8a0463694cceaa79c7a1a2e5a78b232b82e7a18",
+    "experiments/exp5_future_view/task1/DEVIATIONS.md": "8c77bdd22cc70d9fe226308d76b45954f8a328bed025ed92f4741cbd199e9867",
+    "experiments/exp5_future_view/task1/frozen_values.json": "84c1d79612415b926861e5d0dc5c1aa4d10197792c6bdacdcfc0dfd6363a9d4b"
+   },
+   "extra": {
+    "t12": {
+     "path": "work_dirs/exp5_future_view/task1/analysis/t12.json",
+     "sha256": "92f24cde8092295fe5efceeea95dca02006548f5c461420f2f55cfa658e1812c"
+    },
+    "t12_loso": {
+     "path": "work_dirs/exp5_future_view/task1/analysis/t12_loso.json",
+     "sha256": "d4cebaa74b394bc12f594db3e1f49fd2d947cff5fa71ffac97ce7d035b8e5703"
+    },
+    "t12_loso_scale3": {
+     "path": "work_dirs/exp5_future_view/task1/analysis/t12_loso_scale3.json",
+     "sha256": "c1b267123a2fb031a046220d44b135571fc5f4a34f7ee011a10fb61e19439e06"
+    },
+    "t13": {
+     "path": "work_dirs/exp5_future_view/task1/analysis/t13.json",
+     "sha256": "525d37cabb93639ba24553ae80c742ee12dc8aa57374e8e23a36649e6c08a13f"
+    },
+    "t14": {
+     "path": "work_dirs/exp5_future_view/task1/analysis/t14.json",
+     "sha256": "c66ded6f25fdbd5b15a1e67a679c43641861e50c82911bf1d23727ecf703bd12"
+    },
+    "latent": {
+     "path": "work_dirs/exp5_future_view/task1/fixed_state/latent/latent.json",
+     "sha256": "b28b7659ed0a15145298b7d9b2cbf50f47ed4aa9910db77b3d8f571e631caa77"
+    },
+    "scale3_run": {
+     "path": "work_dirs/exp5_future_view/task1/training/scale3/run_none.json",
+     "sha256": "c75ff5cf6d5645fd26e3e40c7d216bc3f29b6a0b89b708338f2f679f20cac287"
+    }
+   },
+   "repo_head": "757ce5179a0434a299f46ec49674d2d723f787ad",
+   "frozen_files_sha256_ok": true,
+   "note": "analysis code + reports at the time of TASK1_FINAL_REPORT.md; v2_data.py includes the M-SCALE3 train3 branch (train6 / train5 unchanged)"
+  }
+ ]
+}

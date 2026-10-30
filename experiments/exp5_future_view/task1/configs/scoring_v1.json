@@ -1,0 +1,12 @@
+{
+ "version": "scoring_v1",
+ "protocol": "protocol.md v1.0 §4",
+ "distp1": {"z0": "abl_common.z0_of(scene)", "entry": "new_set_from_depth", "bitwise_test_states": "S-a 73"},
+ "U": {"K": 4, "R": 7296, "delta_grid_vox": [2, 4, 8, 16], "delta_rule": "smallest grid value >= median Delta of both-new-hit pairs on S-c calibration states; else 16",
+       "weight_pair": "max over new-hit samples of min(1,(z/z0)^2)", "validity_const_frac_max": 0.5},
+ "GU": {"rank": "average-tie rank scaled (r-1)/(M-1)", "lambda_grid": [0.25, 0.5, 1.0, 2.0], "lambda_rule": "min mean regret vs true one-step gain on S-c calibration states; ties -> smaller"},
+ "Sc_times": [0, 1, 2, 3, 5, 10, 20, 30, 50, 70],
+ "timing": {"states": "Dev-3 x start 0 x t in {0,10,...,90}", "repeats": 3, "warmup": 1},
+ "g1es": {"match_rel_tol": 1e-9, "query_offset_px": [0.5, 0.5]},
+ "reliability_K": 16, "reliability_views": 512
+}

@@ -1,0 +1,19 @@
+{
+ "version": "closed_loop_v1",
+ "protocol": "protocol.md v1.0 §5",
+ "scenes": ["barts", "pantheon", "colosseum"], "starts": [0, 1, 2, 3, 4], "moves": 100, "reps": [0, 1, 2],
+ "refresh_R10": [0, 10, 20, 30, 40, 50, 60, 70, 80, 90],
+ "seed_key": "exp5-V2|{scene}|s{start}|rep{rep}|t{t_r}|k{k}",
+ "arms": {
+  "E1": {"name": "E1_V2G_R10_K4", "refresh": "R10", "K": 4, "score": "distp1"},
+  "E2": {"name": "E2_V2G_Nat_K4", "refresh": "native", "K": 4, "score": "distp1"},
+  "E3": {"name": "E3_V2Uraw_R10_K4", "refresh": "R10", "K": 4, "score": "u_raw"},
+  "E4": {"name": "E4_V2DistU_R10_K4", "refresh": "R10", "K": 4, "score": "dist_u"},
+  "E5": {"name": "E5_V2GU_R10_K4", "refresh": "R10", "K": 4, "score": "gu"},
+  "E6": {"name": "E6_V2G_R10_K1", "refresh": "R10", "K": 1, "score": "distp1"}
+ },
+ "run_order": ["E1", "E2", "E3", "E4", "E5", "E6"],
+ "smoke": {"episodes": [["barts", 0], ["pantheon", 0]], "moves": 12, "interrupt_after": 10},
+ "bootstrap": {"n": 10000, "seed": 0, "unit": "start (reps averaged first)"},
+ "baselines": {"B0": [0.866, 0.683], "B2": [0.867, 0.675], "B1": [0.862, 0.693], "MAGICIAN_T7a": [0.868, 0.697]}
+}

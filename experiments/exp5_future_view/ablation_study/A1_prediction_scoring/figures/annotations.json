@@ -1,0 +1,658 @@
+{
+ "fig1|indoor|V2O|spearman": 0.4282464560383984,
+ "fig1|indoor|V2M|spearman": 0.5521028373865242,
+ "fig1|indoor|GTD|spearman": 0.6574330631749963,
+ "fig1|indoor|V2O|top1": 0.4134722222222222,
+ "fig1|indoor|V2M|top1": 0.5553472222222222,
+ "fig1|indoor|GTD|top1": 0.6925694444444445,
+ "fig1|indoor|Random|top1": 0.2624487985008818,
+ "fig1|indoor|V2O|pairwise": 0.6928273811139813,
+ "fig1|indoor|V2M|pairwise": 0.762949977435193,
+ "fig1|indoor|GTD|pairwise": 0.8238828178548634,
+ "fig1|indoor|Random|pairwise": 0.5,
+ "fig1|indoor|V2O|regret": 0.20967363496838942,
+ "fig1|indoor|V2M|regret": 0.11876108401703371,
+ "fig1|indoor|GTD|regret": 0.06445842174284953,
+ "fig1|indoor|Random|regret": 0.352138356485492,
+ "fig1|outdoor|V2O|spearman": 0.5220830007873084,
+ "fig1|outdoor|V2M|spearman": 0.6067369559486716,
+ "fig1|outdoor|GTD|spearman": 0.7499848098599857,
+ "fig1|outdoor|V2O|top1": 0.4896891534391535,
+ "fig1|outdoor|V2M|top1": 0.5469642857142857,
+ "fig1|outdoor|GTD|top1": 0.6907638888888888,
+ "fig1|outdoor|Random|top1": 0.22845311056521375,
+ "fig1|outdoor|V2O|pairwise": 0.7368300286057488,
+ "fig1|outdoor|V2M|pairwise": 0.7786660896168001,
+ "fig1|outdoor|GTD|pairwise": 0.8587154815624894,
+ "fig1|outdoor|Random|pairwise": 0.5,
+ "fig1|outdoor|V2O|regret": 0.6067982400427717,
+ "fig1|outdoor|V2M|regret": 0.48231074908424776,
+ "fig1|outdoor|GTD|regret": 0.16006343749429638,
+ "fig1|outdoor|Random|regret": 1.2676205538183145,
+ "fig2|indoor|V2O|00": 137,
+ "fig2|indoor|V2O|01": 14,
+ "fig2|indoor|V2O|10": 118,
+ "fig2|indoor|V2O|11": 99,
+ "fig2|indoor|V2M|00": 187,
+ "fig2|indoor|V2M|01": 17,
+ "fig2|indoor|V2M|10": 68,
+ "fig2|indoor|V2M|11": 96,
+ "fig2|outdoor|V2O|00": 463,
+ "fig2|outdoor|V2O|01": 70,
+ "fig2|outdoor|V2O|10": 294,
+ "fig2|outdoor|V2O|11": 266,
+ "fig2|outdoor|V2M|00": 515,
+ "fig2|outdoor|V2M|01": 81,
+ "fig2|outdoor|V2M|10": 242,
+ "fig2|outdoor|V2M|11": 255,
+ "fig3|indoor|2azQ1b91cZZ_L0|fair_es": [
+  35.18698637091327,
+  0.1521973576022773,
+  13.327406225671702,
+  0.10566262140723598
+ ],
+ "fig3|indoor|QUCTc6BB5sX_L1|fair_es": [
+  37.36230652849835,
+  0.15124350875473525,
+  14.185795296979004,
+  0.05999993317562781
+ ],
+ "fig3|indoor|TbHJrupSAjP_L1|fair_es": [
+  17.733110186201593,
+  0.2443581503177756,
+  8.46446706669447,
+  0.13366530036247742
+ ],
+ "fig3|indoor|Z6MFQCViBuw_L0|fair_es": [
+  24.210048128239468,
+  0.14827041292162657,
+  8.493913175946897,
+  0.11367119529157578
+ ],
+ "fig3|indoor|oLBMNvg9in8_L1|fair_es": [
+  24.57605396060066,
+  0.3522987452455324,
+  9.143561895044332,
+  0.18080636984825166
+ ],
+ "fig3|indoor|2azQ1b91cZZ_L0|brier": [
+  0.198350441923274,
+  0.1521973576022773,
+  0.08659303416587791,
+  0.10566262140723598
+ ],
+ "fig3|indoor|QUCTc6BB5sX_L1|brier": [
+  0.23699144463097782,
+  0.15124350875473525,
+  0.088575801610175,
+  0.05999993317562781
+ ],
+ "fig3|indoor|TbHJrupSAjP_L1|brier": [
+  0.2051097522522095,
+  0.2443581503177756,
+  0.11022661731071172,
+  0.13366530036247742
+ ],
+ "fig3|indoor|Z6MFQCViBuw_L0|brier": [
+  0.2204750193059699,
+  0.14827041292162657,
+  0.12936119265985968,
+  0.11367119529157578
+ ],
+ "fig3|indoor|oLBMNvg9in8_L1|brier": [
+  0.21020517484192547,
+  0.3522987452455324,
+  0.12016514040572537,
+  0.18080636984825166
+ ],
+ "fig3|indoor|state_pairs": 368,
+ "fig3|outdoor|alhambra|fair_es": [
+  19.354274362749106,
+  0.8234250857880789,
+  10.990294283195674,
+  0.4727773181842262
+ ],
+ "fig3|outdoor|barts|fair_es": [
+  10.38527540469608,
+  1.339407532081643,
+  6.555776877272585,
+  1.1465218125790655
+ ],
+ "fig3|outdoor|bridge|fair_es": [
+  20.981747361853394,
+  0.5196677728157097,
+  11.091137432433845,
+  0.5117130239921183
+ ],
+ "fig3|outdoor|colosseum|fair_es": [
+  12.259715696346898,
+  0.44212230475181435,
+  7.80244489569575,
+  0.3053118476766986
+ ],
+ "fig3|outdoor|neuschwanstein|fair_es": [
+  17.932010285474362,
+  0.25983081121985996,
+  12.298706472614684,
+  0.22641819985034858
+ ],
+ "fig3|outdoor|pantheon|fair_es": [
+  16.33429351868083,
+  0.2563359335995242,
+  8.678413864185655,
+  0.23112229222302955
+ ],
+ "fig3|outdoor|alhambra|brier": [
+  0.13036086242799774,
+  0.8234250857880789,
+  0.08966270470400785,
+  0.4727773181842262
+ ],
+ "fig3|outdoor|barts|brier": [
+  0.27839186393377824,
+  1.339407532081643,
+  0.19140431709287645,
+  1.1465218125790655
+ ],
+ "fig3|outdoor|bridge|brier": [
+  0.12664887214814474,
+  0.5196677728157097,
+  0.09604754222286285,
+  0.5117130239921183
+ ],
+ "fig3|outdoor|colosseum|brier": [
+  0.11906851932806303,
+  0.44212230475181435,
+  0.10182469175779871,
+  0.3053118476766986
+ ],
+ "fig3|outdoor|neuschwanstein|brier": [
+  0.23172870861936817,
+  0.25983081121985996,
+  0.16855246534839427,
+  0.22641819985034858
+ ],
+ "fig3|outdoor|pantheon|brier": [
+  0.13938419239066915,
+  0.2563359335995242,
+  0.10816870958654738,
+  0.23112229222302955
+ ],
+ "fig3|outdoor|state_pairs": 1093,
+ "fig4|indoor|2azQ1b91cZZ_L0|V2O|regret": 0.1521973576022773,
+ "fig4|indoor|2azQ1b91cZZ_L0|V2M|regret": 0.10566262140723598,
+ "fig4|indoor|2azQ1b91cZZ_L0|GTD|regret": 0.03023167540586024,
+ "fig4|indoor|2azQ1b91cZZ_L0|Random|regret": 0.22882133064728186,
+ "fig4|indoor|QUCTc6BB5sX_L1|V2O|regret": 0.15124350875473525,
+ "fig4|indoor|QUCTc6BB5sX_L1|V2M|regret": 0.05999993317562781,
+ "fig4|indoor|QUCTc6BB5sX_L1|GTD|regret": 0.030007855576196858,
+ "fig4|indoor|QUCTc6BB5sX_L1|Random|regret": 0.15605385533050237,
+ "fig4|indoor|TbHJrupSAjP_L1|V2O|regret": 0.2443581503177756,
+ "fig4|indoor|TbHJrupSAjP_L1|V2M|regret": 0.13366530036247742,
+ "fig4|indoor|TbHJrupSAjP_L1|GTD|regret": 0.1315515501614128,
+ "fig4|indoor|TbHJrupSAjP_L1|Random|regret": 0.41724555142315445,
+ "fig4|indoor|Z6MFQCViBuw_L0|V2O|regret": 0.14827041292162657,
+ "fig4|indoor|Z6MFQCViBuw_L0|V2M|regret": 0.11367119529157578,
+ "fig4|indoor|Z6MFQCViBuw_L0|GTD|regret": 0.04308361415293407,
+ "fig4|indoor|Z6MFQCViBuw_L0|Random|regret": 0.27381816429852,
+ "fig4|indoor|oLBMNvg9in8_L1|V2O|regret": 0.3522987452455324,
+ "fig4|indoor|oLBMNvg9in8_L1|V2M|regret": 0.18080636984825166,
+ "fig4|indoor|oLBMNvg9in8_L1|GTD|regret": 0.08741741341784373,
+ "fig4|indoor|oLBMNvg9in8_L1|Random|regret": 0.6847528807280014,
+ "fig4|indoor|2azQ1b91cZZ_L0|V2O|top1": 0.43506944444444445,
+ "fig4|indoor|2azQ1b91cZZ_L0|V2M|top1": 0.5076388888888889,
+ "fig4|indoor|2azQ1b91cZZ_L0|GTD|top1": 0.7586805555555556,
+ "fig4|indoor|2azQ1b91cZZ_L0|Random|top1": 0.20242972883597882,
+ "fig4|indoor|QUCTc6BB5sX_L1|V2O|top1": 0.33749999999999997,
+ "fig4|indoor|QUCTc6BB5sX_L1|V2M|top1": 0.5819444444444445,
+ "fig4|indoor|QUCTc6BB5sX_L1|GTD|top1": 0.6305555555555555,
+ "fig4|indoor|QUCTc6BB5sX_L1|Random|top1": 0.2750909391534392,
+ "fig4|indoor|TbHJrupSAjP_L1|V2O|top1": 0.3267361111111111,
+ "fig4|indoor|TbHJrupSAjP_L1|V2M|top1": 0.4927083333333333,
+ "fig4|indoor|TbHJrupSAjP_L1|GTD|top1": 0.5972222222222223,
+ "fig4|indoor|TbHJrupSAjP_L1|Random|top1": 0.2521891534391534,
+ "fig4|indoor|Z6MFQCViBuw_L0|V2O|top1": 0.42777777777777776,
+ "fig4|indoor|Z6MFQCViBuw_L0|V2M|top1": 0.5458333333333334,
+ "fig4|indoor|Z6MFQCViBuw_L0|GTD|top1": 0.7458333333333332,
+ "fig4|indoor|Z6MFQCViBuw_L0|Random|top1": 0.2889247134038801,
+ "fig4|indoor|oLBMNvg9in8_L1|V2O|top1": 0.5402777777777777,
+ "fig4|indoor|oLBMNvg9in8_L1|V2M|top1": 0.6486111111111111,
+ "fig4|indoor|oLBMNvg9in8_L1|GTD|top1": 0.7305555555555556,
+ "fig4|indoor|oLBMNvg9in8_L1|Random|top1": 0.2936094576719577,
+ "fig4|outdoor|barts|V2O|regret": 1.339407532081643,
+ "fig4|outdoor|barts|V2M|regret": 1.1465218125790655,
+ "fig4|outdoor|barts|GTD|regret": 0.20220737350497392,
+ "fig4|outdoor|barts|Random|regret": 2.029327225013703,
+ "fig4|outdoor|colosseum|V2O|regret": 0.44212230475181435,
+ "fig4|outdoor|colosseum|V2M|regret": 0.3053118476766986,
+ "fig4|outdoor|colosseum|GTD|regret": 0.2761007042425846,
+ "fig4|outdoor|colosseum|Random|regret": 1.074050914678232,
+ "fig4|outdoor|pantheon|V2O|regret": 0.2563359335995242,
+ "fig4|outdoor|pantheon|V2M|regret": 0.23112229222302955,
+ "fig4|outdoor|pantheon|GTD|regret": 0.11110235186490505,
+ "fig4|outdoor|pantheon|Random|regret": 0.9003017362926359,
+ "fig4|outdoor|alhambra|V2O|regret": 0.8234250857880789,
+ "fig4|outdoor|alhambra|V2M|regret": 0.4727773181842262,
+ "fig4|outdoor|alhambra|GTD|regret": 0.10112523546490688,
+ "fig4|outdoor|alhambra|Random|regret": 1.2028209099997906,
+ "fig4|outdoor|bridge|V2O|regret": 0.5196677728157097,
+ "fig4|outdoor|bridge|V2M|regret": 0.5117130239921183,
+ "fig4|outdoor|bridge|GTD|regret": 0.232551854959886,
+ "fig4|outdoor|bridge|Random|regret": 1.485405873201875,
+ "fig4|outdoor|neuschwanstein|V2O|regret": 0.25983081121985996,
+ "fig4|outdoor|neuschwanstein|V2M|regret": 0.22641819985034858,
+ "fig4|outdoor|neuschwanstein|GTD|regret": 0.03729310492852176,
+ "fig4|outdoor|neuschwanstein|Random|regret": 0.9138166637236511,
+ "fig4|outdoor|barts|V2O|top1": 0.5434920634920635,
+ "fig4|outdoor|barts|V2M|top1": 0.5897420634920636,
+ "fig4|outdoor|barts|GTD|top1": 0.7934126984126986,
+ "fig4|outdoor|barts|Random|top1": 0.33461801618795667,
+ "fig4|outdoor|colosseum|V2O|top1": 0.4326388888888889,
+ "fig4|outdoor|colosseum|V2M|top1": 0.505,
+ "fig4|outdoor|colosseum|GTD|top1": 0.5634722222222222,
+ "fig4|outdoor|colosseum|Random|top1": 0.21711700837742504,
+ "fig4|outdoor|pantheon|V2O|top1": 0.49236111111111114,
+ "fig4|outdoor|pantheon|V2M|top1": 0.5529166666666667,
+ "fig4|outdoor|pantheon|GTD|top1": 0.6516666666666666,
+ "fig4|outdoor|pantheon|Random|top1": 0.18586342592592592,
+ "fig4|outdoor|alhambra|V2O|top1": 0.36337301587301585,
+ "fig4|outdoor|alhambra|V2M|top1": 0.5146825396825396,
+ "fig4|outdoor|alhambra|GTD|top1": 0.6925198412698413,
+ "fig4|outdoor|alhambra|Random|top1": 0.16604359567901233,
+ "fig4|outdoor|bridge|V2O|top1": 0.5127777777777778,
+ "fig4|outdoor|bridge|V2M|top1": 0.4948611111111111,
+ "fig4|outdoor|bridge|GTD|top1": 0.6461111111111111,
+ "fig4|outdoor|bridge|Random|top1": 0.22678610008818345,
+ "fig4|outdoor|neuschwanstein|V2O|top1": 0.5934920634920635,
+ "fig4|outdoor|neuschwanstein|V2M|top1": 0.6245833333333334,
+ "fig4|outdoor|neuschwanstein|GTD|top1": 0.7974007936507939,
+ "fig4|outdoor|neuschwanstein|Random|top1": 0.24029051713277902,
+ "fig5|indoor|t_bin|V2O": [
+  0.39083211755936775,
+  0.4151158726618849,
+  0.44422489890020833
+ ],
+ "fig5|indoor|t_bin|V2M": [
+  0.1982430431617453,
+  0.3252234296101427,
+  0.34393711172471286
+ ],
+ "fig5|indoor|t_bin|GTD": [
+  0.1048445824039369,
+  0.22368458130896862,
+  0.240599410180288
+ ],
+ "fig5|indoor|t_bin|Random": [
+  0.5669163679085955,
+  0.620941222411085,
+  0.65220353411416
+ ],
+ "fig5|indoor|coverage|V2O": [
+  0.3897373758029458,
+  0.4091752823344238,
+  0.4564907366452515
+ ],
+ "fig5|indoor|coverage|V2M": [
+  0.21662329345620315,
+  0.3154701088624476,
+  0.33055948527079215
+ ],
+ "fig5|indoor|coverage|GTD": [
+  0.14289033785403138,
+  0.18547208347856156,
+  0.23280256830343485
+ ],
+ "fig5|indoor|coverage|Random": [
+  0.5782798580286858,
+  0.6130929008576695,
+  0.6511112135211616
+ ],
+ "fig5|indoor|max_gain|V2O": [
+  0.41661234056575275,
+  0.40338820262300956,
+  0.4311357907379065
+ ],
+ "fig5|indoor|max_gain|V2M": [
+  0.3207202882188923,
+  0.32354876870682653,
+  0.21785256543378176
+ ],
+ "fig5|indoor|max_gain|GTD": [
+  0.2738814995166175,
+  0.2119454510713137,
+  0.09239728232949959
+ ],
+ "fig5|indoor|max_gain|Random": [
+  0.6131366109626865,
+  0.6023674951094441,
+  0.621958568083325
+ ],
+ "fig5|outdoor|t_bin|V2O": [
+  0.2667042530350203,
+  0.29227442671827497,
+  0.3720125303743256
+ ],
+ "fig5|outdoor|t_bin|V2M": [
+  0.22314129988119305,
+  0.2276015948754004,
+  0.33890494111878067
+ ],
+ "fig5|outdoor|t_bin|GTD": [
+  0.08501614052306375,
+  0.12313663476427043,
+  0.28457258145999526
+ ],
+ "fig5|outdoor|t_bin|Random": [
+  0.5838985739998385,
+  0.6057266409553451,
+  0.636520536068822
+ ],
+ "fig5|outdoor|coverage|V2O": [
+  0.2596803240437291,
+  0.26524655937090563,
+  0.3816798113967628
+ ],
+ "fig5|outdoor|coverage|V2M": [
+  0.20968794729547577,
+  0.21990091686794486,
+  0.3213889930761631
+ ],
+ "fig5|outdoor|coverage|GTD": [
+  0.07257269357920561,
+  0.13251188178240775,
+  0.22460501953861725
+ ],
+ "fig5|outdoor|coverage|Random": [
+  0.586195359044698,
+  0.5908574515200763,
+  0.6390713289120439
+ ],
+ "fig5|outdoor|max_gain|V2O": [
+  0.3926814418180863,
+  0.23187102432035853,
+  0.2880967213448798
+ ],
+ "fig5|outdoor|max_gain|V2M": [
+  0.3402441029985777,
+  0.19305563085419142,
+  0.22507250781380156
+ ],
+ "fig5|outdoor|max_gain|GTD": [
+  0.2614037268658886,
+  0.09403274380820062,
+  0.08559174074175961
+ ],
+ "fig5|outdoor|max_gain|Random": [
+  0.6277024810537886,
+  0.5740332416832039,
+  0.6132658902880451
+ ],
+ "fig6|indoor|success|Oracle": [
+  5.949990437942245,
+  3.505518673332787,
+  2.271330218834522,
+  1.2075512936098134,
+  1.0689014561647951,
+  0.2749091604513291,
+  0.06625140015845696
+ ],
+ "fig6|indoor|success|GTD": [
+  1671.2494811470642,
+  1381.352298553063,
+  1034.9504972942927,
+  697.1163130317608,
+  720.808249588134,
+  338.09660153887666,
+  276.4705960003396
+ ],
+ "fig6|indoor|success|V2M": [
+  1743.6363295034114,
+  1297.404228960544,
+  1093.9098778236128,
+  771.5839622881739,
+  766.1106377012736,
+  844.3234400744192,
+  502.8290121248222
+ ],
+ "fig6|indoor|success|V2O": [
+  1621.5555069191962,
+  995.5883743040029,
+  1128.3857204091655,
+  846.0100615856999,
+  921.5240940859692,
+  553.6549409102854,
+  539.8087660863657
+ ],
+ "fig6|indoor|prediction_fail|Oracle": [
+  0.012793320540012795,
+  0.00201999798000202,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0
+ ],
+ "fig6|indoor|prediction_fail|GTD": [
+  5.800706086137888,
+  0.5365620735743355,
+  2.9346112421819557,
+  1.3875596308870626,
+  1.9442866341328395,
+  0.08654707117244827,
+  0.0
+ ],
+ "fig6|indoor|prediction_fail|V2M": [
+  5.948306781976622,
+  3.9354987913557,
+  11.814487196387113,
+  4.118124943636788,
+  9.322307220944161,
+  0.053943202080728725,
+  1.3797466531242786
+ ],
+ "fig6|indoor|prediction_fail|V2O": [
+  5.790612251704044,
+  8.536538975774633,
+  16.063180376036293,
+  9.497388438954307,
+  18.212642288821087,
+  0.03507204427431774,
+  3.2863739992134575
+ ],
+ "fig6|indoor|scoring_fail|Oracle": [
+  0.2922395289233157,
+  0.10883403146109687,
+  0.10043634384835792,
+  0.060127443307210926,
+  0.0,
+  0.0
+ ],
+ "fig6|indoor|scoring_fail|GTD": [
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0
+ ],
+ "fig6|indoor|scoring_fail|V2M": [
+  35.83688704964872,
+  5.5538844597292805,
+  4.175297270353038,
+  3.506851096782831,
+  1.497919088453304,
+  1.2225453096158743
+ ],
+ "fig6|indoor|scoring_fail|V2O": [
+  139.1137057455357,
+  150.37354695543104,
+  204.06996473311415,
+  11.114230641430828,
+  17.20676451215342,
+  80.14570260462287
+ ],
+ "fig6|indoor|stochastic|Oracle": [
+  0.17240688023736017,
+  0.06081017868837123,
+  0.060141934966520996,
+  0.04811354797321679,
+  0.047779426112291676,
+  0.026729748874009328,
+  0.022052042821057695
+ ],
+ "fig6|indoor|stochastic|GTD": [
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0
+ ],
+ "fig6|indoor|stochastic|V2M": [
+  0.0,
+  0.0,
+  0.0,
+  0.007473669505364232,
+  0.0,
+  0.0,
+  0.0
+ ],
+ "fig6|indoor|stochastic|V2O": [
+  39.10078512966486,
+  64.61731209680822,
+  13.758064303899488,
+  32.39673770738048,
+  41.547615493364965,
+  143.30429439869525,
+  0.5582748829310114
+ ],
+ "fig6|outdoor|success|Oracle": [
+  17.87812615171271,
+  9.087153809475225,
+  4.810395554102649,
+  4.44527529707681,
+  4.427402277502119,
+  3.5975835115343053,
+  2.4486036817327173,
+  0.9345035949052916,
+  0.2195828119176368
+ ],
+ "fig6|outdoor|success|GTD": [
+  3548.7302430988093,
+  2686.919609516949,
+  2086.939737263676,
+  1499.3748762697746,
+  1304.3138001105144,
+  1576.58323301448,
+  1265.3822437495087,
+  750.7459185586599,
+  93.6512719289961
+ ],
+ "fig6|outdoor|success|V2M": [
+  3469.9002488842298,
+  2414.1903378153847,
+  1680.2700638469664,
+  1384.925944313088,
+  875.0976357764647,
+  1144.9710022357012,
+  1415.3988609172247,
+  878.4704892230312,
+  115.86524422720605
+ ],
+ "fig6|outdoor|success|V2O": [
+  2673.0677555741454,
+  2924.7531712405053,
+  2022.5466981400896,
+  1879.047461962877,
+  1689.376798093437,
+  1660.1161022247345,
+  1307.8374360029488,
+  860.5225204344524,
+  118.78378446128262
+ ],
+ "fig6|outdoor|prediction_fail|Oracle": [
+  1.4881306003541255,
+  0.2565742414403665,
+  0.0
+ ],
+ "fig6|outdoor|prediction_fail|GTD": [
+  149.20463431580214,
+  31.035463514371436,
+  0.0
+ ],
+ "fig6|outdoor|prediction_fail|V2M": [
+  160.4531735241257,
+  12.080487722178859,
+  379.46458176842646
+ ],
+ "fig6|outdoor|prediction_fail|V2O": [
+  108.05303511507039,
+  14.070009607944513,
+  410.74746756619766
+ ],
+ "fig6|outdoor|scoring_fail|Oracle": [
+  0.06591506924626826,
+  0.010140779884041272,
+  0.007605584913030952,
+  0.005070389942020636,
+  0.002535194971010318,
+  0.0
+ ],
+ "fig6|outdoor|scoring_fail|GTD": [
+  89.25779561996754,
+  191.1357131214361,
+  127.61133092556364,
+  3.437273285709975,
+  2.0,
+  246.36334043404642
+ ],
+ "fig6|outdoor|scoring_fail|V2M": [
+  105.11035407422884,
+  82.45687980997332,
+  31.905715038854876,
+  2.0012665612593756,
+  3.8615997235035393,
+  74.85564774827392
+ ],
+ "fig6|outdoor|scoring_fail|V2O": [
+  115.15731659894156,
+  69.86267136394738,
+  32.600369825334795,
+  12.486960673524486,
+  3.0762899966715285,
+  58.074894305962694
+ ],
+ "fig6|outdoor|stochastic|Oracle": [
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0
+ ],
+ "fig6|outdoor|stochastic|GTD": [
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0
+ ],
+ "fig6|outdoor|stochastic|V2M": [
+  0.0,
+  0.0,
+  0.011162198641426188,
+  0.0,
+  0.0,
+  0.0
+ ],
+ "fig6|outdoor|stochastic|V2O": [
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0
+ ]
+}

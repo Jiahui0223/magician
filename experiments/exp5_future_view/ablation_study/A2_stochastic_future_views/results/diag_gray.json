@@ -1,0 +1,170 @@
+{
+ "outdoor|success": {
+  "sid": "6f5145e2268fc866",
+  "scene": "colosseum",
+  "t": 0,
+  "n_observed_points": 11673,
+  "candidate": 5,
+  "current": {
+   "points": {
+    "projected_pixels": 11673,
+    "consistent": 1.0,
+    "occluded": 0.0,
+    "inconsistent": 0.0
+   },
+   "p1": {
+    "rays": 7296,
+    "known_surface": 0.3112664473684211,
+    "no_known_surface_unknown": 0.688733552631579,
+    "no_surface": 0.0,
+    "invalid": 0.0,
+    "unknown_shell_vox_median": 4.5,
+    "self_seen_rays": 7296,
+    "self_seen_p1_known": 0.3112664473684211,
+    "self_seen_p1_hole": 0.688733552631579
+   }
+  },
+  "candidate_view": {
+   "points": {
+    "projected_pixels": 5556,
+    "consistent": 0.9598632109431245,
+    "occluded": 0.008999280057595392,
+    "inconsistent": 0.03113750899928006
+   },
+   "p1": {
+    "rays": 7296,
+    "known_surface": 0.11883223684210527,
+    "no_known_surface_unknown": 0.8811677631578947,
+    "no_surface": 0.0,
+    "invalid": 0.0,
+    "unknown_shell_vox_median": 4.5
+   }
+  }
+ },
+ "indoor|stochastic_nondegenerate": {
+  "sid": "b19d571ca892e69f",
+  "scene": "Z6MFQCViBuw_L0",
+  "t": 5,
+  "n_observed_points": 68053,
+  "candidate": 2,
+  "current": {
+   "points": {
+    "projected_pixels": 44867,
+    "consistent": 0.9654757394075824,
+    "occluded": 0.0319165533688457,
+    "inconsistent": 0.00260770722357189
+   },
+   "p1": {
+    "rays": 7296,
+    "known_surface": 0.5348135964912281,
+    "no_known_surface_unknown": 0.46518640350877194,
+    "no_surface": 0.0,
+    "invalid": 0.0,
+    "unknown_shell_vox_median": 4.5,
+    "self_seen_rays": 7177,
+    "self_seen_p1_known": 0.5428451999442664,
+    "self_seen_p1_hole": 0.4571548000557336
+   }
+  },
+  "candidate_view": {
+   "points": {
+    "projected_pixels": 26564,
+    "consistent": 0.9698464086733926,
+    "occluded": 0.025259750037644933,
+    "inconsistent": 0.004893841288962505
+   },
+   "p1": {
+    "rays": 7296,
+    "known_surface": 0.2564418859649123,
+    "no_known_surface_unknown": 0.7435581140350878,
+    "no_surface": 0.0,
+    "invalid": 0.0,
+    "unknown_shell_vox_median": 4.5
+   }
+  }
+ },
+ "indoor|success": {
+  "sid": "db26d57631a1a627",
+  "scene": "oLBMNvg9in8_L1",
+  "t": 5,
+  "n_observed_points": 70034,
+  "candidate": 3,
+  "current": {
+   "points": {
+    "projected_pixels": 36190,
+    "consistent": 0.8961038961038961,
+    "occluded": 0.10071843050566455,
+    "inconsistent": 0.0031776733904393477
+   },
+   "p1": {
+    "rays": 7296,
+    "known_surface": 0.24547697368421054,
+    "no_known_surface_unknown": 0.7545230263157895,
+    "no_surface": 0.0,
+    "invalid": 0.0,
+    "unknown_shell_vox_median": 9.0,
+    "self_seen_rays": 7296,
+    "self_seen_p1_known": 0.24547697368421054,
+    "self_seen_p1_hole": 0.7545230263157895
+   }
+  },
+  "candidate_view": {
+   "points": {
+    "projected_pixels": 21120,
+    "consistent": 0.8562973484848485,
+    "occluded": 0.13622159090909092,
+    "inconsistent": 0.007481060606060606
+   },
+   "p1": {
+    "rays": 7296,
+    "known_surface": 0.1356907894736842,
+    "no_known_surface_unknown": 0.8643092105263158,
+    "no_surface": 0.0,
+    "invalid": 0.0,
+    "unknown_shell_vox_median": 8.5
+   }
+  }
+ },
+ "outdoor|stochastic_nondegenerate": {
+  "sid": "75073479d4149b0c",
+  "scene": "barts",
+  "t": 5,
+  "n_observed_points": 70038,
+  "candidate": 7,
+  "current": {
+   "points": {
+    "projected_pixels": 16489,
+    "consistent": 0.9705864515737764,
+    "occluded": 0.02935290193462308,
+    "inconsistent": 6.0646491600460916e-05
+   },
+   "p1": {
+    "rays": 7296,
+    "known_surface": 0.9875274122807017,
+    "no_known_surface_unknown": 0.012472587719298246,
+    "no_surface": 0.0,
+    "invalid": 0.0,
+    "unknown_shell_vox_median": 2.5,
+    "self_seen_rays": 7296,
+    "self_seen_p1_known": 0.9875274122807017,
+    "self_seen_p1_hole": 0.012472587719298246
+   }
+  },
+  "candidate_view": {
+   "points": {
+    "projected_pixels": 10834,
+    "consistent": 0.6576518368100425,
+    "occluded": 0.33404098209340966,
+    "inconsistent": 0.008307181096547905
+   },
+   "p1": {
+    "rays": 7296,
+    "known_surface": 0.29221491228070173,
+    "no_known_surface_unknown": 0.7077850877192983,
+    "no_surface": 0.0,
+    "invalid": 0.0,
+    "unknown_shell_vox_median": 43.5
+   }
+  }
+ }
+}

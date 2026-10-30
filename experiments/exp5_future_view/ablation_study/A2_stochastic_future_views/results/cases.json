@@ -1,0 +1,88 @@
+{
+ "indoor": {
+  "success": {
+   "sid": "db26d57631a1a627",
+   "key": 5.949990437942245,
+   "n_eligible": 187,
+   "t": 5,
+   "scene": "oLBMNvg9in8_L1"
+  },
+  "prediction_fail": {
+   "sid": "c48381bcf6aedffc",
+   "key": [
+    1.0,
+    0.012793320540012795
+   ],
+   "n_eligible": 40,
+   "t": 140,
+   "scene": "TbHJrupSAjP_L1"
+  },
+  "scoring_fail": {
+   "sid": "1644202c5102309c",
+   "key": [
+    1.0,
+    0.2922395289233157
+   ],
+   "n_eligible": 56,
+   "t": 105,
+   "scene": "2azQ1b91cZZ_L0"
+  },
+  "stochastic": {
+   "sid": "eddfc3088c3941c8",
+   "key": 1.0,
+   "n_eligible": 65,
+   "t": 105,
+   "scene": "QUCTc6BB5sX_L1"
+  },
+  "stochastic_nondegenerate": {
+   "sid": "b19d571ca892e69f",
+   "key": 0.40843395906158647,
+   "n_eligible": 29,
+   "t": 5,
+   "scene": "Z6MFQCViBuw_L0"
+  }
+ },
+ "outdoor": {
+  "success": {
+   "sid": "6f5145e2268fc866",
+   "key": 17.87812615171271,
+   "n_eligible": 515,
+   "t": 0,
+   "scene": "colosseum"
+  },
+  "prediction_fail": {
+   "sid": "30dbd0266f4fb33f",
+   "key": [
+    1.0,
+    1.4881306003541255
+   ],
+   "n_eligible": 146,
+   "t": 85,
+   "scene": "neuschwanstein"
+  },
+  "scoring_fail": {
+   "sid": "8ab499decafaa039",
+   "key": [
+    1.0,
+    0.06591506924626826
+   ],
+   "n_eligible": 114,
+   "t": 55,
+   "scene": "pantheon"
+  },
+  "stochastic": {
+   "sid": "b9ec2522df872c12",
+   "key": 1.0,
+   "n_eligible": 182,
+   "t": 85,
+   "scene": "barts"
+  },
+  "stochastic_nondegenerate": {
+   "sid": "75073479d4149b0c",
+   "key": 0.6309146765071594,
+   "n_eligible": 90,
+   "t": 5,
+   "scene": "barts"
+  }
+ }
+}

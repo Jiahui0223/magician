@@ -1,0 +1,87 @@
+{
+ "version": "eval_indoor_v1",
+ "protocol": "task2/protocol.md \u00a74",
+ "budget": {
+  "frames": 151,
+  "moves": 150
+ },
+ "episodes": [
+  [
+   "Z6MFQCViBuw",
+   0,
+   6
+  ],
+  [
+   "Z6MFQCViBuw",
+   0,
+   17
+  ],
+  [
+   "oLBMNvg9in8",
+   1,
+   36
+  ],
+  [
+   "oLBMNvg9in8",
+   1,
+   78
+  ],
+  [
+   "QUCTc6BB5sX",
+   1,
+   34
+  ],
+  [
+   "QUCTc6BB5sX",
+   1,
+   135
+  ],
+  [
+   "2azQ1b91cZZ",
+   0,
+   60
+  ],
+  [
+   "2azQ1b91cZZ",
+   0,
+   179
+  ],
+  [
+   "TbHJrupSAjP",
+   1,
+   112
+  ],
+  [
+   "TbHJrupSAjP",
+   1,
+   114
+  ]
+ ],
+ "groups": {
+  "V2O": {
+   "name": "G0 V2 Original + DistP1 + Greedy-NV",
+   "checkpoint": "work_dirs/weights/W20_exp5_v2/W20-1_V2_original_ema60k/ema_060000.pt",
+   "sha256": "a379c0fb9d7d80266a430ab6f48f39315fad54fb650c6c3740a999a02db079fc",
+   "n_win": 5,
+   "K": 4
+  },
+  "V2M": {
+   "name": "G1 V2-Mix + DistP1 + Greedy-NV",
+   "checkpoint": "work_dirs/weights/W21_exp5_v2mix/W21-1_V2Mix_best/ema_017500.pt",
+   "sha256": "343f41ab8d566c52007c881b5f32375c3253dd8f1c7a0d8a906d412a165e4516",
+   "n_win": 5,
+   "K": 4,
+   "step": 17500
+  },
+  "MAG-G": {
+   "name": "G2 MAGICIAN official e697009, beam 1x1",
+   "adapter": "magician_planner_grid.py"
+  },
+  "MAG-B": {
+   "name": "G3 MAGICIAN official e697009, beam 10x10",
+   "adapter": "magician_planner_grid.py"
+  }
+ },
+ "grid": "T0.12: 1.0 m, 5 elev x 8 azim, official neighbours, official single-segment GT legality",
+ "sensor": "frozen MAGICIAN sensor 456 x 256, 60 deg, range 70 runtime (10 m)"
+}

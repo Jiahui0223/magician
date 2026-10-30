@@ -1,0 +1,16 @@
+{
+ "version": "t08_v1",
+ "protocol": "magician_comparison/protocol.md v1.0",
+ "episodes": "W/manifests/cl_episodes.txt (22 levels, first start)",
+ "groups": ["ref", "frozen", "C", "V2K4", "V2K1"],
+ "frames": "t = 0..100 (101 service records per episode, M protocol)",
+ "coverage_reproduction_tol": 1e-12,
+ "gt_points": "face-referenced matterport_mesh vertices inside card box_m (z-up metres)",
+ "observed_cloud_primary": "all pixels with mask & z-depth < 70 runtime units (10 m), frozen sensor back-projection",
+ "observed_cloud_secondary": "the stored 10 % sample points",
+ "comp_threshold_m": 0.05,
+ "comp_distance": "mean (and median) NN distance over all GT vertices, unclipped, cm",
+ "visible_vertices": "within 0.05 m of the full-depth back-projection of any legal pose (all panoramas x 3 elev x 8 azim), whole-house mesh",
+ "report_T": [10, 20, 50, 100],
+ "bootstrap": {"cluster": "house", "n": 10000, "seed": 0}
+}

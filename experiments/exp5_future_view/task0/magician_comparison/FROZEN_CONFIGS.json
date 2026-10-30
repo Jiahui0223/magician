@@ -1,0 +1,159 @@
+{
+ "note": "Freezes of the MAGICIAN comparison (T0.8-T0.11). Append-only; each stage freezes before its formal run.",
+ "external": {
+  "MAGICIAN": {
+   "url": "https://github.com/shiyao-li/MAGICIAN",
+   "commit": "e697009b3f9360adfe65e8db1e5c27421158e388",
+   "submodules": {
+    "RaDe-GS": "5f5cd3b0ecb329645bde45216fa826e9e85a7e1c",
+    "RaDe-GS/submodules/simple-knn": "44f764299fa305faf6ec5ebd99939e0508331503",
+    "RaDe-GS/submodules/diff-gaussian-rasterization/third_party/glm": "5c46b9c07008ae65cb81ab79cd677ecc1934b903"
+   },
+   "path": "work_dirs/exp5_future_view/task0/magician_comparison/external/MAGICIAN",
+   "cloned": "2026-10-24"
+  }
+ },
+ "stage_freezes": [
+  {
+   "stage": "T0.8 metric audit (protocol v1.0)",
+   "time": "2026-10-24 21:20:23",
+   "files": {
+    "experiments/exp5_future_view/task0/magician_comparison/protocol.md": "520ad3c23d90200e2152e3c85e7edd28cedfbb6d44e970ea0a4dbd0f59232ee3",
+    "experiments/exp5_future_view/task0/magician_comparison/configs/t08_metrics/t08_v1.json": "92933ad85545621b4398a50a61bdd5940aabeb079d366ae89d68e2ee5d23c78b",
+    "experiments/exp5_future_view/task0/magician_comparison/scripts/mc_common.py": "ee2e22068538777f4ae74600eefc94de71d55ba6c007961ea9c61791b348f6c7",
+    "experiments/exp5_future_view/task0/magician_comparison/scripts/t08_metrics.py": "fc89c90fc90a011b2ab257ff712f60920702906212abea80a6e6b5248944c885",
+    "experiments/exp5_future_view/task0/magician_comparison/tests/t08_units_test.py": "1162b94578c57670077e0715028f9965106bb4329e2716117788f29aea48358c",
+    "experiments/exp5_future_view/task0/scripts/mp3d_sim.py": "03ef801b376cfa9510868202145a482f46aabc3216f5ea6fd281e763593bca88"
+   },
+   "units_test": "W/magician_comparison/metric_replay/units_test.json (all gating tests pass; U4 failed as written, see DEVIATIONS)"
+  },
+  {
+   "stage": "T0.9 official MAGICIAN reproduction, released-code MP3D protocol (protocol v1.1)",
+   "time": "2026-10-24 21:30:42",
+   "files": {
+    "experiments/exp5_future_view/task0/magician_comparison/protocol.md": "4d5ebc9d720d86d0b138f474199da3ffe450d3994992279badf343fbe28043ef",
+    "experiments/exp5_future_view/task0/magician_comparison/configs/t09_official/macarons_mp3d_formal.json": "2ad95b7a4fde4ce2563204945f66f73213920e85b257ef950346e15ccdf1e364",
+    "experiments/exp5_future_view/task0/magician_comparison/configs/t09_official/macarons_mp3d_smoke.json": "36d0e09023628c0b979910f8962095c7147e1906b1a074c51d8d1bce1d4b4ee0",
+    "experiments/exp5_future_view/task0/magician_comparison/configs/t09_official/test_mp3d_template.json": "1dbdc296334fe792cf4dc3f45d65fa5cdb8a827879c05fa076eda5848d30b1a7",
+    "experiments/exp5_future_view/task0/magician_comparison/scripts/t09_run.py": "d5536c5dcd1042fa4ff50c3ff932dd44ce5a9e67a19c113cc8332ed624d078b9",
+    "work_dirs/exp5_future_view/task0/magician_comparison/weights/official_drive_sha256.txt": "8a0ea4bd8cb72f15f9e86f5774b634ad6b424b9278e79c1be0e6d26acb613d38"
+   },
+   "data": {
+    "mp3d_magician.zip": {
+     "sha256": "6ec157d5d15acab0d7e8e68c5606b5b0b3135eb013a73ce7d472e9ad50f2254a",
+     "bytes": 104848109,
+     "path": "/bsuhome/jiahuizhang/scratch/data/mp3d_magician/raw/mp3d_magician.zip",
+     "source": "https://huggingface.co/datasets/sli016/Macarons-plus-plus/resolve/main/mp3d_magician.zip"
+    }
+   }
+  },
+  {
+   "stage": "T0.9 config fix (numGPU 1 -> 0, as protocol v1.1 \u00a78 states; see DEVIATIONS)",
+   "time": "2026-10-24 21:32:58",
+   "files": {
+    "experiments/exp5_future_view/task0/magician_comparison/configs/t09_official/test_mp3d_template.json": "f4ee760a16f441150fb6817a1d65de95bfe407a0391906e68722e2230e1294d6"
+   }
+  },
+  {
+   "stage": "T0.10 shared-protocol comparison: MAG-G, MAG-B, ablation V2K4-NV (protocol v1.2)",
+   "time": "2026-10-24 21:59:46",
+   "files": {
+    "experiments/exp5_future_view/task0/magician_comparison/protocol.md": "8da721867cdc6c5d88b31f8b25380de42b3a84f50c8d293d8199e75e365ccee4",
+    "experiments/exp5_future_view/task0/magician_comparison/adapters/magician_core.py": "2f58f03eec17faa9aabdea737b6d3511df9acae1bf45b7ba17acf523ab2c56e6",
+    "experiments/exp5_future_view/task0/magician_comparison/adapters/station_env.py": "3c6cd252da9d3d977ec3d8aeb39d3db0c6e75351bd9bd24667a5118edb59ad53",
+    "experiments/exp5_future_view/task0/magician_comparison/adapters/magician_planner.py": "02573cc515616ac295260a1fee676785fae63a95f55cd933b6a7913eb5042be5",
+    "experiments/exp5_future_view/task0/magician_comparison/adapters/v2nv_planner.py": "43bc23b51d1110905594e625d64b4a2a621c421ae931b7e759691c256d989dad",
+    "experiments/exp5_future_view/task0/magician_comparison/scripts/t10_sim.py": "7e0d04f74f44fa06602ef1e43f5437095dc5777c94633c6d6f19b80645c605cd",
+    "experiments/exp5_future_view/task0/magician_comparison/tests/t10_native_equiv.py": "a8cd6df850dfa62c244f0438b4186ce458c21deca5f0368ff82cd2c159b04123",
+    "experiments/exp5_future_view/task0/scripts/t06_sim.py": "d2ce538766eae6d13617d53d2fe93ff641576ca7bfc4005f53d0816cce0d5f90",
+    "experiments/exp5_future_view/task0/scripts/t06_planner.py": "b5a7ec0222db149edbcfa6232613ca72b93ad3de9a3632f2ddf94f66d613cd7d",
+    "work_dirs/exp5_future_view/task0/magician_comparison/manifests/official_mp3d_scale.json": "d3d0f5e2025dc50ca49a94372c28e6598c80451262d4595bbd932b46f7fc5272",
+    "work_dirs/exp5_future_view/task0/magician_comparison/shared_protocol/tests/native_equiv.json": "f0a76e7b31d0708bf32e196d69470a0f18d5bb840de1cb2fdc0e8d3ad7b73b9e",
+    "work_dirs/exp5_future_view/task0/magician_comparison/shared_protocol/tests/replay_equiv.json": "3954471f25146ef257180c7a54c86f96f5c1693c305b09ac45c76810cecd16c2"
+   }
+  },
+  {
+   "stage": "T0.11 post-run snapshot (code, configs, reports)",
+   "time": "2026-10-25 01:25:19",
+   "snapshot": "work_dirs/exp5_future_view/task0/magician_comparison/snapshots/T0.11",
+   "files": {
+    "experiments/exp5_future_view/task0/TASK0_FINAL_REPORT.md": "7f23de24c3a9e29fa5037a18d9ed4dd7940dd626591433dabd64cb935e982873",
+    "experiments/exp5_future_view/task0/magician_comparison/DEVIATIONS.md": "4ff7293494fb156bf5692f9a978f46fcdee5f0d83246190f51eb63efac1e307d",
+    "experiments/exp5_future_view/task0/magician_comparison/FROZEN_CONFIGS.json": "f6add3cc7a743e54012bc22c8f1f60d95ae1540ec00609c2072a6ac0ce368ed0",
+    "experiments/exp5_future_view/task0/magician_comparison/README.md": "03752566888df39544605d86296525bcf28a6d2d08ad61e142ca8cb4c72cbeb6",
+    "experiments/exp5_future_view/task0/magician_comparison/RUN_MANIFEST.json": "7ba57f35e47830f382795e36310c0f5a131b7913b17f81c1b1f523eac103efe6",
+    "experiments/exp5_future_view/task0/magician_comparison/adapters/magician_core.py": "2f58f03eec17faa9aabdea737b6d3511df9acae1bf45b7ba17acf523ab2c56e6",
+    "experiments/exp5_future_view/task0/magician_comparison/adapters/magician_planner.py": "02573cc515616ac295260a1fee676785fae63a95f55cd933b6a7913eb5042be5",
+    "experiments/exp5_future_view/task0/magician_comparison/adapters/station_env.py": "3c6cd252da9d3d977ec3d8aeb39d3db0c6e75351bd9bd24667a5118edb59ad53",
+    "experiments/exp5_future_view/task0/magician_comparison/adapters/v2nv_planner.py": "43bc23b51d1110905594e625d64b4a2a621c421ae931b7e759691c256d989dad",
+    "experiments/exp5_future_view/task0/magician_comparison/configs/t08_metrics/t08_v1.json": "92933ad85545621b4398a50a61bdd5940aabeb079d366ae89d68e2ee5d23c78b",
+    "experiments/exp5_future_view/task0/magician_comparison/configs/t09_official/macarons_mp3d_formal.json": "2ad95b7a4fde4ce2563204945f66f73213920e85b257ef950346e15ccdf1e364",
+    "experiments/exp5_future_view/task0/magician_comparison/configs/t09_official/macarons_mp3d_smoke.json": "36d0e09023628c0b979910f8962095c7147e1906b1a074c51d8d1bce1d4b4ee0",
+    "experiments/exp5_future_view/task0/magician_comparison/configs/t09_official/test_mp3d_template.json": "f4ee760a16f441150fb6817a1d65de95bfe407a0391906e68722e2230e1294d6",
+    "experiments/exp5_future_view/task0/magician_comparison/configs/t10_shared_protocol/t10_v1.json": "cee1d20b4116faab0f6beb612a9f0685d8cd8b3d33d30f7b66c4815d612beee4",
+    "experiments/exp5_future_view/task0/magician_comparison/protocol.md": "8da721867cdc6c5d88b31f8b25380de42b3a84f50c8d293d8199e75e365ccee4",
+    "experiments/exp5_future_view/task0/magician_comparison/scripts/mc_common.py": "62a9e16cca50671513f5388d1822d3d7fb5eea8014e6d8265e5bc691680fa419",
+    "experiments/exp5_future_view/task0/magician_comparison/scripts/t08_analyze.py": "75a8823dec63331f2cb0c96b286b4f20bbc181999ab5fc33992838519489a34f",
+    "experiments/exp5_future_view/task0/magician_comparison/scripts/t08_metrics.py": "0a8526e5347fe7b7d97e78f2bbf5fd19a8d045f3812847e4cf17c32e5f69489b",
+    "experiments/exp5_future_view/task0/magician_comparison/scripts/t09_analyze.py": "e05b6b52a5a1a93a56b49854d1741665744e06d2700c70083ba9ca0fbaa2bb65",
+    "experiments/exp5_future_view/task0/magician_comparison/scripts/t09_lmdb_check.py": "58b3e92966d6d037127f99b4db451aeb85141c3c13256e465797b10956f643f6",
+    "experiments/exp5_future_view/task0/magician_comparison/scripts/t09_metrics.py": "004c20c59edf9193a4dc3204ab21784db49f4114b261e4506ff6725e4e6aec50",
+    "experiments/exp5_future_view/task0/magician_comparison/scripts/t09_run.py": "d5536c5dcd1042fa4ff50c3ff932dd44ce5a9e67a19c113cc8332ed624d078b9",
+    "experiments/exp5_future_view/task0/magician_comparison/scripts/t10_beam_analysis.py": "5cd7a93d182c2efb41789890bfd7dbb910ffbb681678b64673ca4c0de9e03841",
+    "experiments/exp5_future_view/task0/magician_comparison/scripts/t10_sim.py": "7e0d04f74f44fa06602ef1e43f5437095dc5777c94633c6d6f19b80645c605cd",
+    "experiments/exp5_future_view/task0/magician_comparison/tests/t08_units_test.py": "1162b94578c57670077e0715028f9965106bb4329e2716117788f29aea48358c",
+    "experiments/exp5_future_view/task0/magician_comparison/tests/t10_native_equiv.py": "a8cd6df850dfa62c244f0438b4186ce458c21deca5f0368ff82cd2c159b04123",
+    "experiments/exp5_future_view/task0/reports/T0.10_fair_comparison.md": "9b2f353bf174e584d7ce0f366708812c92e89d89ce15f18bb36852aa9859e8b5",
+    "experiments/exp5_future_view/task0/reports/T0.11_final_comparison.md": "48dbdad4d10e604ee2ede708ac211d4f61088329247df6a6326e476ecb363db8",
+    "experiments/exp5_future_view/task0/reports/T0.8_metric_report.md": "22e41ec4ba654c48f2fc1cecc0064b80a6455829353d688f802c8afaef963459",
+    "experiments/exp5_future_view/task0/reports/T0.9_magician_reproduction.md": "6eb0b3849428eaf19dfba200766622d0c1a995768e951912454111406a3d46ea",
+    "work_dirs/exp5_future_view/task0/magician_comparison/run_t08.sh": "27efa64442cde83cf3a7054ebf11dbde67c5cbddf0ae0ffd7168860330612d14",
+    "work_dirs/exp5_future_view/task0/magician_comparison/run_t09.sh": "b57422bd7f5e93add90a8ccb03f2be7960a67aeca508500aa2e2ed1ca12c598a",
+    "work_dirs/exp5_future_view/task0/magician_comparison/run_t10.sh": "dd274bde01a1cef4b5b441b15878ecef667d06c3d10b9c35289d51f96fc66eda",
+    "work_dirs/exp5_future_view/task0/magician_comparison/run_timing.sh": "26d21bac6d3e6508b6fda72980471dd244e0aee438112d95435bd16d1ac23b46"
+   }
+  },
+  {
+   "stage": "T0.11 visualisations + FAQ (descriptive, post-run)",
+   "time": "2026-10-25 17:57:48",
+   "snapshot": "work_dirs/exp5_future_view/task0/magician_comparison/snapshots/T0.11_viz",
+   "files": {
+    "experiments/exp5_future_view/task0/magician_comparison/scripts/t11_viz.py": "f25893e0b8f7e9a270dd2277a5251b1a2c9f32ea16be8d9c547a53a69b3bd2d6",
+    "experiments/exp5_future_view/task0/magician_comparison/README.md": "45cfd827a419172055ef6c4ff00c5145c5642bcf6925dfe173730b9e67a4e474",
+    "experiments/exp5_future_view/task0/reports/T0_FAQ_dataset_metrics.md": "e4af09e52c866adf5b7e00ba580b65fee60dafd81df5787da8679ca7d1cae0e5"
+   }
+  },
+  {
+   "stage": "T0.12 grid-action alignment (protocol v1.3)",
+   "time": "2026-10-25 18:38:16",
+   "files": {
+    "experiments/exp5_future_view/task0/magician_comparison/protocol.md": "4f4c024f80bd93cb680ed3a58e5446f4b0d0c9c16b2f8a7aca10e0c5407ecd93",
+    "experiments/exp5_future_view/task0/magician_comparison/adapters/grid_env.py": "7664da25be825b739a501353457cbd1e72dfa7d08fc616d3c8663291395ba01c",
+    "experiments/exp5_future_view/task0/magician_comparison/adapters/magician_planner_grid.py": "becc509c157fb63ac51fb9310798dbd1174c27c7b5602e6a80abbd6d88952ffd",
+    "experiments/exp5_future_view/task0/magician_comparison/adapters/magician_planner.py": "02573cc515616ac295260a1fee676785fae63a95f55cd933b6a7913eb5042be5",
+    "experiments/exp5_future_view/task0/magician_comparison/adapters/magician_core.py": "2f58f03eec17faa9aabdea737b6d3511df9acae1bf45b7ba17acf523ab2c56e6",
+    "experiments/exp5_future_view/task0/magician_comparison/adapters/station_env.py": "3c6cd252da9d3d977ec3d8aeb39d3db0c6e75351bd9bd24667a5118edb59ad53",
+    "experiments/exp5_future_view/task0/magician_comparison/adapters/v2nv_planner.py": "43bc23b51d1110905594e625d64b4a2a621c421ae931b7e759691c256d989dad",
+    "experiments/exp5_future_view/task0/magician_comparison/scripts/t12_sim.py": "5436ae3bbad95d1bfb1125adfa6c72bfec4252b6c05e6e1fb44f2882a9557861",
+    "experiments/exp5_future_view/task0/magician_comparison/scripts/mc_common.py": "d93bb305a2bdbd9534c7ab3f011aae62bbb7e6cba8ce480df0b0789ce710a859",
+    "experiments/exp5_future_view/task0/magician_comparison/scripts/t08_metrics.py": "3f4a5e77396be6be46e7f10c95e52a57b06b02c9653714c1b234646a8802f18a",
+    "experiments/exp5_future_view/task0/magician_comparison/tests/t12_grid_tests.py": "90e5518a1124d4f2b20d91b6432d0b52347143cf0b0033691bdaea60b37c2ccf",
+    "experiments/exp5_future_view/task0/scripts/t06_planner.py": "b5a7ec0222db149edbcfa6232613ca72b93ad3de9a3632f2ddf94f66d613cd7d",
+    "experiments/exp5_future_view/task0/scripts/mp3d_sim.py": "03ef801b376cfa9510868202145a482f46aabc3216f5ea6fd281e763593bca88",
+    "work_dirs/exp5_future_view/task0/magician_comparison/grid_protocol/tests/grid_tests.json": "5e9e59d0d4523d2c8fd62ef8344867f58154581a89d4fcf41290961e24bd2412"
+   }
+  },
+  {
+   "stage": "T0.12 results snapshot (analysis / viz / diagnostic, after the runs)",
+   "time": "2026-10-25 20:22:35",
+   "files": {
+    "experiments/exp5_future_view/task0/magician_comparison/scripts/t12_analyze.py": "70ddd06eb4d3b54b694ce08f383580de94b6d6628563f0562e7a824759f0aaa6",
+    "experiments/exp5_future_view/task0/magician_comparison/scripts/t12_viz.py": "2a01e82ec4027bd52c7ce394af061e51037e8fbc69b8cd42848535186b3433d0",
+    "experiments/exp5_future_view/task0/magician_comparison/scripts/t12_reach.py": "8e5957167143ebe05dca9b1e66b2d83b17366d6fc3e1bce4d60ebb079e6c9014",
+    "work_dirs/exp5_future_view/task0/magician_comparison/analysis/t12.json": "d4373bf895e2e10a67d0ddc188ce413bfebb6a28d545e4a435eb4149d14d4246",
+    "work_dirs/exp5_future_view/task0/magician_comparison/analysis/t12_reach.json": "038198d922026368b20b549d4683148289a7aed89423195b074314b0255ae2b1",
+    "experiments/exp5_future_view/task0/reports/T0.12_grid_alignment.md": "fe18f8dfc699909beb329c5ea0dfee13778e018415acf07f9a0e48f67c205558"
+   }
+  }
+ ]
+}

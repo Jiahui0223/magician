@@ -1,0 +1,170 @@
+{
+ "compare_indoor_Z6MFQCViBuw_L0_s17_t5.png": {
+  "sid": "0ba2f3aeb5cdcfe8",
+  "candidate": 1,
+  "s": {
+   "cur": {
+    "t_known_valid": 0.6378968253968254,
+    "pseudo_front": 0.013108198178182626
+   },
+   "cand": {
+    "t_known_valid": 0.41132129142369506,
+    "pseudo_front": 0.00933609958506224
+   },
+   "band": 311674,
+   "empty": 23096697
+  },
+  "f": {
+   "cur": {
+    "t_known_valid": 0.8205782312925171,
+    "pseudo_front": 0.022625215889464593
+   },
+   "cand": {
+    "t_known_valid": 0.6452851656947802,
+    "pseudo_front": 0.024024685915803395
+   },
+   "band": 858048,
+   "empty": 22992863
+  }
+ },
+ "compare_outdoor_colosseum_s1_t0.png": {
+  "sid": "6f5145e2268fc866",
+  "candidate": 5,
+  "s": {
+   "cur": {
+    "t_known_valid": 0.3112664473684211,
+    "pseudo_front": 0.033905768383971815
+   },
+   "cand": {
+    "t_known_valid": 0.12795159386068478,
+    "pseudo_front": 0.05074971164936563
+   },
+   "band": 81182,
+   "empty": 4874649
+  },
+  "f": {
+   "cur": {
+    "t_known_valid": 0.9047423245614035,
+    "pseudo_front": 0.04272079987880624
+   },
+   "cand": {
+    "t_known_valid": 0.5202184179456907,
+    "pseudo_front": 0.061560283687943265
+   },
+   "band": 404524,
+   "empty": 4824864
+  }
+ },
+ "compare_indoor_QUCTc6BB5sX_L1_s34_t5.png": {
+  "sid": "e03c2fb657f2ccdc",
+  "candidate": 3,
+  "s": {
+   "cur": {
+    "t_known_valid": 0.47715109098394404,
+    "pseudo_front": 0.001725625539257981
+   },
+   "cand": {
+    "t_known_valid": 0.20060373216245883,
+    "pseudo_front": 0.0
+   },
+   "band": 461224,
+   "empty": 23236735
+  },
+  "f": {
+   "cur": {
+    "t_known_valid": 0.9987649238369699,
+    "pseudo_front": 0.005496015388843089
+   },
+   "cand": {
+    "t_known_valid": 0.5266190998902305,
+    "pseudo_front": 0.0036477331943720686
+   },
+   "band": 1638453,
+   "empty": 23013085
+  }
+ },
+ "compare_indoor_Z6MFQCViBuw_L0_s17_t55.png": {
+  "sid": "a828cbfa5ac968aa",
+  "candidate": 6,
+  "s": {
+   "cur": {
+    "t_known_valid": 0.5887772194304858,
+    "pseudo_front": 0.025130393551446185
+   },
+   "cand": {
+    "t_known_valid": 0.5701632991973429,
+    "pseudo_front": 0.01966019417475728
+   },
+   "band": 2168965,
+   "empty": 54877573
+  },
+  "f": {
+   "cur": {
+    "t_known_valid": 0.7215242881072027,
+    "pseudo_front": 0.2174501837879667
+   },
+   "cand": {
+    "t_known_valid": 0.6976197066150014,
+    "pseudo_front": 0.040071414401904384
+   },
+   "band": 3827467,
+   "empty": 54210056
+  }
+ },
+ "compare_outdoor_colosseum_s4_t20.png": {
+  "sid": "e4839c0c5136258b",
+  "candidate": 4,
+  "s": {
+   "cur": {
+    "t_known_valid": 0.19939043952518448,
+    "pseudo_front": 0.008849557522123894
+   },
+   "cand": {
+    "t_known_valid": 0.16782522343594836,
+    "pseudo_front": 0.01972386587771203
+   },
+   "band": 720907,
+   "empty": 58199662
+  },
+  "f": {
+   "cur": {
+    "t_known_valid": 0.9499518768046198,
+    "pseudo_front": 0.012833502195204323
+   },
+   "cand": {
+    "t_known_valid": 0.8958953988745448,
+    "pseudo_front": 0.021429891003140588
+   },
+   "band": 2613529,
+   "empty": 57870095
+  }
+ },
+ "compare_outdoor_bridge_s1_t80.png": {
+  "sid": "9614f1f5efd0f111",
+  "candidate": 2,
+  "s": {
+   "cur": {
+    "t_known_valid": 0.8493695175438597,
+    "pseudo_front": 0.3262869130224302
+   },
+   "cand": {
+    "t_known_valid": 0.8821271929824561,
+    "pseudo_front": 0.3040708514605345
+   },
+   "band": 2984032,
+   "empty": 156091987
+  },
+  "f": {
+   "cur": {
+    "t_known_valid": 0.9601151315789473,
+    "pseudo_front": 0.5140613847251962
+   },
+   "cand": {
+    "t_known_valid": 0.9653234649122807,
+    "pseudo_front": 0.506034360357802
+   },
+   "band": 5777575,
+   "empty": 154809630
+  }
+ }
+}

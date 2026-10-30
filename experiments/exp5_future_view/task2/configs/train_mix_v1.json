@@ -1,0 +1,55 @@
+{
+ "version": "train_mix_v1",
+ "protocol": "task2/protocol.md \u00a73",
+ "model": "model_v1.json",
+ "data_outdoor": "data_v1.json",
+ "init_checkpoint": "work_dirs/exp5_future_view/task1/training/main/ema_060000.pt",
+ "init_checkpoint_sha256": "a379c0fb9d7d80266a430ab6f48f39315fad54fb650c6c3740a999a02db079fc",
+ "train_indoor": "MP3D train houses, t21 shards (n_win = 5 frames)",
+ "train_outdoor": "train6_minus_Sc (T1.1 shards)",
+ "mix": {
+  "indoor_views": 32,
+  "outdoor_views": 32
+ },
+ "steps": 20000,
+ "warmup": 500,
+ "lr": 2e-05,
+ "betas": [
+  0.9,
+  0.99
+ ],
+ "weight_decay": 0.01,
+ "schedule": "cosine_to_0",
+ "batch_views": 64,
+ "states_per_batch": 8,
+ "grad_clip": 1.0,
+ "ema": 0.999,
+ "precision": "bf16",
+ "seed": 0,
+ "stale_p": 0.5,
+ "stale_max": 9,
+ "eval_every": 2500,
+ "ckpt_every": 2500,
+ "eval_tau": [
+  0.1,
+  0.3,
+  0.5,
+  0.7,
+  0.9
+ ],
+ "eval_sets": {
+  "in_val": 2048,
+  "out_sc": 2048,
+  "in_train": 1024,
+  "out_train": 1024
+ },
+ "selection": {
+  "metric": "fair_es_arclength_vox",
+  "score": "ES_in_val / ES_in_val(step 0) + ES_out_sc / ES_out_sc(step 0)",
+  "choose": "minimum over evaluated steps (0 = V2 Original included), ties -> later step"
+ },
+ "smoke": {
+  "overfit_steps": 200,
+  "short_steps": 1000
+ }
+}

@@ -1,0 +1,11 @@
+{
+ "version": "model_v1",
+ "protocol": "architecture.md v1.0",
+ "encoder": {"in_ch": 4, "ch": [32, 64, 96], "blocks_per_level": 2, "dilation_L2": 2, "groups": 8},
+ "ray": {"n_points": 32, "feat_ch": 96, "hidden": 64, "out_ch": 64},
+ "proj_ch": 11,
+ "unet": {"ch": [64, 128, 192, 256], "blocks_per_level": 2, "attn_levels": [3], "heads": 4, "t_emb": 256, "groups": 16, "pad_to": [64, 128]},
+ "flow": {"x_ch": 2, "euler_steps": 10, "nohit_y": 1.0},
+ "decode": {"hit_rule": "b>0 and y<1", "s_clip_eps": 1e-6},
+ "inference_precision": "bf16 autocast for encoder / ray encoder / U-Net; float32 for projection, decoding and DistP1"
+}
