@@ -1,13 +1,15 @@
 # EXP6 V3 — 全局状态板（每次启动 / 结束一个运行就更新）
 
-**最近更新：2026-10-30 06:27**
+**最近更新：2026-10-30 12:33**
 标记：✅ 完成 · 🔄 正在跑 · ⏳ 等待（排队或依赖前项）· ❌ 失败（后面跟修复行）· ⬜ 未开始
 
 ## 0. 此刻在跑什么
 | 编号 | 内容 | 节点 / GPU | 作业 | 日志 | 开始 | 预计结束 |
 |---|---|---|---|---|---|---|
-| P4-T0 | **V3-VAE 正式训练**（40k 步，4 卡 DDP，每 5k 步评估 + EMA，每 1k 步 ckpt_last） | gpu117 GPU 0–3 | 3429774（交互分配） | `work_dirs/exp6_v3/task0_vae/logs/train.log`、`runs/main/log.jsonl`、`eval.jsonl` | 06:24（06:19 的首次启动因脚本写错目录未运行，06:24 重启） | 约 21:30–22:30（估计 1.3–1.4 s/步 + 9 次评估） |
-| P4 链 | `train_chain.sh`：T0 结束后若第二组 4 卡仍未启动则 T1 在 gpu117 顺序跑；若 3435033 / 3435072 任一启动则 T1 立即在该节点并行 | — | — | `work_dirs/exp6_v3/logs/train_chain.log` | 06:24 | — |
+| P4-T0 | **V3-VAE 正式训练**（40k 步，4 卡 DDP，每 5k 步评估 + EMA，每 1k 步 ckpt_last） | gpu117 GPU 0–3 | 3429774（交互分配） | `work_dirs/exp6_v3/task0_vae/logs/train.log`、`runs/main/log.jsonl`、`eval.jsonl` | 06:24（06:19 的首次启动因脚本写错目录未运行，06:24 重启） | 第 15200 步 / 40000（38%），1.38 s/步，峰值 33.2 GB；dev FM in 0.1004 @ 15000；预计 10-30 22:28 结束 |
+| P4-T1 | **V3-VAE-XAttn 正式训练**（40k 步，4 卡 DDP，配置与 T0 相同，并行） | gpu115 GPU 0–3 | 3435033（sbatch 48 h，10-30 11:10 起，约 11-01 11:09 到期） | `work_dirs/exp6_v3/task1_xattn/logs/train.log`、`runs/main/log.jsonl`、`eval.jsonl` | 11:10（`train_chain.sh` 检测到 3435033 运行后自动 `srun --overlap` 启动；11:24 开始计步） | 第 3000 步 / 40000（8%），1.36 s/步，峰值 32.7 GB；dev FM in 1.9339 @ 0；预计 10-31 03:14 结束 |
+| P5-G3-T0 链 | `post_arm.sh t0`：等 T0 `EXIT 0` → `select_final.py`（冻结规则 → `task0_vae/checkpoints/final.pt`）→ 2 步闭环冒烟 → 4 worker G3 闭环（10 MP3D + 30 Macarons++）→ 室外覆盖率（偏差 #9：G3 先于 G1/G2，仅调度） | gpu117 GPU 0–3（T0 结束后） | 3429774 | `work_dirs/exp6_v3/logs/post_t0.log`、`eval/logs/` | 等待 T0（约 22:28） | 闭环约 9 h → 10-31 上午 |
+| P4 链 | `train_chain.sh`：T0 在 gpu117；3435033 于 11:10 开始运行 → T1 已在 gpu115 并行启动（不再顺序）；两组互不等待 | — | — | `work_dirs/exp6_v3/logs/train_chain.log` | 06:24 | T0 结束后链退出 |
 
 **GPU / 作业**
 | 分配 | 作业 | 节点 / 卡 | 状态 | 用途 |
@@ -95,8 +97,8 @@
 ## P4 从零训练 — 🔄
 | 编号 | 组 | 计划 | 状态 |
 |---|---|---|---|
-| P4-T0 | V3-VAE | gpu117 4 × L40S（作业 3429774），`torchrun` 4 进程，40k 步；每 1k 步 ckpt、每 5k 步评估 + EMA（step 0 / 5k / … / 40k） | 🔄 06:24 启动（数据加载约 2 min 后开始计步）；预计 21:30–22:30 结束 |
-| P4-T1 | V3-VAE-XAttn | 第二组 4 卡（3435033 / 3435072 任一启动即并行）否则 T0 结束后在 gpu117 顺序；配置与 T0 完全相同（`7de02cc`） | ⏳ 由 `train_chain.sh` 自动启动 |
+| P4-T0 | V3-VAE | gpu117 4 × L40S（作业 3429774），`torchrun` 4 进程，40k 步；每 1k 步 ckpt、每 5k 步评估 + EMA（step 0 / 5k / … / 40k） | 🔄 第 15200 步 / 40000（38%），1.38 s/步，峰值 33.2 GB；最近评估 @15000：dev FM in 0.1004 / out 0.0310，ES in 7.36 / out 7.40；选择分数 1.5910（最优 @15000）；预计 10-30 22:28 结束；记录 `task0_vae/report/T0_TRAINING.md` |
+| P4-T1 | V3-VAE-XAttn | gpu115 4 × L40S（sbatch 作业 3435033，48 h），`torchrun` 4 进程，40k 步；与 T0 并行；配置与 T0 完全相同（`7de02cc`，仅 `xattn.enabled`） | 🔄 第 3000 步 / 40000（8%），1.36 s/步，峰值 32.7 GB；最近评估 @0：dev FM in 1.9339 / out 1.9461，ES in 17.24 / out 19.60；预计 10-31 03:14 结束；记录 `task1_xattn/report/T1_TRAINING.md` |
 | P4.3 | 训练曲线、dev 指标、checkpoint 选择（冻结规则）→ `T0_TRAINING.md` / `T1_TRAINING.md` | ⬜ |
 
 ## P5 评估与报告 — ⬜
