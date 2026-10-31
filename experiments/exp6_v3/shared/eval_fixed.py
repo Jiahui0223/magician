@@ -14,6 +14,7 @@ Usage: python eval_fixed.py --set valsel|dev3 --stratum B0|B2 --t0 CKPT --t1 CKP
 import argparse
 import glob
 import json
+import numpy as np
 import os
 import sys
 import time
@@ -108,8 +109,23 @@ def run_episode(sset, stratum, tag, sts, cores, dev, ref):
                     row["pred"][m] = acc
                 if ref is not None and sid in ref and "B2" in names:
                     row["repro_B2_eq_E2"] = row["scores"]["B2"] == ref[sid]
-                    if not row["repro_B2_eq_E2"]:
-                        raise SystemExit(f"STOP: B2 replay differs from the E2 rows ({sid})")
+                    # scores["B2"] = [n_cand][K] per-world novelty; the choice compares candidate means
+                    cand = lambda x: (lambda a: a.mean(1) if a.ndim == 2 else a)(np.asarray(x, dtype=float))  # noqa: E731
+                    try:
+                        va, vb = np.asarray(row["scores"]["B2"], float).ravel(), np.asarray(ref[sid], float).ravel()
+                        same_shape = va.shape == vb.shape
+                        row["repro_B2_maxdiff"] = float(np.max(np.abs(va - vb))) if same_shape else None
+                        row["repro_B2_maxrel"] = float(np.max(np.abs(va - vb) / np.maximum(np.abs(vb), 1e-12))) if same_shape else None
+                        row["repro_B2_same_argmax"] = bool(same_shape and int(cand(row["scores"]["B2"]).argmax()) == int(cand(ref[sid]).argmax()))
+                    except (TypeError, ValueError):
+                        row["repro_B2_maxdiff"] = row["repro_B2_maxrel"] = None; row["repro_B2_same_argmax"] = False
+                    # EVAL_FIXED_REPLAY_TOL (default 0 = bitwise, the frozen rule): a documented tolerance on the relative
+                    # score difference, still requiring the same arg-max; anything else is the STOP of the frozen protocol
+                    tol = float(os.environ.get("EVAL_FIXED_REPLAY_TOL", "0"))
+                    within = row["repro_B2_maxrel"] is not None and row["repro_B2_maxrel"] <= tol and row["repro_B2_same_argmax"]
+                    if not row["repro_B2_eq_E2"] and not within:
+                        raise SystemExit(f"STOP: B2 replay differs from the E2 rows ({sid}; max|d| {row['repro_B2_maxdiff']}, "
+                                         f"maxrel {row['repro_B2_maxrel']}, same argmax {row['repro_B2_same_argmax']})")
             del geo
 
         if sset == "valsel":

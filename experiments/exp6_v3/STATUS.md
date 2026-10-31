@@ -1,16 +1,18 @@
 # EXP6 V3 — 全局状态板（每次启动 / 结束一个运行就更新）
 
-**最近更新：2026-10-31 03:31**
+**最近更新：2026-10-31 04:23（全部完成）**
 标记：✅ 完成 · 🔄 正在跑 · ⏳ 等待（排队或依赖前项）· ❌ 失败（后面跟修复行）· ⬜ 未开始
 
 ## 0. 此刻在跑什么
+**当前无运行中的任务**——EXP6 V3 全部训练与评估已于 2026-10-31 04:15 完成；最终报告 `reports/V3_COMBINED_REPORT.md`、`reports/V3_COMPARISON_TABLES.md`。GPU 分配仍在：gpu117 交互作业 3429774（11-01 14:50 到期）、gpu115 sbatch 3435033（11-01 11:09 到期，空闲）、3435072（24 h，排队中）——可按需 `scancel`。下表为本轮的历史运行记录：
 | 编号 | 内容 | 节点 / GPU | 作业 | 日志 | 开始 | 预计结束 |
 |---|---|---|---|---|---|---|
 | P4-T0 | **V3-VAE 正式训练** | gpu117 | 3429774 | `task0_vae/logs/train.log` | 06:24 | ✅ 22:18 结束，40k 步，final.pt = EMA @40k |
 | P4-T1 | **V3-VAE-XAttn 正式训练** | gpu115 | 3435033 | `task1_xattn/logs/train.log` | 11:10 | ✅ 03:26 结束，40k 步，final.pt = EMA @40k |
 | P5-G3-T0 | **T0 的 G3 闭环**：`post_arm.sh t0` → `final.pt` = EMA @40k（22:19）→ 冒烟 ✅（室内 2 步 27 s、室外 2 步 28 s，决策约 1 s/步）→ 4 worker 跑 10 MP3D + 30 Macarons++ 闭环 → 室外覆盖率 | gpu117 GPU 0–3 | 3429774 | `work_dirs/exp6_v3/logs/post_t0.log`、`eval/logs/queue_g3_gpu117_*.log`、`eval/closed_loop/{indoor,outdoor}/T0/` | 22:20 | ✅ 23:07 全部完成（10 室内 + 30 室外 + 30 覆盖率，0 失败；47 min ≈ 3.1 GPU-h）。临时均值（正式分析等 T1）：MP3D AUC T0 0.311 / Final 0.463（B0 0.322 / B2 0.334 / E2D 0.364 / MAG-B 0.292）；Macarons++ AUC 0.702 / Final 0.872 / Cov@20 0.568（B0 0.729 / B2 0.730 / E2D 0.711 / MAG-G 0.704）；配对 T0−B2 dAUC −0.023 / −0.028 |
-| P5-G3-T1 链 | `post_arm.sh t1`（`srun --jobid=3435033 --overlap`）：等 T1 `EXIT 0` → `final.pt` → 冒烟 → T1 的 G3 闭环 | gpu115 GPU 0–3（T1 结束后） | 3435033 | `work_dirs/exp6_v3/logs/post_t1.log` | 03:29 启动（冒烟 ✅） | 约 04:20（T0 同规模 47 min；gpu117 完成 G1/G2 后加入） |
-| P5-G12 链 | `post_g12.sh`：等 T0 的 G3 结束 + T1 `final.pt` → `eval_fixed.py`（VALSEL B0、Dev-3 B0 / B2，各 4 份）→ `analyze_g12.py` → gpu117 加入 T1 的 G3 队列 → 覆盖率 | gpu117 GPU 0–3 | 3429774 | `work_dirs/exp6_v3/logs/post_g12.log`、`eval_fixed/` | 03:28 启动（T0 sha 7ed0ddd7 / T1 639c9d3a） | VALSEL → Dev-3 B0 → Dev-3 B2 → 分析；约 05:00–06:00 |
+| P5-G3-T1 链 | `post_arm.sh t1`（`srun --jobid=3435033 --overlap`）：等 T1 `EXIT 0` → `final.pt` → 冒烟 → T1 的 G3 闭环 | gpu115 GPU 0–3（T1 结束后） | 3435033 | `work_dirs/exp6_v3/logs/post_t1.log` | 03:29 启动 | ✅ 04:00:48 全部完成（10 室内 + 30 室外 + 30 覆盖率，0 失败；gpu115 31 min + gpu117 03:42 起加入 ≈ 3.3 GPU-h） |
+| P5-G12 链 | `post_g12.sh`：等 T0 的 G3 结束 + T1 `final.pt` → `eval_fixed.py`（VALSEL B0、Dev-3 B0 / B2，各 4 份）→ `analyze_g12.py` → gpu117 加入 T1 的 G3 队列 → 覆盖率 | gpu117 GPU 0–3 | 3429774 | `work_dirs/exp6_v3/logs/post_g12.log`、`eval_fixed/` | 03:28 第 1 轮（不完整，作废）→ 04:02 补跑 | ✅ 04:14 完成：9/9 + 15/15 + 15/15 episode，B2 回放 365/365 逐位；`analyze_g12` → `reports/g12_s_final.md`；G2 放行 T0 PASS（B）、T1 PASS（A） |
+| P5-G3 分析 | `analyze_g3.py`（两组 + B0 / B2 / E2D + MAG-G / MAG-B，场景级 bootstrap） | CPU | — | `work_dirs/exp6_v3/logs/analyze_g3.log` → `reports/g3_*.md` | 04:03 | ✅ 04:03 → `reports/g3.md`：T1−T0 meaningful on one（MP3D ΔAUC +0.020、Macarons++ ΔFinal +0.011）；T0−B2 退化；T1−B2 持平（CI 含 0） |
 | P4 链 | `train_chain.sh`：T0 在 gpu117；3435033 于 11:10 开始运行 → T1 已在 gpu115 并行启动（不再顺序）；两组互不等待 | — | — | `work_dirs/exp6_v3/logs/train_chain.log` | 06:24 | T0 结束后链退出 |
 
 **GPU / 作业**
@@ -103,12 +105,12 @@
 | P4-T1 | V3-VAE-XAttn | gpu115 4 × L40S（sbatch 作业 3435033，48 h），`torchrun` 4 进程，40k 步；与 T0 并行；配置与 T0 完全相同（`7de02cc`，仅 `xattn.enabled`） | ✅ 10-31 03:26:18 结束（40k / 40k，无早停，16.3 h ≈ 65 GPU-h）；最终 dev FM 0.0900 / 0.0272，ES in 6.43 / out 6.48（T0 6.37 / 6.44）；选择分数单调降至 1.395 → **final.pt = EMA @40000**（sha `639c9d3a…`）；记录 `task1_xattn/report/T1_TRAINING.md` |
 | P4.3 | 训练曲线、dev 指标、checkpoint 选择（冻结规则）→ `T0_TRAINING.md` / `T1_TRAINING.md` | ⬜ |
 
-## P5 评估与报告 — ⬜
+## P5 评估与报告 — ✅（2026-10-31 04:30）
 | 编号 | 内容 | 状态 |
 |---|---|---|
-| P5.1-T0 / P5.1-T1 | G1 / G2 固定状态（VALSEL 90 + Dev-3 275；`shared/eval_fixed.py`、`analyze_g12.py`） | ⬜ |
-| P5.2 | G2 → G3 放行判定（协议 §4） | ⬜ |
-| P5.3-T0 / P5.3-T1 | G3 闭环（MP3D 10 + Macarons++ 30，各组；`sim_{in,out}_v3.py`、`out_cov_v3.py`、`analyze_g3.py`） | ⬜ |
-| P5.3.3 | G3 参照组：B0 / B2 / E2-D100（Task 3、E2）+ **MAGICIAN MAG-G / MAG-B（Task 2 共享协议闭环）** 纳入同一表（AUC、Final、Cov@k、逐场景）；`analyze_g3.py` 读取 Task 2 的 MAG 闭环（tag 前缀不同） | ⬜ |
-| P5.4 | 任务报告 `T{0,1}_G12.md`、`T{0,1}_G3.md`；`reports/V3_COMBINED_REPORT.md`、`V3_COMPARISON_TABLES.md`、`V3_RESOURCES.md` | ⬜ |
-| P5.5 | git 提交 `[V3][task0]`、`[V3][task1]`、`[V3][eval]` 并 push | ⬜ |
+| P5.1-T0 / P5.1-T1 | G1 / G2 固定状态（VALSEL 90 + Dev-3 275；`shared/eval_fixed.py`、`analyze_g12.py`） | ✅ 04:14（第 1 轮 03:28–03:42 不完整，偏差 #10；补跑后 39/39 episode，B2 回放 365/365 逐位）。T1−T0：G1 ≈ 0；VALSEL regret −0.014 [−0.038, 0.000]，Early regret −0.036 [−0.094, −0.002]，Early Top-1 +0.056；Dev-3 regret +0.019（CI 含 0）。T0−B2 MAE_unknown −0.038 [−0.052, −0.025]（9/0）。报告 `task*/report/T*_G12.md`、`reports/g12_s_final.md` |
+| P5.2 | G2 → G3 放行判定（协议 §4） | ✅ T0 PASS（规则 B；Dev-3 Top-1 0.548 vs 门槛 0.551 差 0.003）；T1 PASS（规则 A）→ 两组 G3 均 formal |
+| P5.3-T0 / P5.3-T1 | G3 闭环（MP3D 10 + Macarons++ 30，各组；`sim_{in,out}_v3.py`、`out_cov_v3.py`、`analyze_g3.py`） | ✅ T0 22:20–23:07（3.1 GPU-h）、T1 03:29–04:00（3.3 GPU-h），80 episode 0 失败；分析 04:03 `reports/g3.md`。MP3D AUC：MAG-B 0.292 / B0 0.322 / B2 0.334 / E2D 0.364 / **T0 0.311 / T1 0.331**；Macarons++ AUC：0.685 / 0.729 / 0.730 / 0.711 / **0.702 / 0.712**。T1−T0 MP3D ΔAUC +0.020 [−0.003, 0.042]（4/1）、Macarons++ ΔFinal +0.011 [0.005, 0.017]（6/0）→ meaningful on one；T0−B2 退化；T1−B2 持平（CI 含 0）；T1−MAG-B MP3D Final +0.131 [0.044, 0.218] |
+| P5.3.3 | G3 参照组：B0 / B2 / E2-D100（Task 3、E2）+ **MAGICIAN MAG-G / MAG-B（Task 2 共享协议闭环）** 纳入同一表（AUC、Final、Cov@k、逐场景）；`analyze_g3.py` 读取 Task 2 的 MAG 闭环（tag 前缀不同） | ✅ 表 1 / 表 2（`reports/V3_COMPARISON_TABLES.md`）含 MAG-G / MAG-B 全部指标与配对差 |
+| P5.4 | 任务报告 `T{0,1}_G12.md`、`T{0,1}_G3.md`；`reports/V3_COMBINED_REPORT.md`、`V3_COMPARISON_TABLES.md`、`V3_RESOURCES.md` | ✅ 04:30 全部写完；最终决定：问题 1 No-Go（T0 闭环相对 B2 退化）、问题 2 Conditional Go（XAttn 小而一致的增量，MP3D 有意义）；主线不变 |
+| P5.5 | git 提交 `[V3][task0]`、`[V3][task1]`、`[V3][eval]` 并 push | ✅ `5c1b8ed` [task0]、`aa1cf2f` [task1]、[eval] 见最新提交 |
