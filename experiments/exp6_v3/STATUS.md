@@ -1,10 +1,10 @@
 # EXP6 V3 — 全局状态板（每次启动 / 结束一个运行就更新）
 
-**最近更新：2026-10-31 04:23（全部完成）**
+**最近更新：2026-10-31 09:44**
 标记：✅ 完成 · 🔄 正在跑 · ⏳ 等待（排队或依赖前项）· ❌ 失败（后面跟修复行）· ⬜ 未开始
 
 ## 0. 此刻在跑什么
-**当前无运行中的任务**——EXP6 V3 全部训练与评估已于 2026-10-31 04:15 完成；最终报告 `reports/V3_COMBINED_REPORT.md`、`reports/V3_COMPARISON_TABLES.md`。GPU 分配仍在：gpu117 交互作业 3429774（11-01 14:50 到期）、gpu115 sbatch 3435033（11-01 11:09 到期，空闲）、3435072（24 h，排队中）——可按需 `scancel`。下表为本轮的历史运行记录：
+**2026-10-31 09:30 起进入 P6 Ablation Study**（任务书 `EXP6_V3_ABLATION_ONLY_PLAN.md`；详细板 `ablation_study/STATUS.md`）。V3 正式实验已于 04:15 完成；最终报告 `reports/V3_COMBINED_REPORT.md`、`reports/V3_COMPARISON_TABLES.md`。GPU 分配仍在：gpu117 交互作业 3429774（11-01 14:50 到期）、gpu115 sbatch 3435033（11-01 11:09 到期，空闲）、3435072（24 h，排队中）——可按需 `scancel`。下表为本轮的历史运行记录：
 | 编号 | 内容 | 节点 / GPU | 作业 | 日志 | 开始 | 预计结束 |
 |---|---|---|---|---|---|---|
 | P4-T0 | **V3-VAE 正式训练** | gpu117 | 3429774 | `task0_vae/logs/train.log` | 06:24 | ✅ 22:18 结束，40k 步，final.pt = EMA @40k |
@@ -114,3 +114,12 @@
 | P5.3.3 | G3 参照组：B0 / B2 / E2-D100（Task 3、E2）+ **MAGICIAN MAG-G / MAG-B（Task 2 共享协议闭环）** 纳入同一表（AUC、Final、Cov@k、逐场景）；`analyze_g3.py` 读取 Task 2 的 MAG 闭环（tag 前缀不同） | ✅ 表 1 / 表 2（`reports/V3_COMPARISON_TABLES.md`）含 MAG-G / MAG-B 全部指标与配对差 |
 | P5.4 | 任务报告 `T{0,1}_G12.md`、`T{0,1}_G3.md`；`reports/V3_COMBINED_REPORT.md`、`V3_COMPARISON_TABLES.md`、`V3_RESOURCES.md` | ✅ 04:30 全部写完；最终决定：问题 1 No-Go（T0 闭环相对 B2 退化）、问题 2 Conditional Go（XAttn 小而一致的增量，MP3D 有意义）；主线不变 |
 | P5.5 | git 提交 `[V3][task0]`、`[V3][task1]`、`[V3][eval]` 并 push | ✅ `5c1b8ed` [task0]、`aa1cf2f` [task1]、[eval] 见最新提交 |
+
+## P6 Ablation Study（Experiment A GT-Depth Oracle Decomposition / Experiment B Depth Uncertainty Planner）— 🔄
+详细编号板：`ablation_study/STATUS.md`。协议 `ablation_study/protocol.md` v1.0（09:55 冻结）。不训练、不启动 V4。
+| 编号 | 内容 | 状态 |
+|---|---|---|
+| P6.0 | 资源 / 缓存审计（`experiment_A_gtdepth_oracle/report/CACHE_REUSE_AUDIT.md`）+ 协议冻结 | ✅ 09:55 |
+| P6.A | Experiment A：Pool FX（365 状态）+ Pool CL（1,461 状态）上 B2 / E2D / T0 / T1 的 K=4 预测 + GTD + oracle 拆分 | 🔄 冒烟中（09:43） |
+| P6.B | Experiment B：DepthU 评分器 P0 / P1 / P2 固定状态 G2 → Gate → G3 | ⬜ |
+| P6.R | `reports/V3_ABLATION_SUMMARY.md` 等 + `[V3][ablation]` 提交 | ⬜ |
