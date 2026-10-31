@@ -1,16 +1,16 @@
 # EXP6 V3 — 全局状态板（每次启动 / 结束一个运行就更新）
 
-**最近更新：2026-10-30 23:10**
+**最近更新：2026-10-31 03:31**
 标记：✅ 完成 · 🔄 正在跑 · ⏳ 等待（排队或依赖前项）· ❌ 失败（后面跟修复行）· ⬜ 未开始
 
 ## 0. 此刻在跑什么
 | 编号 | 内容 | 节点 / GPU | 作业 | 日志 | 开始 | 预计结束 |
 |---|---|---|---|---|---|---|
 | P4-T0 | **V3-VAE 正式训练** | gpu117 | 3429774 | `task0_vae/logs/train.log` | 06:24 | ✅ 22:18 结束，40k 步，final.pt = EMA @40k |
-| P4-T1 | **V3-VAE-XAttn 正式训练**（40k 步，4 卡 DDP，配置与 T0 相同，并行） | gpu115 GPU 0–3 | 3435033（sbatch 48 h，10-30 11:10 起，约 11-01 11:09 到期） | `work_dirs/exp6_v3/task1_xattn/logs/train.log`、`runs/main/log.jsonl`、`eval.jsonl` | 11:10（`train_chain.sh` 检测到 3435033 运行后自动 `srun --overlap` 启动；11:24 开始计步） | 第 25200 步 / 40000（63%），1.37 s/步，峰值 33.2 GB；dev FM in 0.0931 @ 25000；预计 10-31 03:23 结束 |
+| P4-T1 | **V3-VAE-XAttn 正式训练** | gpu115 | 3435033 | `task1_xattn/logs/train.log` | 11:10 | ✅ 03:26 结束，40k 步，final.pt = EMA @40k |
 | P5-G3-T0 | **T0 的 G3 闭环**：`post_arm.sh t0` → `final.pt` = EMA @40k（22:19）→ 冒烟 ✅（室内 2 步 27 s、室外 2 步 28 s，决策约 1 s/步）→ 4 worker 跑 10 MP3D + 30 Macarons++ 闭环 → 室外覆盖率 | gpu117 GPU 0–3 | 3429774 | `work_dirs/exp6_v3/logs/post_t0.log`、`eval/logs/queue_g3_gpu117_*.log`、`eval/closed_loop/{indoor,outdoor}/T0/` | 22:20 | ✅ 23:07 全部完成（10 室内 + 30 室外 + 30 覆盖率，0 失败；47 min ≈ 3.1 GPU-h）。临时均值（正式分析等 T1）：MP3D AUC T0 0.311 / Final 0.463（B0 0.322 / B2 0.334 / E2D 0.364 / MAG-B 0.292）；Macarons++ AUC 0.702 / Final 0.872 / Cov@20 0.568（B0 0.729 / B2 0.730 / E2D 0.711 / MAG-G 0.704）；配对 T0−B2 dAUC −0.023 / −0.028 |
-| P5-G3-T1 链 | `post_arm.sh t1`（`srun --jobid=3435033 --overlap`）：等 T1 `EXIT 0` → `final.pt` → 冒烟 → T1 的 G3 闭环 | gpu115 GPU 0–3（T1 结束后） | 3435033 | `work_dirs/exp6_v3/logs/post_t1.log` | 22:25 挂起等待 | T1 约 03:20 结束后开始 |
-| P5-G12 链 | `post_g12.sh`：等 T0 的 G3 结束 + T1 `final.pt` → `eval_fixed.py`（VALSEL B0、Dev-3 B0 / B2，各 4 份）→ `analyze_g12.py` → gpu117 加入 T1 的 G3 队列 → 覆盖率 | gpu117 GPU 0–3 | 3429774 | `work_dirs/exp6_v3/logs/post_g12.log`、`eval_fixed/` | 22:30 挂起等待 | 约 03:30 开始 |
+| P5-G3-T1 链 | `post_arm.sh t1`（`srun --jobid=3435033 --overlap`）：等 T1 `EXIT 0` → `final.pt` → 冒烟 → T1 的 G3 闭环 | gpu115 GPU 0–3（T1 结束后） | 3435033 | `work_dirs/exp6_v3/logs/post_t1.log` | 03:29 启动（冒烟 ✅） | 约 04:20（T0 同规模 47 min；gpu117 完成 G1/G2 后加入） |
+| P5-G12 链 | `post_g12.sh`：等 T0 的 G3 结束 + T1 `final.pt` → `eval_fixed.py`（VALSEL B0、Dev-3 B0 / B2，各 4 份）→ `analyze_g12.py` → gpu117 加入 T1 的 G3 队列 → 覆盖率 | gpu117 GPU 0–3 | 3429774 | `work_dirs/exp6_v3/logs/post_g12.log`、`eval_fixed/` | 03:28 启动（T0 sha 7ed0ddd7 / T1 639c9d3a） | VALSEL → Dev-3 B0 → Dev-3 B2 → 分析；约 05:00–06:00 |
 | P4 链 | `train_chain.sh`：T0 在 gpu117；3435033 于 11:10 开始运行 → T1 已在 gpu115 并行启动（不再顺序）；两组互不等待 | — | — | `work_dirs/exp6_v3/logs/train_chain.log` | 06:24 | T0 结束后链退出 |
 
 **GPU / 作业**
@@ -96,11 +96,11 @@
 | P3.11 | 大场景单步微基准（dunnottar 1.83 s / 27.4 GB；其余 0.7–0.9 s / 13 GB） | ✅ 06:20 |
 | P3.10 | 冻结 `protocol.md` v1.0：40k 步、lr 1e-4（预热 1k，余弦）、λ_rec 1.0、β 0.02（5k 预热）、每 5k 评估、选择规则与早停规则；`configs/FROZEN_SHA256.json` | ✅ 06:10 冻结；提交 `7de02cc` |
 
-## P4 从零训练 — 🔄
+## P4 从零训练 — ✅（两组 40k 步，10-31 03:26 全部结束）
 | 编号 | 组 | 计划 | 状态 |
 |---|---|---|---|
 | P4-T0 | V3-VAE | gpu117 4 × L40S（作业 3429774），`torchrun` 4 进程，40k 步；每 1k 步 ckpt、每 5k 步评估 + EMA（step 0 / 5k / … / 40k） | ✅ 22:18:48 结束（40k / 40k，无早停，15.9 h ≈ 63.7 GPU-h）；最终 dev FM 0.0900 / 0.0272，ES in 6.37 / out 6.44；选择分数单调降至 1.380 → **final.pt = EMA @40000**（sha `7ed0ddd7…`）；记录 `task0_vae/report/T0_TRAINING.md` |
-| P4-T1 | V3-VAE-XAttn | gpu115 4 × L40S（sbatch 作业 3435033，48 h），`torchrun` 4 进程，40k 步；与 T0 并行；配置与 T0 完全相同（`7de02cc`，仅 `xattn.enabled`） | 🔄 第 25200 步 / 40000（63%），1.37 s/步，峰值 33.2 GB；最近评估 @25000：dev FM in 0.0931 / out 0.0283，ES in 6.74 / out 6.83；选择分数 1.4663（最优 @25000）；预计 10-31 03:23 结束；记录 `task1_xattn/report/T1_TRAINING.md` |
+| P4-T1 | V3-VAE-XAttn | gpu115 4 × L40S（sbatch 作业 3435033，48 h），`torchrun` 4 进程，40k 步；与 T0 并行；配置与 T0 完全相同（`7de02cc`，仅 `xattn.enabled`） | ✅ 10-31 03:26:18 结束（40k / 40k，无早停，16.3 h ≈ 65 GPU-h）；最终 dev FM 0.0900 / 0.0272，ES in 6.43 / out 6.48（T0 6.37 / 6.44）；选择分数单调降至 1.395 → **final.pt = EMA @40000**（sha `639c9d3a…`）；记录 `task1_xattn/report/T1_TRAINING.md` |
 | P4.3 | 训练曲线、dev 指标、checkpoint 选择（冻结规则）→ `T0_TRAINING.md` / `T1_TRAINING.md` | ⬜ |
 
 ## P5 评估与报告 — ⬜
