@@ -1,9 +1,10 @@
-# EXP6 V3 Ablation Summary — Experiment A（GT-Depth Oracle Decomposition）与 Experiment B（Depth Uncertainty Planner）
+# EXP6 V3 Ablation Summary — Experiment A（GT-Depth Oracle Decomposition）、Experiment B（Depth Uncertainty Planner）与 Experiment C（GT-Depth Closed-Loop）
 
-> 状态：**COMPLETED**（2026-10-31 09:30–10:45）。协议 `../protocol.md` v1.0（09:55 冻结，运行前）；偏差 `V3_ABLATION_DEVIATIONS.md`（#1）；资源 `V3_ABLATION_RESOURCES.md`；统一表格 `V3_ABLATION_COMPARISON_TABLES.md`（表 1–7）；逐状态 / 逐候选数据 `experiment_*/results/*.csv`、`*_summary.json`；图 `experiment_*/figures/`。不训练、不改模型、不启动 V4；所有数字来自真实运行；Test-3 非盲，诊断均为 exploratory。
+> 状态：**COMPLETED**（A / B：2026-10-31 09:30–10:45；C：15:20–16:45）。协议 `../protocol.md` v1.0（09:55 冻结）与 `../experiment_C_gtdepth_closed_loop/protocol.md` v1.0（15:45 冻结）；偏差 `V3_ABLATION_DEVIATIONS.md`（#1、C-1）；资源 `V3_ABLATION_RESOURCES.md`（≈ 11.1 GPU-h）；统一表格 `V3_ABLATION_COMPARISON_TABLES.md`（表 1–10）；逐状态 / 逐候选数据 `experiment_*/results/*.csv`、`*_summary.json`；图 `experiment_*/figures/`。不训练、不改模型、不启动 V4；所有数字来自真实运行；Test-3 非盲，诊断均为 exploratory。
 
 ## 1. 一句话结论
 - **Experiment A**：室内（MP3D）一步选点的错误**主要不是预测**——所有学习模型（B2 / E2D / T0 / T1）的一步 regret 相同（0.11–0.12 pp），完美未来深度也只能降到 0.064，即约 57% 的 regret 来自 DistP1 评分 / 规划区域 / 候选空间；MP3D 中期停滞是**候选空间 / 视野限制**（合法候选的最优增益中位数仅 0.019 pp），不是预测或评分错误。室外（Macarons++）**预测误差占主导**（B2 的 regret 66% 可归因预测），V3 把它减半（T1 0.319 vs B2 0.468 pp，GTD 上限 0.160），但这一改善**没有兑现到闭环**（G3 AUC T1 0.712 vs B2 0.730）。
+- **Experiment C**（完整闭环，40 + 40 条 episode，同一 G3 协议）：**完美未来深度（C1 = GT 深度 + 同一 DistP1）不能提高 Final**——相对 B2，MP3D AUC +0.023 [−0.003, +0.065]、Final −0.017；Macarons++ AUC +0.011 [−0.008, +0.029]、Final −0.012，只有早期覆盖显著领先（Macarons++ Cov@20 +0.058 [+0.044, +0.072]）。**把 DistP1 换成真实单步增益（C2）才显著改善**：C2 − C1 MP3D Final +0.101 [+0.043, +0.195]、Macarons++ AUC +0.030 [+0.007, +0.052]；C2 − B2 MP3D AUC +0.066 / Final +0.085，Macarons++ AUC +0.040 [+0.034, +0.046]（6/0）。即便单步 oracle greedy，MP3D Final 也只有 0.615：任一时刻 70–75% 的剩余表面在规划区域外，停滞时合法候选最优增益中位数 0.03 pp 而被阻挡的邻居在 28–42% 的步里更好；Macarons++ 9–10% 的步没有任何候选能新增覆盖。**预测不是瓶颈，评分器与候选 / 视野才是。**
 - **Experiment B**：用同一候选 K = 4 样本的预测分歧选点（DepthU）**无效**：单独使用使 regret 恶化 65–200%；与 DistP1 归一化融合（λ = 1）在两个数据集的 dev 集上中性或更差；预注册 Gate 8 / 8 组合 FAIL，不进入 G3。唯一的正信号（T1、Macarons++、λ = 0.5：−0.023 pp [−0.051, −0.001]）属于敏感性设置，量级仅 P0 的 7%。
 
 ## 2. 做了什么（复用与新算）
@@ -50,3 +51,23 @@
 - 场景数少（MP3D 5 楼层、Macarons++ 6 场景），CI 宽；Test-3 非盲；状态池来自特定策略的轨迹（CL 含 MAGICIAN 轨迹的停滞态）；一步 oracle 不等于长期价值；B 的 α / λ 只用冻结值与两个敏感性值；B 未跑任何闭环。
 - 偏差 #1：回归比对改为"数值等同（相对 ≤ 1e-9 且 argmax 相同）"，原因是 GPU float64 归约顺序（EXP6 #10 同根因）；不影响任何指标。
 - 成本：≈ 4.8 GPU-h（打分）+ CPU 分析；无训练；gpu117 / gpu115 的既有分配，未新申请。
+
+## 7. Experiment C 结果（表 8–10；`../experiment_C_gtdepth_closed_loop/report/C_FINAL_REPORT.md`）
+| 数据集 | 指标 | B2 | T1 | E2D | **C1 GT depth + DistP1** | **C2 GT gain greedy** | C1 − B2 [CI] | C2 − C1 [CI] |
+|---|---|---:|---:|---:|---:|---:|---|---|
+| MP3D | AUC@150 | 0.334 | 0.331 | 0.364 | 0.357 | **0.400** | +0.023 [−0.003, +0.065]（4/1） | +0.043 [−0.004, +0.096]（4/1） |
+| MP3D | Final@150 | 0.530 | 0.508 | 0.553 | 0.513 | **0.615** | −0.017 [−0.060, +0.053]（1/4） | **+0.101 [+0.043, +0.195]**（5/0） |
+| Macarons++ | AUC@100 | 0.730 | 0.712 | 0.711 | 0.741 | **0.771** | +0.011 [−0.008, +0.029]（4/2） | **+0.030 [+0.007, +0.052]**（5/1） |
+| Macarons++ | Final@100 | 0.906 | 0.883 | 0.880 | 0.894 | **0.919** | −0.012 [−0.031, +0.002]（2/4） | +0.024 [−0.001, +0.054]（5/1） |
+| Macarons++ | Cov@20 | 0.572 | 0.566 | 0.570 | 0.630 | **0.655** | **+0.058 [+0.044, +0.072]** | +0.025 |
+- **R1**：C1 − B2 两个数据集都是"退化"（ΔFinal），C1 − T1 在 Macarons++ 上"有意义"（AUC +0.029 [−0.000, +0.074]、Cov@20 +0.063）；C1 的领先在 MP3D 于 Cov@100（+0.049）、Macarons++ 于 Cov@20 达峰后消失。
+- **R2**：同样拥有 GT，C2 显著优于 C1；C1 闭环内 Top-1 率仅 0.630 / 0.645，regret 集中在前 20% 步（室内 0.139 → 0.022 pp，室外 0.347 → 0.017）；系统性失败 colosseum 起点 0（Top-1 0.11，AUC 0.567 vs B2 0.740 / C2 0.779）。
+- **R3**：MP3D 剩余表面只有 25–29% 在规划区域内；C1 / C2 停滞窗口里 G\* 中位 0.03 pp、阻挡邻居优于合法集 28% / 42%；C2 停滞 episode 1 条（B2 4）但 Final 仍 0.615。Macarons++ G\* = 0 的步 273 / 3,000（C1）、315 / 3,000（C2），剩余表面 30–37% 不在任何候选射程内。
+- **R4**：C1 的闭环内一步 regret（0.068 / 0.113 pp）远低于 Experiment A 的 B2（0.112 / 0.468），Final 却与 B2 持平：regret 是早期现象、轨迹分叉放大早期差异（室内 regret 与 C2 − C1 增益相关 −0.15）、评分误差是场景级系统性的。固定状态 regret 的改善最多预示早期覆盖，不能换算为 Final。
+- 工程：G0 9 / 9（t\*、GTD、增益分别与 EXP5 / Experiment A 逐位一致；B2 回放逐位）；9,000 步状态哈希 / 执行一致性全部通过；偏差 C-1（哈希函数在覆盖为 0 时崩溃，修复后重跑 1 条）；5.97 GPU-h。
+
+## 8. A / B / C 合起来对 V4 的证据（更新 §5）
+1. **预测侧的闭环上限 ≈ 0（Final）/ +0.01–0.02（AUC，不显著）**：这是 C1 直接测出的数字。V4 若只换预测网络（3D U-Net + Cross-Attention），无论 scratch 还是 warm-start，在当前规划器下都不可能超过它。
+2. **评分器是第一杠杆**（C2 − C1：MP3D Final +0.10、Macarons++ AUC +0.03），且可零训练：用已存的 oracle / cq / 每步诊断离线拟合或规则化"与评估口径一致的增益估计"（去掉远距离 / 大面积偏置、按覆盖口径计数、评估相关表面），colosseum 起点 0 是首要测试用例。
+3. **候选 / 视野是第二杠杆，决定 Final**（R3）：整层 / 多区域评分、更长位移或目标驱动的多步前瞻；三次独立证据（EXP5 A1、Experiment A、Experiment C）指向同一结论。
+4. **Scratch vs Warm-start**：A / B / C 都没有给出区分证据；两者在固定状态与闭环上都 ≈ B2，差异来源在规划侧。建议先做 2–3 的零训练 counterfactual（同一固定状态 + 同一闭环协议），再决定是否投入大规模训练。

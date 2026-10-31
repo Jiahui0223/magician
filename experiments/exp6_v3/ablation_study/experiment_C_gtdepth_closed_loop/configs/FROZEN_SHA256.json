@@ -1,0 +1,27 @@
+{
+ "frozen_at": "2026-10-31 15:45:09",
+ "git_head_before_commit": "b0ee70f63729fbd32e7fdbf200b0a1c945ce9999",
+ "g0": "report/C_G0_VALIDATION.md ALL PASS",
+ "sha256": {
+  "protocol.md": "13aee20ac1287bd57433e7847d096df7dc3bd4746817af4f43481478ec9022a9",
+  "scripts/c_common.py": "27351405578c5223509877bf41de4c781428bb88775c57305d648c75b9f179eb",
+  "scripts/c_gt.py": "41dd2262305e8cffebdf0d00bc0b26d5ff94df17508c56d882ce61921064efb7",
+  "scripts/c_in_planner.py": "90153d8566d6149add9eae99a6aa0283836617c17e97bff23b5f84e36c15953a",
+  "scripts/c_in_sim.py": "805157643d978772b204ebd76d58e5327d531644c8873a3da8d0da3c0e4d180c",
+  "scripts/c_out_cov.py": "a781e9a7012224c11961e41980d0eb10b733d1ff0a16b9ffb9987ed766fd9e11",
+  "scripts/c_out_planner.py": "eafd263b5e2eb1613dc20e620e50929f40528ad84d7d4893008fdc2fb1ade2fb",
+  "scripts/c_out_sim.py": "571b17cc6c6bd3f6d3205721e6d08ed4cec5cafc77dc2dca120245d0bcdbb4e8",
+  "scripts/c_scoring.py": "2542910d52e050eab18b3c07a08615f2d5a2943cee88c3a5db5ecc24784d507c",
+  "scripts/run_queue_c.sh": "7749be67d8e0fd6d19f76fb6fa735e5504460e6d63730ffa450b6d9997de0ef0",
+  "tests/g0_check.py": "aaa887e6310e150448c6ab62eddc22cb742e1c29f90c07bc86cea59b9e2eac17",
+  "tests/g0_run.sh": "02a92635d7bb31c3dd35192200d664a00c48dd7295d93863cd9349f436146e4b",
+  "tests/test_c_rules.py": "f9e41746415753d289e1bf062847a32a8e8612715c29945bb6cd5b9c60ef34e1"
+ },
+ "amendments": [
+  {
+   "at": "2026-10-31 15:54:55",
+   "file": "scripts/c_gt.py",
+   "what": "OutdoorGT.state_hash: scene_coverage returns a plain float 0.0 when the official coverage is 0 (t = 0 of some starts) -> .item() crashed; fixed to accept both. Hash only; no score / choice / coverage code touched. Deviation C-1."
+  }
+ ]
+}

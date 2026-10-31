@@ -1,6 +1,6 @@
 # EXP6 V3 — 全局状态板（每次启动 / 结束一个运行就更新）
 
-**最近更新：2026-10-31 10:38（V3 + Ablation 全部完成）**
+**最近更新：2026-10-31 16:50（P7 Experiment C 完成；无运行中任务）**
 标记：✅ 完成 · 🔄 正在跑 · ⏳ 等待（排队或依赖前项）· ❌ 失败（后面跟修复行）· ⬜ 未开始
 
 ## 0. 此刻在跑什么
@@ -123,3 +123,11 @@
 | P6.A | Experiment A：Pool FX（365 状态）+ Pool CL（1,461 状态）上 B2 / E2D / T0 / T1 的 K=4 预测 + GTD + oracle 拆分 | ✅ 10:35（4.8 GPU-h）：MP3D 一步 regret 全模型 0.11–0.12 vs GTD 0.064（57% 评分 / 区域 / 候选）；停滞 = 候选空间限制（G\* 中位 0.019 pp）；Macarons++ B2 0.468 → T1 0.319（GTD 0.160），预测主导但未兑现到闭环 |
 | P6.B | Experiment B：DepthU 评分器 P0 / P1 / P2 固定状态 G2 → Gate → G3 | ✅ 10:40 阴性：P1 恶化 65–200%，P2（λ=1）中性或更差，Gate 8/8 FAIL → 不进 G3 |
 | P6.R | `reports/V3_ABLATION_SUMMARY.md` 等 + `[V3][ablation]` 提交 | ✅ 10:50 |
+
+## P7 Ablation Experiment C — GT-Depth Closed-Loop（2026-10-31 15:20 起；详细板 `ablation_study/STATUS.md` C 段）
+| 编号 | 内容 | 状态 |
+|---|---|---|
+| P7.0 | 协议 + 代码 + G0 9 / 9 PASS（`experiment_C_gtdepth_closed_loop/report/C_G0_VALIDATION.md`）| ✅ 15:44 |
+| P7.1 | C1（GT depth + DistP1）40 条闭环 → 阶段回复 | ✅ 16:10 / 16:25（MP3D AUC 0.357 vs B2 0.334、Final 0.513 vs 0.530；Macarons++ 0.741 / 0.894 vs 0.730 / 0.906；Cov@20 +0.058 显著）|
+| P7.2 | C2（GT gain greedy）40 条闭环 + 室外覆盖率 | ✅ 16:27（MP3D AUC 0.400 / Final 0.615；Macarons++ 0.771 / 0.919；C2 − C1 有意义）|
+| P7.3 | 分析 + 报告（`experiment_C_gtdepth_closed_loop/report/C_FINAL_REPORT.md`、`reports/V3_ABLATION_*` 更新）+ `[V3][ablation-c]` 提交；≈ 6.3 GPU-h | ✅ 16:50 |

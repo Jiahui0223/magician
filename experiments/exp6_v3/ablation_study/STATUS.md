@@ -1,13 +1,12 @@
 # EXP6 V3 Ablation — 状态板（每次启动 / 结束一个运行就更新）
 
-**最近更新：2026-10-31 10:34**
+**最近更新：2026-10-31 16:50（Experiment C 全部完成）**
 标记：✅ 完成 · 🔄 正在跑 · ⏳ 等待 · ❌ 失败 · ⬜ 未开始
 
 ## 0. 此刻在跑什么
 | 编号 | 内容 | 节点 / GPU | 作业 | 日志 | 开始 | 预计结束 |
 |---|---|---|---|---|---|---|
-| — | **无运行中任务**：A、B 的打分与分析均已完成（10:33）；剩余为报告与提交（CPU） | — | — | — | — | — |
-| A2-重跑 | 6 个回归失配状态原样重跑一次 | gpu117 GPU 0 | 3429774 | `logs/rerun1_fx_*.log` | 09:55 | ✅ 09:57：与本进程第一次逐位相同，与参照仍差 1e-12 → 偏差 #1（数值等同判定） |
+| — | **无运行中任务**：Experiment C 的闭环（16:24）、覆盖率回放（16:27）、分析与报告（16:45）均已完成；GPU 分配空闲（gpu117 3429774 至 11-01 14:50、gpu115 3435033 至 11-01 10:09） | — | — | — | — | — |
 
 ## AB0 审计与协议 — ✅
 | 编号 | 内容 | 状态 |
@@ -35,3 +34,16 @@
 
 ## R 总报告 — ✅（10:50）
 `reports/V3_ABLATION_SUMMARY.md`、`V3_ABLATION_COMPARISON_TABLES.md`（表 1–7，含 G3 参照与 MAG-G / MAG-B）、`V3_ABLATION_DEVIATIONS.md`（#1）、`V3_ABLATION_RESOURCES.md`（≈ 4.8 GPU-h）；提交 `[V3][ablation]`（A：`c170827`；B + 总报告：见最新提交）。
+
+## C Experiment C — GT-Depth Closed-Loop（任务书 2026-10-31 15:20；`experiment_C_gtdepth_closed_loop/`）
+| 编号 | 内容 | 状态 |
+|---|---|---|
+| C0.1 | 协议审计（t23 / v2_sim / t25 / s1_oracle / ab_score 的 GT 路径、候选、选择规则、覆盖定义）+ 资源核实（3429774 gpu117、3435033 gpu115 空闲；3435072 排队不用）| ✅ 15:35 |
+| C0.2 | `protocol.md` v1.0 起草（C1 / C2 定义、GT 旁路 cq 文件、诊断、统计、G0 九项、资源）| ✅ 15:40（G0 通过后冻结 `configs/FROZEN_SHA256.json` 15:45）|
+| C0.3 | 代码：`c_common / c_gt / c_in_sim / c_in_planner / c_out_sim / c_out_planner / c_scoring / c_out_cov / run_queue_c.sh`；CPU 单测 5 passed | ✅ 15:40 |
+| C0.4 | **G0**（`tests/g0_run.sh` + `g0_check.py` → `report/C_G0_VALIDATION.md`）：9 / 9 PASS（t\* 与 EXP5 逐位、GTD 与 Experiment A 逐位、增益与 oracle.npz 逐位、无泄漏、合法性、单调、确定性、B2 回放逐位（室内 5 步 / 室外 3 步）、冒烟 + 在线单调覆盖 = t25 回放）。第 1 轮唯一问题：子进程 P1 全量哈希每步 15 s → 改为 GPU 校验和（不影响分数）；室外最后一步执行一致性检查补上后第 2 轮 9 / 9 | ✅ 15:44 |
+| C1 | C1 GT depth + DistP1 全部 40 条闭环（10 MP3D × 150 步 + 30 Macarons++ × 100 步，含每步诊断）| ✅ 16:10（15:45 起，8 卡；室内均 387 s / 条、室外均 241 s / 条 ≈ 3.1 GPU-h；1 次失败 = 偏差 C-1（bridge 起点 0 的 t=0 覆盖为 0 使状态哈希崩溃，修复后从头重跑 ✅）；室外覆盖率回放 16:12 起另开 2 worker）|
+| C2 | C2 GT gain greedy 全部 40 条 | ✅ 16:24（室内均 112 s / 条、室外均 196 s / 条，0 失败）|
+| C3 | 室外覆盖率（`c_out_cov.py`，60 条）| ✅ 16:27（官方曲线回放 60 / 60 逐位相等；在线单调覆盖 = 回放）|
+| C4 | `c_analyze.py`：9 组配对统计、曲线、停滞 / 诊断汇总 → `report/{C_GTDEPTH_G3, C_ORACLE_GAIN_G3, C_FAILURE_CASES, C_FINAL_REPORT}.md`；更新 `reports/V3_ABLATION_*.md`（表 8–10、总结 §7–8、偏差 C-1、资源）| ✅ 16:45：C1 − B2 AUC +0.023 / +0.011（CI 含 0）、Final −0.017 / −0.012 → 退化；C2 − C1 MP3D Final +0.101 [+0.043, +0.195]、Macarons++ AUC +0.030 [+0.007, +0.052] → DistP1 是主要损失；C2 MP3D Final 仍只 0.615 → 候选 / 视野上限 |
+| C5 | 阶段回复（C1 完成后 16:25）→ 自动继续 C2 → 总报告 → `[V3][ablation-c]` 提交 | ✅ |

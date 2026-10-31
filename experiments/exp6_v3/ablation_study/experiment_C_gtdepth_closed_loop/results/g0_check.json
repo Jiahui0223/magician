@@ -1,0 +1,76 @@
+{
+ "checks": {
+  "1_single_view_gt": {
+   "pass": true,
+   "detail": "indoor t* shape (10, 7296) hit 0.991, legal == Pool CL t=0 True, t* == EXP5 oracle.npz bitwise True; outdoor shape (10, 7296) hit 1.000, legal == True, t* bitwise True"
+  },
+  "2_gtd_regression_vs_A": {
+   "pass": true,
+   "detail": "indoor bitwise True (max rel 0.0e+00, argmax same True); outdoor bitwise True (max rel 0.0e+00, argmax same True)"
+  },
+  "3_oracle_gain": {
+   "pass": true,
+   "detail": "indoor t=0 gains == oracle.npz True; outdoor mono True, official True; executed-candidate checks indoor {'C1': {'executed_sample_equal': 5, 'executed_gain_equal': 5, 'state_hash_equal': 5, 'pick_in_candidates': 5, 'n': 5}, 'C2': {'executed_sample_equal': 5, 'executed_gain_equal': 5, 'state_hash_equal': 5, 'pick_in_candidates': 5, 'n': 5}} outdoor {'C1': {'executed_sample_equal': 3, 'executed_official_equal': 3, 'executed_mono_equal': 3, 'state_hash_equal': 3, 'n': 3}, 'C2': {'executed_sample_equal': 3, 'executed_official_equal': 3, 'executed_mono_equal': 3, 'state_hash_equal': 3, 'n': 3}}"
+  },
+  "4_no_leakage": {
+   "pass": true,
+   "detail": "state hash unchanged at every query True; cq keys minimal True; guard denials 0; cq reads indoor cumulative per step [1, 2, 3, 4, 5], outdoor total 3; repeated-query identical True"
+  },
+  "5_legality": {
+   "pass": true,
+   "detail": "indoor pick in prefer-unvisited set every step True; outdoor pick < n_legal True"
+  },
+  "6_monotonicity": {
+   "pass": true,
+   "detail": "C_obs non-decreasing True; outdoor cov_mono non-decreasing True; official max drop C1 0.0000, C2 0.0000"
+  },
+  "7_determinism": {
+   "pass": true,
+   "detail": "indoor C1 twice identical True; outdoor C2 twice identical True"
+  },
+  "8_baseline_replay": {
+   "pass": true,
+   "detail": "indoor B2 5 moves: coverage+executed True, scores bitwise True; outdoor B2 3 moves: coverage+keys True, scores bitwise True"
+  },
+  "9_smoke": {
+   "pass": true,
+   "detail": "finite indoor True outdoor True; online mono == t25 replay True; official replay == stored True; walls indoor C1 16s C2 10s, outdoor C1 41s C2 38s"
+  }
+ },
+ "timing": {
+  "indoor": {
+   "C1": {
+    "decision_s": 1.0539419174194335,
+    "gt_query_s": 0.09947185516357422,
+    "diag_s": 0.6695365905761719,
+    "roundtrip_s": 1.1588374614715575,
+    "peak_gb_child": 7.896988868713379
+   },
+   "C2": {
+    "decision_s": 8.630752563476563e-06,
+    "gt_query_s": 0.6239398002624512,
+    "diag_s": 0.03723464012145996,
+    "roundtrip_s": 0.6278045177459717,
+    "peak_gb_child": 0.0
+   }
+  },
+  "outdoor": {
+   "C1": {
+    "decision_s": 0.2941693464914958,
+    "gt_query_s": 0.19548773765563965,
+    "diag_s": 1.461504856745402,
+    "peak_gb_child": 0.7968769073486328,
+    "sim_peak_gb": 3.163799285888672
+   },
+   "C2": {
+    "decision_s": 0.007316748301188151,
+    "gt_query_s": 1.4147294362386067,
+    "diag_s": 0.012553771336873373,
+    "peak_gb_child": 0.0,
+    "sim_peak_gb": 1.2043170928955078
+   }
+  }
+ },
+ "all_pass": true,
+ "g0_dir": "/bsuscratch/jiahuizhang/projects/occupancy/seen2scene/work_dirs/exp6_v3/ablation_study/experiment_C/g0"
+}
