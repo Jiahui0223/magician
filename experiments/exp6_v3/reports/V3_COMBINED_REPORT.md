@@ -1,6 +1,6 @@
 # EXP6 — V3 Combined Report: Simple 3D VAE vs 3D VAE + Cross-Attention
 
-> STATUS（2026-10-30 06:25）：**IN PROGRESS** — Phase 1 / 2 / 3（G0）完成，协议 v1.0 已冻结（06:10，提交 `7de02cc`），T0 训练运行中（06:19 起，gpu117 4 × L40S），T1 待 `train_chain.sh` 启动。本文件按 `../EXP6_V3_REPORT_TEMPLATE.md` 结构填写，每一节标注 `Completed / Running / Failed / Not Run / Exploratory`；所有数字只来自真实日志（路径随数字给出）。
+> STATUS（2026-10-30 16:40）：**IN PROGRESS** — Phase 1 / 2 / 3（G0）完成，协议 v1.0 已冻结（06:10，提交 `7de02cc`）；T0 训练运行中（06:24 起，gpu117，第 25.6k / 40k 步，预计 22:19 结束），T1 并行运行中（11:10 起，gpu115 作业 3435033，第 13.2k / 40k 步，预计 10-31 03:23 结束）；T0 结束后自动进入 `final.pt` 选择 + G3 闭环（偏差 #9），G1 / G2 在两组都结束后运行。本文件按 `../EXP6_V3_REPORT_TEMPLATE.md` 结构填写，每一节标注 `Completed / Running / Failed / Not Run / Exploratory`；所有数字只来自真实日志（路径随数字给出）。
 > 真相来源：`../protocol.md`、run manifests（`work_dirs/exp6_v3/task*/runs/*/run_*.json`）、checkpoints、G1/G2/G3 原始结果。
 
 ## 1. Executive Summary
