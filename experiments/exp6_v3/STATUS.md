@@ -1,6 +1,6 @@
 # EXP6 V3 — 全局状态板（每次启动 / 结束一个运行就更新）
 
-**最近更新：2026-10-31 09:44**
+**最近更新：2026-10-31 10:38（V3 + Ablation 全部完成）**
 标记：✅ 完成 · 🔄 正在跑 · ⏳ 等待（排队或依赖前项）· ❌ 失败（后面跟修复行）· ⬜ 未开始
 
 ## 0. 此刻在跑什么
@@ -115,11 +115,11 @@
 | P5.4 | 任务报告 `T{0,1}_G12.md`、`T{0,1}_G3.md`；`reports/V3_COMBINED_REPORT.md`、`V3_COMPARISON_TABLES.md`、`V3_RESOURCES.md` | ✅ 04:30 全部写完；最终决定：问题 1 No-Go（T0 闭环相对 B2 退化）、问题 2 Conditional Go（XAttn 小而一致的增量，MP3D 有意义）；主线不变 |
 | P5.5 | git 提交 `[V3][task0]`、`[V3][task1]`、`[V3][eval]` 并 push | ✅ `5c1b8ed` [task0]、`aa1cf2f` [task1]、[eval] 见最新提交 |
 
-## P6 Ablation Study（Experiment A GT-Depth Oracle Decomposition / Experiment B Depth Uncertainty Planner）— 🔄
+## P6 Ablation Study（Experiment A GT-Depth Oracle Decomposition / Experiment B Depth Uncertainty Planner）— ✅（2026-10-31 10:45）
 详细编号板：`ablation_study/STATUS.md`。协议 `ablation_study/protocol.md` v1.0（09:55 冻结）。不训练、不启动 V4。
 | 编号 | 内容 | 状态 |
 |---|---|---|
 | P6.0 | 资源 / 缓存审计（`experiment_A_gtdepth_oracle/report/CACHE_REUSE_AUDIT.md`）+ 协议冻结 | ✅ 09:55 |
-| P6.A | Experiment A：Pool FX（365 状态）+ Pool CL（1,461 状态）上 B2 / E2D / T0 / T1 的 K=4 预测 + GTD + oracle 拆分 | 🔄 冒烟中（09:43） |
-| P6.B | Experiment B：DepthU 评分器 P0 / P1 / P2 固定状态 G2 → Gate → G3 | ⬜ |
-| P6.R | `reports/V3_ABLATION_SUMMARY.md` 等 + `[V3][ablation]` 提交 | ⬜ |
+| P6.A | Experiment A：Pool FX（365 状态）+ Pool CL（1,461 状态）上 B2 / E2D / T0 / T1 的 K=4 预测 + GTD + oracle 拆分 | ✅ 10:35（4.8 GPU-h）：MP3D 一步 regret 全模型 0.11–0.12 vs GTD 0.064（57% 评分 / 区域 / 候选）；停滞 = 候选空间限制（G\* 中位 0.019 pp）；Macarons++ B2 0.468 → T1 0.319（GTD 0.160），预测主导但未兑现到闭环 |
+| P6.B | Experiment B：DepthU 评分器 P0 / P1 / P2 固定状态 G2 → Gate → G3 | ✅ 10:40 阴性：P1 恶化 65–200%，P2（λ=1）中性或更差，Gate 8/8 FAIL → 不进 G3 |
+| P6.R | `reports/V3_ABLATION_SUMMARY.md` 等 + `[V3][ablation]` 提交 | ✅ 10:50 |

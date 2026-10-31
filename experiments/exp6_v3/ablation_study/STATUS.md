@@ -1,12 +1,12 @@
 # EXP6 V3 Ablation — 状态板（每次启动 / 结束一个运行就更新）
 
-**最近更新：2026-10-31 10:29**
+**最近更新：2026-10-31 10:34**
 标记：✅ 完成 · 🔄 正在跑 · ⏳ 等待 · ❌ 失败 · ⬜ 未开始
 
 ## 0. 此刻在跑什么
 | 编号 | 内容 | 节点 / GPU | 作业 | 日志 | 开始 | 预计结束 |
 |---|---|---|---|---|---|---|
-| A4 / B2 | `a_analyze.py`（前台）与 `b_analyze.py`（后台，`logs/b_analyze.log`）在全部 1,676 状态上运行 | CPU（gpu117 节点） | — | `experiment_*/report/` | 10:27 | 10:35 |
+| — | **无运行中任务**：A、B 的打分与分析均已完成（10:33）；剩余为报告与提交（CPU） | — | — | — | — | — |
 | A2-重跑 | 6 个回归失配状态原样重跑一次 | gpu117 GPU 0 | 3429774 | `logs/rerun1_fx_*.log` | 09:55 | ✅ 09:57：与本进程第一次逐位相同，与参照仍差 1e-12 → 偏差 #1（数值等同判定） |
 
 ## AB0 审计与协议 — ✅
@@ -25,13 +25,13 @@
 | A4 | `a_analyze.py`：A1 / A2 / A3 表、拆分、停滞、高 regret、CI、图 → `A_FIXED_STATE.md`、`A_FAILURE_CASES.md`、`A_G0_VALIDATION.md` | ✅ 10:30：CL MP3D regret B2 0.112 / T1 0.114 / GTD 0.064（Δ/r_pred ≈ 0.43）；CL Macarons++ B2 0.468 / **T1 0.319** / GTD 0.160（B2 Δ/r_pred 0.66 → T1 0.50）；停滞 53 状态 G\* 中位 0.019 pp（候选空间 / 区域限制）；高 regret 状态 B2 20% / T1 16%，GTD 选对 57% / 48% |
 | A5 | 阶段报告一 | ✅ 10:35 |
 
-## B Experiment B — 🔄
+## B Experiment B — ✅（阴性结果，10:40）
 | 编号 | 内容 | 状态 |
 |---|---|---|
 | B1 | `b_scorer.py` 纯函数 + 单测 + `B_SCORE_AUDIT.md` | ✅ 10:00（2 passed；审计随 B2 生成） |
-| B2 | 固定状态 G2（P0 / P1 / P2 / RiskAware；B2、T1 主，T0 / E2D 对照）→ `B_FIXED_STATE.md` | 🔄 10:28 `b_analyze.py` 运行中（CPU） |
-| B3 | Gate 判定 → `B_DECISION.md`；通过则 G3 闭环 → `B_CLOSED_LOOP.md` | ⬜ |
-| B4 | 阶段报告二 | ⬜ |
+| B2 | 固定状态 G2（P0 / P1 / P2 / RiskAware；B2、T1 主，T0 / E2D 对照）→ `B_FIXED_STATE.md` | ✅ 10:33：P1 使 regret +65% ~ +200%（所有场景）；P2（λ=1）MP3D B2 −3.6% / T1 +40%，Macarons++ B2 +20% / T1 +5%；唯一正信号 T1 Macarons++ λ=0.5 −0.023 [−0.051, −0.001]（非冻结设置） |
+| B3 | Gate 判定 → `B_DECISION.md`；通过则 G3 闭环 → `B_CLOSED_LOOP.md` | ✅ 10:40：8 / 8 组合 FAIL → 不进入 G3，也不跑 exploratory 闭环（`B_CLOSED_LOOP.md` = Not Run） |
+| B4 | 阶段报告二 | ✅ 10:45 |
 
-## R 总报告 — ⬜
-`reports/V3_ABLATION_SUMMARY.md`、`V3_ABLATION_COMPARISON_TABLES.md`、`V3_ABLATION_DEVIATIONS.md`、`V3_ABLATION_RESOURCES.md`；提交 `[V3][ablation]`。
+## R 总报告 — ✅（10:50）
+`reports/V3_ABLATION_SUMMARY.md`、`V3_ABLATION_COMPARISON_TABLES.md`（表 1–7，含 G3 参照与 MAG-G / MAG-B）、`V3_ABLATION_DEVIATIONS.md`（#1）、`V3_ABLATION_RESOURCES.md`（≈ 4.8 GPU-h）；提交 `[V3][ablation]`（A：`c170827`；B + 总报告：见最新提交）。
