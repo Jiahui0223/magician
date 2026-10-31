@@ -1,0 +1,72 @@
+{
+ "formal": {
+  "B2_S1c": {
+   "model": "B2",
+   "scorer": "S1c",
+   "dataset": "outdoor"
+  },
+  "T1_S1c": {
+   "model": "T1",
+   "scorer": "S1c",
+   "dataset": "outdoor"
+  }
+ },
+ "exploratory": {
+  "T1_S2S3x": {
+   "model": "T1",
+   "scorer": "S2S3",
+   "dataset": "indoor",
+   "why": "T1 passes the dev gate alone (B2 fails (c) on one floor); labelled exploratory"
+  },
+  "B2_S2S3x": {
+   "model": "B2",
+   "scorer": "S2S3",
+   "dataset": "indoor",
+   "why": "B2 near-miss (rel -10.9 %, worst floor +101 %); closed loop run for information only"
+  },
+  "B2_FRbonus": {
+   "model": "B2",
+   "scorer": "S0",
+   "frontier": "bonus",
+   "lambda": 119.1,
+   "theta": 0.0,
+   "dataset": "indoor",
+   "why": "Experiment 2 R2 (pre-registered lambda)"
+  },
+  "B2_FRtrig": {
+   "model": "B2",
+   "scorer": "S0",
+   "frontier": "trigger",
+   "lambda": 0.0,
+   "theta": 75.3,
+   "dataset": "indoor",
+   "why": "Experiment 2 R2 (pre-registered theta)"
+  }
+ },
+ "rule": "frozen protocol \u00a73 G2: outdoor both models pass -> formal; indoor no variant passes both models -> no formal MP3D G3 for E1",
+ "gate_outdoor_both": [
+  "S1c"
+ ],
+ "gate_indoor_both": [],
+ "gate_indoor_T1": {
+  "S2h": -0.24756586483390605,
+  "S3": -0.23625429553264596,
+  "S2S3": -0.24778064146620846
+ },
+ "chosen_outdoor": "S1c",
+ "chosen_indoor_T1": "S2S3",
+ "at": "2026-10-31 17:51:29",
+ "sha256": {
+  "protocol.md": "ff22574e76ef8a5e31851e6a396515d1d8c1b0a1d4cfa55a924472342827a4ac",
+  "common/t2_planner_patch.py": "b7134ccd19635e5e497265e6ca2a43529bc0c0b49cc2f9a6abb9e4d23acde8c4",
+  "common/t2_frontier.py": "50c97474010f02ef9d35170d7d9b23d6138e25eeaf631ba40ade610b1090a680",
+  "common/t2_in_planner.py": "18bcf99040304d20762b6e947cc9bd17e29506320827973bf6f430cbd2f6de28",
+  "common/t2_out_planner.py": "ff4f891fcfe5258fe96630bb8fb19fb876c7caca6879cd0fd7ef3e335591ccfa",
+  "common/t2_in_sim.py": "abacb9bbcb1340ec684bf24db275b0c5eec14ce3b0634d0bfe2b5c6b2a684c62",
+  "common/t2_out_sim.py": "a5f1ba47daf5ddbc9d5dd3c8b9b19a87379c31fec6c3c05b6e376a2ccf0a3b1f",
+  "common/t2_out_cov.py": "7440b492af9e8b1d459eda194452d322c659c2e8e9c22353e322f9927feaae5f",
+  "common/run_queue_t2.sh": "db549518b485c0374557805164e09f48e558f369aca52c6235f913e4c21841b7",
+  "common/t2_scorers.py": "ed74584519bf54d7d97ab445ba74d0952e40f615c5911e0b9d5ff371c67b96ec"
+ },
+ "git_head": "aef10f3ff537940fd5555ff564bb69e193c597fb"
+}

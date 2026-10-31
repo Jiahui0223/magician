@@ -1,0 +1,17 @@
+{
+ "frozen_at": "2026-10-31 17:06:58",
+ "git_head": "aef10f3ff537940fd5555ff564bb69e193c597fb",
+ "stage": "E1 fixed-state scoring (GT + cached K=4 samples)",
+ "sha256": {
+  "protocol.md": "f3b39f68dd613e553d24f2da6077074fe1f980f8b367c40c7b5b009814849f27",
+  "common/t2_scorers.py": "ed74584519bf54d7d97ab445ba74d0952e40f615c5911e0b9d5ff371c67b96ec",
+  "exp1_coverage_scoring/scripts/e1_score_fixed.py": "a7d1d7424ea505fa6de71432198dafe2faafb84f874d6b32060a783d42d00efd",
+  "tests/test_scorers.py": "368bc4ba33f5978afd5bb053a9d30ba5131e443713dd9b9b549a1a4964b8e66c"
+ },
+ "amendments": [
+  {
+   "at": "2026-10-31 17:13:17",
+   "what": "cos_incidence returns the valid-normal mask instead of its count (unit-test need); numerics identical: the two smoke states re-scored after the change equal the running pass's JSON bitwise. test_scorers.py: oblique-wall expectation corrected (fallback cos = 1 on grazing rays is by design)."
+  }
+ ]
+}
