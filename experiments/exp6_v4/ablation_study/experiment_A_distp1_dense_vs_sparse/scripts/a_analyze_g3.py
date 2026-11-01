@@ -16,7 +16,7 @@ import analyze_g3_v4 as AV  # noqa: E402
 AG, T, G3 = AV.AG, AV.T, AV.G3
 A = os.path.join(REPO, "experiments", "exp6_v4", "ablation_study", "experiment_A_distp1_dense_vs_sparse")
 WA = os.path.join(REPO, "work_dirs", "exp6_v4", "ablation_study", "experiment_A", "eval")
-GRP = ("MAG-G", "MAG-B", "V2O", "B2", "E2D", "T1", "V31", "V4", "A1")
+GRP = ("MAG-G", "MAG-B", "V2O", "B0", "B2", "E2D", "T1", "V31", "V4", "A1")   # B0 needed by the reader's replay check
 PAIRS = (("A1", "V4"), ("A1", "B2"), ("A1", "E2D"), ("A1", "V2O"), ("A1", "V31"), ("A1", "T1"), ("A1", "MAG-G"), ("A1", "MAG-B"))
 LAB = dict(AV.LAB, V4="A0 = V4 SparseScore（S10 band_dil）", A1="A1 = V4 DenseScore（D100 band_dil）")
 COL = dict(AV.COL, A1="#f59f00")
