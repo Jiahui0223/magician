@@ -1,0 +1,14 @@
+{
+ "experiment": "EXP6 V4 Ablation A -- DistP1 scoring P1: S10 sparse (A0) vs D100 dense (A1)",
+ "checkpoint": "work_dirs/exp6_v4/checkpoints/final.pt",
+ "checkpoint_sha256": "1b31afffbe4da2d94344e0a509b711b30561a34bc4aa521773f1595aafac00d4",
+ "arms": {
+  "A0": {"name": "V4-SparseScore", "T3_P1_MODE": "b2", "model_input_p1": "D100 (P1FusionFull)", "scoring_band_dil": "S10 sparse twin (P1FusionB2.sparse, p1_full._patch_geometry_b2)", "source": "the V4 G3 run of 2026-11-01 (work_dirs/exp6_v4/eval, group V4); not re-run"},
+  "A1": {"name": "V4-DenseScore", "T3_P1_MODE": "full", "model_input_p1": "D100 (P1FusionFull)", "scoring_band_dil": "D100 (the same fusion's caster.band_dil)", "source": "new closed loops under work_dirs/exp6_v4/ablation_study/experiment_A/eval"}
+ },
+ "unchanged": ["V4 3D U-Net / ray encoder / RayXAttn / 2D flow and weights", "coarse-grid input, projection channels, decoding (geo.struct, dense t_known) -- identical in both modes", "K = 4, noise seeds, 10 Euler steps", "candidate generator, n_win = 5, R10 refresh, distance weight z0, unique-voxel dedup, legality", "episodes: MP3D 5 floors x 2 starts x 150, Macarons++ 6 scenes x 5 starts x 100"],
+ "single_variable": "caster.band_dil used by scoring.new_set_from_depth (via v2_plan_core.score_state): sparse-twin map (A0) vs dense map (A1); both built from the executed records only",
+ "fixed_state_sets": {"valsel": "MP3D VALSEL 90 states (B0 stratum)", "dev3": "Macarons++ Dev-3 275 states (B0 150 + B2 125)"},
+ "closed_loop_jobs": "work_dirs/exp6_v4/ablation_study/experiment_A/g3_jobs_A1.txt (40) + g3_cov_A1.txt (30)",
+ "decision_rule": "GO / NO-GO / INCONCLUSIVE from G3 (AUC, Final, Cov@20, paired scene bootstrap) with the Task 3 section-4 criteria; fixed-state gain only supporting"
+}

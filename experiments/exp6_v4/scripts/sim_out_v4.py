@@ -20,7 +20,7 @@ class Planner(T6S.PlannerClient):
                "--ckpt", os.path.join(C.REPO, g["checkpoint"]), "--sha256", g["sha256"]]
         env = T6.seen2scene_env(os.environ)
         env["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
-        env["T3_P1_MODE"] = "b2"
+        env["T3_P1_MODE"] = os.environ.get("V4_P1_MODE", "b2")      # b2 default (V4 G3); full = D100 scoring (Experiment A / A1)
         env["V4_CKPT"] = os.environ["V4_CKPT"]
         if a.planner_gpu is not None:
             env["CUDA_VISIBLE_DEVICES"] = str(a.planner_gpu)

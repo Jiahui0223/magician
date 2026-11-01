@@ -1,6 +1,6 @@
 # EXP6 V3.1 — 状态板（与 V4 共用一张板；正本在 `../exp6_v4/STATUS.md`，本文件为同步副本）
 
-**最近更新：2026-11-01 11:10（第一阶段全部完成：两组训练 + 双域 G3 + G1/G2 + 统一表 + 最终报告；无运行中任务；等待用户决定第二阶段）**
+**最近更新：2026-11-01 16:10（P6 Experiment A 运行中：固定状态 A0/A1 + A1 的 40 条 G3 在 gpu115 新作业 3443137 上）**
 标记：✅ 完成 · 🔄 正在跑 · ⏳ 等待 · ❌ 失败 · ⬜ 未开始
 
 ## 0. 此刻在跑什么
@@ -58,3 +58,14 @@
 ## P3 正式训练 — ✅（2026-10-31 20:47 启动，V4 11-01 01:07 / V3.1 10:10 结束；协议 §9 冻结于 20:46；两组均无 resume、无偏差）
 ## P4 冻结 checkpoint + G1/G2/G3 双域 — ✅（11-01 10:51；`report/G3_OUTDOOR.md`、`G3_INDOOR_ZEROSHOT.md`、`G1_G2_EVAL.md`；表 `reports/V4_COMPARISON_TABLES.md`）
 ## P5 报告 / Go-No-Go — ✅（11-01 11:10；`report/FINAL_REPORT.md` §5：MP3D 微调 Conditional Go、U0 Go（若要对 X-Attn 下结论）、延长 60k No-Go、n_win 独立决定；**全部等待用户决定，未启动**）
+
+## P6 Ablation Experiment A — DistP1 评分 S10（A0）vs D100（A1）— 🔄（用户任务书 2026-11-01 ~15:50；目录 `ablation_study/experiment_A_distp1_dense_vs_sparse/`）
+| 编号 | 内容 | 节点 / GPU | 作业 | 日志 | 状态 |
+|---|---|---|---|---|---|
+| P6.1 | 实现审计（调用链；唯一变量 = `caster.band_dil`）；`sim_{in,out}_v4.py` 加 `V4_P1_MODE`（默认 b2） | CPU | — | `report/A_IMPLEMENTATION_AUDIT.md` | ✅ |
+| P6.2 | G0：A0 3 步冒烟逐位复现存档 V4（两域）；A1 冒烟运行；单变量 GPU 测试（输入体 / 结构 / 粗网格逐位相同，band_dil 稀疏 903k vs 稠密 1,282k 体素） | gpu115 GPU 0–1 | 3443137（本地） | `work_dirs/exp6_v4/ablation_study/experiment_A/smoke/g0_check.json` | ✅ 16:00 PASS |
+| P6.3 | 固定状态 A0 / A1（VALSEL 90 + Dev-3 275；同一 V4 预测两种 band_dil；A0 与存档 V4 行逐位核对） | gpu115 GPU 0–3（与 P6.4 共用） | 3443137 | `.../experiment_A/logs/a_fixed_driver.log` | 🔄 16:01 起 |
+| P6.4 | A1 G3：10 MP3D + 30 Macarons++（`T3_P1_MODE=full`）→ 覆盖率 → `a_analyze_g3.py` | gpu115 GPU 0–3 | 3443137 | `.../experiment_A/logs/a_post.log` | 🔄 16:01 起 |
+| P6.5 | 报告 `A_FIXED_STATE.md`、`A_G3_RESULTS.md`、`A_FINAL_REPORT.md`（GO / NO-GO / INCONCLUSIVE） | CPU | — | | ⏳ |
+
+**GPU / 作业（16:00）**：3429774（gpu117）与 3435072 已到期；现用 3443137 `vscode-dev` gpu115 4 × L40S（到 11-04 ≈ 15:10）。

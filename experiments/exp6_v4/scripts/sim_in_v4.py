@@ -15,14 +15,15 @@ S, C, S2E = T23.S, T23.C, T23.S2E
 
 def child(group, key, tag, od, cfg):
     g = cfg["groups"][group]
-    env = dict(os.environ, LD_PRELOAD=f"{S2E}/lib/libtbb.so", LD_LIBRARY_PATH=f"{S2E}/lib", PYTHONPATH=S.REPO, T3_P1_MODE="b2",
+    mode = os.environ.get("V4_P1_MODE", "b2")                     # b2 = D100 input + sparse DistP1 (default, V4 G3); full = D100 for both (Experiment A / A1)
+    env = dict(os.environ, LD_PRELOAD=f"{S2E}/lib/libtbb.so", LD_LIBRARY_PATH=f"{S2E}/lib", PYTHONPATH=S.REPO, T3_P1_MODE=mode,
                PYTORCH_CUDA_ALLOC_CONF="expandable_segments:True")
     cmd = [f"{S2E}/bin/python", os.path.join(HERE, "v4_in_planner.py"), "--group", group, "--card", key, "--tag", tag,
            "--ckpt", os.path.join(C.REPO, g["checkpoint"]), "--sha256", g["sha256"], "--svc-dir", os.path.join(od, "svc")]
     p = subprocess.Popen(cmd, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=open(os.path.join(od, "planner.err"), "w"), text=True, env=env)
     hello = json.loads(p.stdout.readline())
     assert hello["ready"]
-    hello.setdefault("info", {}).update({"t3_p1_mode": "b2", "v4_ckpt": env["V4_CKPT"]})
+    hello.setdefault("info", {}).update({"t3_p1_mode": mode, "v4_ckpt": env["V4_CKPT"]})
     return p, hello
 
 

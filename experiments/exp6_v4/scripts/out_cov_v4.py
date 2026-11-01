@@ -8,7 +8,7 @@ EXP5 = os.path.join(os.path.dirname(os.path.dirname(HERE)), "exp5_future_view")
 sys.path.insert(0, os.path.join(EXP5, "task2", "scripts"))
 import t25_out_cov as T25  # noqa: E402
 
-W = os.path.join(T25.C.REPO, "work_dirs", "exp6_v4", "eval")
+W = os.environ.get("V4_EVAL_ROOT", os.path.join(T25.C.REPO, "work_dirs", "exp6_v4", "eval"))   # Experiment A sets its own root
 
 if __name__ == "__main__":
     grp = sys.argv[sys.argv.index("--grp") + 1]
