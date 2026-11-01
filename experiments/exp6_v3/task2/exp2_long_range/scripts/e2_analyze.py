@@ -47,12 +47,15 @@ def main():
          "评分 = t\\*（全网格）在区域出口 / 射程处截断，权重 min(1,(z/z0)²)（cap）或 (z/z0)²（area），新颖性相对历史 10% 采样点（hard = d_obs > eps；lin = clip(d_obs / 2eps)），体素去重；n_win 5 = 现行区域，7 / 9 = 扩大，0 = 整层（楼层框）。oracle 增益 = 整层 C_obs（复现断言 ≤ 1e-12）。均值 = 楼层均值的平均，CI = 楼层级 bootstrap。", ""]
     tab = {}
     for name, sub in (("全部", rows), ("停滞态（Experiment A 定义）", [r for r in rows if r["stall"]]), ("非停滞", [r for r in rows if not r["stall"]])):
-        L += [f"## {name}（{len(sub)} 状态）", "", "| 评分（区域 \\| 权重新颖性） | regret pp [CI] | Top-1 | Spearman |", "|---|---|---|---|"]
+        L += [f"## {name}（{len(sub)} 状态）", "", "| 评分（区域 \\| 权重新颖性） | 被选动作真实增益 pp [CI]（越大越好） | Top-1 | Spearman | regret pp（附录） |", "|---|---|---|---|---|"]
         tab[name] = {}
+        gs = hb(sub, lambda r: r["gstar_pp"])
         for k in keys:
             reg = hb(sub, lambda r, k=k: r["metrics"][k]["regret"]); top = hb(sub, lambda r, k=k: float(r["metrics"][k]["top1"])); rho = hb(sub, lambda r, k=k: r["metrics"][k].get("rho"))
-            tab[name][k] = {"regret": reg, "top1": top, "rho": rho}
-            L.append(f"| {k} | {D.fmt(reg)} | {D.fmt(top)} | {D.fmt(rho) if rho else '—'} |")
+            gp = hb(sub, lambda r, k=k: r["metrics"][k]["gmax"] - r["metrics"][k]["regret"])
+            tab[name][k] = {"regret": reg, "top1": top, "rho": rho, "gain_pick": gp}
+            L.append(f"| {k} | {D.fmt(gp)} | {D.fmt(top)} | {D.fmt(rho) if rho else '—'} | {D.fmt(reg)} |")
+        L.append(f"| Oracle 最优（上限） | {D.fmt(gs)} | 1 | — | 0 |")
         L += ["", "| 量 | n_win 5 | 7 | 9 | 整层 |", "|---|---|---|---|---|"]
         rem = {n: hb(sub, lambda r, n=n: r["remaining_in_region"][n]) for n in ("5", "7", "9")}
         bg = {n: hb(sub, lambda r, n=n: r["best_gain_in_region_share"][n]) for n in ("5", "7", "9")}
@@ -61,10 +64,10 @@ def main():
         tab[name]["remaining_in_region"] = rem; tab[name]["best_gain_share"] = bg
         L.append("")
     summary["R1"] = tab
-    L += ["## 逐楼层 regret（cap_hard）", "", "| 楼层 | n | n5 | n7 | n9 | 整层 |", "|---|---|---|---|---|---|"]
+    L += ["## 逐楼层：被选动作真实增益 pp（cap_hard；括号内 oracle 最优）", "", "| 楼层 | n | n5 | n7 | n9 | 整层 | oracle 最优 |", "|---|---|---|---|---|---|---|"]
     for s in sorted({r["scene"] for r in rows}):
         sub = [r for r in rows if r["scene"] == s]
-        L.append(f"| {s} | {len(sub)} | " + " | ".join(f"{np.mean([r['metrics'][k]['regret'] for r in sub]):.3f}" for k in ("n5|cap_hard", "n7|cap_hard", "n9|cap_hard", "n0|cap_hard")) + " |")
+        L.append(f"| {s} | {len(sub)} | " + " | ".join(f"{np.mean([r['metrics'][k]['gmax'] - r['metrics'][k]['regret'] for r in sub]):.3f}" for k in ("n5|cap_hard", "n7|cap_hard", "n9|cap_hard", "n0|cap_hard")) + f" | {np.mean([r['gstar_pp'] for r in sub]):.3f} |")
     open(os.path.join(REP, "E2_ROI_COUNTERFACTUAL.md"), "w").write("\n".join(L) + "\n")
     # ------------------------------------------------------------------ R3
     r3 = [json.load(open(f)) for f in glob.glob(os.path.join(WR3, "*.json"))]
@@ -98,14 +101,14 @@ def main():
     S = r2["summary"]
     L = ["# E2 — R2 Frontier-aware exploration（自动生成；离线部分：MP3D Pool CL 368 状态；闭环部分见 `E2_G3_RESULTS.md`）", "",
          f"frontier 图只用真实记录（`common/t2_frontier.py`）；FP ∈ {{−1, 0, +1}}；bonus λ = {S['lambda']}，trigger θ = {S['theta']}（预登记，VALSEL 上 B2 的分数分布）。oracle 只用于评估。", "",
-         "| 子集 | n | 触发率 | 选点 ≠ S0（bonus / trigger）| 一步 regret pp S0 / bonus / trigger | 被执行增益 pp S0 / bonus / trigger | 选到 FP > 0 动作的比例 S0 / bonus / trigger | 到最近可达 frontier 的路径距离（中位格）| 剩余表面在 frontier 3 m 内的份额 | G\\* 中位 pp |",
+         "| 子集 | n | 触发率 | 选点 ≠ S0（bonus / trigger）| 被执行动作的真实增益 pp S0 / bonus / trigger（越大越好）| 一步 regret pp S0 / bonus / trigger（附录）| 选到 FP > 0 动作的比例 S0 / bonus / trigger | 到最近可达 frontier 的路径距离（中位格）| 剩余表面在 frontier 3 m 内的份额 | G\\* 中位 pp |",
          "|---|---|---|---|---|---|---|---|---|---|"]
     for name, k in (("全部", "all"), ("停滞态", "stall"), ("非停滞", "non_stall"), ("触发态", "triggered")):
         if k not in S["tables"]:
             continue
         x = S["tables"][k]
         L.append(f"| {name} | {x['n']} | {(S['n_triggered'] / S['n_states']) if k == 'all' else '—'} | {x['pick_differs_from_S0']['bonus']:.2f} / {x['pick_differs_from_S0']['trigger']:.2f} | "
-                 f"{x['regret']['S0']['mean']:.3f} / {x['regret']['bonus']['mean']:.3f} / {x['regret']['trigger']['mean']:.3f} | {x['gain_pick']['S0']['mean']:.3f} / {x['gain_pick']['bonus']['mean']:.3f} / {x['gain_pick']['trigger']['mean']:.3f} | "
+                 f"{x['gain_pick']['S0']['mean']:.3f} / {x['gain_pick']['bonus']['mean']:.3f} / {x['gain_pick']['trigger']['mean']:.3f} | {x['regret']['S0']['mean']:.3f} / {x['regret']['bonus']['mean']:.3f} / {x['regret']['trigger']['mean']:.3f} | "
                  f"{x['fp_pick_pos']['S0']:.2f} / {x['fp_pick_pos']['bonus']:.2f} / {x['fp_pick_pos']['trigger']:.2f} | {x['dist_to_frontier_median']:.0f} | {x['remaining_share_near_frontier']:.3f} | {x['gstar_pp_median']:.3f} |")
     L += ["", "解读：frontier 导向的动作按构造牺牲当下的一步增益（bonus / trigger 的 regret 高于 S0）；它是否换来长期覆盖只能由闭环回答。'剩余表面在 frontier 3 m 内的份额' 低说明最近的 frontier 格附近往往没有多少未覆盖表面（frontier 图的 UNKNOWN 格多在走廊 / 边缘）。"]
     open(os.path.join(REP, "E2_FRONTIER_EXPLORATION.md"), "w").write("\n".join(L) + "\n")
@@ -117,7 +120,7 @@ def main():
     for name, col in (("全部", "#1c5cab"), ("停滞态（Experiment A 定义）", "#d62728")):
         vals = [tab[name][f"n{n}|cap_hard"]["regret"] for n in (5, 7, 9, 0)]
         ax.errorbar([5, 7, 9, 11], [v["mean"] for v in vals], yerr=[[v["mean"] - v["lo"] for v in vals], [v["hi"] - v["mean"] for v in vals]], marker="o", color=col, label=name.split("（")[0], capsize=3)
-    ax.set_xticks([5, 7, 9, 11]); ax.set_xticklabels(["n_win 5", "7", "9", "whole level"]); ax.set_ylabel("GT-depth one-step regret (pp)"); ax.set_title("R1: scoring region (GT depth, hard novelty)", loc="left"); ax.legend(fontsize=8); ax.grid(alpha=0.3)
+    ax.set_xticks([5, 7, 9, 11]); ax.set_xticklabels(["n_win 5", "7", "9", "whole level"]); ax.set_ylabel("GT-depth one-step regret (pp; lower = better)"); ax.set_title("R1: scoring region (GT depth, hard novelty)", loc="left"); ax.legend(fontsize=8); ax.grid(alpha=0.3)
     ax = axs[1]
     m1 = np.array([r["max1_pp"] for r in r3]); m2 = np.array([r["max2_pp"] for r in r3]); st = np.array([r["stall"] for r in r3])
     ax.scatter(m1[~st], m2[~st], s=8, alpha=0.5, color="#1c5cab", label="non-stall"); ax.scatter(m1[st], m2[st], s=14, color="#d62728", label="stall")
