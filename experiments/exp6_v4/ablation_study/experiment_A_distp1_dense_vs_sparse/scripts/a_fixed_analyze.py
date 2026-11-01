@@ -62,9 +62,9 @@ def recs_of(sset, rows):
             gp = g[loc[pk]]
             kn = r["known"][m]
             x.update({f"{m}_gain": float(gp), f"{m}_oracle": float(g.max()), f"{m}_top1": float(gp >= g.max() - EA.TAU), f"{m}_regret": float(g.max() - gp),
-                      f"{m}_score_mean": float(np.mean(s[C])), f"{m}_score_pick": float(s[pk]), f"{m}_known_frac": (1.0 - kn["n_new"] / kn["n_hit"]) if kn["n_hit"] else None,
+                      f"{m}_score_mean": float(np.mean(s[C])), f"{m}_pickscore": float(s[pk]), f"{m}_known_frac": (1.0 - kn["n_new"] / kn["n_hit"]) if kn["n_hit"] else None,
                       f"{m}_band_vox": float(r["band_vox"][m]), f"{m}_pick": picks[m]})
-        x["A1_diff_pick"] = float(picks["A1"] != picks["A0"])
+        x["A1_diffpick"] = float(picks["A1"] != picks["A0"])
         x["A1_gain_vs_A0"] = x["A1_gain"] - x["A0_gain"]
         x["A1_band_ratio"] = x["A1_band_vox"] / max(x["A0_band_vox"], 1.0)
         recs.append(x)
@@ -93,12 +93,12 @@ def main():
             Ssub = S[d][sub]
             if not Ssub.get("n_states"):
                 continue
-            for met, lab in (("gain", "被选 Camera 真实增益 pp"), ("oracle", "oracle 上限 pp"), ("top1", "Top-1"), ("score_mean", "平均 DistP1 分数"), ("score_pick", "被选候选 DistP1 分数"),
+            for met, lab in (("gain", "被选 Camera 真实增益 pp"), ("oracle", "oracle 上限 pp"), ("top1", "Top-1"), ("score_mean", "平均 DistP1 分数"), ("pickscore", "被选候选 DistP1 分数"),
                              ("known_frac", "预测 Hit 被判已知比例"), ("band_vox", "band_dil 体素数"), ("regret", "regret pp（附录）")):
                 p = Ssub["paired"].get(f"A1-A0|{met}")
                 L.append(f"| {sub} | {Ssub['n_states']} | {lab} | {f3(Ssub['means'].get(f'A0_{met}'))} | {f3(Ssub['means'].get(f'A1_{met}'))} | "
                          + (f"{f3(p)}（{p['lower']} / {p['higher']}）" if p else "—") + " |")
-            L.append(f"| {sub} | {Ssub['n_states']} | A0 / A1 选择不同的状态比例 | — | {f3(Ssub['means'].get('A1_diff_pick'))} | — |")
+            L.append(f"| {sub} | {Ssub['n_states']} | A0 / A1 选择不同的状态比例 | — | {f3(Ssub['means'].get('A1_diffpick'))} | — |")
         L += ["", "逐场景 被选增益 pp（全部状态）：" + "；".join(f"{k} A0 {S[d]['all']['per_scene']['A0_gain'][k]:.3f} / A1 {S[d]['all']['per_scene']['A1_gain'][k]:.3f}" for k in S[d]["all"]["per_scene"]["A0_gain"]),
               f"每状态时间（s）：预测 {S[d]['timing']['predict_s']:.2f}，稠密评分 {S[d]['timing']['score_dense_s']:.3f}，稀疏评分 {S[d]['timing']['score_sparse_s']:.3f}", ""]
     os.makedirs(os.path.join(A, "results"), exist_ok=True)
@@ -107,7 +107,7 @@ def main():
     print(json.dumps({d: {"n": S[d]["n"], "A0_gain": S[d]["all"]["means"]["A0_gain"]["mean"], "A1_gain": S[d]["all"]["means"]["A1_gain"]["mean"],
                           "A0_top1": S[d]["all"]["means"]["A0_top1"]["mean"], "A1_top1": S[d]["all"]["means"]["A1_top1"]["mean"],
                           "known_A0": S[d]["all"]["means"]["A0_known_frac"]["mean"], "known_A1": S[d]["all"]["means"]["A1_known_frac"]["mean"],
-                          "diff_pick": S[d]["all"]["means"]["A1_diff_pick"]["mean"], "repro": S[d]["repro_A0_eq_V4rows"]} for d in S}, indent=1))
+                          "diff_pick": S[d]["all"]["means"]["A1_diffpick"]["mean"], "repro": S[d]["repro_A0_eq_V4rows"]} for d in S}, indent=1))
 
 
 if __name__ == "__main__":
