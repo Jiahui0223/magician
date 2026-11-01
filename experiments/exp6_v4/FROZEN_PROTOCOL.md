@@ -1,6 +1,6 @@
 # EXP6 V4 / V3.1 第一阶段冻结协议 v1.0（Outdoor-only 预训练 + 双域 G1 / G2 / G3）
 
-> 草案 2026-10-31 20:10；**在全部关键 G0 通过后冻结**（冻结时间与配置 / 代码 sha256 写在文末 §9，之后的任何改动只能记入 `reports/V4_DEVIATIONS.md` / `exp6_v3.1/reports/V3_1_DEVIATIONS.md`）。依据：任务书 `exp6_v3/EXP6_V4_V3_1_OUTDOOR_FIRST_IMPLEMENTATION.md` §6–§8 与 `AUDIT_BASELINES.md`。
+> 草案 2026-10-31 20:10；**已于 2026-10-31 20:46:36 冻结（§9）**（冻结时间与配置 / 代码 sha256 写在文末 §9，之后的任何改动只能记入 `reports/V4_DEVIATIONS.md` / `exp6_v3.1/reports/V3_1_DEVIATIONS.md`）。依据：任务书 `exp6_v3/EXP6_V4_V3_1_OUTDOOR_FIRST_IMPLEMENTATION.md` §6–§8 与 `AUDIT_BASELINES.md`。
 
 ## 1. 数据（两组相同）
 | 项 | 定义 |
@@ -57,4 +57,4 @@ V2 Original 不是 V4 的严格对照（稀疏输入、60k、无开关）。X-At
 - 未经用户确认不启动 MP3D 微调、U0、n_win 闭环、Flow 改造。
 
 ## 9. 冻结记录
-（G0 通过后填写：时间、`configs/FROZEN_SHA256.json` 内容、代码 git SHA。）
+（冻结 2026-10-31 20:46:36，G0 全部通过后；代码 git SHA `f57be9ac8ec89d36b9e2da96bd85e8dfafe83770`（提交 `[V4][setup]`，作用域内无未提交改动：True）。配置 / 代码 sha256 记录：`configs/FROZEN_SHA256.json`（V4，15 个文件）与 `../exp6_v3.1/configs/FROZEN_SHA256.json`（V3.1，14 个文件）。关键哈希：`model_v4.json` `d2537315a6c628e7…`，`outdoor_train.json`（V4）`a3d0bd22edd4fb8c…`，`model_v3_1.json` `680e872a25199c7f…`，`outdoor_train.json`（V3.1）`ff6ea9145df779a0…`，`seen2scene/futureview/model.py` `9a30386b167e1c21…`。自此之后的改动只能记入 `reports/V4_DEVIATIONS.md`。）

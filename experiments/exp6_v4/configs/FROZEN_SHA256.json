@@ -1,0 +1,26 @@
+{
+ "records": [
+  {
+   "frozen_at": "2026-10-31 20:46:36",
+   "git_sha": "f57be9ac8ec89d36b9e2da96bd85e8dfafe83770",
+   "git_dirty_in_scope": false,
+   "files": {
+    "experiments/exp6_v4/configs/model_v4.json": "d2537315a6c628e76df5a977930bdffd4ef8e1665286140eb9c305183aff7223",
+    "experiments/exp6_v4/configs/outdoor_train.json": "a3d0bd22edd4fb8c63e091258b2f4668e0aa090e3008051c0df17b38dc9ee7d1",
+    "experiments/exp6_v4/scripts/train_v4.py": "153d238d3c370d87a9627f6d97bf91e341f2238d46ec8151f8a726b130209e9a",
+    "experiments/exp6_v4/scripts/v4_paths.py": "341e54f7ddf942eb23ec7ed1810c7505baf6ef3e3f301aad7a0f42673f0277ce",
+    "experiments/exp6_v4/FROZEN_PROTOCOL.md": "c9383fda4b45ade2ffff0f309e68142bfb5109c96641588518c56ffc70eddc63",
+    "seen2scene/futureview/model.py": "9a30386b167e1c2119b63a2f97d916052b3e7ac633be42039cd56b1392603951",
+    "seen2scene/futureview/geometry.py": "3557907af8f3e3ebd8955010dfe93997dcca0827fc97695a3e74dd293a4b069e",
+    "seen2scene/futureview/rays.py": "709547effce57954eb8a824d6b07eb63f396be46bf284ba4dabc98e288267318",
+    "seen2scene/futureview/predictor.py": "4d8cf90946e02fe32d0da0c41b91c81ef2918a70afa8528b1e63cc9dbae245d4",
+    "seen2scene/futureview/scoring.py": "d35a8c75f4e5e693a00aac1b15d5ae928fcab2cb6c4fced03db7528ddd796889",
+    "experiments/exp5_future_view/task1/scripts/v2_data.py": "a8f84acd5ed8d6bd33050a4d24e756be045686a5cb6de40fb1f42cfc48421ba8",
+    "experiments/exp5_future_view/task1/scripts/t12_train.py": "23ce11cca90999ef1d6224298094fb9f7c66d72001d7a170b630e5fdae28d145",
+    "experiments/exp5_future_view/task2/scripts/t22_data.py": "504b87f2dfa2bca90523061b5b61619a173363f74d820ac474098038bf5a59df",
+    "experiments/exp5_future_view/task1/configs/data_v1.json": "b5a3472296a110ad8f0c579f243dd33bd52bf33d6eaf54a5a5281e8759307882",
+    "experiments/exp5_future_view/task1/frozen_values.json": "84c1d79612415b926861e5d0dc5c1aa4d10197792c6bdacdcfc0dfd6363a9d4b"
+   }
+  }
+ ]
+}

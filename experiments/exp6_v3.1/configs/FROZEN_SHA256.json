@@ -1,0 +1,25 @@
+{
+ "records": [
+  {
+   "frozen_at": "2026-10-31 20:46:36",
+   "git_sha": "f57be9ac8ec89d36b9e2da96bd85e8dfafe83770",
+   "git_dirty_in_scope": false,
+   "files": {
+    "experiments/exp6_v3.1/configs/model_v3_1.json": "680e872a25199c7f6c6076c80325cafe736c6ac4850b20172b882fe2e0608b26",
+    "experiments/exp6_v3.1/configs/outdoor_train.json": "ff6ea9145df779a058a80b8e1829034c4afdf46dd0874b4c5d2a1160db064a93",
+    "experiments/exp6_v3.1/scripts/trainer_outdoor.py": "ffde677236421a5620094e2e1a3f8bcfb232b2e580f5fa57ae7bb6e4f7a3d4fa",
+    "experiments/exp6_v3.1/scripts/train.py": "972cf87f5d3a00ad3661131b0996dd074c6c71fda788a6ed37af9378511e04ea",
+    "experiments/exp6_v3.1/FROZEN_PROTOCOL.md": "7faad0d622ccd6a244d793a351d9806f33fb18c7a94eb00457b94707b11c80e4",
+    "seen2scene/v3/model.py": "6d8352cf8e80c4096d0c0697bfdbc3c76a19d01328329531bd7af3978c5ce910",
+    "seen2scene/v3/vae.py": "211c4bdae5cc07d66ae78313b21569abb021d6186be80ffc4b502c7978030b78",
+    "seen2scene/v3/data.py": "0f5e148004502f471f179020b13b218c4d0c4d43577b2d853928ce032c6b89e8",
+    "seen2scene/v3/losses.py": "dd190a91e7efb95885487cda2c48a3994e4e4e484104ab55ddc794f400ad7a46",
+    "seen2scene/v3/trainer.py": "43d498e86d90fe084a321a0ed09e927b58ef30949c540bfcc2efce227de8e720",
+    "seen2scene/v3/partial_tsdf.py": "787c5130daa210e65b42963a31e1822693dff47c2c18a79a87d633b07b152c7a",
+    "seen2scene/v3/flow_unet.py": "8226becd439860a274d17bdc6bf72c0db7356a1304fbccad4b5afe2d09fe3e7a",
+    "seen2scene/v3/eval_dev.py": "cfe7282b31e481114624d33cfd99348fdd0a0875aea56079db0cb79ea064e821",
+    "seen2scene/futureview/model.py": "9a30386b167e1c2119b63a2f97d916052b3e7ac633be42039cd56b1392603951"
+   }
+  }
+ ]
+}
