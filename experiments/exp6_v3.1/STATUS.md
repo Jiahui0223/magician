@@ -1,15 +1,16 @@
 # EXP6 V3.1 — 状态板（与 V4 共用一张板；正本在 `../exp6_v4/STATUS.md`，本文件为同步副本）
 
-**最近更新：2026-11-01 02:20（V4 的 G3 + G1/G2 全部完成；V3.1 训练运行中，17,950 步）**
+**最近更新：2026-11-01 10:20（V3.1 训练完成；V3.1 的 G3 在 gpu117 + gpu115 共 8 worker 运行中）**
 标记：✅ 完成 · 🔄 正在跑 · ⏳ 等待 · ❌ 失败 · ⬜ 未开始
 
 ## 0. 此刻在跑什么
 | 编号 | 内容 | 节点 / GPU | 作业 | 日志 | 开始 | 状态 |
 |---|---|---|---|---|---|---|
 | P3-V4 | **V4 Outdoor-only 正式训练**（40k 步，64 视角 / 8 状态 / 步，lr 2e-4，固定 EMA@40k；`train_v4.sh`，torchrun 4 卡） | gpu115 GPU 0–3 | 3435033（步 .9 `v4-train`） | `work_dirs/exp6_v4/logs/train.log`、`runs/main/{log,eval}.jsonl` | 20:47 | ✅ 11-01 01:07 EXIT 0，40,000 步；均值 0.472 s/步、峰值 18.4 GB/卡，墙钟 4.34 h ≈ 17.3 GPU-h；S-c ES 7.23 (5k) → 3.74 (40k)；final.pt = EMA@40k sha `1b31afff…`；报告 `report/OUTDOOR_TRAINING.md` |
-| P3-V3.1 | **V3.1 Outdoor-only 正式训练**（40k 步，64 视角 / 8 状态 / 步，accum 2，lr 1e-4，固定 EMA@40k；`train_v31.sh`） | gpu117 GPU 0–3 | 3429774（本地 setsid，manifest job None） | `work_dirs/exp6_v3_1/logs/train.log`、`runs/main/{log,eval}.jsonl` | 20:47 | 🔄 git `4cef0f8` clean；第 0 步评估 20:50 完成；前 100 步实测 **1.25 s/步**、峰值 23.4 GB/卡（40k 步纯训练 ≈ 13.9 h + 9 次评估；gpu117 分配 11-01 14:50 到期，不足则从 `ckpt_last.pt` resume 并记偏差） |
+| P3-V3.1 | **V3.1 Outdoor-only 正式训练**（40k 步，64 视角 / 8 状态 / 步，accum 2，lr 1e-4，固定 EMA@40k；`train_v31.sh`） | gpu117 GPU 0–3 | 3429774（本地 setsid，manifest job None） | `work_dirs/exp6_v3_1/logs/train.log`、`runs/main/{log,eval}.jsonl` | 20:47 | ✅ 11-01 10:10 EXIT 0，40,000 步；均值 1.29 s/步、峰值 23.4 GB/卡，墙钟 13.39 h ≈ 53.6 GPU-h；S-c ES 8.88 (5k) → 6.19 (40k)，active units 16/16（无后验坍缩，KL/unit 0.38）；final.pt = EMA@40k sha `13df0a45…`；报告 `../exp6_v3.1/report/OUTDOOR_TRAINING.md` |
 | P4-V4 链 | `post_arm_v4.sh v4`：等 `EXIT 0` → `select_final.py v4`（固定 EMA@40k → `checkpoints/final.pt`）→ 2 步冒烟 → V4 的 G3（10 MP3D + 30 Macarons++，4 worker）→ 室外覆盖率 | gpu115 | 3435033（步 .10 `v4-post`） | `work_dirs/exp6_v4/logs/post_v4.log` | 01:07 | ✅ 01:58 完成：final.pt（EMA@40k）→ 冒烟 OK → 10 室内 + 30 室外 + 30 覆盖率，0 失败（≈ 3.3 GPU-h）；V4 单组临时表 `reports/g3_v4_interim_v4.md`（正式表等 V3.1） |
-| P4-V3.1 链 | `post_arm_v4.sh v31`：同上，V3 规划器路径 | gpu117 | 3429774 | `work_dirs/exp6_v4/logs/post_v31.log` | 20:47 | ⏳ |
+| P4-V3.1 链 | `post_arm_v4.sh v31`：等 `EXIT 0` → final.pt（EMA@40k）→ 冒烟 → V3.1 的 G3（4 worker）→ 覆盖率 | gpu117 | 3429774（到期 14:50） | `work_dirs/exp6_v4/logs/post_v31.log` | 10:10 | 🔄 final.pt 10:11 发布、冒烟 OK、G3 队列 10:12 起（与 gpu115 共 8 worker） |
+| P4-V3.1 辅助链 | `post_v31_helper.sh`：等冒烟 OK → 加入 V31 的 G3 队列（4 worker，claim 共享）→ 等 40 条闭环齐 → 覆盖率 → 等 `POST V31 DONE` → `run_g12_arm.sh v31` → `analyze_g12_v4`（合并两组）→ `analyze_g3_v4` → `training_summary v31` → `make_tables_v4` | gpu115 | **3435072**（10:00 启动，24 h） | `work_dirs/exp6_v4/logs/post_v31_helper.log` | 10:03 | 🔄 |
 | P4-G12 | 改为按组分跑：`run_g12_arm.sh v4`（V4 + B2 回放，tag `s_final_v4`）现在在 gpu115 跑；`run_g12_arm.sh v31` 等 V3.1 final.pt 后跑；`analyze_g12_v4.py --tag s_final_v4 --tag31 s_final_v31` 合并（同状态 / 候选 / 噪声） | gpu115 | 3435033（步 .11 取消，新步 `v4-g12`） | `work_dirs/exp6_v4/logs/run_g12_v4.log` | 02:01 | ✅ V4 部分 02:15 完成（365 状态，B2 回放 0 差异，≈ 0.9 GPU-h）；V3.1 部分待 final.pt |
 | G0-V4 | V4 冒烟链：overfit（GPU 0）‖ 单卡 resume A/B（GPU 1）→ 4 卡 1k short | gpu115 | 3435033（ssh） | `work_dirs/exp6_v4/logs/{g0,smoke_overfit,resume_*,smoke_short}.log` | 20:19 | ✅ 20:44 全部通过（overfit drop 0.927 / sign 0.976；resume 精确；1k short 1.77 → 0.128，0.360 s/步，10.6 GB） |
 | G0-replay | 冻结规划器 2 步回放（T0 / V2M × 室内 / 室外） | gpu117 GPU 1–2 | 3429774 | `work_dirs/exp6_v4/eval/g0_replay/` | 20:28 | ✅ 20:29 4/4 逐位 PASS |
@@ -19,8 +20,8 @@
 | 作业 | 节点 | 到期 | 用途 |
 |---|---|---|---|
 | 3429774 `vscode-dev` | gpu117 4 × L40S | 11-01 ≈ 15:49 | V3.1 G0 + 正式训练（更长的分配给更慢的 V3.1） |
-| 3435033 `exp6-v3-aux` | gpu115 4 × L40S | 11-01 ≈ 11:09 | V4 G0 + 正式训练 + V4 的 G3 |
-| 3435072 `exp6-v3-aux2` | 排队（24 h） | — | 任一作业结束后启动；用于 resume / G3 |
+| 3435033 `exp6-v3-aux` | gpu115 4 × L40S | 已于 11-01 10:00 结束 | V4 G0 + 正式训练 + V4 的 G3 + V4 的 G1/G2（全部完成） |
+| 3435072 `exp6-v3-aux2` | gpu115 4 × L40S（24 h） | 11-02 ≈ 10:00 | 10:00 启动：V3.1 的 G3 辅助、G1/G2、统一分析 |
 
 ## P0 审计 — ✅（2026-10-31 19:55–20:10）
 | 编号 | 内容 | 状态 |
@@ -54,6 +55,6 @@
 | G0-11 | 基线回放 | ✅ 开关关闭逐位；✅ 规划器回放 4/4 | ✅ 规划器回放 4/4 |
 | G0-12 | 吞吐 1k | ✅ 0.360 s/步、10.6 GB（小场景子集） | ✅ 0.397 s/步、4.1 GB（小场景子集） |
 
-## P3 正式训练 — 🔄（2026-10-31 20:47 启动；协议 `FROZEN_PROTOCOL.md` §9 冻结于 20:46）
-## P4 冻结 checkpoint + G1/G2/G3 双域 — ⬜
+## P3 正式训练 — ✅（2026-10-31 20:47 启动，V4 11-01 01:07 / V3.1 10:10 结束；协议 §9 冻结于 20:46；两组均无 resume、无偏差）
+## P4 冻结 checkpoint + G1/G2/G3 双域 — 🔄（V4 全部完成；V3.1 G3 运行中）
 ## P5 报告 / Go-No-Go — ⬜（第二阶段 MP3D 微调、U0、n_win 闭环均不自动启动）
