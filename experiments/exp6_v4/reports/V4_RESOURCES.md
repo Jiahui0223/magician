@@ -7,3 +7,4 @@
 | 2026-10-31 | G0 冒烟 V4（overfit 200 步 1 卡 6 min ‖ resume A/B1/B2 1 卡 ≈ 10 min → 4 卡 1k short） | gpu115 | 见 `report/G0_VALIDATION.md` |
 | 2026-10-31 | G0 冒烟 V3.1（overfit 1 卡 1 min → profile 4 卡 1 min → resume A/B 4 卡 → 1k short 4 卡） | gpu117 | |
 | 2026-10-31 | 规划器回放冒烟（4 × 2 步） | gpu117 2 × L40S，3 min | |
+| 2026-10-31/11-01 | **V4 正式训练**（40k 步） | gpu115 4 × L40S（作业 3435033），20:47 → 01:07，墙钟 4.34 h ≈ **17.3 GPU-h**（0.472 s/步 + 16 次评估；峰值 18.4 GB/卡） | EXIT 0 |

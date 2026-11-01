@@ -52,6 +52,17 @@ T.GRP = GRP
 
 
 def main():
+    global GRP, PAIRS
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--groups", nargs="*", default=None, help="interim: subset of groups (e.g. without V31); pairs restricted accordingly")
+    ap.add_argument("--suffix", default="")
+    a = ap.parse_args()
+    if a.groups:
+        GRP = tuple(g for g in GRP if g in a.groups)
+        PAIRS = tuple((x, y) for x, y in PAIRS if x in GRP and y in GRP)
+        T.GRP = GRP
+    primary = f"{PAIRS[0][0]}-{PAIRS[0][1]}"
     os.makedirs(OUT, exist_ok=True)
     os.makedirs(FIG, exist_ok=True)
     T.ST.setup()
@@ -73,9 +84,9 @@ def main():
               "outdoor": [{"scene": r["scene"], "start": r["start"], "split": r["split"], **{g: {k: r[g][k] for k in ("auc", "final", "cov20", "hover", "time_per_move", "peak_gb")} for g in GRP}} for r in rows_out]}
     res = {"groups": list(GRP), "sources": SRC, "B0_equals_task2": {"indoor": sum(r["B0_equals_task2"] for r in rows_in), "outdoor": sum(r["B0_equals_task2"] for r in rows_out)},
            "pairs": {k: {d: {"paired": v[d]["paired"], "criteria": v[d]["criteria"]} for d in ("indoor", "outdoor")} for k, v in P.items()},
-           "means": {d: P["V4-V31"][d]["means"] for d in ("indoor", "outdoor")}, "stall_mp3d": st, "decisions": dec,
-           "per_scene": {d: P["V4-V31"][d]["per_scene"] for d in ("indoor", "outdoor")}, "per_episode": per_ep}
-    json.dump(res, open(os.path.join(OUT, "g3_v4.json"), "w"), indent=1, default=float)
+           "means": {d: P[primary][d]["means"] for d in ("indoor", "outdoor")}, "stall_mp3d": st, "decisions": dec,
+           "per_scene": {d: P[primary][d]["per_scene"] for d in ("indoor", "outdoor")}, "per_episode": per_ep}
+    json.dump(res, open(os.path.join(OUT, f"g3_v4{a.suffix}.json"), "w"), indent=1, default=float)
     f = T.fmt
     L = ["# V4 / V3.1 G3 闭环（自动生成，`exp6_v4/scripts/analyze_g3_v4.py`；均值 = 场景 / 楼层均值的平均，[CI] = 场景级 bootstrap 95 %）", "",
          "| 数据集 | 组 | 训练来源 / P1 口径 | AUC | Final | Cov@20 | Cov@50 | 每步时间 s* | 峰值显存 GB |", "|---|---|---|---|---|---|---|---|---|"]
@@ -95,7 +106,7 @@ def main():
         for s, v in res["per_scene"][d].items():
             L.append(f"- {s}: " + "，".join(f"{g} {v[g]['auc']:.3f} / {v[g]['final']:.3f} / {v[g]['cov20']:.3f}" for g in GRP))
     L += ["", "MP3D 中期停滞 episode 数（/ 10）：" + "，".join(f"{g} {st[g]['episodes_with_stall']}" for g in GRP)]
-    open(os.path.join(OUT, "g3_v4.md"), "w").write("\n".join(L) + "\n")
+    open(os.path.join(OUT, f"g3_v4{a.suffix}.md"), "w").write("\n".join(L) + "\n")
     plt = AG.plt
     fig, axs = plt.subplots(1, 2, figsize=(15, 5))
     for ax, rows, nm, xmax in ((axs[0], rows_in, "MP3D zero-shot (C_obs), 10 episodes", 150), (axs[1], rows_out, "Macarons++ (monotone coverage), 30 episodes", 100)):
@@ -111,7 +122,7 @@ def main():
         T.ST.clean(ax, "both")
     fig.suptitle("EXP6 V4 / V3.1 G3: Outdoor-only scratch arms (solid, thick) vs Mixed V3 (solid), Mixed-FT V2 (dashed), Task 2 references (dotted); measured", x=0.01, ha="left", fontsize=10)
     fig.tight_layout()
-    fig.savefig(os.path.join(FIG, "g3_v4_coverage_curves.png"))
+    fig.savefig(os.path.join(FIG, f"g3_v4{a.suffix}_coverage_curves.png"))
     plt.close(fig)
     print(json.dumps({k: v["verdict"] for k, v in dec.items()}))
 
