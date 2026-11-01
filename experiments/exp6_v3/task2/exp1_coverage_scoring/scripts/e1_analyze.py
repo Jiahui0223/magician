@@ -71,7 +71,9 @@ def load():
                 key = f"{src}|{v}"
                 r["picks"][key], r["fallback"][key] = int(pk), bool(fb)
                 r["metrics"][key] = D.rank_metrics(s[r["cand"]], g, r["cand"].index(pk))
+                r["metrics"][key]["gain_pick"] = r["metrics"][key]["gmax"] - r["metrics"][key]["regret"]      # true coverage gain of the pick, pp
         r["random"] = D.random_reference(g)
+        r["random"]["gain_pick"] = float(g.mean() * 100)
         r["gstar"] = float(g.max() * 100)
     recs.sort(key=lambda r: (r["dataset"], r["pool"], r["scene"], r["start"], r["episode"], r["t"]))
     return recs
@@ -86,24 +88,24 @@ def scene_vals(recs, key, metric):
 
 
 def table(recs, src, variants, title):
-    L = [f"### {title}（{len(recs)} 状态）", "", "| 评分器 | Spearman(score, G) | Top-1（τ） | Pairwise | regret pp [CI] | 归一化 regret | Δregret vs S0 [CI]（场景配对；负 = 更好） | 场景 更好/更差 | fallback |", "|---|---|---|---|---|---|---|---|---|"]
-    s0 = scene_vals(recs, f"{src}|S0", "regret")
+    L = [f"### {title}（{len(recs)} 状态）", "", "| 评分器 | 被选动作的真实覆盖增益 pp [CI]（越大越好） | Δ增益 vs S0 [CI]（场景配对；正 = 更好） | 场景 更好/更差 | Top-1 命中率 | Spearman(score, G) | Pairwise | regret pp（附录） | fallback |", "|---|---|---|---|---|---|---|---|---|"]
+    s0g = scene_vals(recs, f"{src}|S0", "gain_pick")
     for v in variants:
         key = f"{src}|{v}"
         if any(key not in r["metrics"] for r in recs):
             continue
-        rho, top1, pw, reg, nreg = (agg(recs, key, m) for m in ("rho", "top1", "pairwise", "regret", "nregret"))
-        p = D.paired(scene_vals(recs, key, "regret"), s0) if v != "S0" else None
+        rho, top1, pw, reg, gp = (agg(recs, key, m) for m in ("rho", "top1", "pairwise", "regret", "gain_pick"))
+        p = D.paired(scene_vals(recs, key, "gain_pick"), s0g) if v != "S0" else None
         fb = sum(r["fallback"][key] for r in recs)
-        L.append(f"| {v} | {D.fmt(rho) if rho else '—'} | {D.fmt(top1)} | {D.fmt(pw) if pw else '—'} | {D.fmt(reg)} | {D.fmt(nreg) if nreg else '—'} | "
-                 f"{D.fmt(p) if p else '—'} | {f'{p[chr(119)+chr(105)+chr(110)+chr(115)]} / {p[chr(108)+chr(111)+chr(115)+chr(115)+chr(101)+chr(115)]}' if p else '—'} | {fb} |")
-    rr = D.boot(D.hier_mean(recs, lambda r: r["random"]["regret"]).values())
-    L.append(f"| Random | — | {D.fmt(D.boot(D.hier_mean(recs, lambda r: r['random']['top1']).values()))} | — | {D.fmt(rr)} | — | — | — | — |")
+        better, worse = (p["losses"], p["wins"]) if p else ("—", "—")          # paired() counts negatives as wins; for a gain, positive = better
+        L.append(f"| {v} | {D.fmt(gp)} | {D.fmt(p) if p else '—'} | {better} / {worse} | {D.fmt(top1)} | {D.fmt(rho) if rho else '—'} | {D.fmt(pw) if pw else '—'} | {D.fmt(reg)} | {fb} |")
+    L.append(f"| Random | {D.fmt(D.boot(D.hier_mean(recs, lambda r: r['random']['gain_pick']).values()))} | — | — | {D.fmt(D.boot(D.hier_mean(recs, lambda r: r['random']['top1']).values()))} | — | — | {D.fmt(D.boot(D.hier_mean(recs, lambda r: r['random']['regret']).values()))} | — |")
+    L.append(f"| Oracle 最优（上限） | {D.fmt(D.boot(D.hier_mean(recs, lambda r: r['gstar']).values()))} | — | — | 1 | — | — | 0 | — |")
     return "\n".join(L)
 
 
-def phase_table(recs, src, variants):
-    L = ["| 评分器 | early | mid | late |", "|---|---|---|---|"]
+def phase_table(recs, src, variants, metric="gain_pick"):
+    L = [f"| 评分器（{'被选动作真实增益 pp' if metric == 'gain_pick' else metric}） | early | mid | late |", "|---|---|---|---|"]
     for v in variants:
         key = f"{src}|{v}"
         if any(key not in r["metrics"] for r in recs):
@@ -111,17 +113,17 @@ def phase_table(recs, src, variants):
         cells = []
         for ph in ("early", "mid", "late"):
             sub = [r for r in recs if r["phase"] == ph]
-            cells.append((D.fmt(agg(sub, key, "regret")) + f" (n={len(sub)})") if sub else "—")
+            cells.append((D.fmt(agg(sub, key, metric)) + f" (n={len(sub)})") if sub else "—")
         L.append(f"| {v} | " + " | ".join(cells) + " |")
     return "\n".join(L)
 
 
-def per_scene_table(recs, src, variants):
+def per_scene_table(recs, src, variants, metric="gain_pick"):
     scenes = sorted({r["scene"] for r in recs})
-    L = ["| 场景 | n | " + " | ".join(variants) + " |", "|---|---|" + "---|" * len(variants)]
+    L = [f"| 场景（{'被选动作真实增益 pp' if metric == 'gain_pick' else metric}） | n | " + " | ".join(variants) + " |", "|---|---|" + "---|" * len(variants)]
     for s in scenes:
         sub = [r for r in recs if r["scene"] == s]
-        vals = [scene_vals(sub, f"{src}|{v}", "regret").get(s) for v in variants]
+        vals = [scene_vals(sub, f"{src}|{v}", metric).get(s) for v in variants]
         L.append(f"| {s} | {len(sub)} | " + " | ".join("—" if x is None else f"{x:.3f}" for x in vals) + " |")
     return "\n".join(L)
 
@@ -203,7 +205,7 @@ def main():
     # ---- E1-GT report
     LG = ["# E1 — GT Depth Scoring（自动生成 `scripts/e1_analyze.py`；协议 §3）", "",
           f"复现检查：S0(t\\*) = Experiment A `gtd_distp1` 逐位 {checks['GT_S0_eq_A']} / {checks['n']}（最大相对差 {checks['GT_S0_maxrel']:.1e}）；S0(缓存样本) = 缓存 `distp1_k` 逐位 B2 {checks['B2_S0_eq_cache']} / {checks['n']}、T1 {checks['T1_S0_eq_cache']} / {checks['n']}。",
-          "dev = MP3D VALSEL（Pool FX，9 楼层）/ Macarons++ Dev-3（Pool CL + FX）；eval = MP3D 5 评估楼层（Pool CL）/ Macarons++ Test-3（非盲）。均值 = 场景均值的平均，CI = 场景级 bootstrap 95%；regret 单位 pp；τ = 1e-4。全局变体 G_\\*（无区域裁剪）只在 GT 上。", ""]
+          "dev = MP3D VALSEL（Pool FX，9 楼层）/ Macarons++ Dev-3（Pool CL + FX）；eval = MP3D 5 评估楼层（Pool CL）/ Macarons++ Test-3（非盲）。均值 = 场景均值的平均，CI = 场景级 bootstrap 95%。**主指标 = 被选动作的真实一步覆盖增益（pp，越大越好；= oracle 最优增益 − regret）与 Top-1 命中率**；regret 只作附录列。τ = 1e-4。全局变体 G_\\*（无区域裁剪）只在 GT 上。", ""]
     LG += ["## 命中统计（每候选均值；GT 与各模型）", "", "| 来源 | 命中射线 | S0 新命中 | 在 band_dil 内 | 稠密表面之后 | 薄前缘 (< 3 体素) | 命中在稠密 EMPTY | 平均 cosθ | 平均 z（运行） | 平均 N_lin | 硬新颖比例 |", "|---|---|---|---|---|---|---|---|---|---|---|"]
     for src in SOURCES:
         x = diag[src]
@@ -214,12 +216,12 @@ def main():
             sub = groups[(dataset, split)]
             if not sub:
                 continue
-            LG += [f"## {nm} · {split}", "", table(sub, "GT", VARIANTS + GVARIANTS, f"GT depth · {nm} {split}"), "", "按相位（regret）：", "", phase_table(sub, "GT", ["S0", "S1a", "S1d", "S2", "S2S3", "S1aS2", "S1dS2", "G_soft", "G_area"]), "",
-                   "逐场景 regret：", "", per_scene_table(sub, "GT", ["S0", "S1a", "S1b", "S1c", "S1d", "S2", "S2h", "S3", "S1aS2", "S1dS2", "S1aS2S3", "G_soft"]), ""]
+            LG += [f"## {nm} · {split}", "", table(sub, "GT", VARIANTS + GVARIANTS, f"GT depth · {nm} {split}"), "", "按相位（被选动作真实增益 pp）：", "", phase_table(sub, "GT", ["S0", "S1a", "S1d", "S2", "S2S3", "S1aS2", "S1dS2", "G_soft", "G_area"]), "",
+                   "逐场景（被选动作真实增益 pp）：", "", per_scene_table(sub, "GT", ["S0", "S1a", "S1b", "S1c", "S1d", "S2", "S2h", "S3", "S1aS2", "S1dS2", "S1aS2S3", "G_soft"]), ""]
             cal = calibration(sub, "GT", VARIANTS + GVARIANTS)
             summary["calibration"][f"GT/{dataset}/{split}"] = cal
             LG += ["校准（跨状态、跨候选的 pooled Spearman(score, gain)）：" + "，".join(f"{v} {c['pooled_rho']:.3f}" for v, c in cal.items()), ""]
-            summary["tables"][f"GT/{dataset}/{split}"] = {v: {m: agg(sub, f"GT|{v}", m) for m in ("regret", "top1", "rho")} for v in VARIANTS + GVARIANTS if all(f"GT|{v}" in r["metrics"] for r in sub)}
+            summary["tables"][f"GT/{dataset}/{split}"] = {v: {m: agg(sub, f"GT|{v}", m) for m in ("regret", "top1", "rho", "gain_pick")} for v in VARIANTS + GVARIANTS if all(f"GT|{v}" in r["metrics"] for r in sub)}
     open(os.path.join(REP, "E1_GT_SCORING.md"), "w").write("\n".join(LG) + "\n")
     # ---- E1-Pred report + gate
     LM = ["# E1 — Frozen-Model Scoring（自动生成；B2 / T1 主，T0 / E2D 对照；同状态、同候选、同一缓存 K = 4 样本，K 均值）", "", "dev / eval 与 CI 同 `E1_GT_SCORING.md`。G2 Screening（冻结，dev 集，对每个 (模型, 数据集)）：(a) GT 阶段该变体 dev regret ≤ S0；(b) 预测阶段 Δregret CI 上界 < 0，或相对改善 ≥ 10% 且 MP3D ≥ 6/9 楼层、Macarons++ ≥ 2/3 场景改善；(c) 无 dev 场景相对恶化 > 25%。", ""]
@@ -231,9 +233,9 @@ def main():
             LM.append(f"## {nm} · {split}")
             for src in ("B2", "T1", "T0", "E2D"):
                 LM += ["", table(sub, src, VARIANTS, f"{LABEL[src]} · {nm} {split}"), "", "按相位：", "", phase_table(sub, src, ["S0", "S1a", "S1d", "S2", "S3", "S2S3", "S1aS2", "S1dS2"]), ""]
-                summary["tables"][f"{src}/{dataset}/{split}"] = {v: {m: agg(sub, f"{src}|{v}", m) for m in ("regret", "top1", "rho")} for v in VARIANTS if all(f"{src}|{v}" in r["metrics"] for r in sub)}
+                summary["tables"][f"{src}/{dataset}/{split}"] = {v: {m: agg(sub, f"{src}|{v}", m) for m in ("regret", "top1", "rho", "gain_pick")} for v in VARIANTS if all(f"{src}|{v}" in r["metrics"] for r in sub)}
             if split == "dev":
-                LM += ["### G2 Screening（dev）", "", "| 模型 | 变体 | GT Δregret（≤ 0 ?） | 预测 Δregret [CI] | 相对 | 场景 更好/更差 | 最差场景相对变化 | 通过 |", "|---|---|---|---|---|---|---|---|"]
+                LM += ["### G2 Screening（dev）", "", "（Gate 按冻结规则用 regret 判定；Δregret = −Δ增益，负 = 更好）", "", "| 模型 | 变体 | GT Δregret（≤ 0 ?） | 预测 Δregret [CI] | 相对 | 场景 更好/更差 | 最差场景相对变化 | 通过 |", "|---|---|---|---|---|---|---|---|"]
                 for m in MAIN_MODELS:
                     g = gate(sub, m, dataset)
                     summary["gate"][f"{m}/{dataset}"] = g
@@ -260,7 +262,10 @@ def main():
     LF = ["# E1 — 失败案例（自动规则：各类按 regret 和排序前 3）", ""]
     for dataset, nm in (("indoor", "MP3D"), ("outdoor", "Macarons++")):
         sub = [r for r in recs if r["dataset"] == dataset]
-        best = summary["chosen"]["per_dataset"][dataset] or "S1dS2"
+        best = summary["chosen"]["per_dataset"][dataset]
+        if best is None:                       # no variant passes both models: show the best T1-passing variant (or S2S3 / S1c)
+            t1 = {v: x["rel"] for v, x in summary["gate"].get(f"T1/{dataset}", {}).items() if x["pass"]}
+            best = min(t1, key=t1.get) if t1 else ("S2S3" if dataset == "indoor" else "S1c")
         for src in ("GT", "B2", "T1"):
             LF += [f"## {nm} · {LABEL[src]}：S0 vs {best}", "", failure_cases(sub, src, best, dataset), ""]
     open(os.path.join(REP, "E1_FAILURE_CASES.md"), "w").write("\n".join(LF) + "\n")

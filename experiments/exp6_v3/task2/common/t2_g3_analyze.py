@@ -51,7 +51,7 @@ def rows_for(dataset, arms):
             for g in HIST9:
                 r[g] = CA._row_indoor(CA.indoor_dir(g, ep["tag"]), g)
             for a in arms:
-                r[a] = CA._row_indoor(arm_indoor(a, ep["tag"]), "C1")        # same per-step diag reader shape is not available: use the historical reader
+                r[a] = CA._row_indoor(arm_indoor(a, ep["tag"]), "ARM")       # plain reader (no Experiment C diagnostics)
                 d = arm_indoor(a, ep["tag"])
                 t2 = [json.loads(x) for x in open(os.path.join(d, "t2_steps.jsonl"))] if os.path.exists(os.path.join(d, "t2_steps.jsonl")) else []
                 r[a]["t2_score_s"] = float(np.mean([x["t2_score_s"] for x in t2])) if t2 else 0.0
@@ -62,14 +62,12 @@ def rows_for(dataset, arms):
                 r[g] = CA._row_outdoor(g, ep["scene"], ep["start"])
             for a in arms:
                 base, tg, mp = arm_outdoor(a, ep["scene"], ep["start"])
-                CA.CC.outdoor_root = lambda grp, root=None, base=base: base
-                CA.CC.outdoor_metrics_dir = lambda grp, root=None, mp=mp: os.path.dirname(mp)
-                orig_tag = CA.CC.tag_out
-                CA.CC.tag_out = lambda grp, s, k, tg=tg: tg
+                orig_paths = CA.outdoor_paths
+                CA.outdoor_paths = lambda g, s_, k_, triple=(base, tg, mp): triple if g == "ARM" else orig_paths(g, s_, k_)
                 try:
-                    r[a] = CA._row_outdoor("C1", ep["scene"], ep["start"])
+                    r[a] = CA._row_outdoor("ARM", ep["scene"], ep["start"])  # plain reader
                 finally:
-                    CA.CC.tag_out = orig_tag
+                    CA.outdoor_paths = orig_paths
                 plp = os.path.join(base, "planner_logs", f"t2_{tg}.jsonl")
                 t2 = [json.loads(x) for x in open(plp)] if os.path.exists(plp) else []
                 r[a]["t2_score_s"] = float(np.mean([x["t2_score_s"] for x in t2])) if t2 else 0.0

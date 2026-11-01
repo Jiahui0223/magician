@@ -1,6 +1,6 @@
 # EXP6 V3 — 全局状态板（每次启动 / 结束一个运行就更新）
 
-**最近更新：2026-10-31 16:50（P7 Experiment C 完成；无运行中任务）**
+**最近更新：2026-10-31 19:15（P8 Task 2 完成；无运行中任务）**
 标记：✅ 完成 · 🔄 正在跑 · ⏳ 等待（排队或依赖前项）· ❌ 失败（后面跟修复行）· ⬜ 未开始
 
 ## 0. 此刻在跑什么
@@ -131,3 +131,10 @@
 | P7.1 | C1（GT depth + DistP1）40 条闭环 → 阶段回复 | ✅ 16:10 / 16:25（MP3D AUC 0.357 vs B2 0.334、Final 0.513 vs 0.530；Macarons++ 0.741 / 0.894 vs 0.730 / 0.906；Cov@20 +0.058 显著）|
 | P7.2 | C2（GT gain greedy）40 条闭环 + 室外覆盖率 | ✅ 16:27（MP3D AUC 0.400 / Final 0.615；Macarons++ 0.771 / 0.919；C2 − C1 有意义）|
 | P7.3 | 分析 + 报告（`experiment_C_gtdepth_closed_loop/report/C_FINAL_REPORT.md`、`reports/V3_ABLATION_*` 更新）+ `[V3][ablation-c]` 提交；≈ 6.3 GPU-h | ✅ 16:50 |
+
+## P8 Task 2 — Coverage-Aware NBV Planning（2026-10-31 17:00–19:15；详细板 `task2/STATUS.md`）
+| 编号 | 内容 | 状态 |
+|---|---|---|
+| P8.1 | E1 评分器（S0–S4）固定状态 1,676 状态（4.9 GPU-h）+ Gate：室外 S1c 两模型通过；室内仅 T1 通过（S2h / S3 / S2S3） | ✅ 17:55 |
+| P8.2 | G3：室外正式 B2 + S1c / T1 + S1c 无改善（退化 / 无差异）；MP3D 探索性 T1 + S2S3 AUC 0.354 / Final 0.530（vs T1 0.331 / 0.508；= C1）；R2 frontier bonus / trigger 严重退化（9.6 GPU-h） | ✅ 19:05 |
+| P8.3 | E2 离线 R1（区域 n_win 9 → GT Top-1 0.894）/ R3（两步视野 2.3×）/ 失败案例；总报告 `task2/reports/TASK2_COMBINED_REPORT.md`；提交 | ✅ 19:15 |
