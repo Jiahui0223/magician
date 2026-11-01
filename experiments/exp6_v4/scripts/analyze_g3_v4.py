@@ -101,10 +101,10 @@ def main():
             p, c = v[d]["paired"], v[d]["criteria"]
             L.append(f"| {k} | {'MP3D' if d == 'indoor' else 'Macarons++'} | {f(p['auc'])} | {p['auc']['wins']}/{p['auc']['losses']} | {f(p['final'])} | "
                      f"{p['final']['wins']}/{p['final']['losses']} | {f(p['cov20'])} | {c['meaningful']} | {c['degraded']} |")
-    L += ["", "判定（Task 3 §4 标准）：" + "；".join(f"{k}: {v['verdict']}" for k, v in dec.items()), "", "逐场景 / 楼层 AUC · Final · Cov@20：", ""]
+    L += ["", "判定（Task 3 §4 标准）：" + "；".join(f"{k}: {v['verdict']}" for k, v in dec.items()), "", "逐场景 / 楼层 AUC · Final · Cov@20（后两项若分析器未提供则为 nan；完整逐 episode 值在 json 的 per_episode）：", ""]
     for d in ("indoor", "outdoor"):
         for s, v in res["per_scene"][d].items():
-            L.append(f"- {s}: " + "，".join(f"{g} {v[g]['auc']:.3f} / {v[g]['final']:.3f} / {v[g]['cov20']:.3f}" for g in GRP))
+            L.append(f"- {s}: " + "，".join(f"{g} {v[g]['auc']:.3f} / {v[g].get('final', float('nan')):.3f} / {v[g].get('cov20', float('nan')):.3f}" for g in GRP))
     L += ["", "MP3D 中期停滞 episode 数（/ 10）：" + "，".join(f"{g} {st[g]['episodes_with_stall']}" for g in GRP)]
     open(os.path.join(OUT, f"g3_v4{a.suffix}.md"), "w").write("\n".join(L) + "\n")
     plt = AG.plt

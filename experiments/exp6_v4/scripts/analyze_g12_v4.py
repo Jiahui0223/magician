@@ -37,20 +37,22 @@ def read_rows(root):
     return out
 
 
-def load(sset, tag):
+def load(sset, tag, tag31=None):
+    """tag = rows holding V4 (and V31 when tag31 is None); tag31 = separate rows holding V31 (same states / noise)."""
     e2 = read_rows(os.path.join(EP.W, "fixed", f"{sset}_s5000"))
     v3 = read_rows(os.path.join(W3, f"{sset}_s_final"))
     v4 = read_rows(os.path.join(W4, f"{sset}_{tag}"))
+    v31 = read_rows(os.path.join(W4, f"{sset}_{tag31}")) if tag31 else v4
     rows = []
     for sid, r in v4.items():
-        if sid not in e2 or sid not in v3:
+        if sid not in e2 or sid not in v3 or sid not in v31:
             continue
-        e, t = e2[sid], v3[sid]
-        assert r["scores"]["B2"] == e["scores"]["B2"] == t["scores"]["B2"], ("B2 replay differs", sid)
+        e, t, q = e2[sid], v3[sid], v31[sid]
+        assert r["scores"]["B2"] == e["scores"]["B2"] == t["scores"]["B2"] == q["scores"]["B2"], ("B2 replay differs", sid)
         m = dict(e)
-        m["scores"] = {"B2": e["scores"]["B2"], "E2D": e["scores"]["D100"], "T0": t["scores"]["T0"], "T1": t["scores"]["T1"], "V31": r["scores"]["V31"], "V4": r["scores"]["V4"]}
-        m["pred"] = {"B2": e["pred"]["B2"], "E2D": e["pred"]["D100"], "T0": t["pred"]["T0"], "T1": t["pred"]["T1"], "V31": r["pred"]["V31"], "V4": r["pred"]["V4"]}
-        m["timing"] = {**t.get("timing", {}), **r.get("timing", {})}
+        m["scores"] = {"B2": e["scores"]["B2"], "E2D": e["scores"]["D100"], "T0": t["scores"]["T0"], "T1": t["scores"]["T1"], "V31": q["scores"]["V31"], "V4": r["scores"]["V4"]}
+        m["pred"] = {"B2": e["pred"]["B2"], "E2D": e["pred"]["D100"], "T0": t["pred"]["T0"], "T1": t["pred"]["T1"], "V31": q["pred"]["V31"], "V4": r["pred"]["V4"]}
+        m["timing"] = {**t.get("timing", {}), **q.get("timing", {}), **r.get("timing", {})}
         rows.append(m)
     return rows
 
@@ -149,7 +151,8 @@ def tables(S, G, tag):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--tag", default="s_final")
+    ap.add_argument("--tag", default="s_final", help="tag of the rows holding V4")
+    ap.add_argument("--tag31", default=None, help="tag of separate rows holding V31 (default: same rows as --tag)")
     a = ap.parse_args()
     EA.MODELS, EA.LAB, EA.COL, EA.PAIRS = MODELS, LAB, COL, PAIRS
     EA.OUT, EA.FIG = os.path.join(E4, "reports"), os.path.join(E4, "reports", "figures")
@@ -158,7 +161,7 @@ def main():
     EA.ST.setup()
     S = {}
     for d in ("valsel", "dev3"):
-        recs = rows_to_recs(d, load(d, a.tag))
+        recs = rows_to_recs(d, load(d, a.tag, a.tag31))
         S[d] = {sub: EA.summ(recs, sub) for sub in ("early", "middle", "late", "all")}
         S[d]["n"] = len(recs)
     G = gates(S)

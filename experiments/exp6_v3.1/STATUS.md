@@ -1,6 +1,6 @@
 # EXP6 V3.1 — 状态板（与 V4 共用一张板；正本在 `../exp6_v4/STATUS.md`，本文件为同步副本）
 
-**最近更新：2026-11-01 01:15（V4 训练完成，V4 G3 链运行中；V3.1 训练运行中）**
+**最近更新：2026-11-01 02:08（V4 G3 完成；V4 G1/G2 运行中；V3.1 训练运行中）**
 标记：✅ 完成 · 🔄 正在跑 · ⏳ 等待 · ❌ 失败 · ⬜ 未开始
 
 ## 0. 此刻在跑什么
@@ -8,9 +8,9 @@
 |---|---|---|---|---|---|---|
 | P3-V4 | **V4 Outdoor-only 正式训练**（40k 步，64 视角 / 8 状态 / 步，lr 2e-4，固定 EMA@40k；`train_v4.sh`，torchrun 4 卡） | gpu115 GPU 0–3 | 3435033（步 .9 `v4-train`） | `work_dirs/exp6_v4/logs/train.log`、`runs/main/{log,eval}.jsonl` | 20:47 | ✅ 11-01 01:07 EXIT 0，40,000 步；均值 0.472 s/步、峰值 18.4 GB/卡，墙钟 4.34 h ≈ 17.3 GPU-h；S-c ES 7.23 (5k) → 3.74 (40k)；final.pt = EMA@40k sha `1b31afff…`；报告 `report/OUTDOOR_TRAINING.md` |
 | P3-V3.1 | **V3.1 Outdoor-only 正式训练**（40k 步，64 视角 / 8 状态 / 步，accum 2，lr 1e-4，固定 EMA@40k；`train_v31.sh`） | gpu117 GPU 0–3 | 3429774（本地 setsid，manifest job None） | `work_dirs/exp6_v3_1/logs/train.log`、`runs/main/{log,eval}.jsonl` | 20:47 | 🔄 git `4cef0f8` clean；第 0 步评估 20:50 完成；前 100 步实测 **1.25 s/步**、峰值 23.4 GB/卡（40k 步纯训练 ≈ 13.9 h + 9 次评估；gpu117 分配 11-01 14:50 到期，不足则从 `ckpt_last.pt` resume 并记偏差） |
-| P4-V4 链 | `post_arm_v4.sh v4`：等 `EXIT 0` → `select_final.py v4`（固定 EMA@40k → `checkpoints/final.pt`）→ 2 步冒烟 → V4 的 G3（10 MP3D + 30 Macarons++，4 worker）→ 室外覆盖率 | gpu115 | 3435033（步 .10 `v4-post`） | `work_dirs/exp6_v4/logs/post_v4.log` | 01:07 | 🔄 final.pt 已发布（01:08）；冒烟 → G3 进行中 |
+| P4-V4 链 | `post_arm_v4.sh v4`：等 `EXIT 0` → `select_final.py v4`（固定 EMA@40k → `checkpoints/final.pt`）→ 2 步冒烟 → V4 的 G3（10 MP3D + 30 Macarons++，4 worker）→ 室外覆盖率 | gpu115 | 3435033（步 .10 `v4-post`） | `work_dirs/exp6_v4/logs/post_v4.log` | 01:07 | ✅ 01:58 完成：final.pt（EMA@40k）→ 冒烟 OK → 10 室内 + 30 室外 + 30 覆盖率，0 失败（≈ 3.3 GPU-h）；V4 单组临时表 `reports/g3_v4_interim_v4.md`（正式表等 V3.1） |
 | P4-V3.1 链 | `post_arm_v4.sh v31`：同上，V3 规划器路径 | gpu117 | 3429774 | `work_dirs/exp6_v4/logs/post_v31.log` | 20:47 | ⏳ |
-| P4-G12 链 | `post_g12_v4.sh`：等 V4 G3 完成 + V3.1 final.pt → G1 / G2（两组，4 卡）→ 等 V3.1 G3 → `analyze_g3_v4.py` | gpu115 | 3435033（步 .11 `v4-g12`） | `work_dirs/exp6_v4/logs/post_g12.log` | 20:47 | ⏳（若 3435033 于 11-01 10:09 到期前未完成，改在 3435072 / gpu117 上手动续跑） |
+| P4-G12 | 改为按组分跑：`run_g12_arm.sh v4`（V4 + B2 回放，tag `s_final_v4`）现在在 gpu115 跑；`run_g12_arm.sh v31` 等 V3.1 final.pt 后跑；`analyze_g12_v4.py --tag s_final_v4 --tag31 s_final_v31` 合并（同状态 / 候选 / 噪声） | gpu115 | 3435033（步 .11 取消，新步 `v4-g12`） | `work_dirs/exp6_v4/logs/run_g12_v4.log` | 02:05 | 🔄 |
 | G0-V4 | V4 冒烟链：overfit（GPU 0）‖ 单卡 resume A/B（GPU 1）→ 4 卡 1k short | gpu115 | 3435033（ssh） | `work_dirs/exp6_v4/logs/{g0,smoke_overfit,resume_*,smoke_short}.log` | 20:19 | ✅ 20:44 全部通过（overfit drop 0.927 / sign 0.976；resume 精确；1k short 1.77 → 0.128，0.360 s/步，10.6 GB） |
 | G0-replay | 冻结规划器 2 步回放（T0 / V2M × 室内 / 室外） | gpu117 GPU 1–2 | 3429774 | `work_dirs/exp6_v4/eval/g0_replay/` | 20:28 | ✅ 20:29 4/4 逐位 PASS |
 | G0-V3.1 | V3.1 冒烟链：overfit → 4 卡 profile → 4 卡 resume A/B → 4 卡 1k short | gpu117 | 3429774 | `work_dirs/exp6_v3_1/logs/` | 20:29 | ✅ 20:42 全部通过（overfit drop 0.899；profile 0.396 s/步；resume PASS；1k short 3.36 → 0.359，0.397 s/步，4.1 GB） |
