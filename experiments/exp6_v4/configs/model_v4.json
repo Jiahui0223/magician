@@ -1,0 +1,13 @@
+{
+ "version": "model_v4",
+ "protocol": "exp6_v4/FROZEN_PROTOCOL.md v1.0 (V2 model_v1.json + ray_xattn)",
+ "encoder": {"in_ch": 4, "ch": [32, 64, 96], "blocks_per_level": 2, "dilation_L2": 2, "groups": 8},
+ "ray": {"n_points": 32, "feat_ch": 96, "hidden": 64, "out_ch": 64},
+ "proj_ch": 11,
+ "unet": {"ch": [64, 128, 192, 256], "blocks_per_level": 2, "attn_levels": [3], "heads": 4, "t_emb": 256, "groups": 16, "pad_to": [64, 128]},
+ "flow": {"x_ch": 2, "euler_steps": 10, "nohit_y": 1.0},
+ "decode": {"hit_rule": "b>0 and y<1", "s_clip_eps": 1e-6},
+ "ray_xattn": {"enabled": true, "dim": 64, "heads": 4, "n_freq": 4, "out_init_std": 0.005,
+               "doc": "seen2scene.futureview.model.RayXAttn: per-ray attention of [V2 ray context + Fourier(direction, origin/extent)] over the 32 sample-point tokens [F0, F1, in-domain flag, s_j, Fourier(2 s_j - 1), t_j / ext_max]; mask = inside the grid; residual added to the V2 ray context; W_o normal(std 0.005), zero bias"},
+ "inference_precision": "bf16 autocast for encoder / ray encoder / ray X-Attn / U-Net; float32 attention softmax, projection, decoding and DistP1 (as V2)"
+}

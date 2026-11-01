@@ -1,0 +1,10 @@
+{
+ "_status": "DRAFT -- planner-only ablation (FROZEN_PROTOCOL §6, brief §9); NOT launched; separate from the main tables (main = n_win 5)",
+ "version": "nwin_ablation_draft_v0",
+ "models": ["frozen V4 final.pt", "frozen V3.1 final.pt", "B2 (V2-Mix)"],
+ "n_win": [5, 7, 9],
+ "audit_first": "what n_win controls (t2_common.region_box_m: the planning REGION = encoder input block + ray-sampling extent + DistP1 counting window around the camera; the region is rebuilt every 10 steps); whether 7 / 9 change the 3D U-Net / VAE grid size (yes: region side (1 + (n_win - 1) x 0.8) x height; VRAM to be measured) and the candidate set (no)",
+ "stage_1": "fixed-state K = 4 scoring on the Experiment A / Task 2 MP3D pools (368 eval states + VALSEL 90) with the frozen models: gain pp of the pick and Top-1 vs the GT counterfactual (R1: 0.521 / 0.549 / 0.557 pp, Top-1 0.757 / 0.845 / 0.894); pre-registered pass rule before any closed loop",
+ "stage_2": "10 x 150 MP3D G3 with n_win 7 / 9 for the models that pass stage 1; reported as Table G (Planner ablation), never attributed to the encoder / X-Attn",
+ "forbidden": "enlarging the model input range / depth range / candidate count / FOV; mixing with S1-S3 / frontier"
+}

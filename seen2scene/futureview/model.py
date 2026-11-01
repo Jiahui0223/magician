@@ -85,9 +85,9 @@ class RayEncoder(nn.Module):
         o = o[None, None] if o.dim() == 1 else o[:, None]
         return o + d[:, None] * (tcap[:, None] * t[None])[..., None]                       # [R, N, 3]
 
-    def forward(self, F0, F1, dom, o, d, tcap):
-        """F0 [1, c0, X', Y', Z'], F1 [1, c1, ...], dom [1, 1, X', Y', Z'] (in-domain fraction); o [3] or [R, 3]
-        (rays of several views of one state concatenated), d [R, 3], tcap [R]."""
+    def point_features(self, F0, F1, dom, o, d, tcap):
+        """Per-point features [R, C + 1, N] (F0, F1 trilinear, in-domain flag x inside-grid) and the inside-grid mask
+        [R, N] of the N sample points of every ray (the first half of the V2 forward, unchanged)."""
         p = self.points(o, d, tcap)
         ext = torch.tensor([s * BLOCK * VS for s in F0.shape[2:]], device=p.device, dtype=p.dtype)
         g = 2.0 * p / ext - 1.0
@@ -96,12 +96,86 @@ class RayEncoder(nn.Module):
             f0 = F.grid_sample(F0.float(), grid, mode="bilinear", padding_mode="zeros", align_corners=False)
             f1 = F.grid_sample(F1.float(), grid, mode="bilinear", padding_mode="zeros", align_corners=False)
             fd = F.grid_sample(dom.float(), grid, mode="nearest", padding_mode="zeros", align_corners=False)
-        inside = ((g > -1) & (g < 1)).all(-1)[None, None, ..., None].float()
+        inside_pt = ((g > -1) & (g < 1)).all(-1)                                                # [R, N]
+        inside = inside_pt[None, None, ..., None].float()
         f = torch.cat([f0, f1, (fd > 0).float() * inside], 1)[0, ..., 0].permute(1, 0, 2)       # [R, C, N]
+        return f, inside_pt
+
+    def head(self, f):
+        """[R, C + 1, N] -> ray context [R, out_ch] (the Conv1d stack + fc of V2, unchanged)."""
         h = F.silu(self.c1(f))
         h = F.silu(self.c2(h))
         h = F.silu(self.c3(h))
         return self.fc(h.flatten(1))
+
+    def forward(self, F0, F1, dom, o, d, tcap):
+        """F0 [1, c0, X', Y', Z'], F1 [1, c1, ...], dom [1, 1, X', Y', Z'] (in-domain fraction); o [3] or [R, 3]
+        (rays of several views of one state concatenated), d [R, 3], tcap [R]."""
+        f, _ = self.point_features(F0, F1, dom, o, d, tcap)
+        return self.head(f)
+
+
+# ---------------------------------------------------------------------------------------------------- V4 ray-aligned cross-attention
+def fourier_feats(x, n_freq):
+    """x [..., D] (roughly in [-1, 1]) -> [..., D * 2 * n_freq] (sin / cos of 2^k pi x)."""
+    f = (2.0 ** torch.arange(n_freq, device=x.device, dtype=x.dtype)) * math.pi
+    a = x[..., None] * f
+    return torch.cat([torch.sin(a), torch.cos(a)], -1).flatten(-2)
+
+
+class RayXAttn(nn.Module):
+    """V4 (EXP6): ray-aligned cross-attention over the N sample points of EACH ray (no [R, R] attention).
+
+    query  q = W_q [ray context (V2 ray encoder output), Fourier(ray direction), Fourier(camera position / extent)]
+    keys / values from the per-point tokens [point features (F0, F1, in-domain flag), s_j = (j + 0.5) / N,
+           Fourier(2 s_j - 1), t_j / ext_max] (LayerNorm on the token before W_k / W_v)
+    masked softmax over the points inside the grid (UNKNOWN points are legal tokens; rays with no inside point give 0)
+    output W_o(context), W_o initialised small (normal, std out_init_std, zero bias): the module starts as a small
+    perturbation of the V2 ray context and every projection receives a non-zero gradient from step 0.
+    Returns the residual [R, out_ch] that view_cond adds to the V2 ray context."""
+
+    def __init__(self, feat_ch, n_points, ray_ch, dim=64, heads=4, n_freq=4, out_init_std=0.005):
+        super().__init__()
+        assert dim % heads == 0
+        self.n, self.h, self.dim, self.n_freq = n_points, heads, dim, n_freq
+        self.geom_ch = 1 + 2 * n_freq + 1
+        self.ln_k = nn.LayerNorm(feat_ch + self.geom_ch)
+        self.wq = nn.Linear(ray_ch + 2 * 3 * 2 * n_freq, dim)
+        self.wk = nn.Linear(feat_ch + self.geom_ch, dim)
+        self.wv = nn.Linear(feat_ch + self.geom_ch, dim)
+        self.wo = nn.Linear(dim, ray_ch)
+        nn.init.normal_(self.wo.weight, std=out_init_std)
+        nn.init.zeros_(self.wo.bias)
+        self.last_attn = None
+
+    def forward(self, f, inside, rf, o, d, tcap, ext, keep_attn=False):
+        """f [R, C, N] point features, inside [R, N] bool, rf [R, ray_ch] V2 ray context, o [R, 3], d [R, 3] (unit),
+        tcap [R], ext [3] grid extent (model units) -> residual [R, ray_ch]."""
+        R, C, N = f.shape
+        dt = rf.dtype
+        s = (torch.arange(N, device=f.device, dtype=torch.float32) + 0.5) / N                     # [N]
+        ext_max = ext.max().float()
+        t_rel = (tcap.float()[:, None] * s[None]) / ext_max                                         # [R, N]
+        geom = torch.cat([s[None].expand(R, N)[..., None], fourier_feats((2.0 * s - 1.0)[:, None], self.n_freq)[None].expand(R, N, -1),
+                          t_rel[..., None]], -1)                                                     # [R, N, geom_ch]
+        tok = torch.cat([f.permute(0, 2, 1).float(), geom], -1)                                      # [R, N, C + geom_ch]
+        tok = self.ln_k(tok.to(dt))
+        qin = torch.cat([rf, fourier_feats(d.float(), self.n_freq).to(dt),
+                         fourier_feats((2.0 * o.float() / ext.float() - 1.0).clamp(-1.0, 1.0), self.n_freq).to(dt)], -1)
+        hd = self.dim // self.h
+        q = self.wq(qin).reshape(R, self.h, 1, hd)
+        k = self.wk(tok).reshape(R, N, self.h, hd).transpose(1, 2)                                   # [R, h, N, hd]
+        v = self.wv(tok).reshape(R, N, self.h, hd).transpose(1, 2)
+        empty = ~inside.any(1)                                                                       # rays without inside points
+        am = (inside | empty[:, None])[:, None, None, :]                                             # [R, 1, 1, N] (no all-masked rows)
+        # explicit per-ray attention (N = 32 keys per query): float32 softmax, deterministic, no fused-kernel batch limits
+        logits = (q.float() @ k.float().transpose(-1, -2)) / math.sqrt(hd)                           # [R, h, 1, N]
+        w = torch.softmax(logits.masked_fill(~am, float("-inf")), -1)
+        w = torch.where(empty[:, None, None, None], torch.zeros_like(w), w)                          # all-masked rays -> 0
+        if keep_attn:
+            self.last_attn = w[:, :, 0].detach()                                                     # [R, h, N]
+        out = (w.to(v.dtype) @ v).reshape(R, self.dim)
+        return self.wo(out)
 
 
 # ---------------------------------------------------------------------------------------------------- 2D flow U-Net
@@ -211,6 +285,9 @@ class V2Model(nn.Module):
         self.cond_ch = self.proj_ch + self.ray_ch + 1
         self.unet = UNet2D(self.x_ch + self.cond_ch, self.x_ch, tuple(u["ch"]), u["blocks_per_level"],
                            tuple(u["attn_levels"]), u["heads"], u["t_emb"], u["groups"])
+        xa = cfg.get("ray_xattn", {"enabled": False})            # V4 (EXP6): created last -> V2 parameters keep their init order
+        self.ray_xattn = RayXAttn(r["feat_ch"] + 1, r["n_points"], r["out_ch"], xa.get("dim", 64), xa.get("heads", 4),
+                                  xa.get("n_freq", 4), xa.get("out_init_std", 0.005)) if xa.get("enabled") else None
 
     def encode(self, coarse_in):
         """coarse_in [1, 4, X', Y', Z'] (encoder_input) -> (F0, F1, dom)."""
@@ -223,15 +300,23 @@ class V2Model(nn.Module):
         F0, F1, dom = h
         V, R = d.shape[:2]
         args = (F0, F1, dom, o[:, None].expand(V, R, 3).reshape(-1, 3), d.reshape(-1, 3), tcap.reshape(-1))
+        fn = self.rays if self.ray_xattn is None else self._ray_context_v4
         if self.training and torch.is_grad_enabled() and getattr(self, "rays_ckpt", True):   # recompute in backward (memory)
-            rf = torch.utils.checkpoint.checkpoint(self.rays, *args, use_reentrant=False)
+            rf = torch.utils.checkpoint.checkpoint(fn, *args, use_reentrant=False)
         else:
-            rf = self.rays(*args)
+            rf = fn(*args)
         c = torch.cat([ch.to(rf.dtype), rf.reshape(V, R, -1).transpose(1, 2)], 1).reshape(V, -1, GH, GW)
         c = F.pad(c, (0, GW_PAD - GW))
         valid = torch.zeros(V, 1, GH, GW_PAD, device=c.device, dtype=c.dtype)
         valid[..., :GW] = 1
         return torch.cat([c, valid], 1)
+
+    def _ray_context_v4(self, F0, F1, dom, o, d, tcap, keep_attn=False):
+        """V4: V2 ray context + ray-aligned cross-attention residual over the same sample points."""
+        f, inside = self.rays.point_features(F0, F1, dom, o, d, tcap)
+        rf = self.rays.head(f)
+        ext = torch.tensor([s * BLOCK * VS for s in F0.shape[2:]], device=f.device, dtype=torch.float32)
+        return rf + self.ray_xattn(f, inside, rf, o, d, tcap, ext, keep_attn=keep_attn).to(rf.dtype)
 
     def velocity(self, x, tau, cond, return_features=False):
         """x [V, 2, 64, 128] (already masked), tau [V], cond [V, C, 64, 128] -> velocity [V, 2, 64, 128]."""

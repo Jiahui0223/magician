@@ -1,0 +1,73 @@
+{
+ "version": "v3_1_outdoor_train_v1",
+ "note": "exp6_v3.1 FROZEN_PROTOCOL v1.0: the V3 train_v3.json recipe (loss weights, optimiser, EMA, sampler, 64 views / 8 states per step) with the outdoor domain only; accum 2 = two micro-batches of 8 views / 1 state per rank (memory; the loss is normalised by the global labelled-ray count of the whole 64-view step, so the gradient is that of the 64-view batch)",
+ "stage": "outdoor_pretrain",
+ "initialization": "scratch",
+ "domains": [
+  "outdoor"
+ ],
+ "mp3d_training_samples": 0,
+ "model": "model_v3_1.json",
+ "seed": 0,
+ "steps": 40000,
+ "warmup": 1000,
+ "lr": 0.0001,
+ "betas": [
+  0.9,
+  0.99
+ ],
+ "weight_decay": 0.01,
+ "grad_clip": 1.0,
+ "ema": 0.999,
+ "precision": "bf16",
+ "batch_views": 64,
+ "states_per_batch": 8,
+ "accum": 2,
+ "max_cands_per_state": 8,
+ "stale_p": 0.5,
+ "stale_max": 9,
+ "state_weight_t_le": 20,
+ "state_weight_factor": 2.0,
+ "lambda_rec": 1.0,
+ "kl": {
+  "beta": 0.02,
+  "start": 0,
+  "warmup": 5000
+ },
+ "eval_every": 5000,
+ "ckpt_every": 1000,
+ "log_every": 50,
+ "eval_tau": [
+  0.1,
+  0.3,
+  0.5,
+  0.7,
+  0.9
+ ],
+ "eval_sets": {
+  "out_sc": 2048,
+  "out_train": 1024
+ },
+ "ema_save_steps": [
+  0,
+  1000,
+  5000,
+  10000,
+  15000,
+  20000,
+  25000,
+  30000,
+  35000,
+  40000
+ ],
+ "checkpoint_policy": "fixed_ema_step_40000",
+ "selection": {
+  "rule": "fixed EMA @ 40000 (frozen before training); S-c metrics are monitoring only; no evaluation scene, no early stopping"
+ },
+ "smoke": {
+  "overfit_steps": 200,
+  "short_steps": 1000,
+  "profile_steps": 100,
+  "emulate_world": 4
+ }
+}

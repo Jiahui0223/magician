@@ -1,0 +1,15 @@
+{
+ "_status": "DRAFT -- Stage 2 (FROZEN_PROTOCOL §6); NOT launched; requires the user's approval after the dual-domain G3 of both Outdoor-only models",
+ "version": "indoor_finetune_draft_v0",
+ "arms": {
+  "V4-FT": {"init": "work_dirs/exp6_v4/checkpoints/final.pt", "trainer": "experiments/exp6_v4/scripts/train_v4.py (+ MP3D data route to be added: t22_data.MP3DViewData on e2/w2_d100/mp3d/views)", "model": "model_v4.json"},
+  "V3.1-FT": {"init": "work_dirs/exp6_v3_1/checkpoints/final.pt", "trainer": "experiments/exp6_v3.1/scripts/trainer_outdoor.py (+ indoor domain: seen2scene.v3.data items('indoor','train'))", "model": "model_v3_1.json"}
+ },
+ "data": "MP3D train only (228 trajectories / 114 levels, purpose = train in work_dirs/exp5_future_view/task2/mp3d/manifests/traj_jobs.json; D100 shards e2/w2_d100); no Macarons++ replay in the main protocol; VALSEL only for monitoring",
+ "steps": 5000, "warmup": 500, "lr": 2e-5, "betas": [0.9, 0.99], "weight_decay": 0.01, "schedule": "cosine_to_0",
+ "batch_views": 64, "states_per_batch": 8, "ema": 0.999, "precision": "bf16", "seed": 0,
+ "trainable": "all parameters (freeze-encoder variant is a separate ablation)",
+ "checkpoint_policy": "fixed_ema_step_5000 (frozen before launch; no evaluation floor / scene used)",
+ "evaluation": "G3 both domains before and after FT: MP3D 10 x 150 (AUC@150 / Final / Cov@20), Macarons++ 30 x 100 (AUC@100 / Final / Cov@20); Tables E (indoor FT) and F (outdoor retention)",
+ "reference": "E2 pilot 5k-step engineering experience (lr 2e-5, warmup 500) -- a reference, not a tuned optimum"
+}
