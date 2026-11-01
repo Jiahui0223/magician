@@ -43,16 +43,19 @@ def load(sset, tag, tag31=None):
     v3 = read_rows(os.path.join(W3, f"{sset}_s_final"))
     v4 = read_rows(os.path.join(W4, f"{sset}_{tag}"))
     v31 = read_rows(os.path.join(W4, f"{sset}_{tag31}")) if tag31 else v4
+    have31 = any("V31" in r["scores"] for r in v31.values())
     rows = []
     for sid, r in v4.items():
-        if sid not in e2 or sid not in v3 or sid not in v31:
+        if sid not in e2 or sid not in v3 or (have31 and sid not in v31):
             continue
-        e, t, q = e2[sid], v3[sid], v31[sid]
-        assert r["scores"]["B2"] == e["scores"]["B2"] == t["scores"]["B2"] == q["scores"]["B2"], ("B2 replay differs", sid)
+        e, t, q = e2[sid], v3[sid], (v31[sid] if have31 else None)
+        assert r["scores"]["B2"] == e["scores"]["B2"] == t["scores"]["B2"] and (q is None or q["scores"]["B2"] == e["scores"]["B2"]), ("B2 replay differs", sid)
         m = dict(e)
-        m["scores"] = {"B2": e["scores"]["B2"], "E2D": e["scores"]["D100"], "T0": t["scores"]["T0"], "T1": t["scores"]["T1"], "V31": q["scores"]["V31"], "V4": r["scores"]["V4"]}
-        m["pred"] = {"B2": e["pred"]["B2"], "E2D": e["pred"]["D100"], "T0": t["pred"]["T0"], "T1": t["pred"]["T1"], "V31": q["pred"]["V31"], "V4": r["pred"]["V4"]}
-        m["timing"] = {**t.get("timing", {}), **q.get("timing", {}), **r.get("timing", {})}
+        m["scores"] = {"B2": e["scores"]["B2"], "E2D": e["scores"]["D100"], "T0": t["scores"]["T0"], "T1": t["scores"]["T1"], "V4": r["scores"]["V4"]}
+        m["pred"] = {"B2": e["pred"]["B2"], "E2D": e["pred"]["D100"], "T0": t["pred"]["T0"], "T1": t["pred"]["T1"], "V4": r["pred"]["V4"]}
+        if have31:
+            m["scores"]["V31"], m["pred"]["V31"] = q["scores"]["V31"], q["pred"]["V31"]
+        m["timing"] = {**t.get("timing", {}), **(q.get("timing", {}) if q else {}), **r.get("timing", {})}
         rows.append(m)
     return rows
 
@@ -106,7 +109,7 @@ def rows_to_recs(sset, rows):
 def gates(S):
     """V3 protocol §4 G2 -> G3 rule (per arm vs B2; informative only: G3 runs regardless)."""
     out = {}
-    for arm in ("V31", "V4"):
+    for arm in [m for m in ("V31", "V4") if f"{m}_gain" in S["dev3"]["all"]["means"]]:
         per = {}
         for d in ("valsel", "dev3"):
             M, E = S[d]["all"]["means"], S[d]["early"]["means"]
@@ -124,7 +127,7 @@ def tables(S, G, tag):
     f3 = EA.f3
     L = [f"# V4 / V3.1 G1 / G2（开发集固定状态，checkpoint tag {tag}，自动生成）", "",
          "固定状态主指标 = 被选动作的真实一步覆盖增益（pp，越大越好）与 Top-1；regret 只在附录。oracle = 候选中的最大真实增益。", "",
-         "G2 → G3 放行（V3 协议 §4，仅供参考）：" + "；".join(f"{arm} {'PASS' if G[arm]['G2_pass'] else 'FAIL'}（规则 {G[arm]['rule']}）" for arm in ("V31", "V4")), ""]
+         "G2 → G3 放行（V3 协议 §4，仅供参考）：" + "；".join(f"{arm} {'PASS' if G[arm]['G2_pass'] else 'FAIL'}（规则 {G[arm]['rule']}）" for arm in G), ""]
     for d in ("valsel", "dev3"):
         L += [f"## {NAME[d]}（{S[d]['n']} 个状态）", "", "| 阶段 | 状态数 | 指标 | " + " | ".join(LAB[m] for m in MODELS) + " |", "|---|---|---|" + "---|" * len(MODELS)]
         for sub in ("early", "middle", "late", "all"):
@@ -150,9 +153,11 @@ def tables(S, G, tag):
 
 
 def main():
+    global MODELS, PAIRS
     ap = argparse.ArgumentParser()
     ap.add_argument("--tag", default="s_final", help="tag of the rows holding V4")
     ap.add_argument("--tag31", default=None, help="tag of separate rows holding V31 (default: same rows as --tag)")
+    ap.add_argument("--suffix", default="")
     a = ap.parse_args()
     EA.MODELS, EA.LAB, EA.COL, EA.PAIRS = MODELS, LAB, COL, PAIRS
     EA.OUT, EA.FIG = os.path.join(E4, "reports"), os.path.join(E4, "reports", "figures")
@@ -160,15 +165,20 @@ def main():
     os.makedirs(EA.FIG, exist_ok=True)
     EA.ST.setup()
     S = {}
+    loaded = {d: load(d, a.tag, a.tag31) for d in ("valsel", "dev3")}
+    avail = set(loaded["valsel"][0]["scores"]) & set(loaded["dev3"][0]["scores"])
+    MODELS = tuple(m for m in MODELS if m in avail)
+    PAIRS = tuple((x, y) for x, y in PAIRS if x in MODELS and y in MODELS)
+    EA.MODELS, EA.PAIRS = MODELS, PAIRS
     for d in ("valsel", "dev3"):
-        recs = rows_to_recs(d, load(d, a.tag, a.tag31))
+        recs = rows_to_recs(d, loaded[d])
         S[d] = {sub: EA.summ(recs, sub) for sub in ("early", "middle", "late", "all")}
         S[d]["n"] = len(recs)
     G = gates(S)
-    json.dump({"tag": a.tag, "summary": S, "gates": G}, open(os.path.join(EA.OUT, f"g12_v4_{a.tag}.json"), "w"), indent=1, default=float)
-    open(os.path.join(EA.OUT, f"g12_v4_{a.tag}.md"), "w").write(tables(S, G, a.tag))
+    json.dump({"tag": a.tag, "summary": S, "gates": G}, open(os.path.join(EA.OUT, f"g12_v4_{a.tag}{a.suffix}.json"), "w"), indent=1, default=float)
+    open(os.path.join(EA.OUT, f"g12_v4_{a.tag}{a.suffix}.md"), "w").write(tables(S, G, a.tag))
     try:
-        EA.fig_g12(S, f"v4_{a.tag}")
+        EA.fig_g12(S, f"v4_{a.tag}{a.suffix}")
     except Exception as e:                                   # noqa: BLE001
         print("figure skipped:", e)
     print(json.dumps(G, indent=1, default=float))
