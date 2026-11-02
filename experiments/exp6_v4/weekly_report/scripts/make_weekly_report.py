@@ -276,7 +276,8 @@ def fig_cost():
         for g, ls in (("MAG-G", ":"), ("MAG-B", "--")):
             m, _, _ = mean_ci(d, "auc", g)
             ax.axhline(m, color=MUTED, lw=1, ls=ls); ax.text(88, m, f"{g} {m:.3f} ", va="bottom", ha="right", fontsize=7.5, color=INK2)
-        ax.set_xscale("log"); ax.set_xlim(14, 90); ax.set_xlabel("training GPU-hours (L40S, log scale; fine-tune lineages cumulative)"); ax.set_ylabel("G3 AUC")
+        ax.set_xscale("log"); ax.set_xlim(14, 90); ax.set_xticks([15, 20, 30, 40, 60, 80]); ax.set_xticklabels(["15", "20", "30", "40", "60", "80"]); ax.minorticks_off()
+        ax.set_xlabel("training GPU-hours (L40S, log scale; fine-tune lineages cumulative)"); ax.set_ylabel("G3 AUC")
         ax.set_title(f"{DOM[d].split(' (')[0]}: closed-loop AUC vs training cost", loc="left"); clean(ax)
     fig.tight_layout()
     fig.savefig(os.path.join(FIG, "fig9_cost_vs_performance.png"), dpi=150, bbox_inches="tight"); plt.close(fig)
