@@ -1,6 +1,6 @@
 # EXP6 V3.1 — 状态板（与 V4 共用一张板；正本在 `../exp6_v4/STATUS.md`，本文件为同步副本）
 
-**最近更新：2026-11-01 17:00（P6 Experiment A 完成：NO-GO，V4 保留 S10 评分；无运行中任务）**
+**最近更新：2026-11-01 17:35（P7 组会汇报材料 `weekly_report/` 完成；无运行中任务）**
 标记：✅ 完成 · 🔄 正在跑 · ⏳ 等待 · ❌ 失败 · ⬜ 未开始
 
 ## 0. 此刻在跑什么
@@ -69,3 +69,6 @@
 | P6.5 | 报告 `A_FIXED_STATE.md`、`A_G3_RESULTS.md`、`A_FINAL_REPORT.md` | CPU | — | | ✅ **NO-GO**：D100 评分不设默认（室外退化、室内未达阈值）；V2-Mix 时期的 Dense/Dense 退化在 V4 上依旧 |
 
 **GPU / 作业（16:00）**：3429774（gpu117）与 3435072 已到期；现用 3443137 `vscode-dev` gpu115 4 × L40S（到 11-04 ≈ 15:10）。
+
+## P7 组会汇报材料 — ✅（2026-11-01 17:35）
+`weekly_report/WEEKLY_REPORT.md`（中文正文）+ `figures/fig1–fig9.png`（架构图、G3 柱状 + CI、覆盖率曲线、配对差森林图、逐场景、训练曲线 + 成本、固定状态、消融 A、成本 vs 性能）+ `tables/T3–T6`（md + csv）+ `scripts/make_weekly_report.py`（从实测结果重生成）。

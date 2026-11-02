@@ -18,6 +18,8 @@
 | `tests/` | G0 单测：`test_v4_model.py`（G0-4/5/6/7/11a）、`test_split_and_leakage.py`（G0-2/9）、`test_loss_normalisation.py`（G0-3） |
 | `report/` | `G0_VALIDATION.md`、`OUTDOOR_TRAINING.md`、`G1_G2_EVAL.md`、`G3_OUTDOOR.md`、`G3_INDOOR_ZEROSHOT.md`、`FINAL_REPORT.md` |
 | `reports/` | `V4_COMPARISON_TABLES.md`、`V4_DEVIATIONS.md`、`V4_RESOURCES.md` |
+| `weekly_report/` | 组会汇报材料：`WEEKLY_REPORT.md` + 9 张图 + 4 张表 + 生成脚本 |
+| `ablation_study/experiment_A_distp1_dense_vs_sparse/` | 消融 A：DistP1 评分 S10 vs D100（NO-GO） |
 
 **模型改动（仓库级）**：`seen2scene/futureview/model.py` 新增 `RayXAttn` 与 `V2Model.ray_xattn`（配置键 `ray_xattn.enabled`，默认关闭）；`RayEncoder.forward` 拆成 `point_features()` + `head()`（同一算子同一顺序，关闭时与 V2 逐位相同，`tests/futureview` 12 passed + `test_g0_11a`）。
 
