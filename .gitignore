@@ -18,6 +18,7 @@ experiments/*
 !experiments/exp6_v3/
 !experiments/exp6_v4/
 !experiments/exp6_v3.1/
+!experiments/exp6_v5/
 # EXP5 derived result files above 1 MB stay in the working tree only
 experiments/exp5_future_view/ablation_study/A1_prediction_scoring/results/a1_candidates_indoor.csv
 experiments/exp5_future_view/ablation_study/A1_prediction_scoring/results/a1_candidates_outdoor.csv

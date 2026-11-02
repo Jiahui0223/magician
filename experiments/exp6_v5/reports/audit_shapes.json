@@ -1,0 +1,264 @@
+{
+ "v4_ckpt": "/bsuscratch/jiahuizhang/projects/occupancy/seen2scene/work_dirs/exp6_v4/checkpoints/final.pt",
+ "v4_sha256": "1b31afffbe4da2d94344e0a509b711b30561a34bc4aa521773f1595aafac00d4",
+ "v4_step": 40000,
+ "v4_arm": "v4",
+ "v4_model_cfg": {
+  "version": "model_v4",
+  "protocol": "exp6_v4/FROZEN_PROTOCOL.md v1.0 (V2 model_v1.json + ray_xattn)",
+  "encoder": {
+   "in_ch": 4,
+   "ch": [
+    32,
+    64,
+    96
+   ],
+   "blocks_per_level": 2,
+   "dilation_L2": 2,
+   "groups": 8
+  },
+  "ray": {
+   "n_points": 32,
+   "feat_ch": 96,
+   "hidden": 64,
+   "out_ch": 64
+  },
+  "proj_ch": 11,
+  "unet": {
+   "ch": [
+    64,
+    128,
+    192,
+    256
+   ],
+   "blocks_per_level": 2,
+   "attn_levels": [
+    3
+   ],
+   "heads": 4,
+   "t_emb": 256,
+   "groups": 16,
+   "pad_to": [
+    64,
+    128
+   ]
+  },
+  "flow": {
+   "x_ch": 2,
+   "euler_steps": 10,
+   "nohit_y": 1.0
+  },
+  "decode": {
+   "hit_rule": "b>0 and y<1",
+   "s_clip_eps": 1e-06
+  },
+  "ray_xattn": {
+   "enabled": true,
+   "dim": 64,
+   "heads": 4,
+   "n_freq": 4,
+   "out_init_std": 0.005,
+   "doc": "seen2scene.futureview.model.RayXAttn: per-ray attention of [V2 ray context + Fourier(direction, origin/extent)] over the 32 sample-point tokens [F0, F1, in-domain flag, s_j, Fourier(2 s_j - 1), t_j / ext_max]; mask = inside the grid; residual added to the V2 ray context; W_o normal(std 0.005), zero bias"
+  },
+  "inference_precision": "bf16 autocast for encoder / ray encoder / ray X-Attn / U-Net; float32 attention softmax, projection, decoding and DistP1 (as V2)"
+ },
+ "v4_params": {
+  "encoder": 2412000,
+  "rays": 76224,
+  "ray_xattn": 25430,
+  "unet": 22333890
+ },
+ "v5_params": {
+  "encoder": 2412000,
+  "unet": 22333890,
+  "dec": 242757
+ },
+ "v5_dec_params": {
+  "q_mlp": 27520,
+  "f_proj": 20864,
+  "geo_mlp": 19712,
+  "geo_bias": 100,
+  "null": 128,
+  "ln_kv": 256,
+  "ln_q": 256,
+  "wq": 16512,
+  "wk": 16512,
+  "wv": 16512,
+  "wo": 16512,
+  "ffn": 66176,
+  "s_z": 16512,
+  "s_t": 1920,
+  "s_out": 8321,
+  "sum_mlp": 4256,
+  "adapter": 10624,
+  "out_scale": 64
+ },
+ "warm_start": {
+  "copied": 382,
+  "copied_numel": 24745890,
+  "not_used_from_v4": [
+   "ray_xattn",
+   "rays"
+  ],
+  "new_modules_numel": 242757
+ },
+ "state": {
+  "scene_traj": [
+   "bannerman",
+   "cg-A-0001"
+  ],
+  "t": 85,
+  "stale": 0,
+  "views": 7,
+  "coarse_u8": [
+   3,
+   52,
+   60,
+   32
+  ],
+  "cin": [
+   1,
+   4,
+   52,
+   60,
+   32
+  ],
+  "o": [
+   7,
+   3
+  ],
+  "d": [
+   7,
+   7296,
+   3
+  ],
+  "tcap": [
+   7,
+   7296
+  ],
+  "ch": [
+   7,
+   11,
+   7296
+  ],
+  "x1": [
+   7,
+   2,
+   64,
+   128
+  ],
+  "m_unk": [
+   7,
+   64,
+   128
+  ],
+  "tcap_model_units": [
+   3.229387044906616,
+   4.9975080490112305
+  ],
+  "labelled_rays": 8
+ },
+ "v4_path": {
+  "F0": [
+   1,
+   32,
+   52,
+   60,
+   32
+  ],
+  "F1": [
+   1,
+   64,
+   26,
+   30,
+   16
+  ],
+  "dom": [
+   1,
+   1,
+   52,
+   60,
+   32
+  ],
+  "point_features": [
+   51072,
+   97,
+   32
+  ],
+  "n_points": 32,
+  "inside_frac": 0.3165169954299927,
+  "ray_context_H_old": [
+   51072,
+   64
+  ],
+  "H_old_mean": 0.00019199072266928852,
+  "H_old_std": 0.030368531122803688,
+  "H_old_rms": 0.03036913089454174,
+  "cond": [
+   7,
+   76,
+   64,
+   128
+  ],
+  "velocity": [
+   7,
+   2,
+   64,
+   128
+  ]
+ },
+ "v5_path": {
+  "F0": [
+   1,
+   32,
+   52,
+   60,
+   32
+  ],
+  "F1": [
+   1,
+   64,
+   26,
+   30,
+   16
+  ],
+  "tokens_per_ray_max": 45,
+  "valid_tokens_per_ray_mean": 17.63872528076172,
+  "valid_tokens_per_ray_min": 9,
+  "z": [
+   51072,
+   128
+  ],
+  "probe_logits": [
+   51072,
+   16
+  ],
+  "cond": [
+   7,
+   76,
+   64,
+   128
+  ],
+  "H_new_init_rms": 0.02708084136247635,
+  "coarse_tokens": [
+   8,
+   64
+  ]
+ },
+ "frame": {
+  "VS": 0.011,
+  "F0_cell": 0.088,
+  "F1_cell": 0.176,
+  "grid_extent_model_units": [
+   4.576,
+   5.279999999999999,
+   2.816
+  ],
+  "rays_per_view": 7296,
+  "GH_GW": [
+   64,
+   114
+  ]
+ },
+ "gpu": "NVIDIA L40S"
+}

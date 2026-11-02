@@ -1,0 +1,105 @@
+{
+ "data": "data_v1.json",
+ "data_root": "work_dirs/exp5_future_view/task3_full_depth_p1/e2/out_views_d100",
+ "train_set": "train6_minus_Sc",
+ "mp3d_training_samples": 0,
+ "init": "work_dirs/exp6_v4/checkpoints/final.pt (V4 Outdoor-only EMA@40k, sha256 1b31afff...)",
+ "steps": 12000,
+ "betas": [
+  0.9,
+  0.99
+ ],
+ "weight_decay": 0.01,
+ "batch_views": 64,
+ "states_per_batch": 8,
+ "grad_clip": 1.0,
+ "ema": 0.999,
+ "precision": "bf16",
+ "seed": 0,
+ "stale_p": 0.5,
+ "stale_max": 9,
+ "ckpt_every": 1000,
+ "eval_every": 2000,
+ "ema_save_steps": [
+  0,
+  2000,
+  4000,
+  6000,
+  8000,
+  10000,
+  12000
+ ],
+ "eval_sets": {
+  "train_sub": 1024,
+  "sc_sub": 2048
+ },
+ "eval_tau": [
+  0.1,
+  0.3,
+  0.5,
+  0.7,
+  0.9
+ ],
+ "checkpoint_policy": "fixed_ema_step_12000 (pre-registered; no selection on S-c, Dev-3, Test-3 or MP3D)",
+ "smoke": {
+  "overfit_steps": 300,
+  "short_steps": 400,
+  "profile_steps": 40,
+  "emulate_world": 4,
+  "train_items": [
+   [
+    "bannerman",
+    "cg-A-0001"
+   ],
+   [
+    "bannerman",
+    "cg-A-0002"
+   ],
+   [
+    "bannerman",
+    "cg-A-0003"
+   ],
+   [
+    "bannerman",
+    "cg-B-0000"
+   ],
+   [
+    "bannerman",
+    "cg-B-0001"
+   ],
+   [
+    "bannerman",
+    "cg-B-0003"
+   ],
+   [
+    "dunnottar",
+    "cg-A-0000"
+   ],
+   [
+    "dunnottar",
+    "cg-A-0001"
+   ]
+  ],
+  "held_items": [
+   [
+    "bannerman",
+    "cg-A-0000"
+   ],
+   [
+    "bannerman",
+    "cg-B-0002"
+   ],
+   [
+    "bannerman",
+    "fr-A-0000"
+   ]
+  ]
+ },
+ "version": "v4_continue_outdoor_v1",
+ "arm": "V4-Continue12k-S10Score",
+ "model": "(V4 checkpoint model_cfg)",
+ "stages": "all V4 parameters trained from the V4 EMA@40k, same data / batch / EMA / step count as V5",
+ "lr_inherited": 1e-05,
+ "warmup_inherited": 500,
+ "loss": "L = L_FM (the V4 loss)"
+}
