@@ -3,7 +3,7 @@
 merged by sid into the historical rows (B2 / E2D from E2, T0 / T1 from V3, V31 / V4 from exp6_v4); the B2 replay of the
 V5 rows must equal the E2 B2 rows bitwise. Main fixed-state metrics: true one-step coverage gain of the pick (pp) and
 Top-1 (regret only in the appendix); plus the share of states whose pick differs from V4's. Output
-experiments/exp6_v5/reports/g12_v5_<tag>.{json,md}. Usage: python analyze_g12_v5.py [--tag s_final]"""
+experiments/exp6_v5/reports/g12_v5_<tag>.{json,md}. Usage: python analyze_g12_v5.py [--tags s_final_v5 s_final_v4c] [--tag s_final]"""
 import argparse
 import glob
 import json
@@ -27,28 +27,31 @@ COL = dict(A4.COL, V4C="#495057", V5="#7048e8")
 PAIRS = (("V5", "V4C"), ("V5", "V4"), ("V4C", "V4"), ("V5", "B2"), ("V4C", "B2"), ("V5", "E2D"))
 
 
-def load(sset, tag):
+def load(sset, tags):
+    """tags = row directories of the V5 round (e.g. s_final_v5, s_final_v4c: separate runs, same states / candidates / noise)."""
     base = {r["sid"]: r for r in A4.load(sset, "s_final_v4", "s_final_v31")}
-    new = A4.read_rows(os.path.join(W5, f"{sset}_{tag}"))
+    news = [A4.read_rows(os.path.join(W5, f"{sset}_{t}")) for t in tags]
     rows = []
     for sid, r in base.items():
-        if sid not in new:
+        if not all(sid in nw for nw in news):
             continue
-        n = new[sid]
-        assert n["scores"]["B2"] == r["scores"]["B2"], ("B2 replay differs", sid)
-        for m in ("V5", "V4C"):
-            if m in n["scores"]:
-                r["scores"][m], r["pred"][m] = n["scores"][m], n["pred"][m]
-                r.setdefault("timing", {})[m] = n.get("timing", {}).get(m)
+        for nw in news:
+            n = nw[sid]
+            assert n["scores"]["B2"] == r["scores"]["B2"], ("B2 replay differs", sid)
+            for m in ("V5", "V4C"):
+                if m in n["scores"]:
+                    r["scores"][m], r["pred"][m] = n["scores"][m], n["pred"][m]
+                    r.setdefault("timing", {})[m] = n.get("timing", {}).get(m)
         rows.append(r)
     return rows
 
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--tag", default="s_final")
+    ap.add_argument("--tags", nargs="+", default=["s_final_v5", "s_final_v4c"])
+    ap.add_argument("--tag", default="s_final", help="output name")
     a = ap.parse_args()
-    loaded = {d: load(d, a.tag) for d in ("valsel", "dev3")}
+    loaded = {d: load(d, a.tags) for d in ("valsel", "dev3")}
     avail = set(loaded["valsel"][0]["scores"]) & set(loaded["dev3"][0]["scores"])
     models = tuple(m for m in MODELS if m in avail)
     pairs = tuple((x, y) for x, y in PAIRS if x in models and y in models)

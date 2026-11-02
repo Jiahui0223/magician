@@ -32,3 +32,4 @@ bash experiments/exp6_v5/scripts/run_queue_v5.sh 0 work_dirs/exp6_v5/g3_jobs_V5.
 
 ## 变更记录
 - 2026-11-01：建立目录；审计、标签（K 16 / 存 8）、V5 模型、训练器、规划器接入、评估脚本、G0；协议 v1.0 冻结（λ_surf 0.37、λ_bridge0 0.096、固定 EMA@12000）。
+- 2026-11-01 19:36–23:00：V4-Continue12k（7.3 GPU-h）与 V5-Warm12k（10.4 GPU-h）正式训练 → 双域 G3、G1/G2（365 态）、评估端 belief GT 与指标 → `reports/FINAL_REPORT.md`。结论：V5 − V4C 闭环两域无差异（MP3D 0.333 / 0.501 vs 0.342 / 0.484；Macarons++ 0.711 / 0.891 vs 0.713 / 0.882）；belief 第二+ 召回 S-c 0.44 → 评估 0.28–0.32。本轮停止。

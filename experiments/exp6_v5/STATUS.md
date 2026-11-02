@@ -1,17 +1,18 @@
 # EXP6 V5 — 状态板（每次启动 / 结束一个运行就更新）
 
-**最近更新：2026-11-01 20:30（两组正式训练运行中；V5 已过 Bridge 2k 进入 Joint；评估端 belief 全链路冒烟通过）**
+**最近更新：2026-11-01 23:15（本轮完成并停止：两组训练 + 双域 G3 + G1/G2 + belief 评估；`reports/FINAL_REPORT.md`）**
 标记：✅ 完成 · 🔄 正在跑 · ⏳ 等待 · ❌ 失败 · ⬜ 未开始
 
 ## 0. 此刻在跑什么
-| 编号 | 内容 | 节点 / GPU | 作业 | 日志 | 开始 | 状态 |
-|---|---|---|---|---|---|---|
-| P3-V4C | **V4-Continue12k 正式训练**（12k 步，64 视角 / 8 状态 / 步，lr 1e-5，固定 EMA@12000；`train_arm.sh v4c`，torchrun 4 卡） | gpu115 GPU 0–3 | 3443137 | `work_dirs/exp6_v5/logs/train_v4c.log`、`runs/v4c/{log,eval}.jsonl` | 19:36 | 🔄 步 0 S-c FM 0.0196（= V4 EMA@40k）；0.63 s/步；ETA ≈ 21:50 |
-| P3-V5 | **V5-Warm12k 正式训练**（Bridge 2k + Joint 10k，λ_surf 0.37、λ_bridge0 0.096，固定 EMA@12000；`train_arm.sh v5`） | gpu116 GPU 0–3 | 3445003 | `work_dirs/exp6_v5/logs/train_v5.log`、`runs/v5/{log,eval}.jsonl` | 19:42 | 🔄 步 0 S-c FM 0.044（新 decoder 未训练）；0.64 s/步；ETA ≈ 22:30 |
+无（23:00 全部结束）。最终报告 `reports/FINAL_REPORT.md`；统一表 `reports/V5_COMPARISON_TABLES.md`。
 
-| P4-V4C 链 | `post_arm_v5.sh v4c`：等 EXIT 0 → `select_final.py v4c`（EMA@12000 → `checkpoints/v4c_final.pt`）→ V4C 的 G3（4 worker）→ 覆盖率 → G1 / G2（365 态） | gpu115 | 3443137 | `logs/post_v4c.log` | 19:52 | ⏳ 等训练 |
-| P4-V5 链 | `post_arm_v5.sh v5`：同上 + 评估端 belief GT（`eval_belief_gt.py`）+ belief 指标 | gpu116 | 3445003 | `logs/post_v5.log` | 19:52 | ⏳ 等训练 |
-| P4-助手 | `post_helper_v5.sh`：V4C 链结束且 v5_final.pt 存在后，gpu115 加入 V5 的 G3 队列（claim 共享） | gpu115 | 3443137 | `logs/post_helper_v5.log` | 19:52 | ⏳ |
+| 编号 | 内容 | 结果 |
+|---|---|---|
+| P3-V4C | V4-Continue12k 训练（gpu115，19:36–21:25） | ✅ 7.3 GPU-h；`v4c_final.pt` sha `c4190f1d…` |
+| P3-V5 | V5-Warm12k 训练（gpu116，19:42–22:18） | ✅ 10.4 GPU-h；`v5_final.pt` sha `5ef30ac4…` |
+| P4-V4C 链 | G3 40 闭环 + 30 覆盖率（21:26–22:13）→ G1/G2 365 态（22:31） | ✅ 0 失败 |
+| P4-V5 链 | G3 40 闭环 + 30 覆盖率（22:19–22:43，12–16 worker）→ G1/G2（22:58）→ belief GT（22:59）→ belief 指标（23:00） | ✅ 0 失败 |
+| P4-加速 | QOS 上限 8 GPU 已满，空闲 L40S 只有不可用的 gpu118 → 每 GPU 2 worker | ✅ |
 
 **GPU / 作业**
 | 作业 | 节点 | 到期 | 用途 |
@@ -63,15 +64,15 @@
 | G0-11 | 规划器不变：K 4、n_win 5、b2、同一规划器代码；2 步闭环冒烟（V5 smoke ckpt）室内 / 室外 | ✅ 两域 exit 0 |
 | 失败记录 | ① 第一版 L_bridge 按通道标准化 → 近常数通道放大到 3.8e5；改为标量 RMS + 适配器输出尺度 0.05 ② 表面头退化（首表面后负例正确率 1.4 %）→ 加首表面后 / 表面旁负例与三组均衡 ③ 表面旁负例深度可为负 → NaN；查询截断到正数、where 屏蔽 ④ 冒烟轨迹列表随标签生成变化 → 固定列表 | ✅ 均已修复并重测 |
 
-## P3 正式训练 — 🔄
+## P3 正式训练 — ✅
 | 编号 | 内容 | 状态 |
 |---|---|---|
-| P3-V5 | V5-Warm12k（Bridge 2k + Joint 10k），固定 EMA@12000 | 🔄 19:42 启动（gpu116） |
-| P3-V4C | V4-Continue12k，固定 EMA@12000 | 🔄 19:36 启动（gpu115） |
+| P3-V5 | V5-Warm12k（Bridge 2k + Joint 10k），固定 EMA@12000 | ✅ 22:18（`v5_final.pt` sha `5ef30ac4…`） |
+| P3-V4C | V4-Continue12k，固定 EMA@12000 | ✅ 21:25（`v4c_final.pt` sha `c4190f1d…`） |
 
-## P4 评估 — ⬜
+## P4 评估 — ✅
 | 编号 | 内容 | 状态 |
 |---|---|---|
-| P4.1 | G3 Macarons++ 30 × 100、MP3D 10 × 150（V5、V4C） | ⬜ |
-| P4.2 | G1 / G2（365 态）+ belief GT / 指标 | ⬜ |
-| P4.3 | 统一表、资源、偏差、FINAL_REPORT | ⬜ |
+| P4.1 | G3 Macarons++ 30 × 100、MP3D 10 × 150（V5、V4C） | ✅ MP3D：V5 0.333 / 0.501 / 0.188，V4C 0.342 / 0.484 / 0.190；Macarons++：V5 0.711 / 0.891 / 0.569，V4C 0.713 / 0.882 / 0.575；V5 − V4C 两域无差异（`reports/G3_*.md`） |
+| P4.2 | G1 / G2（365 态）+ belief GT / 指标 | ✅ belief 第二+ 召回 MP3D 0.28、Dev-3 0.31–0.32（S-c 0.44）；Dev-3 被选增益 V5 1.145 vs V4C 1.111 pp；`reports/G1_G2.md` |
+| P4.3 | 统一表、资源、偏差、FINAL_REPORT | ✅ |

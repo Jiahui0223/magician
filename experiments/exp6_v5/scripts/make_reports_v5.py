@@ -32,9 +32,9 @@ def g3_report(G, d, title, n_ep, steps):
     for k, v in G["pairs"].items():
         p, c = v[d]["paired"], v[d]["criteria"]
         L.append(f"| {k} | {ci(p['auc'])} | {p['auc']['wins']}/{p['auc']['losses']} | {ci(p['final'])} | {p['final']['wins']}/{p['final']['losses']} | {ci(p['cov20'])} | {c['meaningful']} | {c['degraded']} |")
-    L += ["", "逐场景 / 楼层（AUC / Final / Cov@20）：", "", "| 场景 | " + " | ".join(MAIN + ("B2", "E2D", "MAG-B")) + " |", "|---|" + "---|" * (len(MAIN) + 3)]
+    L += ["", "逐场景 / 楼层（AUC / Final；逐 episode 的 Cov@20 在 `g3_v5.json` 的 per_episode）：", "", "| 场景 | " + " | ".join(MAIN + ("B2", "E2D", "MAG-B")) + " |", "|---|" + "---|" * (len(MAIN) + 3)]
     for s, v in G["per_scene"][d].items():
-        L.append(f"| {s} | " + " | ".join(f"{v[g]['auc']:.3f} / {v[g].get('final', float('nan')):.3f} / {v[g].get('cov20', float('nan')):.3f}" for g in MAIN + ("B2", "E2D", "MAG-B") if g in v) + " |")
+        L.append(f"| {s} | " + " | ".join(f"{v[g]['auc']:.3f} / {v[g].get('final', float('nan')):.3f}" for g in MAIN + ("B2", "E2D", "MAG-B") if g in v) + " |")
     if d == "indoor":
         L += ["", "MP3D 中期停滞 episode 数（/ 10）：" + "，".join(f"{g} {G['stall_mp3d'][g]['episodes_with_stall']}" for g in G["groups"])]
     return "\n".join(L) + "\n"

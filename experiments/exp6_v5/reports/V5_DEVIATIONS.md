@@ -14,3 +14,5 @@
 | D8 | 冻结前 | V4-Continue 学习率 | 同 checkpoint、同数据、约 12k 步 | lr 1e-5（500 步 warmup，余弦到 0），与 V5 继承部分的 lr 相同 | V4 原调度已退火到 0，不能沿用；1e-5 与 V5 对继承权重的步长一致 |
 | D9 | 冻结前 | G0 冒烟的代码版本 | 每门记录 Git SHA | 冒烟在 V5 文件首次提交前运行（manifest HEAD `cb74c40`，V5 文件未跟踪）；修复后的代码全部在 `ad8dc5c`，正式训练从 `ad8dc5c` 启动 | 冒烟后的代码改动只有 D5 / D6 与 NaN 截断、冒烟轨迹固定、belief 导出形状，均在 G0 报告中列出 |
 | D10 | 冻结前 | MP3D 评估端 GT 相机 | — | 评估端多表面 GT 用 T1.1 标签相机（z clip 0.5 运行时单位），MP3D 模拟器的 FoV 相机 znear = 1 | 只影响 0.5–1 运行时单位（7–14 cm）内的表面；只用于 belief 指标 |
+| D11 | 冻结后 | V5 训练 manifest 的 git dirty = True | 每门记录 Git SHA | V5 正式训练（19:42）启动时工作区有已跟踪文件的改动：`STATUS.md` 与 `scripts/label_quality.py`（图标题）；`git diff --stat ad8dc5c HEAD` 对 `v5_model.py`、`train_v5.py`、`train_arm.sh`、`configs/` 为空 | 训练代码与配置与 `ad8dc5c` 完全相同；不影响结果 |
+| D12 | 冻结后 | 评估加速 | — | 用户要求加速评估；`gpu` 分区 QOS 每用户上限 8 GPU（已占满），空闲 L40S 仅 gpu118 的 2 张（不可用节点），无法再申请；改为每 GPU 2 个 G3 worker（claim 文件防重复） | 只影响墙钟与记录的每步时间（共享负载），不影响闭环结果（同起点同种子同动作规则） |
