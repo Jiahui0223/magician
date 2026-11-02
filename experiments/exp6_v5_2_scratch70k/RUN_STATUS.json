@@ -1,6 +1,6 @@
 {
  "experiment": "EXP6 V5.2-M Scratch70k",
- "state": "running",
+ "state": "completed",
  "rounds": [
   {
    "round": "r000_1793615980",
@@ -15,7 +15,11 @@
    "hosts": [
     "gpu115",
     "gpu112"
-   ]
+   ],
+   "end": "2026-11-02 14:55:43",
+   "exit": 0,
+   "step_after": 70000,
+   "nodeB_exit": null
   }
  ],
  "milestones": {
@@ -27,16 +31,61 @@
    "end": "2026-11-02 09:21:57"
   },
   "40000": {
-   "state": "pending"
+   "state": "done",
+   "start": "2026-11-02 10:05:07",
+   "ckpt": "/bsuscratch/jiahuizhang/projects/occupancy/seen2scene/work_dirs/exp6_v5_2_scratch70k/checkpoints/step_040000.pt",
+   "out": "/bsuscratch/jiahuizhang/projects/occupancy/seen2scene/work_dirs/exp6_v5_2_scratch70k/eval/milestone_40k",
+   "end": "2026-11-02 12:43:14"
   }
  },
- "final": {},
- "g3": {},
+ "final": {
+  "last70k": "/bsuscratch/jiahuizhang/projects/occupancy/seen2scene/work_dirs/exp6_v5_2_scratch70k/checkpoints/step_070000.pt",
+  "best_train_holdout": "/bsuscratch/jiahuizhang/projects/occupancy/seen2scene/work_dirs/exp6_v5_2_scratch70k/checkpoints/best_train_holdout.pt",
+  "best_step": 50000,
+  "best": {
+   "step": 50000,
+   "select_score": 0.39761569211259484,
+   "nll_unknown": 0.3202001750469208,
+   "hc_false_nohit_unknown": 0.0024451122153550386,
+   "known_passthrough": 0.036262646317481995
+  },
+  "sha256": {
+   "step_070000.pt": "e1b168945323a21c29e66215db0bb0f01ee765f65ad96541ad15941747352830",
+   "best_train_holdout.pt": "a540950738cc71913cbfb7985eed2e580835cc2ea40f7d44834101ce846bbc98"
+  },
+  "best_is_last": false,
+  "primary": {
+   "name": "final_best",
+   "ckpt": "/bsuscratch/jiahuizhang/projects/occupancy/seen2scene/work_dirs/exp6_v5_2_scratch70k/checkpoints/best_train_holdout.pt",
+   "step": 50000
+  }
+ },
+ "g3": {
+  "smoke": {
+   "state": "done",
+   "start": "2026-11-02 15:07:47",
+   "ckpt": "/bsuscratch/jiahuizhang/projects/occupancy/seen2scene/work_dirs/exp6_v5_2_scratch70k/checkpoints/best_train_holdout.pt",
+   "score_cfg": "/bsuscratch/jiahuizhang/projects/occupancy/seen2scene/work_dirs/exp6_v5_2_scratch70k/eval/final_best/score_v52m.json",
+   "end": "2026-11-02 15:26:48"
+  },
+  "full": {
+   "state": "skipped",
+   "reason": "G3 smoke only (G2 gate not met) (smoke invalid)"
+  }
+ },
  "events": [
   "2026-11-02 03:39:40 driver start pid 19378 phase all on gpu115 (job 3443137)",
   "2026-11-02 03:39:40 round r000_1793615980: 2-node 8-rank from step 0, deadline Wed Nov  4 02:50:56 2026",
   "2026-11-02 06:43:32 milestone G2 20k started (read-only, head node, concurrent with training)",
-  "2026-11-02 09:21:57 milestone G2 20k done"
+  "2026-11-02 09:21:57 milestone G2 20k done",
+  "2026-11-02 10:05:07 milestone G2 40k started (read-only, head node, concurrent with training)",
+  "2026-11-02 12:43:14 milestone G2 40k done",
+  "2026-11-02 14:55:43 round r000_1793615980 exit 0, step 0 -> 70000",
+  "2026-11-02 14:55:45 final G2: last70k + best_train_holdout (step 50000)",
+  "2026-11-02 14:55:45 final_g2: node B gpu112 task final_g2_1793656545",
+  "2026-11-02 15:07:47 gate: FAIL -> G3 smoke only",
+  "2026-11-02 15:07:47 G3 smoke started (2 workers / GPU, head + node B)",
+  "2026-11-02 15:07:47 g3_smoke: node B gpu112 task g3_smoke_1793657267"
  ],
  "head": {
   "host": "gpu115",
@@ -44,7 +93,8 @@
   "driver_pid": 19378
  },
  "git_sha_launch": "",
- "updated": "2026-11-02 09:26:02",
- "steps_completed": 35000,
- "phase": "train"
+ "updated": "2026-11-02 15:26:59",
+ "steps_completed": 70000,
+ "phase": "done",
+ "finished": "2026-11-02 15:26:59"
 }

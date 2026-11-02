@@ -1,0 +1,31 @@
+{
+ "rule": "FROZEN_PROTOCOL \u00a75: G3 full iff Outdoor Dev-3 G2 Top-1 (\u03bb=0, 275 states) \u2265 0.46 AND MP3D VALSEL G2 Top-1 (\u03bb=0, 90 states) \u2265 0.40 AND UNKNOWN-ray high-confidence false no-hit share (rays with p_nohit in [0.9, 1] that truly hit) below old V5.2 in both domains; AND the G3 smoke is valid",
+ "thresholds": {
+  "outdoor_top1_min": 0.46,
+  "mp3d_top1_min": 0.4
+ },
+ "time": "2026-11-02 15:07:47",
+ "outdoor_top1_l0": 0.47133597883597883,
+ "mp3d_top1_l0": 0.3777777777777777,
+ "false_nohit": {
+  "dev3": {
+   "new_false_nohit_share_p09": 0.5598110321815383,
+   "new_rays_p09": 978791,
+   "old_false_nohit_share_p09": 0.540791735922922,
+   "old_rays_p09": 839876,
+   "new_hc_false_nohit_rate_p095": 0.13544144475171957,
+   "improved": false
+  },
+  "valsel": {
+   "new_false_nohit_share_p09": 0.9322539988873517,
+   "new_rays_p09": 406238,
+   "old_false_nohit_share_p09": 0.951316432740963,
+   "old_rays_p09": 239321,
+   "new_hc_false_nohit_rate_p095": 0.21351692196322744,
+   "improved": true
+  }
+ },
+ "g2_gate": "FAIL",
+ "decision": "G3 smoke only (G2 gate not met) (smoke invalid)",
+ "g3_smoke_valid": false
+}
