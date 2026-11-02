@@ -83,7 +83,7 @@ def main():
     ax.set_xscale("log"); ax.axvline(8, color="#cb181d", lw=1.5, ls="--"); ax.text(8.5, ax.get_ylim()[1] * 0.9, "Delta = 8 VS", color="#cb181d", fontsize=8)
     ax.axvline(0.5, color="#636363", lw=1, ls=":"); ax.text(0.53, ax.get_ylim()[1] * 0.8, "merge tol 0.5 VS", color="#636363", fontsize=8)
     ax.set_xlabel("gap between the first and second surface (voxels, VS = 0.011 model units)"); ax.set_ylabel("rays (subsampled)")
-    ax.set_title("Second surface behind the first: thin double-sided structures vs occluded surfaces")
+    ax.set_title("Gap between first and second surface (Train-6, all labelled views)", fontsize=10)
     ax.spines[["top", "right"]].set_visible(False)
     fig.tight_layout(); fig.savefig(os.path.join(FIG, "label_gap21.png"), dpi=150); plt.close(fig)
     # ---- figure 3: example views re-peeled

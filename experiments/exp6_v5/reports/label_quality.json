@@ -1,0 +1,226 @@
+{
+ "scenes": {
+  "bannerman": {
+   "trajectories": 30,
+   "heldout_trajectories": 8,
+   "views": 21695,
+   "rays": 158286720,
+   "hist_surfaces_per_ray_0_to_6plus": [
+    85876755,
+    29454404,
+    16760954,
+    11543600,
+    4582878,
+    4507378,
+    5560751
+   ],
+   "share_ge1": 0.4574607711878798,
+   "share_ge2": 0.2713781737343474,
+   "share_ge2_among_ge1": 0.5932272029133007,
+   "first_eq_tstar_min": 1.0,
+   "first_maxrel_max": 5.959451007589731e-08,
+   "K16_saturated_share": 0.001625024002256638,
+   "rays_with_supervised_range_in_subset": 0.8931393691467712,
+   "subset_share_ge2": 0.3760281931204094,
+   "gap21_vox_quantiles_5_25_50_75_95": [
+    1.356645107269287,
+    4.741322040557861,
+    8.528276443481445,
+    16.30193519592285,
+    44.899681091308594
+   ],
+   "gap21_share_ge8vox": 0.5293370279995037,
+   "gap21_share_ge32vox": 0.09045535381943008,
+   "gpu_seconds": 2856.181256055832
+  },
+  "dunnottar": {
+   "trajectories": 30,
+   "heldout_trajectories": 6,
+   "views": 21805,
+   "rays": 159089280,
+   "hist_surfaces_per_ray_0_to_6plus": [
+    109506728,
+    37731090,
+    4943998,
+    4029654,
+    1380978,
+    865678,
+    631154
+   ],
+   "share_ge1": 0.31166494687762747,
+   "share_ge2": 0.0744956668356284,
+   "share_ge2_among_ge1": 0.23902484890249295,
+   "first_eq_tstar_min": 1.0,
+   "first_maxrel_max": 5.959848038838135e-08,
+   "K16_saturated_share": 8.47512938053582e-05,
+   "rays_with_supervised_range_in_subset": 0.8110840790968913,
+   "subset_share_ge2": 0.247025214966408,
+   "gap21_vox_quantiles_5_25_50_75_95": [
+    3.6093971729278564,
+    12.262517929077148,
+    30.384410858154297,
+    86.1594467163086,
+    232.77699279785156
+   ],
+   "gap21_share_ge8vox": 0.8503672633147089,
+   "gap21_share_ge32vox": 0.4879560899787042,
+   "gpu_seconds": 2492.799388885498
+  },
+  "fushimi": {
+   "trajectories": 30,
+   "heldout_trajectories": 8,
+   "views": 22361,
+   "rays": 163145856,
+   "hist_surfaces_per_ray_0_to_6plus": [
+    115588296,
+    21330716,
+    8493668,
+    9105494,
+    2678066,
+    3184449,
+    2765167
+   ],
+   "share_ge1": 0.29150332816299057,
+   "share_ge2": 0.16075703449065848,
+   "share_ge2_among_ge1": 0.5514758116270052,
+   "first_eq_tstar_min": 1.0,
+   "first_maxrel_max": 5.9589854382531474e-08,
+   "K16_saturated_share": 0.0005773406870904953,
+   "rays_with_supervised_range_in_subset": 0.7355204721747468,
+   "subset_share_ge2": 0.3133225506629943,
+   "gap21_vox_quantiles_5_25_50_75_95": [
+    1.4495849609375,
+    6.430886268615723,
+    18.288352966308594,
+    55.974788665771484,
+    146.57315063476562
+   ],
+   "gap21_share_ge8vox": 0.7002268790710156,
+   "gap21_share_ge32vox": 0.381573190863035,
+   "gpu_seconds": 2742.024580478668
+  },
+  "liberty": {
+   "trajectories": 30,
+   "heldout_trajectories": 6,
+   "views": 20669,
+   "rays": 150801024,
+   "hist_surfaces_per_ray_0_to_6plus": [
+    113666236,
+    6675566,
+    10337213,
+    4840461,
+    3735050,
+    3521349,
+    8025149
+   ],
+   "share_ge1": 0.24625023766416865,
+   "share_ge2": 0.2019828592145369,
+   "share_ge2_among_ge1": 0.8202341696416847,
+   "first_eq_tstar_min": 1.0,
+   "first_maxrel_max": 5.960174781054125e-08,
+   "K16_saturated_share": 0.028019993049142097,
+   "rays_with_supervised_range_in_subset": 0.9774260256893629,
+   "subset_share_ge2": 0.3363265941399017,
+   "gap21_vox_quantiles_5_25_50_75_95": [
+    0.8267489671707153,
+    2.4372448921203613,
+    7.906826972961426,
+    20.57439613342285,
+    45.5433235168457
+   ],
+   "gap21_share_ge8vox": 0.4975754865938185,
+   "gap21_share_ge32vox": 0.12393808952633308,
+   "gpu_seconds": 2028.8746767044067
+  },
+  "pisa": {
+   "trajectories": 30,
+   "heldout_trajectories": 6,
+   "views": 22132,
+   "rays": 161475072,
+   "hist_surfaces_per_ray_0_to_6plus": [
+    106364574,
+    24303015,
+    5946481,
+    3673304,
+    3195625,
+    2874106,
+    15117967
+   ],
+   "share_ge1": 0.34129415344060043,
+   "share_ge2": 0.19078785733565118,
+   "share_ge2_among_ge1": 0.5590129670031289,
+   "first_eq_tstar_min": 1.0,
+   "first_maxrel_max": 5.959529618771126e-08,
+   "K16_saturated_share": 0.03889151266837877,
+   "rays_with_supervised_range_in_subset": 0.8599539888166248,
+   "subset_share_ge2": 0.3513662754473176,
+   "gap21_vox_quantiles_5_25_50_75_95": [
+    0.6252635717391968,
+    1.389936923980713,
+    3.248734951019287,
+    18.62127113342285,
+    124.11221313476562
+   ],
+   "gap21_share_ge8vox": 0.31531817166287734,
+   "gap21_share_ge32vox": 0.2037018175605525,
+   "gpu_seconds": 2860.0343413352966
+  },
+  "redeemer": {
+   "trajectories": 30,
+   "heldout_trajectories": 8,
+   "views": 21252,
+   "rays": 155054592,
+   "hist_surfaces_per_ray_0_to_6plus": [
+    126771195,
+    8777841,
+    11746116,
+    2875041,
+    2386074,
+    891931,
+    1606394
+   ],
+   "share_ge1": 0.18240928330584366,
+   "share_ge2": 0.1257979899105471,
+   "share_ge2_among_ge1": 0.6896468624331087,
+   "first_eq_tstar_min": 1.0,
+   "first_maxrel_max": 5.959734746278203e-08,
+   "K16_saturated_share": 0.020383189767063145,
+   "rays_with_supervised_range_in_subset": 0.8725137579245826,
+   "subset_share_ge2": 0.2987155016588435,
+   "gap21_vox_quantiles_5_25_50_75_95": [
+    1.1319247484207153,
+    4.427823066711426,
+    11.019619941711426,
+    25.412818908691406,
+    43.3460578918457
+   ],
+   "gap21_share_ge8vox": 0.5777296753899537,
+   "gap21_share_ge32vox": 0.14079839154262735,
+   "gpu_seconds": 2182.1188690662384
+  }
+ },
+ "files": 180,
+ "all": {
+  "rays": 947852544,
+  "hist": [
+   657773784,
+   128272632,
+   58228430,
+   36067554,
+   17958671,
+   15844891,
+   33706582
+  ],
+  "share_ge2": 0.17070812229628832,
+  "share_ge2_among_ge1": 0.5578006745478366,
+  "gap21_vox_quantiles_5_25_50_75_95": [
+   0.9356412291526794,
+   3.842440605163574,
+   10.980779647827148,
+   30.495384216308594,
+   123.66832733154297
+  ],
+  "gap21_share_ge8vox": 0.5794966007786232,
+  "gap21_share_ge32vox": 0.23904364557193816
+ }
+}
