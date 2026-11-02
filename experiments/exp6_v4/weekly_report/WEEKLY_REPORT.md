@@ -145,6 +145,58 @@
 
 - V3.1 的一步排序质量与 B2 相当（室内 zero-shot 的 MAE 0.237 vs 0.230）；V4 明显更差（0.381），室外新表面 MAE 6.78 vs 5.9。但闭环里 V4 ≈ V3.1 ≈ T1。结合 Experiment C（GT 深度）、Task 2（评分器）、V3 G2 的结果：**固定状态的一步排序不是闭环覆盖率的可靠代理**，汇报里应以 G3 为主。
 
+## 5.1 可视化：一次 NBV 决策中，预测深度起什么作用
+**一次规划步骤做的事**：当前相机看到一帧深度 → 融合进地图（P1）→ 列出所有合法的下一步相机（6–9 个候选）→ V4 对**每个候选**生成 **K = 4 个**可能的未来深度图（只在当前地图里还是 UNKNOWN 的射线上生成，已知射线沿用地图深度）→ DistP1 统计每个预测里"新表面"的面积并对 4 个样本取平均 → 选分数最高的候选。下面的图把这个过程逐步画出来，并与 GT（网格渲染深度、真实覆盖增益）对照。
+
+**设置**：模型用 V4（本周的 Outdoor-only EMA@40k）；状态、候选、K = 4 噪声与 G1/G2 完全相同，重放得到的分数与存档 V4 行**逐位一致**；GT 只在评估侧使用。MP3D 状态对 V4 是 zero-shot。B2 作为参照只出现在汇总图里，同一脚本换权重即可画 B2 版。
+
+**示例怎么选（事先定好的规则，不是随手挑）**：
+- 正例：早期阶段、候选 ≥ 6 个、V4 选中了真实最优相机、预测分数与真实增益的 Spearman ≥ 0.6，取候选间真实增益差距最大的那个状态。
+- 失败例：早期阶段、候选 ≥ 6 个，取"真实最优增益 − V4 选中相机增益"最大的状态。
+- 正例只是说明机制，**不代表平均水平**：早期阶段 V4 选中真实最优相机的比例室内只有 0.22、室外 0.35（全部状态 0.50 / 0.49）。平均水平看下面的汇总图。
+
+### (1) 汇总：用预测深度选出的相机，真实增益比随机选高多少
+![viz_summary](figures/viz_summary_pick_gain.png)
+
+| 被选相机的真实一步覆盖增益（pp，全部开发状态平均） | 随机选（期望） | B2 选 | V4 选 | 理想上限（GT 最优） |
+|---|---|---|---|---|
+| 室内 MP3D VALSEL（90 态，V4 zero-shot） | 0.45 | 0.88（1.94 倍，上限的 80 %） | 0.57（1.25 倍，52 %） | 1.10 |
+| 　其中早期（36 态） | 1.08 | 2.11 | 1.33 | 2.61 |
+| 室外 Macarons++ Dev-3（275 态） | 0.67 | 1.30（1.94 倍，73 %） | 1.12（1.68 倍，63 %） | 1.78 |
+| 　其中早期（95 态） | 1.58 | 3.02 | 2.55 | 4.18 |
+
+两个模型在每个阶段都明显好于随机选；B2 在室内更强。这是"预测深度能帮助 NBV"最直接的证据：选择只依赖预测，没有用到任何 GT。
+
+### (2) 正例：室内（MP3D EU6Fwq7SyZv L1，第 5 步）
+![viz_indoor_good_overview](figures/viz_indoor_good_overview.png)
+![viz_indoor_good_candidates](figures/viz_indoor_good_candidates.png)
+
+- 7 个候选的预测分数与真实增益 Spearman 0.82；V4 选中的 A 就是真实最优（1.68 pp，随机期望 0.95 pp）。
+- A 有 61 % 的射线在当前地图里是 UNKNOWN；在这些射线上，预测"有没有表面"与 GT 一致 84 %，深度误差中位数 0.28 m。
+- 规划器认为会新增的表面覆盖了 91 % 的真实新增表面（召回），但也把一些已经看过的表面算成新的（精度 0.32）。俯视图 (c) 显示预测表面停在规划区域边界（约 8 m）处，而 GT 表面延伸得更远，这正是之前诊断出的"区域裁剪"限制。
+
+### (3) 正例：室外（Macarons++ colosseum，第 15 步）
+![viz_outdoor_good_overview](figures/viz_outdoor_good_overview.png)
+![viz_outdoor_good_candidates](figures/viz_outdoor_good_candidates.png)
+
+- 9 个候选 Spearman 0.97；V4 选中的 A 是真实最优（6.89 pp，随机期望 2.88 pp），排名前三与真实增益排名完全一致。
+- 4 个预测样本都补出了竞技场看台的墙体，样本之间差异小（K = 4 spread 列颜色浅），说明模型对这类结构比较确定。
+
+### (4) 失败例：两种不同的原因
+![viz_indoor_fail_overview](figures/viz_indoor_fail_overview.png)
+![viz_indoor_fail_candidates](figures/viz_indoor_fail_candidates.png)
+
+- **室内（pLe4wQe7qrG L0，第 0 步）——预测是对的，评分出错**：V4 选中的 A 只有 1.28 pp，真实最优 C 有 16.59 pp。A 的深度预测几乎完美（一致率 99 %、误差 1 cm），但规划器把大量已经看过的表面算成新的（精度 0.09），给了 A 过高的分数。原因是稀疏地图只沿 10 % 采样射线记录表面，已观测区域留有很多"洞"。这与 Task 2 发现的新颖性尺度问题相同（覆盖率尺度的新颖性 S2h 能缓解）。
+
+![viz_outdoor_fail_overview](figures/viz_outdoor_fail_overview.png)
+![viz_outdoor_fail_candidates](figures/viz_outdoor_fail_candidates.png)
+
+- **室外（barts，第 10 步）——预测本身错了**：真实最优相机 F（12.26 pp）前方是一面大墙，V4 的 4 个样本都预测成"没有表面"（白色；一致率只有 40 %），于是规划器认为那里没有新东西可看，F 排第 6。V4 选中的 A 只有 0.66 pp。
+
+### 读图说明
+- 总览图：(a) 当前相机实际看到的深度；(b) 当前地图俯视（深色 = 已观测到的高于地面的结构，浅色 = 已观测的空地 / 地面，灰色 = 未知），箭头 = 候选相机朝向，字母 = 按预测分数排名，○ = V4 选中，★ = 真实最优；(c) V4 选中相机在 UNKNOWN 射线上的预测表面（蓝，4 个样本）与 GT 表面（橙）；(d) 每个候选的预测分数（横轴，误差条 = 4 个样本的最小–最大）与真实增益（纵轴）。
+- 候选网格图：每行一个候选，按预测分数从高到低排；列依次是当前地图的已知深度（灰 = UNKNOWN）、GT 深度、4 个预测样本（黑线圈出 UNKNOWN 区域，模型只在这里生成）、4 个样本的相对差异、规划器认为的新表面（蓝）、真实的新表面（橙）；右侧文字给出预测分数与排名、真实增益与排名、有无表面一致率、深度误差。
+
 ## 6. 消融 Experiment A：DistP1 评分用稠密 P1？
 ![fig8](figures/fig8_experiment_A.png)
 
@@ -177,6 +229,7 @@
 | V4 一步质量诊断（注意力熵、样本离散度 vs 闭环） | 与 U0 并行 | CPU + 少量 GPU |
 
 ## 附录：文件索引
+- 可视化（5.1 节）：`figures/viz_summary_pick_gain.png`（汇总）、`viz_{indoor,outdoor}_{good,fail}_{overview,candidates}.png`（4 个示例 × 2 张）；脚本 `scripts/viz_extract.py`（GPU，重放并导出）与 `scripts/viz_candidates_plot.py`（画图）。
 - 图：`figures/fig10_indoor_average_auc_coverage.png` / `fig11_outdoor_average_auc_coverage.png`（核心图：室内 / 室外平均 AUC 与 Final coverage）、`fig1_architectures.png`（架构）、`fig2_g3_bars.png`（G3 柱状 + CI）、`fig3_coverage_curves.png`（覆盖率曲线）、`fig4_paired_differences.png`（配对差森林图）、`fig5_per_scene_auc.png`（逐场景）、`fig6_training_and_cost.png`（训练曲线 + 成本）、`fig7_fixed_state_g1g2.png`（固定状态）、`fig8_experiment_A.png`（消融 A）、`fig9_cost_vs_performance.png`（成本 vs 性能）。
 - 表：`tables/T3_g3_unified.{md,csv}`、`T4_paired_differences.md`、`T5_fixed_state_g1g2.md`、`T6_experiment_A.md`。
 - 数据与协议：`../AUDIT_BASELINES.md`、`../CHECKPOINT_LINEAGE.md`、`../FROZEN_PROTOCOL.md`、`../report/`、`../reports/`、`../ablation_study/experiment_A_distp1_dense_vs_sparse/`。
