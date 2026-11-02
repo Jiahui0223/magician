@@ -1,0 +1,44 @@
+{
+ "experiment": "EXP6 V5.2-M Scratch70k",
+ "state": "running",
+ "rounds": [
+  {
+   "round": "r000_1793615980",
+   "nnodes": 2,
+   "start": "2026-11-02 03:39:40",
+   "step_before": 0,
+   "deadline": "Wed Nov  4 02:50:56 2026",
+   "jobs": [
+    "3443137",
+    "3449325"
+   ],
+   "hosts": [
+    "gpu115",
+    "gpu112"
+   ]
+  }
+ ],
+ "milestones": {
+  "20000": {
+   "state": "pending"
+  },
+  "40000": {
+   "state": "pending"
+  }
+ },
+ "final": {},
+ "g3": {},
+ "events": [
+  "2026-11-02 03:39:40 driver start pid 19378 phase all on gpu115 (job 3443137)",
+  "2026-11-02 03:39:40 round r000_1793615980: 2-node 8-rank from step 0, deadline Wed Nov  4 02:50:56 2026"
+ ],
+ "head": {
+  "host": "gpu115",
+  "job": "3443137",
+  "driver_pid": 19378
+ },
+ "git_sha_launch": "",
+ "updated": "2026-11-02 03:48:43",
+ "steps_completed": 0,
+ "phase": "train"
+}

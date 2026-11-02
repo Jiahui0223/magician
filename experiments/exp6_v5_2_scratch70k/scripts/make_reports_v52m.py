@@ -143,6 +143,39 @@ def g2_report(st):
     return traj
 
 
+BELIEF_SETS = (("valsel/B0", "MP3D VALSEL"), ("dev3/B0", "Dev-3 B0"), ("dev3/B2", "Dev-3 B2"))
+OLD_BELIEF = os.path.join(R, "experiments", "exp6_v5_2", "reports", "belief_metrics_eval.json")
+
+
+def launch_belief(st):
+    """Start the evaluation-side multi-surface belief metrics of every evaluated checkpoint once (detached, GPU 3 of the
+    head node; ~10 min each), so this report builder itself stays fast."""
+    for name in ("milestone_20k", "milestone_40k", "final_last70k", "final_best"):
+        od = os.path.join(EV, name)
+        mf = sorted(glob.glob(os.path.join(od, "fixed", "*", "*", "models_0.json")))
+        mj = (jload(mf[0]) or {}) if mf else {}
+        if not os.path.exists(os.path.join(od, "DONE")) or os.path.exists(os.path.join(od, "belief.started")) or not mj.get("ckpt"):
+            continue
+        open(os.path.join(od, "belief.started"), "w").write(time.strftime("%F %T"))
+        subprocess.Popen(["bash", os.path.join(HERE, "belief_eval_v52m.sh"), od, mj["ckpt"], "3"], cwd=R, stdout=open(os.path.join(od, "belief.log"), "a"),
+                         stderr=subprocess.STDOUT, start_new_session=True)
+
+
+def belief_rows(bm, key_of):
+    out = []
+    for sub, lab in BELIEF_SETS:
+        k = key_of(sub)
+        if not bm or k not in bm.get("metrics", {}):
+            continue
+        for grp in ("all", "unknown_rays"):
+            x = bm["metrics"][k].get(grp)
+            if not x:
+                continue
+            gap = x.get("recall_second_plus_by_gap", {}).get("gap>=128vox", {})
+            out.append((lab, grp, x))
+    return out
+
+
 def g1_report(st):
     H = jl(os.path.join(W, "holdout.jsonl"))
     out = ["# V5.2-M G1 First-Hit / Geometry（自动生成）", "", "两部分：(1) Train-6 S-c holdout（训练中每 5k；选择依据）；(2) 评估固定状态上所有候选视角的首中（相对 oracle t*），与旧 V5.2 同口径。", ""]
@@ -159,6 +192,28 @@ def g1_report(st):
                 tab = [ln for ln in blk.splitlines() if ln.startswith("| First-Hit") or ln.startswith("|---|---|---|---|---|---|---|---|---|---|") or ln.startswith("| V5.2-M") or ln.startswith("| 旧 V5.2")]
                 out += [f"### {head}", ""] + tab + [""]
             break
+    out += ["## (3) 评估场景多表面 belief（网格深度剥离 GT，仅评估端；每候选视角 256 条射线，UNKNOWN 优先；与旧 V5.2 同口径）", "",
+            "| 模型 | 数据 | 射线组 | 射线 | 首表面召回 | 第二+召回 | 深遮挡（间隔 ≥128 vox）召回 | 网格 precision / recall | 网格 ECE | 首表面后虚假表面率 |", "|---|---|---|---|---|---|---|---|---|---|"]
+    have = False
+    for name, lab in (("final_best", "V5.2-M best"), ("final_last70k", "V5.2-M last70k"), ("milestone_40k", "V5.2-M 40k"), ("milestone_20k", "V5.2-M 20k")):
+        bm = jload(os.path.join(EV, name, "belief_metrics.json"))
+        if not bm:
+            continue
+        have = True
+        for dl, grp, x in belief_rows(bm, lambda sub, name=name: os.path.join(EV, name, "fixed", sub)):
+            g = x.get("recall_second_plus_by_gap", {}).get("gap>=128vox", {})
+            out.append(f"| {lab} | {dl} | {grp} | {x['rays']:,} | {f3(x.get('recall_first'))} | {f3(x.get('recall_second_plus'))} | {f3(g.get('recall'))}（{g.get('n', 0):,}） | "
+                       f"{f3(x.get('grid_precision'))} / {f3(x.get('grid_recall'))} | {f3(x.get('grid_ece'))} | {f3(x.get('false_surface_rate_behind_first'))} |")
+    ob = jload(OLD_BELIEF)
+    mp = {"valsel/B0": "work_dirs/exp6_v5_2/eval_fixed/valsel_s_final/B0", "dev3/B0": "work_dirs/exp6_v5_2/eval_fixed/dev3_s_final/B0", "dev3/B2": "work_dirs/exp6_v5_2/eval_fixed/dev3_s_final/B2"}
+    for dl, grp, x in belief_rows(ob, lambda sub: mp[sub]):
+        g = x.get("recall_second_plus_by_gap", {}).get("gap>=128vox", {})
+        out.append(f"| 旧 V5.2（V5 belief） | {dl} | {grp} | {x['rays']:,} | {f3(x.get('recall_first'))} | {f3(x.get('recall_second_plus'))} | {f3(g.get('recall'))}（{g.get('n', 0):,}） | "
+                   f"{f3(x.get('grid_precision'))} / {f3(x.get('grid_recall'))} | {f3(x.get('grid_ece'))} | {f3(x.get('false_surface_rate_behind_first'))} |")
+    if not have:
+        out.append("")
+        out.append("V5.2-M 的多表面 belief 评估尚未完成（每个评估 checkpoint 的 G2 结束后自动启动）。")
+    out.append("")
     open(os.path.join(E, "G1_FIRSTHIT.md"), "w").write("\n".join(out) + "\n")
 
 
@@ -204,6 +259,10 @@ def main():
             fn(st)
         except Exception:
             traceback.print_exc()
+    try:
+        launch_belief(st)
+    except Exception:
+        traceback.print_exc()
     try:
         traj = g2_report(st)
     except Exception:

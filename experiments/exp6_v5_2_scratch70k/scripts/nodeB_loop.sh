@@ -6,6 +6,9 @@ cd $R; mkdir -p $C
 export LD_PRELOAD=$S2E/lib/libtbb.so LD_LIBRARY_PATH=$S2E/lib PYTHONPATH=$R PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True OMP_NUM_THREADS=6
 END=$(squeue -j $SLURM_JOB_ID -h -o %e)
 done_round=""; done_eval=""
+# a round / eval task announced before this loop started is stale (its head ranks are gone): never join it
+[ -f $C/round.json ] && done_round=$($S2E/bin/python -c "import json; print(json.load(open('$C/round.json'))['round'])")
+[ -f $C/eval_task.json ] && done_eval=$($S2E/bin/python -c "import json; print(json.load(open('$C/eval_task.json'))['id'])")
 status() { echo "{\"host\": \"$(hostname -s)\", \"job\": \"$SLURM_JOB_ID\", \"state\": \"$1\", \"round\": \"$done_round\", \"eval\": \"$done_eval\", \"end\": \"$END\", \"time\": \"$(date '+%F %T')\", \"unix\": $(date +%s)}" > $C/nodeB_status.json.tmp && mv $C/nodeB_status.json.tmp $C/nodeB_status.json; }
 while true; do
   [ -f $C/SHUTDOWN ] && { status shutdown; echo "$(date '+%F %T') SHUTDOWN"; exit 0; }
