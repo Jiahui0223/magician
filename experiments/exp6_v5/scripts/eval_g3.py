@@ -25,7 +25,7 @@ OUT, FIG = os.path.join(E5, "reports"), os.path.join(E5, "figures")
 TASK2 = AV.TASK2
 GRP = ("MAG-G", "MAG-B", "V2O", "B0", "B2", "E2D", "T0", "T1", "V31", "V4", "A1", "V4C", "V5")
 PAIRS = (("V5", "V4C"), ("V5", "V4"), ("V4C", "V4"), ("V5", "B2"), ("V4C", "B2"), ("V5", "E2D"), ("V4C", "E2D"), ("V5", "MAG-G"), ("V5", "MAG-B"),
-         ("V4C", "MAG-G"), ("V4C", "MAG-B"), ("V5", "V31"), ("V5", "V2O"), ("V5", "A1"))
+         ("V4C", "MAG-G"), ("V4C", "MAG-B"), ("V5", "V31"), ("V5", "V2O"), ("V5", "A1"), ("A1", "V4"))
 LAB = dict(AV.LAB, V4="V4@40k Outdoor-only (A0, S10 score)", A1="V4 + D100 DistP1 score (Experiment A1, diagnostic)",
            V4C="V4-Continue12k-S10Score (control)", V5="V5-Warm12k-S10Score")
 SRC = dict(AV.SRC, A1="V4@40k, D100 / D100", V4C="V4@40k + 12k Outdoor-only, D100 / sparse", V5="V4@40k U-Net+Flow + new decoder, Bridge2k + Joint10k Outdoor-only, D100 / sparse")
