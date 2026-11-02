@@ -17,3 +17,6 @@
 | `reports/` | G0、G1、G2、G3 smoke、最终报告 |
 
 共享代码：`seen2scene/futureview/v52_model.py`、`v52_score.py`。大文件：`work_dirs/exp6_v5_2/`。
+
+## 变更记录
+- 2026-11-02 00:32–02:05：审计 → G0（21 项单测 + 冒烟）→ 协议 v1.0 冻结（`c34cb02`）→ 单次训练 6k（1.1 GPU-h，`v52_final.pt` sha `4982bc66…`）→ S-c 下限冻结 → G1 / G2（365 态）→ G3 smoke → 全量 G3（规则 (a) 放行）→ `reports/FINAL_REPORT.md`。结论：V5.2 两域显著退化（MP3D AUC 0.238 / 0.241、Macarons++ 0.608 / 0.611 vs V5 0.333 / 0.711），λ 0.1 无作用；瓶颈为首中头跨场景泛化。本轮停止。

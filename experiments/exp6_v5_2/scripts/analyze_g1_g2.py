@@ -115,7 +115,7 @@ def main():
             L.append(f"| {met} | " + " | ".join(f"{f3(S[d]['all']['paired'][f'{x}-{y}|{met}'])}（低 {S[d]['all']['paired'][f'{x}-{y}|{met}']['lower']} / 高 {S[d]['all']['paired'][f'{x}-{y}|{met}']['higher']}）" for x, y in PAIRS) + " |")
         x = X[d]
         L += ["", f"- 选择不同的比例：" + "，".join(f"{k} {v:.3f}" for k, v in x["pick_differs"].items()),
-              f"- λ 翻转（λ=0 与 λ=0.1 选点不同）：{x['lambda_flip_rate']:.3f}（{x['n_flips']} 态；翻转后增益更高 {x['flip_better']} / 更低 {x['flip_worse']}，平均 Δ {f3(x['flip_gain_delta_pp'])} pp）",
+              f"- λ 翻转（λ=0 与 λ=0.1 选点不同）：{x['lambda_flip_rate']:.3f}（{x['n_flips']} 态；翻转后增益更高 {x['flip_better']} / 更低 {x['flip_worse']}，平均 Δ {(x['flip_gain_delta_pp'] if x['flip_gain_delta_pp'] is not None else float('nan')):.3f} pp）",
               f"- λ=0.1 被选候选中潜力项占总分比例：均值 {x['pot_share_of_pick_mean']:.3f}，p90 {x['pot_share_of_pick_p90']:.3f}",
               f"- 可见首中质量落在 D100 已确认 FREE 的比例（被 q_valid 去掉）：{x['visible_mass_on_D100_free_frac_mean']:.3f}；落在 S10 已知 BAND 的比例：{x['visible_mass_on_S10_known_frac_mean']:.3f}",
               f"- 打分耗时：每状态 {x['score_s_per_state_mean']:.2f} s（平均 {x['candidates_per_state_mean']:.1f} 个候选）", ""]
