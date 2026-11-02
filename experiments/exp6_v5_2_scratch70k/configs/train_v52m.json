@@ -1,0 +1,103 @@
+{
+ "version": "train_v52m_scratch70k_v1",
+ "model": "model_v52m.json",
+ "init": "scratch (all parameters random, seed 0); no V4 / V5 / V5.2 checkpoint is read",
+ "data": "data_v1.json",
+ "data_root": "work_dirs/exp5_future_view/task3_full_depth_p1/e2/out_views_d100",
+ "train_set": "train6_minus_Sc",
+ "mp3d_training_samples": 0,
+ "labels": "work_dirs/exp6_v5/labels/v1 (Train-6 depth peeling) + shard tstar (T1.1 first hit)",
+ "steps": 70000,
+ "lr": 0.0002,
+ "warmup": 1000,
+ "lr_min_frac": 0.0,
+ "schedule": "linear warmup 1k, cosine to 0 at 70k (the V4 / V3.1 scratch recipe: AdamW lr 2e-4, betas (0.9, 0.99), wd 0.01, clip 1.0, EMA 0.999, bf16)",
+ "betas": [
+  0.9,
+  0.99
+ ],
+ "weight_decay": 0.01,
+ "batch_views": 64,
+ "states_per_batch": 8,
+ "rays_label": 256,
+ "rays_fh": 256,
+ "grad_clip": 1.0,
+ "ema": 0.999,
+ "precision": "bf16 autocast, fp32 first-hit accumulation, no loss scaling",
+ "seed": 0,
+ "stale_p": 0.5,
+ "stale_max": 9,
+ "surf_delta_vox": 8,
+ "beta": 1.0,
+ "loss": "L = L_surface + beta * L_firsthit (nothing else)",
+ "ckpt_every": 1000,
+ "holdout_every": 5000,
+ "holdout_views": 256,
+ "tag_steps": [
+  2000,
+  10000,
+  20000,
+  40000,
+  55000,
+  70000
+ ],
+ "tag_every": 5000,
+ "ckpt_spatial": false,
+ "ckpt_depth": true,
+ "oom_max_retries": 2,
+ "selection": "best_train_holdout = min over holdout evaluations of (UNKNOWN first-hit NLL + 2 x UNKNOWN high-confidence false-no-hit rate + 2 x KNOWN-ray pass-through mass beyond t_known + 8 VS) on Train-6 S-c; last70k always kept",
+ "smoke": {
+  "train_items": [
+   [
+    "bannerman",
+    "cg-A-0001"
+   ],
+   [
+    "bannerman",
+    "cg-A-0002"
+   ],
+   [
+    "bannerman",
+    "cg-A-0003"
+   ],
+   [
+    "bannerman",
+    "cg-B-0000"
+   ],
+   [
+    "bannerman",
+    "cg-B-0001"
+   ],
+   [
+    "bannerman",
+    "cg-B-0003"
+   ],
+   [
+    "dunnottar",
+    "cg-A-0000"
+   ],
+   [
+    "dunnottar",
+    "cg-A-0001"
+   ]
+  ],
+  "held_items": [
+   [
+    "bannerman",
+    "cg-A-0000"
+   ],
+   [
+    "bannerman",
+    "cg-B-0002"
+   ],
+   [
+    "bannerman",
+    "fr-A-0000"
+   ]
+  ],
+  "overfit_steps": 200,
+  "short_steps": 200,
+  "gradscale_steps": 120,
+  "emulate_world": 8
+ }
+}

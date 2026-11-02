@@ -1,0 +1,48 @@
+{
+ "version": "model_v52m_v1",
+ "arch": "v52m",
+ "protocol": "exp6_v5_2_scratch70k ARCHITECTURE.md (seen2scene/futureview/v52m_model.py); scratch, no warm start",
+ "encoder": {
+  "in_ch": 4,
+  "ch": [
+   32,
+   64,
+   96
+  ],
+  "blocks_per_level": 2,
+  "dilation_L2": 2,
+  "groups": 8
+ },
+ "proj_ch": 11,
+ "ray_query": {
+  "d": 128,
+  "heads": 4,
+  "n0": 24,
+  "n1": 12,
+  "n_freq": 6,
+  "chunk": 16384
+ },
+ "spatial": {
+  "ray_ch": 64,
+  "out_ch": 64,
+  "ch": [
+   96,
+   192,
+   384,
+   384
+  ],
+  "blocks": 2
+ },
+ "depth": {
+  "width": 192,
+  "blocks": 6,
+  "kernel": 5,
+  "mult": 4,
+  "rho0": 0.05,
+  "known_bias0": 3.0,
+  "n_bins": 64,
+  "c_bins_vox": 16,
+  "n_sub_dom": 4,
+  "chunk": 4096
+ }
+}
