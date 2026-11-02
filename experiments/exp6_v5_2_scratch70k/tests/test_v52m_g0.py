@@ -80,32 +80,43 @@ def structure(tk=1.0, dlo=1.0, dhi=1.0, tmax=9.4, tcap=9.4, n=256, dom=None):
     return edges, fr, known
 
 
-def test_free_before_hazard_and_two_walls():
-    """D100 FREE up to the first UNKNOWN sample at 2.8 (3 m), a spurious network hit at 1.0 (inside FREE), walls at 2.8 and
-    8.4 (9 m). FREE-before-hazard: the spurious hazard is removed BEFORE T, wall A gets the first-hit mass; the wrong order
-    (compute, then delete the FREE intervals) loses that mass. Wall B stays hidden behind an opaque A."""
-    tcap = 9.4
-    edges, fr, _ = structure(dlo=2.8 / tcap, tcap=tcap)
-    t_mid = 0.5 * (edges[:, 1:] + edges[:, :-1]); dt = edges[:, 1:] - edges[:, :-1]
-    rho = torch.full_like(t_mid, 1e-4)
+def _walls(dlo, tcap=9.4):
+    edges, fr, _ = structure(dlo=dlo / tcap, tcap=tcap)
+    dt = edges[:, 1:] - edges[:, :-1]
+    rho = torch.full_like(dt, 1e-4)
     for tw, op in ((1.0, 0.95), (2.8, 0.999), (8.4, 0.999)):
         inside = (edges[:, :-1] <= tw) & (edges[:, 1:] > tw)
         rho = torch.where(inside, -math.log(1 - op) * S0 / dt, rho)
     good = V52.firsthit(rho * dt * (1 - fr) / S0)
     bad = V52.firsthit(rho * dt / S0)
-    pf_bad = bad["p_first"] * (fr < 0.999)                                  # delete the FREE intervals afterwards
     iA = int(((edges[0, :-1] <= 2.8) & (edges[0, 1:] > 2.8)).nonzero()[0])
     iB = int(((edges[0, :-1] <= 8.4) & (edges[0, 1:] > 8.4)).nonzero()[0])
-    assert float(fr[0, :iA - 1].min()) > 0.999 and float(fr[0, iA + 1:].max()) == 0.0
-    # wall A's interval is partly FREE (D100 FREE ends inside it): uniform density inside the interval -> its optical depth is
-    # scaled by (1 - free_frac); the first-hit mass there is 1 - exp(-a_A) up to the tiny transmittance loss before A.
-    exp_A = 1 - math.exp(-(-math.log(1 - 0.999)) * (1 - float(fr[0, iA])))
-    assert abs(float(good["p_first"][0, iA]) - exp_A) < 5e-3 and float(good["p_first"][0, iA]) > 0.9, (float(good["p_first"][0, iA]), exp_A)
+    return edges, fr, good, bad["p_first"] * (fr < 0.999), iA, iB
+
+
+def test_free_before_hazard_and_two_walls():
+    """Walls A at 2.8 (3 m) and B at 8.4 (9 m), opacity 0.999, tcap 9.4; a spurious network hit at 1.0 (opacity 0.95) inside
+    D100 FREE. Case 1: FREE ends at the first UNKNOWN sample 2.6, before A. FREE-before-hazard removes the spurious hit
+    BEFORE T: A gets the first-hit mass, opaque A hides B; the wrong order (compute T, then delete the FREE intervals) loses
+    A's mass. Case 2: FREE ends exactly at the wall (2.8), inside A's interval: uniform density inside an interval scales
+    A's optical depth by (1 - free_frac), so A and B get the analytic masses. In both cases no mass lies inside FREE."""
+    tau = -math.log(1 - 0.999)
+    edges, fr, good, pf_bad, iA, iB = _walls(2.6)
+    assert float(fr[0, iA]) == 0.0 and float(fr[0, iA + 1:].max()) == 0.0
+    assert float(good["p_first"][0, iA]) > 0.99, float(good["p_first"][0, iA])
     assert float(pf_bad[0, iA]) < 0.1, float(pf_bad[0, iA])                  # wrong order: the spurious FREE wall ate the mass
-    assert float((good["p_first"] * (fr >= 0.999)).sum()) < 1e-6           # no first-hit mass inside D100 FREE
-    assert float(good["p_first"][0, iB]) < 1e-2
-    s = good["p_first"].sum(-1) + good["p_nohit"]
-    assert abs(float(s) - 1) < 1e-6
+    assert float(good["p_first"][0, iB]) < 1e-2, float(good["p_first"][0, iB])
+    assert float((good["p_first"] * (fr >= 0.999)).sum()) < 1e-6
+    assert abs(float(good["p_first"].sum(-1) + good["p_nohit"]) - 1) < 1e-6
+    edges, fr, good, pf_bad, iA, iB = _walls(2.8)
+    assert 0.0 < float(fr[0, iA]) < 1.0 and float(fr[0, :iA - 1].min()) > 0.999
+    aA = tau * (1 - float(fr[0, iA]))
+    exp_A, exp_B = 1 - math.exp(-aA), math.exp(-aA) * 0.999
+    assert abs(float(good["p_first"][0, iA]) - exp_A) < 5e-3, (float(good["p_first"][0, iA]), exp_A)
+    assert abs(float(good["p_first"][0, iB]) - exp_B) < 5e-3, (float(good["p_first"][0, iB]), exp_B)
+    assert float(pf_bad[0, iA]) < 0.1, float(pf_bad[0, iA])
+    assert float((good["p_first"] * (fr >= 0.999)).sum()) < 1e-6
+    assert abs(float(good["p_first"].sum(-1) + good["p_nohit"]) - 1) < 1e-6
 
 
 def test_known_crossing_and_band_and_truncation():

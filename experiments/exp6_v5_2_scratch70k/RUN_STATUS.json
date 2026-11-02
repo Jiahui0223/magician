@@ -20,7 +20,11 @@
  ],
  "milestones": {
   "20000": {
-   "state": "pending"
+   "state": "done",
+   "start": "2026-11-02 06:43:32",
+   "ckpt": "/bsuscratch/jiahuizhang/projects/occupancy/seen2scene/work_dirs/exp6_v5_2_scratch70k/checkpoints/step_020000.pt",
+   "out": "/bsuscratch/jiahuizhang/projects/occupancy/seen2scene/work_dirs/exp6_v5_2_scratch70k/eval/milestone_20k",
+   "end": "2026-11-02 09:21:57"
   },
   "40000": {
    "state": "pending"
@@ -30,7 +34,9 @@
  "g3": {},
  "events": [
   "2026-11-02 03:39:40 driver start pid 19378 phase all on gpu115 (job 3443137)",
-  "2026-11-02 03:39:40 round r000_1793615980: 2-node 8-rank from step 0, deadline Wed Nov  4 02:50:56 2026"
+  "2026-11-02 03:39:40 round r000_1793615980: 2-node 8-rank from step 0, deadline Wed Nov  4 02:50:56 2026",
+  "2026-11-02 06:43:32 milestone G2 20k started (read-only, head node, concurrent with training)",
+  "2026-11-02 09:21:57 milestone G2 20k done"
  ],
  "head": {
   "host": "gpu115",
@@ -38,7 +44,7 @@
   "driver_pid": 19378
  },
  "git_sha_launch": "",
- "updated": "2026-11-02 03:48:43",
- "steps_completed": 0,
+ "updated": "2026-11-02 09:26:02",
+ "steps_completed": 35000,
  "phase": "train"
 }
