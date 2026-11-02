@@ -5,3 +5,4 @@
 - `tables/`：T3–T6（Markdown + CSV）。
 - `scripts/make_weekly_report.py`：从实测结果文件重新生成图表（`python scripts/make_weekly_report.py`）。
 - `figures/viz_*.png`：一次 NBV 决策的可视化（当前视角、候选相机、V4 的 K = 4 预测深度 vs GT、预测新表面 vs 真实新表面、预测分数 vs 真实增益）+ 全部状态汇总；由 `scripts/viz_extract.py`（GPU）和 `scripts/viz_candidates_plot.py` 生成，说明见 `WEEKLY_REPORT.md` 5.1 节。
+- `animations/explore_*.{gif,mp4}`：V4 闭环探索动图（4 条室外 + 2 条室内）：每步 5 个候选相机 × 4 个想象深度 → 选择 → 移动 → 真实所见与覆盖率；说明见 `WEEKLY_REPORT.md` 5.2 节。
