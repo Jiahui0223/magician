@@ -331,3 +331,36 @@ if __name__ == "__main__":
     import shutil
     shutil.copy(os.path.join(E4, "reports", "figures", "g3_v4_coverage_curves.png"), os.path.join(FIG, "fig3_coverage_curves.png"))
     print("figures:", sorted(os.listdir(FIG)))
+
+
+# ---------------------------------------------------------------- Figures 10 / 11: average AUC (left) and average Final coverage (right), one figure per domain
+def fig_domain_average(d, fname, title):
+    """Bars = average over all episodes of the domain (scene/floor means averaged; every scene has the same number of
+    starts, so this equals the plain episode average). No per-scene breakdown, no error bars (CIs are in fig2 / T3)."""
+    fig, axs = plt.subplots(1, 2, figsize=(13, 4.9))
+    for ax, (met, lab) in zip(axs, (("auc", "AUC" + ("@150" if d == "indoor" else "@100")), ("final", "Final coverage" + (" @150" if d == "indoor" else " @100")))):
+        vals = [G3["means"][d][met][g]["mean"] for g in GRP]
+        xs = np.arange(len(GRP))
+        for i, (g, v) in enumerate(zip(GRP, vals)):
+            ax.bar(i, v, width=0.72, color=GCOL[g], alpha=0.95 if g in NEW else 0.62, edgecolor=SURF, linewidth=1.0, hatch="//" if g in NEW else None)
+            ax.text(i, v + 0.008 * (1 if d == "indoor" else 1.6), f"{v:.3f}", ha="center", va="bottom", fontsize=8.6, color=INK, fontweight="semibold" if g in NEW else "normal")
+        top = max(vals)
+        ax.set_ylim(0, top * 1.16)
+        ax.set_xticks(xs); ax.set_xticklabels([NAME[g] for g in GRP], rotation=30, ha="right", fontsize=9)
+        for t, g in zip(ax.get_xticklabels(), GRP):
+            t.set_fontweight("semibold" if g in NEW else "normal")
+        ax.set_title(f"Average {lab}", loc="left"); ax.set_ylabel(lab)
+        clean(ax); ax.grid(axis="x", visible=False)
+    handles = [plt.Rectangle((0, 0), 1, 1, color=FCOL[f], alpha=0.8) for f in FCOL] + [plt.Rectangle((0, 0), 1, 1, facecolor=SURF, edgecolor=INK2, hatch="//")]
+    fig.legend(handles, list(FCOL) + ["this week (V3.1, V4)"], loc="lower center", ncol=5, bbox_to_anchor=(0.5, -0.02))
+    fig.suptitle(title, x=0.01, ha="left", fontsize=11, fontweight="semibold")
+    fig.tight_layout(rect=(0, 0.06, 1, 0.95))
+    fig.savefig(os.path.join(FIG, fname), dpi=150, bbox_inches="tight"); plt.close(fig)
+
+
+if __name__ == "__main__":
+    fig_domain_average("indoor", "fig10_indoor_average_auc_coverage.png",
+                       "Indoor — MP3D zero-shot (5 floors x 2 starts, 150 steps): average over all 10 episodes")
+    fig_domain_average("outdoor", "fig11_outdoor_average_auc_coverage.png",
+                       "Outdoor — Macarons++ (Dev-3 + Test-3, 6 scenes x 5 starts, 100 steps): average over all 30 episodes")
+    print("fig10 / fig11 written")

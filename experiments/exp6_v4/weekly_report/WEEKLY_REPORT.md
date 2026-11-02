@@ -13,6 +13,28 @@
 3. **还不能下的结论**：Ray X-Attn 的因果作用 —— 严格对照 U0（V2 架构、D100、40k、Outdoor-only、无 X-Attn）没有训练；V2 Original 的口径（稀疏 P1、60k）不同。
 4. **建议的下一步**（等待决定）：(a) MP3D 室内微调（从 Outdoor-only 权重出发，目标 E2-D100 的 0.364 / 0.553，并量化室外遗忘）；(b) U0 对照（≈ 20 GPU-h）；(c) 不延长到 60k（S-c 开发指标已平台）。
 
+## 核心图：各模型的平均 AUC 与平均 Final coverage（左 AUC，右 Final coverage）
+每根柱子是该数据集**全部 episode 的平均值**（室内 10 条、室外 30 条；每个楼层 / 场景的起点数相同，所以与"先场景平均再平均"完全一致），不分场景。带斜线的是本周的两个 Outdoor-only 模型；颜色表示训练来源。置信区间见图 2 / 表 3。
+
+**室内（MP3D zero-shot，150 步）**
+![fig10](figures/fig10_indoor_average_auc_coverage.png)
+
+**室外（Macarons++ Dev-3 + Test-3，100 步）**
+![fig11](figures/fig11_outdoor_average_auc_coverage.png)
+
+| 模型 | 室内 AUC@150 | 室内 Final@150 | 室外 AUC@100 | 室外 Final@100 |
+|---|---|---|---|---|
+| MAG-G | 0.278 | 0.377 | 0.704 | 0.905 |
+| MAG-B | 0.292 | 0.377 | 0.685 | 0.891 |
+| V2 Original | 0.315 | 0.441 | 0.724 | 0.898 |
+| B0 | 0.322 | 0.469 | 0.729 | 0.884 |
+| B2 | 0.334 | 0.530 | 0.730 | 0.906 |
+| E2-D100 | **0.364** | **0.553** | 0.711 | 0.880 |
+| V3-T0 | 0.311 | 0.463 | 0.702 | 0.872 |
+| V3-T1 | 0.331 | 0.508 | 0.712 | 0.883 |
+| **V3.1**（本周） | 0.335 | 0.499 | 0.697 | 0.865 |
+| **V4**（本周） | 0.327 | 0.495 | 0.710 | 0.878 |
+
 ## 1. 比较的是什么：架构演进
 ![fig1](figures/fig1_architectures.png)
 
@@ -155,7 +177,7 @@
 | V4 一步质量诊断（注意力熵、样本离散度 vs 闭环） | 与 U0 并行 | CPU + 少量 GPU |
 
 ## 附录：文件索引
-- 图：`figures/fig1_architectures.png`（架构）、`fig2_g3_bars.png`（G3 柱状 + CI）、`fig3_coverage_curves.png`（覆盖率曲线）、`fig4_paired_differences.png`（配对差森林图）、`fig5_per_scene_auc.png`（逐场景）、`fig6_training_and_cost.png`（训练曲线 + 成本）、`fig7_fixed_state_g1g2.png`（固定状态）、`fig8_experiment_A.png`（消融 A）、`fig9_cost_vs_performance.png`（成本 vs 性能）。
+- 图：`figures/fig10_indoor_average_auc_coverage.png` / `fig11_outdoor_average_auc_coverage.png`（核心图：室内 / 室外平均 AUC 与 Final coverage）、`fig1_architectures.png`（架构）、`fig2_g3_bars.png`（G3 柱状 + CI）、`fig3_coverage_curves.png`（覆盖率曲线）、`fig4_paired_differences.png`（配对差森林图）、`fig5_per_scene_auc.png`（逐场景）、`fig6_training_and_cost.png`（训练曲线 + 成本）、`fig7_fixed_state_g1g2.png`（固定状态）、`fig8_experiment_A.png`（消融 A）、`fig9_cost_vs_performance.png`（成本 vs 性能）。
 - 表：`tables/T3_g3_unified.{md,csv}`、`T4_paired_differences.md`、`T5_fixed_state_g1g2.md`、`T6_experiment_A.md`。
 - 数据与协议：`../AUDIT_BASELINES.md`、`../CHECKPOINT_LINEAGE.md`、`../FROZEN_PROTOCOL.md`、`../report/`、`../reports/`、`../ablation_study/experiment_A_distp1_dense_vs_sparse/`。
 - 资源：第一阶段 ≈ 85 GPU-h（L40S）+ 消融 A ≈ 3.5 GPU-h；EXP6 V3 ≈ 161 GPU-h。
