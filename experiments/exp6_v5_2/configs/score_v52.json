@@ -11,15 +11,15 @@
  "lambda": 0.0,
  "eta": 0.5,
  "floors": {
-  "vis": 1e-06,
-  "surf": 1e-06,
-  "space": 1e-06
+  "vis": 29.142163839190705,
+  "surf": 153.8093215232715,
+  "space": 15.696970983408391
  },
  "chunk": 8192,
  "lambdas": [
   0.0,
   0.1
  ],
- "version": "score_v52_provisional",
- "doc": "PROVISIONAL (G0 / smoke only): floors not yet calibrated; the frozen version is written after the Train-6 S-c calibration, before any G2 / G3 run"
+ "version": "score_v52_v1",
+ "doc": "FROZEN 2026-11-02 01:16:26: floors from Train-6 S-c calibration (60 states, reports/calibration_floors.json) on v52_final.pt sha 4982bc667368"
 }
