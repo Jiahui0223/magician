@@ -1,0 +1,25 @@
+{
+ "n_sub": 8,
+ "thr_vis": 0.001,
+ "thr_surf": 0.01,
+ "thr_space": 0.01,
+ "delta_vox": 8.0,
+ "kappa_vox": 128.0,
+ "space_eps": 0.1,
+ "frontier_free_frac": 0.25,
+ "unknown_dom_frac": 0.5,
+ "lambda": 0.0,
+ "eta": 0.5,
+ "floors": {
+  "vis": 1e-06,
+  "surf": 1e-06,
+  "space": 1e-06
+ },
+ "chunk": 8192,
+ "lambdas": [
+  0.0,
+  0.1
+ ],
+ "version": "score_v52_provisional",
+ "doc": "PROVISIONAL (G0 / smoke only): floors not yet calibrated; the frozen version is written after the Train-6 S-c calibration, before any G2 / G3 run"
+}

@@ -1,0 +1,50 @@
+{
+ "version": "model_v52",
+ "protocol": "exp6_v5_2 ARCHITECTURE.md: V5 encoder + V5RayDecoder (inherited from v5_final.pt) + HazardHead (seen2scene/futureview/v52_model.py); no flow U-Net",
+ "encoder": {
+  "in_ch": 4,
+  "ch": [
+   32,
+   64,
+   96
+  ],
+  "blocks_per_level": 2,
+  "dilation_L2": 2,
+  "groups": 8
+ },
+ "ray": {
+  "out_ch": 64,
+  "doc": "the 64 ray channels of the V4 flow condition are now produced by the V5 CondAdapter; n_points / hidden / feat_ch of the V4 RayEncoder are not used"
+ },
+ "proj_ch": 11,
+ "decode": {
+  "hit_rule": "b>0 and y<1",
+  "s_clip_eps": 1e-06
+ },
+ "inference_precision": "bf16 autocast for encoder / ray encoder / ray X-Attn / U-Net; float32 attention softmax, projection, decoding and DistP1 (as V2)",
+ "arch": "v52",
+ "v5": {
+  "d": 128,
+  "heads": 4,
+  "n0": 24,
+  "n1": 12,
+  "n_coarse": 8,
+  "n_freq": 6,
+  "d_sum": 32,
+  "n_probe": 16,
+  "chunk": 16384,
+  "retrieval": "log-depth strata from one cell to tcap; per stratum the grid cell nearest to the ray among 3 probe cells (integer indexing + gather, no interpolation); outside grid / domain / behind camera / duplicate masked; UNKNOWN in-domain cells kept",
+  "coarse": "F1 adaptive-average-pooled to 2 x 2 x 2 regions (8 tokens per state)",
+  "null_token": true,
+  "out_scale_init": 0.05
+ },
+ "hazard": {
+  "hidden": 64,
+  "n_freq": 6,
+  "rho0": 0.02,
+  "n_bins": 64,
+  "c_bins_vox": 16,
+  "chunk": 8192,
+  "doc": "intervals uniform in log1p(t / c), c = 16 VS, from tcap * 0.5 / 70 to tcap; rho per S0 of ray length; belief input detached"
+ }
+}
