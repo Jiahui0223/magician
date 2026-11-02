@@ -1,0 +1,84 @@
+{
+ "valsel": {
+  "all": {
+   "rays": 4428672,
+   "hit_rate": 0.9650531807277667,
+   "hit_beyond_grid_share_of_hits": 0.21506706748677556,
+   "hc_rays": 944125,
+   "hc_share": 0.2131846747738374,
+   "hc_true_nohit": 0.07190573282139547,
+   "hc_hit_inside_grid": 0.3458556864821925,
+   "hc_hit_beyond_grid": 0.582238580696412,
+   "mean_pnohit_hit_inside": 0.16610992923380188,
+   "mean_pnohit_hit_beyond": 0.6688548908138399,
+   "mean_pnohit_true_nohit": 0.5357113509520514
+  },
+  "unknown": {
+   "rays": 1747165,
+   "hit_rate": 0.9569971925948608,
+   "hit_beyond_grid_share_of_hits": 0.22266978143958968,
+   "hc_rays": 407372,
+   "hc_share": 0.23316172198962318,
+   "hc_true_nohit": 0.06755741680822443,
+   "hc_hit_inside_grid": 0.49103767563799183,
+   "hc_hit_beyond_grid": 0.44140490755378375,
+   "mean_pnohit_hit_inside": 0.21432132823839098,
+   "mean_pnohit_hit_beyond": 0.5440701070081955,
+   "mean_pnohit_true_nohit": 0.4538725323214728
+  },
+  "known": {
+   "rays": 2681507,
+   "hit_rate": 0.9703021472627146,
+   "hit_beyond_grid_share_of_hits": 0.2101813617272487,
+   "hc_rays": 536753,
+   "hc_share": 0.20016841276192826,
+   "hc_true_nohit": 0.07520591407966047,
+   "hc_hit_inside_grid": 0.23566892034138606,
+   "hc_hit_beyond_grid": 0.6891251655789534,
+   "mean_pnohit_hit_inside": 0.13561788275096825,
+   "mean_pnohit_hit_beyond": 0.7538095767121133,
+   "mean_pnohit_true_nohit": 0.6129235864970028
+  }
+ },
+ "dev3": {
+  "all": {
+   "rays": 14139648,
+   "hit_rate": 0.9064954799440552,
+   "hit_beyond_grid_share_of_hits": 0.12950649528571306,
+   "hc_rays": 2511313,
+   "hc_share": 0.17760788670269584,
+   "hc_true_nohit": 0.47614853266000695,
+   "hc_hit_inside_grid": 0.32806862386329383,
+   "hc_hit_beyond_grid": 0.19578284347669925,
+   "mean_pnohit_hit_inside": 0.12331266828755258,
+   "mean_pnohit_hit_beyond": 0.38854453144557405,
+   "mean_pnohit_true_nohit": 0.9286853612924483
+  },
+  "unknown": {
+   "rays": 4228143,
+   "hit_rate": 0.8841763393527607,
+   "hit_beyond_grid_share_of_hits": 0.08602074029056095,
+   "hc_rays": 985094,
+   "hc_share": 0.2329850243948703,
+   "hc_true_nohit": 0.4373724740989185,
+   "hc_hit_inside_grid": 0.42167854032204033,
+   "hc_hit_beyond_grid": 0.14094898557904117,
+   "mean_pnohit_hit_inside": 0.16963708309281195,
+   "mean_pnohit_hit_beyond": 0.5382845572142734,
+   "mean_pnohit_true_nohit": 0.9145271562765137
+  },
+  "known": {
+   "rays": 9911505,
+   "hit_rate": 0.9160165888026087,
+   "hit_beyond_grid_share_of_hits": 0.14741224986653417,
+   "hc_rays": 1526219,
+   "hc_share": 0.15398458659910882,
+   "hc_true_nohit": 0.5011764366712772,
+   "hc_hit_inside_grid": 0.26764835190755715,
+   "hc_hit_beyond_grid": 0.23117521142116565,
+   "mean_pnohit_hit_inside": 0.10286457594058734,
+   "mean_pnohit_hit_beyond": 0.35256519904293016,
+   "mean_pnohit_true_nohit": 0.937014919888498
+  }
+ }
+}

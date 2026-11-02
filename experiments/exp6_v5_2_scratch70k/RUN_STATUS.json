@@ -66,11 +66,12 @@
    "start": "2026-11-02 15:07:47",
    "ckpt": "/bsuscratch/jiahuizhang/projects/occupancy/seen2scene/work_dirs/exp6_v5_2_scratch70k/checkpoints/best_train_holdout.pt",
    "score_cfg": "/bsuscratch/jiahuizhang/projects/occupancy/seen2scene/work_dirs/exp6_v5_2_scratch70k/eval/final_best/score_v52m.json",
-   "end": "2026-11-02 15:26:48"
+   "end": "2026-11-02 15:26:48",
+   "rerun": "6 items rerun 15:28-15:34 (planner CUDA OOM on a shared GPU; replay-frame directory race); valid after rerun"
   },
   "full": {
    "state": "skipped",
-   "reason": "G3 smoke only (G2 gate not met) (smoke invalid)"
+   "reason": "G3 smoke only (G2 gate not met); the smoke was recorded invalid at 15:27 (infrastructure failures), valid after the 15:34 rerun (FROZEN_PROTOCOL \u00a79)"
   }
  },
  "events": [
@@ -85,16 +86,20 @@
   "2026-11-02 14:55:45 final_g2: node B gpu112 task final_g2_1793656545",
   "2026-11-02 15:07:47 gate: FAIL -> G3 smoke only",
   "2026-11-02 15:07:47 G3 smoke started (2 workers / GPU, head + node B)",
-  "2026-11-02 15:07:47 g3_smoke: node B gpu112 task g3_smoke_1793657267"
+  "2026-11-02 15:07:47 g3_smoke: node B gpu112 task g3_smoke_1793657267",
+  "2026-11-02 15:27:06 node B released (ctl/SHUTDOWN)",
+  "2026-11-02 15:40 (manual) G3 smoke rerun of 6 items failed for infrastructure reasons (planner CUDA OOM on a GPU shared with the read-only diagnostic; replay-frame directory race between V52ML0 / V52ML01 coverage passes); attempt 1 kept in eval/g3/failed_attempt1; see FROZEN_PROTOCOL \u00a79"
  ],
  "head": {
   "host": "gpu115",
   "job": "3443137",
   "driver_pid": 19378
  },
- "git_sha_launch": "",
- "updated": "2026-11-02 15:26:59",
+ "git_sha_launch": "f105eed",
+ "updated": "2026-11-02 15:27:06",
  "steps_completed": 70000,
  "phase": "done",
- "finished": "2026-11-02 15:26:59"
+ "finished": "2026-11-02 15:26:59",
+ "git_sha_reports": "8ad0aa65c261747a042148934b4c2b1ce20f19d0",
+ "git_sha_launch_note": "filled manually from git log (commit 03:39:24, driver start 03:39:40); the driver recorded an empty string"
 }

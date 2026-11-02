@@ -29,8 +29,9 @@ G5.COL.update({"V52L0": "#94d82d", "V52L01": "#ffa94d", "V52ML0": "#2b8a3e", "V5
 G5.OUT, G5.FIG = os.path.join(E, "reports"), os.path.join(E, "figures")
 
 if __name__ == "__main__":
-    if not os.path.isdir(os.path.join(WM, "closed_loop", "outdoor", "V52ML0")) or not os.path.exists(os.path.join(E, "AUTO_DECISION.json")) \
-            or "full" not in open(os.path.join(E, "AUTO_DECISION.json")).read():
+    import json
+    dec = json.load(open(os.path.join(E, "AUTO_DECISION.json"))) if os.path.exists(os.path.join(E, "AUTO_DECISION.json")) else {}
+    if dec.get("decision") != "G3 smoke + G3 full" or not os.path.isdir(os.path.join(WM, "closed_loop", "outdoor", "V52ML0")):
         sys.exit(0)
     os.makedirs(G5.OUT, exist_ok=True); os.makedirs(G5.FIG, exist_ok=True)
     sys.argv = [sys.argv[0], "--suffix", "2m_full"]

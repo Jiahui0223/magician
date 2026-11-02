@@ -1,6 +1,6 @@
 # EXP6 V5.2-M Scratch70k —— 状态板（驱动脚本自动更新）
 
-**最近更新：2026-11-02 15:27:03**　标记：✅ 完成 · 🔄 正在跑 · ⏳ 等待 · ❌ 失败 · ⬜ 跳过
+**最近更新：2026-11-02 15:39:11**　标记：✅ 完成 · 🔄 正在跑 · ⏳ 等待 · ❌ 失败 · ⬜ 跳过
 
 ## GPU / 作业
 
@@ -17,9 +17,9 @@
 | P2.1 | 里程碑 G2 20k | ✅ 2026-11-02 06:43:32 → 2026-11-02 09:21:57 |
 | P2.2 | 里程碑 G2 40k | ✅ 2026-11-02 10:05:07 → 2026-11-02 12:43:14 |
 | P3 | 最终 G1/G2（last70k + best） | best step 50000；主权重 final_best |
-| P4 | 门槛 / 决策 | FAIL → G3 smoke only (G2 gate not met) (smoke invalid) |
+| P4 | 门槛 / 决策 | FAIL → G3 smoke only (G2 gate not met) |
 | P5.smoke | G3 smoke | ✅ 2026-11-02 15:07:47 → 2026-11-02 15:26:48  |
-| P5.full | G3 full | ⬜  →  G3 smoke only (G2 gate not met) (smoke invalid) |
+| P5.full | G3 full | ⬜  →  G3 smoke only (G2 gate not met); the smoke was recorded invalid at 15:27 (infrastructure failures), valid after the 15:34 rerun (FROZEN_PROTOCOL §9) |
 
 ## 事件（最近 15 条）
 
@@ -35,4 +35,6 @@
 - 2026-11-02 15:07:47 gate: FAIL -> G3 smoke only
 - 2026-11-02 15:07:47 G3 smoke started (2 workers / GPU, head + node B)
 - 2026-11-02 15:07:47 g3_smoke: node B gpu112 task g3_smoke_1793657267
+- 2026-11-02 15:27:06 node B released (ctl/SHUTDOWN)
+- 2026-11-02 15:40 (manual) G3 smoke rerun of 6 items failed for infrastructure reasons (planner CUDA OOM on a GPU shared with the read-only diagnostic; replay-frame directory race between V52ML0 / V52ML01 coverage passes); attempt 1 kept in eval/g3/failed_attempt1; see FROZEN_PROTOCOL §9
 

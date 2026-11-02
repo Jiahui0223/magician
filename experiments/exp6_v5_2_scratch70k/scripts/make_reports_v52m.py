@@ -165,6 +165,8 @@ def belief_rows(bm, key_of):
     out = []
     for sub, lab in BELIEF_SETS:
         k = key_of(sub)
+        if bm and k not in bm.get("metrics", {}):                     # keys are written relative to the repository root
+            k = next((x for x in bm["metrics"] if os.path.normpath(os.path.join(R, x)) == os.path.normpath(os.path.join(R, k))), k)
         if not bm or k not in bm.get("metrics", {}):
             continue
         for grp in ("all", "unknown_rays"):

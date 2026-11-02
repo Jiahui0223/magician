@@ -1,0 +1,25 @@
+{
+ "n_sub": 8,
+ "thr_vis": 0.001,
+ "thr_surf": 0.01,
+ "thr_space": 0.01,
+ "delta_vox": 8.0,
+ "kappa_vox": 128.0,
+ "space_eps": 0.1,
+ "frontier_free_frac": 0.25,
+ "unknown_dom_frac": 0.5,
+ "lambda": 0.0,
+ "eta": 0.5,
+ "floors": {
+  "vis": 17.755353693290726,
+  "surf": 104.89201830651146,
+  "space": 10.69775463808328
+ },
+ "chunk": 8192,
+ "lambdas": [
+  0.0,
+  0.1
+ ],
+ "version": "score_v52m",
+ "doc": "floors from Train-6 S-c calibration (60 states) on best_train_holdout.pt sha a540950738cc (FROZEN_PROTOCOL rule, V5.2 rule)"
+}

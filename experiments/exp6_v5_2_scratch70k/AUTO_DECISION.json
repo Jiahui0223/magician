@@ -1,5 +1,5 @@
 {
- "rule": "FROZEN_PROTOCOL \u00a75: G3 full iff Outdoor Dev-3 G2 Top-1 (\u03bb=0, 275 states) \u2265 0.46 AND MP3D VALSEL G2 Top-1 (\u03bb=0, 90 states) \u2265 0.40 AND UNKNOWN-ray high-confidence false no-hit share (rays with p_nohit in [0.9, 1] that truly hit) below old V5.2 in both domains; AND the G3 smoke is valid",
+ "rule": "FROZEN_PROTOCOL §5: G3 full iff Outdoor Dev-3 G2 Top-1 (λ=0, 275 states) ≥ 0.46 AND MP3D VALSEL G2 Top-1 (λ=0, 90 states) ≥ 0.40 AND UNKNOWN-ray high-confidence false no-hit share (rays with p_nohit in [0.9, 1] that truly hit) below old V5.2 in both domains; AND the G3 smoke is valid",
  "thresholds": {
   "outdoor_top1_min": 0.46,
   "mp3d_top1_min": 0.4
@@ -26,6 +26,8 @@
   }
  },
  "g2_gate": "FAIL",
- "decision": "G3 smoke only (G2 gate not met) (smoke invalid)",
- "g3_smoke_valid": false
+ "decision": "G3 smoke only (G2 gate not met)",
+ "g3_smoke_valid": false,
+ "g3_smoke_valid_after_rerun": true,
+ "note_after_rerun": "2026-11-02 15:34: 6 smoke items that failed for infrastructure reasons (FROZEN_PROTOCOL §9) were rerun with the same checkpoint / score config; the smoke is valid after the rerun. The decision is unchanged: G3 full is skipped because the G2 gate failed (MP3D Top-1 0.378 < 0.40; Dev-3 high-confidence false no-hit 0.560 not below old V5.2 0.541)."
 }
