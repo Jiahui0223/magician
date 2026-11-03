@@ -23,7 +23,7 @@ while read -r it; do
   case $kind in
     cl_in)  done_f=$root/closed_loop/indoor/$grp/V2M/${b}_L${c}_S${d}/episode.json ;;
     cl_out) done_f=$root/closed_loop/outdoor/$grp/V2M/episodes/ep_V2M_${b}_s${c}_r0.json ;;
-    cov_out) done_f=$root/metrics/outdoor/$grp/V2M_${b}_s${c}_r0.json; [ -f $root/closed_loop/outdoor/$grp/V2M/episodes/ep_V2M_${b}_s${c}_r0.json ] || continue ;;
+    cov_out) done_f=$root/metrics/outdoor/$grp/V2M/V2M_${b}_s${c}_r0.json; [ -f $root/closed_loop/outdoor/$grp/V2M/episodes/ep_V2M_${b}_s${c}_r0.json ] || continue ;;
   esac
   [ -f $done_f ] && continue
   ( set -o noclobber; echo "$(hostname -s):$g:$$" > claims/$(echo $it | tr ':' '_').claim ) 2>/dev/null || continue

@@ -16,3 +16,4 @@
 
 ## 变更记录
 - 2026-11-02：完成审计与协议；Stage B 固定状态分析完成，λ*（B2 0.1、E2-D100 0.1、V4 0、V5 0）；开始 Stage A 回归和 Stage C pilot。
+- 2026-11-02 20:40：Stage A 回归通过（与历史逐位一致）；pilot 4 个组合的门槛全部未通过 → 不运行完整 G3；C2 未运行。**结论 NO-GO**（`reports/FINAL_REPORT.md`）。停在 Phase 1。
