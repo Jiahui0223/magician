@@ -1,0 +1,12 @@
+{
+ "updated": "2026-11-03 04:25",
+ "slurm": {
+  "3443137": {"name": "vscode-dev", "state": "RUNNING", "node": "gpu115", "gpus": "4 x L40S", "ends": "2026-11-04 15:11", "use": "all overnight GPU work (nohup processes on the compute node)"},
+  "3461041": {"name": "vscode-dev", "state": "PENDING", "owner": "user (submitted 02:53, not by Claude)", "use": "left untouched; user to decide"},
+  "3460841": {"name": "da_g3", "state": "CANCELLED 03:04", "reason": "redundant extra G3 node; estimated start 11-04 15:11"}
+ },
+ "processes_on_gpu115": {
+  "density_ab_g3": "experiments/exp_density_ab/scripts/run_g3_local3.sh -> 8 x da_g3_queue3.sh",
+  "stage1_chain": "experiments/exp_temporal_refresh/scripts/chain_stage1.sh"
+ }
+}

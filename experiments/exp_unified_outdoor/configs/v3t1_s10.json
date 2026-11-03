@@ -1,0 +1,223 @@
+{
+ "version": "uo_v3t1_s10_v1",
+ "note": "Unified outdoor-only V3-T1: exp6_v3.1 outdoor_train.json recipe with the T1 model (xattn enabled at construction, as seen2scene.v3.trainer.model_cfg) and the unified changes listed in unified.changed_keys",
+ "stage": "outdoor_pretrain",
+ "initialization": "scratch",
+ "domains": [
+  "outdoor"
+ ],
+ "mp3d_training_samples": 0,
+ "model": "experiments/exp6_v3/configs/model_v3.json",
+ "seed": 0,
+ "steps": 60000,
+ "warmup": 1000,
+ "lr": 0.0002,
+ "betas": [
+  0.9,
+  0.99
+ ],
+ "weight_decay": 0.01,
+ "grad_clip": 1.0,
+ "ema": 0.999,
+ "precision": "bf16",
+ "batch_views": 64,
+ "states_per_batch": 8,
+ "accum": 2,
+ "max_cands_per_state": 8,
+ "stale_p": 0.5,
+ "stale_max": 9,
+ "state_weight_t_le": 20,
+ "state_weight_factor": 2.0,
+ "lambda_rec": 1.0,
+ "kl": {
+  "beta": 0.02,
+  "start": 0,
+  "warmup": 5000
+ },
+ "eval_every": 5000,
+ "ckpt_every": 1000,
+ "log_every": 50,
+ "eval_tau": [
+  0.1,
+  0.3,
+  0.5,
+  0.7,
+  0.9
+ ],
+ "eval_sets": {
+  "out_sc": 2048,
+  "out_train": 1024
+ },
+ "ema_save_steps": [
+  0,
+  2000,
+  4000,
+  6000,
+  8000,
+  10000,
+  12000,
+  14000,
+  16000,
+  18000,
+  20000,
+  22000,
+  24000,
+  26000,
+  28000,
+  30000,
+  32000,
+  34000,
+  36000,
+  38000,
+  40000,
+  42000,
+  44000,
+  46000,
+  48000,
+  50000,
+  52000,
+  54000,
+  56000,
+  58000,
+  60000
+ ],
+ "checkpoint_policy": "fixed_ema_step_60000",
+ "selection": {
+  "rule": "fixed EMA @ 60000 (frozen before training); S-c metrics are monitoring only; no evaluation scene, no early stopping"
+ },
+ "smoke": {
+  "overfit_steps": 200,
+  "short_steps": 1000,
+  "profile_steps": 100,
+  "emulate_world": 4
+ },
+ "train_set": "train6_minus_Sc",
+ "data_root": "work_dirs/exp5_future_view/task1/data/views",
+ "tsdf_cache_root": "work_dirs/exp_unified_outdoor/cache/tsdf4_s10",
+ "unified": {
+  "arm": "v3t1_s10",
+  "density": "s10",
+  "protocol": "experiments/exp_unified_outdoor/TRAINING_PROTOCOL_DRAFT.md",
+  "trainer": "experiments/exp6_v3.1/scripts/trainer_outdoor.py (+ uo_common.patch_v3t1)",
+  "base_config": "experiments/exp6_v3.1/configs/outdoor_train.json",
+  "base_config_sha256": "ff6ea9145df779a058a80b8e1829034c4afdf46dd0874b4c5d2a1160db064a93",
+  "changed_keys": [
+   {
+    "key": "version",
+    "old": "v3_1_outdoor_train_v1",
+    "new": "uo_v3t1_s10_v1",
+    "reason": "new identity"
+   },
+   {
+    "key": "note",
+    "old": "exp6_v3.1 FROZEN_PROTOCOL v1.0: the V3 train_v3.json recipe (loss weights, optimiser, EMA, sampler, 64 views / 8 states per step) with the outdoor domain only; accum 2 = two micro-batches of 8 views / 1 state per rank (memory; the loss is normalised by the global labelled-ray count of the whole 64-view step, so the gradient is that of the 64-view batch)",
+    "new": "Unified outdoor-only V3-T1: exp6_v3.1 outdoor_train.json recipe with the T1 model (xattn enabled at construction, as seen2scene.v3.trainer.model_cfg) and the unified changes listed in unified.changed_keys",
+    "reason": "doc"
+   },
+   {
+    "key": "model",
+    "old": "model_v3_1.json",
+    "new": "experiments/exp6_v3/configs/model_v3.json",
+    "reason": "the V3 model config shared by T0 / T1 (T1 = xattn switched on at construction); repo-relative (trainer_outdoor.CFG_DIR patched to the repo root)"
+   },
+   {
+    "key": "train_set",
+    "old": "<absent>",
+    "new": "train6_minus_Sc",
+    "reason": "split name for uo_common v2_pool loader (v2_data.load_split); not read by trainer_outdoor"
+   },
+   {
+    "key": "data_root",
+    "old": "<absent>",
+    "new": "work_dirs/exp5_future_view/task1/data/views",
+    "reason": "density variant (seen2scene.v3.data.shard_path patched)"
+   },
+   {
+    "key": "tsdf_cache_root",
+    "old": "<absent>",
+    "new": "work_dirs/exp_unified_outdoor/cache/tsdf4_s10",
+    "reason": "density variant of the 4x partial-TSDF cache (seen2scene.v3.data.CACHE patched); S10 cache must be built first"
+   },
+   {
+    "key": "steps",
+    "old": 40000,
+    "new": 60000,
+    "reason": "unified main budget 60k (historical 40k)"
+   },
+   {
+    "key": "lr",
+    "old": 0.0001,
+    "new": 0.0002,
+    "reason": "unified peak LR (V2 / V4 value); historical V3 1e-4 was an a-priori draft value, never compared with 2e-4 (see protocol \u00a74)"
+   },
+   {
+    "key": "ema_save_steps",
+    "old": [
+     0,
+     1000,
+     5000,
+     10000,
+     15000,
+     20000,
+     25000,
+     30000,
+     35000,
+     40000
+    ],
+    "new": [
+     0,
+     2000,
+     4000,
+     6000,
+     8000,
+     10000,
+     12000,
+     14000,
+     16000,
+     18000,
+     20000,
+     22000,
+     24000,
+     26000,
+     28000,
+     30000,
+     32000,
+     34000,
+     36000,
+     38000,
+     40000,
+     42000,
+     44000,
+     46000,
+     48000,
+     50000,
+     52000,
+     54000,
+     56000,
+     58000,
+     60000
+    ],
+    "reason": "unified: EMA every 2k (the trainer also saves EMA at every eval, eval_every 5000)"
+   },
+   {
+    "key": "checkpoint_policy",
+    "old": "fixed_ema_step_40000",
+    "new": "fixed_ema_step_60000",
+    "reason": "fixed EMA at the end of the 60k budget"
+   },
+   {
+    "key": "selection",
+    "old": {
+     "rule": "fixed EMA @ 40000 (frozen before training); S-c metrics are monitoring only; no evaluation scene, no early stopping"
+    },
+    "new": {
+     "rule": "fixed EMA @ 60000 (frozen before training); S-c metrics are monitoring only; no evaluation scene, no early stopping"
+    },
+    "reason": "fixed EMA at the end of the 60k budget"
+   }
+  ],
+  "v3_arm": "t1",
+  "sampler": "v2_pool",
+  "sampler_doc": "every rank loads all 138 Train-6-minus-S-c trajectories in the V2 split order; one V2-rule draw of batch_views / world = 16 views per rank and step (identical (state, views, staleness) to V2 / V4 for the same seed / rank), split at a state boundary into accum = 2 micro-batches (memory); historical V3 sharded trajectories sorted[rank::world] and drew 2 x 8 views"
+ }
+}

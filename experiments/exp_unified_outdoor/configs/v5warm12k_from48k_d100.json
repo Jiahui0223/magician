@@ -1,0 +1,156 @@
+{
+ "data": "data_v1.json",
+ "data_root": "work_dirs/exp5_future_view/task3_full_depth_p1/e2/out_views_d100",
+ "train_set": "train6_minus_Sc",
+ "mp3d_training_samples": 0,
+ "init": "work_dirs/exp_unified_outdoor/runs/v4_d100/ema_048000.pt (unified V4 D100 EMA@48k; sha256 recorded in <out>/PARENT.json at the first launch)",
+ "steps": 12000,
+ "betas": [
+  0.9,
+  0.99
+ ],
+ "weight_decay": 0.01,
+ "batch_views": 64,
+ "states_per_batch": 8,
+ "grad_clip": 1.0,
+ "ema": 0.999,
+ "precision": "bf16",
+ "seed": 0,
+ "stale_p": 0.5,
+ "stale_max": 9,
+ "ckpt_every": 1000,
+ "eval_every": 2000,
+ "ema_save_steps": [
+  0,
+  2000,
+  4000,
+  6000,
+  8000,
+  10000,
+  12000
+ ],
+ "eval_sets": {
+  "train_sub": 1024,
+  "sc_sub": 2048
+ },
+ "eval_tau": [
+  0.1,
+  0.3,
+  0.5,
+  0.7,
+  0.9
+ ],
+ "checkpoint_policy": "fixed_ema_step_12000 (pre-registered; no selection on S-c, Dev-3, Test-3 or MP3D)",
+ "smoke": {
+  "overfit_steps": 300,
+  "short_steps": 400,
+  "profile_steps": 40,
+  "emulate_world": 4,
+  "train_items": [
+   [
+    "bannerman",
+    "cg-A-0001"
+   ],
+   [
+    "bannerman",
+    "cg-A-0002"
+   ],
+   [
+    "bannerman",
+    "cg-A-0003"
+   ],
+   [
+    "bannerman",
+    "cg-B-0000"
+   ],
+   [
+    "bannerman",
+    "cg-B-0001"
+   ],
+   [
+    "bannerman",
+    "cg-B-0003"
+   ],
+   [
+    "dunnottar",
+    "cg-A-0000"
+   ],
+   [
+    "dunnottar",
+    "cg-A-0001"
+   ]
+  ],
+  "held_items": [
+   [
+    "bannerman",
+    "cg-A-0000"
+   ],
+   [
+    "bannerman",
+    "cg-B-0002"
+   ],
+   [
+    "bannerman",
+    "fr-A-0000"
+   ]
+  ]
+ },
+ "version": "uo_v5warm12k_from48k_d100_v1",
+ "arm": "V5-Warm12k-from-V4@48k",
+ "model": "experiments/exp6_v5/configs/model_v5.json",
+ "stages": "Bridge2k (steps 0-1999: encoder + flow U-Net frozen; new decoder trained) + Joint10k (steps 2000-11999: all trained)",
+ "bridge_steps": 2000,
+ "lr_new": 0.0001,
+ "warmup_new": 200,
+ "lr_inherited": 1e-05,
+ "warmup_inherited": 500,
+ "lambda_surf": 0.37,
+ "lambda_bridge0": 0.096,
+ "bridge_end_step": 4000,
+ "loss": "L = L_FM + lambda_surf * L_surf + lambda_bridge(step) * L_bridge ; lambda_bridge(step) = lambda_bridge0 * max(0, 1 - step / bridge_end_step)",
+ "surf_delta_vox": 8,
+ "surf_rays_per_view": 256,
+ "surf_rand_queries": 8,
+ "surf_doc": "Delta = one F0 cell (8 VS = 0.088 model units); positive if a stored mesh surface lies within Delta/2; queries outside the label's [t_lo, t_hi] unsupervised; balanced BCE",
+ "lambda_rule": "frozen 2026-11-01 from the G0 gradient probe (runs/g0/v5_gradscale: 300 Bridge steps with provisional lambdas = 1, pinned smoke trajectories, then the median L2 norm of each term's gradient on the new modules over 30 steps: FM 0.108, surf 0.148, bridge 1.125); lambda_surf = 0.5 * g_FM / g_surf = 0.37 (surface gradient half of the flow gradient); lambda_bridge0 = 1.0 * g_FM / g_bridge = 0.096 (bridge gradient equal to the flow gradient at the start), linear decay to 0 at step 4000",
+ "unified": {
+  "arm": "v5warm12k_from48k_d100",
+  "density": "d100",
+  "protocol": "experiments/exp_unified_outdoor/TRAINING_PROTOCOL_DRAFT.md",
+  "trainer": "experiments/exp6_v5/scripts/train_v5.py --arm v5 (+ uo_common.patch_v5)",
+  "base_config": "experiments/exp6_v5/configs/train_v5_outdoor.json",
+  "base_config_sha256": "dc208609314298a9999ae02dd82945166e27d109e679e19e09c0889a2867889f",
+  "changed_keys": [
+   {
+    "key": "version",
+    "old": "v5_warm_outdoor_v1",
+    "new": "uo_v5warm12k_from48k_d100_v1",
+    "reason": "new identity"
+   },
+   {
+    "key": "arm",
+    "old": "V5-Warm12k-S10Score",
+    "new": "V5-Warm12k-from-V4@48k",
+    "reason": "doc"
+   },
+   {
+    "key": "model",
+    "old": "model_v5.json",
+    "new": "experiments/exp6_v5/configs/model_v5.json",
+    "reason": "same model config file, repo-relative (train_v5.CFG patched to the repo root)"
+   },
+   {
+    "key": "init",
+    "old": "work_dirs/exp6_v4/checkpoints/final.pt (V4 Outdoor-only EMA@40k, sha256 1b31afff...)",
+    "new": "work_dirs/exp_unified_outdoor/runs/v4_d100/ema_048000.pt (unified V4 D100 EMA@48k; sha256 recorded in <out>/PARENT.json at the first launch)",
+    "reason": "parent = new unified V4@48k instead of the historical V4 EMA@40k (train_v5.V4CK / V4SHA patched)"
+   }
+  ],
+  "parent": {
+   "arm": "v4_d100",
+   "step": 48000,
+   "ckpt": "work_dirs/exp_unified_outdoor/runs/v4_d100/ema_048000.pt"
+  },
+  "labels": "work_dirs/exp6_v5/labels/v1 (density independent: built from shard R / T / jitter / k_M / dims / tstar / t / a only)"
+ }
+}

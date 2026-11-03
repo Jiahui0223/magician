@@ -1,0 +1,88 @@
+{
+ "version": "uo_v2_d100_v1",
+ "protocol": "experiments/exp_unified_outdoor/TRAINING_PROTOCOL_DRAFT.md",
+ "model": "model_v1.json",
+ "data": "data_v1.json",
+ "train_set": "train6_minus_Sc",
+ "steps": 60000,
+ "warmup": 1000,
+ "lr": 0.0002,
+ "betas": [
+  0.9,
+  0.99
+ ],
+ "weight_decay": 0.01,
+ "schedule": "cosine_to_0",
+ "batch_views": 64,
+ "states_per_batch": 8,
+ "grad_clip": 1.0,
+ "ema": 0.999,
+ "precision": "bf16",
+ "seed": 0,
+ "stale_p": 0.5,
+ "stale_max": 9,
+ "ckpt_every": 2000,
+ "eval_every": 2500,
+ "sample_eval_every": 10000,
+ "eval_sets": {
+  "train_sub": 1024,
+  "sc_sub": 2048
+ },
+ "eval_tau": [
+  0.1,
+  0.3,
+  0.5,
+  0.7,
+  0.9
+ ],
+ "final_checkpoint": "EMA@60000",
+ "smoke": {
+  "overfit_steps": 200,
+  "overfit_loss_drop": 0.9,
+  "overfit_sign_agree": 0.95,
+  "short_steps": 2000
+ },
+ "stop": {
+  "s_std_min": 0.01,
+  "false_wall_max": 0.5,
+  "hit_ratio_range": [
+   0.3333333333,
+   3.0
+  ]
+ },
+ "data_root": "work_dirs/exp5_future_view/task3_full_depth_p1/e2/out_views_d100",
+ "unified": {
+  "arm": "v2_d100",
+  "density": "d100",
+  "protocol": "experiments/exp_unified_outdoor/TRAINING_PROTOCOL_DRAFT.md",
+  "trainer": "experiments/exp5_future_view/task1/scripts/t12_train.py",
+  "base_config": "experiments/exp5_future_view/task1/configs/train_main.json",
+  "base_config_sha256": "1fcbc77facb6697b7c0054edd1037960ce0eef1bef25753d3262fa99af5c63e9",
+  "changed_keys": [
+   {
+    "key": "version",
+    "old": "train_main_v1",
+    "new": "uo_v2_d100_v1",
+    "reason": "new identity"
+   },
+   {
+    "key": "protocol",
+    "old": "protocol.md v1.0 \u00a73",
+    "new": "experiments/exp_unified_outdoor/TRAINING_PROTOCOL_DRAFT.md",
+    "reason": "unified protocol"
+   },
+   {
+    "key": "data_root",
+    "old": "<absent>",
+    "new": "work_dirs/exp5_future_view/task3_full_depth_p1/e2/out_views_d100",
+    "reason": "density variant (read by uo_common.patch_v2; t12_train itself always reads the S10 shards)"
+   },
+   {
+    "key": "ckpt_every",
+    "old": 5000,
+    "new": 2000,
+    "reason": "unified: full-state checkpoint >= every 2k steps and EMA at 10k/20k/40k/48k/60k (t12_train saves ema_<step> at every ckpt_every)"
+   }
+  ]
+ }
+}

@@ -1,0 +1,150 @@
+{
+ "data": "data_v1.json",
+ "data_root": "work_dirs/exp5_future_view/task1/data/views",
+ "train_set": "train6_minus_Sc",
+ "mp3d_training_samples": 0,
+ "init": "work_dirs/exp_unified_outdoor/runs/v4_s10/ema_048000.pt (unified V4 S10 EMA@48k; sha256 recorded in <out>/PARENT.json at the first launch)",
+ "steps": 12000,
+ "betas": [
+  0.9,
+  0.99
+ ],
+ "weight_decay": 0.01,
+ "batch_views": 64,
+ "states_per_batch": 8,
+ "grad_clip": 1.0,
+ "ema": 0.999,
+ "precision": "bf16",
+ "seed": 0,
+ "stale_p": 0.5,
+ "stale_max": 9,
+ "ckpt_every": 1000,
+ "eval_every": 2000,
+ "ema_save_steps": [
+  0,
+  2000,
+  4000,
+  6000,
+  8000,
+  10000,
+  12000
+ ],
+ "eval_sets": {
+  "train_sub": 1024,
+  "sc_sub": 2048
+ },
+ "eval_tau": [
+  0.1,
+  0.3,
+  0.5,
+  0.7,
+  0.9
+ ],
+ "checkpoint_policy": "fixed_ema_step_12000 (pre-registered; no selection on S-c, Dev-3, Test-3 or MP3D)",
+ "smoke": {
+  "overfit_steps": 300,
+  "short_steps": 400,
+  "profile_steps": 40,
+  "emulate_world": 4,
+  "train_items": [
+   [
+    "bannerman",
+    "cg-A-0001"
+   ],
+   [
+    "bannerman",
+    "cg-A-0002"
+   ],
+   [
+    "bannerman",
+    "cg-A-0003"
+   ],
+   [
+    "bannerman",
+    "cg-B-0000"
+   ],
+   [
+    "bannerman",
+    "cg-B-0001"
+   ],
+   [
+    "bannerman",
+    "cg-B-0003"
+   ],
+   [
+    "dunnottar",
+    "cg-A-0000"
+   ],
+   [
+    "dunnottar",
+    "cg-A-0001"
+   ]
+  ],
+  "held_items": [
+   [
+    "bannerman",
+    "cg-A-0000"
+   ],
+   [
+    "bannerman",
+    "cg-B-0002"
+   ],
+   [
+    "bannerman",
+    "fr-A-0000"
+   ]
+  ]
+ },
+ "version": "uo_v4c12k_from48k_s10_v1",
+ "arm": "V4-Continue12k-from-V4@48k",
+ "model": "(V4 checkpoint model_cfg)",
+ "stages": "all V4 parameters trained from the unified V4 EMA@48k, same data / batch / EMA / step count as V5",
+ "lr_inherited": 1e-05,
+ "warmup_inherited": 500,
+ "loss": "L = L_FM (the V4 loss)",
+ "unified": {
+  "arm": "v4c12k_from48k_s10",
+  "density": "s10",
+  "protocol": "experiments/exp_unified_outdoor/TRAINING_PROTOCOL_DRAFT.md",
+  "trainer": "experiments/exp6_v5/scripts/train_v5.py --arm v4c (+ uo_common.patch_v5)",
+  "base_config": "experiments/exp6_v5/configs/train_v4_continue.json",
+  "base_config_sha256": "e97ed5c212d7d76ac51dd65cb062ef1e64478ad21cc7bc6eb3fcb946f2d79178",
+  "changed_keys": [
+   {
+    "key": "version",
+    "old": "v4_continue_outdoor_v1",
+    "new": "uo_v4c12k_from48k_s10_v1",
+    "reason": "new identity"
+   },
+   {
+    "key": "arm",
+    "old": "V4-Continue12k-S10Score",
+    "new": "V4-Continue12k-from-V4@48k",
+    "reason": "doc"
+   },
+   {
+    "key": "data_root",
+    "old": "work_dirs/exp5_future_view/task3_full_depth_p1/e2/out_views_d100",
+    "new": "work_dirs/exp5_future_view/task1/data/views",
+    "reason": "density variant (train_v5.OUTD patched)"
+   },
+   {
+    "key": "init",
+    "old": "work_dirs/exp6_v4/checkpoints/final.pt (V4 Outdoor-only EMA@40k, sha256 1b31afff...)",
+    "new": "work_dirs/exp_unified_outdoor/runs/v4_s10/ema_048000.pt (unified V4 S10 EMA@48k; sha256 recorded in <out>/PARENT.json at the first launch)",
+    "reason": "parent = new unified V4@48k instead of the historical V4 EMA@40k (train_v5.V4CK / V4SHA patched)"
+   },
+   {
+    "key": "stages",
+    "old": "all V4 parameters trained from the V4 EMA@40k, same data / batch / EMA / step count as V5",
+    "new": "all V4 parameters trained from the unified V4 EMA@48k, same data / batch / EMA / step count as V5",
+    "reason": "doc"
+   }
+  ],
+  "parent": {
+   "arm": "v4_s10",
+   "step": 48000,
+   "ckpt": "work_dirs/exp_unified_outdoor/runs/v4_s10/ema_048000.pt"
+  }
+ }
+}
