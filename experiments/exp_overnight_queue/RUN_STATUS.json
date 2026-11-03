@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-03 05:05",
+ "updated": "2026-11-03 11:20",
  "stages": {
   "S0_density_ab": {
    "state": "COMPLETED",
@@ -10,12 +10,12 @@
    "detail": "39/39 episodes, 365 states, R10 regression 1460/1460 bitwise; fresh encoding improves depth (both domains) and outdoor selected gain (+0.10 pp, early +0.37 pp); indoor ranking unchanged; fixed states all at t%5==0 so R5==R1 there"
   },
   "S1b_refresh_g3_R2_R1": {
-   "state": "RUNNING",
-   "detail": "started 05:00 (8 workers); R10 replay 2 episodes first"
+   "state": "COMPLETED",
+   "detail": "R10 replay 2/2 bitwise; R2/R1 x B2/E2D 160 episodes; no closed-loop gain"
   },
   "S1c_refresh_g3_R5": {
-   "state": "QUEUED",
-   "detail": "same workers after R2/R1"
+   "state": "COMPLETED",
+   "detail": "80 episodes; no gain"
   },
   "S2_density_decision": {
    "state": "COMPLETED",
@@ -30,24 +30,36 @@
    "detail": "reused: V2 Original task1 main 60k (recipe-identical), EMA@60k sha a379c0fb...; fixed-state eval queued with V4 training"
   },
   "S2_train_V4": {
-   "state": "QUEUED",
-   "detail": "chain_stage2.sh starts after Stage 1 chain; deliberate interrupt+resume test at step 1000"
+   "state": "RUNNING",
+   "detail": "17.8k/60k at 11:16 (0.45 s/step), ETA ~16:35; resume test passed (4/4 ranks EXACT at step 1000)"
   },
   "S2_train_V4C_12k": {
    "state": "QUEUED",
-   "detail": "needs V4@48k"
+   "detail": "after V4-S10 (needs ema_048000), ETA ~18:25"
   },
   "S2_train_V5_12k": {
    "state": "QUEUED",
-   "detail": "needs V4@48k"
+   "detail": "after V4C, ETA ~21:00"
   },
   "S2_train_V3T1": {
    "state": "QUEUED",
-   "detail": "after V4C/V5 and the S10 TSDF cache; LR 2e-4 (unified) with pre-registered 1e-4 fallback; profile smoke first"
+   "detail": "profile smoke then formal ~21:10; ~50k/60k by job end 11-04 15:11 (resumable)"
   },
   "S2_mixed_finetune": {
    "state": "SKIPPED",
    "detail": "not started tonight (user instruction)"
+  },
+  "S1_reports": {
+   "state": "COMPLETED",
+   "detail": "G1_G2_RESULTS / G3_INDOOR / G3_OUTDOOR / COMPUTE_COST / FINAL_REPORT (254d614): keep R10"
+  },
+  "S2_eval_V2S10": {
+   "state": "COMPLETED",
+   "detail": "39/39 episodes; V2-S10 < B2 on outdoor ranking (sel gain -0.14 pp, sig; on-policy caveat)"
+  },
+  "S2_cache_s10": {
+   "state": "COMPLETED",
+   "detail": "180/180 trajectories on CPU 05:13-09:32"
   }
  }
 }
