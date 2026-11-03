@@ -1,15 +1,53 @@
 {
- "updated": "2026-11-03 04:25",
+ "updated": "2026-11-03 05:05",
  "stages": {
-  "S0_density_ab": {"state": "RUNNING", "detail": "G3 7 new configs: 213/280 episodes done at 04:16; fixed-state G1/G2 COMPLETED (365/365 states, 3195 bitwise checks)"},
-  "S1a_refresh_fixed": {"state": "QUEUED", "detail": "chain_stage1.sh waits for the Density A/B G3 workers; smoke on 1 Dev-3 episode running"},
-  "S1b_refresh_g3_R2_R1": {"state": "QUEUED", "detail": "gate: fixed-state R10 regression all true"},
-  "S1c_refresh_g3_R5": {"state": "QUEUED", "detail": "after S1b"},
-  "S2_density_decision": {"state": "BLOCKED", "detail": "waits for Density A/B G3 analysis (decision rule frozen in OVERNIGHT_PLAN.md §4)"},
-  "S2_recipe_audit": {"state": "RUNNING", "detail": "background agent: unified outdoor recipes for V2/V4/V3-T1/V4C/V5, both densities, resume support"},
-  "S2_train_V2": {"state": "QUEUED"}, "S2_train_V4": {"state": "QUEUED"},
-  "S2_train_V4C_12k": {"state": "QUEUED", "detail": "needs V4@48k"}, "S2_train_V5_12k": {"state": "QUEUED", "detail": "needs V4@48k"},
-  "S2_train_V3T1": {"state": "QUEUED", "detail": "lowest priority; ~22 h, cannot finish before 11-04 15:11"},
-  "S2_mixed_finetune": {"state": "SKIPPED", "detail": "not started tonight (user instruction)"}
+  "S0_density_ab": {
+   "state": "COMPLETED",
+   "detail": "12-config fixed state + G3 (280 new episodes, integrity 0 bad); FINAL_REPORT / NEXT_TRAINING_RECOMMENDATION committed 64b6d9a"
+  },
+  "S1a_refresh_fixed": {
+   "state": "RUNNING",
+   "detail": "started 04:44 by chain_stage1.sh; smoke passed (28/28 R10 checks)"
+  },
+  "S1b_refresh_g3_R2_R1": {
+   "state": "QUEUED",
+   "detail": "gate: fixed-state R10 regression all true"
+  },
+  "S1c_refresh_g3_R5": {
+   "state": "QUEUED",
+   "detail": "after S1b"
+  },
+  "S2_density_decision": {
+   "state": "COMPLETED",
+   "detail": "S10 per pre-registered rule (moderate evidence; D100 branch kept, not run tonight)"
+  },
+  "S2_recipe_audit": {
+   "state": "COMPLETED",
+   "detail": "TRAINING_PROTOCOL_DRAFT.md + configs + run_arm.sh; CPU dry check ALL_OK; V2 Original == unified V2-S10 (reuse)"
+  },
+  "S2_train_V2": {
+   "state": "SKIPPED",
+   "detail": "reused: V2 Original task1 main 60k (recipe-identical), EMA@60k sha a379c0fb...; fixed-state eval queued with V4 training"
+  },
+  "S2_train_V4": {
+   "state": "QUEUED",
+   "detail": "chain_stage2.sh starts after Stage 1 chain; deliberate interrupt+resume test at step 1000"
+  },
+  "S2_train_V4C_12k": {
+   "state": "QUEUED",
+   "detail": "needs V4@48k"
+  },
+  "S2_train_V5_12k": {
+   "state": "QUEUED",
+   "detail": "needs V4@48k"
+  },
+  "S2_train_V3T1": {
+   "state": "QUEUED",
+   "detail": "after V4C/V5 and the S10 TSDF cache; LR 2e-4 (unified) with pre-registered 1e-4 fallback; profile smoke first"
+  },
+  "S2_mixed_finetune": {
+   "state": "SKIPPED",
+   "detail": "not started tonight (user instruction)"
+  }
  }
 }
