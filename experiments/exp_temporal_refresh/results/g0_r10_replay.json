@@ -1,0 +1,12 @@
+{
+ "indoor_B2_R10": {
+  "executed_equal": true,
+  "coverage_equal": true,
+  "scores_equal": true
+ },
+ "outdoor_E2D_R10": {
+  "executed_keys_equal": true,
+  "coverage_equal": true,
+  "cov_mono_equal": true
+ }
+}
