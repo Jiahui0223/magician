@@ -190,3 +190,5 @@
 | 日期 | 偏差 | 原因 | 影响 |
 |---|---|---|---|
 | 2026-11-03 | 固定状态 VALSEL 分片 1/3 在 GPU 1 上 CUDA OOM：同卡有 G0 闭环 worker（约 16 GB），该进程约 19 GB | 资源冲突（基础设施），与协议无关 | 未完成的 episode 没有写出（输出为原子写入）；G0 结束后在同一 GPU 上重跑该分片，已完成的 episode 自动跳过。方法、数据、种子不变 |
+| 2026-11-03 | G3 第一批：B2\|S10\|D100 的 MP3D episode QUCTc6BB5sX_L1_S34 在第 31 步 CUDA OOM（同卡有两个 MP3D 规划器，各 18–21 GB） | 资源冲突（基础设施），与协议无关 | 部分输出移到 `work_dirs/exp_density_ab/g3/failed/`，该 episode 从头重跑。调度改为 `da_g3_queue2.sh`：每张 GPU 同时最多 1 个 MP3D episode，多轮扫描任务文件，outdoor 增加 cov-only 补算。模拟器、规划器、设置、种子都不变 |
+| 2026-11-03 | G3：01:15–01:17 有 4 个 Macarons++ episode（B2\|S10\|D100）在 pytorch3d 渲染时 CUDA OOM，原因是旧调度遗留的两个 MP3D 规划器仍占用 GPU 0 / 2 | 资源冲突（基础设施） | 部分输出和认领移到 `g3/failed/<cfg>_<tag>_tryN/`，不删除；该 episode 从头重跑。增加 `requeue_failed.sh`：失败且未在运行的任务自动释放，每个任务最多 2 次，超过则标为 GAVE_UP 并报告。方法不变 |

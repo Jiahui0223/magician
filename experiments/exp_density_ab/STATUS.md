@@ -6,8 +6,7 @@
 | 项 | 进程 | 节点 / GPU | 日志 | 开始 | 预计 |
 |---|---|---|---|---|---|
 | P2-T1/T2 固定状态 12 组 | 7 个 da_fixed 进程（valsel × 3、dev3 B0 × 2、dev3 B2 × 2） | gpu115 / 0–3（交互作业 3443137） | `work_dirs/exp_density_ab/logs/fixed_*.log` | 2026-11-03 00:42 | 约 30–40 分钟 |
-| P3-B1 G3 第一批（4 组新配置，160 个 episode） | 3 个 da_g3_queue worker（GPU 0/2/3），固定状态跑完后增加到 8 个（`chain_after_g0.sh`） | gpu115 | `work_dirs/exp_density_ab/g3/logs/` | 2026-11-03 01:04 | 约 3–5 小时 |
-| P3-B2 调度 | `chain_batch2.sh`：第一批全部认领后，在空出的 worker 位上开始第二批 | gpu115 | `work_dirs/exp_density_ab/logs/chain.log` | 01:05 | — |
+| P3-B1 / B2 G3（7 组新配置，280 个 episode） | `run_g3_local.sh`：8 个 da_g3_queue2 worker（每 GPU 2 个，同时最多 1 个 MP3D），第一批完成后自动接第二批 | gpu115 / 0–3 | `work_dirs/exp_density_ab/g3/logs/queue2_*` | 2026-11-03 01:16（01:04 起由旧调度先跑） | 约 4–6 小时 |
 | 额外节点 | sbatch 3460841（4 × L40，第一批 → 第二批共用队列） | PENDING（Priority） | `logs/sbatch_3460841.out` | — | 取决于排队 |
 
 ## P1 Task 0 — 核验
@@ -27,13 +26,13 @@
 | id | 项 | 状态 | 结果 |
 |---|---|---|---|
 | P2-S | smoke（1 个室内 + 1 个室外 episode） | ✅ | 回归检查全部通过；峰值显存 12.1 GB（室内）、3.2 GB（室外） |
-| P2-R | 完整运行，39 个 episode | 🔄 | VALSEL 分片 1/3 OOM（与 G0 worker 共卡）→ 01:04 重跑（偏差记录 §9） |
-| P2-A | 分析（G1 / G2 / 评分掩码） | ⬜ | — |
+| P2-R | 完整运行，39 个 episode | ✅ 01:10 | 365/365 个状态、3195 项回归检查全部逐位一致；VALSEL 分片 1/3 OOM 后已重跑（偏差 §9） |
+| P2-A | 分析（G1 / G2 / 评分掩码） | ✅ | `results/fixed_summary.json`、`results/tables_fixed.md` |
 
 ## P3 Task 3 — 闭环 G3
 | id | 项 | 状态 | 结果 |
 |---|---|---|---|
-| P3-B1 | 第一批 4 组新配置（160 个 episode） | 🔄 | — |
+| P3-B1 | 第一批 4 组新配置（160 个 episode） | 🔄 | 1 个 MP3D episode OOM → 重跑；调度改为每 GPU 最多 1 个 MP3D（偏差 §9） |
 | P3-B2 | 第二批 3 组新配置（120 个 episode） | ⏳ 第一批全部认领后开始 | — |
 | P3-A | G3 分析 | ⬜ | — |
 

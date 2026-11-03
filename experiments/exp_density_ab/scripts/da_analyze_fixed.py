@@ -177,7 +177,7 @@ def summarize(recs):
             ea, eb = ep_mean(recs, f"{hi}#{met}"), ep_mean(recs, f"{lo}#{met}")
             de = {s: ea[s] - eb[s] for s in ea if s in eb}
             bo = AL.boot(dd)
-            bo.update({"wins": int(sum(v > 1e-12 for v in dd.values())), "losses": int(sum(v < -1e-12 for v in dd.values())),
+            bo.update({"wins": int(sum(v > 1e-12 for v in dd.values())), "losses": int(sum(v < -1e-12 for v in dd.values())), "per_scene": dd,
                        "episode": boot_ep(de), "ep_wins": int(sum(v > 1e-12 for v in de.values())), "ep_losses": int(sum(v < -1e-12 for v in de.values()))})
             S["paired"][f"G1:{hi} - {lo}|{met}"] = bo
     return S
