@@ -1,6 +1,6 @@
 # V5.2-M Scratch70k —— 训练日志摘要（自动生成）
 
-生成时间 2026-11-02 15:39:07。已完成的同步 optimizer step：**70,000 / 70,000**（seen samples = 4,480,000 views；全局 batch 64 views / 8 states）。
+生成时间 2026-11-02 19:23:45。已完成的同步 optimizer step：**70,000 / 70,000**（seen samples = 4,480,000 views；全局 batch 64 views / 8 states）。
 
 ## 训练轮次（弹性 DDP）
 

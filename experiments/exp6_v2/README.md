@@ -22,7 +22,7 @@ experiments/exp6_v2/
 │   └── g3_queue.sh                G3 闭环 worker（参数化的历史 run_queue2.sh / run_queue_g3.sh），默认输出到新目录
 ├── B2/
 │   ├── README.md
-│   ├── configs/  b2.json · g3_jobs_in.txt（MP3D 10 ep）· g3_jobs_out.txt（Macarons++ 30 ep）
+│   ├── configs/  b2.json · g3_jobs_in.txt（MP3D 10 ep）· g3_jobs_out.txt（Macarons++ Dev-3 + Test-3，6 场景 × 5 起点 = 30 ep）
 │   ├── scripts/  verify.sh · smoke.sh · g12_fixed.sh · g3.sh · train_lineage.sh
 │   └── results/  verify_config_checkpoint.json · smoke_dev3.json · smoke_valsel.json · smoke_g3_2moves.json
 │                 historical/ → TASK2_FINAL_REPORT.md · T3_E1_B2_CLOSED_LOOP.md · T3_E1_DECISION.md · tables.md ·
@@ -66,7 +66,7 @@ V2-Mix（EXP5 Task 2；MP3D + Train-6 稀疏，20k，冻结规则选 17.5k）─
 | 训练数据 | （V2-Mix：MP3D + Train-6，稀疏 P1） | MP3D + Train-6，**D100** 重建分片 |
 | 规划 | D100 输入 / S10 DistP1，K 4，n_win 5，R10 | 相同 |
 | 冻结协议 | Task 2 `protocol.md`、Task 3 `protocol.md` | `e2_pilot/protocol.md` |
-| G3（AUC / Final） | MP3D 0.334 / 0.530；Macarons++ 0.730 / 0.906 | MP3D 0.364 / 0.553；Macarons++ 0.711 / 0.880 |
+| G3 历史已报告结果（AUC / Final；MP3D 10 ep × 150；Macarons++ Dev-3 + Test-3（6 scenes，30 episodes × 100 steps）） | MP3D 0.334 / 0.530；Macarons++ 0.730 / 0.906 | MP3D 0.364 / 0.553；Macarons++ 0.711 / 0.880 |
 
 ## 3. 重要 checkpoint：原路径 → 新路径
 | 新路径（`work_dirs/checkpoints/exp6_v2/…`） | 原路径（保持不变，仍有效） | step | sha256（前 16） |
@@ -125,7 +125,7 @@ V2-Mix（EXP5 Task 2；MP3D + Train-6 稀疏，20k，冻结规则选 17.5k）─
 | DistP1（每候选 × K）旧 = 新 | ✅ | ✅ |
 | 与历史结果比较（E2 pilot 当时写下的 `e2/fixed/<set>_s5000` 行）：DistP1 分数、相机排序、预测误差统计 | ✅ 全部完全相等（B2 与 B0） | ✅ 全部完全相等（D100 与 S10） |
 | 张量级谱系 | V2-Mix step 0 = V2 Original EMA@60k ✅ | E2 step 0 = V2-Mix EMA@17.5k ✅；EMA@5k ≠ 初始化 ✅ |
-| **闭环入口**（`shared/g3_queue.sh`，MOVES=2）：Macarons++ alhambra s0 与历史 100 步 episode 的前两步比较 | 候选集、DistP1 分数、选择、动作、覆盖率完全一致 ✅ | 完全一致 ✅ |
+| **闭环入口**（`shared/g3_queue.sh`，MOVES=2）：Macarons++ alhambra s0（Test-3 场景）与历史 100 步 episode 的前两步比较 | 候选集、DistP1 分数、选择、动作、覆盖率完全一致 ✅ | 完全一致 ✅ |
 | MP3D 8194nk5LbLH L0 S10 两步闭环 | exit 0（该 episode 不在历史 G3 列表中，只验证能运行） | exit 0 |
 
 推理耗时（单个 episode，旧 / 新）：
@@ -154,3 +154,66 @@ V2-Mix（EXP5 Task 2；MP3D + Train-6 稀疏，20k，冻结规则选 17.5k）─
 - **修改 `experiments/README.md`**：新增变更记录和索引行。
 - **未修改**：任何模型代码、训练 / 评估脚本、冻结配置、权重文件或历史结果。
 - `work_dirs/checkpoints/` 不进 git（`work_dirs/` 被忽略），内容由 `checkpoint_registry.py` 可重建。
+
+## 8. 第二轮修正与验收（2026-11-02 19:40）
+
+### 8.1 本轮修改的文件和内容
+| 文件 | 修改 |
+|---|---|
+| `experiments/MODEL_VERSIONS.md` | ① 完整 G3 的 Outdoor 范围改为 **Macarons++ Dev-3 + Test-3（6 scenes，30 episodes × 100 steps）**：Dev-3 = barts / pantheon / colosseum，Test-3 = alhambra / bridge / neuschwanstein；表头与说明同步修改，数值不变。<br>② 加入命名备注 `V5.3 = V5.2-M Scratch70k（同一模型，讨论名称）`：标题、总览表、审查发现第 7 条。<br>③ “已发表结果”统一改为“历史已报告结果”。<br>④ V5.2-M 的 smoke 数字注明只含 Test-3 的 4 个 episode，不可与 30 episode 的结果直接比较。 |
+| `experiments/exp6_v2/README.md`、`B2/README.md`、`E2/README.md` | G3 表头注明评估范围（MP3D VALSEL 10 ep × 150；Macarons++ Dev-3 + Test-3，30 ep × 100）；“历史结果”改为“历史已报告结果”；alhambra 注明为 Test-3 场景 |
+| `B2/configs/b2.json`、`E2/configs/e2.json` | `evaluation.G3_closed_loop.episodes` 的说明同步修正（只改描述字段，不改任何参数） |
+| `B2/scripts/g3.sh` | 注释中的评估范围修正 |
+| `B2/scripts/smoke.sh`、`E2/scripts/smoke.sh` | 增加可选第 3 个参数 LABEL，结果写到 `results/smoke_<set>_<LABEL>.json`，不覆盖第一轮的 smoke 记录 |
+| `experiments/checkpoint_registry.py` | 新增只读核验模式 `--verify OUT.json`；V5.2-M 的标题加上 “= V5.3” |
+| `experiments/CHECKPOINTS.md`、`work_dirs/checkpoints/{README.md, exp6_v5_2_scratch70k/README.md, MANIFEST.json}` | 只改 V5.2-M 的标题（加 “= V5.3”），没有重新生成，SHA / 路径行未改动 |
+| `experiments/CHECKPOINTS_VERIFY.json`（新增） | 全量核验报告 |
+| `experiments/exp6_v5_2_scratch70k/FROZEN_PROTOCOL.md` | §5 中 G3 Full 的 Outdoor 范围原文误写为 “Test-3 30 episode”，就地勘误为 Dev-3 + Test-3（30 episodes），并在 §9 记录。G3 Full 未运行，没有结果受影响 |
+| `experiments/exp6_v5_2_scratch70k/scripts/final_report_v52m.py` → `FINAL_REPORT.md` | 用户基准表表头注明 30 episode 的范围，并说明它与只含 Test-3 的 smoke 不可直接比较。重新生成后只改了这两行和时间戳，`STATUS.md` / `TRAINING_LOG_SUMMARY.md` 只改了时间戳 |
+
+### 8.2 Checkpoint 检查结果（`checkpoint_registry.py --verify`，19:23，只读）
+- 范围：7 个实验目录，共 108 个登记的软链接，以及 9 个 alias（字节相同、未重复链接的文件）。
+- **全部通过，问题数 0**。
+
+逐项检查内容：
+- 软链接存在，链接目标未变，目标文件存在；
+- 链接与原文件是同一文件（samefile）；
+- 重新计算的 SHA256 与 MANIFEST 一致，大小一致；
+- checkpoint 内的 step 一致；
+- EMA 权重按对应架构严格加载（strict=True），参数量与 MANIFEST 一致；
+- 原始训练状态中 model 与 EMA 的键和形状一致；
+- 没有孤立的链接（不在 MANIFEST 中的链接）；
+- `experiments/CHECKPOINTS.md` 中每一行的新路径、原路径、step、参数、SHA 前缀都与真实文件一致。
+
+重点三个 checkpoint 还与仓库中独立的历史记录做了交叉核对：
+
+| checkpoint | 注册表 SHA256 | 独立记录 | step / 参数 |
+|---|---|---|---|
+| `exp6_v2/B2/v2mix_ema17500.pt` | 343f41ab8d566c52… | 与 `work_dirs/weights/W21…/MANIFEST.json`、Task 2 `eval_{indoor,outdoor}_v1.json` 的 V2M 组、E2 `init_checkpoint_sha256`、`exp6_v4/CHECKPOINT_LINEAGE.md` 都一致 ✅ | 17500 / 24,822,114 ✅ |
+| `exp6_v2/E2/e2d100_ema5000.pt` | 61439612cb6132af… | 与 `exp6_v4/CHECKPOINT_LINEAGE.md` 一致 ✅ | 5000 / 24,822,114 ✅ |
+| `exp6_v5_2_scratch70k/V5_2M/v52m_best_ema50000.pt`（= V5.3） | a540950738cc7191… | 与 `exp6_v5_2_scratch70k/RUN_STATUS.json` 的 `final.sha256` 一致 ✅；step 与 `best_train_holdout.json` 一致 ✅ | 50000 / 26,999,143（= PARAMETER_AUDIT）✅ |
+
+### 8.3 B2 / E2 Smoke Test（从新目录入口：`scripts/verify.sh` + `scripts/smoke.sh dev3 <GPU> acceptance`；19:23，L40S）
+| 检查 | B2 | E2 |
+|---|---|---|
+| `verify.sh`：配置加载、链接 = 原文件、SHA、step、model_cfg = model_v1.json、严格加载、参数 | ok ✅ | ok ✅（含 E2-S10 对照） |
+| 推理：Dev-3 barts_s0，10 态 / 73 候选，`score_state` 调用 20 次 | 运行正常 | 运行正常 |
+| 未来深度（首中张量 SHA256）：旧路径 = 新路径 | ✅ 逐位一致 | ✅ 逐位一致 |
+| DistP1：旧 = 新 | ✅ | ✅ |
+| 与历史行比较（DistP1 分数、相机排序、预测误差统计） | ✅ 全部相等 | ✅ 全部相等 |
+| 张量级谱系 | ✅ | ✅ |
+| 耗时（旧 / 新，单个 episode） | 45 / 39 s | 46 / 41 s |
+
+结果：`B2/results/smoke_dev3_acceptance.json`、`E2/results/smoke_dev3_acceptance.json`。第一轮的 `smoke_{dev3,valsel}.json`、`smoke_g3_2moves.json` 保留未动。
+
+### 8.4 尚未解决的问题
+- 本轮没有未解决的整理问题。
+- 第一轮列出的事项仍然成立，但都不影响复现：旧命名冲突（`closed_loop_v1.json` 中的 B2 / E2）、`exp6_v3.1` 与 `exp6_v3_1` 目录名不一致、`final.pt` 与最后一个 EMA 字节相同（按 alias 处理）。
+- 这些都没有改动，因为旧脚本依赖原路径。
+
+### 8.5 最终 Git 修改摘要（本轮）
+- **修改**：`.gitignore`（放行 `experiments/CHECKPOINTS_VERIFY.json`）、`experiments/MODEL_VERSIONS.md`、`experiments/CHECKPOINTS.md`（只改标题）、`experiments/checkpoint_registry.py`。
+- **修改 exp6_v2**：README ×3、`configs` ×2、`scripts/g3.sh`、`scripts/smoke.sh` ×2。
+- **修改 exp6_v5_2_scratch70k**：`FROZEN_PROTOCOL.md`（勘误）、`scripts/final_report_v52m.py`、`FINAL_REPORT.md`、`STATUS.md`、`TRAINING_LOG_SUMMARY.md`（重新生成）。
+- **新增**：`experiments/CHECKPOINTS_VERIFY.json`、`B2/results/smoke_dev3_acceptance.json`、`E2/results/smoke_dev3_acceptance.json`。
+- **未删除、覆盖或移动任何 checkpoint**；没有训练，没有运行 G3。

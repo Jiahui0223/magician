@@ -81,8 +81,8 @@
   "G3_closed_loop": {
    "launcher": "experiments/exp6_v2/E2/scripts/g3.sh (tracked copy of work_dirs/exp5_future_view/task3_full_depth_p1/e2/run_queue_g3.sh + chain_g3.sh)",
    "episodes": {
-    "indoor": "configs/g3_jobs_in.txt",
-    "outdoor": "configs/g3_jobs_out.txt"
+    "indoor": "configs/g3_jobs_in.txt (MP3D VALSEL 10 episodes x 150 moves)",
+    "outdoor": "configs/g3_jobs_out.txt (Macarons++ Dev-3 + Test-3: 6 scenes x 5 starts = 30 episodes x 100 moves)"
    },
    "coverage": "experiments/exp5_future_view/task3_full_depth_p1/scripts/t35_out_cov.py",
    "analysis": "experiments/exp5_future_view/task3_full_depth_p1/e2_pilot/scripts/e2_g3_analyze.py",

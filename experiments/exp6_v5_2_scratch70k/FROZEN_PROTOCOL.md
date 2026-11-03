@@ -90,7 +90,7 @@
   - (c) 两个域的 UNKNOWN 射线中，`p_nohit ∈ [0.9, 1]` 的射线实际命中比例（false no-hit）都低于旧 V5.2 的同一指标。若新模型在该区间没有射线，视为改善并如实报告。
   - **G3 smoke 总是运行**：4 个 Outdoor episode（alhambra s0/s1、bridge s0/s1，100 步）和 2 个 MP3D episode（8194nk5LbLH L0 S10、EU6Fwq7SyZv L0 S67，150 步），各跑 λ 0 / 0.1，与旧 V5.2 smoke 是同一组 episode。
   - **smoke 有效**的条件：12 个 episode 都完成（exit 0、步数完整），守卫计数为 0。
-  - **G3 Full** 当且仅当 (a)(b)(c) 成立且 smoke 有效。Full 为 Outdoor Test-3 30 episode × 100 步和 MP3D 10 episode × 150 步，各跑 λ 0 / 0.1，分场景 / 楼层统计，给出 bootstrap CI。否则写明 skip。
+  - **G3 Full** 当且仅当 (a)(b)(c) 成立且 smoke 有效。Full 为 Outdoor Macarons++ Dev-3 + Test-3（6 scenes，30 episodes × 100 steps；勘误 2026-11-02：原文误写为“Test-3 30 episode”，job 列表 `g3_full_jobs.txt` 本身一直是 6 场景）和 MP3D 10 episode × 150 步，各跑 λ 0 / 0.1，分场景 / 楼层统计，给出 bootstrap CI。否则写明 skip。
 - **规划器设置不变**：B2 规划器（D100 输入、S10 新颖性、K=4 候选、n_win=5、R10、P1 更新），只替换 camera utility。
 
 ## 6. 资源与无人值守链
@@ -142,3 +142,4 @@ QOS 限制每个用户 8 张 GPU，其中 4 张由交互作业 3443137（gpu115�
   - 处理：用相同的权重、score 配置和 job 定义补跑；覆盖统计改为单 worker 串行。
   - 驱动在 15:27 补跑之前写入了“smoke 无效”。门槛在 G2 已判定 FAIL，所以无论 smoke 是否有效，G3 full 都不会运行。
 - **RUN_STATUS 中的 `git_sha_launch`**：驱动记录为空，按 git log 手工补为 f105eed（03:39:24 提交，驱动 03:39:40 启动）。
+- **勘误（2026-11-02，文件整理验收）**：§5 中 G3 Full 的 Outdoor 范围原写为“Test-3 30 episode”，实际 job 列表（`work_dirs/exp6_v5_2_scratch70k/g3_full_jobs.txt`，取自 V4 的冻结列表）是 Macarons++ Dev-3 + Test-3（6 scenes，30 episodes × 100 steps）。G3 Full 本轮未运行，没有结果受影响；smoke 的 4 个 Outdoor episode 确实只在 Test-3（alhambra、bridge）。

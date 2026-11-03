@@ -45,16 +45,16 @@
 | `verify.sh` | 加载 `configs/b2.json`，核对 checkpoint（链接 / SHA / step / model_cfg / 严格加载 / 参数），CPU 上运行 → `results/verify_config_checkpoint.json` |
 | `smoke.sh [dev3\|valsel] [GPU]` | 最小推理 smoke：一个固定状态 episode，分别从旧路径和新路径加载，比较未来深度、DistP1、排序，并与历史行比较 → `results/smoke_<set>.json` |
 | `g12_fixed.sh` | 历史 G1 / G2 命令（`e2_fixed.py` 同时计算 B0 / B2 / E2-S10 / E2-D100，再跑 `e2_analyze.py`）；只补写缺失文件，历史结果存在时不做任何事 |
-| `g3.sh [OUT] [N]` | G3 闭环：MP3D 10 × 150、Macarons++ 30 × 100（`configs/g3_jobs_{in,out}.txt` = 历史 `jobs_b2_*.txt`），worker 为 `../shared/g3_queue.sh`；默认输出 `work_dirs/exp6_v2/g3`，不会覆盖历史结果 |
+| `g3.sh [OUT] [N]` | G3 闭环：MP3D VALSEL 10 × 150、Macarons++ Dev-3 + Test-3（6 scenes，30 episodes × 100 steps）（`configs/g3_jobs_{in,out}.txt` = 历史 `jobs_b2_*.txt`），worker 为 `../shared/g3_queue.sh`；默认输出 `work_dirs/exp6_v2/g3`，不会覆盖历史结果 |
 | `train_lineage.sh` | 打印两阶段训练的原命令；只有 `RUN=1` 时才执行，输出到新目录。本次未运行 |
 
-## 6. 历史结果（`results/historical/` 是指向原报告的软链接）
+## 6. 历史已报告结果（`results/historical/` 是指向原报告的软链接）
 - **G3**（Task 3 E1 B2 闭环，`T3_E1_B2_CLOSED_LOOP.md`）：
 
-  | 数据集 | AUC | Final | 相对 B0 |
+  | 数据集（G3 范围） | AUC | Final | 相对 B0 |
   |---|---|---|---|
-  | MP3D | 0.334 | 0.530 | ΔFinal +0.061，CI 不含 0 |
-  | Macarons++ | 0.730 | 0.906 | ΔAUC +0.001 |
+  | MP3D VALSEL（10 ep × 150） | 0.334 | 0.530 | ΔFinal +0.061，CI 不含 0 |
+  | Macarons++ Dev-3 + Test-3（6 scenes，30 episodes × 100 steps） | 0.730 | 0.906 | ΔAUC +0.001 |
 
 - **G2**（固定状态，E2 pilot 的行，被 EXP6 各版本引用）：
   - Dev-3 275 态：Top-1 0.581，增益 1.275 pp；

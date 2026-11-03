@@ -1,5 +1,5 @@
 #!/bin/bash
-# B2: G3 closed loops (MP3D VALSEL 10 x 150, Macarons++ Test-3 30 x 100) with the frozen B2 planner (V2-Mix EMA@17.5k,
+# B2: G3 closed loops (MP3D VALSEL 10 x 150, Macarons++ Dev-3 + Test-3: 6 scenes, 30 x 100) with the frozen B2 planner (V2-Mix EMA@17.5k,
 # D100 input, S10 DistP1, K 4, n_win 5, R10). Tracked form of work_dirs/.../task3_full_depth_p1/chain_b2.sh.
 # Usage: g3.sh [OUT_ROOT] [WORKERS_PER_GPU]   (OUT_ROOT default work_dirs/exp6_v2/g3: historical results are not touched)
 source $(dirname $0)/../../shared/env.sh

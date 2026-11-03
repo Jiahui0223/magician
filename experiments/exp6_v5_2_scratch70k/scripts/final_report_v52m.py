@@ -110,7 +110,7 @@ def write(st, traj):
     elif dec:
         L += [f"**G3 Full**：{(st.get('g3', {}).get('full') or {}).get('state', '未运行')} —— {dec.get('decision')}。", ""]
     L += ["## 3. 门槛与自动决策（FROZEN_PROTOCOL §5）", "", "```json", json.dumps(dec, ensure_ascii=False, indent=1, default=str) if dec else "{}", "```", "",
-          "## 4. G3 用户基准（以往实验，AUC / Final）", "", "| 模型 | Outdoor | MP3D |", "|---|---|---|"]
+          "## 4. G3 用户基准（历史已报告结果，AUC / Final；Outdoor = Macarons++ Dev-3 + Test-3，6 scenes，30 episodes × 100 steps；MP3D = VALSEL 10 × 150。上文 smoke 只含 Test-3 的 4 个 episode，不可与本表直接比较）", "", "| 模型 | Outdoor（Dev-3 + Test-3，30 ep） | MP3D（10 ep） |", "|---|---|---|"]
     for k, v in BENCH.items():
         L.append(f"| {k} | {' / '.join(f'{x:.3f}' for x in v['outdoor']) if 'outdoor' in v else '—'} | {' / '.join(f'{x:.3f}' for x in v['mp3d']) if 'mp3d' in v else '—'} |")
     L += ["", "## 5. 明细文件", "", "- 训练：`TRAINING_LOG_SUMMARY.md`、`figures/training_dashboard.png`", "- G1：`G1_FIRSTHIT.md`；G2：`G2_FIXED_STATE.md`（20k / 40k / 70k / best）",

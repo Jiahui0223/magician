@@ -145,7 +145,7 @@ V5.2 pilot (Idea 2: ray geometry belief + conditional first-hit hazard, V5 warm-
 
 ## exp6_v5_2_scratch70k
 
-V5.2-M Scratch70k (Idea 2, 27.0M, from scratch)
+V5.2-M Scratch70k (= V5.3, discussion name of the same model; Idea 2, 27.0M, from scratch)
 
 | 新路径（work_dirs/checkpoints/…） | 原路径 | 类型 | step | 参数 | sha256（前 16） | 严格加载 | 用途 |
 |---|---|---|---|---|---|---|---|

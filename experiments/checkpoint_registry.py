@@ -9,7 +9,9 @@ Files whose sha equals an already registered file of the same folder are not lin
 Existing different files / links at a destination are never overwritten (error). Expected sha256 values recorded in the
 experiments' own reports are cross-checked. Outputs: work_dirs/checkpoints/<experiment>/{MANIFEST.json, README.md},
 work_dirs/checkpoints/README.md and the tracked index experiments/CHECKPOINTS.md.
-Usage: python experiments/checkpoint_registry.py [--only exp6_v2 ...] [--dry]  (seen2scene env, CPU only)"""
+Usage: python experiments/checkpoint_registry.py [--only exp6_v2 ...] [--dry]  (seen2scene env, CPU only)
+       python experiments/checkpoint_registry.py --verify OUT.json   (read-only audit: links, targets, sha256, size, step,
+       strict load + parameter count, raw layout, orphan links, consistency with experiments/CHECKPOINTS.md)"""
 import argparse
 import concurrent.futures as cf
 import glob
@@ -91,7 +93,7 @@ def spec():
     S["exp6_v5_2"] = {"title": "V5.2 pilot (Idea 2: ray geometry belief + conditional first-hit hazard, V5 warm-start, 2.67M)", "groups": {"V5_2": [
         ("v52_ema6000.pt", "work_dirs/exp6_v5_2/checkpoints/v52_final.pt", "ema", "V5.2 pilot final (EMA@6000)"),
         ("v52_raw6000.pt", "work_dirs/exp6_v5_2/runs/v52/ckpt_last.pt", "raw", "V5.2 raw training state at 6000")] + emas("work_dirs/exp6_v5_2/runs/v52", "v52", "ema_*.pt")}}
-    S["exp6_v5_2_scratch70k"] = {"title": "V5.2-M Scratch70k (Idea 2, 27.0M, from scratch)", "groups": {"V5_2M": [
+    S["exp6_v5_2_scratch70k"] = {"title": "V5.2-M Scratch70k (= V5.3, discussion name of the same model; Idea 2, 27.0M, from scratch)", "groups": {"V5_2M": [
         ("v52m_best_ema50000.pt", "work_dirs/exp6_v5_2_scratch70k/checkpoints/best_train_holdout.pt", "ema", "V5.2-M best_train_holdout (EMA@50k; primary checkpoint of the run)"),
         ("v52m_ema70000.pt", "work_dirs/exp6_v5_2_scratch70k/checkpoints/step_070000.pt", "ema", "V5.2-M last70k (EMA@70k)"),
         ("v52m_raw70000.pt", "work_dirs/exp6_v5_2_scratch70k/checkpoints/last.pt", "raw", "V5.2-M raw training state at 70k")]
@@ -156,11 +158,65 @@ def inspect(path, kind, cfg_cache):
     return info
 
 
+def verify(out_json):
+    """Read-only audit of the registry as built: every MANIFEST row against the files on disk and the index."""
+    index = open(os.path.join(R, "experiments", "CHECKPOINTS.md")).read()
+    res = {"time": time.strftime("%F %T"), "experiments": {}, "problems": []}
+    for mp in sorted(glob.glob(os.path.join(CKR, "exp6_*", "MANIFEST.json"))):
+        m = json.load(open(mp))
+        ver = m["experiment"]
+        rows = m["rows"]
+        paths = [os.path.join(R, r["new_path"] if r.get("linked") else r["original_path"]) for r in rows]
+        with cf.ThreadPoolExecutor(8) as ex:
+            shas = list(ex.map(lambda p: sha256(p) if os.path.exists(p) else None, paths))
+        out, cache, listed = [], {}, set()
+        for r, p, sh in zip(rows, paths, shas):
+            o = {"new_path": r["new_path"], "kind": r["kind"], "linked": bool(r.get("linked"))}
+            orig = os.path.join(R, r["original_path"])
+            o["original_exists"] = os.path.isfile(orig)
+            o["sha_ok"] = sh == r["sha256"]
+            if r.get("linked"):
+                listed.add(os.path.normpath(p))
+                o["is_symlink"] = os.path.islink(p)
+                o["target_exists"] = os.path.exists(p)
+                o["link_target_unchanged"] = o["is_symlink"] and os.readlink(p) == r.get("link_target")
+                o["same_file_as_original"] = o["target_exists"] and o["original_exists"] and os.path.samefile(p, orig)
+                o["size_ok"] = o["target_exists"] and os.path.getsize(p) == r["size"]
+                info = inspect(p, r["kind"], cache.setdefault(r["group"], {}))
+                o["step_ok"] = info.get("step") == r.get("step")
+                o["params_ok"] = info.get("params") == r.get("params")
+                o["model_ok"] = (info.get("strict_load") == "ok") if r["kind"] == "ema" else bool(info.get("raw_model_matches_ema_layout"))
+                rel = r["new_path"].split("checkpoints/", 1)[1]
+                line = next((ln for ln in index.splitlines() if ln.startswith(f"| `{rel}` |")), "")
+                o["index_ok"] = bool(line) and r["sha256"][:16] in line and f"{r.get('params', 0):,}" in line and f"| {r.get('step')} |" in line and f"`{r['original_path']}`" in line
+            else:
+                o["alias_of"] = r["alias_of"]
+                o["index_ok"] = f"`{r['original_path']}`" in index
+            o["ok"] = all(v for k, v in o.items() if k.endswith(("_ok", "_exists", "is_symlink", "_unchanged", "_original")) and isinstance(v, bool))
+            if not o["ok"]:
+                res["problems"].append(o)
+            out.append(o)
+        links = {os.path.normpath(os.path.join(dp, f)) for dp, _, fs in os.walk(os.path.join(CKR, ver)) for f in fs if os.path.islink(os.path.join(dp, f))}
+        orphans = sorted(os.path.relpath(x, R) for x in links - listed)
+        res["problems"] += [{"orphan_link": x} for x in orphans]
+        res["experiments"][ver] = {"rows": len(rows), "linked": sum(r["linked"] for r in out), "aliases": sum(not r["linked"] for r in out),
+                                   "all_ok": all(r["ok"] for r in out) and not orphans, "orphan_links": orphans, "detail": out}
+        print(ver, res["experiments"][ver]["linked"], "links", res["experiments"][ver]["aliases"], "aliases", "ALL OK" if res["experiments"][ver]["all_ok"] else "PROBLEMS", flush=True)
+    res["all_ok"] = not res["problems"]
+    json.dump(res, open(out_json, "w"), indent=1)
+    return res
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--only", nargs="*", default=None)
     ap.add_argument("--dry", action="store_true")
+    ap.add_argument("--verify", default=None, help="read-only audit of the existing registry; JSON report path")
     a = ap.parse_args()
+    if a.verify:
+        r = verify(a.verify)
+        print("ALL OK" if r["all_ok"] else f"{len(r['problems'])} PROBLEMS")
+        sys.exit(0 if r["all_ok"] else 1)
     S = spec()
     allrows = {}
     for ver, sv in S.items():

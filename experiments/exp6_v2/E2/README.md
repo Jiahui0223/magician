@@ -39,14 +39,14 @@ E2 的初始化权重就是 `../B2/v2mix_ema17500.pt`，不在 E2 目录重复�
 | `g3.sh [OUT] [N]` | E2-D100 的 G3 闭环（`configs/g3_jobs_*.txt`）；`CONTROL=1` 时加跑 E2-S10（`configs/control_e2s10_g3_jobs_*.txt`）；默认输出 `work_dirs/exp6_v2/g3` |
 | `train.sh [d100\|s10]` | 打印数据构建和训练的原命令；只有 `RUN=1` 时才执行训练，输出到新目录。本次未运行 |
 
-## 5. 历史结果（`results/historical/` 是指向原报告的软链接）
+## 5. 历史已报告结果（`results/historical/` 是指向原报告的软链接）
 - **G1**：相对 B2，unknown 与 truly-new 的误差下降，通过。
 - **G2**：Dev-3 排序差于 B2，未通过；MP3D 更好。见 `E2_G12_REPORT.md`、`g12_s5000.md`。
 - **G3**（探索性，`E2_G3_REPORT.md`）：
 
-  | 数据集 | E2-D100 AUC / Final | B2 | E2-S10 |
+  | 数据集（G3 范围） | E2-D100 AUC / Final | B2 | E2-S10 |
   |---|---|---|---|
-  | MP3D | 0.364 / 0.553 | 0.334 / 0.530 | 0.347 / 0.519 |
-  | Macarons++ | 0.711 / 0.880 | 0.730 / 0.906 | 0.719 / 0.880 |
+  | MP3D VALSEL（10 ep × 150） | 0.364 / 0.553 | 0.334 / 0.530 | 0.347 / 0.519 |
+  | Macarons++ Dev-3 + Test-3（6 scenes，30 episodes × 100 steps） | 0.711 / 0.880 | 0.730 / 0.906 | 0.719 / 0.880 |
 
   结论 Conditional Go：室内有效，室外微调不如冻结模型。

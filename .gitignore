@@ -25,6 +25,7 @@ experiments/*
 !experiments/CHECKPOINTS.md
 !experiments/MODEL_VERSIONS.md
 !experiments/checkpoint_registry.py
+!experiments/CHECKPOINTS_VERIFY.json
 # EXP5 derived result files above 1 MB stay in the working tree only
 experiments/exp5_future_view/ablation_study/A1_prediction_scoring/results/a1_candidates_indoor.csv
 experiments/exp5_future_view/ablation_study/A1_prediction_scoring/results/a1_candidates_outdoor.csv

@@ -1,6 +1,6 @@
 # EXP6 V5.2-M Scratch70k —— 最终报告
 
-自动生成于 2026-11-02 15:39:11（`scripts/final_report_v52m.py`，数字全部读自阶段输出；评估场景非盲）。人工解读见文末（若有）。
+自动生成于 2026-11-02 19:23:50（`scripts/final_report_v52m.py`，数字全部读自阶段输出；评估场景非盲）。人工解读见文末（若有）。
 
 ## 0. 运行事实
 
@@ -73,9 +73,9 @@
 }
 ```
 
-## 4. G3 用户基准（以往实验，AUC / Final）
+## 4. G3 用户基准（历史已报告结果，AUC / Final；Outdoor = Macarons++ Dev-3 + Test-3，6 scenes，30 episodes × 100 steps；MP3D = VALSEL 10 × 150。上文 smoke 只含 Test-3 的 4 个 episode，不可与本表直接比较）
 
-| 模型 | Outdoor | MP3D |
+| 模型 | Outdoor（Dev-3 + Test-3，30 ep） | MP3D（10 ep） |
 |---|---|---|
 | V5 | 0.711 / 0.891 | 0.333 / 0.501 |
 | old V5.2 λ0 | 0.608 / 0.781 | 0.238 / 0.310 |
