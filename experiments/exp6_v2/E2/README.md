@@ -13,7 +13,7 @@ E2-D100 在 V2-Mix EMA@17.5k（即 B2 的权重）上，用 D100（稠密 P1）�
 | 初始化 | V2-Mix EMA@17.5k（sha 343f41ab…，= B2 权重） | 同左 |
 | 数据 | MP3D train（`e2/w2_d100`，D100 P1 重建）+ Train-6 去 S-c（`e2/out_views_d100`），各 32 views | 同配方，S10 稀疏分片（`e2_s10_v1.json`） |
 | 优化 | 5k 步，lr 2e-5，warmup 500，余弦降到 0，AdamW (0.9, 0.99)，wd 0.01，bf16，EMA 0.999，seed 0，64 views / 8 states | 同左 |
-| 选择 | 冻结规则：在评估步 0–5k 中取 ES 比值最小 → **EMA@5k** | EMA@5k |
+| 选择 | **按协议固定为 EMA@5k，不做 checkpoint 选择**（`e2_pilot/protocol.md:50`；2026-11-02 更正：此前误写为“ES 比值最小”） | 同左（固定 EMA@5k；若按 ES 规则会选 1k，未采用） |
 | 脚本 | `e2_pilot/scripts/e2_paths.py`、`e2_build.py`（数据）、`e2_train.py`；启动见 `scripts/train.sh` | 同左（`e2_train.py s10`） |
 
 张量级核对（`results/smoke_*.json` 的 `lineage`）：E2-D100 第 0 步权重 = V2-Mix EMA@17.5k；EMA@5k 与初始化不同。

@@ -63,7 +63,7 @@
   "data": "MP3D train houses (D100 P1 rebuild, e2/w2_d100) + Train-6 minus S-c (D100 P1 rebuild, e2/out_views_d100), 32 + 32 views",
   "steps": 5000,
   "lr": 2e-05,
-  "selection": "EMA@5k (frozen rule over evaluated steps 0..5k)",
+  "selection": "fixed EMA@5k by protocol (e2_pilot/protocol.md:50: no checkpoint selection; intermediate checkpoints only for curves). Correction 2026-11-02: earlier text said 'ES-ratio minimum'",
   "config": "experiments/exp5_future_view/task3_full_depth_p1/e2_pilot/configs/e2_d100_v1.json",
   "data_builder": "experiments/exp5_future_view/task3_full_depth_p1/e2_pilot/scripts/e2_build.py",
   "trainer": "experiments/exp5_future_view/task3_full_depth_p1/e2_pilot/scripts/e2_train.py",

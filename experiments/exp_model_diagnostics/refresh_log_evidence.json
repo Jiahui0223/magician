@@ -1,0 +1,159 @@
+{
+ "what": "refresh events in the historical closed-loop planner logs (empirical cross-check of the code audit)",
+ "indoor": {
+  "B2": {
+   "episodes": 10,
+   "refresh_events": 150,
+   "refresh_t_mod10": {
+    "0": 150
+   },
+   "region_box_changed_at_non_first_refresh": 139,
+   "non_first_refreshes": 140
+  },
+  "E2D": {
+   "episodes": 10,
+   "refresh_events": 150,
+   "refresh_t_mod10": {
+    "0": 150
+   },
+   "region_box_changed_at_non_first_refresh": 138,
+   "non_first_refreshes": 140
+  },
+  "V3-T0": {
+   "episodes": 10,
+   "refresh_events": 150,
+   "refresh_t_mod10": {
+    "0": 150
+   },
+   "region_box_changed_at_non_first_refresh": 139,
+   "non_first_refreshes": 140
+  },
+  "V3-T1": {
+   "episodes": 10,
+   "refresh_events": 150,
+   "refresh_t_mod10": {
+    "0": 150
+   },
+   "region_box_changed_at_non_first_refresh": 138,
+   "non_first_refreshes": 140
+  },
+  "V3.1": {
+   "episodes": 10,
+   "refresh_events": 150,
+   "refresh_t_mod10": {
+    "0": 150
+   },
+   "region_box_changed_at_non_first_refresh": 139,
+   "non_first_refreshes": 140
+  },
+  "V4": {
+   "episodes": 10,
+   "refresh_events": 150,
+   "refresh_t_mod10": {
+    "0": 150
+   },
+   "region_box_changed_at_non_first_refresh": 137,
+   "non_first_refreshes": 140
+  },
+  "V4C": {
+   "episodes": 10,
+   "refresh_events": 150,
+   "refresh_t_mod10": {
+    "0": 150
+   },
+   "region_box_changed_at_non_first_refresh": 138,
+   "non_first_refreshes": 140
+  },
+  "V5": {
+   "episodes": 10,
+   "refresh_events": 150,
+   "refresh_t_mod10": {
+    "0": 150
+   },
+   "region_box_changed_at_non_first_refresh": 138,
+   "non_first_refreshes": 140
+  }
+ },
+ "outdoor": {
+  "B2": {
+   "episodes": 30,
+   "steps": 3000,
+   "refresh_events": 300,
+   "refresh_t_mod10": {
+    "0": 300
+   },
+   "steps_with_p1_update": 3000,
+   "steps_with_geometry": 3000
+  },
+  "E2D": {
+   "episodes": 30,
+   "steps": 3000,
+   "refresh_events": 300,
+   "refresh_t_mod10": {
+    "0": 300
+   },
+   "steps_with_p1_update": 3000,
+   "steps_with_geometry": 3000
+  },
+  "V3-T0": {
+   "episodes": 30,
+   "steps": 3000,
+   "refresh_events": 300,
+   "refresh_t_mod10": {
+    "0": 300
+   },
+   "steps_with_p1_update": 3000,
+   "steps_with_geometry": 3000
+  },
+  "V3-T1": {
+   "episodes": 30,
+   "steps": 3000,
+   "refresh_events": 300,
+   "refresh_t_mod10": {
+    "0": 300
+   },
+   "steps_with_p1_update": 3000,
+   "steps_with_geometry": 3000
+  },
+  "V3.1": {
+   "episodes": 30,
+   "steps": 3000,
+   "refresh_events": 300,
+   "refresh_t_mod10": {
+    "0": 300
+   },
+   "steps_with_p1_update": 3000,
+   "steps_with_geometry": 3000
+  },
+  "V4": {
+   "episodes": 30,
+   "steps": 3000,
+   "refresh_events": 300,
+   "refresh_t_mod10": {
+    "0": 300
+   },
+   "steps_with_p1_update": 3000,
+   "steps_with_geometry": 3000
+  },
+  "V4C": {
+   "episodes": 30,
+   "steps": 3000,
+   "refresh_events": 300,
+   "refresh_t_mod10": {
+    "0": 300
+   },
+   "steps_with_p1_update": 3000,
+   "steps_with_geometry": 3000
+  },
+  "V5": {
+   "episodes": 30,
+   "steps": 3000,
+   "refresh_events": 300,
+   "refresh_t_mod10": {
+    "0": 300
+   },
+   "steps_with_p1_update": 3000,
+   "steps_with_geometry": 3000
+  }
+ }
+}

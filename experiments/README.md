@@ -188,6 +188,7 @@
 | 2026-11-02 | exp6_v2 整理 + checkpoint 统一登记 | 你的指示：只整理不训练。`exp6_v2/{B2,E2}`（独立配置、入口、历史结果链接；共享 V2 代码留在原处）；`work_dirs/checkpoints/exp6_{v2,v3,v3_1,v4,v5,v5_2,v5_2_scratch70k}/` 共 108 个相对软链接（不移动 / 不删除；SHA、step、严格加载全部核对）；索引 `CHECKPOINTS.md`、架构总览 `MODEL_VERSIONS.md`；B2 / E2 推理 smoke 与整理前后逐位一致，等待审查 |
 | 2026-11-02 | exp_camera_pose 建立（Phase 1） | 你的任务书：不训练，只研究候选位姿。审计（单步动作已穷举，最多 10 个）→ 预注册协议 → Stage B 固定状态（λ* B2 / E2 0.1，V4 / V5 0）→ Stage A 回归（逐位一致）→ Stage C pilot（4 个组合门槛全部未通过）→ 不运行完整 G3；C2 未运行；**NO-GO** |
 | 2026-11-02 | exp_camera_pose C2 + 附加比较 | 你的任务书 C2（MP3D 细格 / 连续位姿）：审计、网格外 smoke 通过；Stage A oracle：C2a +0.013 pp、C2b +0.031、C2c +0.084（+7.7%），门槛未通过 → **NO-GO**，未跑模型和闭环。附加：V4 / V5 的 C0 / C1（探索性）与 MAGICIAN beam 在同一 pilot episode 上比较。Camera Pose 阶段结束 |
+| 2026-11-02 | exp_model_diagnostics 建立（审计） | 你的指示：只审计不训练。刷新路径（所有模型都是 R10：编码、噪声、室内区域在同一次刷新中触发，P1 和几何每步更新）、空间表示（8³ 粗网格、F0 / F1、32 点均匀射线 → fc(512→64)）、训练条件对比（B2 在 S10 上训练却用 D100 评估；E2 选择规则文档更正）；ABLATION_PLAN 待你确认 |
 
 ## 通用设定（所有实验共用）
 
