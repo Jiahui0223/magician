@@ -1,0 +1,177 @@
+{
+ "arm": "E2",
+ "set": "valsel",
+ "stratum": "B0",
+ "tag": "8194nk5LbLH_L0_ogr_p10",
+ "states": 10,
+ "models": {
+  "S10": [
+   "E2S",
+   10
+  ],
+  "D100": [
+   "E2D",
+   100
+  ]
+ },
+ "gpu": "NVIDIA L40S",
+ "time": "2026-11-02 18:59:23",
+ "paths": {
+  "old": {
+   "E2D": "work_dirs/exp5_future_view/task3_full_depth_p1/e2/training/d100/ema_005000.pt",
+   "E2S": "work_dirs/exp5_future_view/task3_full_depth_p1/e2/training/s10/ema_005000.pt"
+  },
+  "new": {
+   "E2D": "work_dirs/checkpoints/exp6_v2/E2/e2d100_ema5000.pt",
+   "E2S": "work_dirs/checkpoints/exp6_v2/E2/control_e2s10/e2s10_ema5000.pt"
+  }
+ },
+ "score_state_calls": 20,
+ "future_depth_old_eq_new": true,
+ "distp1_old_eq_new": true,
+ "future_depth_sha256_first_call": "d71e1d70278183495eb8363a20f40e4c3e3cc94bd69c5312569b12e87f10ebe0",
+ "historical_rows": "work_dirs/exp5_future_view/task3_full_depth_p1/e2/fixed/valsel_s5000/B0/8194nk5LbLH_L0_ogr_p10.jsonl",
+ "per_state": [
+  {
+   "sid": "e796d010462a8529",
+   "t": 0,
+   "n_cand": 6,
+   "S10_scores_eq_hist": true,
+   "S10_rank_eq_hist": true,
+   "S10_pred_eq_hist": true,
+   "S10_top1": 2,
+   "D100_scores_eq_hist": true,
+   "D100_rank_eq_hist": true,
+   "D100_pred_eq_hist": true,
+   "D100_top1": 2
+  },
+  {
+   "sid": "533dc0b1c01a86d3",
+   "t": 5,
+   "n_cand": 7,
+   "S10_scores_eq_hist": true,
+   "S10_rank_eq_hist": true,
+   "S10_pred_eq_hist": true,
+   "S10_top1": 3,
+   "D100_scores_eq_hist": true,
+   "D100_rank_eq_hist": true,
+   "D100_pred_eq_hist": true,
+   "D100_top1": 3
+  },
+  {
+   "sid": "38f25cf38eed8913",
+   "t": 20,
+   "n_cand": 10,
+   "S10_scores_eq_hist": true,
+   "S10_rank_eq_hist": true,
+   "S10_pred_eq_hist": true,
+   "S10_top1": 6,
+   "D100_scores_eq_hist": true,
+   "D100_rank_eq_hist": true,
+   "D100_pred_eq_hist": true,
+   "D100_top1": 6
+  },
+  {
+   "sid": "f4eae3087bf67cb4",
+   "t": 25,
+   "n_cand": 9,
+   "S10_scores_eq_hist": true,
+   "S10_rank_eq_hist": true,
+   "S10_pred_eq_hist": true,
+   "S10_top1": 6,
+   "D100_scores_eq_hist": true,
+   "D100_rank_eq_hist": true,
+   "D100_pred_eq_hist": true,
+   "D100_top1": 6
+  },
+  {
+   "sid": "ee675c0c669bfe4b",
+   "t": 50,
+   "n_cand": 8,
+   "S10_scores_eq_hist": true,
+   "S10_rank_eq_hist": true,
+   "S10_pred_eq_hist": true,
+   "S10_top1": 0,
+   "D100_scores_eq_hist": true,
+   "D100_rank_eq_hist": true,
+   "D100_pred_eq_hist": true,
+   "D100_top1": 0
+  },
+  {
+   "sid": "b62d75f9437551f2",
+   "t": 55,
+   "n_cand": 7,
+   "S10_scores_eq_hist": true,
+   "S10_rank_eq_hist": true,
+   "S10_pred_eq_hist": true,
+   "S10_top1": 6,
+   "D100_scores_eq_hist": true,
+   "D100_rank_eq_hist": true,
+   "D100_pred_eq_hist": true,
+   "D100_top1": 6
+  },
+  {
+   "sid": "245b0959ad7c2229",
+   "t": 100,
+   "n_cand": 8,
+   "S10_scores_eq_hist": true,
+   "S10_rank_eq_hist": true,
+   "S10_pred_eq_hist": true,
+   "S10_top1": 0,
+   "D100_scores_eq_hist": true,
+   "D100_rank_eq_hist": true,
+   "D100_pred_eq_hist": true,
+   "D100_top1": 0
+  },
+  {
+   "sid": "05adb0a2bfab3c0b",
+   "t": 105,
+   "n_cand": 8,
+   "S10_scores_eq_hist": true,
+   "S10_rank_eq_hist": true,
+   "S10_pred_eq_hist": true,
+   "S10_top1": 0,
+   "D100_scores_eq_hist": true,
+   "D100_rank_eq_hist": true,
+   "D100_pred_eq_hist": true,
+   "D100_top1": 0
+  },
+  {
+   "sid": "f122800282e680a3",
+   "t": 140,
+   "n_cand": 9,
+   "S10_scores_eq_hist": true,
+   "S10_rank_eq_hist": true,
+   "S10_pred_eq_hist": true,
+   "S10_top1": 5,
+   "D100_scores_eq_hist": true,
+   "D100_rank_eq_hist": true,
+   "D100_pred_eq_hist": true,
+   "D100_top1": 3
+  },
+  {
+   "sid": "d2ede3b2889efaec",
+   "t": 145,
+   "n_cand": 7,
+   "S10_scores_eq_hist": true,
+   "S10_rank_eq_hist": true,
+   "S10_pred_eq_hist": true,
+   "S10_top1": 2,
+   "D100_scores_eq_hist": true,
+   "D100_rank_eq_hist": true,
+   "D100_pred_eq_hist": true,
+   "D100_top1": 3
+  }
+ ],
+ "all_equal_to_history": true,
+ "lineage": {
+  "E2D_step0_weights_eq_V2Mix_ema17500": true,
+  "V2Mix_step0_weights_eq_V2Original_ema60000": true,
+  "E2D_ema5000_differs_from_init": true
+ },
+ "seconds": {
+  "old": 159.64201593399048,
+  "new": 155.28596138954163
+ },
+ "ok": true
+}

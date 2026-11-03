@@ -11,7 +11,7 @@ __pycache__/
 # Folder
 work_dirs/
 checkpoints/
-# experiments/: design docs stay local, except the archived EXP5 (V2) tree, the EXP6 V3 / V4 / V3.1 / V5 / V5.2 / V5.2-M trees and the index (2026-10-29, 2026-10-31, 2026-11-02)
+# experiments/: design docs stay local, except the archived EXP5 (V2) tree, the EXP6 V3 / V4 / V3.1 / V5 / V5.2 / V5.2-M trees, the exp6_v2 (B2 / E2) organisation, the checkpoint index / registry and the index (2026-10-29, 2026-10-31, 2026-11-02)
 experiments/*
 !experiments/README.md
 !experiments/exp5_future_view/
@@ -21,6 +21,10 @@ experiments/*
 !experiments/exp6_v5/
 !experiments/exp6_v5_2/
 !experiments/exp6_v5_2_scratch70k/
+!experiments/exp6_v2/
+!experiments/CHECKPOINTS.md
+!experiments/MODEL_VERSIONS.md
+!experiments/checkpoint_registry.py
 # EXP5 derived result files above 1 MB stay in the working tree only
 experiments/exp5_future_view/ablation_study/A1_prediction_scoring/results/a1_candidates_indoor.csv
 experiments/exp5_future_view/ablation_study/A1_prediction_scoring/results/a1_candidates_outdoor.csv

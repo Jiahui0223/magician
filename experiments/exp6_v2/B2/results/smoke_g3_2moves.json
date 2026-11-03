@@ -1,0 +1,29 @@
+{
+ "what": "2-move closed loops through experiments/exp6_v2/shared/g3_queue.sh (registry checkpoints via T3_CKPT, P1 mode b2), compared with the historical 100-move episodes of the same episode (first two planning steps)",
+ "time": "2026-11-02 19:03",
+ "episode": "Macarons++ Test-3 alhambra s0 (outdoor)",
+ "historical": "work_dirs/exp5_future_view/task3_full_depth_p1/closed_loop/outdoor/B2/V2M/episodes/ep_V2M_alhambra_s0_r0.json",
+ "new": "work_dirs/exp6_v2/smoke_g3/closed_loop/outdoor/B2/V2M/episodes/ep_V2M_alhambra_s0_r0.json",
+ "steps": [
+  {
+   "step": 0,
+   "pick_eq": true,
+   "action_eq": true,
+   "legal_eq": true,
+   "cov_eq": true,
+   "distp1_scores_eq": true,
+   "n_candidates": 8
+  },
+  {
+   "step": 1,
+   "pick_eq": true,
+   "action_eq": true,
+   "legal_eq": true,
+   "cov_eq": true,
+   "distp1_scores_eq": true,
+   "n_candidates": 7
+  }
+ ],
+ "all_equal": true,
+ "indoor": "MP3D 8194nk5LbLH L0 S10 2-move episode ran (exit 0); this episode is not in the historical B2 / E2 G3 lists, so it is a run check only"
+}

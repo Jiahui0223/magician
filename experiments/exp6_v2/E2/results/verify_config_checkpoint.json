@@ -1,0 +1,43 @@
+{
+ "arm": "E2",
+ "config": "experiments/exp6_v2/E2/configs/e2.json",
+ "missing": [],
+ "planner": {
+  "p1_mode": "b2",
+  "K": 4,
+  "flow_steps": 10,
+  "n_win_indoor": 5,
+  "refresh": "R10 (encoder input refreshed every 10 moves)",
+  "score": "distp1"
+ },
+ "checkpoint": {
+  "path": "work_dirs/checkpoints/exp6_v2/E2/e2d100_ema5000.pt",
+  "original_path": "work_dirs/exp5_future_view/task3_full_depth_p1/e2/training/d100/ema_005000.pt",
+  "is_symlink": true,
+  "same_file_as_original": true,
+  "sha256": "61439612cb6132afbe74976b82a531c8f827802b06b4f87ad6de1a197d0a2fa5",
+  "sha256_ok": true,
+  "step": 5000,
+  "step_ok": true,
+  "model_cfg_equals_config_file": true,
+  "strict_load": true,
+  "params": 24822114,
+  "ok": true
+ },
+ "params_ok": true,
+ "control_e2s10": {
+  "path": "work_dirs/checkpoints/exp6_v2/E2/control_e2s10/e2s10_ema5000.pt",
+  "original_path": "work_dirs/exp5_future_view/task3_full_depth_p1/e2/training/s10/ema_005000.pt",
+  "is_symlink": true,
+  "same_file_as_original": true,
+  "sha256": "578855bb149956262f3eba976db837f09e61172542a4412a0404efcb69f1521b",
+  "sha256_ok": true,
+  "step": 5000,
+  "step_ok": true,
+  "model_cfg_equals_config_file": true,
+  "strict_load": true,
+  "params": 24822114,
+  "ok": true
+ },
+ "ok": true
+}

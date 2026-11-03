@@ -1,0 +1,177 @@
+{
+ "arm": "E2",
+ "set": "dev3",
+ "stratum": "B0",
+ "tag": "barts_s0",
+ "states": 10,
+ "models": {
+  "S10": [
+   "E2S",
+   10
+  ],
+  "D100": [
+   "E2D",
+   100
+  ]
+ },
+ "gpu": "NVIDIA L40S",
+ "time": "2026-11-02 18:59:23",
+ "paths": {
+  "old": {
+   "E2D": "work_dirs/exp5_future_view/task3_full_depth_p1/e2/training/d100/ema_005000.pt",
+   "E2S": "work_dirs/exp5_future_view/task3_full_depth_p1/e2/training/s10/ema_005000.pt"
+  },
+  "new": {
+   "E2D": "work_dirs/checkpoints/exp6_v2/E2/e2d100_ema5000.pt",
+   "E2S": "work_dirs/checkpoints/exp6_v2/E2/control_e2s10/e2s10_ema5000.pt"
+  }
+ },
+ "score_state_calls": 20,
+ "future_depth_old_eq_new": true,
+ "distp1_old_eq_new": true,
+ "future_depth_sha256_first_call": "4235b3b5a0da9577db2f2b7bfbf9274e3d7888b7ce2b709edeeb78822cebc531",
+ "historical_rows": "work_dirs/exp5_future_view/task3_full_depth_p1/e2/fixed/dev3_s5000/B0/barts_s0.jsonl",
+ "per_state": [
+  {
+   "sid": "a8c9d3371c721067",
+   "t": 0,
+   "n_cand": 10,
+   "S10_scores_eq_hist": true,
+   "S10_rank_eq_hist": true,
+   "S10_pred_eq_hist": true,
+   "S10_top1": 3,
+   "D100_scores_eq_hist": true,
+   "D100_rank_eq_hist": true,
+   "D100_pred_eq_hist": true,
+   "D100_top1": 3
+  },
+  {
+   "sid": "7e9b3ec33c7a3a1a",
+   "t": 5,
+   "n_cand": 6,
+   "S10_scores_eq_hist": true,
+   "S10_rank_eq_hist": true,
+   "S10_pred_eq_hist": true,
+   "S10_top1": 5,
+   "D100_scores_eq_hist": true,
+   "D100_rank_eq_hist": true,
+   "D100_pred_eq_hist": true,
+   "D100_top1": 5
+  },
+  {
+   "sid": "ed3a158022c2f642",
+   "t": 10,
+   "n_cand": 5,
+   "S10_scores_eq_hist": true,
+   "S10_rank_eq_hist": true,
+   "S10_pred_eq_hist": true,
+   "S10_top1": 1,
+   "D100_scores_eq_hist": true,
+   "D100_rank_eq_hist": true,
+   "D100_pred_eq_hist": true,
+   "D100_top1": 2
+  },
+  {
+   "sid": "11b9798c0ef487bb",
+   "t": 15,
+   "n_cand": 8,
+   "S10_scores_eq_hist": true,
+   "S10_rank_eq_hist": true,
+   "S10_pred_eq_hist": true,
+   "S10_top1": 5,
+   "D100_scores_eq_hist": true,
+   "D100_rank_eq_hist": true,
+   "D100_pred_eq_hist": true,
+   "D100_top1": 5
+  },
+  {
+   "sid": "29f4bd597b5a1535",
+   "t": 20,
+   "n_cand": 9,
+   "S10_scores_eq_hist": true,
+   "S10_rank_eq_hist": true,
+   "S10_pred_eq_hist": true,
+   "S10_top1": 1,
+   "D100_scores_eq_hist": true,
+   "D100_rank_eq_hist": true,
+   "D100_pred_eq_hist": true,
+   "D100_top1": 1
+  },
+  {
+   "sid": "9acd62228dd39651",
+   "t": 25,
+   "n_cand": 7,
+   "S10_scores_eq_hist": true,
+   "S10_rank_eq_hist": true,
+   "S10_pred_eq_hist": true,
+   "S10_top1": 2,
+   "D100_scores_eq_hist": true,
+   "D100_rank_eq_hist": true,
+   "D100_pred_eq_hist": true,
+   "D100_top1": 2
+  },
+  {
+   "sid": "83a849b5dcadb2a2",
+   "t": 50,
+   "n_cand": 7,
+   "S10_scores_eq_hist": true,
+   "S10_rank_eq_hist": true,
+   "S10_pred_eq_hist": true,
+   "S10_top1": 0,
+   "D100_scores_eq_hist": true,
+   "D100_rank_eq_hist": true,
+   "D100_pred_eq_hist": true,
+   "D100_top1": 4
+  },
+  {
+   "sid": "f025c6a328057a8d",
+   "t": 55,
+   "n_cand": 8,
+   "S10_scores_eq_hist": true,
+   "S10_rank_eq_hist": true,
+   "S10_pred_eq_hist": true,
+   "S10_top1": 3,
+   "D100_scores_eq_hist": true,
+   "D100_rank_eq_hist": true,
+   "D100_pred_eq_hist": true,
+   "D100_top1": 3
+  },
+  {
+   "sid": "70de73840d7cd024",
+   "t": 80,
+   "n_cand": 7,
+   "S10_scores_eq_hist": true,
+   "S10_rank_eq_hist": true,
+   "S10_pred_eq_hist": true,
+   "S10_top1": 5,
+   "D100_scores_eq_hist": true,
+   "D100_rank_eq_hist": true,
+   "D100_pred_eq_hist": true,
+   "D100_top1": 0
+  },
+  {
+   "sid": "671295ce0188673b",
+   "t": 85,
+   "n_cand": 6,
+   "S10_scores_eq_hist": true,
+   "S10_rank_eq_hist": true,
+   "S10_pred_eq_hist": true,
+   "S10_top1": 3,
+   "D100_scores_eq_hist": true,
+   "D100_rank_eq_hist": true,
+   "D100_pred_eq_hist": true,
+   "D100_top1": 3
+  }
+ ],
+ "all_equal_to_history": true,
+ "lineage": {
+  "E2D_step0_weights_eq_V2Mix_ema17500": true,
+  "V2Mix_step0_weights_eq_V2Original_ema60000": true,
+  "E2D_ema5000_differs_from_init": true
+ },
+ "seconds": {
+  "old": 46.87487745285034,
+  "new": 41.01999020576477
+ },
+ "ok": true
+}

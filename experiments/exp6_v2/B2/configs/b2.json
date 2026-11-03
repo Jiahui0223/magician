@@ -1,0 +1,99 @@
+{
+ "arm": "B2",
+ "version": "exp6_v2_b2_v1",
+ "created": "2026-11-02 (file organisation only; nothing retrained, no algorithm change)",
+ "description": "B2 = frozen V2-Mix (EMA@17.5k) planned with D100 model input and S10 (sparse) DistP1 novelty. No training of its own: the weights are the Task 2 V2-Mix selection; B2 differs from B0 only in the planner's P1 mode.",
+ "architecture": {
+  "name": "V2",
+  "summary": "3D U-Net encoder (Encoder3D 32/64/96) + 32-point ray encoder with Conv1D (RayEncoder) + 2D rectified-flow U-Net (UNet2D) -> K future depth samples; camera score DistP1",
+  "model_class": "seen2scene.futureview.model.V2Model",
+  "predictor": "seen2scene.futureview.predictor.V2Predictor (10 flow steps)",
+  "planner_core": "experiments/exp5_future_view/task1/scripts/v2_plan_core.py (Core / Geometry / score_state)",
+  "distp1": "seen2scene/futureview/scoring.py new_set_from_depth (via v2_plan_core)",
+  "model_config": "experiments/exp5_future_view/task1/configs/model_v1.json",
+  "params": 24822114
+ },
+ "checkpoint": {
+  "path": "work_dirs/checkpoints/exp6_v2/B2/v2mix_ema17500.pt",
+  "original_path": "work_dirs/weights/W21_exp5_v2mix/W21-1_V2Mix_best/ema_017500.pt",
+  "also_at": "work_dirs/exp5_future_view/task2/training/mix_v1/ema_017500.pt (hard link)",
+  "sha256": "343f41ab8d566c52007c881b5f32375c3253dd8f1c7a0d8a906d412a165e4516",
+  "step": 17500,
+  "weights": "ema"
+ },
+ "planner": {
+  "p1_mode": "b2",
+  "env": {
+   "T3_P1_MODE": "b2"
+  },
+  "model_input_fusion": "D100 (all valid depth pixels; FullDepth-P1)",
+  "distp1_novelty": "S10 sparse 10 % P1 band_dil (only caster.band_dil replaced; p1_full._patch_geometry_b2)",
+  "K": 4,
+  "flow_steps": 10,
+  "n_win_indoor": 5,
+  "refresh": "R10 (encoder input refreshed every 10 moves)",
+  "score": "distp1",
+  "group": "V2M",
+  "implementation": [
+   "experiments/exp5_future_view/task3_full_depth_p1/scripts/p1_full.py (mode b2)",
+   "experiments/exp5_future_view/task3_full_depth_p1/scripts/t32_in_planner.py",
+   "experiments/exp5_future_view/task3_full_depth_p1/scripts/t32_out_planner.py",
+   "experiments/exp5_future_view/task3_full_depth_p1/scripts/t33_in_sim.py",
+   "experiments/exp5_future_view/task3_full_depth_p1/scripts/t33_out_sim.py",
+   "experiments/exp5_future_view/task2/scripts/t23_in_sim.py",
+   "experiments/exp5_future_view/task2/scripts/t24_out_sim.py",
+   "experiments/exp5_future_view/task2/scripts/t23_v2_in_planner.py",
+   "experiments/exp5_future_view/task2/scripts/t24_v2_out_planner.py"
+  ],
+  "group_configs": [
+   "experiments/exp5_future_view/task2/configs/eval_indoor_v1.json",
+   "experiments/exp5_future_view/task2/configs/eval_outdoor_v1.json"
+  ],
+  "scoring_config": "experiments/exp5_future_view/task1/configs/scoring_v1.json"
+ },
+ "training_lineage": [
+  {
+   "stage": "V2 Original (EXP5 Task 1)",
+   "init": "random seed 0",
+   "data": "Macarons++ Train-6 minus S-c, sparse P1 (T1.1 shards)",
+   "steps": 60000,
+   "selected": "EMA@60k (fixed)",
+   "script": "experiments/exp5_future_view/task1/scripts/t12_train.py",
+   "config": "experiments/exp5_future_view/task1/configs/train_main.json",
+   "data_config": "experiments/exp5_future_view/task1/configs/data_v1.json",
+   "checkpoint": "work_dirs/checkpoints/exp6_v2/B2/lineage/v2orig_ema60000.pt",
+   "sha256": "a379c0fb9d7d80266a430ab6f48f39315fad54fb650c6c3740a999a02db079fc"
+  },
+  {
+   "stage": "V2-Mix (EXP5 Task 2)",
+   "init": "V2 Original EMA@60k",
+   "data": "MP3D train houses (t21 shards, n_win 5) + Train-6 minus S-c (sparse P1), 32 + 32 views",
+   "steps": 20000,
+   "selected": "EMA@17.5k by the frozen rule min(ES_in_val/ES0 + ES_out_sc/ES0)",
+   "script": "experiments/exp5_future_view/task2/scripts/t22_train_mix.py",
+   "config": "experiments/exp5_future_view/task2/configs/train_mix_v1.json",
+   "selection_script": "experiments/exp5_future_view/task2/scripts/t22_select.py",
+   "checkpoint": "work_dirs/checkpoints/exp6_v2/B2/v2mix_ema17500.pt"
+  }
+ ],
+ "evaluation": {
+  "G1_G2_fixed_states": {
+   "runner": "experiments/exp5_future_view/task3_full_depth_p1/e2_pilot/scripts/e2_fixed.py (model key B2 = V2M on D100, DistP1 with S10)",
+   "analysis": "experiments/exp5_future_view/task3_full_depth_p1/e2_pilot/scripts/e2_analyze.py",
+   "sets": "MP3D VALSEL 90 states; Macarons++ Dev-3 B0 150 + B2 125 states",
+   "rows": "work_dirs/exp5_future_view/task3_full_depth_p1/e2/fixed/<set>_s5000/<stratum>/*.jsonl (scores['B2'])",
+   "earlier_source": "experiments/exp5_future_view/task3_full_depth_p1/density_ablation/scripts/e12_fixed.py (I100 = B2, bitwise equal)"
+  },
+  "G3_closed_loop": {
+   "launcher": "experiments/exp6_v2/B2/scripts/g3.sh (tracked copy of work_dirs/exp5_future_view/task3_full_depth_p1/run_queue2.sh + chain_b2.sh)",
+   "episodes": {
+    "indoor": "configs/g3_jobs_in.txt (MP3D VALSEL 10 x 150 moves)",
+    "outdoor": "configs/g3_jobs_out.txt (Macarons++ Test-3 30 x 100 moves)"
+   },
+   "coverage": "experiments/exp5_future_view/task3_full_depth_p1/scripts/t35_out_cov.py",
+   "analysis": "experiments/exp5_future_view/task3_full_depth_p1/scripts/t34_analyze.py",
+   "historical_output": "work_dirs/exp5_future_view/task3_full_depth_p1/{closed_loop,metrics}/.../B2"
+  }
+ },
+ "not_to_confuse": "The 'B2' row of task1/configs/closed_loop_v1.json 'baselines' and the 'E2' arm (E2_V2G_Nat_K4) of the same file are unrelated EXP5 Task 1 / EXP4 names."
+}

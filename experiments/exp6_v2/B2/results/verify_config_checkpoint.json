@@ -1,0 +1,29 @@
+{
+ "arm": "B2",
+ "config": "experiments/exp6_v2/B2/configs/b2.json",
+ "missing": [],
+ "planner": {
+  "p1_mode": "b2",
+  "K": 4,
+  "flow_steps": 10,
+  "n_win_indoor": 5,
+  "refresh": "R10 (encoder input refreshed every 10 moves)",
+  "score": "distp1"
+ },
+ "checkpoint": {
+  "path": "work_dirs/checkpoints/exp6_v2/B2/v2mix_ema17500.pt",
+  "original_path": "work_dirs/weights/W21_exp5_v2mix/W21-1_V2Mix_best/ema_017500.pt",
+  "is_symlink": true,
+  "same_file_as_original": true,
+  "sha256": "343f41ab8d566c52007c881b5f32375c3253dd8f1c7a0d8a906d412a165e4516",
+  "sha256_ok": true,
+  "step": 17500,
+  "step_ok": true,
+  "model_cfg_equals_config_file": true,
+  "strict_load": true,
+  "params": 24822114,
+  "ok": true
+ },
+ "params_ok": true,
+ "ok": true
+}
