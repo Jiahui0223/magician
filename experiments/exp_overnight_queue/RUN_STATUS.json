@@ -6,16 +6,16 @@
    "detail": "12-config fixed state + G3 (280 new episodes, integrity 0 bad); FINAL_REPORT / NEXT_TRAINING_RECOMMENDATION committed 64b6d9a"
   },
   "S1a_refresh_fixed": {
-   "state": "RUNNING",
-   "detail": "started 04:44 by chain_stage1.sh; smoke passed (28/28 R10 checks)"
+   "state": "COMPLETED",
+   "detail": "39/39 episodes, 365 states, R10 regression 1460/1460 bitwise; fresh encoding improves depth (both domains) and outdoor selected gain (+0.10 pp, early +0.37 pp); indoor ranking unchanged; fixed states all at t%5==0 so R5==R1 there"
   },
   "S1b_refresh_g3_R2_R1": {
-   "state": "QUEUED",
-   "detail": "gate: fixed-state R10 regression all true"
+   "state": "RUNNING",
+   "detail": "started 05:00 (8 workers); R10 replay 2 episodes first"
   },
   "S1c_refresh_g3_R5": {
    "state": "QUEUED",
-   "detail": "after S1b"
+   "detail": "same workers after R2/R1"
   },
   "S2_density_decision": {
    "state": "COMPLETED",
