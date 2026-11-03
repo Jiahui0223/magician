@@ -126,3 +126,10 @@ C2 没有运行：
 - **建议转向 Depth / DAPS 方向**：提升未来深度和打分的排序质量。这正是 selected gain（1.275）与 oracle（1.740）之间差距的来源。
 - **若坚持 Camera Pose**：唯一有理论空间的是改变动作协议（C2，室内）。这需要重新定义公平基线（同一新协议下的 C0、路径 / 动作成本记账、新 oracle），属于新的实验，不应在 Phase 1 中顺带完成。
 - 多步前瞻（Beam Search）不在本阶段范围内。
+
+## 附录（2026-11-02 22:40）：后续 C2 与附加比较
+- **C2**（MP3D 细格 / 连续位姿，任务书 C2）：Stage A 的一步 oracle 上限只提高 1–8%（C2c +0.084 pp），未通过预注册门槛 → **NO-GO**。见 `../C2/FINAL_REPORT.md`。
+- **附加比较**（用户要求，`addon.md`）：在同一 pilot episode 上比较 B2 / E2-D100 / V4 / V5 的 C0 与 C1，以及 MAGICIAN beam。
+  - V4 / V5 的 C1 为探索性（预注册 λ* = 0）：VALSEL ΔAUC −0.046 / −0.015，Dev-3 +0.024 / −0.012。
+  - 4 个模型的 C0 在 MP3D VALSEL 上都高于 MAGICIAN beam（ΔAUC +0.015 至 +0.084）；在 Macarons++ Dev-3 上与 MAGICIAN beam 互有胜负，Final 都略低。
+  - 本报告的 NO-GO 结论不变。

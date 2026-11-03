@@ -3,3 +3,4 @@
 - 固定状态：选择改变 3–5%，一步收益变化 ≤ 0.03 pp，无系统提升（`../reports/fixed_state.md`）。
 - pilot：4 个组合的 mean ΔAUC 为 +0.002 / −0.019 / −0.020 / −0.029，门槛全部未通过（`../reports/pilot.md`）。
 - 结论：NO-GO；没有运行完整 G3。
+- 附加（用户要求）：V4 / V5 的 C1（λ 0.1，探索性；预注册 λ* = 0）。VALSEL ΔAUC −0.046 / −0.015，Dev-3 +0.024 / −0.012。与 MAGICIAN beam 的同 episode 比较见 `../reports/addon.md`。

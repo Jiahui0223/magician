@@ -1,0 +1,375 @@
+{
+ "note": "Camera Pose -- user add-on (2026-11-02): B2 / E2-D100 / V4 / V5 under C0 and C1 and the MAGICIAN beam search (MAG-B)\non the same pilot episodes (seen2scene env, CPU). Pre-registered pilot: B2 / E2-D100 (lambda* 0.1). V4 / V5 C1 use\nlambda 0.1 although their pre-registered lambda* is 0 -> EXPLORATORY. MAG-B = MAGICIAN official beam 10 x 10 on the original\ngrid (indoor: new runs of Task 2 t23_in_sim --group MAG-B on the VALSEL pilot episodes; outdoor: the historical Task 2\nG3 MAG-B episodes of the same Dev-3 starts). Indoor metrics episode.json auc150 / cov_final / cov20 / cov50 (C_obs);\noutdoor metrics auc_mono / cov_mono_final / cov_mono[20 / 50]. V4 / V5 C0 (new entry) are also compared with their\nhistorical G3 episodes (outdoor) as a regression. Output reports/addon.{json,md}, reports/figures/addon_coverage.png.",
+ "lambda": {
+  "B2": 0.1,
+  "E2D": 0.1,
+  "lam_star": {
+   "B2": 0.1,
+   "E2D": 0.1,
+   "V4": 0.0,
+   "V5": 0.0
+  },
+  "rule": "protocol.md \u00a72/\u00a73: lambda* = argmax over {0, 0.1, 0.3} of the two-domain mean selected one-step gain on the dev fixed states (ties -> smaller); pilot lambda = lambda* if > 0 else 0.1",
+  "source": "experiments/exp_camera_pose/reports/fixed_state.json",
+  "frozen": "2026-11-02, before any closed-loop C1 result",
+  "V4": 0.1,
+  "V5": 0.1,
+  "note_V4_V5": "pre-registered lambda* = 0 for V4 and V5 (C1 == C0 under the frozen rule); lambda 0.1 for V4 / V5 is an EXPLORATORY run requested by the user on 2026-11-02 (not pre-registered, reported separately from the pre-registered B2 / E2-D100 pilot)"
+ },
+ "domains": {
+  "indoor": {
+   "methods": {
+    "B2_C0": {
+     "auc": 0.7203057656605821,
+     "final": 0.9011866642267113,
+     "cov20": 0.5179277935630698,
+     "cov50": 0.7036873210091804,
+     "n": 4,
+     "translations": 79.75,
+     "distinct_positions": 61.0
+    },
+    "B2_C1": {
+     "auc": 0.7225787956737221,
+     "final": 0.894017953306575,
+     "cov20": 0.5628595055189811,
+     "cov50": 0.7246538489429921,
+     "n": 4,
+     "translations": 82.0,
+     "distinct_positions": 59.25
+    },
+    "E2D_C0": {
+     "auc": 0.7894368010467564,
+     "final": 0.9381983602563397,
+     "cov20": 0.5511571402872786,
+     "cov50": 0.8035648221474375,
+     "n": 4,
+     "translations": 81.25,
+     "distinct_positions": 63.25
+    },
+    "E2D_C1": {
+     "auc": 0.7699100360482644,
+     "final": 0.9568789272642128,
+     "cov20": 0.5509828073210603,
+     "cov50": 0.7024833706593219,
+     "n": 4,
+     "translations": 79.25,
+     "distinct_positions": 60.0
+    },
+    "V4_C0": {
+     "auc": 0.7738745299752463,
+     "final": 0.9565532549999974,
+     "cov20": 0.5941176129389498,
+     "cov50": 0.7507818944883803,
+     "n": 4,
+     "translations": 83.5,
+     "distinct_positions": 67.0
+    },
+    "V4_C1": {
+     "auc": 0.728389024214001,
+     "final": 0.9144997155846075,
+     "cov20": 0.4702722613754006,
+     "cov50": 0.7258995546856291,
+     "n": 4,
+     "translations": 82.25,
+     "distinct_positions": 63.75
+    },
+    "V5_C0": {
+     "auc": 0.743218591085049,
+     "final": 0.9075336173729002,
+     "cov20": 0.573421211124602,
+     "cov50": 0.734765476127723,
+     "n": 4,
+     "translations": 81.25,
+     "distinct_positions": 63.25
+    },
+    "V5_C1": {
+     "auc": 0.7283104760325742,
+     "final": 0.9111225462160955,
+     "cov20": 0.576237260304097,
+     "cov50": 0.6696167253585286,
+     "n": 4,
+     "translations": 83.5,
+     "distinct_positions": 60.25
+    },
+    "MAGB_ORIG": {
+     "auc": 0.7055043291807727,
+     "final": 0.846442355569188,
+     "cov20": 0.46196287424800386,
+     "cov50": 0.6771877242735977,
+     "n": 4,
+     "translations": 90.75,
+     "distinct_positions": 61.75
+    }
+   },
+   "paired_C1_minus_C0": {
+    "B2": {
+     "n": 4,
+     "dAUC_mean": 0.0022730300131399983,
+     "dFinal_mean": -0.0071687109201363786,
+     "wins": 2,
+     "losses": 2,
+     "min_dAUC": -0.04437055899604292,
+     "pre_registered": true
+    },
+    "E2D": {
+     "n": 4,
+     "dAUC_mean": -0.019526764998491986,
+     "dFinal_mean": 0.01868056700787299,
+     "wins": 1,
+     "losses": 3,
+     "min_dAUC": -0.07594130195557669,
+     "pre_registered": true
+    },
+    "V4": {
+     "n": 4,
+     "dAUC_mean": -0.045485505761245285,
+     "dFinal_mean": -0.04205353941538989,
+     "wins": 0,
+     "losses": 4,
+     "min_dAUC": -0.1262105040080464,
+     "pre_registered": false
+    },
+    "V5": {
+     "n": 4,
+     "dAUC_mean": -0.01490811505247469,
+     "dFinal_mean": 0.003588928843195255,
+     "wins": 2,
+     "losses": 2,
+     "min_dAUC": -0.0666363586064439,
+     "pre_registered": false
+    }
+   },
+   "vs_MAGB": {
+    "B2_C0": {
+     "n": 4,
+     "dAUC_mean": 0.014801436479809471,
+     "dFinal_mean": 0.054744308657523305,
+     "wins": 3
+    },
+    "B2_C1": {
+     "n": 4,
+     "dAUC_mean": 0.01707446649294947,
+     "dFinal_mean": 0.04757559773738693,
+     "wins": 3
+    },
+    "E2D_C0": {
+     "n": 4,
+     "dAUC_mean": 0.08393247186598377,
+     "dFinal_mean": 0.09175600468715162,
+     "wins": 4
+    },
+    "E2D_C1": {
+     "n": 4,
+     "dAUC_mean": 0.06440570686749178,
+     "dFinal_mean": 0.1104365716950246,
+     "wins": 4
+    },
+    "V4_C0": {
+     "n": 4,
+     "dAUC_mean": 0.06837020079447372,
+     "dFinal_mean": 0.11011089943080934,
+     "wins": 4
+    },
+    "V4_C1": {
+     "n": 4,
+     "dAUC_mean": 0.02288469503322843,
+     "dFinal_mean": 0.06805736001541945,
+     "wins": 3
+    },
+    "V5_C0": {
+     "n": 4,
+     "dAUC_mean": 0.03771426190427622,
+     "dFinal_mean": 0.06109126180371213,
+     "wins": 3
+    },
+    "V5_C1": {
+     "n": 4,
+     "dAUC_mean": 0.02280614685180153,
+     "dFinal_mean": 0.06468019064690739,
+     "wins": 3
+    }
+   }
+  },
+  "outdoor": {
+   "methods": {
+    "B2_C0": {
+     "auc": 0.7446645050161598,
+     "final": 0.9121639484172342,
+     "cov20": 0.5700956057662362,
+     "cov50": 0.8520874259132566,
+     "n": 6,
+     "translations": 63.0,
+     "distinct_positions": 56.0
+    },
+    "B2_C1": {
+     "auc": 0.7259731277395133,
+     "final": 0.8769772531447678,
+     "cov20": 0.5800952784650619,
+     "cov50": 0.8254761107802988,
+     "n": 6,
+     "translations": 64.0,
+     "distinct_positions": 55.0
+    },
+    "E2D_C0": {
+     "auc": 0.7266421193033962,
+     "final": 0.9084963673054891,
+     "cov20": 0.579596658768642,
+     "cov50": 0.8221207982905859,
+     "n": 6,
+     "translations": 66.5,
+     "distinct_positions": 56.5
+    },
+    "E2D_C1": {
+     "auc": 0.6981268826640772,
+     "final": 0.8719484915479029,
+     "cov20": 0.5428628654011515,
+     "cov50": 0.8004201436079436,
+     "n": 6,
+     "translations": 64.66666666666667,
+     "distinct_positions": 53.833333333333336
+    },
+    "V4_C0": {
+     "auc": 0.7275614485344937,
+     "final": 0.8848932472575525,
+     "cov20": 0.6132888538118103,
+     "cov50": 0.8106992326284684,
+     "n": 6,
+     "translations": 67.0,
+     "distinct_positions": 58.666666666666664
+    },
+    "V4_C1": {
+     "auc": 0.7512966285615764,
+     "final": 0.9102464887742134,
+     "cov20": 0.609326516983487,
+     "cov50": 0.8589807904097132,
+     "n": 6,
+     "translations": 69.5,
+     "distinct_positions": 62.333333333333336
+    },
+    "V5_C0": {
+     "auc": 0.7556264290275658,
+     "final": 0.904452978434453,
+     "cov20": 0.6127429227185796,
+     "cov50": 0.8690322874830799,
+     "n": 6,
+     "translations": 64.33333333333333,
+     "distinct_positions": 57.166666666666664
+    },
+    "V5_C1": {
+     "auc": 0.7431845884864955,
+     "final": 0.8799406480525893,
+     "cov20": 0.6109645584243797,
+     "cov50": 0.848115977042898,
+     "n": 6,
+     "translations": 66.83333333333333,
+     "distinct_positions": 58.666666666666664
+    },
+    "MAGB_ORIG": {
+     "auc": 0.7324171586836172,
+     "final": 0.9230968871948989,
+     "cov20": 0.5195004905337004,
+     "cov50": 0.8444732829962605,
+     "n": 6
+    }
+   },
+   "paired_C1_minus_C0": {
+    "B2": {
+     "n": 6,
+     "dAUC_mean": -0.018691377276646676,
+     "dFinal_mean": -0.03518669527246643,
+     "wins": 2,
+     "losses": 4,
+     "min_dAUC": -0.06820203838834149,
+     "pre_registered": true
+    },
+    "E2D": {
+     "n": 6,
+     "dAUC_mean": -0.02851523663931897,
+     "dFinal_mean": -0.036547875757586036,
+     "wins": 2,
+     "losses": 4,
+     "min_dAUC": -0.1401048131440482,
+     "pre_registered": true
+    },
+    "V4": {
+     "n": 6,
+     "dAUC_mean": 0.023735180027082897,
+     "dFinal_mean": 0.025353241516660963,
+     "wins": 5,
+     "losses": 1,
+     "min_dAUC": -1.3331944589189959e-05,
+     "pre_registered": false
+    },
+    "V5": {
+     "n": 6,
+     "dAUC_mean": -0.01244184054107019,
+     "dFinal_mean": -0.02451233038186366,
+     "wins": 2,
+     "losses": 3,
+     "min_dAUC": -0.07716612369160203,
+     "pre_registered": false
+    }
+   },
+   "vs_MAGB": {
+    "B2_C0": {
+     "n": 6,
+     "dAUC_mean": 0.012247346332542578,
+     "dFinal_mean": -0.010932938777664677,
+     "wins": 3
+    },
+    "B2_C1": {
+     "n": 6,
+     "dAUC_mean": -0.0064440309441040995,
+     "dFinal_mean": -0.04611963405013111,
+     "wins": 2
+    },
+    "E2D_C0": {
+     "n": 6,
+     "dAUC_mean": -0.005775039380221188,
+     "dFinal_mean": -0.014600519889409913,
+     "wins": 3
+    },
+    "E2D_C1": {
+     "n": 6,
+     "dAUC_mean": -0.034290276019540156,
+     "dFinal_mean": -0.05114839564699595,
+     "wins": 3
+    },
+    "V4_C0": {
+     "n": 6,
+     "dAUC_mean": -0.004855710149123689,
+     "dFinal_mean": -0.03820363993734641,
+     "wins": 2
+    },
+    "V4_C1": {
+     "n": 6,
+     "dAUC_mean": 0.018879469877959205,
+     "dFinal_mean": -0.012850398420685452,
+     "wins": 2
+    },
+    "V5_C0": {
+     "n": 6,
+     "dAUC_mean": 0.02320927034394839,
+     "dFinal_mean": -0.018643908760445915,
+     "wins": 3
+    },
+    "V5_C1": {
+     "n": 6,
+     "dAUC_mean": 0.010767429802878203,
+     "dFinal_mean": -0.04315623914230957,
+     "wins": 3
+    }
+   },
+   "regression_new_C0_vs_historical": {
+    "V4": {
+     "compared": 6,
+     "identical_curves": 6
+    },
+    "V5": {
+     "compared": 6,
+     "identical_curves": 6
+    }
+   }
+  }
+ }
+}

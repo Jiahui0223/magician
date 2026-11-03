@@ -92,3 +92,4 @@ pilot 结果不得写成完整 G3；候选 oracle 的变化也不得写成模型
   - `analyze_closed.py` 中室外 episode 字段名写错（`pick` → `action_key`），已修正，没有重跑实验；
   - `run_queue.sh` 的覆盖率 done 文件路径少了一层 `V2M/`，在覆盖率阶段开始前用原子替换修正。
 - 发现（不是改动）：FrontierPrior 的近场性质——候选在未观测区内时 F ≈ 1——在 pilot 之后才在分析中确认。按协议没有修改定义。
+- 2026-11-02 21:20（用户追加要求）：`configs/c1_lambda.json` 增加 V4 / V5 的 λ = 0.1。它们的预注册 λ* = 0，所以这是**探索性**运行，与预注册的 B2 / E2 pilot 分开报告（`reports/addon.md`）。B2 / E2 的 λ 和门槛没有任何改动。
