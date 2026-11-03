@@ -1,0 +1,13 @@
+{
+ "B2": 0.1,
+ "E2D": 0.1,
+ "lam_star": {
+  "B2": 0.1,
+  "E2D": 0.1,
+  "V4": 0.0,
+  "V5": 0.0
+ },
+ "rule": "protocol.md \u00a72/\u00a73: lambda* = argmax over {0, 0.1, 0.3} of the two-domain mean selected one-step gain on the dev fixed states (ties -> smaller); pilot lambda = lambda* if > 0 else 0.1",
+ "source": "experiments/exp_camera_pose/reports/fixed_state.json",
+ "frozen": "2026-11-02, before any closed-loop C1 result"
+}

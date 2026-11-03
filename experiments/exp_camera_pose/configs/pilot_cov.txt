@@ -1,0 +1,13 @@
+cov_out:B2:C1:barts:0
+cov_out:B2:C1:barts:1
+cov_out:B2:C1:pantheon:0
+cov_out:B2:C1:pantheon:1
+cov_out:B2:C1:colosseum:0
+cov_out:B2:C1:colosseum:1
+cov_out:E2D:C1:barts:0
+cov_out:E2D:C1:barts:1
+cov_out:E2D:C1:pantheon:0
+cov_out:E2D:C1:pantheon:1
+cov_out:E2D:C1:colosseum:0
+cov_out:E2D:C1:colosseum:1
+cov_out:B2:C0:barts:0
