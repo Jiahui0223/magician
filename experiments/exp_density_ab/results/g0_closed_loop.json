@@ -1,0 +1,271 @@
+{
+ "replay": {
+  "B2_S10_S10": {
+   "indoor": {
+    "tag": "2azQ1b91cZZ_L0_S60",
+    "executed_equal": true,
+    "coverage_equal": true,
+    "moves": [
+     150,
+     150
+    ],
+    "planner_score_keys": [
+     "pick",
+     "scores"
+    ],
+    "planner_scores_equal": true,
+    "final": [
+     0.39050591029254184,
+     0.39050591029254184
+    ]
+   },
+   "outdoor": {
+    "tag": "V2M_colosseum_s0_r0",
+    "executed_keys_equal": true,
+    "coverage_official_equal": true,
+    "cov_mono_equal": true,
+    "auc_mono": [
+     0.7409284281638042,
+     0.7409284281638042
+    ]
+   }
+  },
+  "B2_D100_S10": {
+   "indoor": {
+    "tag": "2azQ1b91cZZ_L0_S60",
+    "executed_equal": true,
+    "coverage_equal": true,
+    "moves": [
+     150,
+     150
+    ],
+    "planner_score_keys": [
+     "pick",
+     "scores"
+    ],
+    "planner_scores_equal": true,
+    "final": [
+     0.446387482742752,
+     0.446387482742752
+    ]
+   },
+   "outdoor": {
+    "tag": "V2M_colosseum_s0_r0",
+    "executed_keys_equal": true,
+    "coverage_official_equal": true,
+    "cov_mono_equal": true,
+    "auc_mono": [
+     0.7400389275342867,
+     0.7400389275342867
+    ]
+   }
+  },
+  "B2_D100_D100": {
+   "indoor": {
+    "tag": "2azQ1b91cZZ_L0_S60",
+    "executed_equal": true,
+    "coverage_equal": true,
+    "moves": [
+     150,
+     150
+    ],
+    "planner_score_keys": [
+     "pick",
+     "scores"
+    ],
+    "planner_scores_equal": true,
+    "final": [
+     0.16124232031467814,
+     0.16124232031467814
+    ]
+   },
+   "outdoor": {
+    "tag": "V2M_colosseum_s0_r0",
+    "executed_keys_equal": true,
+    "coverage_official_equal": true,
+    "cov_mono_equal": true,
+    "auc_mono": [
+     0.6147628559103964,
+     0.6147628559103964
+    ]
+   }
+  },
+  "E2S_S10_S10": {
+   "indoor": {
+    "tag": "2azQ1b91cZZ_L0_S60",
+    "executed_equal": true,
+    "coverage_equal": true,
+    "moves": [
+     150,
+     150
+    ],
+    "planner_score_keys": [
+     "pick",
+     "scores"
+    ],
+    "planner_scores_equal": true,
+    "final": [
+     0.2757968565775728,
+     0.2757968565775728
+    ]
+   },
+   "outdoor": {
+    "tag": "V2M_colosseum_s0_r0",
+    "executed_keys_equal": true,
+    "coverage_official_equal": true,
+    "cov_mono_equal": true,
+    "auc_mono": [
+     0.7576907714513329,
+     0.7576907714513329
+    ]
+   }
+  },
+  "E2D_D100_S10": {
+   "indoor": {
+    "tag": "2azQ1b91cZZ_L0_S60",
+    "executed_equal": true,
+    "coverage_equal": true,
+    "moves": [
+     150,
+     150
+    ],
+    "planner_score_keys": [
+     "pick",
+     "scores"
+    ],
+    "planner_scores_equal": true,
+    "final": [
+     0.33842009264328976,
+     0.33842009264328976
+    ]
+   },
+   "outdoor": {
+    "tag": "V2M_colosseum_s0_r0",
+    "executed_keys_equal": true,
+    "coverage_official_equal": true,
+    "cov_mono_equal": true,
+    "auc_mono": [
+     0.7563151972494648,
+     0.7563151972494648
+    ]
+   }
+  }
+ },
+ "historical_recompute": {
+  "B2_S10_S10": {
+   "indoor": {
+    "n": 10,
+    "auc": 0.3216850956160974,
+    "final": 0.46928584683111635
+   },
+   "outdoor": {
+    "n": 30,
+    "auc": 0.7289839483439825,
+    "final": 0.884094681363005
+   },
+   "matches_reported_3dp": true,
+   "reported": [
+    [
+     0.322,
+     0.469
+    ],
+    [
+     0.729,
+     0.884
+    ]
+   ]
+  },
+  "B2_D100_S10": {
+   "indoor": {
+    "n": 10,
+    "auc": 0.3340064868720562,
+    "final": 0.5298719827204936
+   },
+   "outdoor": {
+    "n": 30,
+    "auc": 0.7301856098012802,
+    "final": 0.9061932610244269
+   },
+   "matches_reported_3dp": true,
+   "reported": [
+    [
+     0.334,
+     0.53
+    ],
+    [
+     0.73,
+     0.906
+    ]
+   ]
+  },
+  "B2_D100_D100": {
+   "indoor": {
+    "n": 10,
+    "auc": 0.3304714355782162,
+    "final": 0.47170948118361816
+   },
+   "outdoor": {
+    "n": 30,
+    "auc": 0.6912680852126858,
+    "final": 0.8691536837664867
+   },
+   "matches_reported_3dp": true,
+   "reported": [
+    [
+     0.33,
+     0.472
+    ],
+    [
+     0.691,
+     0.869
+    ]
+   ]
+  },
+  "E2S_S10_S10": {
+   "indoor": {
+    "n": 10,
+    "auc": 0.34703927516715216,
+    "final": 0.5190002806947476
+   },
+   "outdoor": {
+    "n": 30,
+    "auc": 0.7188882876182764,
+    "final": 0.8804941381012829
+   },
+   "matches_reported_3dp": true,
+   "reported": [
+    [
+     0.347,
+     0.519
+    ],
+    [
+     0.719,
+     0.88
+    ]
+   ]
+  },
+  "E2D_D100_S10": {
+   "indoor": {
+    "n": 10,
+    "auc": 0.36445099955080196,
+    "final": 0.5529452440891919
+   },
+   "outdoor": {
+    "n": 30,
+    "auc": 0.7111870728861448,
+    "final": 0.8802042202314371
+   },
+   "matches_reported_3dp": true,
+   "reported": [
+    [
+     0.364,
+     0.553
+    ],
+    [
+     0.711,
+     0.88
+    ]
+   ]
+  }
+ }
+}

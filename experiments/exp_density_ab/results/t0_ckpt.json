@@ -1,0 +1,254 @@
+{
+ "checkpoints": {
+  "B2": {
+   "registry_path": "work_dirs/checkpoints/exp6_v2/B2/v2mix_ema17500.pt",
+   "real_path": "work_dirs/weights/W21_exp5_v2mix/W21-1_V2Mix_best/ema_017500.pt",
+   "sha256": "343f41ab8d566c52007c881b5f32375c3253dd8f1c7a0d8a906d412a165e4516",
+   "keys": [
+    "ema",
+    "model_cfg",
+    "step"
+   ],
+   "step": 17500,
+   "weights_key": "ema",
+   "n_params": 24822114,
+   "model_cfg_version": "model_v1",
+   "strict_load": "missing 0 unexpected 0",
+   "rays_fc_shape": [
+    64,
+    512
+   ]
+  },
+  "E2S": {
+   "registry_path": "work_dirs/checkpoints/exp6_v2/E2/control_e2s10/e2s10_ema5000.pt",
+   "real_path": "work_dirs/exp5_future_view/task3_full_depth_p1/e2/training/s10/ema_005000.pt",
+   "sha256": "578855bb149956262f3eba976db837f09e61172542a4412a0404efcb69f1521b",
+   "keys": [
+    "ema",
+    "model_cfg",
+    "step"
+   ],
+   "step": 5000,
+   "weights_key": "ema",
+   "n_params": 24822114,
+   "model_cfg_version": "model_v1",
+   "strict_load": "missing 0 unexpected 0",
+   "rays_fc_shape": [
+    64,
+    512
+   ]
+  },
+  "E2D": {
+   "registry_path": "work_dirs/checkpoints/exp6_v2/E2/e2d100_ema5000.pt",
+   "real_path": "work_dirs/exp5_future_view/task3_full_depth_p1/e2/training/d100/ema_005000.pt",
+   "sha256": "61439612cb6132afbe74976b82a531c8f827802b06b4f87ad6de1a197d0a2fa5",
+   "keys": [
+    "ema",
+    "model_cfg",
+    "step"
+   ],
+   "step": 5000,
+   "weights_key": "ema",
+   "n_params": 24822114,
+   "model_cfg_version": "model_v1",
+   "strict_load": "missing 0 unexpected 0",
+   "rays_fc_shape": [
+    64,
+    512
+   ]
+  }
+ },
+ "e2_init": {
+  "s10": {
+   "init_checkpoint": "work_dirs/weights/W21_exp5_v2mix/W21-1_V2Mix_best/ema_017500.pt",
+   "init_sha_cfg": "343f41ab8d566c52007c881b5f32375c3253dd8f1c7a0d8a906d412a165e4516",
+   "init_sha_eq_B2": true,
+   "ema0_eq_B2_weights": true,
+   "detail": "all tensors bitwise equal",
+   "ema0_step": 0
+  },
+  "d100": {
+   "init_checkpoint": "work_dirs/weights/W21_exp5_v2mix/W21-1_V2Mix_best/ema_017500.pt",
+   "init_sha_cfg": "343f41ab8d566c52007c881b5f32375c3253dd8f1c7a0d8a906d412a165e4516",
+   "init_sha_eq_B2": true,
+   "ema0_eq_B2_weights": true,
+   "detail": "all tensors bitwise equal",
+   "ema0_step": 0
+  }
+ },
+ "e2_pair": {
+  "config_keys_differing": [
+   "p1_input",
+   "train_indoor",
+   "train_outdoor",
+   "version"
+  ],
+  "config_s10": {
+   "version": "e2_s10_v1",
+   "protocol": "task3_full_depth_p1/e2_pilot/protocol.md",
+   "model": "model_v1.json",
+   "data_outdoor": "data_v1.json",
+   "init_checkpoint": "work_dirs/weights/W21_exp5_v2mix/W21-1_V2Mix_best/ema_017500.pt",
+   "init_checkpoint_sha256": "343f41ab8d566c52007c881b5f32375c3253dd8f1c7a0d8a906d412a165e4516",
+   "train_indoor": "MP3D train houses, t21 shards (Task 2 sparse shards, unchanged)",
+   "train_outdoor": "train6_minus_Sc (T1.1 sparse shards, unchanged)",
+   "mix": {
+    "indoor_views": 32,
+    "outdoor_views": 32
+   },
+   "steps": 5000,
+   "warmup": 500,
+   "lr": 2e-05,
+   "betas": [
+    0.9,
+    0.99
+   ],
+   "weight_decay": 0.01,
+   "schedule": "cosine_to_0",
+   "batch_views": 64,
+   "states_per_batch": 8,
+   "grad_clip": 1.0,
+   "ema": 0.999,
+   "precision": "bf16",
+   "seed": 0,
+   "stale_p": 0.5,
+   "stale_max": 9,
+   "eval_every": 1000,
+   "ckpt_every": 1000,
+   "eval_tau": [
+    0.1,
+    0.3,
+    0.5,
+    0.7,
+    0.9
+   ],
+   "eval_sets": {
+    "in_val": 2048,
+    "out_sc": 2048,
+    "in_train": 1024,
+    "out_train": 1024
+   },
+   "selection": {
+    "metric": "fair_es_arclength_vox",
+    "score": "ES_in_val / ES_in_val(step 0) + ES_out_sc / ES_out_sc(step 0)",
+    "choose": "minimum over evaluated steps (0 = V2 Original included), ties -> later step"
+   },
+   "smoke": {
+    "overfit_steps": 200,
+    "short_steps": 1000
+   },
+   "p1_input": "D10 (frozen 10 % sample)"
+  },
+  "run_meta": {
+   "world_size": [
+    4,
+    4
+   ],
+   "views_equal": true,
+   "views": {
+    "out_train": 25225,
+    "out_sc": 31027,
+    "in_train": 66803,
+    "in_val": 10473
+   },
+   "data_file_keys_equal": true,
+   "n_data_files": 143,
+   "n_data_files_same_bytes": 0,
+   "code_sha_equal": true,
+   "resumed_at": [
+    0,
+    0
+   ],
+   "gpu": [
+    "NVIDIA L40S",
+    "NVIDIA L40S"
+   ],
+   "host": [
+    "gpu115",
+    "gpu117"
+   ],
+   "final_loss_mean50": [
+    0.129627845287323,
+    0.049087649136781694
+   ]
+  },
+  "log": {
+   "n_logged": [
+    101,
+    101
+   ],
+   "steps_equal": true,
+   "views_equal": true,
+   "lr_equal": true,
+   "rays_indoor_mean": [
+    29934.564356435643,
+    16648.752475247526
+   ],
+   "rays_outdoor_mean": [
+    17224.10891089109,
+    12944.752475247526
+   ]
+  },
+  "ckpt_last_step": {
+   "s10": 5000,
+   "d100": 5000
+  },
+  "ema5000_eq_registry": {
+   "s10": true,
+   "d100": true
+  }
+ },
+ "historical_groups": {
+  "V2M_group_ckpt": {
+   "checkpoint": "work_dirs/weights/W21_exp5_v2mix/W21-1_V2Mix_best/ema_017500.pt",
+   "sha256": "343f41ab8d566c52007c881b5f32375c3253dd8f1c7a0d8a906d412a165e4516",
+   "eq_B2": true
+  },
+  "B0": {
+   "n_indoor_episodes": 10,
+   "p1_modes_logged": [
+    "(none logged: Task 2 run = sparse)"
+   ],
+   "t3_ckpt": [
+    "(unset: group V2M checkpoint)"
+   ]
+  },
+  "B1": {
+   "n_indoor_episodes": 10,
+   "p1_modes_logged": [
+    "full"
+   ],
+   "t3_ckpt": [
+    "(unset: group V2M checkpoint)"
+   ]
+  },
+  "B2": {
+   "n_indoor_episodes": 10,
+   "p1_modes_logged": [
+    "b2"
+   ],
+   "t3_ckpt": [
+    "(unset: group V2M checkpoint)"
+   ]
+  },
+  "E2S": {
+   "n_indoor_episodes": 10,
+   "p1_modes_logged": [
+    "sparse"
+   ],
+   "t3_ckpt": [
+    "/bsuscratch/jiahuizhang/projects/occupancy/seen2scene/work_dirs/exp5_future_view/task3_full_depth_p1/e2/training/s10/ema_005000.pt"
+   ]
+  },
+  "E2D": {
+   "n_indoor_episodes": 10,
+   "p1_modes_logged": [
+    "b2"
+   ],
+   "t3_ckpt": [
+    "/bsuscratch/jiahuizhang/projects/occupancy/seen2scene/work_dirs/exp5_future_view/task3_full_depth_p1/e2/training/d100/ema_005000.pt"
+   ]
+  }
+ },
+ "model_cfg_equal_all": true
+}

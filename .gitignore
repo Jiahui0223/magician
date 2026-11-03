@@ -28,6 +28,7 @@ experiments/*
 !experiments/CHECKPOINTS_VERIFY.json
 !experiments/exp_camera_pose/
 !experiments/exp_model_diagnostics/
+!experiments/exp_density_ab/
 # EXP5 derived result files above 1 MB stay in the working tree only
 experiments/exp5_future_view/ablation_study/A1_prediction_scoring/results/a1_candidates_indoor.csv
 experiments/exp5_future_view/ablation_study/A1_prediction_scoring/results/a1_candidates_outdoor.csv

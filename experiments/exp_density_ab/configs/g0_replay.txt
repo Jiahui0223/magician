@@ -1,0 +1,10 @@
+cl_in:B2_S10_S10:2azQ1b91cZZ:0:60
+cl_out:B2_S10_S10:colosseum:0
+cl_in:B2_D100_S10:2azQ1b91cZZ:0:60
+cl_out:B2_D100_S10:colosseum:0
+cl_in:B2_D100_D100:2azQ1b91cZZ:0:60
+cl_out:B2_D100_D100:colosseum:0
+cl_in:E2S_S10_S10:2azQ1b91cZZ:0:60
+cl_out:E2S_S10_S10:colosseum:0
+cl_in:E2D_D100_S10:2azQ1b91cZZ:0:60
+cl_out:E2D_D100_S10:colosseum:0
