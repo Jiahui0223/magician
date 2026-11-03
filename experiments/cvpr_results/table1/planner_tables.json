@@ -1,0 +1,574 @@
+{
+ "alhambra": {
+  "scene": "alhambra",
+  "scene_bbox_runtime_min": [
+   -58.01852226257324,
+   -5.798429846763611,
+   -81.85202598571777
+  ],
+  "scene_bbox_runtime_max": [
+   33.37197542190552,
+   40.56414604187012,
+   17.45645523071289
+  ],
+  "scene_extent_runtime_yup": [
+   91.39049768447876,
+   46.36257588863373,
+   99.30848121643066
+  ],
+  "z0_frozen": null,
+  "z0_rule": 39.51025913159052,
+  "em2_present": true,
+  "em2_official_positions_present": true,
+  "k_M_rule": 16.463982914997775,
+  "k_M_em2": 16.463982914997775,
+  "n_windows_em2": 9,
+  "n_windows_official": 9,
+  "dims_grid_official": [
+   505,
+   548,
+   256
+  ],
+  "scene_geometry_ok": true,
+  "geometry_dims": [
+   505,
+   548,
+   256
+  ],
+  "geometry_n_windows": 9,
+  "geometry_k_M": 16.463982914997775
+ },
+ "bannerman": {
+  "scene": "bannerman",
+  "scene_bbox_runtime_min": [
+   -44.70438003540039,
+   -16.598052978515625,
+   -58.586883544921875
+  ],
+  "scene_bbox_runtime_max": [
+   48.937082290649414,
+   44.44167613983154,
+   51.683316230773926
+  ],
+  "scene_extent_runtime_yup": [
+   93.6414623260498,
+   61.03972911834717,
+   110.2701997756958
+  ],
+  "z0_frozen": null,
+  "z0_rule": 44.15856520334879,
+  "em2_present": true,
+  "em2_official_positions_present": true,
+  "k_M_rule": 21.676040169867605,
+  "k_M_em2": 21.676040169867605,
+  "n_windows_em2": 6,
+  "n_windows_official": 4,
+  "dims_grid_official": [
+   393,
+   462,
+   256
+  ],
+  "scene_geometry_ok": true,
+  "geometry_dims": [
+   393,
+   462,
+   256
+  ],
+  "geometry_n_windows": 4,
+  "geometry_k_M": 21.676040169867605
+ },
+ "barts": {
+  "scene": "barts",
+  "scene_bbox_runtime_min": [
+   -11.73516035079956,
+   -2.2565899789333344,
+   -13.809889554977417
+  ],
+  "scene_bbox_runtime_max": [
+   18.991390466690063,
+   30.299100875854492,
+   13.59292984008789
+  ],
+  "scene_extent_runtime_yup": [
+   30.726550817489624,
+   32.55569085478783,
+   27.402819395065308
+  ],
+  "z0_frozen": 15.1142,
+  "z0_rule": 15.114176844557127,
+  "em2_present": true,
+  "em2_official_positions_present": true,
+  "k_M_rule": 11.560969763774088,
+  "k_M_em2": 11.560969763774088,
+  "n_windows_em2": 1,
+  "n_windows_official": 1,
+  "dims_grid_official": [
+   256,
+   256,
+   256
+  ],
+  "scene_geometry_ok": true,
+  "geometry_dims": [
+   256,
+   256,
+   256
+  ],
+  "geometry_n_windows": 1,
+  "geometry_k_M": 11.560969763774088
+ },
+ "bridge": {
+  "scene": "bridge",
+  "scene_bbox_runtime_min": [
+   -100.52140235900879,
+   -3.606906533241272,
+   -32.74386405944824
+  ],
+  "scene_bbox_runtime_max": [
+   94.8271656036377,
+   31.508758068084717,
+   35.78557252883911
+  ],
+  "scene_extent_runtime_yup": [
+   195.34856796264648,
+   35.11566460132599,
+   68.52943658828735
+  ],
+  "z0_frozen": null,
+  "z0_rule": 49.832278192043304,
+  "em2_present": true,
+  "em2_official_positions_present": true,
+  "k_M_rule": 12.470051349902695,
+  "k_M_em2": 12.470051349902695,
+  "n_windows_em2": 21,
+  "n_windows_official": 21,
+  "dims_grid_official": [
+   1424,
+   500,
+   256
+  ],
+  "scene_geometry_ok": true,
+  "geometry_dims": [
+   1424,
+   500,
+   256
+  ],
+  "geometry_n_windows": 21,
+  "geometry_k_M": 12.470051349902695
+ },
+ "colosseum": {
+  "scene": "colosseum",
+  "scene_bbox_runtime_min": [
+   -51.31645202636719,
+   -10.7681405544281,
+   -43.03718090057373
+  ],
+  "scene_bbox_runtime_max": [
+   52.55924701690674,
+   22.795193195343018,
+   39.30678606033325
+  ],
+  "scene_extent_runtime_yup": [
+   103.87569904327393,
+   33.56333374977112,
+   82.34396696090698
+  ],
+  "z0_frozen": 36.6305,
+  "z0_rule": 36.630499958992004,
+  "em2_present": true,
+  "em2_official_positions_present": true,
+  "k_M_rule": 11.918797496367585,
+  "k_M_em2": 11.918797496367585,
+  "n_windows_em2": 12,
+  "n_windows_official": 12,
+  "dims_grid_official": [
+   792,
+   628,
+   256
+  ],
+  "scene_geometry_ok": true,
+  "geometry_dims": [
+   792,
+   628,
+   256
+  ],
+  "geometry_n_windows": 12,
+  "geometry_k_M": 11.918797496367585
+ },
+ "dunnottar": {
+  "scene": "dunnottar",
+  "scene_bbox_runtime_min": [
+   -54.25546646118164,
+   -9.794584512710571,
+   -98.06743621826172
+  ],
+  "scene_bbox_runtime_max": [
+   63.774237632751465,
+   17.437013387680054,
+   70.88710308074951
+  ],
+  "scene_extent_runtime_yup": [
+   118.0297040939331,
+   27.231597900390625,
+   168.95453929901123
+  ],
+  "z0_frozen": null,
+  "z0_rule": 52.369306882222496,
+  "em2_present": true,
+  "em2_official_positions_present": true,
+  "k_M_rule": 9.67031175440008,
+  "k_M_em2": 9.67031175440008,
+  "n_windows_em2": 48,
+  "n_windows_official": 48,
+  "dims_grid_official": [
+   1110,
+   1588,
+   256
+  ],
+  "scene_geometry_ok": true,
+  "geometry_dims": [
+   1110,
+   1588,
+   256
+  ],
+  "geometry_n_windows": 48,
+  "geometry_k_M": 9.67031175440008
+ },
+ "eiffel": {
+  "scene": "eiffel",
+  "scene_bbox_runtime_min": [
+   -20.4274320602417,
+   -2.302749902009964,
+   -22.883048057556152
+  ],
+  "scene_bbox_runtime_max": [
+   24.207417964935303,
+   92.4953842163086,
+   22.4153733253479
+  ],
+  "scene_extent_runtime_yup": [
+   44.634850025177,
+   94.79813411831856,
+   45.29842138290405
+  ],
+  "z0_frozen": null,
+  "z0_rule": 30.78856758773327,
+  "em2_present": true,
+  "em2_official_positions_present": true,
+  "k_M_rule": 33.66411012724381,
+  "k_M_em2": 33.66411012724381,
+  "n_windows_em2": 1,
+  "n_windows_official": 1,
+  "dims_grid_official": [
+   256,
+   256,
+   256
+  ],
+  "scene_geometry_ok": true,
+  "geometry_dims": [
+   256,
+   256,
+   256
+  ],
+  "geometry_n_windows": 1,
+  "geometry_k_M": 33.66411012724381
+ },
+ "fushimi": {
+  "scene": "fushimi",
+  "scene_bbox_runtime_min": [
+   -29.26720380783081,
+   -6.467551589012146,
+   -38.80609750747681
+  ],
+  "scene_bbox_runtime_max": [
+   30.97529411315918,
+   38.29635143280029,
+   34.7815728187561
+  ],
+  "scene_extent_runtime_yup": [
+   60.24249792098999,
+   44.76390302181244,
+   73.58767032623291
+  ],
+  "z0_frozen": null,
+  "z0_rule": 29.765678544839222,
+  "em2_present": true,
+  "em2_official_positions_present": true,
+  "k_M_rule": 15.896272379904987,
+  "k_M_em2": 15.896272379904987,
+  "n_windows_em2": 4,
+  "n_windows_official": 4,
+  "dims_grid_official": [
+   345,
+   421,
+   256
+  ],
+  "scene_geometry_ok": true,
+  "geometry_dims": [
+   345,
+   421,
+   256
+  ],
+  "geometry_n_windows": 4,
+  "geometry_k_M": 15.896272379904987
+ },
+ "liberty": {
+  "scene": "liberty",
+  "scene_bbox_runtime_min": [
+   -19.431066513061523,
+   -0.6775461137294769,
+   -20.92813491821289
+  ],
+  "scene_bbox_runtime_max": [
+   22.80850887298584,
+   80.18130302429199,
+   25.825841426849365
+  ],
+  "scene_extent_runtime_yup": [
+   42.23957538604736,
+   80.85884913802147,
+   46.753976345062256
+  ],
+  "z0_frozen": null,
+  "z0_rule": 28.308733478188515,
+  "em2_present": true,
+  "em2_official_positions_present": true,
+  "k_M_rule": 28.71407994958149,
+  "k_M_em2": 28.71407994958149,
+  "n_windows_em2": 1,
+  "n_windows_official": 1,
+  "dims_grid_official": [
+   256,
+   256,
+   256
+  ],
+  "scene_geometry_ok": true,
+  "geometry_dims": [
+   256,
+   256,
+   256
+  ],
+  "geometry_n_windows": 1,
+  "geometry_k_M": 28.71407994958149
+ },
+ "neuschwanstein": {
+  "scene": "neuschwanstein",
+  "scene_bbox_runtime_min": [
+   -79.59075927734375,
+   -23.782076835632324,
+   -27.882044315338135
+  ],
+  "scene_bbox_runtime_max": [
+   60.67741870880127,
+   59.686927795410156,
+   33.06004762649536
+  ],
+  "scene_extent_runtime_yup": [
+   140.26817798614502,
+   83.46900463104248,
+   60.942091941833496
+  ],
+  "z0_frozen": null,
+  "z0_rule": 47.44654575983683,
+  "em2_present": true,
+  "em2_official_positions_present": true,
+  "k_M_rule": 29.6409817581827,
+  "k_M_em2": 29.6409817581827,
+  "n_windows_em2": 2,
+  "n_windows_official": 2,
+  "dims_grid_official": [
+   430,
+   256,
+   256
+  ],
+  "scene_geometry_ok": true,
+  "geometry_dims": [
+   430,
+   256,
+   256
+  ],
+  "geometry_n_windows": 2,
+  "geometry_k_M": 29.6409817581827
+ },
+ "pantheon": {
+  "scene": "pantheon",
+  "scene_bbox_runtime_min": [
+   -36.3720965385437,
+   -2.6476559042930603,
+   -66.17199897766113
+  ],
+  "scene_bbox_runtime_max": [
+   38.69049310684204,
+   45.260419845581055,
+   40.15023708343506
+  ],
+  "scene_extent_runtime_yup": [
+   75.06258964538574,
+   47.908075749874115,
+   106.32223606109619
+  ],
+  "z0_frozen": 38.2155,
+  "z0_rule": 38.21548357605934,
+  "em2_present": true,
+  "em2_official_positions_present": true,
+  "k_M_rule": 17.012810990722343,
+  "k_M_em2": 17.012810990722343,
+  "n_windows_em2": 6,
+  "n_windows_official": 6,
+  "dims_grid_official": [
+   401,
+   568,
+   256
+  ],
+  "scene_geometry_ok": true,
+  "geometry_dims": [
+   401,
+   568,
+   256
+  ],
+  "geometry_n_windows": 6,
+  "geometry_k_M": 17.012810990722343
+ },
+ "pisa": {
+  "scene": "pisa",
+  "scene_bbox_runtime_min": [
+   -80.15642166137695,
+   -7.179202437400818,
+   -30.646114349365234
+  ],
+  "scene_bbox_runtime_max": [
+   67.53629207611084,
+   32.229554653167725,
+   25.212550163269043
+  ],
+  "scene_extent_runtime_yup": [
+   147.6927137374878,
+   39.40875709056854,
+   55.85866451263428
+  ],
+  "z0_frozen": null,
+  "z0_rule": 40.493355890115105,
+  "em2_present": true,
+  "em2_official_positions_present": true,
+  "k_M_rule": 13.994587035003034,
+  "k_M_em2": 13.994587035003034,
+  "n_windows_em2": 10,
+  "n_windows_official": 10,
+  "dims_grid_official": [
+   959,
+   363,
+   256
+  ],
+  "scene_geometry_ok": true,
+  "geometry_dims": [
+   959,
+   363,
+   256
+  ],
+  "geometry_n_windows": 10,
+  "geometry_k_M": 13.994587035003034
+ },
+ "redeemer": {
+  "scene": "redeemer",
+  "scene_bbox_runtime_min": [
+   -17.24464178085327,
+   11.454319953918457,
+   -14.225993156433105
+  ],
+  "scene_bbox_runtime_max": [
+   19.173951148986816,
+   58.83137226104736,
+   57.18632221221924
+  ],
+  "scene_extent_runtime_yup": [
+   36.41859292984009,
+   47.377052307128906,
+   71.41231536865234
+  ],
+  "z0_frozen": null,
+  "z0_rule": 25.867993434270222,
+  "em2_present": true,
+  "em2_official_positions_present": true,
+  "k_M_rule": 16.824237324974753,
+  "k_M_em2": 16.824237324974753,
+  "n_windows_em2": 2,
+  "n_windows_official": 2,
+  "dims_grid_official": [
+   256,
+   386,
+   256
+  ],
+  "scene_geometry_ok": true,
+  "geometry_dims": [
+   256,
+   386,
+   256
+  ],
+  "geometry_n_windows": 2,
+  "geometry_k_M": 16.824237324974753
+ },
+ "sestino_museum": {
+  "scene": "sestino_museum",
+  "scene_bbox_runtime_min": [
+   -21.137030124664307,
+   -1.3254499435424805,
+   -8.973079919815063
+  ],
+  "scene_bbox_runtime_max": [
+   41.46535873413086,
+   11.138269901275635,
+   8.906649947166443
+  ],
+  "scene_extent_runtime_yup": [
+   62.602388858795166,
+   12.463719844818115,
+   17.879729866981506
+  ],
+  "z0_frozen": null,
+  "z0_rule": 15.49097309509913,
+  "em2_present": true,
+  "em2_official_positions_present": true,
+  "k_M_rule": 4.426036876710978,
+  "k_M_em2": 4.426036876710978,
+  "n_windows_em2": 14,
+  "n_windows_official": 14,
+  "dims_grid_official": [
+   1286,
+   367,
+   256
+  ],
+  "scene_geometry_ok": true,
+  "geometry_dims": [
+   1286,
+   367,
+   256
+  ],
+  "geometry_n_windows": 14,
+  "geometry_k_M": 4.426036876710978
+ },
+ "sofia_church": {
+  "scene": "sofia_church",
+  "scene_bbox_runtime_min": [
+   -18.169939517974854,
+   -0.44057998806238174,
+   -16.448969841003418
+  ],
+  "scene_bbox_runtime_max": [
+   28.263020515441895,
+   17.667460441589355,
+   14.914170503616333
+  ],
+  "scene_extent_runtime_yup": [
+   46.43296003341675,
+   18.108040429651737,
+   31.36314034461975
+  ],
+  "z0_frozen": null,
+  "z0_rule": 15.98402346794804,
+  "em2_present": false,
+  "em2_official_positions_present": false,
+  "k_M_rule": 6.430412084393373,
+  "scene_geometry_ok": false,
+  "scene_geometry_error": "KeyError: 'sofia_church'",
+  "scene_geometry_traceback": "Traceback (most recent call last):\n  File \"/bsuscratch/jiahuizhang/projects/occupancy/seen2scene/experiments/cvpr_results/table1/scripts/planner_tables.py\", line 63, in main\n    fr, dims, dom, win = TD.scene_geometry(s)\n                         ^^^^^^^^^^^^^^^^^^^^\n  File \"/bsuscratch/jiahuizhang/projects/occupancy/seen2scene/experiments/exp3b_macaronspp_transfer/t5_diagnostic.py\", line 118, in scene_geometry\n    fr = frame_of(scene)\n         ^^^^^^^^^^^^^^^\n  File \"/bsuscratch/jiahuizhang/projects/occupancy/seen2scene/experiments/exp3b_macaronspp_transfer/t5_diagnostic.py\", line 111, in frame_of\n    em2 = MC.load_json(os.path.join(E, \"task1_protocol\", \"em2_windows.json\"))[\"scenes\"][scene]\n          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^\nKeyError: 'sofia_church'\n"
+ }
+}

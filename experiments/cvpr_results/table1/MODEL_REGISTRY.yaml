@@ -1,0 +1,539 @@
+# CVPR Table 1（Macarons++ 室外）模型注册表
+# 生成：2026-11-03，只读审计（没有训练、没有启动运行、没有修改任何 checkpoint 或历史结果）。
+# 依据：experiments/CHECKPOINTS.md、work_dirs/checkpoints/exp6_*/MANIFEST.json（完整 sha256）、
+#       experiments/CHECKPOINTS_VERIFY.json（2026-11-02 19:23:17，七个实验 all_ok = true）、各实验配置 / 启动脚本 / 规划器日志。
+# 详细出处（file:line）见同目录 CHECKPOINT_AUDIT.md 与 EVALUATION_AUDIT.md；历史 episode 逐条清单见
+#   audit/historical_outdoor_episodes.{json,csv}（由 scripts/audit_model_episodes.py 只读生成）。
+# 读取方：scripts/aggregate.py / validate.py / plot.py 只用 models[*].id / label / status / sha256；其余字段供人工核对。
+version: table1_model_registry_v1
+created: "2026-11-03"
+
+conventions:
+  repo: /bsuscratch/jiahuizhang/projects/occupancy/seen2scene
+  shell_prelude: |
+    R=/bsuscratch/jiahuizhang/projects/occupancy/seen2scene; cd $R
+    MG="env -u LD_PRELOAD -u PYTHONPATH /bsuscratch/jiahuizhang/envs/magician/bin/python"
+    T1W=$R/work_dirs/cvpr_results/table1/g3      # 建议的新输出根目录（不得位于任何历史目录或 work_dirs/exp5_future_view/task1、task2 之下）
+    S=<scene>; K=<start 0..4>; G=<gpu>
+    export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+    unset T3_CKPT V4_P1_MODE V3_CKPT V4_CKPT       # 这些环境变量会被规划器子进程继承并改变权重 / P1 模式
+  simulator: >-
+    所有组共用冻结的 M 协议模拟器（magician 环境）：task2/scripts/t24_out_sim.py -> task1/scripts/v2_sim.run ->
+    exp3b m_t6_sim.EpisodeSim（官方 settings 网格、官方邻居 -> get_valid_neighbors -> GT 线段检测、无合法动作时 hover、
+    带种子的观测与 10% 采样、MAGICIAN 式覆盖率、逐步 checkpoint 与逐位续跑）。预算 C0 + 100 moves = 101 帧。
+  root_warning: >-
+    t24_out_sim.py 及其所有包装（t33_out_sim / da_out_sim / sim_out_v3 / sim_out_v4 / sim_out_v5）不给 --root 时默认写入
+    work_dirs/exp5_future_view/task2/eval/outdoor/closed_loop/<group>（历史 Task 2 目录，t24_out_sim.py:70）。新运行必须显式给 --root。
+  density_codes:
+    S10: 模拟器 10% 采样点构成的稀疏 P1（冻结 m_p1.P1Fusion）
+    D100: 每帧全部有效深度像素构成的 FullDepth-P1（p1_full.P1FusionFull）
+  p1_modes:
+    sparse: S10 推理输入 / S10 DistP1 评分（历史 B0、V2O、E2S）
+    b2: D100 推理输入 / S10 DistP1 评分（只替换 caster.band_dil；历史 B2、E2D、V3、V3.1、V4、V4C、V5）
+    full: D100 推理输入 / D100 评分（历史 B1）
+  status_values:
+    READY: checkpoint sha256 已核对、启动链存在且评估代码自历史运行后未变或已逐位复现、Dev-3 + Test-3 历史 episode 30/30 可复用
+    PENDING_ALIGNMENT: 需要先对齐（协议 / 代码 / 权重）才能与其他行同表
+  blocked_scenes_all_models:
+    sofia_church: >-
+      冻结模拟器从 MAGICIAN_clean_9521d69 导入 load_scene（m_magician_replay.py:38,47；m_t6_sim.py:51），其多纹理分支含
+      `torch.tensor()`（MAGICIAN_clean_9521d69/macarons/utility/macarons_utils.py:470-494），而 sofia_church 的 .mtl 有 4 个 map_Kd，
+      其余 14 个场景各 1 个。已实测：同目录 load_test.log:15（数据集审计代理）在 EpisodeSim 阶段报
+      TypeError: tensor() missing 1 required positional arguments。另外我们的 V2 系列规划器（含 V3/V4/V5）在
+      v2_planner.py:112 调用 t5_diagnostic.scene_geometry -> frame_of（t5_diagnostic.py:110-112），读取
+      work_dirs/exp3b_macaronspp_transfer/task1_protocol/em2_windows.json，其中只有 14 个场景、没有 sofia_church（KeyError）。
+      官方 e697009 克隆中该行已注释（external/MAGICIAN/macarons/utility/macarons_utils.py:481）。
+
+models:
+  # ---------------------------------------------------------------- MAGICIAN
+  - id: MAG-B
+    label: MAGICIAN (Beam 10x10)
+    role: main
+    status: READY
+    status_reason: >-
+      官方 MAGICIAN e697009 代码 + 官方 Drive 权重，经与官方循环逐位等价的适配层在共享 M 协议下运行；Task 2 评估冻结后
+      相关脚本哈希全部未变（task2/FROZEN_CONFIGS.json 逐项比对）；Dev-3 + Test-3 30/30 可复用。
+    sha256: 34c5247f13bedda08bb57e7e7e7a5baba53af6da7faf3d5f6bb57a27c2dbb59c   # trained_macarons.pth（MAGICIAN 无自有权重）
+    model_version: MAGICIAN e697009（MACARONS SconeOcc 占据 -> 想象高斯 -> novelty x 距离权重增益，beam search）
+    checkpoint:
+      registry_path: work_dirs/weights/W00_external/W00-2_magician_official_e697009/macarons/trained_macarons.pth
+      real_path: work_dirs/exp5_future_view/task0/magician_comparison/weights/official_drive/macarons/trained_macarons.pth
+      runtime_path: work_dirs/exp5_future_view/task0/magician_comparison/external/MAGICIAN/weights/macarons/trained_macarons.pth（硬链接）
+      also_loaded_first: macarons/pretrained_macarons.pth sha256 c7d66c9f46ac07e676a0a956390460c067aa5ed9bc5ebbaa298300a85d9e54ad
+      sha256_source: W00-2 MANIFEST.json；2026-11-03 对运行时文件与 MAGICIAN 根目录副本重算，三者相同
+      weights: 官方发布权重（不区分 EMA / raw）
+    training:
+      data: MACARONS 官方训练（作者完成）；训练场景 dunnottar、pisa、bannerman、redeemer、pantheon、fushimi、liberty、colosseum；验证 alhambra、neuschwanstein；测试 bridge、eiffel
+      outdoor_pretrain_steps: n/a（官方）
+      mixed_finetune_steps: 0
+      training_density: n/a（官方训练用完美深度）
+    inference:
+      p1_mode: n/a（MAGICIAN 自己的表面 / 代理点；输入为同一服务记录的 10% 采样点）
+      inference_density: S10 服务记录（与所有组相同）
+      scoring_density: n/a（官方增益）
+      refresh: 每步 SCONE 占据 + novelty 重算；官方每 20 个循环 fill_surface_scene
+      planner: MAGICIAN beam search，宽 10 x 深 10；第 0 层 = 环境合法列表，更深层 = 官方邻居 + 官方有效性 + 想象点线段碰撞
+      K: n/a
+      euler_steps: n/a
+      seeds: sha256("exp5-T2|MAG|<scene>_s<start>|<t>")，MAG-G 与 MAG-B 共用
+    code: 官方克隆 work_dirs/exp5_future_view/task0/magician_comparison/external/MAGICIAN @ e697009；适配层 task0/magician_comparison/adapters/{magician_core,magician_planner,magician_planner_grid,grid_env}.py
+    launch:
+      chain: >-
+        $MG t24_out_sim.py --group MAG-B -> 子进程 [magician python -I] task2/scripts/t24_mag_out_planner.py --method MAG-B ->
+        adapters/magician_planner.py (BEAM[MAG-B] = (10, 10)) -> magician_core.MagicianCore
+      historical_launcher: work_dirs/exp5_future_view/task2/run_eval.sh outdoor <GPU> base（manifests/outdoor_jobs_base.txt；_sbatch/eval_out_gpu114.sh 每卡 1 个 worker）
+      command: |
+        CUDA_VISIBLE_DEVICES=$G $MG experiments/exp5_future_view/task2/scripts/t24_out_sim.py --group MAG-B --scene $S --start $K --root $T1W/closed_loop/outdoor/MAG-B
+      episode_file: $T1W/closed_loop/outdoor/MAG-B/episodes/ep_MAG-B_${S}_s${K}_r0.json
+      coverage_command: |
+        CUDA_VISIBLE_DEVICES=$G $MG experiments/exp5_future_view/task2/scripts/t25_out_cov.py --group MAG-B --tag MAG-B_${S}_s${K}_r0 --root $T1W/closed_loop/outdoor/MAG-B --out $T1W/metrics/outdoor
+      coverage_note: t25_out_cov.py 的临时回放帧固定写在 work_dirs/exp5_future_view/task2/eval/outdoor/replay_frames/MAG-B_<tag>（结束时删除，t25_out_cov.py:48-49,68）；若不希望触碰 Task 2 目录，需要一个像 exp6_v4/scripts/out_cov_v4.py:17 那样改写 T25.C.W2 的小包装（尚不存在）
+    historical_outdoor:
+      closed_loop_root: work_dirs/exp5_future_view/task2/eval/outdoor/closed_loop/MAG-B
+      metrics_root: work_dirs/exp5_future_view/task2/eval/outdoor/metrics/MAG-B
+      tag: MAG-B_<scene>_s<k>_r0
+      scenes: [alhambra, bridge, neuschwanstein, barts, pantheon, colosseum]
+      reusable_episodes: 30
+      reported_mono_auc_final: [0.685, 0.891]
+      official_auc_final: [0.669, 0.868]
+    runtime_per_episode_s: {wall_median: 1706, wall_min: 1232, wall_max: 2450, decision_per_step: 15.5, coverage_replay: 77, note: 非独占 L40S（gpu114，同卡有室内作业）}
+
+  # ---------------------------------------------------------------- V2 Original
+  - id: V2O
+    label: V2 Original (outdoor 60k, S10)
+    role: main
+    status: READY
+    status_reason: >-
+      Task 2 组 V2O；启动链与 B0 相同（只换 checkpoint），B0 链路 2026-11-03 用当前代码逐位复现（exp_density_ab/G0_REPRODUCTION.md:30-38）；
+      model.py 自 V2O 运行后有改动（f57be9a，加入默认关闭的 ray_xattn），关闭时与 V2 逐位相同（exp6_v4 G0-11a）；30/30 可复用。
+    sha256: a379c0fb9d7d80266a430ab6f48f39315fad54fb650c6c3740a999a02db079fc
+    model_version: V2（task1/configs/model_v1.json；V2Model，24,822,114 参数）
+    checkpoint:
+      registry_symlink: work_dirs/checkpoints/exp6_v2/B2/lineage/v2orig_ema60000.pt
+      real_path: work_dirs/weights/W20_exp5_v2/W20-1_V2_original_ema60k/ema_060000.pt
+      also_at: work_dirs/exp5_future_view/task1/training/main/ema_060000.pt（硬链接）
+      sha256_source: work_dirs/checkpoints/exp6_v2/MANIFEST.json（CHECKPOINTS_VERIFY.json sha_ok）
+      weights: EMA 0.999
+      step: 60000
+    training:
+      init: 随机，seed 0
+      data: Macarons++ Train-6 去 S-c（bannerman、dunnottar、fushimi、liberty、pisa、redeemer；138 条轨迹 / 98,887 视角），T1.1 稀疏分片 data/macaronspp_belief/v1
+      outdoor_pretrain_steps: 60000
+      mixed_finetune_steps: 0
+      training_density: S10
+      selection: 固定 EMA@60k（task1/configs/train_main.json）
+      config: experiments/exp5_future_view/task1/configs/train_main.json
+      code_commit: 训练时未记录 git（run_none.json 只有 11 个文件的 code_sha256）；代码归档于 9fcbdb2（2026-10-29）
+    inference: {p1_mode: sparse, inference_density: S10, scoring_density: S10, refresh: R10, planner: Greedy-NV（DistP1 argmax，环境合法列表已优先未访问）, K: 4, euler_steps: 10, planning_region: 整个场景}
+    launch:
+      chain: $MG t24_out_sim.py --group V2O -> 子进程 [seen2scene python] task2/scripts/t24_v2_out_planner.py（ckpt / sha 取自 task2/configs/eval_outdoor_v1.json 组 V2O） -> task1/scripts/v2_planner.py
+      historical_launcher: work_dirs/exp5_future_view/task2/run_eval.sh outdoor <GPU> base
+      command: |
+        CUDA_VISIBLE_DEVICES=$G $MG experiments/exp5_future_view/task2/scripts/t24_out_sim.py --group V2O --scene $S --start $K --root $T1W/closed_loop/outdoor/V2O
+      episode_file: $T1W/closed_loop/outdoor/V2O/episodes/ep_V2O_${S}_s${K}_r0.json
+      coverage_command: |
+        CUDA_VISIBLE_DEVICES=$G $MG experiments/exp5_future_view/task2/scripts/t25_out_cov.py --group V2O --tag V2O_${S}_s${K}_r0 --root $T1W/closed_loop/outdoor/V2O --out $T1W/metrics/outdoor
+      coverage_note: 临时回放帧同 MAG-B，写在 Task 2 目录（结束删除）
+    historical_outdoor:
+      closed_loop_root: work_dirs/exp5_future_view/task2/eval/outdoor/closed_loop/V2O
+      metrics_root: work_dirs/exp5_future_view/task2/eval/outdoor/metrics/V2O
+      tag: V2O_<scene>_s<k>_r0
+      reusable_episodes: 30
+      reported_mono_auc_final: [0.724, 0.898]
+      official_auc_final: [0.704, 0.868]
+    runtime_per_episode_s: {wall_median: 130, wall_min: 108, wall_max: 157, decision_per_step: 0.6, coverage_replay: 72}
+
+  # ---------------------------------------------------------------- V2-Mix family (ONE set of weights)
+  - id: B0
+    label: "B0: V2-Mix EMA@17.5k (S10 / S10)"
+    role: main
+    status: READY
+    status_reason: 与 B2、B1 是同一份权重（sha 343f41ab…），只是 P1 模式不同；Task 2 组 V2M = Task 3 B0（task3 README:26 逐位相同）；当前代码逐位复现（G0_REPRODUCTION.md:34）；30/30 可复用。
+    sha256: 343f41ab8d566c52007c881b5f32375c3253dd8f1c7a0d8a906d412a165e4516
+    model_version: V2（model_v1.json，24,822,114 参数）
+    checkpoint:
+      registry_symlink: work_dirs/checkpoints/exp6_v2/B2/v2mix_ema17500.pt
+      real_path: work_dirs/weights/W21_exp5_v2mix/W21-1_V2Mix_best/ema_017500.pt
+      also_at: work_dirs/exp5_future_view/task2/training/mix_v1/ema_017500.pt（硬链接）
+      sha256_source: work_dirs/checkpoints/exp6_v2/MANIFEST.json；W21-1 MANIFEST.json；task2/configs/eval_outdoor_v1.json:40
+      weights: EMA 0.999
+      step: 17500
+    training:
+      init: V2O EMA@60k（a379c0fb…）
+      data: MP3D 官方 train 61 个房屋中 114 个楼层（228 条轨迹）+ Macarons++ Train-6 去 S-c，均为 S10；每步 32 室内 + 32 室外视角
+      outdoor_pretrain_steps: 60000
+      mixed_finetune_steps: 17500（运行 20k，冻结规则选出 17.5k）
+      training_density: S10
+      selection: score = ES_in_val/ES0 + ES_out_sc/ES0 取最小（task2/protocol.md:57-61；W21-1 MANIFEST score 1.4087）
+      config: experiments/exp5_future_view/task2/configs/train_mix_v1.json
+      code_commit: 训练时未记录 git（run_none.json 记录 14 个文件 code_sha256）；归档 9fcbdb2
+    inference: {p1_mode: sparse, inference_density: S10, scoring_density: S10, refresh: R10, planner: Greedy-NV, K: 4, euler_steps: 10, planning_region: 整个场景}
+    launch:
+      chain: $MG t24_out_sim.py --group V2M -> t24_v2_out_planner.py -> v2_planner.py（等价路径：task3 t33_out_sim.py --p1 sparse，逐位相同）
+      historical_launcher: work_dirs/exp5_future_view/task2/run_eval.sh outdoor <GPU> v2m（manifests/outdoor_jobs_v2m.txt）
+      alt_launcher: experiments/exp_density_ab/scripts/da_g3_queue.sh GPU JOBFILE $T1W，作业行 cl_out:B2_S10_S10:$S:$K（自动接着跑覆盖率）
+      command: |
+        CUDA_VISIBLE_DEVICES=$G $MG experiments/exp5_future_view/task2/scripts/t24_out_sim.py --group V2M --scene $S --start $K --root $T1W/closed_loop/outdoor/B0/V2M
+      episode_file: $T1W/closed_loop/outdoor/B0/V2M/episodes/ep_V2M_${S}_s${K}_r0.json
+      coverage_command: |
+        DA_G3_ROOT=$T1W CUDA_VISIBLE_DEVICES=$G $MG experiments/exp_density_ab/scripts/da_out_cov.py --cfg B0 --scene $S --start $K
+    historical_outdoor:
+      closed_loop_root: work_dirs/exp5_future_view/task2/eval/outdoor/closed_loop/V2M（task3 closed_loop/outdoor/B0/V2M 是指向它的软链接）
+      metrics_root: work_dirs/exp5_future_view/task2/eval/outdoor/metrics/V2M（task3 metrics/outdoor/B0/V2M 30/30 逐位相同）
+      tag: V2M_<scene>_s<k>_r0
+      reusable_episodes: 30
+      reported_mono_auc_final: [0.729, 0.884]
+      official_auc_final: [0.709, 0.854]
+    runtime_per_episode_s: {wall_median: 131, wall_min: 107, wall_max: 158, decision_per_step: 0.6, coverage_replay: 58}
+
+  - id: B2
+    label: "B2: V2-Mix EMA@17.5k (D100 / S10)"
+    role: main
+    status: READY
+    status_reason: 与 B0 同一份权重，仅规划器 P1 = b2；当前代码逐位复现（G0_REPRODUCTION.md:35）；30/30 可复用。
+    sha256: 343f41ab8d566c52007c881b5f32375c3253dd8f1c7a0d8a906d412a165e4516
+    model_version: V2（model_v1.json）
+    checkpoint:
+      registry_symlink: work_dirs/checkpoints/exp6_v2/B2/v2mix_ema17500.pt
+      real_path: work_dirs/weights/W21_exp5_v2mix/W21-1_V2Mix_best/ema_017500.pt
+      sha256_source: 同 B0
+      weights: EMA 0.999
+      step: 17500
+    training: {same_as: B0, outdoor_pretrain_steps: 60000, mixed_finetune_steps: 17500, training_density: S10}
+    inference: {p1_mode: b2, inference_density: D100, scoring_density: S10, refresh: R10, planner: Greedy-NV, K: 4, euler_steps: 10, planning_region: 整个场景}
+    launch:
+      chain: $MG task3/scripts/t33_out_sim.py --p1 b2 --group V2M -> t32_out_planner.py（p1_full.patch("b2")；不设 T3_CKPT = 组 V2M 权重） -> t24_v2_out_planner.py -> v2_planner.py
+      historical_launcher: work_dirs/exp5_future_view/task3_full_depth_p1/run_queue2.sh + chain_b2.sh（jobs_b2_out.txt）
+      tracked_launcher: experiments/exp6_v2/B2/scripts/g3.sh -> experiments/exp6_v2/shared/g3_queue.sh（arm b2；用注册表软链接）
+      alt_launcher: experiments/exp_density_ab/scripts/da_g3_queue.sh，作业行 cl_out:B2_D100_S10:$S:$K
+      command: |
+        CUDA_VISIBLE_DEVICES=$G $MG experiments/exp5_future_view/task3_full_depth_p1/scripts/t33_out_sim.py --p1 b2 --group V2M --scene $S --start $K --root $T1W/closed_loop/outdoor/B2/V2M
+      episode_file: $T1W/closed_loop/outdoor/B2/V2M/episodes/ep_V2M_${S}_s${K}_r0.json
+      coverage_command: |
+        DA_G3_ROOT=$T1W CUDA_VISIBLE_DEVICES=$G $MG experiments/exp_density_ab/scripts/da_out_cov.py --cfg B2 --scene $S --start $K
+    historical_outdoor:
+      closed_loop_root: work_dirs/exp5_future_view/task3_full_depth_p1/closed_loop/outdoor/B2/V2M
+      metrics_root: work_dirs/exp5_future_view/task3_full_depth_p1/metrics/outdoor/B2/V2M
+      tag: V2M_<scene>_s<k>_r0
+      reusable_episodes: 30
+      reported_mono_auc_final: [0.730, 0.906]
+      official_auc_final: [0.710, 0.879]
+    runtime_per_episode_s: {wall_median: 278, wall_min: 182, wall_max: 420, decision_per_step: 2.0, coverage_replay: 88, note: "历史上每卡 2-3 个 worker（chain_b2.sh:6,9）"}
+
+  # ---------------------------------------------------------------- E2 (V2-Mix fine-tuned)
+  - id: E2D
+    label: E2-D100 EMA@5k (D100 / S10)
+    role: main
+    status: READY
+    status_reason: 当前代码逐位复现（G0_REPRODUCTION.md:38）；30/30 可复用。
+    sha256: 61439612cb6132afbe74976b82a531c8f827802b06b4f87ad6de1a197d0a2fa5
+    model_version: V2（model_v1.json）
+    checkpoint:
+      registry_symlink: work_dirs/checkpoints/exp6_v2/E2/e2d100_ema5000.pt
+      real_path: work_dirs/exp5_future_view/task3_full_depth_p1/e2/training/d100/ema_005000.pt
+      sha256_source: work_dirs/checkpoints/exp6_v2/MANIFEST.json；exp_density_ab/CHECKPOINT_AUDIT.md:12
+      weights: EMA 0.999
+      step: 5000
+    training:
+      init: V2-Mix EMA@17.5k（B0/B2 权重；训练器断言 sha，t22_train_mix.py:89）
+      data: MP3D train + Train-6 去 S-c，均为 D100 重建分片（e2/w2_d100、e2/out_views_d100），32 + 32 视角，lr 2e-5
+      outdoor_pretrain_steps: 60000
+      mixed_finetune_steps: 22500（17,500 S10 + 5,000 D100）
+      training_density: D100（最后 5k）；之前 S10
+      selection: 固定 EMA@5k（exp6_v2/E2/configs/e2.json:66 的 2026-11-02 更正；exp6_v4/CHECKPOINT_LINEAGE.md:7 仍写“ES 比值最小”）
+      config: experiments/exp5_future_view/task3_full_depth_p1/e2_pilot/configs/e2_d100_v1.json
+      code_commit: 训练时未记录 git（16 个文件 code_sha256）；归档 9fcbdb2
+    inference: {p1_mode: b2, inference_density: D100, scoring_density: S10, refresh: R10, planner: Greedy-NV, K: 4, euler_steps: 10, planning_region: 整个场景}
+    launch:
+      chain: T3_CKPT=<E2D> $MG t33_out_sim.py --p1 b2 --group V2M -> t32_out_planner.py（ckpt_override 用 T3_CKPT 替换 --ckpt/--sha256） -> t24_v2_out_planner.py -> v2_planner.py
+      historical_launcher: work_dirs/exp5_future_view/task3_full_depth_p1/e2/run_queue_g3.sh（jobs_g3_out_E2D.txt）
+      tracked_launcher: experiments/exp6_v2/E2/scripts/g3.sh -> shared/g3_queue.sh（arm E2D）
+      alt_launcher: da_g3_queue.sh 作业行 cl_out:E2D_D100_S10:$S:$K
+      command: |
+        T3_CKPT=$R/work_dirs/exp5_future_view/task3_full_depth_p1/e2/training/d100/ema_005000.pt CUDA_VISIBLE_DEVICES=$G $MG experiments/exp5_future_view/task3_full_depth_p1/scripts/t33_out_sim.py --p1 b2 --group V2M --scene $S --start $K --root $T1W/closed_loop/outdoor/E2D/V2M
+      episode_file: $T1W/closed_loop/outdoor/E2D/V2M/episodes/ep_V2M_${S}_s${K}_r0.json
+      coverage_command: |
+        DA_G3_ROOT=$T1W CUDA_VISIBLE_DEVICES=$G $MG experiments/exp_density_ab/scripts/da_out_cov.py --cfg E2D --scene $S --start $K
+    historical_outdoor:
+      closed_loop_root: work_dirs/exp5_future_view/task3_full_depth_p1/closed_loop/outdoor/E2D/V2M
+      metrics_root: work_dirs/exp5_future_view/task3_full_depth_p1/metrics/outdoor/E2D/V2M
+      tag: V2M_<scene>_s<k>_r0
+      reusable_episodes: 30
+      reported_mono_auc_final: [0.711, 0.880]
+      official_auc_final: [0.691, 0.850]
+    runtime_per_episode_s: {wall_median: 237, wall_min: 199, wall_max: 341, decision_per_step: 1.6, coverage_replay: 99}
+
+  # ---------------------------------------------------------------- V3 / V4 / V5
+  - id: V3
+    label: V3-T1 (V3-VAE-XAttn, mixed scratch 40k)
+    role: main
+    status: READY
+    status_reason: 冻结规划器 + V3 安装钩子；V3 路径 2 步闭环 2026-10-31 与存档逐位相同（exp6_v4/report/G0_VALIDATION.md:17，T0 臂，同一路径）；30/30 可复用。
+    sha256: 639c9d3ae3f3c069dc0399dc4cdd44102be2bf20e70d666a6a529c6affc62bdb
+    model_version: V3-T1（exp6_v3/configs/model_v3.json，xattn 开；seen2scene.v3；23,730,986 参数）
+    checkpoint:
+      registry_symlink: work_dirs/checkpoints/exp6_v3/T1_xattn/v3t1_ema40000.pt
+      real_path: work_dirs/exp6_v3/task1_xattn/checkpoints/final.pt（与 runs/main/ema_040000.pt 字节相同）
+      sha256_source: work_dirs/checkpoints/exp6_v3/MANIFEST.json
+      weights: EMA 0.999
+      step: 40000
+    training:
+      init: 随机，seed 0（公共模块初始 sha 6a9d6071…，与 T0 相同）
+      data: MP3D train 228 条轨迹 + Train-6 去 S-c 138 条；E2 D100 分片 + D100 融合的 4x 部分 TSDF 缓存（exp6_v3/protocol.md:8-12），32 + 32 视角
+      outdoor_pretrain_steps: 0
+      mixed_finetune_steps: 40000（从零混合训练）
+      training_density: D100（+ TSDF）
+      selection: ES_in/ES_in(5k) + ES_out/ES_out(5k) 最小 -> 40k（exp6_v3/configs/train_v3.json selection；exp6_v4/CHECKPOINT_LINEAGE.md:9）
+      config: experiments/exp6_v3/configs/train_v3.json
+      code_commit: 2021604（dirty，diff sha256 bc222222…；work_dirs/exp6_v3/task1_xattn/runs/main/run_none.json）
+    inference: {p1_mode: b2, inference_density: D100, scoring_density: S10, refresh: R10, planner: Greedy-NV, K: 4, euler_steps: 10, planning_region: 整个场景}
+    launch:
+      chain: $MG exp6_v3/shared/sim_out_v3.py --v3-ckpt PATH（设 T3_P1_MODE=b2、V3_CKPT） -> v3_out_planner.py（planner_v3.install + p1_full.patch） -> t24_v2_out_planner.py -> v2_planner.py
+      historical_launcher: experiments/exp6_v3/shared/run_queue_g3.sh（组 T1；work_dirs/exp6_v3/g3_jobs_T1.txt）
+      command: |
+        CUDA_VISIBLE_DEVICES=$G $MG experiments/exp6_v3/shared/sim_out_v3.py --v3-ckpt $R/work_dirs/exp6_v3/task1_xattn/checkpoints/final.pt --group V2M --scene $S --start $K --root $T1W/closed_loop/outdoor/V3/V2M
+      episode_file: $T1W/closed_loop/outdoor/V3/V2M/episodes/ep_V2M_${S}_s${K}_r0.json
+      coverage_command: |
+        DA_G3_ROOT=$T1W CUDA_VISIBLE_DEVICES=$G $MG experiments/exp_density_ab/scripts/da_out_cov.py --cfg V3 --scene $S --start $K
+      coverage_note: 历史的 out_cov_v3.py 把根目录写死为 work_dirs/exp6_v3/eval（out_cov_v3.py:11），新根目录不能用它
+    historical_outdoor:
+      closed_loop_root: work_dirs/exp6_v3/eval/closed_loop/outdoor/T1/V2M
+      metrics_root: work_dirs/exp6_v3/eval/metrics/outdoor/T1/V2M
+      tag: V2M_<scene>_s<k>_r0
+      reusable_episodes: 30
+      reported_mono_auc_final: [0.712, 0.883]
+      official_auc_final: [0.692, 0.854]
+    runtime_per_episode_s: {wall_median: 155, wall_min: 119, wall_max: 202, decision_per_step: 1.0, coverage_replay: 55}
+
+  - id: V4
+    label: V4@40k (outdoor scratch 40k, D100)
+    role: main
+    status: READY
+    status_reason: V4 C0 6 个室外 episode 用新入口与历史逐位相同（exp_camera_pose/C0/README.md）；V4 之后无评估代码改动（规划器日志 code_sha256 与当前文件全部一致）；30/30 可复用。
+    sha256: 1b31afffbe4da2d94344e0a509b711b30561a34bc4aa521773f1595aafac00d4
+    model_version: V4（exp6_v4/configs/model_v4.json；V2Model + RayXAttn；24,847,544 参数）
+    checkpoint:
+      registry_symlink: work_dirs/checkpoints/exp6_v4/V4/v4_ema40000.pt
+      real_path: work_dirs/exp6_v4/checkpoints/final.pt（与 runs/main/ema_040000.pt 字节相同）
+      sha256_source: work_dirs/checkpoints/exp6_v4/MANIFEST.json；run_none.json final_checkpoint_sha256
+      weights: EMA 0.999
+      step: 40000
+    training:
+      init: 随机，seed 0
+      data: Macarons++ Train-6 去 S-c（138 条 / 98,887 视角），E2 D100 视角分片 work_dirs/exp5_future_view/task3_full_depth_p1/e2/out_views_d100；MP3D 0
+      outdoor_pretrain_steps: 40000
+      mixed_finetune_steps: 0
+      training_density: D100
+      selection: 固定 EMA@40k（训练前冻结）
+      config: experiments/exp6_v4/configs/outdoor_train.json
+      code_commit: 4cef0f8（clean）
+    inference: {p1_mode: b2, inference_density: D100, scoring_density: S10, refresh: R10, planner: Greedy-NV, K: 4, euler_steps: 10, planning_region: 整个场景}
+    launch:
+      chain: $MG exp6_v4/scripts/sim_out_v4.py --v4-ckpt PATH（T3_P1_MODE = V4_P1_MODE 默认 b2；V4_CKPT） -> v4_out_planner.py（p1_full.patch） -> t24_v2_out_planner.py -> v2_planner.py
+      historical_launcher: experiments/exp6_v4/scripts/run_queue_v4.sh（组 V4；work_dirs/exp6_v4/g3_jobs_V4.txt）
+      command: |
+        CUDA_VISIBLE_DEVICES=$G $MG experiments/exp6_v4/scripts/sim_out_v4.py --v4-ckpt $R/work_dirs/exp6_v4/checkpoints/final.pt --group V2M --scene $S --start $K --root $T1W/closed_loop/outdoor/V4/V2M
+      episode_file: $T1W/closed_loop/outdoor/V4/V2M/episodes/ep_V2M_${S}_s${K}_r0.json
+      coverage_command: |
+        DA_G3_ROOT=$T1W CUDA_VISIBLE_DEVICES=$G $MG experiments/exp_density_ab/scripts/da_out_cov.py --cfg V4 --scene $S --start $K
+      env_warning: 必须不设 V4_P1_MODE（=full 时是 Experiment A 的 D100 评分）
+    historical_outdoor:
+      closed_loop_root: work_dirs/exp6_v4/eval/closed_loop/outdoor/V4/V2M
+      metrics_root: work_dirs/exp6_v4/eval/metrics/outdoor/V4/V2M
+      tag: V2M_<scene>_s<k>_r0
+      reusable_episodes: 30
+      reported_mono_auc_final: [0.710, 0.878]
+      official_auc_final: [0.689, 0.849]
+    runtime_per_episode_s: {wall_median: 165, wall_min: 133, wall_max: 212, decision_per_step: 1.0, coverage_replay: 57}
+
+  - id: V5
+    label: V5-Warm12k (V4@40k warm start + 12k)
+    role: main
+    status: READY
+    status_reason: V5 C0 6 个室外 episode 与历史逐位相同（exp_camera_pose/C0/README.md）；规划器日志 code_sha256 与当前文件一致；30/30 可复用。
+    sha256: 5ef30ac4fd0b4a175d1ddd72d78c504c82b31b40b56da68b1d9454533918d543
+    model_version: V5（exp6_v5/configs/model_v5.json；V5Model：V4 的 3D U-Net + Flow，几何感知 ray-to-scene memory + 多表面 belief 解码器，无 32 点采样；24,988,647 参数）
+    checkpoint:
+      registry_symlink: work_dirs/checkpoints/exp6_v5/V5/v5_ema12000.pt
+      real_path: work_dirs/exp6_v5/checkpoints/v5_final.pt（与 runs/v5/ema_012000.pt 字节相同）
+      sha256_source: work_dirs/checkpoints/exp6_v5/MANIFEST.json；exp6_v5/CHECKPOINT_LINEAGE.md:7
+      weights: EMA 0.999
+      step: 12000
+    training:
+      init: V4 EMA@40k 的 encoder + unet 逐名复制（382 个张量）；新 V5RayDecoder 随机初始化；V4 的 ray_xattn / rays 不用
+      data: 同 V4（Train-6 去 S-c，D100）+ Train-6 网格多表面标签 labels/v1；冻结 V4 Teacher 只用于 L_bridge
+      outdoor_pretrain_steps: 52000（40,000 V4 + 12,000 V5：Bridge 2k + Joint 10k）
+      mixed_finetune_steps: 0
+      training_density: D100
+      selection: 固定 EMA@12k（训练前冻结）
+      config: experiments/exp6_v5/configs/train_v5_outdoor.json
+      code_commit: ad8dc5c（dirty，diff sha256 7ee76ec4…）
+    inference: {p1_mode: b2, inference_density: D100, scoring_density: S10, refresh: R10, planner: Greedy-NV, K: 4, euler_steps: 10, planning_region: 整个场景}
+    launch:
+      chain: $MG exp6_v5/scripts/sim_out_v5.py --v4-ckpt <V5 ckpt> -> v5_out_planner.py（v5_core.install：model_cfg arch=v5 时构建 V5Model；禁止 grid_sample） -> v4_out_planner -> t24_v2_out_planner.py -> v2_planner.py
+      historical_launcher: experiments/exp6_v5/scripts/run_queue_v5.sh（组 V5；work_dirs/exp6_v5/g3_jobs_V5.txt）
+      command: |
+        CUDA_VISIBLE_DEVICES=$G $MG experiments/exp6_v5/scripts/sim_out_v5.py --v4-ckpt $R/work_dirs/exp6_v5/checkpoints/v5_final.pt --group V2M --scene $S --start $K --root $T1W/closed_loop/outdoor/V5/V2M
+      episode_file: $T1W/closed_loop/outdoor/V5/V2M/episodes/ep_V2M_${S}_s${K}_r0.json
+      coverage_command: |
+        DA_G3_ROOT=$T1W CUDA_VISIBLE_DEVICES=$G $MG experiments/exp_density_ab/scripts/da_out_cov.py --cfg V5 --scene $S --start $K
+    historical_outdoor:
+      closed_loop_root: work_dirs/exp6_v5/eval/closed_loop/outdoor/V5/V2M
+      metrics_root: work_dirs/exp6_v5/eval/metrics/outdoor/V5/V2M
+      tag: V2M_<scene>_s<k>_r0
+      reusable_episodes: 30
+      reported_mono_auc_final: [0.711, 0.891]
+      official_auc_final: [0.690, 0.861]
+    runtime_per_episode_s: {wall_median: 252, wall_min: 161, wall_max: 294, decision_per_step: 1.6, coverage_replay: 70}
+
+  # ---------------------------------------------------------------- optional rows
+  - id: MAG-G
+    label: MAGICIAN (Greedy, beam 1x1)
+    role: optional
+    status: READY
+    status_reason: 与 MAG-B 同代码、同权重、同种子键，只有 BEAM = (1, 1)（adapters/magician_planner.py:36）；30/30 可复用。
+    sha256: 34c5247f13bedda08bb57e7e7e7a5baba53af6da7faf3d5f6bb57a27c2dbb59c
+    model_version: 同 MAG-B
+    checkpoint: {same_as: MAG-B}
+    training: {same_as: MAG-B}
+    inference: {planner: MAGICIAN beam 宽 1 x 深 1（一步贪心）, other: 同 MAG-B}
+    launch:
+      command: |
+        CUDA_VISIBLE_DEVICES=$G $MG experiments/exp5_future_view/task2/scripts/t24_out_sim.py --group MAG-G --scene $S --start $K --root $T1W/closed_loop/outdoor/MAG-G
+      episode_file: $T1W/closed_loop/outdoor/MAG-G/episodes/ep_MAG-G_${S}_s${K}_r0.json
+      coverage_command: |
+        CUDA_VISIBLE_DEVICES=$G $MG experiments/exp5_future_view/task2/scripts/t25_out_cov.py --group MAG-G --tag MAG-G_${S}_s${K}_r0 --root $T1W/closed_loop/outdoor/MAG-G --out $T1W/metrics/outdoor
+    historical_outdoor:
+      closed_loop_root: work_dirs/exp5_future_view/task2/eval/outdoor/closed_loop/MAG-G
+      metrics_root: work_dirs/exp5_future_view/task2/eval/outdoor/metrics/MAG-G
+      tag: MAG-G_<scene>_s<k>_r0
+      reusable_episodes: 30
+      reported_mono_auc_final: [0.704, 0.905]
+      official_auc_final: [0.686, 0.882]
+    runtime_per_episode_s: {wall_median: 367, wall_min: 219, wall_max: 559, decision_per_step: 3.0, coverage_replay: 80}
+
+  - id: E2S
+    label: E2-S10 EMA@5k (S10 / S10)
+    role: optional
+    status: READY
+    status_reason: E2-D100 的配对对照（同初始化、同采样器、同步数，只有训练分片密度不同；exp_density_ab/CHECKPOINT_AUDIT.md §2-§3）；当前代码逐位复现（G0_REPRODUCTION.md:37）；30/30 可复用。注意历史推理为 S10/S10，与 E2D 的 D100/S10 不同。
+    sha256: 578855bb149956262f3eba976db837f09e61172542a4412a0404efcb69f1521b
+    model_version: V2（model_v1.json）
+    checkpoint:
+      registry_symlink: work_dirs/checkpoints/exp6_v2/E2/control_e2s10/e2s10_ema5000.pt
+      real_path: work_dirs/exp5_future_view/task3_full_depth_p1/e2/training/s10/ema_005000.pt
+      sha256_source: work_dirs/checkpoints/exp6_v2/MANIFEST.json；exp_density_ab/CHECKPOINT_AUDIT.md:12
+      weights: EMA 0.999
+      step: 5000
+    training: {init: V2-Mix EMA@17.5k, data: 同 E2D 但为 S10 分片, outdoor_pretrain_steps: 60000, mixed_finetune_steps: "22500（17,500 + 5,000，均 S10）", training_density: S10, selection: 固定 EMA@5k, config: experiments/exp5_future_view/task3_full_depth_p1/e2_pilot/configs/e2_s10_v1.json}
+    inference: {p1_mode: sparse, inference_density: S10, scoring_density: S10, refresh: R10, planner: Greedy-NV, K: 4, euler_steps: 10}
+    launch:
+      command: |
+        T3_CKPT=$R/work_dirs/exp5_future_view/task3_full_depth_p1/e2/training/s10/ema_005000.pt CUDA_VISIBLE_DEVICES=$G $MG experiments/exp5_future_view/task3_full_depth_p1/scripts/t33_out_sim.py --p1 sparse --group V2M --scene $S --start $K --root $T1W/closed_loop/outdoor/E2S/V2M
+      historical_launcher: work_dirs/exp5_future_view/task3_full_depth_p1/e2/run_queue_g3.sh（jobs_g3_out_E2S.txt）；tracked：exp6_v2/shared/g3_queue.sh arm E2S；alt：da_g3_queue.sh cl_out:E2S_S10_S10:$S:$K
+      coverage_command: |
+        DA_G3_ROOT=$T1W CUDA_VISIBLE_DEVICES=$G $MG experiments/exp_density_ab/scripts/da_out_cov.py --cfg E2S --scene $S --start $K
+    historical_outdoor:
+      closed_loop_root: work_dirs/exp5_future_view/task3_full_depth_p1/closed_loop/outdoor/E2S/V2M
+      metrics_root: work_dirs/exp5_future_view/task3_full_depth_p1/metrics/outdoor/E2S/V2M
+      reusable_episodes: 30
+      reported_mono_auc_final: [0.719, 0.880]
+      official_auc_final: [0.699, 0.851]
+    runtime_per_episode_s: {wall_median: 188, wall_min: 149, wall_max: 232, decision_per_step: 1.0, coverage_replay: 99}
+
+  - id: B1
+    label: "B1: V2-Mix EMA@17.5k (D100 / D100)"
+    role: optional
+    status: READY
+    status_reason: 与 B0 / B2 同一份权重，P1 = full；当前代码逐位复现（G0_REPRODUCTION.md:36）；30/30 可复用。
+    sha256: 343f41ab8d566c52007c881b5f32375c3253dd8f1c7a0d8a906d412a165e4516
+    model_version: V2（model_v1.json）
+    checkpoint: {same_as: B0}
+    training: {same_as: B0}
+    inference: {p1_mode: full, inference_density: D100, scoring_density: D100, refresh: R10, planner: Greedy-NV, K: 4, euler_steps: 10}
+    launch:
+      command: |
+        CUDA_VISIBLE_DEVICES=$G $MG experiments/exp5_future_view/task3_full_depth_p1/scripts/t33_out_sim.py --p1 full --group V2M --scene $S --start $K --root $T1W/closed_loop/outdoor/B1/V2M
+      historical_launcher: work_dirs/exp5_future_view/task3_full_depth_p1/run_queue.sh（jobs.txt cl_out:full:…）；alt：da_g3_queue.sh cl_out:B2_D100_D100:$S:$K
+      coverage_command: |
+        DA_G3_ROOT=$T1W CUDA_VISIBLE_DEVICES=$G $MG experiments/exp_density_ab/scripts/da_out_cov.py --cfg B1 --scene $S --start $K
+    historical_outdoor:
+      closed_loop_root: work_dirs/exp5_future_view/task3_full_depth_p1/closed_loop/outdoor/B1/V2M
+      metrics_root: work_dirs/exp5_future_view/task3_full_depth_p1/metrics/outdoor/B1/V2M
+      reusable_episodes: 30
+      reported_mono_auc_final: [0.691, 0.869]
+      official_auc_final: [0.671, 0.838]
+    runtime_per_episode_s: {wall_median: 191, wall_min: 152, wall_max: 239, decision_per_step: 1.0, coverage_replay: 111}
+
+  - id: V3.1
+    label: V3.1 (V3-T0 arch, outdoor scratch 40k)
+    role: optional
+    status: READY
+    status_reason: 与 V3 同一规划器路径（sim_out_v3.py）；规划器日志 code_sha256 与当前文件一致；30/30 可复用。
+    sha256: 13df0a45df56d125d474a27f0998b9be596be33d0fad1defbb9e82c863263265
+    model_version: V3.1（exp6_v3.1/configs/model_v3_1.json = V3-T0 有效配置，xattn 关；23,539,622 参数）
+    checkpoint:
+      registry_symlink: work_dirs/checkpoints/exp6_v3_1/V3_1/v31_ema40000.pt
+      real_path: work_dirs/exp6_v3_1/checkpoints/final.pt（与 runs/main/ema_040000.pt 字节相同）
+      sha256_source: work_dirs/checkpoints/exp6_v3_1/MANIFEST.json
+      weights: EMA 0.999
+      step: 40000
+    training: {init: 随机 seed 0, data: Train-6 去 S-c，D100 + TSDF 缓存，MP3D 0, outdoor_pretrain_steps: 40000, mixed_finetune_steps: 0, training_density: D100, selection: 固定 EMA@40k, config: experiments/exp6_v3.1/configs/outdoor_train.json, code_commit: 4cef0f8（clean）}
+    inference: {p1_mode: b2, inference_density: D100, scoring_density: S10, refresh: R10, planner: Greedy-NV, K: 4, euler_steps: 10}
+    launch:
+      command: |
+        CUDA_VISIBLE_DEVICES=$G $MG experiments/exp6_v3/shared/sim_out_v3.py --v3-ckpt $R/work_dirs/exp6_v3_1/checkpoints/final.pt --group V2M --scene $S --start $K --root $T1W/closed_loop/outdoor/V3.1/V2M
+      historical_launcher: experiments/exp6_v4/scripts/run_queue_v4.sh（组 V31）
+      coverage_command: |
+        DA_G3_ROOT=$T1W CUDA_VISIBLE_DEVICES=$G $MG experiments/exp_density_ab/scripts/da_out_cov.py --cfg V3.1 --scene $S --start $K
+    historical_outdoor:
+      closed_loop_root: work_dirs/exp6_v4/eval/closed_loop/outdoor/V31/V2M
+      metrics_root: work_dirs/exp6_v4/eval/metrics/outdoor/V31/V2M
+      reusable_episodes: 30
+      reported_mono_auc_final: [0.697, 0.865]
+      official_auc_final: [0.676, 0.838]
+    runtime_per_episode_s: {wall_median: 161, wall_min: 127, wall_max: 205, decision_per_step: 1.0, coverage_replay: 58}
+
+  - id: V4C
+    label: V4-Continue12k (V4@40k + 12k)
+    role: optional
+    status: READY
+    status_reason: V5 的步数对照（同父节点、同数据、同 12k，只用 L_FM）；用 V4 规划器路径；30/30 可复用。
+    sha256: c4190f1d05dd29d999f23657ac9be381910ad06e3e66d8b6ffbd77b8235cdbe4
+    model_version: V4（model_v4.json）
+    checkpoint:
+      registry_symlink: work_dirs/checkpoints/exp6_v5/V4C/v4c_ema12000.pt
+      real_path: work_dirs/exp6_v5/checkpoints/v4c_final.pt（与 runs/v4c/ema_012000.pt 字节相同）
+      sha256_source: work_dirs/checkpoints/exp6_v5/MANIFEST.json；exp6_v5/CHECKPOINT_LINEAGE.md:8
+      weights: EMA 0.999
+      step: 12000
+    training: {init: V4 EMA@40k 全部参数, data: 同 V4（D100），L = L_FM, outdoor_pretrain_steps: "52000（40k + 12k）", mixed_finetune_steps: 0, training_density: D100, selection: 固定 EMA@12k, config: experiments/exp6_v5/configs/train_v4_continue.json, code_commit: ad8dc5c（clean）}
+    inference: {p1_mode: b2, inference_density: D100, scoring_density: S10, refresh: R10, planner: Greedy-NV, K: 4, euler_steps: 10}
+    launch:
+      command: |
+        CUDA_VISIBLE_DEVICES=$G $MG experiments/exp6_v4/scripts/sim_out_v4.py --v4-ckpt $R/work_dirs/exp6_v5/checkpoints/v4c_final.pt --group V2M --scene $S --start $K --root $T1W/closed_loop/outdoor/V4C/V2M
+      historical_launcher: experiments/exp6_v5/scripts/run_queue_v5.sh（组 V4C）
+      coverage_command: |
+        DA_G3_ROOT=$T1W CUDA_VISIBLE_DEVICES=$G $MG experiments/exp_density_ab/scripts/da_out_cov.py --cfg V4C --scene $S --start $K
+    historical_outdoor:
+      closed_loop_root: work_dirs/exp6_v5/eval/closed_loop/outdoor/V4C/V2M
+      metrics_root: work_dirs/exp6_v5/eval/metrics/outdoor/V4C/V2M
+      reusable_episodes: 30
+      reported_mono_auc_final: [0.713, 0.882]
+      official_auc_final: [0.692, 0.853]
+    runtime_per_episode_s: {wall_median: 168, wall_min: 140, wall_max: 211, decision_per_step: 1.0, coverage_replay: 69}
+
+# 不进入 models 列表的参考数据（aggregate.py 只读 models）
+references:
+  MAGICIAN_LMDB:
+    status: REFERENCE_ONLY（不是冻结 M 协议的数据，不能与上表同口径）
+    path: /bsuhome/jiahuizhang/scratch/projects/occupancy/MAGICIAN/results/scene_exploration/magician_lmdb（= /bsuscratch/jiahuizhang/projects/occupancy/MAGICIAN/...）
+    content: 70 个键 = 14 个场景 x 5 个起点；每键 coverage（101 值）、X_cam_history（102 x 3）、V_cam_history（102 x 2）、points、points_color
+    produced_by: >-
+      上游 test_magician_planning.py（MAGICIAN/run.sh，sbatch 4 x L40），作者权重 trained_macarons.pth（sha 34c5247f…，与 MAG-B 相同），
+      use_perfect_depth_map = true，beam 10 x 10，不设种子；2026-06-15（目录时间戳）。MAGICIAN/jiahui/stage_1/exp1/README.md:10-16。
+    numbers: 14 场景 AUC（trapz/100）0.711、Final 0.906；6 个 Dev-3 + Test-3 场景 0.671 / 0.875
+    replay_tool: experiments/exp3b_macaronspp_transfer/m_magician_replay.py（按存储位姿在 M 协议下重放，得到带种子的覆盖率；不改变轨迹本身）
+  not_registered:
+    V3-T0: work_dirs/checkpoints/exp6_v3/T0_vae/v3t0_ema40000.pt（sha 7ed0ddd7…）；Dev-3 + Test-3 30/30 在 work_dirs/exp6_v3/eval/closed_loop/outdoor/T0（未纳入，用户未列）
+    V5.2 / V5.2-M: 只有 pilot / smoke 闭环，冻结门槛未通过（MODEL_VERSIONS.md:40-41），未纳入

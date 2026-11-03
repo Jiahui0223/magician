@@ -1,0 +1,2362 @@
+{
+ "lmdb": "/bsuscratch/jiahuizhang/projects/occupancy/MAGICIAN/results/scene_exploration/magician_lmdb",
+ "n_keys": 70,
+ "scenes": [
+  "alhambra",
+  "bannerman",
+  "barts",
+  "bridge",
+  "colosseum",
+  "dunnottar",
+  "eiffel",
+  "fushimi",
+  "liberty",
+  "neuschwanstein",
+  "pantheon",
+  "pisa",
+  "redeemer",
+  "sestino_museum"
+ ],
+ "starts_per_scene": {
+  "alhambra": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "bannerman": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "barts": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "bridge": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "colosseum": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "dunnottar": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "eiffel": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "fushimi": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "liberty": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "neuschwanstein": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "pantheon": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "pisa": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "redeemer": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "sestino_museum": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ]
+ },
+ "rows": {
+  "alhambra/0": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    -10.5,
+    32.5,
+    -75.45454406738281
+   ],
+   "V0": [
+    -60.0,
+    180.0
+   ],
+   "cov0": 0.009188843070099158,
+   "cov_final_last": 0.8456219095591252,
+   "cov_100": 0.8456219095591252,
+   "auc_exp1": 0.6939188290668781,
+   "auc_evallmdb_unnorm": 68.54624857977319
+  },
+  "alhambra/1": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    16.5,
+    32.5,
+    -11.818183898925781
+   ],
+   "V0": [
+    60.0,
+    324.0
+   ],
+   "cov0": 7.449919938789998e-05,
+   "cov_final_last": 0.8182495399437681,
+   "cov_100": 0.8182495399437681,
+   "auc_exp1": 0.3774542911547616,
+   "auc_evallmdb_unnorm": 36.92772590299457
+  },
+  "alhambra/2": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    -37.5,
+    22.5,
+    -75.45454406738281
+   ],
+   "V0": [
+    -60.0,
+    216.0
+   ],
+   "cov0": 0.009696031608667955,
+   "cov_final_last": 0.8647074736425874,
+   "cov_100": 0.8647074736425874,
+   "auc_exp1": 0.6684842199474305,
+   "auc_evallmdb_unnorm": 65.98347893976981
+  },
+  "alhambra/3": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    -37.5,
+    22.5,
+    -11.818183898925781
+   ],
+   "V0": [
+    -60.0,
+    324.0
+   ],
+   "cov0": 0.010884966351564468,
+   "cov_final_last": 0.851966565420849,
+   "cov_100": 0.851966565420849,
+   "auc_exp1": 0.6985369866819908,
+   "auc_evallmdb_unnorm": 69.00171964858333
+  },
+  "alhambra/4": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    16.5,
+    27.5,
+    -66.36363220214844
+   ],
+   "V0": [
+    -30.0,
+    288.0
+   ],
+   "cov0": 0.14303214849718113,
+   "cov_final_last": 0.823229476905998,
+   "cov_100": 0.823229476905998,
+   "auc_exp1": 0.6967828496419337,
+   "auc_evallmdb_unnorm": 68.85474508765955
+  },
+  "bannerman/0": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    25.0,
+    2.8571434020996094,
+    -18.75
+   ],
+   "V0": [
+    -30.0,
+    72.0
+   ],
+   "cov0": 0.0017433576555955042,
+   "cov_final_last": 0.9080828883165687,
+   "cov_100": 0.9080828883165687,
+   "auc_exp1": 0.7649407230826738,
+   "auc_evallmdb_unnorm": 75.58627615640732
+  },
+  "bannerman/1": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    25.0,
+    2.8571434020996094,
+    -18.75
+   ],
+   "V0": [
+    -30.0,
+    180.0
+   ],
+   "cov0": 0.0063414290089961675,
+   "cov_final_last": 0.8946451416698963,
+   "cov_100": 0.8946451416698963,
+   "auc_exp1": 0.7474282948949121,
+   "auc_evallmdb_unnorm": 73.84780660927024
+  },
+  "bannerman/2": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    5.0,
+    20.000001907348633,
+    -37.08333206176758
+   ],
+   "V0": [
+    -60.0,
+    324.0
+   ],
+   "cov0": 0.08976585872024533,
+   "cov_final_last": 0.8959835085504652,
+   "cov_100": 0.8959835085504652,
+   "auc_exp1": 0.7850007135373276,
+   "auc_evallmdb_unnorm": 77.60398458690923
+  },
+  "bannerman/3": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    15.0,
+    2.8571434020996094,
+    27.083335876464844
+   ],
+   "V0": [
+    30.0,
+    144.0
+   ],
+   "cov0": 0.014642307840512287,
+   "cov_final_last": 0.8942151642254458,
+   "cov_100": 0.8942151642254458,
+   "auc_exp1": 0.720694276978242,
+   "auc_evallmdb_unnorm": 71.17514357453514
+  },
+  "bannerman/4": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    -5.0,
+    37.142860412597656,
+    27.083335876464844
+   ],
+   "V0": [
+    -30.0,
+    180.0
+   ],
+   "cov0": 0.16040369559180553,
+   "cov_final_last": 0.8811103843601233,
+   "cov_100": 0.8811103843601233,
+   "auc_exp1": 0.8006098822301538,
+   "auc_evallmdb_unnorm": 79.17986639596047
+  },
+  "barts/0": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    3.8729639053344727,
+    9.883758544921875,
+    -0.9089088439941406
+   ],
+   "V0": [
+    18.0,
+    180.0
+   ],
+   "cov0": 0.07816475495307612,
+   "cov_final_last": 0.9969551616266945,
+   "cov_100": 0.9969551616266945,
+   "auc_exp1": 0.7552982273201252,
+   "auc_evallmdb_unnorm": 74.53396246089677
+  },
+  "barts/1": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    3.8729639053344727,
+    6.447324752807617,
+    -0.9089088439941406
+   ],
+   "V0": [
+    -18.0,
+    120.0
+   ],
+   "cov0": 0.07979867593926863,
+   "cov_final_last": 0.9974730071215254,
+   "cov_100": 0.9974730071215254,
+   "auc_exp1": 0.8395162166113238,
+   "auc_evallmdb_unnorm": 82.95414865401085
+  },
+  "barts/2": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    15.894460678100586,
+    27.065929412841797,
+    3.9367752075195312
+   ],
+   "V0": [
+    -54.0,
+    60.0
+   ],
+   "cov0": 0.06296682662215732,
+   "cov_final_last": 0.9971208011683705,
+   "cov_100": 0.9971208011683705,
+   "auc_exp1": 0.8089276027540161,
+   "auc_evallmdb_unnorm": 79.89563947423325
+  },
+  "barts/3": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    -0.1342010498046875,
+    13.320192337036133,
+    -0.9089088439941406
+   ],
+   "V0": [
+    18.0,
+    240.0
+   ],
+   "cov0": 0.03289569809430379,
+   "cov_final_last": 0.997203030745789,
+   "cov_100": 0.997203030745789,
+   "auc_exp1": 0.809026800809869,
+   "auc_evallmdb_unnorm": 79.9054770502411
+  },
+  "barts/4": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    -0.1342010498046875,
+    9.883758544921875,
+    -5.7545928955078125
+   ],
+   "V0": [
+    -18.0,
+    0.0
+   ],
+   "cov0": 0.12677643523445814,
+   "cov_final_last": 0.9985183330203051,
+   "cov_100": 0.9985183330203051,
+   "auc_exp1": 0.8982774056219869,
+   "auc_evallmdb_unnorm": 88.82922222917838
+  },
+  "bridge/0": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    -93.33333587646484,
+    28.0,
+    3.75
+   ],
+   "V0": [
+    -30.0,
+    288.0
+   ],
+   "cov0": 0.0,
+   "cov_final_last": 0.9553202188331645,
+   "cov_100": 0.9553202188331645,
+   "auc_exp1": 0.7712333415247369,
+   "auc_evallmdb_unnorm": 76.1680264953791
+  },
+  "bridge/1": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    53.333343505859375,
+    20.0,
+    -18.75
+   ],
+   "V0": [
+    -30.0,
+    144.0
+   ],
+   "cov0": 0.02148110936531341,
+   "cov_final_last": 0.9605196399360199,
+   "cov_100": 0.9605196399360199,
+   "auc_exp1": 0.7931106967644344,
+   "auc_evallmdb_unnorm": 78.35381617009513
+  },
+  "bridge/2": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    26.666671752929688,
+    20.0,
+    11.25
+   ],
+   "V0": [
+    -60.0,
+    144.0
+   ],
+   "cov0": 0.018900843291227015,
+   "cov_final_last": 0.9611178818050796,
+   "cov_100": 0.9611178818050796,
+   "auc_exp1": 0.6962354386529972,
+   "auc_evallmdb_unnorm": 68.66273849743796
+  },
+  "bridge/3": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    -80.0,
+    12.0,
+    -3.75
+   ],
+   "V0": [
+    60.0,
+    180.0
+   ],
+   "cov0": 0.03510739653244607,
+   "cov_final_last": 0.9576155907231118,
+   "cov_100": 0.9576155907231118,
+   "auc_exp1": 0.7660847098873874,
+   "auc_evallmdb_unnorm": 75.65130613491833
+  },
+  "bridge/4": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    7.62939453125e-06,
+    4.0,
+    11.25
+   ],
+   "V0": [
+    0.0,
+    0.0
+   ],
+   "cov0": 0.02617393067461291,
+   "cov_final_last": 0.9601028164954327,
+   "cov_100": 0.9601028164954327,
+   "auc_exp1": 0.7201085160838082,
+   "auc_evallmdb_unnorm": 71.05113664649863
+  },
+  "colosseum/0": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    35.0,
+    28.0,
+    -25.0
+   ],
+   "V0": [
+    -30.0,
+    180.0
+   ],
+   "cov0": 0.0026498435986072894,
+   "cov_final_last": 0.8702697880195248,
+   "cov_100": 0.8702697880195248,
+   "auc_exp1": 0.7092966304645525,
+   "auc_evallmdb_unnorm": 70.0596862699875
+  },
+  "colosseum/1": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    15.0,
+    20.0,
+    35.0
+   ],
+   "V0": [
+    -60.0,
+    216.0
+   ],
+   "cov0": 0.11010106732269172,
+   "cov_final_last": 0.8742825202359424,
+   "cov_100": 0.8742825202359424,
+   "auc_exp1": 0.6930795908089622,
+   "auc_evallmdb_unnorm": 68.43337065355033
+  },
+  "colosseum/2": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    -45.0,
+    20.0,
+    65.0
+   ],
+   "V0": [
+    30.0,
+    108.0
+   ],
+   "cov0": 0.0,
+   "cov_final_last": 0.8610085916799143,
+   "cov_100": 0.8610085916799143,
+   "auc_exp1": 0.6447213186791452,
+   "auc_evallmdb_unnorm": 63.61099562484962
+  },
+  "colosseum/3": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    45.0,
+    12.0,
+    55.0
+   ],
+   "V0": [
+    0.0,
+    144.0
+   ],
+   "cov0": 0.04485384642784285,
+   "cov_final_last": 0.8768736379562139,
+   "cov_100": 0.8768736379562139,
+   "auc_exp1": 0.7123642146370527,
+   "auc_evallmdb_unnorm": 70.35950970633283
+  },
+  "colosseum/4": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    -25.0,
+    4.0,
+    55.0
+   ],
+   "V0": [
+    -30.0,
+    144.0
+   ],
+   "cov0": 0.0434004018100569,
+   "cov_final_last": 0.8765044111586624,
+   "cov_100": 0.8765044111586624,
+   "auc_exp1": 0.7459896308088882,
+   "auc_evallmdb_unnorm": 73.7227648454043
+  },
+  "dunnottar/0": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    -0.41666412353515625,
+    24.166667938232422,
+    7.6666717529296875
+   ],
+   "V0": [
+    0.0,
+    324.0
+   ],
+   "cov0": 0.017570553925297976,
+   "cov_final_last": 0.9815237474187588,
+   "cov_100": 0.9815237474187588,
+   "auc_exp1": 0.7449597869796761,
+   "auc_evallmdb_unnorm": 73.51428286780423
+  },
+  "dunnottar/1": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    10.416671752929688,
+    0.8333334922790527,
+    -94.33333587646484
+   ],
+   "V0": [
+    30.0,
+    180.0
+   ],
+   "cov0": 0.0,
+   "cov_final_last": 0.9728401776810807,
+   "cov_100": 0.9728401776810807,
+   "auc_exp1": 0.7160417913153837,
+   "auc_evallmdb_unnorm": 70.6318556794488
+  },
+  "dunnottar/2": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    64.58334350585938,
+    24.166667938232422,
+    7.6666717529296875
+   ],
+   "V0": [
+    60.0,
+    180.0
+   ],
+   "cov0": 0.0,
+   "cov_final_last": 0.9685441250995439,
+   "cov_100": 0.9685441250995439,
+   "auc_exp1": 0.6365901686816766,
+   "auc_evallmdb_unnorm": 62.690373199160206
+  },
+  "dunnottar/3": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    10.416671752929688,
+    12.5,
+    -71.66666412353516
+   ],
+   "V0": [
+    30.0,
+    288.0
+   ],
+   "cov0": 0.0024453863710466256,
+   "cov_final_last": 0.9753649965583452,
+   "cov_100": 0.9753649965583452,
+   "auc_exp1": 0.7775972720356483,
+   "auc_evallmdb_unnorm": 76.78467920153606
+  },
+  "dunnottar/4": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    -54.58333206176758,
+    12.5,
+    -26.333328247070312
+   ],
+   "V0": [
+    30.0,
+    72.0
+   ],
+   "cov0": 0.0,
+   "cov_final_last": 0.9433456679851985,
+   "cov_100": 0.9433456679851985,
+   "auc_exp1": 0.7293983667219601,
+   "auc_evallmdb_unnorm": 71.99668240398113
+  },
+  "eiffel/0": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    -5.0,
+    79.16667175292969,
+    5.0
+   ],
+   "V0": [
+    60.0,
+    180.0
+   ],
+   "cov0": 0.0,
+   "cov_final_last": 0.9308888766702751,
+   "cov_100": 0.9308888766702751,
+   "auc_exp1": 0.6922366443890178,
+   "auc_evallmdb_unnorm": 68.29270648811253
+  },
+  "eiffel/1": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    -25.0,
+    62.500003814697266,
+    -5.0
+   ],
+   "V0": [
+    -60.0,
+    36.0
+   ],
+   "cov0": 0.288130270558494,
+   "cov_final_last": 0.9304187481576666,
+   "cov_100": 0.9304187481576666,
+   "auc_exp1": 0.7791708316766415,
+   "auc_evallmdb_unnorm": 76.98673343825541
+  },
+  "eiffel/2": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    25.0,
+    29.166667938232422,
+    15.0
+   ],
+   "V0": [
+    0.0,
+    36.0
+   ],
+   "cov0": 0.0,
+   "cov_final_last": 0.8195843334947209,
+   "cov_100": 0.8195843334947209,
+   "auc_exp1": 0.6841672565870363,
+   "auc_evallmdb_unnorm": 67.59769416455696
+  },
+  "eiffel/3": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    5.0,
+    95.83334350585938,
+    25.0
+   ],
+   "V0": [
+    -60.0,
+    288.0
+   ],
+   "cov0": 0.029141009226443852,
+   "cov_final_last": 0.9329748509482103,
+   "cov_100": 0.9329748509482103,
+   "auc_exp1": 0.7877813914224108,
+   "auc_evallmdb_unnorm": 77.84588125263097
+  },
+  "eiffel/4": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    -5.0,
+    95.83334350585938,
+    -25.0
+   ],
+   "V0": [
+    -30.0,
+    0.0
+   ],
+   "cov0": 0.04749443560089907,
+   "cov_final_last": 0.9284840630914639,
+   "cov_100": 0.9284840630914639,
+   "auc_exp1": 0.8050609990324312,
+   "auc_evallmdb_unnorm": 79.5792234854573
+  },
+  "fushimi/0": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    -5.0,
+    37.500003814697266,
+    15.0
+   ],
+   "V0": [
+    0.0,
+    180.0
+   ],
+   "cov0": 0.07773175678131024,
+   "cov_final_last": 0.9342146588573453,
+   "cov_100": 0.9342146588573453,
+   "auc_exp1": 0.7936890226532314,
+   "auc_evallmdb_unnorm": 78.43416992570855
+  },
+  "fushimi/1": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    35.0,
+    12.500000953674316,
+    -5.0
+   ],
+   "V0": [
+    30.0,
+    252.0
+   ],
+   "cov0": 0.1026714344164256,
+   "cov_final_last": 0.9387558259807084,
+   "cov_100": 0.9387558259807084,
+   "auc_exp1": 0.8102668120917361,
+   "auc_evallmdb_unnorm": 80.08810480900063
+  },
+  "fushimi/2": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    15.0,
+    45.833335876464844,
+    15.0
+   ],
+   "V0": [
+    -60.0,
+    36.0
+   ],
+   "cov0": 0.05034598171028688,
+   "cov_final_last": 0.953113857543796,
+   "cov_100": 0.953113857543796,
+   "auc_exp1": 0.8071906426164649,
+   "auc_evallmdb_unnorm": 79.76610947513495
+  },
+  "fushimi/3": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    35.0,
+    4.1666669845581055,
+    5.0
+   ],
+   "V0": [
+    -60.0,
+    216.0
+   ],
+   "cov0": 0.00834164633364244,
+   "cov_final_last": 0.9365792960059975,
+   "cov_100": 0.9365792960059975,
+   "auc_exp1": 0.7655629738285521,
+   "auc_evallmdb_unnorm": 75.61913936018969
+  },
+  "fushimi/4": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    -25.0,
+    12.500000953674316,
+    -35.0
+   ],
+   "V0": [
+    0.0,
+    144.0
+   ],
+   "cov0": 0.00019823182949822753,
+   "cov_final_last": 0.9230070445096471,
+   "cov_100": 0.9230070445096471,
+   "auc_exp1": 0.6967226358918075,
+   "auc_evallmdb_unnorm": 68.75044593564809
+  },
+  "liberty/0": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    -8.0,
+    13.5,
+    -16.66666603088379
+   ],
+   "V0": [
+    -30.0,
+    324.0
+   ],
+   "cov0": 0.08830395552243549,
+   "cov_final_last": 0.9487758517352104,
+   "cov_100": 0.9487758517352104,
+   "auc_exp1": 0.8123081360178971,
+   "auc_evallmdb_unnorm": 80.2820377500545
+  },
+  "liberty/1": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    -16.0,
+    13.5,
+    -3.333332061767578
+   ],
+   "V0": [
+    60.0,
+    180.0
+   ],
+   "cov0": 0.019598507181479072,
+   "cov_final_last": 0.947113823241302,
+   "cov_100": 0.947113823241302,
+   "auc_exp1": 0.7374365662902376,
+   "auc_evallmdb_unnorm": 72.79659192484807
+  },
+  "liberty/2": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    -8.0,
+    13.5,
+    16.666667938232422
+   ],
+   "V0": [
+    30.0,
+    108.0
+   ],
+   "cov0": 0.05245045998955837,
+   "cov_final_last": 0.9550007046181143,
+   "cov_100": 0.9550007046181143,
+   "auc_exp1": 0.8264472766924434,
+   "auc_evallmdb_unnorm": 81.68972696462623
+  },
+  "liberty/3": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    -16.0,
+    4.5,
+    3.333333969116211
+   ],
+   "V0": [
+    0.0,
+    180.0
+   ],
+   "cov0": 0.034252742622722626,
+   "cov_final_last": 0.9491563305152433,
+   "cov_100": 0.9491563305152433,
+   "auc_exp1": 0.8055961270527072,
+   "auc_evallmdb_unnorm": 79.6105057302924
+  },
+  "liberty/4": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    8.0,
+    4.5,
+    -16.66666603088379
+   ],
+   "V0": [
+    -30.0,
+    216.0
+   ],
+   "cov0": 0.0066012673833838985,
+   "cov_final_last": 0.9425526033304786,
+   "cov_100": 0.9425526033304786,
+   "auc_exp1": 0.8014955888289748,
+   "auc_evallmdb_unnorm": 79.207006279567
+  },
+  "neuschwanstein/0": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    5.0,
+    52.85714340209961,
+    -5.0
+   ],
+   "V0": [
+    0.0,
+    252.0
+   ],
+   "cov0": 0.005592414226185414,
+   "cov_final_last": 0.9701228301371797,
+   "cov_100": 0.9701228301371797,
+   "auc_exp1": 0.6696652518956323,
+   "auc_evallmdb_unnorm": 65.99680495469103
+  },
+  "neuschwanstein/1": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    -15.0,
+    52.85714340209961,
+    25.0
+   ],
+   "V0": [
+    0.0,
+    108.0
+   ],
+   "cov0": 0.02902625320264443,
+   "cov_final_last": 0.9718896185695514,
+   "cov_100": 0.9718896185695514,
+   "auc_exp1": 0.693696963010241,
+   "auc_evallmdb_unnorm": 68.39780668245454
+  },
+  "neuschwanstein/2": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    -15.0,
+    18.571430206298828,
+    15.0
+   ],
+   "V0": [
+    30.0,
+    108.0
+   ],
+   "cov0": 0.001098194923331327,
+   "cov_final_last": 0.6724320728552604,
+   "cov_100": 0.6724320728552604,
+   "auc_exp1": 0.38311920947316236,
+   "auc_evallmdb_unnorm": 37.63932780587222
+  },
+  "neuschwanstein/3": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    -85.0,
+    30.0,
+    -15.0
+   ],
+   "V0": [
+    0.0,
+    108.0
+   ],
+   "cov0": 0.07081161589794006,
+   "cov_final_last": 0.9706354877379898,
+   "cov_100": 0.9706354877379898,
+   "auc_exp1": 0.743293924562775,
+   "auc_evallmdb_unnorm": 73.35889592957051
+  },
+  "neuschwanstein/4": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    5.0,
+    18.571430206298828,
+    -5.0
+   ],
+   "V0": [
+    30.0,
+    252.0
+   ],
+   "cov0": 0.004749508582579528,
+   "cov_final_last": 0.5973128132177633,
+   "cov_100": 0.5973128132177633,
+   "auc_exp1": 0.3944823456322807,
+   "auc_evallmdb_unnorm": 38.85709611116766
+  },
+  "pantheon/0": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    -31.5,
+    25.0,
+    6.73077392578125
+   ],
+   "V0": [
+    0.0,
+    36.0
+   ],
+   "cov0": 0.040363723353363065,
+   "cov_final_last": 0.8427294326341095,
+   "cov_100": 0.8427294326341095,
+   "auc_exp1": 0.6765467441888111,
+   "auc_evallmdb_unnorm": 66.811944986247
+  },
+  "pantheon/1": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    -4.5,
+    5.0,
+    -50.9615364074707
+   ],
+   "V0": [
+    0.0,
+    144.0
+   ],
+   "cov0": 0.01677773985521565,
+   "cov_final_last": 0.8395225132098438,
+   "cov_100": 0.8395225132098438,
+   "auc_exp1": 0.5254136078672805,
+   "auc_evallmdb_unnorm": 51.70178743188228
+  },
+  "pantheon/2": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    4.5,
+    25.0,
+    -22.11538314819336
+   ],
+   "V0": [
+    -60.0,
+    180.0
+   ],
+   "cov0": 0.013253747000882119,
+   "cov_final_last": 0.3532047404775309,
+   "cov_100": 0.3532047404775309,
+   "auc_exp1": 0.266943286709328,
+   "auc_evallmdb_unnorm": 26.342571178691
+  },
+  "pantheon/3": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    -22.5,
+    35.0,
+    6.73077392578125
+   ],
+   "V0": [
+    0.0,
+    216.0
+   ],
+   "cov0": 0.012850348080367635,
+   "cov_final_last": 0.8343837671550963,
+   "cov_100": 0.8343837671550963,
+   "auc_exp1": 0.6144892964943555,
+   "auc_evallmdb_unnorm": 60.61468555997697
+  },
+  "pantheon/4": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    -31.5,
+    45.0,
+    16.346160888671875
+   ],
+   "V0": [
+    0.0,
+    36.0
+   ],
+   "cov0": 0.008174174281068309,
+   "cov_final_last": 0.8439708017030961,
+   "cov_100": 0.8439708017030961,
+   "auc_exp1": 0.6735958779075635,
+   "auc_evallmdb_unnorm": 66.51578199567695
+  },
+  "pisa/0": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    -25.0,
+    12.0,
+    15.0
+   ],
+   "V0": [
+    0.0,
+    180.0
+   ],
+   "cov0": 0.1134271078547376,
+   "cov_final_last": 0.944292982206713,
+   "cov_100": 0.944292982206713,
+   "auc_exp1": 0.7938324548815688,
+   "auc_evallmdb_unnorm": 78.43952262163964
+  },
+  "pisa/1": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    -65.0,
+    12.0,
+    -25.0
+   ],
+   "V0": [
+    30.0,
+    36.0
+   ],
+   "cov0": 0.052199881428558324,
+   "cov_final_last": 0.9388750186913001,
+   "cov_100": 0.9388750186913001,
+   "auc_exp1": 0.7521853181257684,
+   "auc_evallmdb_unnorm": 74.27976005774593
+  },
+  "pisa/2": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    35.0,
+    4.0,
+    -35.0
+   ],
+   "V0": [
+    30.0,
+    72.0
+   ],
+   "cov0": 0.020044484035655293,
+   "cov_final_last": 0.9387156501787925,
+   "cov_100": 0.9387156501787925,
+   "auc_exp1": 0.6510099310977906,
+   "auc_evallmdb_unnorm": 64.16235475195515
+  },
+  "pisa/3": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    -75.0,
+    4.0,
+    -25.0
+   ],
+   "V0": [
+    0.0,
+    324.0
+   ],
+   "cov0": 0.021526134852132766,
+   "cov_final_last": 0.9486229103084535,
+   "cov_100": 0.9486229103084535,
+   "auc_exp1": 0.7517580085336862,
+   "auc_evallmdb_unnorm": 74.22717794306017
+  },
+  "pisa/4": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    25.0,
+    20.0,
+    -25.0
+   ],
+   "V0": [
+    0.0,
+    72.0
+   ],
+   "cov0": 0.07280060016618056,
+   "cov_final_last": 0.9145430027265878,
+   "cov_100": 0.9145430027265878,
+   "auc_exp1": 0.6788756754399656,
+   "auc_evallmdb_unnorm": 66.9729728546529
+  },
+  "redeemer/0": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    -8.0,
+    23.125,
+    -15.55555534362793
+   ],
+   "V0": [
+    0.0,
+    108.0
+   ],
+   "cov0": 0.017809241465897595,
+   "cov_final_last": 0.9778892586729224,
+   "cov_100": 0.9778892586729224,
+   "auc_exp1": 0.8407675072157693,
+   "auc_evallmdb_unnorm": 83.09886146290401
+  },
+  "redeemer/1": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    -16.0,
+    41.875,
+    11.111112594604492
+   ],
+   "V0": [
+    -30.0,
+    288.0
+   ],
+   "cov0": 0.0,
+   "cov_final_last": 0.9684608394163139,
+   "cov_100": 0.9684608394163139,
+   "auc_exp1": 0.7484064264894115,
+   "auc_evallmdb_unnorm": 73.87218180952483
+  },
+  "redeemer/2": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    0.0,
+    35.625,
+    -15.55555534362793
+   ],
+   "V0": [
+    30.0,
+    36.0
+   ],
+   "cov0": 0.16013607101988023,
+   "cov_final_last": 0.9709969730627008,
+   "cov_100": 0.9709969730627008,
+   "auc_exp1": 0.8007922100357748,
+   "auc_evallmdb_unnorm": 79.10822403051479
+  },
+  "redeemer/3": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    8.0,
+    66.875,
+    2.2222232818603516
+   ],
+   "V0": [
+    -30.0,
+    36.0
+   ],
+   "cov0": 0.08876918163007402,
+   "cov_final_last": 0.9770286316549612,
+   "cov_100": 0.9770286316549612,
+   "auc_exp1": 0.8073583267734807,
+   "auc_evallmdb_unnorm": 79.75882587775942
+  },
+  "redeemer/4": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    -8.0,
+    23.125,
+    46.66667175292969
+   ],
+   "V0": [
+    -60.0,
+    288.0
+   ],
+   "cov0": 0.0,
+   "cov_final_last": 0.9726599489810841,
+   "cov_100": 0.9726599489810841,
+   "auc_exp1": 0.7744242206047359,
+   "auc_evallmdb_unnorm": 76.46980606756395
+  },
+  "sestino_museum/0": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    -18.449838638305664,
+    1.2169140577316284,
+    -6.91765832901001
+   ],
+   "V0": [
+    18.0,
+    180.0
+   ],
+   "cov0": 0.0027962692356262742,
+   "cov_final_last": 0.9619526979488012,
+   "cov_100": 0.9619526979488012,
+   "auc_exp1": 0.7537681983005897,
+   "auc_evallmdb_unnorm": 74.41441612094314
+  },
+  "sestino_museum/1": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    10.015594482421875,
+    1.2169140577316284,
+    2.5030317306518555
+   ],
+   "V0": [
+    -18.0,
+    240.0
+   ],
+   "cov0": 0.08962713815493642,
+   "cov_final_last": 0.9181250786912963,
+   "cov_100": 0.9181250786912963,
+   "auc_exp1": 0.45259438458909657,
+   "auc_evallmdb_unnorm": 44.34490170332932
+  },
+  "sestino_museum/2": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    24.248310089111328,
+    1.2169140577316284,
+    0.1478586196899414
+   ],
+   "V0": [
+    18.0,
+    240.0
+   ],
+   "cov0": 0.012386516853932585,
+   "cov_final_last": 0.733591011235955,
+   "cov_100": 0.733591011235955,
+   "auc_exp1": 0.5869018426966293,
+   "auc_evallmdb_unnorm": 57.95697078651686
+  },
+  "sestino_museum/3": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    24.248310089111328,
+    1.2169140577316284,
+    0.1478586196899414
+   ],
+   "V0": [
+    -18.0,
+    180.0
+   ],
+   "cov0": 0.014293429342934294,
+   "cov_final_last": 0.7827902790279028,
+   "cov_100": 0.7827902790279028,
+   "auc_exp1": 0.635369396939694,
+   "auc_evallmdb_unnorm": 62.75187218721872
+  },
+  "sestino_museum/4": {
+   "fields": [
+    "V_cam_history",
+    "X_cam_history",
+    "coverage",
+    "points",
+    "points_color"
+   ],
+   "X_shape": [
+    102,
+    3
+   ],
+   "V_shape": [
+    102,
+    2
+   ],
+   "n_coverage": 101,
+   "X0": [
+    2.8992347717285156,
+    3.125558614730835,
+    0.1478586196899414
+   ],
+   "V0": [
+    -18.0,
+    300.0
+   ],
+   "cov0": 0.019341941758063644,
+   "cov_final_last": 0.9409296378338466,
+   "cov_100": 0.9409296378338466,
+   "auc_exp1": 0.5801616330794028,
+   "auc_evallmdb_unnorm": 57.075233670106435
+  }
+ }
+}

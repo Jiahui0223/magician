@@ -1,0 +1,5500 @@
+{
+ "roots": [
+  "/bsuscratch/jiahuizhang/projects/occupancy/seen2scene/work_dirs/exp5_future_view/task2/eval/outdoor/closed_loop",
+  "/bsuscratch/jiahuizhang/projects/occupancy/seen2scene/work_dirs/exp5_future_view/task3_full_depth_p1/closed_loop/outdoor",
+  "/bsuscratch/jiahuizhang/projects/occupancy/seen2scene/work_dirs/exp5_future_view/task1/closed_loop",
+  "/bsuscratch/jiahuizhang/projects/occupancy/seen2scene/work_dirs/exp4_multiworld_belief/ablation_study",
+  "/bsuscratch/jiahuizhang/projects/occupancy/seen2scene/work_dirs/exp4_multiworld_belief/task3",
+  "/bsuscratch/jiahuizhang/projects/occupancy/seen2scene/work_dirs/exp3b_macaronspp_transfer",
+  "/bsuscratch/jiahuizhang/projects/occupancy/seen2scene/work_dirs/exp_density_ab/g3",
+  "/bsuscratch/jiahuizhang/projects/occupancy/seen2scene/work_dirs/exp_temporal_refresh/g3",
+  "/bsuscratch/jiahuizhang/projects/occupancy/seen2scene/work_dirs/exp_camera_pose",
+  "/bsuscratch/jiahuizhang/projects/occupancy/seen2scene/work_dirs/exp_unified_outdoor",
+  "/bsuscratch/jiahuizhang/projects/occupancy/seen2scene/work_dirs/exp6_semantics",
+  "/bsuscratch/jiahuizhang/projects/occupancy/seen2scene/work_dirs/exp6_v2",
+  "/bsuscratch/jiahuizhang/projects/occupancy/seen2scene/work_dirs/exp6_v3",
+  "/bsuscratch/jiahuizhang/projects/occupancy/seen2scene/work_dirs/exp6_v3_1",
+  "/bsuscratch/jiahuizhang/projects/occupancy/seen2scene/work_dirs/exp6_v4",
+  "/bsuscratch/jiahuizhang/projects/occupancy/seen2scene/work_dirs/exp6_v5",
+  "/bsuscratch/jiahuizhang/projects/occupancy/seen2scene/work_dirs/exp6_v5_2",
+  "/bsuscratch/jiahuizhang/projects/occupancy/seen2scene/work_dirs/exp6_v5_2_scratch70k"
+ ],
+ "episodes": {
+  "exp5_future_view/task2/eval/outdoor/closed_loop/MAG-B/episodes": {
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "neuschwanstein": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "bridge": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "alhambra": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp5_future_view/task2/eval/outdoor/closed_loop/MAG-G/episodes": {
+   "alhambra": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "bridge": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "neuschwanstein": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp5_future_view/task2/eval/outdoor/closed_loop/V2M/episodes": {
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "alhambra": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "neuschwanstein": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "bridge": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp5_future_view/task2/eval/outdoor/closed_loop/V2O/episodes": {
+   "bridge": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "neuschwanstein": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "alhambra": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp5_future_view/task3_full_depth_p1/closed_loop/outdoor/E2S/V2M/episodes": {
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "alhambra": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "neuschwanstein": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "bridge": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp5_future_view/task3_full_depth_p1/closed_loop/outdoor/E2D/V2M/episodes": {
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "alhambra": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "neuschwanstein": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "bridge": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp5_future_view/task3_full_depth_p1/closed_loop/outdoor/B2/V2M/episodes": {
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "alhambra": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "neuschwanstein": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "bridge": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp5_future_view/task3_full_depth_p1/closed_loop/outdoor/B1/V2M/episodes": {
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "alhambra": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "neuschwanstein": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "bridge": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp5_future_view/task1/closed_loop/E2_V2G_Nat_K4/episodes": {
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 15,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 15,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 15,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp5_future_view/task1/closed_loop/E6_V2G_R10_K1/episodes": {
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 15,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 15,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 15,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp5_future_view/task1/closed_loop/_dev_tests/E1r/episodes": {
+   "pantheon": {
+    "starts": [
+     0
+    ],
+    "n": 1,
+    "moves": [
+     6
+    ],
+    "n_coverage": [
+     7
+    ]
+   }
+  },
+  "exp5_future_view/task1/closed_loop/_dev_tests/E5/episodes": {
+   "barts": {
+    "starts": [
+     0
+    ],
+    "n": 1,
+    "moves": [
+     5
+    ],
+    "n_coverage": [
+     6
+    ]
+   }
+  },
+  "exp5_future_view/task1/closed_loop/_dev_tests/E1u/episodes": {
+   "pantheon": {
+    "starts": [
+     0
+    ],
+    "n": 1,
+    "moves": [
+     6
+    ],
+    "n_coverage": [
+     7
+    ]
+   }
+  },
+  "exp5_future_view/task1/closed_loop/E1_V2G_R10_K4/episodes": {
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 15,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 15,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 15,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp5_future_view/task1/closed_loop/E5_V2GU_R10_K4/episodes": {
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 15,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 15,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 15,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp5_future_view/task1/closed_loop/E4_V2DistU_R10_K4/episodes": {
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 15,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 15,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 15,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp5_future_view/task1/closed_loop/E3_V2Uraw_R10_K4/episodes": {
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 15,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 15,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 15,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp4_multiworld_belief/ablation_study/abl_1/T1C_FRindep_DistP1_Greedy_R10_K4/dev100/episodes": {
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp4_multiworld_belief/ablation_study/abl_1/T1C_FRindep_P1_Empty_Greedy_R10_K4/dev100/episodes": {
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp4_multiworld_belief/ablation_study/abl_1/T1C_FRindep_P1_BeamW5H5_R10_K4/dev100/episodes": {
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp4_multiworld_belief/ablation_study/abl_1/T1C_FRindep_DistP1_Empty_BeamW5H5_R10_K4/smoke_resume/episodes": {
+   "barts": {
+    "starts": [
+     0
+    ],
+    "n": 1,
+    "moves": [
+     12
+    ],
+    "n_coverage": [
+     13
+    ]
+   }
+  },
+  "exp4_multiworld_belief/ablation_study/abl_1/T1C_FRindep_DistP1_Empty_BeamW5H5_R10_K4/dev100/episodes": {
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp4_multiworld_belief/ablation_study/abl_2/T1C_FRindep_DistP1_Greedy_R10_K1/chain_k2/dev100/episodes": {
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp4_multiworld_belief/ablation_study/abl_2/T1C_FRindep_DistP1_Greedy_R10_K1/chain_k0/dev100/episodes": {
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp4_multiworld_belief/ablation_study/abl_2/T1C_FRindep_DistP1_Greedy_R10_K1/chain_k3/dev100/episodes": {
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp4_multiworld_belief/ablation_study/abl_2/T1C_FRindep_DistP1_Greedy_R10_K1/chain_k1/smoke/episodes": {
+   "pantheon": {
+    "starts": [
+     0
+    ],
+    "n": 1,
+    "moves": [
+     12
+    ],
+    "n_coverage": [
+     13
+    ]
+   },
+   "barts": {
+    "starts": [
+     0
+    ],
+    "n": 1,
+    "moves": [
+     12
+    ],
+    "n_coverage": [
+     13
+    ]
+   }
+  },
+  "exp4_multiworld_belief/ablation_study/abl_2/T1C_FRindep_DistP1_Greedy_R10_K1/chain_k1/smoke_resume/episodes": {
+   "barts": {
+    "starts": [
+     0
+    ],
+    "n": 1,
+    "moves": [
+     12
+    ],
+    "n_coverage": [
+     13
+    ]
+   }
+  },
+  "exp4_multiworld_belief/ablation_study/abl_2/T1C_FRindep_DistP1_Greedy_R10_K1/chain_k1/dev100/episodes": {
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp4_multiworld_belief/ablation_study/abl_2/T1C_C1A_DistP1_Greedy_R10_K4/c1a_seed1/dev100/episodes": {
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp4_multiworld_belief/ablation_study/abl_2/T1C_C1A_DistP1_Greedy_R10_K4/c1a_seed0/smoke/episodes": {
+   "pantheon": {
+    "starts": [
+     0
+    ],
+    "n": 1,
+    "moves": [
+     12
+    ],
+    "n_coverage": [
+     13
+    ]
+   },
+   "barts": {
+    "starts": [
+     0
+    ],
+    "n": 1,
+    "moves": [
+     12
+    ],
+    "n_coverage": [
+     13
+    ]
+   }
+  },
+  "exp4_multiworld_belief/ablation_study/abl_2/T1C_C1A_DistP1_Greedy_R10_K4/c1a_seed0/smoke_resume/episodes": {
+   "barts": {
+    "starts": [
+     0
+    ],
+    "n": 1,
+    "moves": [
+     12
+    ],
+    "n_coverage": [
+     13
+    ]
+   }
+  },
+  "exp4_multiworld_belief/ablation_study/abl_2/T1C_C1A_DistP1_Greedy_R10_K4/c1a_seed0/dev100/episodes": {
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp4_multiworld_belief/ablation_study/abl_2/T1C_C1A_DistP1_Greedy_R10_K4/c1a_seed0/c1a_resume_test/interrupted/episodes": {
+   "barts": {
+    "starts": [
+     0
+    ],
+    "n": 1,
+    "moves": [
+     22
+    ],
+    "n_coverage": [
+     23
+    ]
+   }
+  },
+  "exp4_multiworld_belief/ablation_study/abl_2/T1C_C1A_DistP1_Greedy_R10_K4/c1a_seed0/c1a_resume_test/uninterrupted/episodes": {
+   "barts": {
+    "starts": [
+     0
+    ],
+    "n": 1,
+    "moves": [
+     22
+    ],
+    "n_coverage": [
+     23
+    ]
+   }
+  },
+  "exp4_multiworld_belief/ablation_study/abl_2/T1C_FRindep_DistP1_Greedy_R5Early30_K4/dev100/episodes": {
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp4_multiworld_belief/ablation_study/abl_2/T1C_FRindep_DistP1_Greedy_R5_K4/smoke_resume/episodes": {
+   "barts": {
+    "starts": [
+     0
+    ],
+    "n": 1,
+    "moves": [
+     12
+    ],
+    "n_coverage": [
+     13
+    ]
+   }
+  },
+  "exp4_multiworld_belief/ablation_study/abl_2/T1C_FRindep_DistP1_Greedy_R5_K4/dev100/episodes": {
+   "pantheon": {
+    "starts": [
+     1,
+     2
+    ],
+    "n": 2,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp4_multiworld_belief/ablation_study/abl_2/Frozen_FRindep_DistP1_Greedy_R10_K4/smoke_resume/episodes": {
+   "barts": {
+    "starts": [
+     0
+    ],
+    "n": 1,
+    "moves": [
+     12
+    ],
+    "n_coverage": [
+     13
+    ]
+   }
+  },
+  "exp4_multiworld_belief/ablation_study/abl_2/Frozen_FRindep_DistP1_Greedy_R10_K4/dev100/episodes": {
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp4_multiworld_belief/task3/loop/smoke_resume/episodes": {
+   "barts": {
+    "starts": [
+     0
+    ],
+    "n": 1,
+    "moves": [
+     12
+    ],
+    "n_coverage": [
+     13
+    ]
+   }
+  },
+  "exp4_multiworld_belief/task3/loop/dev100/episodes": {
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp3b_macaronspp_transfer/task6_baseline_v2/run/episodes": {
+   "sestino_museum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 90,
+    "moves": [
+     10
+    ],
+    "n_coverage": [
+     11
+    ]
+   },
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 90,
+    "moves": [
+     10
+    ],
+    "n_coverage": [
+     11
+    ]
+   },
+   "eiffel": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 90,
+    "moves": [
+     10
+    ],
+    "n_coverage": [
+     11
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 90,
+    "moves": [
+     10
+    ],
+    "n_coverage": [
+     11
+    ]
+   },
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 90,
+    "moves": [
+     10
+    ],
+    "n_coverage": [
+     11
+    ]
+   }
+  },
+  "exp3b_macaronspp_transfer/task6_baseline_v2/rerun/episodes": {
+   "pantheon": {
+    "starts": [
+     1
+    ],
+    "n": 10,
+    "moves": [
+     10
+    ],
+    "n_coverage": [
+     11
+    ]
+   }
+  },
+  "exp3b_macaronspp_transfer/task6_baseline_v2/pretest/pilot_B/episodes": {
+   "barts": {
+    "starts": [
+     0
+    ],
+    "n": 5,
+    "moves": [
+     2
+    ],
+    "n_coverage": [
+     3
+    ]
+   }
+  },
+  "exp3b_macaronspp_transfer/task6_baseline_v2/pretest/pilot_C/episodes": {
+   "barts": {
+    "starts": [
+     0
+    ],
+    "n": 1,
+    "moves": [
+     10
+    ],
+    "n_coverage": [
+     11
+    ]
+   },
+   "eiffel": {
+    "starts": [
+     2
+    ],
+    "n": 1,
+    "moves": [
+     10
+    ],
+    "n_coverage": [
+     11
+    ]
+   }
+  },
+  "exp3b_macaronspp_transfer/task6_baseline_v2/pretest/pilot_A/episodes": {
+   "barts": {
+    "starts": [
+     0
+    ],
+    "n": 10,
+    "moves": [
+     2
+    ],
+    "n_coverage": [
+     3
+    ]
+   }
+  },
+  "exp3b_macaronspp_transfer/task7a_baseline_v2/run/episodes": {
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3
+    ],
+    "n": 4,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp3b_macaronspp_transfer/task7a_baseline_v2/attempt2/run/episodes": {
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 65,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 65,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 65,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp3b_macaronspp_transfer/task7a_baseline_v2/attempt2/rerun/episodes": {
+   "barts": {
+    "starts": [
+     1
+    ],
+    "n": 7,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp3b_macaronspp_transfer/task7a_baseline_v2/attempt2/pretest/smoke_A/episodes": {
+   "eiffel": {
+    "starts": [
+     0
+    ],
+    "n": 7,
+    "moves": [
+     100,
+     12,
+     30
+    ],
+    "n_coverage": [
+     101,
+     13,
+     31
+    ]
+   }
+  },
+  "exp3b_macaronspp_transfer/task7a_baseline_v2/attempt2/pretest/smoke_B/episodes": {
+   "eiffel": {
+    "starts": [
+     0
+    ],
+    "n": 2,
+    "moves": [
+     30
+    ],
+    "n_coverage": [
+     31
+    ]
+   }
+  },
+  "exp3b_macaronspp_transfer/task7a_baseline_v2/attempt2/pretest/smoke_E/episodes": {
+   "colosseum": {
+    "starts": [
+     0
+    ],
+    "n": 1,
+    "moves": [
+     11
+    ],
+    "n_coverage": [
+     12
+    ]
+   }
+  },
+  "exp3b_macaronspp_transfer/task7a_baseline_v2/attempt2/pretest/smoke_C/episodes": {
+   "eiffel": {
+    "starts": [
+     2
+    ],
+    "n": 1,
+    "moves": [
+     30
+    ],
+    "n_coverage": [
+     31
+    ]
+   }
+  },
+  "exp3b_macaronspp_transfer/task7a_baseline_v2/attempt2/resume_envtest/episodes": {
+   "barts": {
+    "starts": [
+     0
+    ],
+    "n": 4,
+    "moves": [
+     10
+    ],
+    "n_coverage": [
+     11
+    ]
+   }
+  },
+  "exp3b_macaronspp_transfer/task7a_baseline_v2/pretest/smoke_A/episodes": {
+   "eiffel": {
+    "starts": [
+     0
+    ],
+    "n": 7,
+    "moves": [
+     100,
+     12,
+     30
+    ],
+    "n_coverage": [
+     101,
+     13,
+     31
+    ]
+   }
+  },
+  "exp3b_macaronspp_transfer/task7a_baseline_v2/pretest/smoke_B/episodes": {
+   "eiffel": {
+    "starts": [
+     0
+    ],
+    "n": 2,
+    "moves": [
+     30
+    ],
+    "n_coverage": [
+     31
+    ]
+   }
+  },
+  "exp3b_macaronspp_transfer/task7a_baseline_v2/pretest/smoke_E/episodes": {
+   "colosseum": {
+    "starts": [
+     0
+    ],
+    "n": 1,
+    "moves": [
+     11
+    ],
+    "n_coverage": [
+     12
+    ]
+   }
+  },
+  "exp3b_macaronspp_transfer/task7a_baseline_v2/pretest/smoke_C/episodes": {
+   "eiffel": {
+    "starts": [
+     2
+    ],
+    "n": 1,
+    "moves": [
+     30
+    ],
+    "n_coverage": [
+     31
+    ]
+   }
+  },
+  "exp_density_ab/g3/closed_loop/outdoor/E2D_D100_D100/V2M/episodes": {
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "alhambra": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "neuschwanstein": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "bridge": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp_density_ab/g3/closed_loop/outdoor/E2D_S10_S10/V2M/episodes": {
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "alhambra": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "neuschwanstein": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "bridge": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp_density_ab/g3/closed_loop/outdoor/E2S_S10_D100/V2M/episodes": {
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "alhambra": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "neuschwanstein": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "bridge": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp_density_ab/g3/closed_loop/outdoor/E2S_D100_S10/V2M/episodes": {
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "alhambra": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "neuschwanstein": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "bridge": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp_density_ab/g3/closed_loop/outdoor/E2D_S10_D100/V2M/episodes": {
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "alhambra": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "neuschwanstein": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "bridge": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp_density_ab/g3/closed_loop/outdoor/E2S_D100_D100/V2M/episodes": {
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "alhambra": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "neuschwanstein": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "bridge": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp_density_ab/g3/closed_loop/outdoor/B2_S10_D100/V2M/episodes": {
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "alhambra": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "neuschwanstein": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "bridge": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp_density_ab/g3/failed/B2_S10_D100_V2M_pantheon_s1_r0_try1/episodes": {
+   "pantheon": {
+    "starts": [
+     1
+    ],
+    "n": 1,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp_density_ab/g3/failed/B2_S10_D100_V2M_barts_s3_r0_try1/episodes": {
+   "barts": {
+    "starts": [
+     3
+    ],
+    "n": 1,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp_density_ab/g3/failed/B2_S10_D100_V2M_neuschwanstein_s4_r0_try1/episodes": {
+   "neuschwanstein": {
+    "starts": [
+     4
+    ],
+    "n": 1,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp_temporal_refresh/g3/closed_loop/outdoor/E2D_R5/V2M/episodes": {
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "alhambra": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "neuschwanstein": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "bridge": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp_temporal_refresh/g3/closed_loop/outdoor/E2D_R1/V2M/episodes": {
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "alhambra": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "neuschwanstein": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "bridge": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp_temporal_refresh/g3/closed_loop/outdoor/B2_R1/V2M/episodes": {
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "alhambra": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "neuschwanstein": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "bridge": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp_temporal_refresh/g3/closed_loop/outdoor/E2D_R10/V2M/episodes": {
+   "colosseum": {
+    "starts": [
+     0
+    ],
+    "n": 1,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp_temporal_refresh/g3/closed_loop/outdoor/B2_R5/V2M/episodes": {
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "alhambra": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "neuschwanstein": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "bridge": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp_temporal_refresh/g3/closed_loop/outdoor/B2_R2/V2M/episodes": {
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "alhambra": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "neuschwanstein": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "bridge": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp_temporal_refresh/g3/closed_loop/outdoor/E2D_R2/V2M/episodes": {
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "alhambra": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "neuschwanstein": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "bridge": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp_camera_pose/closed_loop/B2_C0/closed_loop/outdoor/B2_C0/V2M/episodes": {
+   "barts": {
+    "starts": [
+     0
+    ],
+    "n": 1,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp_camera_pose/closed_loop/V5_C1/closed_loop/outdoor/V5_C1/V2M/episodes": {
+   "barts": {
+    "starts": [
+     0,
+     1
+    ],
+    "n": 2,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1
+    ],
+    "n": 2,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "colosseum": {
+    "starts": [
+     0,
+     1
+    ],
+    "n": 2,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp_camera_pose/closed_loop/V5_C0/closed_loop/outdoor/V5_C0/V2M/episodes": {
+   "barts": {
+    "starts": [
+     0,
+     1
+    ],
+    "n": 2,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1
+    ],
+    "n": 2,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "colosseum": {
+    "starts": [
+     0,
+     1
+    ],
+    "n": 2,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp_camera_pose/closed_loop/B2_C1/closed_loop/outdoor/B2_C1/V2M/episodes": {
+   "barts": {
+    "starts": [
+     0,
+     1
+    ],
+    "n": 2,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1
+    ],
+    "n": 2,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "colosseum": {
+    "starts": [
+     0,
+     1
+    ],
+    "n": 2,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp_camera_pose/closed_loop/V4_C1/closed_loop/outdoor/V4_C1/V2M/episodes": {
+   "barts": {
+    "starts": [
+     0,
+     1
+    ],
+    "n": 2,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1
+    ],
+    "n": 2,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "colosseum": {
+    "starts": [
+     0,
+     1
+    ],
+    "n": 2,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp_camera_pose/closed_loop/E2D_C1/closed_loop/outdoor/E2D_C1/V2M/episodes": {
+   "barts": {
+    "starts": [
+     0,
+     1
+    ],
+    "n": 2,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1
+    ],
+    "n": 2,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "colosseum": {
+    "starts": [
+     0,
+     1
+    ],
+    "n": 2,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp_camera_pose/closed_loop/V4_C0/closed_loop/outdoor/V4_C0/V2M/episodes": {
+   "barts": {
+    "starts": [
+     0,
+     1
+    ],
+    "n": 2,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1
+    ],
+    "n": 2,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "colosseum": {
+    "starts": [
+     0,
+     1
+    ],
+    "n": 2,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp6_v2/smoke_g3/closed_loop/outdoor/E2D/V2M/episodes": {
+   "alhambra": {
+    "starts": [
+     0
+    ],
+    "n": 1,
+    "moves": [
+     2
+    ],
+    "n_coverage": [
+     3
+    ]
+   }
+  },
+  "exp6_v2/smoke_g3/closed_loop/outdoor/B2/V2M/episodes": {
+   "alhambra": {
+    "starts": [
+     0
+    ],
+    "n": 1,
+    "moves": [
+     2
+    ],
+    "n_coverage": [
+     3
+    ]
+   }
+  },
+  "exp6_v3/task2/g0/out_S0/V2M/episodes": {
+   "barts": {
+    "starts": [
+     0
+    ],
+    "n": 1,
+    "moves": [
+     3
+    ],
+    "n_coverage": [
+     4
+    ]
+   }
+  },
+  "exp6_v3/task2/g3/closed_loop/outdoor/T1_S1c/V2M/episodes": {
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "alhambra": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "neuschwanstein": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "bridge": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp6_v3/task2/g3/closed_loop/outdoor/B2_S1c/V2M/episodes": {
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "alhambra": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "neuschwanstein": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "bridge": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp6_v3/eval/smoke/outdoor/T1/V2M/episodes": {
+   "barts": {
+    "starts": [
+     0
+    ],
+    "n": 1,
+    "moves": [
+     2
+    ],
+    "n_coverage": [
+     3
+    ]
+   }
+  },
+  "exp6_v3/eval/smoke/outdoor/T0/V2M/episodes": {
+   "barts": {
+    "starts": [
+     0
+    ],
+    "n": 1,
+    "moves": [
+     2
+    ],
+    "n_coverage": [
+     3
+    ]
+   }
+  },
+  "exp6_v3/eval/closed_loop/outdoor/T1/V2M/episodes": {
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "alhambra": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "neuschwanstein": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "bridge": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp6_v3/eval/closed_loop/outdoor/T0/V2M/episodes": {
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "alhambra": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "neuschwanstein": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "bridge": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp6_v3/ablation_study/experiment_C/g0/outdoor_a/C2/episodes": {
+   "barts": {
+    "starts": [
+     0
+    ],
+    "n": 1,
+    "moves": [
+     3
+    ],
+    "n_coverage": [
+     4
+    ]
+   }
+  },
+  "exp6_v3/ablation_study/experiment_C/g0/outdoor_a/C1/episodes": {
+   "barts": {
+    "starts": [
+     0
+    ],
+    "n": 1,
+    "moves": [
+     3
+    ],
+    "n_coverage": [
+     4
+    ]
+   }
+  },
+  "exp6_v3/ablation_study/experiment_C/g0/outdoor_rep/V2M/episodes": {
+   "barts": {
+    "starts": [
+     0
+    ],
+    "n": 1,
+    "moves": [
+     3
+    ],
+    "n_coverage": [
+     4
+    ]
+   }
+  },
+  "exp6_v3/ablation_study/experiment_C/g0/outdoor_b/C2/episodes": {
+   "barts": {
+    "starts": [
+     0
+    ],
+    "n": 1,
+    "moves": [
+     3
+    ],
+    "n_coverage": [
+     4
+    ]
+   }
+  },
+  "exp6_v3/ablation_study/experiment_C/eval/closed_loop/outdoor/C2/episodes": {
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "alhambra": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "bridge": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "neuschwanstein": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp6_v3/ablation_study/experiment_C/eval/closed_loop/outdoor/C1/episodes": {
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "neuschwanstein": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "bridge": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "alhambra": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp6_v4/eval/smoke/outdoor/V31/V2M/episodes": {
+   "barts": {
+    "starts": [
+     0
+    ],
+    "n": 1,
+    "moves": [
+     2
+    ],
+    "n_coverage": [
+     3
+    ]
+   }
+  },
+  "exp6_v4/eval/smoke/outdoor/V4/V2M/episodes": {
+   "barts": {
+    "starts": [
+     0
+    ],
+    "n": 1,
+    "moves": [
+     2
+    ],
+    "n_coverage": [
+     3
+    ]
+   }
+  },
+  "exp6_v4/eval/closed_loop/outdoor/V31/V2M/episodes": {
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "alhambra": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "neuschwanstein": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "bridge": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp6_v4/eval/closed_loop/outdoor/V4/V2M/episodes": {
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "alhambra": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "neuschwanstein": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "bridge": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp6_v4/eval/g0_replay/outdoor_V2M/V2M/episodes": {
+   "barts": {
+    "starts": [
+     0
+    ],
+    "n": 1,
+    "moves": [
+     2
+    ],
+    "n_coverage": [
+     3
+    ]
+   }
+  },
+  "exp6_v4/eval/g0_replay/outdoor_T0/V2M/episodes": {
+   "barts": {
+    "starts": [
+     0
+    ],
+    "n": 1,
+    "moves": [
+     2
+    ],
+    "n_coverage": [
+     3
+    ]
+   }
+  },
+  "exp6_v4/ablation_study/experiment_A/smoke/outdoor_b2/V2M/episodes": {
+   "barts": {
+    "starts": [
+     0
+    ],
+    "n": 1,
+    "moves": [
+     3
+    ],
+    "n_coverage": [
+     4
+    ]
+   }
+  },
+  "exp6_v4/ablation_study/experiment_A/smoke/outdoor_full/V2M/episodes": {
+   "barts": {
+    "starts": [
+     0
+    ],
+    "n": 1,
+    "moves": [
+     3
+    ],
+    "n_coverage": [
+     4
+    ]
+   }
+  },
+  "exp6_v4/ablation_study/experiment_A/eval/closed_loop/outdoor/A1/V2M/episodes": {
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "alhambra": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "neuschwanstein": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "bridge": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp6_v5/eval/smoke/outdoor/V2M/episodes": {
+   "barts": {
+    "starts": [
+     0
+    ],
+    "n": 1,
+    "moves": [
+     2
+    ],
+    "n_coverage": [
+     3
+    ]
+   }
+  },
+  "exp6_v5/eval/closed_loop/outdoor/V4C/V2M/episodes": {
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "alhambra": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "neuschwanstein": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "bridge": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp6_v5/eval/closed_loop/outdoor/V5/V2M/episodes": {
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "alhambra": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "neuschwanstein": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "bridge": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp6_v5_2/eval/closed_loop/outdoor/V52L0/V2M/episodes": {
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "alhambra": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "neuschwanstein": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "bridge": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp6_v5_2/eval/closed_loop/outdoor/V52L01/V2M/episodes": {
+   "colosseum": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "barts": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "alhambra": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "pantheon": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "neuschwanstein": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "bridge": {
+    "starts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "n": 5,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp6_v5_2/eval_smoke/g0_init/outdoor/V2M/episodes": {
+   "alhambra": {
+    "starts": [
+     0
+    ],
+    "n": 1,
+    "moves": [
+     2
+    ],
+    "n_coverage": [
+     3
+    ]
+   }
+  },
+  "exp6_v5_2_scratch70k/eval/g0/planner_smoke/g0_l01/outdoor/V2M/episodes": {
+   "alhambra": {
+    "starts": [
+     0
+    ],
+    "n": 1,
+    "moves": [
+     2
+    ],
+    "n_coverage": [
+     3
+    ]
+   }
+  },
+  "exp6_v5_2_scratch70k/eval/g3/closed_loop/outdoor/V52ML0/V2M/episodes": {
+   "bridge": {
+    "starts": [
+     0,
+     1
+    ],
+    "n": 2,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "alhambra": {
+    "starts": [
+     0,
+     1
+    ],
+    "n": 2,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  },
+  "exp6_v5_2_scratch70k/eval/g3/closed_loop/outdoor/V52ML01/V2M/episodes": {
+   "bridge": {
+    "starts": [
+     0,
+     1
+    ],
+    "n": 2,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   },
+   "alhambra": {
+    "starts": [
+     0,
+     1
+    ],
+    "n": 2,
+    "moves": [
+     100
+    ],
+    "n_coverage": [
+     101
+    ]
+   }
+  }
+ }
+}

@@ -1,0 +1,43 @@
+# CVPR Table 1 -- frozen evaluation configuration (protocol v1.0, 2026-11-03). Human-readable version: PROTOCOL.md.
+protocol_version: v1.0
+dataset:
+  name: Macarons++
+  official_scenes: 15
+  scene_registry: SCENE_REGISTRY.yaml
+  splits_source: experiments/exp4_multiworld_belief/task0/configs/dataset_manifest_v1.json (frozen 2026-10-14)
+  groups:
+    train: [bannerman, dunnottar, fushimi, liberty, pisa, redeemer]
+    dev: [barts, colosseum, eiffel, pantheon, sestino_museum]
+    test: [alhambra, bridge, neuschwanstein]
+    other_unassigned: [sofia_church]
+    all14: runnable scenes (SCENE_REGISTRY runnable.overall) = MAGICIAN official 14-scene test list
+    all15: all registry scenes; reported only as partial while sofia_church is not runnable
+  starts_per_scene: 5            # settings.json camera.start_positions[0..4]
+closed_loop:
+  simulator: experiments/exp3b_macaronspp_transfer/m_t6_sim.py EpisodeSim (frozen M protocol)
+  entry: experiments/exp5_future_view/task2/scripts/t24_out_sim.py (+ model wrappers, MODEL_REGISTRY.yaml launch)
+  moves: 100
+  frames: 101
+  resolution: [456, 256]
+  sensor_range: 70
+  depth: perfect
+  magician: {code: official e697009, weights_sha256: 34c5247f13bedda08bb57e7e7e7a5baba53af6da7faf3d5f6bb57a27c2dbb59c, beam: [10, 10], greedy_row: MAG-G}
+  ours: {planner: Greedy-NV, K: 4, euler_steps: 10, refresh: R10, scoring: S10 DistP1, inference_density: per model (MODEL_REGISTRY)}
+coverage:
+  primary: magician_official      # gathering_factor*2 = 10% points, capped covered cells, eps = 2*0.05*10 = 1.0, / visibility_ratio
+  secondary: monotone_10pct       # same GT points / eps / normalisation, all samples kept
+  check: official curve re-computed by t25_out_cov.py must equal the stored episode curve bitwise
+metrics:
+  cov_at: [10, 20, 40, 50, 60, 80, 100]
+  auc_at: [10, 20, 40, 50, 60, 80, 100]
+  auc_rule: trapz(C[0..k], dx=1) / k
+  final: C[100]   # == Cov@100
+aggregation:
+  scene: mean over 5 starts (complete scenes only)
+  split: scene-equal mean over complete scenes; incomplete -> "<group>-partialNofM"
+  ci: scene-level bootstrap 95%, 10000 resamples, seed 0
+  reference: MAG-B
+  paired: per scene mean over matched starts, bootstrap over scenes, wins/losses
+outputs:
+  canonical_records: work_dirs/cvpr_results/table1/episodes/<model>/<scene>_s<k>.json
+  generated_by: [scripts/aggregate.py, scripts/plot.py, scripts/validate.py]
