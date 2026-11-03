@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-03 05:05",
+ "updated": "2026-11-03 14:10",
  "slurm": {
   "3443137": {
    "name": "vscode-dev",
@@ -22,7 +22,6 @@
   }
  },
  "processes_on_gpu115": {
-  "stage1_chain": "experiments/exp_temporal_refresh/scripts/chain_stage1.sh (tr_fixed -> tr_g3_queue x8)",
-  "stage2_chain": "experiments/exp_unified_outdoor/scripts/chain_stage2.sh (waits for stage 1; V4-S10 -> V4C/V5 -> S10 TSDF cache -> V3-T1)"
+  "none": "all chains and training stopped 14:06 (PAUSED_RESTART.md); GPUs 0-3 free"
  }
 }

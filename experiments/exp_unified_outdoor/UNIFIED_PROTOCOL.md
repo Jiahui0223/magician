@@ -75,3 +75,4 @@
 ## 7. 运行记录
 - **2026-11-03 08:41 续训测试**：V4-S10 在第 1000 步的第一个完整 checkpoint 后被主动中断（SIGTERM），08:43 续训。`runs/v4_s10/resume_log_r{0..3}.jsonl` 显示 4/4 个 rank 的 RNG（numpy 采样器、torch CPU / CUDA）**精确恢复（EXACT）**，日志为“resumed at step 1000”，之后 LR 与 loss 连续。损失约 30 分钟的计算。
 - V4-S10 与 V2-S10 评估、CPU 缓存构建并行时为 0.55 s / 步（历史 0.43 s / 步）。
+- **2026-11-03 14:06 暂停**（用户要求）：V4-S10 的完整 checkpoint 在第 38,000 步，已核对 model / opt / ema / RNG，4 个 rank 的 RNG 快照齐全。重启方法见 `experiments/exp_overnight_queue/PAUSED_RESTART.md` 和 `scripts/chain_resume.sh`。

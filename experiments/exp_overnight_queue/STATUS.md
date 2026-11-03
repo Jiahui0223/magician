@@ -1,4 +1,4 @@
-# Overnight queue — STATUS（2026-11-03 11:20）
+# Overnight queue — STATUS（2026-11-03 14:10，**已暂停**，见 PAUSED_RESTART.md）
 
 图例：COMPLETED / RUNNING / QUEUED / FAILED / BLOCKED / SKIPPED
 
@@ -13,10 +13,10 @@
 | S2 训练密度判定 | COMPLETED | 按预注册规则选 S10，证据中等；D100 分支保留 |
 | S2 训练配方审计 | COMPLETED | TRAINING_PROTOCOL_DRAFT + UNIFIED_PROTOCOL（2ee6aae） |
 | S2 V2-S10 | SKIPPED（复用历史 V2 Original，配方逐项一致） | 固定状态评估与 V4 训练并行 |
-| S2 V4-S10 | RUNNING | 11:16 时 17.8k / 60k，预计约 16:35 完成；续训测试通过（4/4 EXACT） |
+| S2 V4-S10 | PAUSED | 14:06 暂停；完整 checkpoint 在第 38,000 步；用 `chain_resume.sh` 重启 |
 | S2 V2-S10 评估（固定状态） | COMPLETED | 见 exp_unified_outdoor/INTERIM_RESULTS.md |
 | S2 S10 TSDF 缓存（CPU） | COMPLETED | 180/180（09:32） |
-| S2 V4C / V5 → V3-T1 | QUEUED | `chain_stage2.sh` |
+| S2 V4C / V5 → V3-T1 | PAUSED | 未开始；用 `chain_resume.sh` 重启 |
 | Mixed 20k | SKIPPED | 本夜不启动（用户要求） |
 
 作业：3443137（gpu115，4 × L40S，11-04 15:11 到期）运行中；3461041 是用户的 vscode-dev，排队中，没有动；3460841 已取消（冗余）。

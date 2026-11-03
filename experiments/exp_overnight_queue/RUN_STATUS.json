@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-03 11:20",
+ "updated": "2026-11-03 14:10",
  "stages": {
   "S0_density_ab": {
    "state": "COMPLETED",
@@ -30,20 +30,20 @@
    "detail": "reused: V2 Original task1 main 60k (recipe-identical), EMA@60k sha a379c0fb...; fixed-state eval queued with V4 training"
   },
   "S2_train_V4": {
-   "state": "RUNNING",
-   "detail": "17.8k/60k at 11:16 (0.45 s/step), ETA ~16:35; resume test passed (4/4 ranks EXACT at step 1000)"
+   "state": "PAUSED",
+   "detail": "full checkpoint at step 38000 (ckpt_last.pt sha c5df8906...); resume with chain_resume.sh or run_arm.sh v4_s10"
   },
   "S2_train_V4C_12k": {
-   "state": "QUEUED",
-   "detail": "after V4-S10 (needs ema_048000), ETA ~18:25"
+   "state": "PAUSED",
+   "detail": "after V4-S10 (needs ema_048000), ETA ~18:25 (queue paused 14:06)"
   },
   "S2_train_V5_12k": {
-   "state": "QUEUED",
-   "detail": "after V4C, ETA ~21:00"
+   "state": "PAUSED",
+   "detail": "after V4C, ETA ~21:00 (queue paused 14:06)"
   },
   "S2_train_V3T1": {
-   "state": "QUEUED",
-   "detail": "profile smoke then formal ~21:10; ~50k/60k by job end 11-04 15:11 (resumable)"
+   "state": "PAUSED",
+   "detail": "profile smoke then formal ~21:10; ~50k/60k by job end 11-04 15:11 (resumable) (queue paused 14:06)"
   },
   "S2_mixed_finetune": {
    "state": "SKIPPED",
@@ -60,6 +60,11 @@
   "S2_cache_s10": {
    "state": "COMPLETED",
    "detail": "180/180 trajectories on CPU 05:13-09:32"
+  },
+  "S2_eval_V4S10": {
+   "state": "PAUSED",
+   "detail": "runs after V4-S10 finishes"
   }
- }
+ },
+ "paused": "2026-11-03 14:06 by user request; see PAUSED_RESTART.md"
 }
