@@ -140,3 +140,13 @@ Dev / Test / Train 分组以及全部 Cov@k、AUC@k 见 `TABLE1_PAPER.md`、`TAB
    - B0 的 AUC@20 / AUC@100 最高；
    - B2 的 Final 最高，且在三个指标上都不低于 MAG-B；
    - V3 / V4 / V5 相对 B0 / B2 没有可测到的收益。
+
+## 附录（2026-11-03 23:40）：加入 EXP6 V5 / F1 的两个模型
+- **来源**：按 README 的“加入新模型”流程，加入 F1 在 Dev-3 上预注册选定的 F1-CONT-v1@2k（B0 + 室外 S10 续训 2k）与 F1-GQ-v1@5k（B0 + V5 Geometry Query 5k）。
+- **运行**：由本流水线运行全部 70 个 episode / 模型。
+- **对上文的影响**：上文 13 个模型的结论与数字都没有改变。表格中新增的两行由 `aggregate.py` 自动生成。
+- **All-14 结果**（AUC@20 / AUC@100 / Final）：
+  - F1-GQ-v1@5k：0.402 / 0.745 / 0.888
+  - F1-CONT-v1@2k：0.395 / 0.741 / 0.886
+  - 参照 B0：0.403 / 0.748 / 0.897
+- **与 B0 的配对差**：均不显著，详见 `experiments/exp6_v5/F1/reports/TABLE1_FOLLOWUP.md`。

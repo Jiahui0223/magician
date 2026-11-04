@@ -28,6 +28,8 @@ run_sim() {   # model scene start root
     V4)  $MG $X/exp6_v4/scripts/sim_out_v4.py --v4-ckpt $R/work_dirs/exp6_v4/checkpoints/final.pt --group V2M --scene $s --start $k --root $root ;;
     V4C) $MG $X/exp6_v4/scripts/sim_out_v4.py --v4-ckpt $R/work_dirs/exp6_v5/checkpoints/v4c_final.pt --group V2M --scene $s --start $k --root $root ;;
     V5)  $MG $X/exp6_v5/scripts/sim_out_v5.py --v4-ckpt $R/work_dirs/exp6_v5/checkpoints/v5_final.pt --group V2M --scene $s --start $k --root $root ;;
+    F1-CONT-v1@2k) env -u LD_PRELOAD -u PYTHONPATH -u T3_CKPT -u V3_CKPT -u V4_CKPT V4_P1_MODE=sparse /bsuscratch/jiahuizhang/envs/magician/bin/python $X/exp6_v5/scripts/sim_out_v5.py --v4-ckpt $R/work_dirs/exp6_v5/F1/runs/A/ema_002000.pt --group V2M --scene $s --start $k --root $root ;;
+    F1-GQ-v1@5k) env -u LD_PRELOAD -u PYTHONPATH -u T3_CKPT -u V3_CKPT -u V4_CKPT V4_P1_MODE=sparse /bsuscratch/jiahuizhang/envs/magician/bin/python $X/exp6_v5/scripts/sim_out_v5.py --v4-ckpt $R/work_dirs/exp6_v5/F1/runs/B/ema_005000.pt --group V2M --scene $s --start $k --root $root ;;
     *) echo "unknown model $m"; return 2 ;;
   esac
 }

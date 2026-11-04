@@ -523,6 +523,43 @@ models:
       official_auc_final: [0.692, 0.853]
     runtime_per_episode_s: {wall_median: 168, wall_min: 140, wall_max: 211, decision_per_step: 1.0, coverage_replay: 69}
 
+
+  # ---- added 2026-11-03 from EXP6 V5 / F1 (experiments/exp6_v5/F1/table1_export/f1_model_registry_entry.yaml); selected on Dev-3 only
+  - id: F1-CONT-v1@2k
+    label: "F1-A Continue@2k (B0 + outdoor S10 L_FM 2k)"
+    role: f1
+    status: READY
+    status_reason: F1 预注册规则在 Dev-3（15 ep，官方 AUC@20）上从 2k / 5k 中选出；Table 1 用自己的流水线重跑全部 70 个 episode（不导入 F1 的 Dev-3 记录）；启动链 = F1 G3 链（B0 权重经此链逐位复现 Table 1 B0 barts_s0）
+    sha256: 7b1e8b057ea493438aec6374937e6f5e9372fd1da18df001a302060eec3a9887
+    model_version: V2（model_v1，与 B0 相同结构，24,822,114 参数）
+    checkpoint:
+      real_path: work_dirs/exp6_v5/F1/runs/A/ema_002000.pt
+      weights: EMA 0.999
+      step: "B0 EMA@17.5k + 2000"
+    training: {init: "V2-Mix EMA@17.5k (B0, sha 343f41ab…)", data: "Macarons++ Train-6 去 S-c，S10 分片，无 MP3D", added_steps: 2000, loss: L_FM, lr: "2e-5 全部参数，预热 500，余弦（5k 日程中的 2k 点）", protocol: experiments/exp6_v5/F1/PROTOCOL.md}
+    inference: {p1_mode: sparse, inference_density: S10, scoring_density: S10, refresh: R10, planner: Greedy-NV, K: 4, euler_steps: 10, planning_region: 整个场景}
+    launch:
+      command: |
+        CUDA_VISIBLE_DEVICES=$G env -u LD_PRELOAD -u PYTHONPATH -u T3_CKPT -u V3_CKPT -u V4_CKPT V4_P1_MODE=sparse $MAGPY experiments/exp6_v5/scripts/sim_out_v5.py --v4-ckpt $R/work_dirs/exp6_v5/F1/runs/A/ema_002000.pt --group V2M --scene $S --start $K --root $T1W/closed_loop/outdoor/F1-CONT-v1@2k/V2M
+    historical_outdoor: {reusable_episodes: 0, note: "F1 的 Dev-3 G3 记录是开发结果，不导入"}
+  - id: F1-GQ-v1@5k
+    label: "F1-B Geometry Query@5k (B0 + V5 query, outdoor S10 L_FM 5k)"
+    role: f1
+    status: READY
+    status_reason: F1 预注册规则在 Dev-3（15 ep，官方 AUC@20）上从 2k / 5k 中选出；Table 1 用自己的流水线重跑全部 70 个 episode；同一启动链
+    sha256: a3f47c0375bb61810553e72227442fae8aeb0cf3ee25a20eceb2780cff82513c
+    model_version: V5Model（B0 的 encoder / UNet2D + V5RayDecoder，无 L_surf / L_bridge；24,988,647 参数）
+    checkpoint:
+      real_path: work_dirs/exp6_v5/F1/runs/B/ema_005000.pt
+      weights: EMA 0.999
+      step: "B0 EMA@17.5k + 5000（2000 只训 decoder + 3000 全部）"
+    training: {init: "V2-Mix EMA@17.5k (B0) encoder / UNet2D 逐位复制 + 随机 decoder", data: "Macarons++ Train-6 去 S-c，S10 分片，无 MP3D", added_steps: 5000, loss: L_FM, protocol: experiments/exp6_v5/F1/PROTOCOL.md}
+    inference: {p1_mode: sparse, inference_density: S10, scoring_density: S10, refresh: R10, planner: Greedy-NV, K: 4, euler_steps: 10, planning_region: 整个场景}
+    launch:
+      command: |
+        CUDA_VISIBLE_DEVICES=$G env -u LD_PRELOAD -u PYTHONPATH -u T3_CKPT -u V3_CKPT -u V4_CKPT V4_P1_MODE=sparse $MAGPY experiments/exp6_v5/scripts/sim_out_v5.py --v4-ckpt $R/work_dirs/exp6_v5/F1/runs/B/ema_005000.pt --group V2M --scene $S --start $K --root $T1W/closed_loop/outdoor/F1-GQ-v1@5k/V2M
+    historical_outdoor: {reusable_episodes: 0, note: "F1 的 Dev-3 G3 记录是开发结果，不导入"}
+
 # 不进入 models 列表的参考数据（aggregate.py 只读 models）
 references:
   MAGICIAN_LMDB:

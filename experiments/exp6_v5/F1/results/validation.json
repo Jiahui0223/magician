@@ -1,0 +1,17 @@
+{
+ "valid": {
+  "B0": 15,
+  "A2k": 15,
+  "A5k": 15,
+  "B2k": 15,
+  "B5k": 15
+ },
+ "missing": {},
+ "bad": [],
+ "checkpoint_sha256": {
+  "A2k": "7b1e8b057ea493438aec6374937e6f5e9372fd1da18df001a302060eec3a9887",
+  "A5k": "bd997903d33a3602b2fc57a41b392e6e9d27cd50590ec3a9646985c92895731f",
+  "B2k": "8a888d920f1df703fdabef33ac117a83c140a063d416636254969e40b8b21ad6",
+  "B5k": "a3f47c0375bb61810553e72227442fae8aeb0cf3ee25a20eceb2780cff82513c"
+ }
+}

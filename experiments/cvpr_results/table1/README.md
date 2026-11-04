@@ -42,3 +42,4 @@ $PY baseline_report.py                # reports/BASELINE_REPRODUCTION.md
 |---|---|
 | 2026-11-03 | protocol v1.0 冻结。完成场景、模型与历史 episode 审计，复用 390 个历史 episode，8 个主模型回归逐位一致 |
 | 2026-11-03 | 补跑 520 个 episode（双节点 8 × L40），dunnottar 的双图任务改为独占运行。910 / 910 有效，生成全部表格、图表与报告（`reports/FINAL_REPORT.md`） |
+| 2026-11-03 | 按“加入新模型”流程加入 EXP6 V5 / F1 的两个 Dev-3 选定 checkpoint：F1-CONT-v1@2k 与 F1-GQ-v1@5k（role f1，不进主图）。各 70 / 70，由本流水线运行（dunnottar 上 5 次 OOM，自动重试成功）；Dev-3 部分与 F1 记录 15 / 15 逐位一致。已有 13 个模型的结果没有改动 |

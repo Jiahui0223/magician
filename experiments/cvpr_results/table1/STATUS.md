@@ -20,3 +20,4 @@
 | T1.7 | `aggregate.py`（官方 + 单调）、`plot.py`（56 个文件） | ✅ | — |
 | T1.8 | 报告：BASELINE_REPRODUCTION / COMPUTE_COST / RESULTS_ANALYSIS（+ mono）/ MISSING_EPISODES / FINAL_REPORT | ✅ | — |
 | T1.9 | sofia_church → All-15（需要 protocol v1.1） | ⬜ | 等待用户决定 |
+| T1.10 | 加入 F1 的两个 checkpoint（F1-CONT-v1@2k、F1-GQ-v1@5k） | ✅ | 22:58–23:38，16–18 个 worker；140 / 140 有效；dunnottar 上 5 次 OOM 重试成功；`experiments/exp6_v5/F1/reports/TABLE1_FOLLOWUP.md` |

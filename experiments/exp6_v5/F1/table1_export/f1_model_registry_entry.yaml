@@ -1,0 +1,120 @@
+generated_by: experiments/exp6_v5/F1/scripts/export_table1.py
+protocol: experiments/exp6_v5/F1/PROTOCOL.md (f1-v1)
+selection_rule: per arm higher extended Dev-3 AUC@20 (official); |d| < 1e-4 -> 5k
+entries:
+- model_id: F1-CONT-v1@2k
+  model_family: V5-F1
+  arm: F1-A
+  selected_on_dev3: true
+  parent_model: V2-Mix-B0
+  parent_ckpt_sha256: 343f41ab8d566c52007c881b5f32375c3253dd8f1c7a0d8a906d412a165e4516
+  checkpoint: work_dirs/exp6_v5/F1/runs/A/ema_002000.pt
+  checkpoint_sha256: 7b1e8b057ea493438aec6374937e6f5e9372fd1da18df001a302060eec3a9887
+  weights: EMA 0.999
+  training_data: Outdoor Train-6 minus S-c / S10 shards (no MP3D)
+  training_steps_added: 2000
+  inference_density: S10
+  scoring_density: S10
+  refresh: R10
+  flow_k: 4
+  flow_euler_steps: 10
+  planner: Greedy-NV
+  architecture_difference: none (parent V2 architecture continued with L_FM)
+  selection_split: Dev (Dev-3, 15 episodes, official AUC@20)
+  launch:
+    command: CUDA_VISIBLE_DEVICES=$G V4_P1_MODE=sparse $MG experiments/exp6_v5/scripts/sim_out_v5.py --v4-ckpt $R/work_dirs/exp6_v5/F1/runs/A/ema_002000.pt --group V2M --scene $S --start $K --root $T1W/closed_loop/outdoor/<ID>/V2M
+    chain_regression: B0 weights through this chain reproduce Table 1 B0 barts_s0 bitwise (F1 CHECKPOINT_AUDIT §4)
+  dev3_development_result_official:
+    auc20: 0.3843847584309068
+    auc100: 0.7067232605640873
+    final: 0.8318510837822027
+    cov20: 0.6011987043460641
+    episodes: 15
+  status: REGISTERED_IN_TABLE1
+- model_id: F1-CONT-v1@5k
+  model_family: V5-F1
+  arm: F1-A
+  selected_on_dev3: false
+  parent_model: V2-Mix-B0
+  parent_ckpt_sha256: 343f41ab8d566c52007c881b5f32375c3253dd8f1c7a0d8a906d412a165e4516
+  checkpoint: work_dirs/exp6_v5/F1/runs/A/ema_005000.pt
+  checkpoint_sha256: bd997903d33a3602b2fc57a41b392e6e9d27cd50590ec3a9646985c92895731f
+  weights: EMA 0.999
+  training_data: Outdoor Train-6 minus S-c / S10 shards (no MP3D)
+  training_steps_added: 5000
+  inference_density: S10
+  scoring_density: S10
+  refresh: R10
+  flow_k: 4
+  flow_euler_steps: 10
+  planner: Greedy-NV
+  architecture_difference: none (parent V2 architecture continued with L_FM)
+  selection_split: Dev (Dev-3, 15 episodes, official AUC@20)
+  launch:
+    command: CUDA_VISIBLE_DEVICES=$G V4_P1_MODE=sparse $MG experiments/exp6_v5/scripts/sim_out_v5.py --v4-ckpt $R/work_dirs/exp6_v5/F1/runs/A/ema_005000.pt --group V2M --scene $S --start $K --root $T1W/closed_loop/outdoor/<ID>/V2M
+    chain_regression: B0 weights through this chain reproduce Table 1 B0 barts_s0 bitwise (F1 CHECKPOINT_AUDIT §4)
+  dev3_development_result_official:
+    auc20: 0.3701272226299448
+    auc100: 0.6911340848519577
+    final: 0.8171417985082808
+    cov20: 0.5768178579664579
+    episodes: 15
+  status: NOT_SELECTED (provenance only)
+- model_id: F1-GQ-v1@2k
+  model_family: V5-F1
+  arm: F1-B
+  selected_on_dev3: false
+  parent_model: V2-Mix-B0
+  parent_ckpt_sha256: 343f41ab8d566c52007c881b5f32375c3253dd8f1c7a0d8a906d412a165e4516
+  checkpoint: work_dirs/exp6_v5/F1/runs/B/ema_002000.pt
+  checkpoint_sha256: 8a888d920f1df703fdabef33ac117a83c140a063d416636254969e40b8b21ad6
+  weights: EMA 0.999
+  training_data: Outdoor Train-6 minus S-c / S10 shards (no MP3D)
+  training_steps_added: 2000
+  inference_density: S10
+  scoring_density: S10
+  refresh: R10
+  flow_k: 4
+  flow_euler_steps: 10
+  planner: Greedy-NV
+  architecture_difference: V5 Geometry Query only (V5RayDecoder replaces Ray32/Conv1D); no L_surf / L_bridge
+  selection_split: Dev (Dev-3, 15 episodes, official AUC@20)
+  launch:
+    command: CUDA_VISIBLE_DEVICES=$G V4_P1_MODE=sparse $MG experiments/exp6_v5/scripts/sim_out_v5.py --v4-ckpt $R/work_dirs/exp6_v5/F1/runs/B/ema_002000.pt --group V2M --scene $S --start $K --root $T1W/closed_loop/outdoor/<ID>/V2M
+    chain_regression: B0 weights through this chain reproduce Table 1 B0 barts_s0 bitwise (F1 CHECKPOINT_AUDIT §4)
+  dev3_development_result_official:
+    auc20: 0.3777939697796479
+    auc100: 0.7112579348504013
+    final: 0.8653843119709862
+    cov20: 0.5632929186718022
+    episodes: 15
+  status: NOT_SELECTED (provenance only)
+- model_id: F1-GQ-v1@5k
+  model_family: V5-F1
+  arm: F1-B
+  selected_on_dev3: true
+  parent_model: V2-Mix-B0
+  parent_ckpt_sha256: 343f41ab8d566c52007c881b5f32375c3253dd8f1c7a0d8a906d412a165e4516
+  checkpoint: work_dirs/exp6_v5/F1/runs/B/ema_005000.pt
+  checkpoint_sha256: a3f47c0375bb61810553e72227442fae8aeb0cf3ee25a20eceb2780cff82513c
+  weights: EMA 0.999
+  training_data: Outdoor Train-6 minus S-c / S10 shards (no MP3D)
+  training_steps_added: 5000
+  inference_density: S10
+  scoring_density: S10
+  refresh: R10
+  flow_k: 4
+  flow_euler_steps: 10
+  planner: Greedy-NV
+  architecture_difference: V5 Geometry Query only (V5RayDecoder replaces Ray32/Conv1D); no L_surf / L_bridge
+  selection_split: Dev (Dev-3, 15 episodes, official AUC@20)
+  launch:
+    command: CUDA_VISIBLE_DEVICES=$G V4_P1_MODE=sparse $MG experiments/exp6_v5/scripts/sim_out_v5.py --v4-ckpt $R/work_dirs/exp6_v5/F1/runs/B/ema_005000.pt --group V2M --scene $S --start $K --root $T1W/closed_loop/outdoor/<ID>/V2M
+    chain_regression: B0 weights through this chain reproduce Table 1 B0 barts_s0 bitwise (F1 CHECKPOINT_AUDIT §4)
+  dev3_development_result_official:
+    auc20: 0.3932218986843991
+    auc100: 0.7143086652953542
+    final: 0.842143989087051
+    cov20: 0.6107248602632973
+    episodes: 15
+  status: REGISTERED_IN_TABLE1

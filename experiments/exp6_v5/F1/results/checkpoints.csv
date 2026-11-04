@@ -1,0 +1,13 @@
+model,arm,step,path,sha256
+F1-A,A,0,work_dirs/exp6_v5/F1/runs/A/ema_000000.pt,860d4de1d9b658c2abb3cb5b3196661496c1a1494e91d74a21b7679593bf5974
+F1-A,A,1000,work_dirs/exp6_v5/F1/runs/A/ema_001000.pt,f2082e9f3eda853c990e0085fc744c951d357daf02e4b06c1711c5ebfb5aaa8c
+F1-A,A,2000,work_dirs/exp6_v5/F1/runs/A/ema_002000.pt,7b1e8b057ea493438aec6374937e6f5e9372fd1da18df001a302060eec3a9887
+F1-A,A,3000,work_dirs/exp6_v5/F1/runs/A/ema_003000.pt,db4681e8350c5a7cd0a27090e3eceebf4cd474872446969bd0969ff060c3b767
+F1-A,A,4000,work_dirs/exp6_v5/F1/runs/A/ema_004000.pt,fc58bbeb78695052179239779cc125a7a3651d7df72e994057ee80c327d41ec6
+F1-A,A,5000,work_dirs/exp6_v5/F1/runs/A/ema_005000.pt,bd997903d33a3602b2fc57a41b392e6e9d27cd50590ec3a9646985c92895731f
+F1-B,B,0,work_dirs/exp6_v5/F1/runs/B/ema_000000.pt,f9b24f1b385c81a6671b529c5a3340cb4b60615425fc718f665fa1a9ecc7a80c
+F1-B,B,1000,work_dirs/exp6_v5/F1/runs/B/ema_001000.pt,fb075583c8f658a04bf08fe249ef3252f1abf6c04f84e974c3e80ea316dd1eb3
+F1-B,B,2000,work_dirs/exp6_v5/F1/runs/B/ema_002000.pt,8a888d920f1df703fdabef33ac117a83c140a063d416636254969e40b8b21ad6
+F1-B,B,3000,work_dirs/exp6_v5/F1/runs/B/ema_003000.pt,988b5dcc6dc70e3e72da46ac53de6f5be4fba0ddde54a8c0f9b182c48b77621a
+F1-B,B,4000,work_dirs/exp6_v5/F1/runs/B/ema_004000.pt,e8371e52b4ff4ceaca422384f2fbbea83c76a996146a33cd33fbf81407d63533
+F1-B,B,5000,work_dirs/exp6_v5/F1/runs/B/ema_005000.pt,a3f47c0375bb61810553e72227442fae8aeb0cf3ee25a20eceb2780cff82513c

@@ -17,3 +17,5 @@
 | B1 | 70 | 5 | sofia_church_s0 sofia_church_s1 sofia_church_s2 sofia_church_s3 sofia_church_s4 |
 | V3.1 | 70 | 5 | sofia_church_s0 sofia_church_s1 sofia_church_s2 sofia_church_s3 sofia_church_s4 |
 | V4C | 70 | 5 | sofia_church_s0 sofia_church_s1 sofia_church_s2 sofia_church_s3 sofia_church_s4 |
+| F1-CONT-v1@2k | 70 | 5 | sofia_church_s0 sofia_church_s1 sofia_church_s2 sofia_church_s3 sofia_church_s4 |
+| F1-GQ-v1@5k | 70 | 5 | sofia_church_s0 sofia_church_s1 sofia_church_s2 sofia_church_s3 sofia_church_s4 |
