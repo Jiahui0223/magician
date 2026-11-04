@@ -144,190 +144,88 @@
    "id": "V3-D1-H3-NORISK",
    "splits": {
     "train": {
-     "episodes": 4,
+     "episodes": 30,
      "episodes_total": 30,
-     "scenes_complete": 0,
+     "scenes_complete": 6,
      "scenes_total": 6,
-     "complete": false,
-     "auc10": null,
-     "auc20": null,
-     "auc50": null,
-     "auc100": null,
-     "cov20": null,
-     "cov50": null,
-     "final": null,
-     "missing": [
-      "bannerman_s0",
-      "bannerman_s1",
-      "bannerman_s2",
-      "bannerman_s3",
-      "bannerman_s4",
-      "dunnottar_s0",
-      "dunnottar_s1",
-      "dunnottar_s2",
-      "dunnottar_s3",
-      "dunnottar_s4",
-      "fushimi_s0",
-      "fushimi_s1",
-      "fushimi_s2",
-      "fushimi_s3",
-      "fushimi_s4",
-      "liberty_s0",
-      "liberty_s1",
-      "liberty_s2",
-      "liberty_s3",
-      "liberty_s4",
-      "pisa_s4",
-      "redeemer_s0",
-      "redeemer_s1",
-      "redeemer_s2",
-      "redeemer_s3",
-      "redeemer_s4"
-     ]
+     "complete": true,
+     "auc10": 0.30140822797825767,
+     "auc20": 0.44106278993166304,
+     "auc50": 0.6632697330651472,
+     "auc100": 0.793815746378352,
+     "cov20": 0.6534728793012206,
+     "cov50": 0.8952755781329206,
+     "final": 0.9343158737705908,
+     "missing": []
     },
     "dev": {
-     "episodes": 17,
+     "episodes": 25,
      "episodes_total": 25,
-     "scenes_complete": 0,
+     "scenes_complete": 5,
      "scenes_total": 5,
-     "complete": false,
-     "auc10": null,
-     "auc20": null,
-     "auc50": null,
-     "auc100": null,
-     "cov20": null,
-     "cov50": null,
-     "final": null,
-     "missing": [
-      "barts_s4",
-      "colosseum_s4",
-      "eiffel_s3",
-      "eiffel_s4",
-      "pantheon_s3",
-      "pantheon_s4",
-      "sestino_museum_s3",
-      "sestino_museum_s4"
-     ]
+     "complete": true,
+     "auc10": 0.2862366895180896,
+     "auc20": 0.44686530211215203,
+     "auc50": 0.6531630428515668,
+     "auc100": 0.7654555297731047,
+     "cov20": 0.6968360585564918,
+     "cov50": 0.8498460499202543,
+     "final": 0.8955569899901373,
+     "missing": []
     },
     "test": {
-     "episodes": 0,
+     "episodes": 15,
      "episodes_total": 15,
-     "scenes_complete": 0,
+     "scenes_complete": 3,
      "scenes_total": 3,
-     "complete": false,
-     "auc10": null,
-     "auc20": null,
-     "auc50": null,
-     "auc100": null,
-     "cov20": null,
-     "cov50": null,
-     "final": null,
-     "missing": [
-      "alhambra_s0",
-      "alhambra_s1",
-      "alhambra_s2",
-      "alhambra_s3",
-      "alhambra_s4",
-      "bridge_s0",
-      "bridge_s1",
-      "bridge_s2",
-      "bridge_s3",
-      "bridge_s4",
-      "neuschwanstein_s0",
-      "neuschwanstein_s1",
-      "neuschwanstein_s2",
-      "neuschwanstein_s3",
-      "neuschwanstein_s4"
-     ]
+     "complete": true,
+     "auc10": 0.21983478826940261,
+     "auc20": 0.3586078102504591,
+     "auc50": 0.5630128713719339,
+     "auc100": 0.7074644000800042,
+     "cov20": 0.5841980724445658,
+     "cov50": 0.780640737017478,
+     "final": 0.8846373658485099,
+     "missing": []
     },
     "all14": {
-     "episodes": 21,
+     "episodes": 70,
      "episodes_total": 70,
-     "scenes_complete": 0,
+     "scenes_complete": 14,
      "scenes_total": 14,
-     "complete": false,
-     "auc10": null,
-     "auc20": null,
-     "auc50": null,
-     "auc100": null,
-     "cov20": null,
-     "cov50": null,
-     "final": null,
-     "missing": [
-      "alhambra_s0",
-      "alhambra_s1",
-      "alhambra_s2",
-      "alhambra_s3",
-      "alhambra_s4",
-      "bannerman_s0",
-      "bannerman_s1",
-      "bannerman_s2",
-      "bannerman_s3",
-      "bannerman_s4",
-      "barts_s4",
-      "bridge_s0",
-      "bridge_s1",
-      "bridge_s2",
-      "bridge_s3",
-      "bridge_s4",
-      "colosseum_s4",
-      "dunnottar_s0",
-      "dunnottar_s1",
-      "dunnottar_s2",
-      "dunnottar_s3",
-      "dunnottar_s4",
-      "eiffel_s3",
-      "eiffel_s4",
-      "fushimi_s0",
-      "fushimi_s1",
-      "fushimi_s2",
-      "fushimi_s3",
-      "fushimi_s4",
-      "liberty_s0",
-      "liberty_s1",
-      "liberty_s2",
-      "liberty_s3",
-      "liberty_s4",
-      "neuschwanstein_s0",
-      "neuschwanstein_s1",
-      "neuschwanstein_s2",
-      "neuschwanstein_s3",
-      "neuschwanstein_s4",
-      "pantheon_s3",
-      "pantheon_s4",
-      "pisa_s4",
-      "redeemer_s0",
-      "redeemer_s1",
-      "redeemer_s2",
-      "redeemer_s3",
-      "redeemer_s4",
-      "sestino_museum_s3",
-      "sestino_museum_s4"
-     ]
+     "complete": true,
+     "auc10": 0.2785097985905859,
+     "auc20": 0.42546619149300824,
+     "auc50": 0.638176587626037,
+     "auc100": 0.7651832376696891,
+     "cov20": 0.6541151275659629,
+     "cov50": 0.8544861378179449,
+     "final": 0.9098280207228403,
+     "missing": []
     }
    },
    "runtime": [
-    6.296030163764954,
-    8.348449802398683,
-    8.694822788238525
+    5.658602356910706,
+    7.960793280601502,
+    30.498456954956055
    ]
   },
   "D2 Depth3-B3": {
    "id": "V3-D2-DEPTH3-B3",
    "splits": {
     "train": {
-     "episodes": 3,
+     "episodes": 5,
      "episodes_total": 30,
-     "scenes_complete": 0,
+     "scenes_complete": 1,
      "scenes_total": 6,
      "complete": false,
-     "auc10": null,
-     "auc20": null,
-     "auc50": null,
-     "auc100": null,
-     "cov20": null,
-     "cov50": null,
-     "final": null,
+     "auc10": 0.2709870521588759,
+     "auc20": 0.3895512333459125,
+     "auc50": 0.6193707530752278,
+     "auc100": 0.7684602883032243,
+     "cov20": 0.5900306294683866,
+     "cov50": 0.8831747357108266,
+     "final": 0.9343871106026775,
      "missing": [
       "bannerman_s0",
       "bannerman_s1",
@@ -349,8 +247,6 @@
       "liberty_s2",
       "liberty_s3",
       "liberty_s4",
-      "pisa_s3",
-      "pisa_s4",
       "redeemer_s0",
       "redeemer_s1",
       "redeemer_s2",
@@ -359,29 +255,19 @@
      ]
     },
     "dev": {
-     "episodes": 16,
+     "episodes": 25,
      "episodes_total": 25,
-     "scenes_complete": 0,
+     "scenes_complete": 5,
      "scenes_total": 5,
-     "complete": false,
-     "auc10": null,
-     "auc20": null,
-     "auc50": null,
-     "auc100": null,
-     "cov20": null,
-     "cov50": null,
-     "final": null,
-     "missing": [
-      "barts_s3",
-      "barts_s4",
-      "colosseum_s4",
-      "eiffel_s3",
-      "eiffel_s4",
-      "pantheon_s3",
-      "pantheon_s4",
-      "sestino_museum_s3",
-      "sestino_museum_s4"
-     ]
+     "complete": true,
+     "auc10": 0.2749260740248797,
+     "auc20": 0.41281975744089544,
+     "auc50": 0.6270760286154141,
+     "auc100": 0.7575188437843202,
+     "cov20": 0.6205191937467294,
+     "cov50": 0.8624675395353405,
+     "final": 0.8958986649006622,
+     "missing": []
     },
     "test": {
      "episodes": 0,
@@ -415,18 +301,18 @@
      ]
     },
     "all14": {
-     "episodes": 19,
+     "episodes": 30,
      "episodes_total": 70,
-     "scenes_complete": 0,
+     "scenes_complete": 6,
      "scenes_total": 14,
      "complete": false,
-     "auc10": null,
-     "auc20": null,
-     "auc50": null,
-     "auc100": null,
-     "cov20": null,
-     "cov50": null,
-     "final": null,
+     "auc10": 0.2742695703805457,
+     "auc20": 0.40894167009173166,
+     "auc50": 0.6257918160253831,
+     "auc100": 0.7593424178708043,
+     "cov20": 0.6154377663670055,
+     "cov50": 0.8659187388979216,
+     "final": 0.9023134058509981,
      "missing": [
       "alhambra_s0",
       "alhambra_s1",
@@ -438,21 +324,16 @@
       "bannerman_s2",
       "bannerman_s3",
       "bannerman_s4",
-      "barts_s3",
-      "barts_s4",
       "bridge_s0",
       "bridge_s1",
       "bridge_s2",
       "bridge_s3",
       "bridge_s4",
-      "colosseum_s4",
       "dunnottar_s0",
       "dunnottar_s1",
       "dunnottar_s2",
       "dunnottar_s3",
       "dunnottar_s4",
-      "eiffel_s3",
-      "eiffel_s4",
       "fushimi_s0",
       "fushimi_s1",
       "fushimi_s2",
@@ -468,23 +349,17 @@
       "neuschwanstein_s2",
       "neuschwanstein_s3",
       "neuschwanstein_s4",
-      "pantheon_s3",
-      "pantheon_s4",
-      "pisa_s3",
-      "pisa_s4",
       "redeemer_s0",
       "redeemer_s1",
       "redeemer_s2",
       "redeemer_s3",
-      "redeemer_s4",
-      "sestino_museum_s3",
-      "sestino_museum_s4"
+      "redeemer_s4"
      ]
     }
    },
    "runtime": [
-    14.390902161598206,
-    20.184820771217357,
+    13.976494669914246,
+    19.849425888061525,
     8.694822788238525
    ]
   },
@@ -492,6 +367,159 @@
    "id": "V3-D3-DEPTH3-B5",
    "splits": {
     "train": {
+     "episodes": 5,
+     "episodes_total": 30,
+     "scenes_complete": 1,
+     "scenes_total": 6,
+     "complete": false,
+     "auc10": 0.2709870521588759,
+     "auc20": 0.3895512333459125,
+     "auc50": 0.6193707530752278,
+     "auc100": 0.7686660420184557,
+     "cov20": 0.5900306294683866,
+     "cov50": 0.8831747357108266,
+     "final": 0.9347076155879865,
+     "missing": [
+      "bannerman_s0",
+      "bannerman_s1",
+      "bannerman_s2",
+      "bannerman_s3",
+      "bannerman_s4",
+      "dunnottar_s0",
+      "dunnottar_s1",
+      "dunnottar_s2",
+      "dunnottar_s3",
+      "dunnottar_s4",
+      "fushimi_s0",
+      "fushimi_s1",
+      "fushimi_s2",
+      "fushimi_s3",
+      "fushimi_s4",
+      "liberty_s0",
+      "liberty_s1",
+      "liberty_s2",
+      "liberty_s3",
+      "liberty_s4",
+      "redeemer_s0",
+      "redeemer_s1",
+      "redeemer_s2",
+      "redeemer_s3",
+      "redeemer_s4"
+     ]
+    },
+    "dev": {
+     "episodes": 25,
+     "episodes_total": 25,
+     "scenes_complete": 5,
+     "scenes_total": 5,
+     "complete": true,
+     "auc10": 0.27499927301644955,
+     "auc20": 0.4130483645760741,
+     "auc50": 0.6281801012423686,
+     "auc100": 0.757255860468462,
+     "cov20": 0.6201128291907171,
+     "cov50": 0.8602012099216679,
+     "final": 0.8954263507993161,
+     "missing": []
+    },
+    "test": {
+     "episodes": 0,
+     "episodes_total": 15,
+     "scenes_complete": 0,
+     "scenes_total": 3,
+     "complete": false,
+     "auc10": null,
+     "auc20": null,
+     "auc50": null,
+     "auc100": null,
+     "cov20": null,
+     "cov50": null,
+     "final": null,
+     "missing": [
+      "alhambra_s0",
+      "alhambra_s1",
+      "alhambra_s2",
+      "alhambra_s3",
+      "alhambra_s4",
+      "bridge_s0",
+      "bridge_s1",
+      "bridge_s2",
+      "bridge_s3",
+      "bridge_s4",
+      "neuschwanstein_s0",
+      "neuschwanstein_s1",
+      "neuschwanstein_s2",
+      "neuschwanstein_s3",
+      "neuschwanstein_s4"
+     ]
+    },
+    "all14": {
+     "episodes": 30,
+     "episodes_total": 70,
+     "scenes_complete": 6,
+     "scenes_total": 14,
+     "complete": false,
+     "auc10": 0.2743305695401873,
+     "auc20": 0.4091321760377138,
+     "auc50": 0.6267118765478451,
+     "auc100": 0.7591575573934611,
+     "cov20": 0.6150991292369954,
+     "cov50": 0.8640301308865276,
+     "final": 0.9019732282640945,
+     "missing": [
+      "alhambra_s0",
+      "alhambra_s1",
+      "alhambra_s2",
+      "alhambra_s3",
+      "alhambra_s4",
+      "bannerman_s0",
+      "bannerman_s1",
+      "bannerman_s2",
+      "bannerman_s3",
+      "bannerman_s4",
+      "bridge_s0",
+      "bridge_s1",
+      "bridge_s2",
+      "bridge_s3",
+      "bridge_s4",
+      "dunnottar_s0",
+      "dunnottar_s1",
+      "dunnottar_s2",
+      "dunnottar_s3",
+      "dunnottar_s4",
+      "fushimi_s0",
+      "fushimi_s1",
+      "fushimi_s2",
+      "fushimi_s3",
+      "fushimi_s4",
+      "liberty_s0",
+      "liberty_s1",
+      "liberty_s2",
+      "liberty_s3",
+      "liberty_s4",
+      "neuschwanstein_s0",
+      "neuschwanstein_s1",
+      "neuschwanstein_s2",
+      "neuschwanstein_s3",
+      "neuschwanstein_s4",
+      "redeemer_s0",
+      "redeemer_s1",
+      "redeemer_s2",
+      "redeemer_s3",
+      "redeemer_s4"
+     ]
+    }
+   },
+   "runtime": [
+    15.448638200759888,
+    22.321938252449034,
+    8.694822788238525
+   ]
+  },
+  "D4 Depth4-B3": {
+   "id": "V3-D4-DEPTH4-B3",
+   "splits": {
+    "train": {
      "episodes": 3,
      "episodes_total": 30,
      "scenes_complete": 0,
@@ -535,63 +563,66 @@
      ]
     },
     "dev": {
+     "episodes": 13,
+     "episodes_total": 25,
+     "scenes_complete": 0,
+     "scenes_total": 5,
+     "complete": false,
+     "auc10": null,
+     "auc20": null,
+     "auc50": null,
+     "auc100": null,
+     "cov20": null,
+     "cov50": null,
+     "final": null,
+     "missing": [
+      "barts_s3",
+      "barts_s4",
+      "colosseum_s3",
+      "colosseum_s4",
+      "eiffel_s3",
+      "eiffel_s4",
+      "pantheon_s2",
+      "pantheon_s3",
+      "pantheon_s4",
+      "sestino_museum_s2",
+      "sestino_museum_s3",
+      "sestino_museum_s4"
+     ]
+    },
+    "test": {
+     "episodes": 0,
+     "episodes_total": 15,
+     "scenes_complete": 0,
+     "scenes_total": 3,
+     "complete": false,
+     "auc10": null,
+     "auc20": null,
+     "auc50": null,
+     "auc100": null,
+     "cov20": null,
+     "cov50": null,
+     "final": null,
+     "missing": [
+      "alhambra_s0",
+      "alhambra_s1",
+      "alhambra_s2",
+      "alhambra_s3",
+      "alhambra_s4",
+      "bridge_s0",
+      "bridge_s1",
+      "bridge_s2",
+      "bridge_s3",
+      "bridge_s4",
+      "neuschwanstein_s0",
+      "neuschwanstein_s1",
+      "neuschwanstein_s2",
+      "neuschwanstein_s3",
+      "neuschwanstein_s4"
+     ]
+    },
+    "all14": {
      "episodes": 16,
-     "episodes_total": 25,
-     "scenes_complete": 0,
-     "scenes_total": 5,
-     "complete": false,
-     "auc10": null,
-     "auc20": null,
-     "auc50": null,
-     "auc100": null,
-     "cov20": null,
-     "cov50": null,
-     "final": null,
-     "missing": [
-      "barts_s3",
-      "barts_s4",
-      "colosseum_s4",
-      "eiffel_s3",
-      "eiffel_s4",
-      "pantheon_s3",
-      "pantheon_s4",
-      "sestino_museum_s3",
-      "sestino_museum_s4"
-     ]
-    },
-    "test": {
-     "episodes": 0,
-     "episodes_total": 15,
-     "scenes_complete": 0,
-     "scenes_total": 3,
-     "complete": false,
-     "auc10": null,
-     "auc20": null,
-     "auc50": null,
-     "auc100": null,
-     "cov20": null,
-     "cov50": null,
-     "final": null,
-     "missing": [
-      "alhambra_s0",
-      "alhambra_s1",
-      "alhambra_s2",
-      "alhambra_s3",
-      "alhambra_s4",
-      "bridge_s0",
-      "bridge_s1",
-      "bridge_s2",
-      "bridge_s3",
-      "bridge_s4",
-      "neuschwanstein_s0",
-      "neuschwanstein_s1",
-      "neuschwanstein_s2",
-      "neuschwanstein_s3",
-      "neuschwanstein_s4"
-     ]
-    },
-    "all14": {
-     "episodes": 19,
      "episodes_total": 70,
      "scenes_complete": 0,
      "scenes_total": 14,
@@ -621,6 +652,7 @@
       "bridge_s2",
       "bridge_s3",
       "bridge_s4",
+      "colosseum_s3",
       "colosseum_s4",
       "dunnottar_s0",
       "dunnottar_s1",
@@ -644,6 +676,7 @@
       "neuschwanstein_s2",
       "neuschwanstein_s3",
       "neuschwanstein_s4",
+      "pantheon_s2",
       "pantheon_s3",
       "pantheon_s4",
       "pisa_s3",
@@ -653,229 +686,16 @@
       "redeemer_s2",
       "redeemer_s3",
       "redeemer_s4",
+      "sestino_museum_s2",
       "sestino_museum_s3",
       "sestino_museum_s4"
      ]
     }
    },
    "runtime": [
-    15.608088612556458,
-    22.374562478065492,
+    18.67859399318695,
+    26.304087710380557,
     8.694822788238525
-   ]
-  },
-  "D4 Depth4-B3": {
-   "id": "V3-D4-DEPTH4-B3",
-   "splits": {
-    "train": {
-     "episodes": 0,
-     "episodes_total": 30,
-     "scenes_complete": 0,
-     "scenes_total": 6,
-     "complete": false,
-     "auc10": null,
-     "auc20": null,
-     "auc50": null,
-     "auc100": null,
-     "cov20": null,
-     "cov50": null,
-     "final": null,
-     "missing": [
-      "bannerman_s0",
-      "bannerman_s1",
-      "bannerman_s2",
-      "bannerman_s3",
-      "bannerman_s4",
-      "dunnottar_s0",
-      "dunnottar_s1",
-      "dunnottar_s2",
-      "dunnottar_s3",
-      "dunnottar_s4",
-      "fushimi_s0",
-      "fushimi_s1",
-      "fushimi_s2",
-      "fushimi_s3",
-      "fushimi_s4",
-      "liberty_s0",
-      "liberty_s1",
-      "liberty_s2",
-      "liberty_s3",
-      "liberty_s4",
-      "pisa_s0",
-      "pisa_s1",
-      "pisa_s2",
-      "pisa_s3",
-      "pisa_s4",
-      "redeemer_s0",
-      "redeemer_s1",
-      "redeemer_s2",
-      "redeemer_s3",
-      "redeemer_s4"
-     ]
-    },
-    "dev": {
-     "episodes": 0,
-     "episodes_total": 25,
-     "scenes_complete": 0,
-     "scenes_total": 5,
-     "complete": false,
-     "auc10": null,
-     "auc20": null,
-     "auc50": null,
-     "auc100": null,
-     "cov20": null,
-     "cov50": null,
-     "final": null,
-     "missing": [
-      "barts_s0",
-      "barts_s1",
-      "barts_s2",
-      "barts_s3",
-      "barts_s4",
-      "colosseum_s0",
-      "colosseum_s1",
-      "colosseum_s2",
-      "colosseum_s3",
-      "colosseum_s4",
-      "eiffel_s0",
-      "eiffel_s1",
-      "eiffel_s2",
-      "eiffel_s3",
-      "eiffel_s4",
-      "pantheon_s0",
-      "pantheon_s1",
-      "pantheon_s2",
-      "pantheon_s3",
-      "pantheon_s4",
-      "sestino_museum_s0",
-      "sestino_museum_s1",
-      "sestino_museum_s2",
-      "sestino_museum_s3",
-      "sestino_museum_s4"
-     ]
-    },
-    "test": {
-     "episodes": 0,
-     "episodes_total": 15,
-     "scenes_complete": 0,
-     "scenes_total": 3,
-     "complete": false,
-     "auc10": null,
-     "auc20": null,
-     "auc50": null,
-     "auc100": null,
-     "cov20": null,
-     "cov50": null,
-     "final": null,
-     "missing": [
-      "alhambra_s0",
-      "alhambra_s1",
-      "alhambra_s2",
-      "alhambra_s3",
-      "alhambra_s4",
-      "bridge_s0",
-      "bridge_s1",
-      "bridge_s2",
-      "bridge_s3",
-      "bridge_s4",
-      "neuschwanstein_s0",
-      "neuschwanstein_s1",
-      "neuschwanstein_s2",
-      "neuschwanstein_s3",
-      "neuschwanstein_s4"
-     ]
-    },
-    "all14": {
-     "episodes": 0,
-     "episodes_total": 70,
-     "scenes_complete": 0,
-     "scenes_total": 14,
-     "complete": false,
-     "auc10": null,
-     "auc20": null,
-     "auc50": null,
-     "auc100": null,
-     "cov20": null,
-     "cov50": null,
-     "final": null,
-     "missing": [
-      "alhambra_s0",
-      "alhambra_s1",
-      "alhambra_s2",
-      "alhambra_s3",
-      "alhambra_s4",
-      "bannerman_s0",
-      "bannerman_s1",
-      "bannerman_s2",
-      "bannerman_s3",
-      "bannerman_s4",
-      "barts_s0",
-      "barts_s1",
-      "barts_s2",
-      "barts_s3",
-      "barts_s4",
-      "bridge_s0",
-      "bridge_s1",
-      "bridge_s2",
-      "bridge_s3",
-      "bridge_s4",
-      "colosseum_s0",
-      "colosseum_s1",
-      "colosseum_s2",
-      "colosseum_s3",
-      "colosseum_s4",
-      "dunnottar_s0",
-      "dunnottar_s1",
-      "dunnottar_s2",
-      "dunnottar_s3",
-      "dunnottar_s4",
-      "eiffel_s0",
-      "eiffel_s1",
-      "eiffel_s2",
-      "eiffel_s3",
-      "eiffel_s4",
-      "fushimi_s0",
-      "fushimi_s1",
-      "fushimi_s2",
-      "fushimi_s3",
-      "fushimi_s4",
-      "liberty_s0",
-      "liberty_s1",
-      "liberty_s2",
-      "liberty_s3",
-      "liberty_s4",
-      "neuschwanstein_s0",
-      "neuschwanstein_s1",
-      "neuschwanstein_s2",
-      "neuschwanstein_s3",
-      "neuschwanstein_s4",
-      "pantheon_s0",
-      "pantheon_s1",
-      "pantheon_s2",
-      "pantheon_s3",
-      "pantheon_s4",
-      "pisa_s0",
-      "pisa_s1",
-      "pisa_s2",
-      "pisa_s3",
-      "pisa_s4",
-      "redeemer_s0",
-      "redeemer_s1",
-      "redeemer_s2",
-      "redeemer_s3",
-      "redeemer_s4",
-      "sestino_museum_s0",
-      "sestino_museum_s1",
-      "sestino_museum_s2",
-      "sestino_museum_s3",
-      "sestino_museum_s4"
-     ]
-    }
-   },
-   "runtime": [
-    null,
-    null,
-    null
    ]
   },
   "Y45K + H0": {
@@ -928,45 +748,19 @@
      ]
     },
     "dev": {
-     "episodes": 0,
+     "episodes": 25,
      "episodes_total": 25,
-     "scenes_complete": 0,
+     "scenes_complete": 5,
      "scenes_total": 5,
-     "complete": false,
-     "auc10": null,
-     "auc20": null,
-     "auc50": null,
-     "auc100": null,
-     "cov20": null,
-     "cov50": null,
-     "final": null,
-     "missing": [
-      "barts_s0",
-      "barts_s1",
-      "barts_s2",
-      "barts_s3",
-      "barts_s4",
-      "colosseum_s0",
-      "colosseum_s1",
-      "colosseum_s2",
-      "colosseum_s3",
-      "colosseum_s4",
-      "eiffel_s0",
-      "eiffel_s1",
-      "eiffel_s2",
-      "eiffel_s3",
-      "eiffel_s4",
-      "pantheon_s0",
-      "pantheon_s1",
-      "pantheon_s2",
-      "pantheon_s3",
-      "pantheon_s4",
-      "sestino_museum_s0",
-      "sestino_museum_s1",
-      "sestino_museum_s2",
-      "sestino_museum_s3",
-      "sestino_museum_s4"
-     ]
+     "complete": true,
+     "auc10": 0.24760660899405273,
+     "auc20": 0.37503430570935276,
+     "auc50": 0.5955964666729008,
+     "auc100": 0.7324902865623102,
+     "cov20": 0.6005346811064619,
+     "cov50": 0.8244196494899428,
+     "final": 0.8938411146753836,
+     "missing": []
     },
     "test": {
      "episodes": 0,
@@ -1000,18 +794,18 @@
      ]
     },
     "all14": {
-     "episodes": 0,
+     "episodes": 25,
      "episodes_total": 70,
-     "scenes_complete": 0,
+     "scenes_complete": 5,
      "scenes_total": 14,
      "complete": false,
-     "auc10": null,
-     "auc20": null,
-     "auc50": null,
-     "auc100": null,
-     "cov20": null,
-     "cov50": null,
-     "final": null,
+     "auc10": 0.24760660899405273,
+     "auc20": 0.37503430570935276,
+     "auc50": 0.5955964666729008,
+     "auc100": 0.7324902865623102,
+     "cov20": 0.6005346811064619,
+     "cov50": 0.8244196494899428,
+     "final": 0.8938411146753836,
      "missing": [
       "alhambra_s0",
       "alhambra_s1",
@@ -1023,31 +817,16 @@
       "bannerman_s2",
       "bannerman_s3",
       "bannerman_s4",
-      "barts_s0",
-      "barts_s1",
-      "barts_s2",
-      "barts_s3",
-      "barts_s4",
       "bridge_s0",
       "bridge_s1",
       "bridge_s2",
       "bridge_s3",
       "bridge_s4",
-      "colosseum_s0",
-      "colosseum_s1",
-      "colosseum_s2",
-      "colosseum_s3",
-      "colosseum_s4",
       "dunnottar_s0",
       "dunnottar_s1",
       "dunnottar_s2",
       "dunnottar_s3",
       "dunnottar_s4",
-      "eiffel_s0",
-      "eiffel_s1",
-      "eiffel_s2",
-      "eiffel_s3",
-      "eiffel_s4",
       "fushimi_s0",
       "fushimi_s1",
       "fushimi_s2",
@@ -1063,11 +842,6 @@
       "neuschwanstein_s2",
       "neuschwanstein_s3",
       "neuschwanstein_s4",
-      "pantheon_s0",
-      "pantheon_s1",
-      "pantheon_s2",
-      "pantheon_s3",
-      "pantheon_s4",
       "pisa_s0",
       "pisa_s1",
       "pisa_s2",
@@ -1077,237 +851,158 @@
       "redeemer_s1",
       "redeemer_s2",
       "redeemer_s3",
-      "redeemer_s4",
-      "sestino_museum_s0",
-      "sestino_museum_s1",
-      "sestino_museum_s2",
-      "sestino_museum_s3",
-      "sestino_museum_s4"
+      "redeemer_s4"
      ]
     }
    },
    "runtime": [
-    null,
-    null,
-    null
+    1.3173648118972778,
+    2.822263503074646,
+    8.694822788238525
    ]
   },
   "Y50K + H0": {
    "id": "V3-Y50K-H0",
    "splits": {
     "train": {
-     "episodes": 0,
+     "episodes": 30,
      "episodes_total": 30,
-     "scenes_complete": 0,
+     "scenes_complete": 6,
      "scenes_total": 6,
-     "complete": false,
-     "auc10": null,
-     "auc20": null,
-     "auc50": null,
-     "auc100": null,
-     "cov20": null,
-     "cov50": null,
-     "final": null,
-     "missing": [
-      "bannerman_s0",
-      "bannerman_s1",
-      "bannerman_s2",
-      "bannerman_s3",
-      "bannerman_s4",
-      "dunnottar_s0",
-      "dunnottar_s1",
-      "dunnottar_s2",
-      "dunnottar_s3",
-      "dunnottar_s4",
-      "fushimi_s0",
-      "fushimi_s1",
-      "fushimi_s2",
-      "fushimi_s3",
-      "fushimi_s4",
-      "liberty_s0",
-      "liberty_s1",
-      "liberty_s2",
-      "liberty_s3",
-      "liberty_s4",
-      "pisa_s0",
-      "pisa_s1",
-      "pisa_s2",
-      "pisa_s3",
-      "pisa_s4",
-      "redeemer_s0",
-      "redeemer_s1",
-      "redeemer_s2",
-      "redeemer_s3",
-      "redeemer_s4"
-     ]
+     "complete": true,
+     "auc10": 0.2854023515764917,
+     "auc20": 0.42468035800259935,
+     "auc50": 0.6422293992657515,
+     "auc100": 0.7722229041905943,
+     "cov20": 0.6441971761014588,
+     "cov50": 0.8743029722387248,
+     "final": 0.9160282208452378,
+     "missing": []
     },
     "dev": {
-     "episodes": 0,
+     "episodes": 25,
      "episodes_total": 25,
-     "scenes_complete": 0,
+     "scenes_complete": 5,
      "scenes_total": 5,
-     "complete": false,
-     "auc10": null,
-     "auc20": null,
-     "auc50": null,
-     "auc100": null,
-     "cov20": null,
-     "cov50": null,
-     "final": null,
-     "missing": [
-      "barts_s0",
-      "barts_s1",
-      "barts_s2",
-      "barts_s3",
-      "barts_s4",
-      "colosseum_s0",
-      "colosseum_s1",
-      "colosseum_s2",
-      "colosseum_s3",
-      "colosseum_s4",
-      "eiffel_s0",
-      "eiffel_s1",
-      "eiffel_s2",
-      "eiffel_s3",
-      "eiffel_s4",
-      "pantheon_s0",
-      "pantheon_s1",
-      "pantheon_s2",
-      "pantheon_s3",
-      "pantheon_s4",
-      "sestino_museum_s0",
-      "sestino_museum_s1",
-      "sestino_museum_s2",
-      "sestino_museum_s3",
-      "sestino_museum_s4"
-     ]
+     "complete": true,
+     "auc10": 0.2516010844855966,
+     "auc20": 0.38354393446524904,
+     "auc50": 0.601082411081785,
+     "auc100": 0.741421659979196,
+     "cov20": 0.5958037521925461,
+     "cov50": 0.835565101722953,
+     "final": 0.8990273357287617,
+     "missing": []
     },
     "test": {
-     "episodes": 0,
+     "episodes": 15,
      "episodes_total": 15,
-     "scenes_complete": 0,
+     "scenes_complete": 3,
      "scenes_total": 3,
-     "complete": false,
-     "auc10": null,
-     "auc20": null,
-     "auc50": null,
-     "auc100": null,
-     "cov20": null,
-     "cov50": null,
-     "final": null,
-     "missing": [
-      "alhambra_s0",
-      "alhambra_s1",
-      "alhambra_s2",
-      "alhambra_s3",
-      "alhambra_s4",
-      "bridge_s0",
-      "bridge_s1",
-      "bridge_s2",
-      "bridge_s3",
-      "bridge_s4",
-      "neuschwanstein_s0",
-      "neuschwanstein_s1",
-      "neuschwanstein_s2",
-      "neuschwanstein_s3",
-      "neuschwanstein_s4"
-     ]
+     "complete": true,
+     "auc10": 0.1884390313497775,
+     "auc20": 0.3014432317452271,
+     "auc50": 0.5149620979243087,
+     "auc100": 0.6655295778943494,
+     "cov20": 0.4961708788964818,
+     "cov50": 0.7591558757172624,
+     "final": 0.8408198802088033,
+     "missing": []
     },
     "all14": {
-     "episodes": 0,
+     "episodes": 70,
      "episodes_total": 70,
-     "scenes_complete": 0,
+     "scenes_complete": 14,
      "scenes_total": 14,
-     "complete": false,
-     "auc10": null,
-     "auc20": null,
-     "auc50": null,
-     "auc100": null,
-     "cov20": null,
-     "cov50": null,
-     "final": null,
-     "missing": [
-      "alhambra_s0",
-      "alhambra_s1",
-      "alhambra_s2",
-      "alhambra_s3",
-      "alhambra_s4",
-      "bannerman_s0",
-      "bannerman_s1",
-      "bannerman_s2",
-      "bannerman_s3",
-      "bannerman_s4",
-      "barts_s0",
-      "barts_s1",
-      "barts_s2",
-      "barts_s3",
-      "barts_s4",
-      "bridge_s0",
-      "bridge_s1",
-      "bridge_s2",
-      "bridge_s3",
-      "bridge_s4",
-      "colosseum_s0",
-      "colosseum_s1",
-      "colosseum_s2",
-      "colosseum_s3",
-      "colosseum_s4",
-      "dunnottar_s0",
-      "dunnottar_s1",
-      "dunnottar_s2",
-      "dunnottar_s3",
-      "dunnottar_s4",
-      "eiffel_s0",
-      "eiffel_s1",
-      "eiffel_s2",
-      "eiffel_s3",
-      "eiffel_s4",
-      "fushimi_s0",
-      "fushimi_s1",
-      "fushimi_s2",
-      "fushimi_s3",
-      "fushimi_s4",
-      "liberty_s0",
-      "liberty_s1",
-      "liberty_s2",
-      "liberty_s3",
-      "liberty_s4",
-      "neuschwanstein_s0",
-      "neuschwanstein_s1",
-      "neuschwanstein_s2",
-      "neuschwanstein_s3",
-      "neuschwanstein_s4",
-      "pantheon_s0",
-      "pantheon_s1",
-      "pantheon_s2",
-      "pantheon_s3",
-      "pantheon_s4",
-      "pisa_s0",
-      "pisa_s1",
-      "pisa_s2",
-      "pisa_s3",
-      "pisa_s4",
-      "redeemer_s0",
-      "redeemer_s1",
-      "redeemer_s2",
-      "redeemer_s3",
-      "redeemer_s4",
-      "sestino_museum_s0",
-      "sestino_museum_s1",
-      "sestino_museum_s2",
-      "sestino_museum_s3",
-      "sestino_museum_s4"
-     ]
+     "complete": true,
+     "auc10": 0.25255261613830465,
+     "auc20": 0.38358082254125164,
+     "auc50": 0.6002624817697401,
+     "auc100": 0.7383596041944711,
+     "cov20": 0.5951938895900664,
+     "cov50": 0.8357936406570643,
+     "final": 0.8938404031672603,
+     "missing": []
     }
    },
    "runtime": [
-    null,
-    null,
-    null
+    1.9025123119354248,
+    2.822635173797608,
+    30.498456954956055
    ]
   },
   "YBEST + H3": {
    "id": "V3-YBEST-H3",
+   "splits": {
+    "train": {
+     "episodes": 30,
+     "episodes_total": 30,
+     "scenes_complete": 6,
+     "scenes_total": 6,
+     "complete": true,
+     "auc10": 0.2992597421587817,
+     "auc20": 0.44027516306949277,
+     "auc50": 0.659710956389704,
+     "auc100": 0.7934578896176752,
+     "cov20": 0.6597241620289657,
+     "cov50": 0.8907487769241462,
+     "final": 0.9448489779064101,
+     "missing": []
+    },
+    "dev": {
+     "episodes": 25,
+     "episodes_total": 25,
+     "scenes_complete": 5,
+     "scenes_total": 5,
+     "complete": true,
+     "auc10": 0.28689278776241345,
+     "auc20": 0.44845697120636785,
+     "auc50": 0.6626365211355318,
+     "auc100": 0.7693558066048385,
+     "cov20": 0.7063054333653377,
+     "cov50": 0.8580838040871269,
+     "final": 0.8848005532324411,
+     "missing": []
+    },
+    "test": {
+     "episodes": 15,
+     "episodes_total": 15,
+     "scenes_complete": 3,
+     "scenes_total": 3,
+     "complete": true,
+     "auc10": 0.22862594244953569,
+     "auc20": 0.36390824418568196,
+     "auc50": 0.5740308904569109,
+     "auc100": 0.7226387358139316,
+     "cov20": 0.5720073850363212,
+     "cov50": 0.8315238522157626,
+     "final": 0.8848590557020257,
+     "missing": []
+    },
+    "all14": {
+     "episodes": 70,
+     "episodes_total": 70,
+     "scenes_complete": 14,
+     "scenes_total": 14,
+     "complete": true,
+     "auc10": 0.2797071585080975,
+     "auc20": 0.4268328976432744,
+     "auc50": 0.6423957868133298,
+     "auc100": 0.7696744698694314,
+     "cov20": 0.6575638781506749,
+     "cov50": 0.8663916599019856,
+     "final": 0.9105481286219103,
+     "missing": []
+    }
+   },
+   "runtime": [
+    5.513598203659058,
+    7.8975845098495485,
+    30.498456954956055
+   ]
+  },
+  "YD Y50K + D1": {
+   "id": "V3-YD-COMBINED-Y50K-D1",
    "splits": {
     "train": {
      "episodes": 0,
@@ -1356,45 +1051,19 @@
      ]
     },
     "dev": {
-     "episodes": 0,
+     "episodes": 25,
      "episodes_total": 25,
-     "scenes_complete": 0,
+     "scenes_complete": 5,
      "scenes_total": 5,
-     "complete": false,
-     "auc10": null,
-     "auc20": null,
-     "auc50": null,
-     "auc100": null,
-     "cov20": null,
-     "cov50": null,
-     "final": null,
-     "missing": [
-      "barts_s0",
-      "barts_s1",
-      "barts_s2",
-      "barts_s3",
-      "barts_s4",
-      "colosseum_s0",
-      "colosseum_s1",
-      "colosseum_s2",
-      "colosseum_s3",
-      "colosseum_s4",
-      "eiffel_s0",
-      "eiffel_s1",
-      "eiffel_s2",
-      "eiffel_s3",
-      "eiffel_s4",
-      "pantheon_s0",
-      "pantheon_s1",
-      "pantheon_s2",
-      "pantheon_s3",
-      "pantheon_s4",
-      "sestino_museum_s0",
-      "sestino_museum_s1",
-      "sestino_museum_s2",
-      "sestino_museum_s3",
-      "sestino_museum_s4"
-     ]
+     "complete": true,
+     "auc10": 0.28584451756945195,
+     "auc20": 0.4450214978080026,
+     "auc50": 0.6572238940842737,
+     "auc100": 0.7679991764037839,
+     "cov20": 0.6981227485204785,
+     "cov50": 0.8533868688027789,
+     "final": 0.8908568281326295,
+     "missing": []
     },
     "test": {
      "episodes": 0,
@@ -1428,18 +1097,18 @@
      ]
     },
     "all14": {
-     "episodes": 0,
+     "episodes": 25,
      "episodes_total": 70,
-     "scenes_complete": 0,
+     "scenes_complete": 5,
      "scenes_total": 14,
      "complete": false,
-     "auc10": null,
-     "auc20": null,
-     "auc50": null,
-     "auc100": null,
-     "cov20": null,
-     "cov50": null,
-     "final": null,
+     "auc10": 0.28584451756945195,
+     "auc20": 0.4450214978080026,
+     "auc50": 0.6572238940842737,
+     "auc100": 0.7679991764037839,
+     "cov20": 0.6981227485204785,
+     "cov50": 0.8533868688027789,
+     "final": 0.8908568281326295,
      "missing": [
       "alhambra_s0",
       "alhambra_s1",
@@ -1451,31 +1120,16 @@
       "bannerman_s2",
       "bannerman_s3",
       "bannerman_s4",
-      "barts_s0",
-      "barts_s1",
-      "barts_s2",
-      "barts_s3",
-      "barts_s4",
       "bridge_s0",
       "bridge_s1",
       "bridge_s2",
       "bridge_s3",
       "bridge_s4",
-      "colosseum_s0",
-      "colosseum_s1",
-      "colosseum_s2",
-      "colosseum_s3",
-      "colosseum_s4",
       "dunnottar_s0",
       "dunnottar_s1",
       "dunnottar_s2",
       "dunnottar_s3",
       "dunnottar_s4",
-      "eiffel_s0",
-      "eiffel_s1",
-      "eiffel_s2",
-      "eiffel_s3",
-      "eiffel_s4",
       "fushimi_s0",
       "fushimi_s1",
       "fushimi_s2",
@@ -1491,11 +1145,6 @@
       "neuschwanstein_s2",
       "neuschwanstein_s3",
       "neuschwanstein_s4",
-      "pantheon_s0",
-      "pantheon_s1",
-      "pantheon_s2",
-      "pantheon_s3",
-      "pantheon_s4",
       "pisa_s0",
       "pisa_s1",
       "pisa_s2",
@@ -1505,19 +1154,14 @@
       "redeemer_s1",
       "redeemer_s2",
       "redeemer_s3",
-      "redeemer_s4",
-      "sestino_museum_s0",
-      "sestino_museum_s1",
-      "sestino_museum_s2",
-      "sestino_museum_s3",
-      "sestino_museum_s4"
+      "redeemer_s4"
      ]
     }
    },
    "runtime": [
-    null,
-    null,
-    null
+    5.9677311182022095,
+    8.327797031402588,
+    8.694822788238525
    ]
   },
   "B0": {
@@ -1731,5 +1375,1711 @@
    ]
   }
  },
- "pairs": {}
+ "pairs": {
+  "V3-D1-H3-NORISK \u2212 V3-H3 | train": {
+   "n_scenes": 6,
+   "of": 6,
+   "auc20": {
+    "d": 4.063566110549625e-05,
+    "ci": [
+     -0.001322429666840939,
+     0.0012022131054355938
+    ],
+    "wins": 3,
+    "losses": 2
+   },
+   "auc100": {
+    "d": 0.0016158623576300972,
+    "ci": [
+     -0.0024743506960631842,
+     0.00650394662434121
+    ],
+    "wins": 3,
+    "losses": 3
+   },
+   "final": {
+    "d": 0.004243547908786949,
+    "ci": [
+     -0.0026126097794644254,
+     0.015192183708928645
+    ],
+    "wins": 3,
+    "losses": 3
+   }
+  },
+  "V3-D1-H3-NORISK \u2212 V3-H3 | dev": {
+   "n_scenes": 5,
+   "of": 5,
+   "auc20": {
+    "d": 0.0025269367151470323,
+    "ci": [
+     -0.010983577160838864,
+     0.012729933567090835
+    ],
+    "wins": 3,
+    "losses": 2
+   },
+   "auc100": {
+    "d": 0.006061587875267937,
+    "ci": [
+     -0.010143465369549066,
+     0.026040833995508918
+    ],
+    "wins": 3,
+    "losses": 2
+   },
+   "final": {
+    "d": 0.02096543023670496,
+    "ci": [
+     -0.0016160509489582474,
+     0.06105063244318067
+    ],
+    "wins": 2,
+    "losses": 3
+   }
+  },
+  "V3-D1-H3-NORISK \u2212 V3-H3 | test": {
+   "n_scenes": 3,
+   "of": 3,
+   "auc20": {
+    "d": 0.000943954938504854,
+    "ci": [
+     -0.0015949677602287715,
+     0.00416607242809186
+    ],
+    "wins": 2,
+    "losses": 1
+   },
+   "auc100": {
+    "d": 0.0021773585361225165,
+    "ci": [
+     -0.005984884963163073,
+     0.006976908660275893
+    ],
+    "wins": 2,
+    "losses": 1
+   },
+   "final": {
+    "d": -0.0021297838190594462,
+    "ci": [
+     -0.005868665827369002,
+     0.0006418353410907462
+    ],
+    "wins": 1,
+    "losses": 2
+   }
+  },
+  "V3-D1-H3-NORISK \u2212 V3-H3 | all14": {
+   "n_scenes": 14,
+   "of": 14,
+   "auc20": {
+    "d": 0.0011221687398487643,
+    "ci": [
+     -0.003581892462051232,
+     0.005099080769420307
+    ],
+    "wins": 8,
+    "losses": 5
+   },
+   "auc100": {
+    "d": 0.00332394208074913,
+    "ci": [
+     -0.002884994404198119,
+     0.010700250607242999
+    ],
+    "wins": 8,
+    "losses": 6
+   },
+   "final": {
+    "d": 0.008849934798504868,
+    "ci": [
+     -0.001334355426871603,
+     0.024475252397401722
+    ],
+    "wins": 6,
+    "losses": 8
+   }
+  },
+  "V3-D2-DEPTH3-B3 \u2212 V3-D1-H3-NORISK | train": {
+   "n_scenes": 1,
+   "of": 6,
+   "auc20": {
+    "d": 0.006656248377431395,
+    "ci": [
+     null,
+     null
+    ],
+    "wins": 1,
+    "losses": 0
+   },
+   "auc100": {
+    "d": 0.018853429955338896,
+    "ci": [
+     null,
+     null
+    ],
+    "wins": 1,
+    "losses": 0
+   },
+   "final": {
+    "d": 0.02253795606285136,
+    "ci": [
+     null,
+     null
+    ],
+    "wins": 1,
+    "losses": 0
+   }
+  },
+  "V3-D2-DEPTH3-B3 \u2212 V3-D1-H3-NORISK | dev": {
+   "n_scenes": 5,
+   "of": 5,
+   "auc20": {
+    "d": -0.03404554467125658,
+    "ci": [
+     -0.07268478110080996,
+     -0.0020701358202882825
+    ],
+    "wins": 1,
+    "losses": 4
+   },
+   "auc100": {
+    "d": -0.007936685988784364,
+    "ci": [
+     -0.02828826203575461,
+     0.014066647472034455
+    ],
+    "wins": 2,
+    "losses": 3
+   },
+   "final": {
+    "d": 0.0003416749105247696,
+    "ci": [
+     -0.0057122791399458524,
+     0.006395628960995392
+    ],
+    "wins": 3,
+    "losses": 2
+   }
+  },
+  "V3-D2-DEPTH3-B3 \u2212 V3-D1-H3-NORISK | all14": {
+   "n_scenes": 6,
+   "of": 14,
+   "auc20": {
+    "d": -0.027261912496475253,
+    "ci": [
+     -0.06380798755799594,
+     0.0010729816921027323
+    ],
+    "wins": 2,
+    "losses": 4
+   },
+   "auc100": {
+    "d": -0.003471666664763821,
+    "ci": [
+     -0.02340999809645733,
+     0.014477220027575177
+    ],
+    "wins": 3,
+    "losses": 3
+   },
+   "final": {
+    "d": 0.004041055102579201,
+    "ci": [
+     -0.0035956383112168977,
+     0.012547989382890368
+    ],
+    "wins": 4,
+    "losses": 2
+   }
+  },
+  "V3-D3-DEPTH3-B5 \u2212 V3-D2-DEPTH3-B3 | train": {
+   "n_scenes": 1,
+   "of": 6,
+   "auc20": {
+    "d": 0.0,
+    "ci": [
+     null,
+     null
+    ],
+    "wins": 0,
+    "losses": 0
+   },
+   "auc100": {
+    "d": 0.00020575371523134933,
+    "ci": [
+     null,
+     null
+    ],
+    "wins": 1,
+    "losses": 0
+   },
+   "final": {
+    "d": 0.0003205049853090003,
+    "ci": [
+     null,
+     null
+    ],
+    "wins": 1,
+    "losses": 0
+   }
+  },
+  "V3-D3-DEPTH3-B5 \u2212 V3-D2-DEPTH3-B3 | dev": {
+   "n_scenes": 5,
+   "of": 5,
+   "auc20": {
+    "d": 0.00022860713517859345,
+    "ci": [
+     -0.0003491783191419184,
+     0.0010258907724161159
+    ],
+    "wins": 2,
+    "losses": 1
+   },
+   "auc100": {
+    "d": -0.00026298331585825616,
+    "ci": [
+     -0.0014259070936700757,
+     0.0008063675823840599
+    ],
+    "wins": 2,
+    "losses": 3
+   },
+   "final": {
+    "d": -0.0004723141013460719,
+    "ci": [
+     -0.0026590414800006235,
+     0.0013635189464617614
+    ],
+    "wins": 3,
+    "losses": 2
+   }
+  },
+  "V3-D3-DEPTH3-B5 \u2212 V3-D2-DEPTH3-B3 | all14": {
+   "n_scenes": 6,
+   "of": 14,
+   "auc20": {
+    "d": 0.0001905059459821612,
+    "ci": [
+     -0.0002909819326182654,
+     0.0008587043737890895
+    ],
+    "wins": 2,
+    "losses": 1
+   },
+   "auc100": {
+    "d": -0.00018486047734332192,
+    "ci": [
+     -0.0012402749132502204,
+     0.0007551465825734738
+    ],
+    "wins": 3,
+    "losses": 3
+   },
+   "final": {
+    "d": -0.00034017758690355987,
+    "ci": [
+     -0.00224859926454322,
+     0.0011896832862696345
+    ],
+    "wins": 4,
+    "losses": 2
+   }
+  },
+  "V3-D2-DEPTH3-B3 \u2212 V3-H3 | train": {
+   "n_scenes": 1,
+   "of": 6,
+   "auc20": {
+    "d": 0.008860321570766605,
+    "ci": [
+     null,
+     null
+    ],
+    "wins": 1,
+    "losses": 0
+   },
+   "auc100": {
+    "d": 0.031026607356627878,
+    "ci": [
+     null,
+     null
+    ],
+    "wins": 1,
+    "losses": 0
+   },
+   "final": {
+    "d": 0.05320854961083532,
+    "ci": [
+     null,
+     null
+    ],
+    "wins": 1,
+    "losses": 0
+   }
+  },
+  "V3-D2-DEPTH3-B3 \u2212 V3-H3 | dev": {
+   "n_scenes": 5,
+   "of": 5,
+   "auc20": {
+    "d": -0.03151860795610955,
+    "ci": [
+     -0.06346302802547206,
+     -0.001763823590463076
+    ],
+    "wins": 2,
+    "losses": 3
+   },
+   "auc100": {
+    "d": -0.001875098113516427,
+    "ci": [
+     -0.031693000822031414,
+     0.035736485985042886
+    ],
+    "wins": 2,
+    "losses": 3
+   },
+   "final": {
+    "d": 0.02130710514722973,
+    "ci": [
+     0.001548355856565009,
+     0.05712142304312209
+    ],
+    "wins": 4,
+    "losses": 1
+   }
+  },
+  "V3-D2-DEPTH3-B3 \u2212 V3-H3 | all14": {
+   "n_scenes": 6,
+   "of": 14,
+   "auc20": {
+    "d": -0.02478878636829686,
+    "ci": [
+     -0.05823963093708323,
+     0.0007342278705989672
+    ],
+    "wins": 3,
+    "losses": 3
+   },
+   "auc100": {
+    "d": 0.003608519464840957,
+    "ci": [
+     -0.024703071955010498,
+     0.03495150621364038
+    ],
+    "wins": 3,
+    "losses": 3
+   },
+   "final": {
+    "d": 0.026624012557830663,
+    "ci": [
+     0.002922790104976388,
+     0.056808557263580674
+    ],
+    "wins": 5,
+    "losses": 1
+   }
+  },
+  "V3-D3-DEPTH3-B5 \u2212 V3-H3 | train": {
+   "n_scenes": 1,
+   "of": 6,
+   "auc20": {
+    "d": 0.008860321570766605,
+    "ci": [
+     null,
+     null
+    ],
+    "wins": 1,
+    "losses": 0
+   },
+   "auc100": {
+    "d": 0.031232361071859227,
+    "ci": [
+     null,
+     null
+    ],
+    "wins": 1,
+    "losses": 0
+   },
+   "final": {
+    "d": 0.05352905459614432,
+    "ci": [
+     null,
+     null
+    ],
+    "wins": 1,
+    "losses": 0
+   }
+  },
+  "V3-D3-DEPTH3-B5 \u2212 V3-H3 | dev": {
+   "n_scenes": 5,
+   "of": 5,
+   "auc20": {
+    "d": -0.03129000082093096,
+    "ci": [
+     -0.06347479722993939,
+     -0.0010753419327215407
+    ],
+    "wins": 2,
+    "losses": 3
+   },
+   "auc100": {
+    "d": -0.002138081429374683,
+    "ci": [
+     -0.03209447298907779,
+     0.0354303611256694
+    ],
+    "wins": 2,
+    "losses": 3
+   },
+   "final": {
+    "d": 0.02083479104588366,
+    "ci": [
+     0.0014329988129577309,
+     0.056928461118981574
+    ],
+    "wins": 5,
+    "losses": 0
+   }
+  },
+  "V3-D3-DEPTH3-B5 \u2212 V3-H3 | all14": {
+   "n_scenes": 6,
+   "of": 14,
+   "auc20": {
+    "d": -0.024598280422314697,
+    "ci": [
+     -0.058435056073472436,
+     0.0013079625853835801
+    ],
+    "wins": 3,
+    "losses": 3
+   },
+   "auc100": {
+    "d": 0.0034236589874976353,
+    "ci": [
+     -0.025922591112630955,
+     0.03473069445003437
+    ],
+    "wins": 3,
+    "losses": 3
+   },
+   "final": {
+    "d": 0.026283834970927105,
+    "ci": [
+     0.0023621080247805217,
+     0.05651169312093272
+    ],
+    "wins": 6,
+    "losses": 0
+   }
+  },
+  "V3-D1-H3-NORISK \u2212 V3 | train": {
+   "n_scenes": 6,
+   "of": 6,
+   "auc20": {
+    "d": 0.02309554453365642,
+    "ci": [
+     -0.0031218052334078448,
+     0.05038313193997616
+    ],
+    "wins": 5,
+    "losses": 1
+   },
+   "auc100": {
+    "d": 0.015440790832694526,
+    "ci": [
+     -0.002976440010874363,
+     0.033858021676263415
+    ],
+    "wins": 4,
+    "losses": 2
+   },
+   "final": {
+    "d": -0.0019048000749055845,
+    "ci": [
+     -0.011707049095326346,
+     0.007382280808881943
+    ],
+    "wins": 3,
+    "losses": 3
+   }
+  },
+  "V3-D1-H3-NORISK \u2212 V3 | dev": {
+   "n_scenes": 5,
+   "of": 5,
+   "auc20": {
+    "d": 0.06253747050428164,
+    "ci": [
+     0.027889384833821175,
+     0.09718555617474212
+    ],
+    "wins": 5,
+    "losses": 0
+   },
+   "auc100": {
+    "d": 0.01767300819971207,
+    "ci": [
+     -0.006837247869506435,
+     0.042316601799979425
+    ],
+    "wins": 4,
+    "losses": 1
+   },
+   "final": {
+    "d": -0.0010025995734121106,
+    "ci": [
+     -0.030393635497616266,
+     0.023886016737609105
+    ],
+    "wins": 3,
+    "losses": 2
+   }
+  },
+  "V3-D1-H3-NORISK \u2212 V3 | test": {
+   "n_scenes": 3,
+   "of": 3,
+   "auc20": {
+    "d": 0.04467544266307122,
+    "ci": [
+     0.03151774011754099,
+     0.06437635445792078
+    ],
+    "wins": 3,
+    "losses": 0
+   },
+   "auc100": {
+    "d": 0.04066096716012461,
+    "ci": [
+     0.017901750759915847,
+     0.08111170309008442
+    ],
+    "wins": 3,
+    "losses": 0
+   },
+   "final": {
+    "d": 0.0366613366472297,
+    "ci": [
+     -0.0007510855845768161,
+     0.10182651258356501
+    ],
+    "wins": 2,
+    "losses": 1
+   }
+  },
+  "V3-D1-H3-NORISK \u2212 V3 | all14": {
+   "n_scenes": 14,
+   "of": 14,
+   "auc20": {
+    "d": 0.04180621055089717,
+    "ci": [
+     0.02306921817415752,
+     0.061734735301660244
+    ],
+    "wins": 13,
+    "losses": 1
+   },
+   "auc100": {
+    "d": 0.021642334819650094,
+    "ci": [
+     0.0076954284418228255,
+     0.03647164253861354
+    ],
+    "wins": 11,
+    "losses": 3
+   },
+   "final": {
+    "d": 0.006681586544656789,
+    "ci": [
+     -0.00901019152327824,
+     0.025176953346571097
+    ],
+    "wins": 8,
+    "losses": 6
+   }
+  },
+  "V3-D2-DEPTH3-B3 \u2212 V3 | train": {
+   "n_scenes": 1,
+   "of": 6,
+   "auc20": {
+    "d": -0.020362374792059157,
+    "ci": [
+     null,
+     null
+    ],
+    "wins": 0,
+    "losses": 1
+   },
+   "auc100": {
+    "d": -0.002891310453417173,
+    "ci": [
+     null,
+     null
+    ],
+    "wins": 0,
+    "losses": 1
+   },
+   "final": {
+    "d": 0.002406462818320132,
+    "ci": [
+     null,
+     null
+    ],
+    "wins": 1,
+    "losses": 0
+   }
+  },
+  "V3-D2-DEPTH3-B3 \u2212 V3 | dev": {
+   "n_scenes": 5,
+   "of": 5,
+   "auc20": {
+    "d": 0.02849192583302506,
+    "ci": [
+     -0.009840219695081542,
+     0.0741577077989254
+    ],
+    "wins": 3,
+    "losses": 2
+   },
+   "auc100": {
+    "d": 0.009736322210927706,
+    "ci": [
+     0.0008520956507113598,
+     0.020013217891847023
+    ],
+    "wins": 4,
+    "losses": 1
+   },
+   "final": {
+    "d": -0.0006609246628873411,
+    "ci": [
+     -0.03177510799435808,
+     0.022145416591163335
+    ],
+    "wins": 3,
+    "losses": 2
+   }
+  },
+  "V3-D2-DEPTH3-B3 \u2212 V3 | all14": {
+   "n_scenes": 6,
+   "of": 14,
+   "auc20": {
+    "d": 0.020349542395511025,
+    "ci": [
+     -0.014239011103475729,
+     0.05975336416773045
+    ],
+    "wins": 3,
+    "losses": 3
+   },
+   "auc100": {
+    "d": 0.007631716766870226,
+    "ci": [
+     -0.0006642007300832568,
+     0.017207056625375878
+    ],
+    "wins": 4,
+    "losses": 2
+   },
+   "final": {
+    "d": -0.0001496934160194289,
+    "ci": [
+     -0.026078179525578376,
+     0.01929014395972069
+    ],
+    "wins": 4,
+    "losses": 2
+   }
+  },
+  "V3-Y45K-H0 \u2212 V3 | dev": {
+   "n_scenes": 5,
+   "of": 5,
+   "auc20": {
+    "d": -0.009293525898517636,
+    "ci": [
+     -0.020733383522799426,
+     0.004207208446421506
+    ],
+    "wins": 1,
+    "losses": 4
+   },
+   "auc100": {
+    "d": -0.01529223501108259,
+    "ci": [
+     -0.039547420566771255,
+     0.0050180185995903235
+    ],
+    "wins": 1,
+    "losses": 4
+   },
+   "final": {
+    "d": -0.0027184748881659226,
+    "ci": [
+     -0.014646272699338558,
+     0.009526034567330033
+    ],
+    "wins": 2,
+    "losses": 3
+   }
+  },
+  "V3-Y45K-H0 \u2212 V3 | all14": {
+   "n_scenes": 5,
+   "of": 14,
+   "auc20": {
+    "d": -0.009293525898517636,
+    "ci": [
+     -0.020733383522799426,
+     0.004207208446421506
+    ],
+    "wins": 1,
+    "losses": 4
+   },
+   "auc100": {
+    "d": -0.01529223501108259,
+    "ci": [
+     -0.039547420566771255,
+     0.0050180185995903235
+    ],
+    "wins": 1,
+    "losses": 4
+   },
+   "final": {
+    "d": -0.0027184748881659226,
+    "ci": [
+     -0.014646272699338558,
+     0.009526034567330033
+    ],
+    "wins": 2,
+    "losses": 3
+   }
+  },
+  "V3-Y50K-H0 \u2212 V3 | train": {
+   "n_scenes": 6,
+   "of": 6,
+   "auc20": {
+    "d": 0.006713112604592786,
+    "ci": [
+     -0.009338261475663431,
+     0.026117435750896582
+    ],
+    "wins": 3,
+    "losses": 3
+   },
+   "auc100": {
+    "d": -0.006152051355063082,
+    "ci": [
+     -0.02068632195066496,
+     0.007874177775192892
+    ],
+    "wins": 2,
+    "losses": 4
+   },
+   "final": {
+    "d": -0.020192453000258643,
+    "ci": [
+     -0.03768427022122859,
+     -0.0064745171934639245
+    ],
+    "wins": 0,
+    "losses": 6
+   }
+  },
+  "V3-Y50K-H0 \u2212 V3 | dev": {
+   "n_scenes": 5,
+   "of": 5,
+   "auc20": {
+    "d": -0.0007838971426213537,
+    "ci": [
+     -0.008509375474526615,
+     0.007549041964110497
+    ],
+    "wins": 2,
+    "losses": 3
+   },
+   "auc100": {
+    "d": -0.006360861594196576,
+    "ci": [
+     -0.025247901818839867,
+     0.008787581793815825
+    ],
+    "wins": 2,
+    "losses": 3
+   },
+   "final": {
+    "d": 0.002467746165212037,
+    "ci": [
+     -0.0069272329263115,
+     0.013388836599328213
+    ],
+    "wins": 3,
+    "losses": 2
+   }
+  },
+  "V3-Y50K-H0 \u2212 V3 | test": {
+   "n_scenes": 3,
+   "of": 3,
+   "auc20": {
+    "d": -0.012489135842160807,
+    "ci": [
+     -0.04884907243317238,
+     0.01294216635403439
+    ],
+    "wins": 1,
+    "losses": 2
+   },
+   "auc100": {
+    "d": -0.001273855025530309,
+    "ci": [
+     -0.015604119795029514,
+     0.01311221196983503
+    ],
+    "wins": 1,
+    "losses": 2
+   },
+   "final": {
+    "d": -0.0071561489924769255,
+    "ci": [
+     -0.021880673456853073,
+     0.008168468790299865
+    ],
+    "wins": 1,
+    "losses": 2
+   }
+  },
+  "V3-Y50K-H0 \u2212 V3 | all14": {
+   "n_scenes": 14,
+   "of": 14,
+   "auc20": {
+    "d": -7.915840085946249e-05,
+    "ci": [
+     -0.011248954509345623,
+     0.011034639292512666
+    ],
+    "wins": 6,
+    "losses": 8
+   },
+   "auc100": {
+    "d": -0.005181298655568022,
+    "ci": [
+     -0.014830607995202937,
+     0.0038563329972943375
+    ],
+    "wins": 5,
+    "losses": 9
+   },
+   "final": {
+    "d": -0.009306031010923033,
+    "ci": [
+     -0.019643495941926322,
+     -0.00016023840479533836
+    ],
+    "wins": 4,
+    "losses": 10
+   }
+  },
+  "V3-Y50K-H0 \u2212 V3-Y45K-H0 | dev": {
+   "n_scenes": 5,
+   "of": 5,
+   "auc20": {
+    "d": 0.008509628755896281,
+    "ci": [
+     0.00043433077074959134,
+     0.01658492674104297
+    ],
+    "wins": 3,
+    "losses": 2
+   },
+   "auc100": {
+    "d": 0.008931373416886013,
+    "ci": [
+     -0.0035705276599328427,
+     0.02128404338243106
+    ],
+    "wins": 3,
+    "losses": 2
+   },
+   "final": {
+    "d": 0.00518622105337796,
+    "ci": [
+     0.0010086148626180958,
+     0.01042792694725254
+    ],
+    "wins": 5,
+    "losses": 0
+   }
+  },
+  "V3-Y50K-H0 \u2212 V3-Y45K-H0 | all14": {
+   "n_scenes": 5,
+   "of": 14,
+   "auc20": {
+    "d": 0.008509628755896281,
+    "ci": [
+     0.00043433077074959134,
+     0.01658492674104297
+    ],
+    "wins": 3,
+    "losses": 2
+   },
+   "auc100": {
+    "d": 0.008931373416886013,
+    "ci": [
+     -0.0035705276599328427,
+     0.02128404338243106
+    ],
+    "wins": 3,
+    "losses": 2
+   },
+   "final": {
+    "d": 0.00518622105337796,
+    "ci": [
+     0.0010086148626180958,
+     0.01042792694725254
+    ],
+    "wins": 5,
+    "losses": 0
+   }
+  },
+  "V3-YBEST-H3 \u2212 V3-H3 | train": {
+   "n_scenes": 6,
+   "of": 6,
+   "auc20": {
+    "d": -0.0007469912010646765,
+    "ci": [
+     -0.006258763009584824,
+     0.004801841597770251
+    ],
+    "wins": 3,
+    "losses": 3
+   },
+   "auc100": {
+    "d": 0.001258005596953382,
+    "ci": [
+     -0.006726945058525742,
+     0.013198340144252937
+    ],
+    "wins": 2,
+    "losses": 4
+   },
+   "final": {
+    "d": 0.014776652044606172,
+    "ci": [
+     0.0022926171049708066,
+     0.03177933625084933
+    ],
+    "wins": 5,
+    "losses": 1
+   }
+  },
+  "V3-YBEST-H3 \u2212 V3-H3 | dev": {
+   "n_scenes": 5,
+   "of": 5,
+   "auc20": {
+    "d": 0.004118605809362919,
+    "ci": [
+     -0.006414926927013476,
+     0.015184736312924708
+    ],
+    "wins": 3,
+    "losses": 2
+   },
+   "auc100": {
+    "d": 0.009961864707001711,
+    "ci": [
+     0.00345357224205487,
+     0.018115022266892277
+    ],
+    "wins": 5,
+    "losses": 0
+   },
+   "final": {
+    "d": 0.010208993479008721,
+    "ci": [
+     0.0017573575904399786,
+     0.02287778244400145
+    ],
+    "wins": 4,
+    "losses": 1
+   }
+  },
+  "V3-YBEST-H3 \u2212 V3-H3 | test": {
+   "n_scenes": 3,
+   "of": 3,
+   "auc20": {
+    "d": 0.006244388873727691,
+    "ci": [
+     -0.0003516204853182825,
+     0.013205565003021669
+    ],
+    "wins": 2,
+    "losses": 1
+   },
+   "auc100": {
+    "d": 0.0173516942700499,
+    "ci": [
+     -0.0032106247019542122,
+     0.04646264754200746
+    ],
+    "wins": 2,
+    "losses": 1
+   },
+   "final": {
+    "d": -0.0019080939655437001,
+    "ci": [
+     -0.012331085545487008,
+     0.011679866367188096
+    ],
+    "wins": 1,
+    "losses": 2
+   }
+  },
+  "V3-YBEST-H3 \u2212 V3-H3 | all14": {
+   "n_scenes": 14,
+   "of": 14,
+   "auc20": {
+    "d": 0.002488874890114972,
+    "ci": [
+     -0.002570820525656744,
+     0.007405022445682899
+    ],
+    "wins": 8,
+    "losses": 6
+   },
+   "auc100": {
+    "d": 0.007815174280491324,
+    "ci": [
+     0.0004591683876383294,
+     0.016480831636135666
+    ],
+    "wins": 9,
+    "losses": 5
+   },
+   "final": {
+    "d": 0.009570042697574967,
+    "ci": [
+     0.0017812324947358163,
+     0.019089465345104563
+    ],
+    "wins": 10,
+    "losses": 4
+   }
+  },
+  "V3-YBEST-H3 \u2212 V3 | train": {
+   "n_scenes": 6,
+   "of": 6,
+   "auc20": {
+    "d": 0.02230791767148625,
+    "ci": [
+     -0.0018097003266667837,
+     0.05073086298345414
+    ],
+    "wins": 4,
+    "losses": 2
+   },
+   "auc100": {
+    "d": 0.01508293407201781,
+    "ci": [
+     0.0020116177127729915,
+     0.029401592159616612
+    ],
+    "wins": 4,
+    "losses": 2
+   },
+   "final": {
+    "d": 0.008628304060913639,
+    "ci": [
+     0.0025355782386042858,
+     0.01658516406748713
+    ],
+    "wins": 5,
+    "losses": 1
+   }
+  },
+  "V3-YBEST-H3 \u2212 V3 | dev": {
+   "n_scenes": 5,
+   "of": 5,
+   "auc20": {
+    "d": 0.06412913959849753,
+    "ci": [
+     0.03681369633539923,
+     0.09144458286159583
+    ],
+    "wins": 5,
+    "losses": 0
+   },
+   "auc100": {
+    "d": 0.021573285031445844,
+    "ci": [
+     -0.012921692847113687,
+     0.04812994283758674
+    ],
+    "wins": 4,
+    "losses": 1
+   },
+   "final": {
+    "d": -0.011759036331108353,
+    "ci": [
+     -0.0662011444073326,
+     0.023300303542020683
+    ],
+    "wins": 4,
+    "losses": 1
+   }
+  },
+  "V3-YBEST-H3 \u2212 V3 | test": {
+   "n_scenes": 3,
+   "of": 3,
+   "auc20": {
+    "d": 0.049975876598294056,
+    "ci": [
+     0.03937558068866237,
+     0.069994816413749
+    ],
+    "wins": 3,
+    "losses": 0
+   },
+   "auc100": {
+    "d": 0.055835302894051995,
+    "ci": [
+     0.021164758818757567,
+     0.12059744197181599
+    ],
+    "wins": 3,
+    "losses": 0
+   },
+   "final": {
+    "d": 0.03688302650074545,
+    "ci": [
+     -0.006465983643999751,
+     0.11937504477812211
+    ],
+    "wins": 1,
+    "losses": 2
+   }
+  },
+  "V3-YBEST-H3 \u2212 V3 | all14": {
+   "n_scenes": 14,
+   "of": 14,
+   "auc20": {
+    "d": 0.043172916701163376,
+    "ci": [
+     0.02509972327973792,
+     0.062048158996327804
+    ],
+    "wins": 12,
+    "losses": 2
+   },
+   "auc100": {
+    "d": 0.02613356701939229,
+    "ci": [
+     0.008991714792858731,
+     0.04518977714267093
+    ],
+    "wins": 11,
+    "losses": 3
+   },
+   "final": {
+    "d": 0.007401694443726887,
+    "ci": [
+     -0.01792297910800463,
+     0.030971561639894566
+    ],
+    "wins": 10,
+    "losses": 4
+   }
+  },
+  "V3-YD-COMBINED-Y50K-D1 \u2212 V3-D1-H3-NORISK | dev": {
+   "n_scenes": 5,
+   "of": 5,
+   "auc20": {
+    "d": -0.0018438043041494768,
+    "ci": [
+     -0.009468745015342306,
+     0.009704814273104467
+    ],
+    "wins": 1,
+    "losses": 4
+   },
+   "auc100": {
+    "d": 0.0025436466306793413,
+    "ci": [
+     -0.002163423340845361,
+     0.0072507166022040435
+    ],
+    "wins": 3,
+    "losses": 2
+   },
+   "final": {
+    "d": -0.004700161857507856,
+    "ci": [
+     -0.016663692821066854,
+     0.003939996039890948
+    ],
+    "wins": 3,
+    "losses": 2
+   }
+  },
+  "V3-YD-COMBINED-Y50K-D1 \u2212 V3-D1-H3-NORISK | all14": {
+   "n_scenes": 5,
+   "of": 14,
+   "auc20": {
+    "d": -0.0018438043041494768,
+    "ci": [
+     -0.009468745015342306,
+     0.009704814273104467
+    ],
+    "wins": 1,
+    "losses": 4
+   },
+   "auc100": {
+    "d": 0.0025436466306793413,
+    "ci": [
+     -0.002163423340845361,
+     0.0072507166022040435
+    ],
+    "wins": 3,
+    "losses": 2
+   },
+   "final": {
+    "d": -0.004700161857507856,
+    "ci": [
+     -0.016663692821066854,
+     0.003939996039890948
+    ],
+    "wins": 3,
+    "losses": 2
+   }
+  },
+  "V3-YD-COMBINED-Y50K-D1 \u2212 V3-YBEST-H3 | dev": {
+   "n_scenes": 5,
+   "of": 5,
+   "auc20": {
+    "d": -0.003435473398365363,
+    "ci": [
+     -0.016807887065494687,
+     0.010380130882556304
+    ],
+    "wins": 2,
+    "losses": 3
+   },
+   "auc100": {
+    "d": -0.0013566302010544317,
+    "ci": [
+     -0.014299783655507835,
+     0.012655101902190057
+    ],
+    "wins": 2,
+    "losses": 3
+   },
+   "final": {
+    "d": 0.006056274900188385,
+    "ci": [
+     -0.0034372228359515365,
+     0.021949186651713283
+    ],
+    "wins": 3,
+    "losses": 2
+   }
+  },
+  "V3-YD-COMBINED-Y50K-D1 \u2212 V3-YBEST-H3 | all14": {
+   "n_scenes": 5,
+   "of": 14,
+   "auc20": {
+    "d": -0.003435473398365363,
+    "ci": [
+     -0.016807887065494687,
+     0.010380130882556304
+    ],
+    "wins": 2,
+    "losses": 3
+   },
+   "auc100": {
+    "d": -0.0013566302010544317,
+    "ci": [
+     -0.014299783655507835,
+     0.012655101902190057
+    ],
+    "wins": 2,
+    "losses": 3
+   },
+   "final": {
+    "d": 0.006056274900188385,
+    "ci": [
+     -0.0034372228359515365,
+     0.021949186651713283
+    ],
+    "wins": 3,
+    "losses": 2
+   }
+  },
+  "V3-D1-H3-NORISK \u2212 MAG-B | train": {
+   "n_scenes": 6,
+   "of": 6,
+   "auc20": {
+    "d": 0.11470226683517921,
+    "ci": [
+     0.039315958202594446,
+     0.19617491538066698
+    ],
+    "wins": 5,
+    "losses": 1
+   },
+   "auc100": {
+    "d": 0.03329878881989575,
+    "ci": [
+     0.00932862216122147,
+     0.06087642199751231
+    ],
+    "wins": 5,
+    "losses": 1
+   },
+   "final": {
+    "d": -0.01117710799403752,
+    "ci": [
+     -0.020297590018837446,
+     -0.002064977561178368
+    ],
+    "wins": 1,
+    "losses": 5
+   }
+  },
+  "V3-D1-H3-NORISK \u2212 MAG-B | dev": {
+   "n_scenes": 5,
+   "of": 5,
+   "auc20": {
+    "d": 0.12987889166743774,
+    "ci": [
+     0.09035421437475008,
+     0.17037439779110314
+    ],
+    "wins": 5,
+    "losses": 0
+   },
+   "auc100": {
+    "d": 0.07033865015243361,
+    "ci": [
+     -0.013933843271477597,
+     0.16997488763737328
+    ],
+    "wins": 4,
+    "losses": 1
+   },
+   "final": {
+    "d": 0.012858038401676607,
+    "ci": [
+     -0.049727833193556406,
+     0.07050426969195397
+    ],
+    "wins": 3,
+    "losses": 2
+   }
+  },
+  "V3-D1-H3-NORISK \u2212 MAG-B | test": {
+   "n_scenes": 3,
+   "of": 3,
+   "auc20": {
+    "d": 0.10655279042136907,
+    "ci": [
+     0.04042295847004393,
+     0.1490015861073269
+    ],
+    "wins": 3,
+    "losses": 0
+   },
+   "auc100": {
+    "d": 0.06975615248350497,
+    "ci": [
+     0.04813009908626209,
+     0.08222618297260953
+    ],
+    "wins": 3,
+    "losses": 0
+   },
+   "final": {
+    "d": 0.01726619162461022,
+    "ci": [
+     -0.00726257838422506,
+     0.04705834315975421
+    ],
+    "wins": 2,
+    "losses": 1
+   }
+  },
+  "V3-D1-H3-NORISK \u2212 MAG-B | all14": {
+   "n_scenes": 14,
+   "of": 14,
+   "auc20": {
+    "d": 0.11837617361516936,
+    "ci": [
+     0.08075871050525221,
+     0.1573845867966465
+    ],
+    "wins": 13,
+    "losses": 1
+   },
+   "auc100": {
+    "d": 0.054339602938004106,
+    "ci": [
+     0.022825171752778494,
+     0.09182216828105368
+    ],
+    "wins": 12,
+    "losses": 2
+   },
+   "final": {
+    "d": 0.0035018656369991846,
+    "ci": [
+     -0.01971427464542654,
+     0.02811183447677186
+    ],
+    "wins": 6,
+    "losses": 8
+   }
+  },
+  "V3-YBEST-H3 \u2212 MAG-B | train": {
+   "n_scenes": 6,
+   "of": 6,
+   "auc20": {
+    "d": 0.11391463997300905,
+    "ci": [
+     0.03719737276767363,
+     0.19398514920513846
+    ],
+    "wins": 5,
+    "losses": 1
+   },
+   "auc100": {
+    "d": 0.03294093205921903,
+    "ci": [
+     0.00777241935609535,
+     0.05939552853195986
+    ],
+    "wins": 5,
+    "losses": 1
+   },
+   "final": {
+    "d": -0.0006440038582182969,
+    "ci": [
+     -0.0038485849400275254,
+     0.0027417444154988293
+    ],
+    "wins": 3,
+    "losses": 3
+   }
+  },
+  "V3-YBEST-H3 \u2212 MAG-B | dev": {
+   "n_scenes": 5,
+   "of": 5,
+   "auc20": {
+    "d": 0.13147056076165362,
+    "ci": [
+     0.09299956493213678,
+     0.16994155659117044
+    ],
+    "wins": 5,
+    "losses": 0
+   },
+   "auc100": {
+    "d": 0.07423892698416738,
+    "ci": [
+     -0.019587763478474705,
+     0.17588270377160067
+    ],
+    "wins": 4,
+    "losses": 1
+   },
+   "final": {
+    "d": 0.0021016016439803662,
+    "ci": [
+     -0.08835331376611799,
+     0.07212029498591596
+    ],
+    "wins": 4,
+    "losses": 1
+   }
+  },
+  "V3-YBEST-H3 \u2212 MAG-B | test": {
+   "n_scenes": 3,
+   "of": 3,
+   "auc20": {
+    "d": 0.11185322435659191,
+    "ci": [
+     0.04946245104497374,
+     0.1546200480631551
+    ],
+    "wins": 3,
+    "losses": 0
+   },
+   "auc100": {
+    "d": 0.08493048821743236,
+    "ci": [
+     0.05090435934747095,
+     0.1217119218543411
+    ],
+    "wins": 3,
+    "losses": 0
+   },
+   "final": {
+    "d": 0.017487881478125966,
+    "ci": [
+     -0.012977476443647995,
+     0.06460687535431131
+    ],
+    "wins": 2,
+    "losses": 1
+   }
+  },
+  "V3-YBEST-H3 \u2212 MAG-B | all14": {
+   "n_scenes": 14,
+   "of": 14,
+   "auc20": {
+    "d": 0.11974287976543556,
+    "ci": [
+     0.08226572981620625,
+     0.1575897623269713
+    ],
+    "wins": 13,
+    "losses": 1
+   },
+   "auc100": {
+    "d": 0.0588308351377463,
+    "ci": [
+     0.02371935011602786,
+     0.09802374500726134
+    ],
+    "wins": 12,
+    "losses": 2
+   },
+   "final": {
+    "d": 0.004221973536069282,
+    "ci": [
+     -0.028250103167993167,
+     0.031984127033256225
+    ],
+    "wins": 9,
+    "losses": 5
+   }
+  },
+  "V3-D1-H3-NORISK \u2212 B0 | train": {
+   "n_scenes": 6,
+   "of": 6,
+   "auc20": {
+    "d": 0.006776197457732697,
+    "ci": [
+     -0.01371588059463121,
+     0.02978579315110368
+    ],
+    "wins": 2,
+    "losses": 4
+   },
+   "auc100": {
+    "d": 0.008974464531778525,
+    "ci": [
+     -0.005464972173098992,
+     0.023594617921834666
+    ],
+    "wins": 3,
+    "losses": 3
+   },
+   "final": {
+    "d": 0.0009020881831383424,
+    "ci": [
+     -0.003051322960172631,
+     0.005592863488655379
+    ],
+    "wins": 2,
+    "losses": 4
+   }
+  },
+  "V3-D1-H3-NORISK \u2212 B0 | dev": {
+   "n_scenes": 5,
+   "of": 5,
+   "auc20": {
+    "d": 0.04857848051457049,
+    "ci": [
+     0.02013479922772826,
+     0.07636846632375324
+    ],
+    "wins": 5,
+    "losses": 0
+   },
+   "auc100": {
+    "d": 0.032556525229575396,
+    "ci": [
+     -0.00489186478795176,
+     0.08262261971401992
+    ],
+    "wins": 4,
+    "losses": 1
+   },
+   "final": {
+    "d": 0.01589960558381569,
+    "ci": [
+     -0.006157766493081418,
+     0.037926249437191584
+    ],
+    "wins": 3,
+    "losses": 2
+   }
+  },
+  "V3-D1-H3-NORISK \u2212 B0 | test": {
+   "n_scenes": 3,
+   "of": 3,
+   "auc20": {
+    "d": 0.010111075492819291,
+    "ci": [
+     -0.012956484347196762,
+     0.03321670965717699
+    ],
+    "wins": 2,
+    "losses": 1
+   },
+   "auc100": {
+    "d": 0.007171727974903878,
+    "ci": [
+     -0.006560359164886509,
+     0.01653474385403564
+    ],
+    "wins": 2,
+    "losses": 1
+   },
+   "final": {
+    "d": 0.030182211130238074,
+    "ci": [
+     0.0010705102515981002,
+     0.08530128240206558
+    ],
+    "wins": 3,
+    "losses": 0
+   }
+  },
+  "V3-D1-H3-NORISK \u2212 B0 | all14": {
+   "n_scenes": 14,
+   "of": 14,
+   "auc20": {
+    "d": 0.022420200985550465,
+    "ci": [
+     0.005280890417906034,
+     0.040432117818088614
+    ],
+    "wins": 9,
+    "losses": 5
+   },
+   "auc100": {
+    "d": 0.017010328375947126,
+    "ci": [
+     0.001563694570665508,
+     0.037645874200016784
+    ],
+    "wins": 9,
+    "losses": 5
+   },
+   "final": {
+    "d": 0.012532656457758766,
+    "ci": [
+     0.0003410012917228272,
+     0.027773846153338128
+    ],
+    "wins": 8,
+    "losses": 6
+   }
+  }
+ }
 }

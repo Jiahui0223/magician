@@ -603,7 +603,7 @@ models:
 
   # ---- added 2026-11-04 from EXP6 V3 ablation D (frozen V3-T1, planner only) and EXP6 V3 / Y (continued V3-T1, H0 planner)
   - id: V3-D1-H3-NORISK
-    label: "V3-D1-H3-NORISK: V3-T1 + H3 深度 2，λ = 0（去掉 H2 风险项）"
+    label: "V3-D1: V3-T1 + H3 depth 2, no risk (lambda 0)"
     role: d
     status: READY
     status_reason: EXP6 V3 ablation D（protocol D-v1，experiments/exp6_v3/ablation_study/experiment_D_h3_lookahead/configs/d_config.yaml）；冻结 V3-T1（与 V3 行同一 checkpoint），只改规划；D1：H3 深度 2，λ = 0（去掉 H2 风险项）
@@ -615,7 +615,7 @@ models:
         CUDA_VISIBLE_DEVICES=$G $MG experiments/exp6_v3/ablation_study/experiment_D_h3_lookahead/scripts/sim_out_d.py --v3-ckpt $R/work_dirs/exp6_v3/task1_xattn/checkpoints/final.pt --policy d1 --group V2M --scene $S --start $K --root $T1W/closed_loop/outdoor/V3-D1-H3-NORISK/V2M
     historical_outdoor: {reusable_episodes: 0}
   - id: V3-D2-DEPTH3-B3
-    label: "V3-D2-DEPTH3-B3: V3-T1 + 深度 3，每个根保留 3 条路径"
+    label: "V3-D2: V3-T1 + lookahead depth 3, beam 3"
     role: d
     status: READY
     status_reason: EXP6 V3 ablation D（protocol D-v1，experiments/exp6_v3/ablation_study/experiment_D_h3_lookahead/configs/d_config.yaml）；冻结 V3-T1（与 V3 行同一 checkpoint），只改规划；D2：深度 3，每个根保留 3 条路径
@@ -627,7 +627,7 @@ models:
         CUDA_VISIBLE_DEVICES=$G $MG experiments/exp6_v3/ablation_study/experiment_D_h3_lookahead/scripts/sim_out_d.py --v3-ckpt $R/work_dirs/exp6_v3/task1_xattn/checkpoints/final.pt --policy d2 --group V2M --scene $S --start $K --root $T1W/closed_loop/outdoor/V3-D2-DEPTH3-B3/V2M
     historical_outdoor: {reusable_episodes: 0}
   - id: V3-D3-DEPTH3-B5
-    label: "V3-D3-DEPTH3-B5: V3-T1 + 深度 3，每个根保留 5 条路径"
+    label: "V3-D3: V3-T1 + lookahead depth 3, beam 5"
     role: d
     status: READY
     status_reason: EXP6 V3 ablation D（protocol D-v1，experiments/exp6_v3/ablation_study/experiment_D_h3_lookahead/configs/d_config.yaml）；冻结 V3-T1（与 V3 行同一 checkpoint），只改规划；D3：深度 3，每个根保留 5 条路径
@@ -639,7 +639,7 @@ models:
         CUDA_VISIBLE_DEVICES=$G $MG experiments/exp6_v3/ablation_study/experiment_D_h3_lookahead/scripts/sim_out_d.py --v3-ckpt $R/work_dirs/exp6_v3/task1_xattn/checkpoints/final.pt --policy d3 --group V2M --scene $S --start $K --root $T1W/closed_loop/outdoor/V3-D3-DEPTH3-B5/V2M
     historical_outdoor: {reusable_episodes: 0}
   - id: V3-D4-DEPTH4-B3
-    label: "V3-D4-DEPTH4-B3: V3-T1 + 深度 4，每个根保留 3 条路径"
+    label: "V3-D4: V3-T1 + lookahead depth 4, beam 3"
     role: d
     status: READY
     status_reason: EXP6 V3 ablation D（protocol D-v1，experiments/exp6_v3/ablation_study/experiment_D_h3_lookahead/configs/d_config.yaml）；冻结 V3-T1（与 V3 行同一 checkpoint），只改规划；D4（可选）：深度 4，每个根保留 3 条路径
@@ -651,7 +651,7 @@ models:
         CUDA_VISIBLE_DEVICES=$G $MG experiments/exp6_v3/ablation_study/experiment_D_h3_lookahead/scripts/sim_out_d.py --v3-ckpt $R/work_dirs/exp6_v3/task1_xattn/checkpoints/final.pt --policy d4 --group V2M --scene $S --start $K --root $T1W/closed_loop/outdoor/V3-D4-DEPTH4-B3/V2M
     historical_outdoor: {reusable_episodes: 0}
   - id: V3-Y45K-H0
-    label: "V3-Y45K-H0: V3-T1 续训到 45K（Y），H0 = 原 DistP1 Greedy（与 V3 行同一启动链）"
+    label: "V3-Y45K: V3-T1 continued to 45K + H0"
     role: y
     status: READY
     status_reason: EXP6 V3 / Y（experiments/exp6_v3/Y/FROZEN_PROTOCOL.md）；checkpoint 在训练到 45000 步后由 Y 的 manifest 填入 sha256 并改为 READY
@@ -663,7 +663,7 @@ models:
         CUDA_VISIBLE_DEVICES=$G $MG experiments/exp6_v3/shared/sim_out_v3.py --v3-ckpt $R/work_dirs/exp6_v3/Y/runs/main/ema_045000.pt --group V2M --scene $S --start $K --root $T1W/closed_loop/outdoor/V3-Y45K-H0/V2M
     historical_outdoor: {reusable_episodes: 0}
   - id: V3-Y50K-H0
-    label: "V3-Y50K-H0: V3-T1 续训到 50K（Y），H0"
+    label: "V3-Y50K: V3-T1 continued to 50K + H0"
     role: y
     status: READY
     status_reason: EXP6 V3 / Y（experiments/exp6_v3/Y/FROZEN_PROTOCOL.md）；checkpoint 在训练到 50000 步后由 Y 的 manifest 填入 sha256 并改为 READY
@@ -675,7 +675,7 @@ models:
         CUDA_VISIBLE_DEVICES=$G $MG experiments/exp6_v3/shared/sim_out_v3.py --v3-ckpt $R/work_dirs/exp6_v3/Y/runs/main/ema_050000.pt --group V2M --scene $S --start $K --root $T1W/closed_loop/outdoor/V3-Y50K-H0/V2M
     historical_outdoor: {reusable_episodes: 0}
   - id: V3-YBEST-H3
-    label: "V3-YBEST-H3: Y 50K（Dev-5 选出）+ 原 H3 策略（H-v1 h3，未改）"
+    label: "V3-YBEST-H3: Y50K + H3 (H-v1)"
     role: y
     status: READY
     status_reason: EXP6 V3 / Y 的 Dev-5 预注册选择（work_dirs/exp6_v3/overnight/SELECTION.json）；同一 H3 规划器（H-v1），只换权重；用于测同一规划器下的微调收益，不是 D 的结果
@@ -687,7 +687,7 @@ models:
         CUDA_VISIBLE_DEVICES=$G $MG experiments/exp6_v3/H/scripts/sim_out_h.py --v3-ckpt $R/work_dirs/exp6_v3/Y/runs/main/ema_050000.pt --policy h3 --group V2M --scene $S --start $K --root $T1W/closed_loop/outdoor/V3-YBEST-H3/V2M
     historical_outdoor: {reusable_episodes: 0}
   - id: V3-YD-COMBINED-Y50K-D1
-    label: "V3-YD-COMBINED-Y50K-D1: Y 50K（Dev-5 选出）+ D1（H3 去掉风险项，D-v1）"
+    label: "V3-YD: Y50K + D1 (combined)"
     role: yd
     status: READY
     status_reason: EXP6 V3 overnight 组合实验（Y 与 D 各自在 Dev-5 上单独选定之后才组合）；不是 Y 或 D 单独的贡献

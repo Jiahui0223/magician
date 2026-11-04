@@ -28,10 +28,10 @@ SPLIT = {"train": ["bannerman", "dunnottar", "fushimi", "liberty", "pisa", "rede
 SPLIT["all14"] = sorted(SPLIT["train"] + SPLIT["dev"] + SPLIT["test"])
 MODELS = {"H0 (V3-T1 40K)": "V3", "H3 (historical)": "V3-H3", "D1 H3-NoRisk": "V3-D1-H3-NORISK", "D2 Depth3-B3": "V3-D2-DEPTH3-B3",
           "D3 Depth3-B5": "V3-D3-DEPTH3-B5", "D4 Depth4-B3": "V3-D4-DEPTH4-B3", "Y45K + H0": "V3-Y45K-H0", "Y50K + H0": "V3-Y50K-H0",
-          "YBEST + H3": "V3-YBEST-H3", "B0": "B0", "B2": "B2", "MAGICIAN Beam": "MAG-B"}
+          "YBEST + H3": "V3-YBEST-H3", "YD Y50K + D1": "V3-YD-COMBINED-Y50K-D1", "B0": "B0", "B2": "B2", "MAGICIAN Beam": "MAG-B"}
 PAIRS = [("V3-D1-H3-NORISK", "V3-H3"), ("V3-D2-DEPTH3-B3", "V3-D1-H3-NORISK"), ("V3-D3-DEPTH3-B5", "V3-D2-DEPTH3-B3"), ("V3-D4-DEPTH4-B3", "V3-D2-DEPTH3-B3"),
          ("V3-D2-DEPTH3-B3", "V3-H3"), ("V3-D3-DEPTH3-B5", "V3-H3"), ("V3-D1-H3-NORISK", "V3"), ("V3-D2-DEPTH3-B3", "V3"),
-         ("V3-Y45K-H0", "V3"), ("V3-Y50K-H0", "V3"), ("V3-Y50K-H0", "V3-Y45K-H0"), ("V3-YBEST-H3", "V3-H3"), ("V3-YBEST-H3", "V3")]
+         ("V3-Y45K-H0", "V3"), ("V3-Y50K-H0", "V3"), ("V3-Y50K-H0", "V3-Y45K-H0"), ("V3-YBEST-H3", "V3-H3"), ("V3-YBEST-H3", "V3"), ("V3-YD-COMBINED-Y50K-D1", "V3-D1-H3-NORISK"), ("V3-YD-COMBINED-Y50K-D1", "V3-YBEST-H3"), ("V3-D1-H3-NORISK", "MAG-B"), ("V3-YBEST-H3", "MAG-B"), ("V3-D1-H3-NORISK", "B0")]
 KEYS = ("auc10", "auc20", "auc50", "auc100", "cov20", "cov50", "final")
 
 
@@ -141,7 +141,7 @@ def main():
         open(p, "w").write("\n".join([f"# G3_DEV_AND_ALL14（{os.path.basename(os.path.dirname(os.path.dirname(p)))}）", ""] + hdr + rows + ["", "## 配对差", ""] + P) + "\n")
     # figures: Dev-5 and All-14 coverage curves (complete scenes only), colosseum 20-50, compute vs AUC
     COL = {"V3": "#333333", "V3-H3": "#d6336c", "V3-D1-H3-NORISK": "#2a78d6", "V3-D2-DEPTH3-B3": "#1baf7a", "V3-D3-DEPTH3-B5": "#c9a227", "V3-D4-DEPTH4-B3": "#7b4fd6",
-           "V3-Y45K-H0": "#8a8a8a", "V3-Y50K-H0": "#e67e22", "V3-YBEST-H3": "#a61e4d", "B0": "#9ec5fe", "B2": "#b2f2bb", "MAG-B": "#adb5bd"}
+           "V3-Y45K-H0": "#8a8a8a", "V3-Y50K-H0": "#e67e22", "V3-YBEST-H3": "#a61e4d", "V3-YD-COMBINED-Y50K-D1": "#0b7285", "B0": "#9ec5fe", "B2": "#b2f2bb", "MAG-B": "#adb5bd"}
     curves = {}
     for (mid, s, k), r in rec.items():
         curves.setdefault(mid, {}).setdefault(s, {})[k] = np.asarray(r["coverage_official"])

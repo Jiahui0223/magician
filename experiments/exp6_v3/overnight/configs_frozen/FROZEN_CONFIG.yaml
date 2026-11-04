@@ -1,0 +1,62 @@
+# EXP6 V3 / H -- frozen configuration (protocol H-v1, frozen 2026-11-04 before any H1-H3 closed loop; FROZEN_PROTOCOL.md)
+version: H-v1
+model:
+  id: V3-T1
+  checkpoint: work_dirs/exp6_v3/task1_xattn/checkpoints/final.pt
+  sha256: 639c9d3ae3f3c069dc0399dc4cdd44102be2bf20e70d666a6a529c6affc62bdb
+  config: experiments/exp6_v3/configs/model_v3.json      # V3-VAE (self-trained dense 3D VAE) + Scene X-Attn + 2D rectified flow
+  training: none in this experiment (frozen EMA@40k)
+inference:                                               # identical for H0-H3 (CVPR Table 1 V3 row)
+  p1: {model_input: D100 (partial TSDF 4x grid of the D100 fusion), scoring_band: S10 band_dil (sparse twin), mode: b2}
+  refresh: R10
+  K: 4
+  euler_steps: 10
+  noise: v2_common.seed_key(scene, start, rep, t_refresh, k) -> shared by all candidates of a step (frozen V3 rule)
+  render: 456 x 256 depth, 64 x 114 scoring rays
+  candidates: simulator legal list (MAGICIAN get_neighboring_poses -> get_valid_neighbors (unvisited first) -> GT segment collision), unchanged
+  choose: m_score.choose (argmax, ties lowest index, all-zero -> seeded fallback), unchanged
+  steps: 100
+pose_tables: /bsuscratch/jiahuizhang/projects/occupancy/seen2scene/work_dirs/exp6_v3/H/pose_tables          # settings-grid (R, T, centre) per pose index, built by MAGICIAN's own camera code; verified vs service records
+policies:
+  h0: {value: h0, aggregate: mean, horizon: 1, doc: "frozen DistP1 (scoring.new_set_from_depth) mean over K; = Table 1 V3"}
+  h1:
+    value: cov
+    eps_cov: 1.0              # official coverage tolerance 2 x TEST_RESOLUTION 0.05 x scene_scale_factor 10 (runtime units)
+    cell_size: 1.0            # dedup cell (runtime units) = eps_cov
+    novelty: hard             # novel iff no observed S10 sample point (sample_points of executed frames 0..t) within eps_cov
+    valid: in-domain hit voxel (same test as DistP1)
+    weight: "w(z) = min(1, (z / z0)^2), max per cell (same w and z0 as DistP1)"
+    aggregate: mean
+    horizon: 1
+  h2:
+    value: cov
+    eps_cov: 1.0
+    cell_size: 1.0
+    novelty: hard
+    aggregate: mean_minus_lambda_std
+    lambda_risk: 0.25         # pre-registered (task H-v1 §1 H2); std ddof 0; no tuning on any split
+    horizon: 1
+  h3:
+    value: cov
+    eps_cov: 1.0
+    cell_size: 1.0
+    novelty: hard
+    aggregate: mean_minus_lambda_std
+    lambda_risk: 0.25
+    horizon: 2
+    depth: 2
+    first_layer: all legal candidates of the simulator (no pruning)
+    second_layer: "settings-grid neighbours of c1 (get_neighboring_poses), unvisited first with c1 counted visited, c1 excluded, segment c1->c2 crossing the known D100 surface band dropped; no GT collision test; exhaustive"
+    union: per sample k, union of the novel cells of c1 and c2 (max weight per cell); sample k of c1 paired with sample k of c2 (same noise maps; Monte-Carlo pairing, not a joint world posterior)
+    score_c1: max over c2 of Q(c1, c2) = mean_k - lambda std_k ; no c2 -> H2 score of c1
+    replan: every step (only c1 executed); no imagined observation written into the P1
+    c2_chunk: 16              # views per frozen score_state call for the second layer (memory)
+regression_variants:
+  h1deg: H1 code path with the h0 per-sample value -> must reproduce H0 (scores and closed loop)
+  h3d1: H3 code path with depth 1 -> must reproduce H2
+  lambda0: H2 with lambda_risk 0 -> must equal H1 (fixed-state check)
+evaluation:
+  coverage: CVPR Table 1 official MAGICIAN coverage (t25_out_cov; replay must equal the stored curve) primary; monotone S10 secondary, separate
+  scenes: All-14 (Train-6, Dev-5, Test-3; sofia_church PENDING) x starts 0..4 x 100 steps
+  order: Dev-5 first, then Train-6 + Test-3
+  table1_ids: {H0: V3 (alias, no duplicate row), H1: V3-H1, H2: V3-H2, H3: V3-H3}
