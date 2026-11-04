@@ -240,3 +240,22 @@ export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True; unset T3_CKPT V4_P1_MOD
    - 另外 8 个 MAGICIAN 测试场景都在 `em2_windows.json` 中；
    - z0 按 settings.json 计算（abl_common.z0_of，适用于任何场景）。
    - **未验证项**：新场景若明显更大，整场景规划区域的显存与耗时是否会超出历史范围（历史显存峰值 12.4 GB）。
+
+## 10. 附录：Table 1 本轮运行的核对结果（2026-11-03）
+- **回归重放**：当前代码 + Table 1 启动链（`scripts/replay_check.sh`）重跑 barts_s0。8 个主模型（B0、V2O、B2、E2D、V4、V5、V3、MAG-B）的 `executed_keys` 与官方覆盖曲线都和历史 episode **逐位一致**，日志见 `g3/logs/replay_check.log`。
+- **新 episode**：520 个，13 个模型 × 8 个场景 × 5 个起点。每个都：
+  - 由 `t1_out_cov.py` 重放，`official_equal_stored = true`；
+  - 由 `import_episodes.py --new` 导入（断言官方曲线与 episode 文件一致，不覆盖已有记录）；
+  - 通过 `validate.py` 检查（101 个值、取值范围、单调曲线、101 个执行动作、sha 与注册表一致）。最终结果为 bad 0。
+- **失败尝试**：共 18 次，全部是 CUDA OOM（失败目录中的规划器 stderr 已确认）：
+  - E2D dunnottar s1–s4：各 4 次；
+  - E2S dunnottar s3：1 次；
+  - MAG-B fushimi s4：1 次。
+  - 原因是同一张卡上有多个规划器（每卡 2–3 个 worker）。
+  - 每次失败的部分输出都移到 `g3/failed/<model>_<tag>_tryN`；dunnottar 的 D100 任务另存为 `_excl_pre`。
+  - 之后从头重跑：普通重试，或每卡独占运行（`scripts/rerun_exclusive.sh`）。**没有用任何部分结果。**
+- **§9 未验证项的结论**：
+  - 新场景中 dunnottar 最大。双图（b2）规划器峰值 30.5 GB，S10 规划器 21.6 GB，超过历史的 12.4 GB；
+  - 其他新场景的峰值都 ≤ 12.4 GB；
+  - 每张 L40 只有 44.5 GB 显存，因此 dunnottar 的双图任务需要独占一张卡。
+- **P1 模式**：抽查新 episode 的规划器 stderr，B1 为 `T3_P1_MODE=full`、B2 为 `b2`，B0 没有 T3 行（稀疏），与注册表一致。

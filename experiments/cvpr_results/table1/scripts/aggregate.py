@@ -156,7 +156,7 @@ def main():
     wcsv("per_scene", sorted(scene_rows, key=lambda r: (order.index(r["model"]), r["split"], r["scene"])),
          ["model", "scene", "split", "n_starts", "complete"] + [x for k in mk for x in (k, k + "_std")])
     wcsv("per_split", split_rows, ["model", "label", "group", "complete", "n_scenes", "n_episodes"] + [x for k in mk for x in (k, k + "_std", k + "_ci")] + ["scenes"])
-    wcsv("per_model", [r for r in split_rows if r["group"].startswith("all15")], ["model", "label", "group", "complete", "n_scenes", "n_episodes"] + mk)
+    wcsv("per_model", [r for r in split_rows if r["group"] == "all14" or r["group"] == "all15"], ["model", "label", "group", "complete", "n_scenes", "n_episodes"] + mk)
     with open(os.path.join(R, f"coverage_curves{suf}.csv"), "w", newline="") as f:
         w = csv.writer(f)
         w.writerow(["model", "scene", "split", "start"] + [f"c{t}" for t in range(T_MAX + 1)])
@@ -194,7 +194,7 @@ def tables(split_rows, pair_rows, scene_rows, present, label, split):
         for r in split_rows:
             w.writerow([r["model"], r["label"], r["group"], r["complete"], r["n_scenes"], r["n_episodes"]] +
                        [x for k in mk for x in (round(r[k], 5), r[k + "_ci"][0], r[k + "_ci"][1], round(r[k + "_std"], 5))])
-    gname = {"train": "Train", "dev": "Dev", "test": "Test", "other": "Other / Unassigned", "all14": "All-14（14 个可运行场景）", "all15": "All-15"}
+    gname = {"train": "Train", "dev": "Dev", "test": "Test", "other": "Other / Unassigned", "all14": "All-14（14 个可运行场景）", "all15": "All-15 — 不完整（sofia_church 缺失），只作审计，不是 All-15 结果"}
     order_g = ["train", "dev", "test", "other", "all14", "all15"]
 
     def rows_of(g):
@@ -217,7 +217,7 @@ def tables(split_rows, pair_rows, scene_rows, present, label, split):
     open(os.path.join(T1, "TABLE1.md"), "w").write("\n".join(L) + "\n")
     # paper table: compact
     P = ["# TABLE1_PAPER — 正文紧凑版（主协议：MAGICIAN 官方覆盖）", "", hdr, "| 模型 | " + " | ".join(
-        f"{gname[g]} AUC@20 | {gname[g]} AUC@50 | {gname[g]} AUC@100 | {gname[g]} Cov@20 | {gname[g]} Final" for g in ("dev", "test", "all15")) + " |",
+        f"{gname[g]} AUC@20 | {gname[g]} AUC@50 | {gname[g]} AUC@100 | {gname[g]} Cov@20 | {gname[g]} Final" for g in ("dev", "test", "all14")) + " |",
          "|---|" + "---|" * 15]
     for m in present:
         cells = []

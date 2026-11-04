@@ -1,0 +1,111 @@
+{
+ "ok": {
+  "MAG-B": 70,
+  "V2O": 70,
+  "B0": 70,
+  "B2": 70,
+  "E2D": 70,
+  "V3": 70,
+  "V4": 70,
+  "V5": 70,
+  "MAG-G": 70,
+  "E2S": 70,
+  "B1": 70,
+  "V3.1": 70,
+  "V4C": 70
+ },
+ "missing": {
+  "MAG-B": [
+   "sofia_church_s0",
+   "sofia_church_s1",
+   "sofia_church_s2",
+   "sofia_church_s3",
+   "sofia_church_s4"
+  ],
+  "V2O": [
+   "sofia_church_s0",
+   "sofia_church_s1",
+   "sofia_church_s2",
+   "sofia_church_s3",
+   "sofia_church_s4"
+  ],
+  "B0": [
+   "sofia_church_s0",
+   "sofia_church_s1",
+   "sofia_church_s2",
+   "sofia_church_s3",
+   "sofia_church_s4"
+  ],
+  "B2": [
+   "sofia_church_s0",
+   "sofia_church_s1",
+   "sofia_church_s2",
+   "sofia_church_s3",
+   "sofia_church_s4"
+  ],
+  "E2D": [
+   "sofia_church_s0",
+   "sofia_church_s1",
+   "sofia_church_s2",
+   "sofia_church_s3",
+   "sofia_church_s4"
+  ],
+  "V3": [
+   "sofia_church_s0",
+   "sofia_church_s1",
+   "sofia_church_s2",
+   "sofia_church_s3",
+   "sofia_church_s4"
+  ],
+  "V4": [
+   "sofia_church_s0",
+   "sofia_church_s1",
+   "sofia_church_s2",
+   "sofia_church_s3",
+   "sofia_church_s4"
+  ],
+  "V5": [
+   "sofia_church_s0",
+   "sofia_church_s1",
+   "sofia_church_s2",
+   "sofia_church_s3",
+   "sofia_church_s4"
+  ],
+  "MAG-G": [
+   "sofia_church_s0",
+   "sofia_church_s1",
+   "sofia_church_s2",
+   "sofia_church_s3",
+   "sofia_church_s4"
+  ],
+  "E2S": [
+   "sofia_church_s0",
+   "sofia_church_s1",
+   "sofia_church_s2",
+   "sofia_church_s3",
+   "sofia_church_s4"
+  ],
+  "B1": [
+   "sofia_church_s0",
+   "sofia_church_s1",
+   "sofia_church_s2",
+   "sofia_church_s3",
+   "sofia_church_s4"
+  ],
+  "V3.1": [
+   "sofia_church_s0",
+   "sofia_church_s1",
+   "sofia_church_s2",
+   "sofia_church_s3",
+   "sofia_church_s4"
+  ],
+  "V4C": [
+   "sofia_church_s0",
+   "sofia_church_s1",
+   "sofia_church_s2",
+   "sofia_church_s3",
+   "sofia_church_s4"
+  ]
+ },
+ "bad": []
+}
