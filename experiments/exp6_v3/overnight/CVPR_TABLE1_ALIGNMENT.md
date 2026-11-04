@@ -10,7 +10,7 @@
 | V3-D1-H3-NORISK | V3-T1 40K + D1（D-v1，depth 2，λ 0） | 639c9d3a…（V3-T1） | 30 / 25 / 15 / **70** | 完整 |
 | V3-D2-DEPTH3-B3 | V3-T1 40K + depth 3，beam 3 | 639c9d3a… | 5 / 25 / 0 / 30 | partial（Dev + pisa） |
 | V3-D3-DEPTH3-B5 | V3-T1 40K + depth 3，beam 5 | 639c9d3a… | 5 / 25 / 0 / 30 | partial（Dev + pisa） |
-| V3-D4-DEPTH4-B3 | V3-T1 40K + depth 4，beam 3 | 639c9d3a… | 运行中 | partial |
+| V3-D4-DEPTH4-B3 | V3-T1 40K + depth 4，beam 3 | 639c9d3a… | 5 / 25 / 0 / 30 | partial（Dev + pisa） |
 | V3-Y45K-H0 | Y 45K + H0 | 37da75b2… | 0 / 25 / 0 / 25 | partial（Dev） |
 | V3-Y50K-H0 | Y 50K + H0 | 64cea1d6… | 30 / 25 / 15 / **70** | 完整 |
 | V3-YBEST-H3 | Y 50K + H3（H-v1，未改） | 64cea1d6… | 30 / 25 / 15 / **70** | 完整 |

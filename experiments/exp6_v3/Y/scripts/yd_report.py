@@ -31,7 +31,7 @@ MODELS = {"H0 (V3-T1 40K)": "V3", "H3 (historical)": "V3-H3", "D1 H3-NoRisk": "V
           "YBEST + H3": "V3-YBEST-H3", "YD Y50K + D1": "V3-YD-COMBINED-Y50K-D1", "B0": "B0", "B2": "B2", "MAGICIAN Beam": "MAG-B"}
 PAIRS = [("V3-D1-H3-NORISK", "V3-H3"), ("V3-D2-DEPTH3-B3", "V3-D1-H3-NORISK"), ("V3-D3-DEPTH3-B5", "V3-D2-DEPTH3-B3"), ("V3-D4-DEPTH4-B3", "V3-D2-DEPTH3-B3"),
          ("V3-D2-DEPTH3-B3", "V3-H3"), ("V3-D3-DEPTH3-B5", "V3-H3"), ("V3-D1-H3-NORISK", "V3"), ("V3-D2-DEPTH3-B3", "V3"),
-         ("V3-Y45K-H0", "V3"), ("V3-Y50K-H0", "V3"), ("V3-Y50K-H0", "V3-Y45K-H0"), ("V3-YBEST-H3", "V3-H3"), ("V3-YBEST-H3", "V3"), ("V3-YD-COMBINED-Y50K-D1", "V3-D1-H3-NORISK"), ("V3-YD-COMBINED-Y50K-D1", "V3-YBEST-H3"), ("V3-D1-H3-NORISK", "MAG-B"), ("V3-YBEST-H3", "MAG-B"), ("V3-D1-H3-NORISK", "B0")]
+         ("V3-Y45K-H0", "V3"), ("V3-Y50K-H0", "V3"), ("V3-Y50K-H0", "V3-Y45K-H0"), ("V3-YBEST-H3", "V3-H3"), ("V3-YBEST-H3", "V3"), ("V3-YD-COMBINED-Y50K-D1", "V3-D1-H3-NORISK"), ("V3-D4-DEPTH4-B3", "V3-D1-H3-NORISK"), ("V3-D4-DEPTH4-B3", "V3-H3"), ("V3-YD-COMBINED-Y50K-D1", "V3-YBEST-H3"), ("V3-D1-H3-NORISK", "MAG-B"), ("V3-YBEST-H3", "MAG-B"), ("V3-D1-H3-NORISK", "B0")]
 KEYS = ("auc10", "auc20", "auc50", "auc100", "cov20", "cov50", "final")
 
 

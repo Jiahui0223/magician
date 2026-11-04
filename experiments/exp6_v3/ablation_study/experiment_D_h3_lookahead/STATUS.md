@@ -1,4 +1,4 @@
-# STATUS — EXP6 V3 ablation D（2026-11-04T18:55:02Z，controller 自动更新）
+# STATUS — EXP6 V3 ablation D（2026-11-04T19:34:06Z，controller 自动更新）
 
 - **阶段**：COMPLETED
 - **作业**：3443137 (gpu115) + 3461041 (gpu114)；本节点存活的 worker：0；任务文件 `experiments/cvpr_results/table1/configs/jobs_main_all14.txt` 剩余 0 个任务
@@ -10,7 +10,7 @@
 | V3-D1-H3-NORISK | 30/30 | 25/25 | 15/15 | 70/70 |
 | V3-D2-DEPTH3-B3 | 5/30 | 25/25 | 0/15 | 30/70 |
 | V3-D3-DEPTH3-B5 | 5/30 | 25/25 | 0/15 | 30/70 |
-| V3-D4-DEPTH4-B3 | 3/30 | 13/25 | 0/15 | 16/70 |
+| V3-D4-DEPTH4-B3 | 5/30 | 25/25 | 0/15 | 30/70 |
 | V3-Y45K-H0 | 0/30 | 25/25 | 0/15 | 25/70 |
 | V3-Y50K-H0 | 30/30 | 25/25 | 15/15 | 70/70 |
 | V3-YBEST-H3 | 30/30 | 25/25 | 15/15 | 70/70 |

@@ -20,6 +20,7 @@
 | 10:00 | 主队列完成；dunnottar（gpu115，独占）与第二波（gpu114）自动接力 | — |
 | 10:10 | 依据 YBEST-H3 的 Dev 结果（AUC@100 +0.010，5/0），把 YBEST-H3 的 All-14 排在 D4 之前 | — |
 | 11:55 | gpu115 空闲，加 8 个 worker 跑 D4 | — |
+| 12:31 | D4 的 Dev-5 + pisa 完成（30 / 30）；所有 t1_queue worker 退出，GPU 空闲 | 重新生成 Table 1 与全部报告 |
 
 - **episode 失败**：本夜所有 D / Y / YBEST / YD 的 episode **0 次失败尝试、0 次放弃**。
 - **训练异常**：无 NaN、无 OOM。

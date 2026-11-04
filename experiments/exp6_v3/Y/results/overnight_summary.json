@@ -520,18 +520,18 @@
    "id": "V3-D4-DEPTH4-B3",
    "splits": {
     "train": {
-     "episodes": 3,
+     "episodes": 5,
      "episodes_total": 30,
-     "scenes_complete": 0,
+     "scenes_complete": 1,
      "scenes_total": 6,
      "complete": false,
-     "auc10": null,
-     "auc20": null,
-     "auc50": null,
-     "auc100": null,
-     "cov20": null,
-     "cov50": null,
-     "final": null,
+     "auc10": 0.28108570971107927,
+     "auc20": 0.39985467193979685,
+     "auc50": 0.6262497131612683,
+     "auc100": 0.7699402529618936,
+     "cov20": 0.6052809695389743,
+     "cov50": 0.8645467335387049,
+     "final": 0.9346097626409285,
      "missing": [
       "bannerman_s0",
       "bannerman_s1",
@@ -553,8 +553,6 @@
       "liberty_s2",
       "liberty_s3",
       "liberty_s4",
-      "pisa_s3",
-      "pisa_s4",
       "redeemer_s0",
       "redeemer_s1",
       "redeemer_s2",
@@ -563,32 +561,19 @@
      ]
     },
     "dev": {
-     "episodes": 13,
+     "episodes": 25,
      "episodes_total": 25,
-     "scenes_complete": 0,
+     "scenes_complete": 5,
      "scenes_total": 5,
-     "complete": false,
-     "auc10": null,
-     "auc20": null,
-     "auc50": null,
-     "auc100": null,
-     "cov20": null,
-     "cov50": null,
-     "final": null,
-     "missing": [
-      "barts_s3",
-      "barts_s4",
-      "colosseum_s3",
-      "colosseum_s4",
-      "eiffel_s3",
-      "eiffel_s4",
-      "pantheon_s2",
-      "pantheon_s3",
-      "pantheon_s4",
-      "sestino_museum_s2",
-      "sestino_museum_s3",
-      "sestino_museum_s4"
-     ]
+     "complete": true,
+     "auc10": 0.2745482115929614,
+     "auc20": 0.41524672842607835,
+     "auc50": 0.649424426432931,
+     "auc100": 0.7730297685562848,
+     "cov20": 0.6423830634452959,
+     "cov50": 0.8818397301431391,
+     "final": 0.9038066535968661,
+     "missing": []
     },
     "test": {
      "episodes": 0,
@@ -622,18 +607,18 @@
      ]
     },
     "all14": {
-     "episodes": 16,
+     "episodes": 30,
      "episodes_total": 70,
-     "scenes_complete": 0,
+     "scenes_complete": 6,
      "scenes_total": 14,
      "complete": false,
-     "auc10": null,
-     "auc20": null,
-     "auc50": null,
-     "auc100": null,
-     "cov20": null,
-     "cov50": null,
-     "final": null,
+     "auc10": 0.2756377946126477,
+     "auc20": 0.4126813856783648,
+     "auc50": 0.6455619742209872,
+     "auc100": 0.772514849290553,
+     "cov20": 0.6361993811275756,
+     "cov50": 0.8789575640424001,
+     "final": 0.9089405051042098,
      "missing": [
       "alhambra_s0",
       "alhambra_s1",
@@ -645,22 +630,16 @@
       "bannerman_s2",
       "bannerman_s3",
       "bannerman_s4",
-      "barts_s3",
-      "barts_s4",
       "bridge_s0",
       "bridge_s1",
       "bridge_s2",
       "bridge_s3",
       "bridge_s4",
-      "colosseum_s3",
-      "colosseum_s4",
       "dunnottar_s0",
       "dunnottar_s1",
       "dunnottar_s2",
       "dunnottar_s3",
       "dunnottar_s4",
-      "eiffel_s3",
-      "eiffel_s4",
       "fushimi_s0",
       "fushimi_s1",
       "fushimi_s2",
@@ -676,25 +655,17 @@
       "neuschwanstein_s2",
       "neuschwanstein_s3",
       "neuschwanstein_s4",
-      "pantheon_s2",
-      "pantheon_s3",
-      "pantheon_s4",
-      "pisa_s3",
-      "pisa_s4",
       "redeemer_s0",
       "redeemer_s1",
       "redeemer_s2",
       "redeemer_s3",
-      "redeemer_s4",
-      "sestino_museum_s2",
-      "sestino_museum_s3",
-      "sestino_museum_s4"
+      "redeemer_s4"
      ]
     }
    },
    "runtime": [
-    18.67859399318695,
-    26.304087710380557,
+    18.450927019119263,
+    26.531411004066467,
     8.694822788238525
    ]
   },
@@ -1686,6 +1657,99 @@
     "losses": 2
    }
   },
+  "V3-D4-DEPTH4-B3 \u2212 V3-D2-DEPTH3-B3 | train": {
+   "n_scenes": 1,
+   "of": 6,
+   "auc20": {
+    "d": 0.010303438593884329,
+    "ci": [
+     null,
+     null
+    ],
+    "wins": 1,
+    "losses": 0
+   },
+   "auc100": {
+    "d": 0.001479964658669286,
+    "ci": [
+     null,
+     null
+    ],
+    "wins": 1,
+    "losses": 0
+   },
+   "final": {
+    "d": 0.00022265203825100333,
+    "ci": [
+     null,
+     null
+    ],
+    "wins": 1,
+    "losses": 0
+   }
+  },
+  "V3-D4-DEPTH4-B3 \u2212 V3-D2-DEPTH3-B3 | dev": {
+   "n_scenes": 5,
+   "of": 5,
+   "auc20": {
+    "d": 0.0024269709851829024,
+    "ci": [
+     -0.01568910270758026,
+     0.020543044677946064
+    ],
+    "wins": 3,
+    "losses": 2
+   },
+   "auc100": {
+    "d": 0.015510924771964451,
+    "ci": [
+     -0.001582922146996224,
+     0.03177899180434211
+    ],
+    "wins": 3,
+    "losses": 2
+   },
+   "final": {
+    "d": 0.00790798869620397,
+    "ci": [
+     -0.00599549358986784,
+     0.02738973307008665
+    ],
+    "wins": 2,
+    "losses": 3
+   }
+  },
+  "V3-D4-DEPTH4-B3 \u2212 V3-D2-DEPTH3-B3 | all14": {
+   "n_scenes": 6,
+   "of": 14,
+   "auc20": {
+    "d": 0.0037397155866331403,
+    "ci": [
+     -0.011357012490669496,
+     0.018836443663935776
+    ],
+    "wins": 4,
+    "losses": 2
+   },
+   "auc100": {
+    "d": 0.01317243141974859,
+    "ci": [
+     -0.0007887931396531692,
+     0.028714263871986962
+    ],
+    "wins": 4,
+    "losses": 2
+   },
+   "final": {
+    "d": 0.00662709925321181,
+    "ci": [
+     -0.004959135985181366,
+     0.02368027176727196
+    ],
+    "wins": 3,
+    "losses": 3
+   }
+  },
   "V3-D2-DEPTH3-B3 \u2212 V3-H3 | train": {
    "n_scenes": 1,
    "of": 6,
@@ -2644,6 +2708,192 @@
      0.003939996039890948
     ],
     "wins": 3,
+    "losses": 2
+   }
+  },
+  "V3-D4-DEPTH4-B3 \u2212 V3-D1-H3-NORISK | train": {
+   "n_scenes": 1,
+   "of": 6,
+   "auc20": {
+    "d": 0.016959686971315724,
+    "ci": [
+     null,
+     null
+    ],
+    "wins": 1,
+    "losses": 0
+   },
+   "auc100": {
+    "d": 0.020333394614008182,
+    "ci": [
+     null,
+     null
+    ],
+    "wins": 1,
+    "losses": 0
+   },
+   "final": {
+    "d": 0.022760608101102364,
+    "ci": [
+     null,
+     null
+    ],
+    "wins": 1,
+    "losses": 0
+   }
+  },
+  "V3-D4-DEPTH4-B3 \u2212 V3-D1-H3-NORISK | dev": {
+   "n_scenes": 5,
+   "of": 5,
+   "auc20": {
+    "d": -0.03161857368607368,
+    "ci": [
+     -0.08315557346242061,
+     0.0014226461389229782
+    ],
+    "wins": 1,
+    "losses": 4
+   },
+   "auc100": {
+    "d": 0.007574238783180087,
+    "ci": [
+     -0.02624071666114163,
+     0.038214096713510635
+    ],
+    "wins": 4,
+    "losses": 1
+   },
+   "final": {
+    "d": 0.008249663606728741,
+    "ci": [
+     -0.0014358784292197724,
+     0.023803142709485046
+    ],
+    "wins": 4,
+    "losses": 1
+   }
+  },
+  "V3-D4-DEPTH4-B3 \u2212 V3-D1-H3-NORISK | all14": {
+   "n_scenes": 6,
+   "of": 14,
+   "auc20": {
+    "d": -0.023522196909842114,
+    "ci": [
+     -0.06972551984847168,
+     0.006688293629177426
+    ],
+    "wins": 2,
+    "losses": 4
+   },
+   "auc100": {
+    "d": 0.00970076475498477,
+    "ci": [
+     -0.018619851744747878,
+     0.035759012666987444
+    ],
+    "wins": 5,
+    "losses": 1
+   },
+   "final": {
+    "d": 0.010668154355791012,
+    "ci": [
+     -0.00025528995660280734,
+     0.023737422456930335
+    ],
+    "wins": 5,
+    "losses": 1
+   }
+  },
+  "V3-D4-DEPTH4-B3 \u2212 V3-H3 | train": {
+   "n_scenes": 1,
+   "of": 6,
+   "auc20": {
+    "d": 0.019163760164650934,
+    "ci": [
+     null,
+     null
+    ],
+    "wins": 1,
+    "losses": 0
+   },
+   "auc100": {
+    "d": 0.032506572015297164,
+    "ci": [
+     null,
+     null
+    ],
+    "wins": 1,
+    "losses": 0
+   },
+   "final": {
+    "d": 0.053431201649086324,
+    "ci": [
+     null,
+     null
+    ],
+    "wins": 1,
+    "losses": 0
+   }
+  },
+  "V3-D4-DEPTH4-B3 \u2212 V3-H3 | dev": {
+   "n_scenes": 5,
+   "of": 5,
+   "auc20": {
+    "d": -0.02909163697092665,
+    "ci": [
+     -0.07526542819303919,
+     -0.0012020609343878052
+    ],
+    "wins": 1,
+    "losses": 4
+   },
+   "auc100": {
+    "d": 0.013635826658448025,
+    "ci": [
+     -0.02668108051260274,
+     0.06420759460069163
+    ],
+    "wins": 4,
+    "losses": 1
+   },
+   "final": {
+    "d": 0.029215093843433702,
+    "ci": [
+     -0.002063518170260159,
+     0.08484900639970805
+    ],
+    "wins": 3,
+    "losses": 2
+   }
+  },
+  "V3-D4-DEPTH4-B3 \u2212 V3-H3 | all14": {
+   "n_scenes": 6,
+   "of": 14,
+   "auc20": {
+    "d": -0.02104907078166372,
+    "ci": [
+     -0.06296972126681069,
+     0.006370825150146697
+    ],
+    "wins": 2,
+    "losses": 4
+   },
+   "auc100": {
+    "d": 0.016780950884589547,
+    "ci": [
+     -0.016905386139559202,
+     0.058427178758992636
+    ],
+    "wins": 5,
+    "losses": 1
+   },
+   "final": {
+    "d": 0.033251111811042476,
+    "ci": [
+     0.0001341033163277013,
+     0.07899452626326246
+    ],
+    "wins": 4,
     "losses": 2
    }
   },
