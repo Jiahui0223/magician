@@ -39,6 +39,8 @@ run_sim() {   # model scene start root
     V3-D4-DEPTH4-B3) $MG $X/exp6_v3/ablation_study/experiment_D_h3_lookahead/scripts/sim_out_d.py --v3-ckpt $R/work_dirs/exp6_v3/task1_xattn/checkpoints/final.pt --policy d4 --group V2M --scene $s --start $k --root $root ;;
     V3-Y45K-H0) $MG $X/exp6_v3/shared/sim_out_v3.py --v3-ckpt $R/work_dirs/exp6_v3/Y/runs/main/ema_045000.pt --group V2M --scene $s --start $k --root $root ;;
     V3-Y50K-H0) $MG $X/exp6_v3/shared/sim_out_v3.py --v3-ckpt $R/work_dirs/exp6_v3/Y/runs/main/ema_050000.pt --group V2M --scene $s --start $k --root $root ;;
+    V3-YBEST-H3) $MG $X/exp6_v3/H/scripts/sim_out_h.py --v3-ckpt $R/work_dirs/exp6_v3/Y/runs/main/ema_050000.pt --policy h3 --group V2M --scene $s --start $k --root $root ;;
+    V3-YD-COMBINED-Y50K-D1) $MG $X/exp6_v3/ablation_study/experiment_D_h3_lookahead/scripts/sim_out_d.py --v3-ckpt $R/work_dirs/exp6_v3/Y/runs/main/ema_050000.pt --policy d1 --group V2M --scene $s --start $k --root $root ;;
     *) echo "unknown model $m"; return 2 ;;
   esac
 }

@@ -653,9 +653,9 @@ models:
   - id: V3-Y45K-H0
     label: "V3-Y45K-H0: V3-T1 续训到 45K（Y），H0 = 原 DistP1 Greedy（与 V3 行同一启动链）"
     role: y
-    status: PENDING_CHECKPOINT
+    status: READY
     status_reason: EXP6 V3 / Y（experiments/exp6_v3/Y/FROZEN_PROTOCOL.md）；checkpoint 在训练到 45000 步后由 Y 的 manifest 填入 sha256 并改为 READY
-    sha256: null
+    sha256: 37da75b2bd9542932d52efe395842cb4760c5a9dfc3efae469faaf87f39021cd
     checkpoint: {real_path: work_dirs/exp6_v3/Y/runs/main/ema_045000.pt, parent: "V3-T1 40K (ckpt_last sha 3d819782…, EMA = final.pt 639c9d3a…)", added_steps: 5000}
     inference: {p1_mode: b2, inference_density: D100, scoring_density: S10, refresh: R10, planner: Greedy-NV (H0 / DistP1), K: 4, euler_steps: 10, planning_region: 整个场景}
     launch:
@@ -665,14 +665,38 @@ models:
   - id: V3-Y50K-H0
     label: "V3-Y50K-H0: V3-T1 续训到 50K（Y），H0"
     role: y
-    status: PENDING_CHECKPOINT
+    status: READY
     status_reason: EXP6 V3 / Y（experiments/exp6_v3/Y/FROZEN_PROTOCOL.md）；checkpoint 在训练到 50000 步后由 Y 的 manifest 填入 sha256 并改为 READY
-    sha256: null
+    sha256: 64cea1d62e7b2a30322117de80664e9381f6a7dc802740e20ea77f982d70332c
     checkpoint: {real_path: work_dirs/exp6_v3/Y/runs/main/ema_050000.pt, parent: "V3-T1 40K (ckpt_last sha 3d819782…, EMA = final.pt 639c9d3a…)", added_steps: 10000}
     inference: {p1_mode: b2, inference_density: D100, scoring_density: S10, refresh: R10, planner: Greedy-NV (H0 / DistP1), K: 4, euler_steps: 10, planning_region: 整个场景}
     launch:
       command: |
         CUDA_VISIBLE_DEVICES=$G $MG experiments/exp6_v3/shared/sim_out_v3.py --v3-ckpt $R/work_dirs/exp6_v3/Y/runs/main/ema_050000.pt --group V2M --scene $S --start $K --root $T1W/closed_loop/outdoor/V3-Y50K-H0/V2M
+    historical_outdoor: {reusable_episodes: 0}
+  - id: V3-YBEST-H3
+    label: "V3-YBEST-H3: Y 50K（Dev-5 选出）+ 原 H3 策略（H-v1 h3，未改）"
+    role: y
+    status: READY
+    status_reason: EXP6 V3 / Y 的 Dev-5 预注册选择（work_dirs/exp6_v3/overnight/SELECTION.json）；同一 H3 规划器（H-v1），只换权重；用于测同一规划器下的微调收益，不是 D 的结果
+    sha256: 64cea1d62e7b2a30322117de80664e9381f6a7dc802740e20ea77f982d70332c
+    checkpoint: {real_path: work_dirs/exp6_v3/Y/runs/main/ema_050000.pt, parent: "V3-T1 40K", added_steps: 10000}
+    inference: {p1_mode: b2, inference_density: D100, scoring_density: S10, refresh: R10, planner: "Greedy-NV + h3 (H-v1)", K: 4, euler_steps: 10, planning_region: 整个场景}
+    launch:
+      command: |
+        CUDA_VISIBLE_DEVICES=$G $MG experiments/exp6_v3/H/scripts/sim_out_h.py --v3-ckpt $R/work_dirs/exp6_v3/Y/runs/main/ema_050000.pt --policy h3 --group V2M --scene $S --start $K --root $T1W/closed_loop/outdoor/V3-YBEST-H3/V2M
+    historical_outdoor: {reusable_episodes: 0}
+  - id: V3-YD-COMBINED-Y50K-D1
+    label: "V3-YD-COMBINED-Y50K-D1: Y 50K（Dev-5 选出）+ D1（H3 去掉风险项，D-v1）"
+    role: yd
+    status: READY
+    status_reason: EXP6 V3 overnight 组合实验（Y 与 D 各自在 Dev-5 上单独选定之后才组合）；不是 Y 或 D 单独的贡献
+    sha256: 64cea1d62e7b2a30322117de80664e9381f6a7dc802740e20ea77f982d70332c
+    checkpoint: {real_path: work_dirs/exp6_v3/Y/runs/main/ema_050000.pt, parent: "V3-T1 40K", added_steps: 10000}
+    inference: {p1_mode: b2, inference_density: D100, scoring_density: S10, refresh: R10, planner: "Greedy-NV + d1 (D-v1)", K: 4, euler_steps: 10, planning_region: 整个场景}
+    launch:
+      command: |
+        CUDA_VISIBLE_DEVICES=$G $MG experiments/exp6_v3/ablation_study/experiment_D_h3_lookahead/scripts/sim_out_d.py --v3-ckpt $R/work_dirs/exp6_v3/Y/runs/main/ema_050000.pt --policy d1 --group V2M --scene $S --start $K --root $T1W/closed_loop/outdoor/V3-YD-COMBINED-Y50K-D1/V2M
     historical_outdoor: {reusable_episodes: 0}
 
 # 不进入 models 列表的参考数据（aggregate.py 只读 models）
