@@ -560,6 +560,47 @@ models:
         CUDA_VISIBLE_DEVICES=$G env -u LD_PRELOAD -u PYTHONPATH -u T3_CKPT -u V3_CKPT -u V4_CKPT V4_P1_MODE=sparse $MAGPY experiments/exp6_v5/scripts/sim_out_v5.py --v4-ckpt $R/work_dirs/exp6_v5/F1/runs/B/ema_005000.pt --group V2M --scene $S --start $K --root $T1W/closed_loop/outdoor/F1-GQ-v1@5k/V2M
     historical_outdoor: {reusable_episodes: 0, note: "F1 的 Dev-3 G3 记录是开发结果，不导入"}
 
+  # ---- added 2026-11-04 from EXP6 V3 / H (decision policies on the frozen V3-T1; H0 = the V3 row above, alias)
+  - id: V3-H1
+    label: "V3-H1: V3-T1 + H1 Coverage-Aligned Greedy"
+    role: h
+    status: READY
+    status_reason: EXP6 V3 / H（protocol H-v1，experiments/exp6_v3/H/FROZEN_PROTOCOL.md）；冻结 V3-T1 权重（与 V3 行同一 checkpoint），只改评分 / 规划；H0 = 已有 V3 行（别名，不重复登记）
+    sha256: 639c9d3ae3f3c069dc0399dc4cdd44102be2bf20e70d666a6a529c6affc62bdb
+    model_version: V3-T1（同 V3 行）
+    policy: {id: h1, doc: "H1 Coverage-Aligned Greedy：每样本价值 = 规划域内、距所有已观测 S10 采样点 > eps_cov（1.0）的预测命中，在 1.0 运行时单位的格子上去重，权重 w(z) 不变；K 均值", config: experiments/exp6_v3/H/FROZEN_CONFIG.yaml, code: experiments/exp6_v3/H/scripts/h_policy.py, hashes: "规划器 stderr 的 H_POLICY 行与 episode planner_hello.planner.h_policy"}
+    inference: {p1_mode: b2, inference_density: D100, scoring_density: S10, refresh: R10, planner: "Greedy-NV + h1", K: 4, euler_steps: 10, planning_region: 整个场景}
+    launch:
+      command: |
+        CUDA_VISIBLE_DEVICES=$G $MG experiments/exp6_v3/H/scripts/sim_out_h.py --v3-ckpt $R/work_dirs/exp6_v3/task1_xattn/checkpoints/final.pt --policy h1 --group V2M --scene $S --start $K --root $T1W/closed_loop/outdoor/V3-H1/V2M
+    historical_outdoor: {reusable_episodes: 0}
+  - id: V3-H2
+    label: "V3-H2: V3-T1 + H2 Uncertainty-Aware Greedy"
+    role: h
+    status: READY
+    status_reason: EXP6 V3 / H（protocol H-v1，experiments/exp6_v3/H/FROZEN_PROTOCOL.md）；冻结 V3-T1 权重（与 V3 行同一 checkpoint），只改评分 / 规划；H0 = 已有 V3 行（别名，不重复登记）
+    sha256: 639c9d3ae3f3c069dc0399dc4cdd44102be2bf20e70d666a6a529c6affc62bdb
+    model_version: V3-T1（同 V3 行）
+    policy: {id: h2, doc: "H2 Uncertainty-Aware Greedy：H1 的每样本价值，聚合 = mean − 0.25·std（ddof 0）", config: experiments/exp6_v3/H/FROZEN_CONFIG.yaml, code: experiments/exp6_v3/H/scripts/h_policy.py, hashes: "规划器 stderr 的 H_POLICY 行与 episode planner_hello.planner.h_policy"}
+    inference: {p1_mode: b2, inference_density: D100, scoring_density: S10, refresh: R10, planner: "Greedy-NV + h2", K: 4, euler_steps: 10, planning_region: 整个场景}
+    launch:
+      command: |
+        CUDA_VISIBLE_DEVICES=$G $MG experiments/exp6_v3/H/scripts/sim_out_h.py --v3-ckpt $R/work_dirs/exp6_v3/task1_xattn/checkpoints/final.pt --policy h2 --group V2M --scene $S --start $K --root $T1W/closed_loop/outdoor/V3-H2/V2M
+    historical_outdoor: {reusable_episodes: 0}
+  - id: V3-H3
+    label: "V3-H3: V3-T1 + H3 Short-Horizon2"
+    role: h
+    status: READY
+    status_reason: EXP6 V3 / H（protocol H-v1，experiments/exp6_v3/H/FROZEN_PROTOCOL.md）；冻结 V3-T1 权重（与 V3 行同一 checkpoint），只改评分 / 规划；H0 = 已有 V3 行（别名，不重复登记）
+    sha256: 639c9d3ae3f3c069dc0399dc4cdd44102be2bf20e70d666a6a529c6affc62bdb
+    model_version: V3-T1（同 V3 行）
+    policy: {id: h3, doc: "H3 Short-Horizon2：H2 价值，两步（合法 c1 × 设置网格邻居 c2，未访问优先，已知表面阻挡），每样本三维格子并集去重，Q = mean − 0.25·std，只执行 c1，逐步重规划", config: experiments/exp6_v3/H/FROZEN_CONFIG.yaml, code: experiments/exp6_v3/H/scripts/h_policy.py, hashes: "规划器 stderr 的 H_POLICY 行与 episode planner_hello.planner.h_policy"}
+    inference: {p1_mode: b2, inference_density: D100, scoring_density: S10, refresh: R10, planner: "Greedy-NV + h3", K: 4, euler_steps: 10, planning_region: 整个场景}
+    launch:
+      command: |
+        CUDA_VISIBLE_DEVICES=$G $MG experiments/exp6_v3/H/scripts/sim_out_h.py --v3-ckpt $R/work_dirs/exp6_v3/task1_xattn/checkpoints/final.pt --policy h3 --group V2M --scene $S --start $K --root $T1W/closed_loop/outdoor/V3-H3/V2M
+    historical_outdoor: {reusable_episodes: 0}
+
 # 不进入 models 列表的参考数据（aggregate.py 只读 models）
 references:
   MAGICIAN_LMDB:
