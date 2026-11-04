@@ -1,0 +1,9 @@
+# F1-A Baseline Continue (matched control): the parent V2 model itself, all parameters trained, L_FM only
+version: f1_a_v1
+arm: A
+model_id: F1-A-Continue
+model: "parent model_cfg (model_v1 = Encoder3D + RayEncoder Ray32/Conv1D -> 64 + UNet2D), unchanged"
+trainable: "all parameters (encoder, rays, unet)"
+lr: 2.0e-5                 # the verified V2-Mix / E2-S10 fine-tune recipe (e2_s10_v1.json)
+warmup: 500                # linear 0 -> lr
+schedule: cosine to 0 at step 5000

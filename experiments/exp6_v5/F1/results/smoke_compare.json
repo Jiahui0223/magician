@@ -1,0 +1,58 @@
+{
+ "states": 14,
+ "rays": 700416,
+ "parent_ray_context": {
+  "mean": -0.0011111048515886068,
+  "std": 0.02750527672469616,
+  "rms": 0.027527708560228348,
+  "ray_norm_mean": 0.2119966447353363,
+  "ray_norm_p95": 0.3323936462402344,
+  "finite": true,
+  "chan_std_min": 0.008142143487930298,
+  "chan_std_max": 0.052474088966846466
+ },
+ "f1b_decoder_out_scale1": {
+  "mean": -0.0002360153739573434,
+  "std": 0.5819128155708313,
+  "rms": 0.5819128155708313,
+  "ray_norm_mean": 4.643677234649658,
+  "ray_norm_p95": 5.190314292907715,
+  "finite": true,
+  "chan_std_min": 0.23239856958389282,
+  "chan_std_max": 0.45209869742393494
+ },
+ "cos_parent_vs_new": {
+  "mean": -0.0046106199733912945,
+  "abs_mean": 0.07665640115737915
+ },
+ "projection_and_valid_channels_equal": true,
+ "warm_start_A": {
+  "strict": true,
+  "missing": [],
+  "unexpected": [],
+  "copied": 390
+ },
+ "warm_start_B": {
+  "copied": 382,
+  "copied_numel": 24745890,
+  "not_used_from_v4": [
+   "rays"
+  ],
+  "new_modules_numel": 242757,
+  "torch_equal_inherited": true,
+  "not_copied_parent_numel": 76224
+ },
+ "not_copied_parent_keys_B": [
+  "rays.c1",
+  "rays.c2",
+  "rays.c3",
+  "rays.fc"
+ ],
+ "params": {
+  "parent_total": 24822114,
+  "parent_rays": 76224,
+  "f1b_total": 24988647,
+  "f1b_dec": 242757
+ },
+ "rule_out_scale_init": 0.04730555475604169
+}

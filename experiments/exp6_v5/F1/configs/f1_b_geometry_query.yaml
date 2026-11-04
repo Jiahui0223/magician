@@ -1,0 +1,20 @@
+# F1-B V5 Geometry Query only: parent encoder + parent flow U-Net copied exactly; Ray32/Conv1D RayEncoder replaced by
+# the V5RayDecoder of seen2scene/futureview/v5_model.py (unchanged code), randomly initialised (seed 0); L_FM only
+version: f1_b_v1
+arm: B
+model_id: F1-B-GQ
+model_cfg_base: experiments/exp6_v5/configs/model_v5.json   # its "v5" block (d 128, heads 4, n0 24, n1 12, coarse 2x2x2, null token, n_freq 6, d_sum 32, n_probe 16)
+v5_overrides:
+  out_scale_init: 0.0473   # FROZEN BY RULE 2026-11-03 21:27 (smoke_compare.py, 96 views: rms parent ray context 0.02753 / rms decoder output at out_scale 1 0.58191 = 0.0473; results/smoke_compare.json)
+no_v5_pretrained_weights: true   # the V5-Warm12k decoder (trained on D100 data with L_surf / L_bridge) is NOT loaded
+stage1:
+  steps: 2000              # steps 0-1999: parent encoder + U-Net frozen; V5RayDecoder (incl. its CondAdapter + out_scale) trained
+stage2:
+  steps: 3000              # steps 2000-4999: decoder + parent encoder + U-Net all trained (subject to the joint smoke check)
+  inherited_lr: 2.0e-5     # same peak as F1-A
+  inherited_warmup: 500    # from step 2000
+lr_new: 1.0e-4             # decoder: the V5 recipe (train_v5_outdoor.json)
+warmup_new: 200
+schedule: "cosine to 0 at step 5000 (both groups)"
+lambda_surf: 0.0
+lambda_bridge: 0.0

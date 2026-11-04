@@ -1,0 +1,28 @@
+# EXP6 V5 / F1 -- evaluation protocol (frozen 2026-11-03 before any F1 training)
+version: f1_eval_v1
+checkpoints: {F1-A: [2000, 5000], F1-B: [2000, 5000]}   # pre-registered; 0 / 1k / 3k / 4k saved but not evaluated in G3
+parent: B0 (V2-Mix EMA@17.5k, S10 inference + S10 DistP1 scoring, R10, K 4, Euler 10, Greedy-NV)
+inference: {p1_mode: sparse, inference_density: S10, scoring: S10 DistP1, refresh: R10, K: 4, euler_steps: 10, planner: Greedy-NV, planning_region: whole scene}
+g12:
+  set: dev3                          # Macarons++ Dev-3 fixed states of E1.2 (barts, pantheon, colosseum), strata B0 and B2, reported separately and pooled
+  models: [B0, A2k, A5k, B2k, B5k]
+  evaluator: e2_pilot/scripts/e2_fixed.py run_episode (same states, candidates, noise keys, replay rules, oracle) with MODELS = S10 inputs for every model
+  regression: B0 scores must equal the E2 rows (e2/fixed/dev3_s5000/<stratum>, scores.B0) bitwise, else STOP
+  early_states: t <= 20
+g3:
+  simulator: frozen M-protocol (exp3b m_t6_sim) through exp6_v5/scripts/sim_out_v5.py, V4_P1_MODE=sparse, V4_CKPT=<checkpoint>
+  chain_regression: B0 weights through this chain reproduce Table 1 B0 barts_s0 bitwise (executed keys + official coverage) -- done before training
+  pilot: {scenes: [barts, pantheon, colosseum], starts: [0, 1], steps: 100}
+  extended: {scenes: [barts, pantheon, colosseum], starts: [2, 3, 4], steps: 100}
+  b0_parent: reused from CVPR Table 1 canonical records (work_dirs/cvpr_results/table1/episodes/B0), same protocol, bitwise chain regression
+  coverage: {primary: MAGICIAN official (t25_out_cov, replay must equal the stored curve), secondary: monotone S10}
+  metrics: {cov_k: [10, 20, 40, 50, 60, 80, 100], auc_k: [10, 20, 40, 50, 60, 80, 100], auc_rule: "trapz(C[0..k], dx=1) / k", final: "C[100] (== Cov@100, checked)"}
+  aggregation: scene = mean over its starts; group = equal-weight mean over scenes; paired scene-level bootstrap 95% CI (10k, seed 0); wins / losses
+  main_pairs: [[F1-B@5k, F1-A@5k], [F1-B@2k, F1-A@2k], [F1-B@5k, B0], [F1-A@5k, B0], [F1-B@2k, B0], [F1-A@2k, B0]]
+selection:
+  split: Dev-3 only (15 episodes per checkpoint = pilot + extended)
+  rule: "per arm, between 2k and 5k the higher Dev-3 AUC@20 (official); |diff| < 1e-4 -> 5k; AUC@100 and Final reported independently (no single 'best')"
+  test_discipline: Test-3 / Train-6 / All-14 never used for selection or tuning
+table1:
+  export: table1_export/f1_model_registry_entry.yaml (status PENDING_TABLE1_EVALUATION until Table 1 runs its own evaluation)
+  formal_evaluation: CVPR Table 1 pipeline (All-14 runnable, sofia_church PENDING), only after the Dev-3 selection

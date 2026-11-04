@@ -1,0 +1,10 @@
+# EXP6 V5 / F1 -- where things live (large files outside git)
+work_dir: work_dirs/exp6_v5/F1
+training: {A: work_dirs/exp6_v5/F1/runs/A, B: work_dirs/exp6_v5/F1/runs/B}   # ema_<step>.pt, ckpt_last.pt, log / eval / digest jsonl, run json
+smoke: work_dirs/exp6_v5/F1/smoke
+g12_rows: work_dirs/exp6_v5/F1/eval_fixed/dev3/<stratum>/<tag>.jsonl
+g3: work_dirs/exp6_v5/F1/g3/{closed_loop,metrics,claims,logs,failed}
+g3_regression: work_dirs/exp6_v5/F1/g3/regress
+logs: work_dirs/exp6_v5/F1/logs
+parent_checkpoint: work_dirs/weights/W21_exp5_v2mix/W21-1_V2Mix_best/ema_017500.pt (read-only)
+table1_b0_records: work_dirs/cvpr_results/table1/episodes/B0 (read-only)
