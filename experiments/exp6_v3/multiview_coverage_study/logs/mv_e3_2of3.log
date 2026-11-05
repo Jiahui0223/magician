@@ -1,0 +1,47 @@
+D_POLICY {"d_policy": "d1", "d_policy_file_sha256": "c8418279771e787eaaa0404f421602c9b95851e67d14aed1f717690230e48ecb", "h_policy_file_sha256": "ccfdf4af2783be3f1e7717bc644daf31a2fe994bcf312fdb4e4269ddf017a94a", "config_sha256": "e53c230db866e821b55fc40c0030c5eff448d12cbddcb2fbee00b4044b43c0b3", "config_version": "D-v1", "policy_cfg": {"depth": 2, "beam": null, "lambda_risk": 0.0, "doc": "D1_H3_NO_RISK: H3 with lambda 0", "kind": "cov", "eps_cov": 1.0, "cell_size": 1.0, "novelty": "hard", "c2_chunk": 16}}
+/bsuhome/jiahuizhang/scratch/projects/occupancy/seen2scene/seen2scene/v3/predictor.py:80: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  ck = torch.load(ckpt_path, map_location=device)
+/bsuhome/jiahuizhang/scratch/projects/occupancy/seen2scene/experiments/exp6_v3/multiview_coverage_study/scripts/mv_core.py:286: UserWarning: median CUDA with indices output does not have a deterministic implementation, but you set 'torch.use_deterministic_algorithms(True, warn_only=True)'. You can file an issue at https://github.com/pytorch/pytorch/issues to help us prioritize adding deterministic support for this operation. (Triggered internally at /home/conda/feedstock_root/build_artifacts/libtorch_1737583452020/work/aten/src/ATen/Context.cpp:83.)
+  med = torch.nanmedian(tA, dim=0).values
+colosseum_s2 t=0 n=9 views=49 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 1.5e-03 | 3.7s/6.4s total 16s mem 8.7GB
+colosseum_s2 t=5 n=8 views=47 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 2.2e-03 | 3.8s/6.9s total 17s mem 8.8GB
+colosseum_s2 t=10 n=9 views=56 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 5.6e-03 | 5.4s/9.5s total 25s mem 8.8GB
+colosseum_s2 t=15 n=9 views=55 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 1.6e-03 | 5.2s/9.2s total 24s mem 8.8GB
+colosseum_s2 t=20 n=7 views=38 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 4.3e-03 | 3.3s/6.0s total 15s mem 8.8GB
+colosseum_s2 t=25 n=6 views=36 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 1.4e-02 | 2.9s/5.1s total 12s mem 8.8GB
+colosseum_s2 t=30 n=7 views=43 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 1.8e-03 | 3.5s/6.2s total 15s mem 8.8GB
+colosseum_s2 t=35 n=3 views=22 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 0.0e+00 | 1.6s/2.8s total 10s mem 8.8GB
+colosseum_s2 t=40 n=4 views=25 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 0.0e+00 | 1.8s/3.3s total 8s mem 8.8GB
+colosseum_s2 t=45 n=5 views=25 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 0.0e+00 | 1.7s/3.2s total 8s mem 8.8GB
+colosseum_s2 t=50 n=6 views=35 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 1.0e-02 | 2.8s/4.9s total 12s mem 8.8GB
+colosseum_s2 t=55 n=7 views=43 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 1.3e-02 | 3.5s/6.3s total 15s mem 8.8GB
+colosseum_s2 t=60 n=4 views=25 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 1.0e-03 | 1.8s/3.3s total 9s mem 8.8GB
+colosseum_s2 t=65 n=8 views=46 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 1.5e-02 | 3.7s/6.9s total 17s mem 8.8GB
+colosseum_s2 t=70 n=7 views=36 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 0.0e+00 | 2.8s/5.1s total 13s mem 8.8GB
+colosseum_s2 t=75 n=7 views=41 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 4.5e-03 | 3.4s/6.0s total 15s mem 8.8GB
+colosseum_s2 t=80 n=6 views=30 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 0.0e+00 | 2.2s/4.1s total 10s mem 8.8GB
+colosseum_s2 t=85 n=8 views=46 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 4.7e-03 | 3.8s/7.0s total 18s mem 8.8GB
+colosseum_s2 t=90 n=8 views=46 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 5.4e-03 | 3.9s/7.0s total 18s mem 8.8GB
+colosseum_s2 t=95 n=6 views=30 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 4.1e-03 | 2.5s/4.7s total 12s mem 8.8GB
+DONE e3 colosseum_s2 states 20 514s
+pisa_s1 t=0 n=9 views=51 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 8.3e-04 | 4.2s/7.3s total 20s mem 8.8GB
+pisa_s1 t=5 n=8 views=46 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 2.7e-03 | 4.0s/7.3s total 18s mem 8.8GB
+pisa_s1 t=10 n=8 views=46 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 4.3e-03 | 4.0s/7.2s total 18s mem 8.8GB
+pisa_s1 t=15 n=6 views=29 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 4.0e-03 | 2.5s/4.7s total 12s mem 8.8GB
+pisa_s1 t=20 n=7 views=38 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 5.5e-03 | 3.2s/5.9s total 14s mem 8.8GB
+pisa_s1 t=25 n=7 views=37 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 1.3e-03 | 3.2s/5.7s total 14s mem 8.8GB
+pisa_s1 t=30 n=6 views=30 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 7.0e-03 | 2.4s/4.6s total 11s mem 8.8GB
+pisa_s1 t=35 n=5 views=22 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 9.0e-03 | 2.0s/3.4s total 8s mem 8.8GB
+pisa_s1 t=40 n=7 views=38 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 0.0e+00 | 3.4s/6.2s total 16s mem 8.8GB
+pisa_s1 t=45 n=6 views=33 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 0.0e+00 | 3.0s/5.4s total 13s mem 8.8GB
+pisa_s1 t=50 n=4 views=21 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 1.7e-04 | 1.9s/3.4s total 8s mem 8.8GB
+pisa_s1 t=55 n=4 views=22 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 1.4e-03 | 2.0s/3.5s total 8s mem 8.8GB
+pisa_s1 t=60 n=6 views=32 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 1.3e-02 | 2.9s/5.2s total 13s mem 8.8GB
+pisa_s1 t=65 n=6 views=34 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 2.0e-02 | 3.0s/5.5s total 14s mem 8.8GB
+pisa_s1 t=70 n=6 views=34 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 5.6e-02 | 3.0s/5.5s total 14s mem 8.8GB
+pisa_s1 t=75 n=7 views=36 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 1.3e-03 | 3.1s/5.7s total 14s mem 8.8GB
+pisa_s1 t=80 n=6 views=39 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 0.0e+00 | 3.5s/6.2s total 16s mem 8.8GB
+pisa_s1 t=85 n=7 views=40 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 0.0e+00 | 3.7s/6.7s total 17s mem 8.8GB
+pisa_s1 t=90 n=5 views=31 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 0.0e+00 | 2.7s/5.0s total 13s mem 8.8GB
+pisa_s1 t=95 n=7 views=37 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 3.8e-02 | 3.4s/6.2s total 16s mem 8.8GB
+DONE e3 pisa_s1 states 20 389s

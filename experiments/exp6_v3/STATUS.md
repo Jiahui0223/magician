@@ -1,6 +1,6 @@
 # EXP6 V3 — 全局状态板（每次启动 / 结束一个运行就更新）
 
-**最近更新：2026-10-31 19:15（P8 Task 2 完成；无运行中任务）**
+**最近更新：2026-11-05 02:30（Multi-View Coverage Reasoning Study 完成；无运行中任务。E2 / E3 见 `ablation_study/STATUS.md`）**
 标记：✅ 完成 · 🔄 正在跑 · ⏳ 等待（排队或依赖前项）· ❌ 失败（后面跟修复行）· ⬜ 未开始
 
 ## 0. 此刻在跑什么
@@ -138,3 +138,11 @@
 | P8.1 | E1 评分器（S0–S4）固定状态 1,676 状态（4.9 GPU-h）+ Gate：室外 S1c 两模型通过；室内仅 T1 通过（S2h / S3 / S2S3） | ✅ 17:55 |
 | P8.2 | G3：室外正式 B2 + S1c / T1 + S1c 无改善（退化 / 无差异）；MP3D 探索性 T1 + S2S3 AUC 0.354 / Final 0.530（vs T1 0.331 / 0.508；= C1）；R2 frontier bonus / trigger 严重退化（9.6 GPU-h） | ✅ 19:05 |
 | P8.3 | E2 离线 R1（区域 n_win 9 → GT Top-1 0.894）/ R3（两步视野 2.3×）/ 失败案例；总报告 `task2/reports/TASK2_COMBINED_REPORT.md`；提交 | ✅ 19:15 |
+
+## P9 Multi-View Coverage Reasoning Study（2026-11-05；`multiview_coverage_study/FINAL_REPORT.md`）
+| 编号 | 内容 | 状态 |
+|---|---|---|
+| P9.0 | 口径冻结 `configs/mv_v1.yaml`；冒烟 colosseum s1（修正位姿键映射后，抓取集合重算分数 = 规划器） | ✅ |
+| P9.1 | 395 个固定状态（E3 120 + G2 275），8 GPU，01:03–01:34，0 失败 | ✅ |
+| P9.2 | 价值函数诊断（两轮）、案例重跑 + 真实渲染、汇总与图 | ✅ 02:20 |
+| P9.3 | 结论：A/B/C 都不是选错主因；CVAR 门槛 FAIL；同一价值函数用真实深度 Top-1 0.44 < 预测 0.55，覆盖 0.80–0.85 → 价值函数是瓶颈；不跑闭环 | ✅ |

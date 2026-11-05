@@ -1,0 +1,45 @@
+# Multi-View Coverage Reasoning Study -- frozen 2026-11-05 before any analysis output. Offline only; no training; nothing in the
+# planner, the model, E3, Table 1 or the geometry audit is changed.
+version: MV-v1
+frozen_planner: "V3-T1 40K + D-v2 (E3 configs/dv2_v2.yaml, mode full) on D1 (D-v1 d1: depth 2, lambda 0); b2 = D100 input / S10 scoring;
+  K 4 (seeds = the planner's noise keys), Euler 10, R10"
+spatial_definition: "audit geometry_roi_audit (no Critical / Major finding): ROI = settings scene box (x 10, y-up runtime units) = P1 valid domain
+  minus a thin strip; world = runtime frame; GT only offline"
+states:
+  E3: "D1 Table 1 trajectories (rep 0), colosseum s0-s4 + pisa s1, every 5 steps (120 states); official one-step gain per candidate from
+    experiment E-B oracle; GT target points of the same start (E-B oracle npz)"
+  G2: "Dev-3 fixed states of EXP6 V3 G2 (barts, pantheon, colosseum; B0 / B2 strata; 275 states); official one-step gain per candidate from
+    oracle.npz; GT target points = audit a1 (start 0 seed)"
+  excluded: "Test-3 (alhambra, bridge, neuschwanstein) -- not used"
+truth:
+  official_one_step: "dcov_pp of every first-layer candidate (official evaluator, snapshot / restore)"
+  value_on_gt_depth: "h_policy.value_cov (the D1 value function, no D-v2 filter) applied to the TRUE first hit of the same 114 x 64 rays
+    (embree, simulator mesh): same units as the prediction"
+  geometric_coverage: "GT target points within eps 1.0 of a true visible point of the view (true first hit of the 114 x 64 rays, z < 70, inside
+    the ROI box) and not within 1.0 of any S10 point of frames 0..t inside the box (the stored 'mono' coverage rule); pp = 100 * n / (n_gt * vis)"
+  geometric_two_step: "for a first-layer candidate c1: max over the planner's own children c2 of |N(c1) U N(c2)| (pp)"
+pairs:
+  first_layer: "all unordered pairs of legal candidates of a state"
+  paths: "(c1, c2) for c2 in the D-v2 lookahead children of c1 (same rule as d_policy.children)"
+  failure_case: "predicted overlap I / min(V_A, V_B) < 0.2 and true coverage overlap |N_A n N_B| / min(|N_A|, |N_B|) > 0.5, min(|N_A|, |N_B|) >= 20 points"
+consistency:
+  points: "generated first hits (decoded on UNKNOWN samples, hit_u) of view A, all and D-v2-novel only; weight w(z) of the planner"
+  valid_in_B: "projects into B's 114 x 64 grid (z > 0), B ray has UNKNOWN samples, B box entry < t_p < min(B box exit, B range 70 z, B t_known - tol)"
+  tolerance: "tol = 1.0 + e + t_p * 0.01636 (e = distance of the point to B's ray; 0.01636 rad = one 4-pixel block)"
+  classes: "agree |d_B - t_p| <= tol; front d_B < t_p - tol (occlusion / disocclusion, excluded); through d_B > t_p + tol (B predicts free space at the point: conflict)"
+  levels: "per-sample (kA, kB): paired kA = kB and unpaired kA != kB reported separately; distribution level: through share over all B samples"
+  inconsistency: "through / (agree + through), weighted"
+K_study: "K in {1, 2, 4, 8} = the first K of the same 8 seeds (sha_seed of the planner noise keys k = 0..7); K = 1 also averaged over the 8 single
+  samples, K = 2 over 4 disjoint pairs, K = 4 over 2 disjoint quadruples; equivalence of the subset with real K runs checked"
+cvar:   # Counterfactual View Agreement Rescoring (Task D), switchable; off = D-v2 two-step score bitwise
+  hypothesis: "c1 reliable surface points: rays with >= 3 of 4 generated hits within tol of their median depth; c1 reliable free space: all 4 samples
+    have no surface before depth D (decoded depth, inf = none)"
+  rule_occlusion: "a D-v2-novel hit of c2 (sample k) is removed if a reliable c1 surface point projects onto the same c2 ray with depth <= d2 + tol
+    (c2 would see c1's surface there: duplicate or hidden), the point lying in c2's UNKNOWN segment"
+  rule_free_space: "a D-v2-novel hit p2 of c2 is removed if it projects onto a c1 ray that all 4 c1 samples see as free beyond p2 + tol, inside c1's
+    UNKNOWN segment"
+  untouched: "c2 hits in regions c1 does not see (outside c1's view, behind c1's known surface, no reliable c1 evidence)"
+  variants: [cvar, cvar_occlusion_only, cvar_free_only, unpaired_union]
+  gate_offline: "CVAR is called an improvement only if, over all E3 + G2 states: mean regret vs the official one-step gain AND vs the geometric
+    two-step coverage both decrease, Top-1 (official) does not decrease, and on t < 20 the official regret does not increase by more than 0.02 pp.
+    Otherwise stop (no closed loop)."

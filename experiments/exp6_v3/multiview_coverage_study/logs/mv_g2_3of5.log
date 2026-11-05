@@ -1,0 +1,67 @@
+D_POLICY {"d_policy": "d1", "d_policy_file_sha256": "c8418279771e787eaaa0404f421602c9b95851e67d14aed1f717690230e48ecb", "h_policy_file_sha256": "ccfdf4af2783be3f1e7717bc644daf31a2fe994bcf312fdb4e4269ddf017a94a", "config_sha256": "e53c230db866e821b55fc40c0030c5eff448d12cbddcb2fbee00b4044b43c0b3", "config_version": "D-v1", "policy_cfg": {"depth": 2, "beam": null, "lambda_risk": 0.0, "doc": "D1_H3_NO_RISK: H3 with lambda 0", "kind": "cov", "eps_cov": 1.0, "cell_size": 1.0, "novelty": "hard", "c2_chunk": 16}}
+/bsuhome/jiahuizhang/scratch/projects/occupancy/seen2scene/seen2scene/v3/predictor.py:80: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  ck = torch.load(ckpt_path, map_location=device)
+/bsuhome/jiahuizhang/scratch/projects/occupancy/seen2scene/experiments/exp6_v3/multiview_coverage_study/scripts/mv_core.py:286: UserWarning: median CUDA with indices output does not have a deterministic implementation, but you set 'torch.use_deterministic_algorithms(True, warn_only=True)'. You can file an issue at https://github.com/pytorch/pytorch/issues to help us prioritize adding deterministic support for this operation. (Triggered internally at /home/conda/feedstock_root/build_artifacts/libtorch_1737583452020/work/aten/src/ATen/Context.cpp:83.)
+  med = torch.nanmedian(tA, dim=0).values
+B0_barts_s3 t=0 n=8 views=52 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 4.1e-03 | 5.5s/9.9s total 30s mem 2.8GB
+B0_barts_s3 t=5 n=9 views=56 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 2.1e-03 | 5.3s/9.7s total 26s mem 2.8GB
+B0_barts_s3 t=10 n=7 views=38 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 1.4e-03 | 3.6s/6.6s total 17s mem 2.8GB
+B0_barts_s3 t=15 n=5 views=24 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 4.9e-03 | 2.3s/4.1s total 11s mem 2.8GB
+B0_barts_s3 t=20 n=7 views=36 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 1.5e-02 | 3.3s/6.1s total 16s mem 2.8GB
+B0_barts_s3 t=25 n=7 views=37 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 5.0e-03 | 3.4s/6.3s total 17s mem 2.8GB
+B0_barts_s3 t=50 n=7 views=37 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 0.0e+00 | 3.5s/6.5s total 16s mem 2.8GB
+B0_barts_s3 t=55 n=9 views=52 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 1.6e-03 | 4.9s/9.1s total 24s mem 2.8GB
+B0_barts_s3 t=80 n=7 views=43 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 0.0e+00 | 4.2s/7.7s total 20s mem 2.8GB
+B0_barts_s3 t=85 n=7 views=36 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 0.0e+00 | 3.3s/6.1s total 15s mem 2.8GB
+DONE g2 B0_barts_s3 states 10 236s
+B0_colosseum_s3 t=0 n=9 views=57 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 3.1e-03 | 4.5s/7.9s total 21s mem 8.8GB
+B0_colosseum_s3 t=5 n=9 views=55 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 2.9e-03 | 4.7s/8.4s total 21s mem 8.8GB
+B0_colosseum_s3 t=10 n=9 views=56 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 2.7e-03 | 5.4s/9.7s total 25s mem 8.8GB
+B0_colosseum_s3 t=15 n=9 views=55 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 2.9e-03 | 5.2s/9.3s total 24s mem 8.8GB
+B0_colosseum_s3 t=20 n=8 views=46 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 7.2e-03 | 3.7s/6.9s total 17s mem 8.8GB
+B0_colosseum_s3 t=25 n=6 views=34 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 3.9e-03 | 2.6s/4.8s total 11s mem 8.8GB
+B0_colosseum_s3 t=50 n=6 views=32 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 1.2e-02 | 2.7s/4.9s total 12s mem 8.8GB
+B0_colosseum_s3 t=55 n=7 views=40 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 1.5e-02 | 3.8s/6.6s total 17s mem 8.8GB
+B0_colosseum_s3 t=80 n=5 views=28 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 2.9e-03 | 2.0s/3.8s total 13s mem 8.8GB
+B0_colosseum_s3 t=85 n=5 views=29 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 0.0e+00 | 1.9s/3.7s total 13s mem 8.8GB
+DONE g2 B0_colosseum_s3 states 10 397s
+B0_pantheon_s3 t=0 n=8 views=53 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 5.3e-03 | 4.2s/7.5s total 19s mem 8.8GB
+B0_pantheon_s3 t=5 n=8 views=45 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 1.7e-03 | 3.6s/6.6s total 16s mem 8.8GB
+B0_pantheon_s3 t=10 n=7 views=35 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 1.4e-03 | 3.1s/5.6s total 14s mem 8.8GB
+B0_pantheon_s3 t=15 n=7 views=39 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 2.3e-03 | 3.6s/6.4s total 16s mem 8.8GB
+B0_pantheon_s3 t=20 n=7 views=37 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 1.8e-02 | 3.3s/6.0s total 16s mem 8.8GB
+B0_pantheon_s3 t=25 n=7 views=44 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 2.6e-04 | 3.7s/6.8s total 17s mem 8.8GB
+B0_pantheon_s3 t=50 n=6 views=35 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 6.0e-03 | 3.0s/5.5s total 14s mem 8.8GB
+B0_pantheon_s3 t=55 n=5 views=28 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 1.1e-03 | 2.2s/4.1s total 10s mem 8.8GB
+B0_pantheon_s3 t=80 n=7 views=38 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 4.2e-02 | 3.3s/5.9s total 15s mem 8.8GB
+B0_pantheon_s3 t=85 n=6 views=36 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 1.2e-01 | 3.1s/5.7s total 14s mem 8.8GB
+DONE g2 B0_pantheon_s3 states 10 313s
+B2_barts_s3 t=5 n=9 views=56 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 1.9e-03 | 5.4s/9.9s total 29s mem 8.8GB
+B2_barts_s3 t=10 n=7 views=38 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 2.8e-03 | 3.6s/6.7s total 18s mem 8.8GB
+B2_barts_s3 t=15 n=7 views=38 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 2.0e-03 | 3.5s/6.4s total 16s mem 8.8GB
+B2_barts_s3 t=20 n=7 views=37 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 9.5e-03 | 3.6s/6.6s total 18s mem 8.8GB
+B2_barts_s3 t=25 n=7 views=38 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 1.1e-02 | 3.3s/6.2s total 16s mem 8.8GB
+B2_barts_s3 t=50 n=8 views=44 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 0.0e+00 | 4.1s/7.7s total 20s mem 8.8GB
+B2_barts_s3 t=55 n=7 views=37 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 3.2e-04 | 3.6s/6.6s total 17s mem 8.8GB
+B2_barts_s3 t=80 n=9 views=53 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 0.0e+00 | 5.1s/9.4s total 24s mem 8.8GB
+B2_barts_s3 t=85 n=6 views=22 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 0.0e+00 | 2.0s/3.8s total 9s mem 8.8GB
+DONE g2 B2_barts_s3 states 9 206s
+B2_colosseum_s3 t=10 n=9 views=56 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 3.2e-03 | 5.5s/9.6s total 28s mem 8.8GB
+B2_colosseum_s3 t=15 n=9 views=56 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 3.1e-03 | 5.1s/9.1s total 24s mem 8.8GB
+B2_colosseum_s3 t=20 n=7 views=39 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 3.1e-03 | 3.3s/6.1s total 15s mem 8.8GB
+B2_colosseum_s3 t=25 n=7 views=39 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 8.9e-03 | 3.1s/5.7s total 13s mem 8.8GB
+B2_colosseum_s3 t=50 n=7 views=38 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 6.0e-03 | 3.1s/5.5s total 13s mem 8.8GB
+B2_colosseum_s3 t=55 n=6 views=31 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 4.1e-03 | 2.5s/4.6s total 11s mem 8.8GB
+B2_colosseum_s3 t=80 n=8 views=44 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 1.6e-02 | 3.8s/6.9s total 17s mem 8.8GB
+B2_colosseum_s3 t=85 n=6 views=38 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 0.0e+00 | 3.2s/5.9s total 14s mem 8.8GB
+DONE g2 B2_colosseum_s3 states 8 367s
+B2_pantheon_s3 t=5 n=8 views=47 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 4.1e-03 | 3.8s/7.0s total 19s mem 8.8GB
+B2_pantheon_s3 t=10 n=8 views=45 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 5.4e-03 | 4.2s/7.6s total 20s mem 8.8GB
+B2_pantheon_s3 t=15 n=6 views=31 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 3.4e-03 | 2.6s/4.8s total 12s mem 8.8GB
+B2_pantheon_s3 t=20 n=7 views=37 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 5.3e-03 | 3.2s/5.7s total 14s mem 8.8GB
+B2_pantheon_s3 t=25 n=8 views=51 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 4.7e-03 | 4.6s/8.4s total 21s mem 8.8GB
+B2_pantheon_s3 t=50 n=6 views=38 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 3.3e-03 | 3.4s/6.2s total 17s mem 8.8GB
+B2_pantheon_s3 t=55 n=8 views=44 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 1.4e-03 | 4.0s/7.2s total 18s mem 8.8GB
+B2_pantheon_s3 t=80 n=5 views=29 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 0.0e+00 | 2.3s/4.3s total 10s mem 8.8GB
+B2_pantheon_s3 t=85 n=7 views=36 reg K4 0.0e+00 K8 0.0e+00 K8[:4]-K4 0.0e+00 | 2.9s/5.3s total 14s mem 8.8GB
+DONE g2 B2_pantheon_s3 states 9 305s

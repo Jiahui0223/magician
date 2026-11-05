@@ -1,0 +1,5 @@
+#!/bin/bash
+# worker: run_mv.sh GPU SET PART
+cd /bsuhome/jiahuizhang/scratch/projects/occupancy/seen2scene; export LD_PRELOAD=/bsuscratch/jiahuizhang/envs/seen2scene/lib/libtbb.so LD_LIBRARY_PATH=/bsuscratch/jiahuizhang/envs/seen2scene/lib PYTHONPATH=/bsuhome/jiahuizhang/scratch/projects/occupancy/seen2scene OMP_NUM_THREADS=6 CUBLAS_WORKSPACE_CONFIG=:4096:8
+CUDA_VISIBLE_DEVICES=$1 /bsuscratch/jiahuizhang/envs/seen2scene/bin/python /bsuhome/jiahuizhang/scratch/projects/occupancy/seen2scene/experiments/exp6_v3/multiview_coverage_study/scripts/mv_run.py --set $2 --part $3 >> /bsuhome/jiahuizhang/scratch/projects/occupancy/seen2scene/experiments/exp6_v3/multiview_coverage_study/logs/mv_$2_${3/\//of}.log 2>&1
+echo "exit $? $2 $3 $(date +%T)" >> /bsuhome/jiahuizhang/scratch/projects/occupancy/seen2scene/experiments/exp6_v3/multiview_coverage_study/logs/mv_queue.log

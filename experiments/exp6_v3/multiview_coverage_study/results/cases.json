@@ -1,0 +1,115 @@
+{
+ "rules": "Multi-View Coverage Reasoning Study -- choose the case states for the figures (CPU, read-only) -> results/cases.json.\nRules (fixed before looking at any case figure):\n  correct  E3 or G2 state, D-v2 Top-1 on the official one-step gain, >= 5 legal cameras, best true gain >= 1 pp, largest spread of the\n           true one-step gains among such states (a decision that matters)\n  wrong    D-v2 not Top-1, regret >= 1 pp, the same value function on TRUE depth would have picked the best camera (the error comes from\n           the predictions), largest regret; preferably a different scene than 'correct'\nShown cameras per case: the D-v2 pick, the true best camera, and the camera with the largest predicted one-step value among the rest.",
+ "cases": [
+  {
+   "name": "correct",
+   "set": "g2",
+   "tag": "B0_colosseum_s1",
+   "scene": "colosseum",
+   "start": 1,
+   "t": 0,
+   "show_keys": [
+    [
+     8,
+     2,
+     10,
+     1,
+     6
+    ],
+    [
+     8,
+     3,
+     10,
+     0,
+     6
+    ],
+    [
+     8,
+     2,
+     9,
+     0,
+     6
+    ]
+   ],
+   "render_keys": [
+    [
+     8,
+     2,
+     10,
+     1,
+     6
+    ],
+    [
+     8,
+     3,
+     10,
+     0,
+     6
+    ],
+    [
+     8,
+     2,
+     9,
+     0,
+     6
+    ]
+   ],
+   "title": "Correct D-v2 decision \u2014 colosseum (G2 B0_colosseum_s1), step 0: D-v2 picks camera 5 (true gain 17.88 pp), best is camera 5 (17.88 pp)"
+  },
+  {
+   "name": "wrong",
+   "set": "g2",
+   "tag": "B2_barts_s0",
+   "scene": "barts",
+   "start": 0,
+   "t": 15,
+   "show_keys": [
+    [
+     2,
+     2,
+     4,
+     3,
+     2
+    ],
+    [
+     2,
+     3,
+     3,
+     3,
+     2
+    ],
+    [
+     2,
+     3,
+     4,
+     2,
+     2
+    ]
+   ],
+   "render_keys": [
+    [
+     2,
+     2,
+     4,
+     3,
+     2
+    ],
+    [
+     2,
+     3,
+     3,
+     3,
+     2
+    ],
+    [
+     2,
+     3,
+     4,
+     2,
+     2
+    ]
+   ],
+   "title": "Wrong D-v2 decision \u2014 barts (G2 B2_barts_s0), step 15: D-v2 picks camera 1 (true gain 2.92 pp), best is camera 2 (8.95 pp)"
+  }
+ ]
+}
