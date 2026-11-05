@@ -1,6 +1,6 @@
 # EXP6 V3 Ablation — 状态板（每次启动 / 结束一个运行就更新）
 
-**最近更新：2026-11-04 19:20（Experiment E2 完成；无运行中任务。D / E / Y 的记录在各自目录的 FINAL_REPORT）**
+**最近更新：2026-11-04 22:40（E3 D-v2 全部完成；无运行中任务）**
 标记：✅ 完成 · 🔄 正在跑 · ⏳ 等待 · ❌ 失败 · ⬜ 未开始
 
 ## 0. 此刻在跑什么
@@ -58,3 +58,17 @@
 | E2.3b | 闭环 35 条（colosseum 5 × 3 rep + Dev-4 × 5，rep 0），每卡 2 条 | gpu114 + gpu115 8 GPU | ✅ 19:10，35/35，0 重试 |
 | E2.3c | 分析：colosseum ΔFinal +0.116 显著、平台 5 → 0；Dev-5 ΔAUC@20 −0.008、ΔAUC@100 +0.016 n.s.、ΔFinal +0.020 n.s. → All-14 门槛 FAIL | CPU | ✅ 19:12：保留 D1，不登记 Table 1，不跑 All-14 |
 | E2.4 | FINAL_REPORT + 提交 | — | ✅ 19:20 |
+
+## E3 D-v2 Observed-Geometry-Constrained Planning 闭环验证（2026-11-04；`experiment_E_stability_plateau/E3_dv2_closed_loop/`；预登记门槛 `configs/dv2_v2.yaml`）
+| 编号 | 内容 | 节点 / GPU | 状态 |
+|---|---|---|---|
+| E3.0 | Task 0：基线与审计确认（沿用 E2 审计：域内已有 known-surface 约束，缺口在 P1 域外） | — | ✅ 19:25 |
+| E3.1a | D-v2 v1（3×3×3 支持数 ≥ 9）冒烟 colosseum s1：误截断占比未下降 → Dev 诊断 → 改为射线足迹判据，冻结 v2 | gpu115 GPU 0 | ✅ 19:42（v1 未做正式运行） |
+| E3.1b | 固定状态 4 模式（off / ksv1 / dv2 / dv2_first）：colosseum s0–s4 + pisa s1，120 状态 | gpu115 GPU 0–3 | ✅ 19:57：F1–F5 全部通过（off = 日志 120/120；Top-1 0.38 → 0.54；早期误截断 0.11 → 0.02） |
+| E3.1c | 闭环回归：开关关闭 colosseum s0 rep 0 = Table 1 D1、rep 1 = E 的 D1 rep 1，逐位一致 | gpu114 GPU 0–1 | ✅ 19:54 |
+| E3.1d | alhambra s0 固定状态（冻结后，仅报告） | gpu115 GPU 3 | ✅ 20:08：误截断 0.28 → 0.12，所选增益 0.90 → 0.93 pp |
+| E3.2A | 阶段 A：D-v2 colosseum + pisa 各 5 起点 rep 0 | gpu114 + gpu115 | ✅ 20:13：colosseum ΔAUC@100 +0.089 / ΔFinal +0.091 / ΔAUC@20 0.000；pisa +0.018 / +0.029 / +0.004 → 正面 |
+| E3.2B | 阶段 B：D-v2 rep 1/2（20 条）+ pisa 配对 D1 rep 1/2（开关关闭，10 条）+ 仅第一层过滤诊断 colosseum rep 0（5 条） | gpu114 + gpu115 8 GPU × 2 | ✅ 20:47（35/35）：colosseum 15 对 ΔAUC@100 +0.097 / ΔFinal +0.111（显著），平台 5 → 0，ΔAUC@20 −0.008；pisa 15 对 +0.017 / +0.027（显著），ΔAUC@20 +0.002 → 进入 Dev-5；仅第一层：colosseum ΔFinal +0.037，平台 1 → 1 |
+| E3.3 | Dev-5（其余 4 场景 × 5 起点，rep 0） | gpu114 + gpu115 8 GPU × 2 | ✅ 21:08（20/20）：ΔAUC@20 −0.001、ΔAUC@100 +0.022 [0.004, 0.056]（5/5 场景）、ΔFinal +0.020 [−0.002, 0.056]（4/1），平台 2 → 1，规划时间 +1%；G1–G5 全部通过（去掉 colosseum：+0.005 / +0.002） |
+| E3.4 | All-14：登记 V3-DV2-KSV（MODEL_REGISTRY + t1_queue，已有条目未改），70 条经 Table 1 流水线（含 Dev-5 + pisa 的 30 条重跑，用于逐位核对） | gpu114（dunnottar 每卡 1 条）+ gpu115（每卡 2 条） | ✅ 22:21（70/70，0 失败，0 重试；重跑的 30 条与 E3 逐位一致）：All-14 ΔAUC@20 −0.001 [−0.003, +0.002]、ΔAUC@100 +0.010 [−0.001, +0.025]、ΔFinal +0.011 [−0.001, +0.026]（9 胜 5 负），低平台 3 → 1；Train-6 持平，Test-3 +0.011 / +0.011（不显著）；bannerman −0.019 / −0.015 |
+| E3.5 | Table 1 刷新（validate + aggregate official / mono + paper_tables refresh；已有行逐行未变）、FINAL_REPORT、提交 | CPU | ✅ 22:40 |

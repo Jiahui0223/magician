@@ -1,0 +1,41 @@
+{
+ "what": "v1 design (support >= 9, single ray) cut rays on colosseum Dev states t = 0, 5, 10, 15; 'wrong' = true first surface not in front of the predicted hit (GT, offline). Raw per-ray records: work_dirs/exp6_v3/ablation_study/experiment_E_stability_plateau/E3_dv2_closed_loop/diag/wrong_cut_<scene>_s<k>.json",
+ "episodes": {
+  "colosseum_s1": {
+   "wrong": {
+    "rays_sampled": 47574,
+    "elev_deg_median": -41.458413049787296,
+    "share_downward": 1.0,
+    "occupied_run_median": 0.5,
+    "occupied_run_gt_1": 0.29949131878757307,
+    "leaves_layer_before_hit_minus_margin": 0.5978475637953504
+   },
+   "right": {
+    "rays_sampled": 18788,
+    "elev_deg_median": -47.86517241111828,
+    "share_downward": 1.0,
+    "occupied_run_median": 0.75,
+    "occupied_run_gt_1": 0.17894400681285927,
+    "leaves_layer_before_hit_minus_margin": 0.8890249095167128
+   }
+  },
+  "colosseum_s3": {
+   "wrong": {
+    "rays_sampled": 39252,
+    "elev_deg_median": -29.65207144709296,
+    "share_downward": 0.9950321002751452,
+    "occupied_run_median": 0.75,
+    "occupied_run_gt_1": 0.3550137572607765,
+    "leaves_layer_before_hit_minus_margin": 0.49849689187812085
+   },
+   "right": {
+    "rays_sampled": 21768,
+    "elev_deg_median": -33.19639348016961,
+    "share_downward": 0.9569092245497979,
+    "occupied_run_median": 0.75,
+    "occupied_run_gt_1": 0.24402793090775451,
+    "leaves_layer_before_hit_minus_margin": 0.8816611539875046
+   }
+  }
+ }
+}

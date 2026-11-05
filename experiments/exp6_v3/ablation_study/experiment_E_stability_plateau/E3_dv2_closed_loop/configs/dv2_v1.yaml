@@ -1,0 +1,44 @@
+# E3 D-v2 v1 -- frozen 2026-11-04 before any D-v2 result (fixed-state or closed-loop). Changes only as a new version with reason.
+version: E3-DV2-v1
+baseline: "V3-T1 40K (task1_xattn final.pt) + D-v1 d1 (depth 2, lambda 0), b2 (D100 P1 input, S10 DistP1 novelty), K 4, Euler 10, R10,
+  Macarons++ 100 steps, CVPR Table 1 frozen scenes / starts / action space / official coverage evaluator"
+dv2:
+  # tolerances unchanged from the pre-registered E2-KSV-v1 (cell 0.5, step 0.25, margin 1.0, min_t 1.0, padding)
+  cell: 0.5
+  step: 0.25
+  margin: 1.0
+  min_t: 1.0
+  pad_xz: 80.0
+  pad_y_lo: 30.0
+  pad_y_hi: 80.0
+  # new in D-v2: reliable occluders only (3x3x3 support >= 9 = planar 3x3 patch). Reason: E2 found KSV-v1 cuts 11 % of the cut value
+  # wrongly on Dev states t < 20 (colosseum) -- rays through holes / past wall edges / sparse returns; the task requires holes, edges,
+  # sparse surfaces and voxel error to be handled. 9 is fixed from geometry, not searched; no Test-3 state is used to choose it.
+  support: 9
+  layers: full          # first layer + every lookahead layer; 'first' only as a diagnostic ablation
+  source: "all valid depth pixels (z < 70) of executed frames 0..t incl. outside the P1 domain; never GT, future depth or oracle gain"
+switch: "E3_DV2 = off | full | first; off must reproduce D1 bitwise (fixed-state scores + picks; closed-loop trajectory)"
+
+gates:
+  fixed_state:   # colosseum s0-s4 + pisa s1 (Dev / Train-6), D1 Table 1 states every 5 steps, E-B oracle
+    F1: "off == planner log on every state (scores, pick)"
+    F2: "ksv1 mode == E2 KSV-v1 fixed-state ON scores on every state (implementation equivalence)"
+    F3: "dv2 mean selected true one-step gain > off over all states and >= off on t < 20"
+    F4: "dv2 wrong-cut share of cut value on t < 20 < ksv1's"
+    F5: "dv2 removes predictions in the lookahead layer (layer-2 cuts > 0)"
+    proceed_if: "F1-F5 all pass"
+    report_only: "alhambra s0 (Test-3) is run after freezing, only as an over-filtering check; nothing is changed after it"
+  stage_A:   # colosseum s0-s4 + pisa s0-s4, rep 0, paired with Table 1 D1 rep 0
+    positive_if: "(colosseum mean dAUC@100 > 0 or dFinal > 0) and pisa mean dFinal >= -0.005 and both scenes mean dAUC@20 >= -0.02"
+  stage_B:   # + rep 1, 2 for both scenes (30 pairs); colosseum D1 r1/r2 from experiment E (checked bitwise), pisa D1 r1/r2 rerun with switch off
+    proceed_to_dev5_if: "colosseum low plateaus (Final < 0.70) <= D1's and colosseum dAUC@100 >= 0 and pisa dFinal >= -0.005 and pisa dAUC@100 >= -0.005
+      and each scene mean dAUC@20 >= -0.01"
+  dev5:      # 5 scenes x 5 starts, rep 0, paired with Table 1 D1; scene-level paired bootstrap 10k seed 0
+    G1_early: "mean dAUC@20 >= -0.005 and no scene dAUC@20 < -0.015"
+    G2_gain: "mean dAUC@100 >= +0.010 or mean dFinal >= +0.010"
+    G3_not_one_scene: "for the metric(s) meeting G2, the mean over the 4 scenes left after removing the best scene is >= 0"
+    G4_no_sacrifice: "at most 1 scene with dAUC@100 < -0.010 or dFinal < -0.010"
+    G5_cost: "mean planning time per step <= 1.25 x D1"
+    all14_if: "G1-G5 all pass"
+  stop: "any stage failing its rule -> stop, keep D1, no Table 1 registration; never tune on Test-3 (alhambra, bridge, neuschwanstein)"
+plateau: "low-coverage plateau = Final coverage < 0.70 (as in experiment E: colosseum D1 5 / 15)"

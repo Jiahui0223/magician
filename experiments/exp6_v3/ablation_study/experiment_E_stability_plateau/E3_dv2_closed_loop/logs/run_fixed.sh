@@ -1,0 +1,5 @@
+#!/bin/bash
+cd /bsuhome/jiahuizhang/scratch/projects/occupancy/seen2scene; export LD_PRELOAD=/bsuscratch/jiahuizhang/envs/seen2scene/lib/libtbb.so LD_LIBRARY_PATH=/bsuscratch/jiahuizhang/envs/seen2scene/lib PYTHONPATH=/bsuhome/jiahuizhang/scratch/projects/occupancy/seen2scene OMP_NUM_THREADS=4
+mkdir -p /bsuhome/jiahuizhang/scratch/projects/occupancy/seen2scene/experiments/exp6_v3/ablation_study/experiment_E_stability_plateau/E3_dv2_closed_loop/logs/fixed
+g=$1; shift
+for sk in "$@"; do s=${sk%:*}; k=${sk#*:}; CUDA_VISIBLE_DEVICES=$g /bsuscratch/jiahuizhang/envs/seen2scene/bin/python /bsuhome/jiahuizhang/scratch/projects/occupancy/seen2scene/experiments/exp6_v3/ablation_study/experiment_E_stability_plateau/E3_dv2_closed_loop/scripts/dv2_fixed.py --scene $s --start $k >> /bsuhome/jiahuizhang/scratch/projects/occupancy/seen2scene/experiments/exp6_v3/ablation_study/experiment_E_stability_plateau/E3_dv2_closed_loop/logs/fixed/${s}_s${k}.log 2>&1; echo "exit $? $s $k $(date +%T)" >> /bsuhome/jiahuizhang/scratch/projects/occupancy/seen2scene/experiments/exp6_v3/ablation_study/experiment_E_stability_plateau/E3_dv2_closed_loop/logs/fixed/queue.log; done

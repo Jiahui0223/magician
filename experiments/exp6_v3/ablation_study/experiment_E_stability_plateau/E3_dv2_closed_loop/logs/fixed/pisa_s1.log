@@ -1,0 +1,23 @@
+D_POLICY {"d_policy": "d1", "d_policy_file_sha256": "c8418279771e787eaaa0404f421602c9b95851e67d14aed1f717690230e48ecb", "h_policy_file_sha256": "ccfdf4af2783be3f1e7717bc644daf31a2fe994bcf312fdb4e4269ddf017a94a", "config_sha256": "e53c230db866e821b55fc40c0030c5eff448d12cbddcb2fbee00b4044b43c0b3", "config_version": "D-v1", "policy_cfg": {"depth": 2, "beam": null, "lambda_risk": 0.0, "doc": "D1_H3_NO_RISK: H3 with lambda 0", "kind": "cov", "eps_cov": 1.0, "cell_size": 1.0, "novelty": "hard", "c2_chunk": 16}}
+/bsuhome/jiahuizhang/scratch/projects/occupancy/seen2scene/seen2scene/v3/predictor.py:80: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  ck = torch.load(ckpt_path, map_location=device)
+pisa s1 t=0 reg=True pick off 3 ksv1 3 dv2 3 first 3 | cut L1/L2 dv2 [597, 1975] | s 4.0/4.2
+pisa s1 t=5 reg=True pick off 7 ksv1 7 dv2 7 first 7 | cut L1/L2 dv2 [3003, 14227] | s 3.8/4.0
+pisa s1 t=10 reg=True pick off 2 ksv1 2 dv2 2 first 2 | cut L1/L2 dv2 [1539, 7148] | s 3.7/4.0
+pisa s1 t=15 reg=True pick off 4 ksv1 4 dv2 4 first 4 | cut L1/L2 dv2 [1689, 5454] | s 2.4/2.6
+pisa s1 t=20 reg=True pick off 6 ksv1 6 dv2 6 first 6 | cut L1/L2 dv2 [346, 1409] | s 3.0/3.2
+pisa s1 t=25 reg=True pick off 2 ksv1 2 dv2 2 first 2 | cut L1/L2 dv2 [1290, 4646] | s 3.0/3.2
+pisa s1 t=30 reg=True pick off 5 ksv1 3 dv2 5 first 5 | cut L1/L2 dv2 [2069, 7885] | s 2.3/2.4
+pisa s1 t=35 reg=True pick off 2 ksv1 4 dv2 4 first 4 | cut L1/L2 dv2 [2003, 6023] | s 1.9/1.9
+pisa s1 t=40 reg=True pick off 2 ksv1 2 dv2 2 first 0 | cut L1/L2 dv2 [3931, 16277] | s 3.3/3.4
+pisa s1 t=45 reg=True pick off 5 ksv1 2 dv2 3 first 5 | cut L1/L2 dv2 [2355, 9973] | s 2.9/3.0
+pisa s1 t=50 reg=True pick off 3 ksv1 1 dv2 1 first 3 | cut L1/L2 dv2 [1213, 4100] | s 2.0/1.9
+pisa s1 t=55 reg=True pick off 0 ksv1 3 dv2 3 first 0 | cut L1/L2 dv2 [1058, 3372] | s 2.1/2.0
+pisa s1 t=60 reg=True pick off 0 ksv1 3 dv2 3 first 0 | cut L1/L2 dv2 [2001, 8429] | s 2.9/2.9
+pisa s1 t=65 reg=True pick off 3 ksv1 3 dv2 3 first 1 | cut L1/L2 dv2 [4471, 18309] | s 3.1/3.0
+pisa s1 t=70 reg=True pick off 5 ksv1 0 dv2 0 first 5 | cut L1/L2 dv2 [10320, 33790] | s 3.0/3.0
+pisa s1 t=75 reg=True pick off 1 ksv1 5 dv2 5 first 1 | cut L1/L2 dv2 [10489, 32223] | s 3.3/3.1
+pisa s1 t=80 reg=True pick off 2 ksv1 2 dv2 2 first 0 | cut L1/L2 dv2 [8821, 46111] | s 3.6/3.5
+pisa s1 t=85 reg=True pick off 0 ksv1 6 dv2 5 first 0 | cut L1/L2 dv2 [6026, 33371] | s 3.8/3.7
+pisa s1 t=90 reg=True pick off 0 ksv1 3 dv2 4 first 2 | cut L1/L2 dv2 [3519, 15390] | s 2.9/2.7
+pisa s1 t=95 reg=True pick off 0 ksv1 0 dv2 0 first 0 | cut L1/L2 dv2 [3047, 9540] | s 3.5/3.4

@@ -698,6 +698,18 @@ models:
       command: |
         CUDA_VISIBLE_DEVICES=$G $MG experiments/exp6_v3/ablation_study/experiment_D_h3_lookahead/scripts/sim_out_d.py --v3-ckpt $R/work_dirs/exp6_v3/Y/runs/main/ema_050000.pt --policy d1 --group V2M --scene $S --start $K --root $T1W/closed_loop/outdoor/V3-YD-COMBINED-Y50K-D1/V2M
     historical_outdoor: {reusable_episodes: 0}
+  - id: V3-DV2-KSV
+    label: "V3-D-v2: V3-T1 + D1 + known-surface visibility"
+    role: e
+    status: READY
+    status_reason: EXP6 V3 Experiment E3（experiments/exp6_v3/ablation_study/experiment_E_stability_plateau/E3_dv2_closed_loop，协议 configs/dv2_v2.yaml，2026-11-04 冻结）；冻结 V3-T1（与 V3 / V3-D1 行同一 checkpoint）+ D-v1 d1（深度 2，λ = 0），只在规划端加可开关的已观测表面可见性约束（射线足迹判据，两步前瞻每一层都过滤）；开关关闭逐位等于 V3-D1-H3-NORISK；Dev-5 预登记门槛 G1–G5 通过后才登记
+    sha256: 639c9d3ae3f3c069dc0399dc4cdd44102be2bf20e70d666a6a529c6affc62bdb
+    policy: {id: "d1 + dv2 full", code: experiments/exp6_v3/ablation_study/experiment_E_stability_plateau/E3_dv2_closed_loop/scripts/dv2.py, config: experiments/exp6_v3/ablation_study/experiment_E_stability_plateau/E3_dv2_closed_loop/configs/dv2_v2.yaml, hashes: "规划器 stderr 的 D_POLICY 与 E3_DV2 行"}
+    inference: {p1_mode: b2, inference_density: D100, scoring_density: S10, refresh: R10, planner: "Greedy-NV + d1 + known-surface visibility (D-v2)", K: 4, euler_steps: 10, planning_region: 整个场景}
+    launch:
+      command: |
+        CUDA_VISIBLE_DEVICES=$G $MG experiments/exp6_v3/ablation_study/experiment_E_stability_plateau/E3_dv2_closed_loop/scripts/e3_sim.py --v3-ckpt $R/work_dirs/exp6_v3/task1_xattn/checkpoints/final.pt --dv2 full --scene $S --start $K --rep 0 --root $T1W/closed_loop/outdoor/V3-DV2-KSV/V2M
+    historical_outdoor: {reusable_episodes: 0}
 
 # 不进入 models 列表的参考数据（aggregate.py 只读 models）
 references:

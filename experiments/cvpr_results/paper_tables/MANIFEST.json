@@ -1,22 +1,22 @@
 {
  "tables": {
-  "generated": "2026-11-04T17:50:40",
-  "git_head_at_generation": "5ff7c05",
+  "generated": "2026-11-04T22:22:42",
+  "git_head_at_generation": "8f986d8",
   "config_version": "paper-tables-v1",
   "config_sha256": "049d2d88f8877e8369f53cbd7d695c41f14bce28aea312b1a86aa0e6c21571cb",
   "script": "experiments/cvpr_results/paper_tables/scripts/make_tables.py",
   "inputs": {
    "per_scene": {
     "path": "experiments/cvpr_results/table1/results/per_scene.csv",
-    "sha256": "d784b6ed51b84b638175b028e6c2b25610a9e73f9bf4b5d713429ca2a691b898"
+    "sha256": "e1f0c3aa66fdeac62be6cdcf413de096d2ab22258c66559ba7982c38d364462f"
    },
    "per_model": {
     "path": "experiments/cvpr_results/table1/results/per_model.csv",
-    "sha256": "9557db6ccb8a50cbe0b409647a07a062354300d0d9e25d62ad4c297ef7e52d10"
+    "sha256": "c4dd521c37748ae5b39f94f65e1b0e550fa17dd7148a61f795a1e5e54ec5fcc9"
    },
    "validation": {
     "path": "experiments/cvpr_results/table1/results/validation.json",
-    "sha256": "fef5405a69ea3194231a3d17162fd01dbed3c52911f361d38d95e77c81bb8760"
+    "sha256": "34e424bcbb2beea1acc2c1021978547bda1d500662dcacaeab09b62856ec0880"
    },
    "scene_registry": {
     "path": "experiments/cvpr_results/table1/SCENE_REGISTRY.yaml",
@@ -24,7 +24,7 @@
    },
    "model_registry": {
     "path": "experiments/cvpr_results/table1/MODEL_REGISTRY.yaml",
-    "sha256": "88e631858ffd0ad03b778675e62cd99ce32d6d03ec58a6bc339aecd62c48a765"
+    "sha256": "2b37d55c7dfd6ad820497ca830b7488312a9c0e67f93ccbe90aff04722bfd319"
    }
   },
   "outputs": {
@@ -789,8 +789,8 @@
   ]
  },
  "figures": {
-  "generated": "2026-11-04T17:50:43",
-  "git_head_at_generation": "5ff7c05",
+  "generated": "2026-11-04T22:22:45",
+  "git_head_at_generation": "8f986d8",
   "script": "experiments/cvpr_results/paper_tables/scripts/make_figures.py",
   "config_sha256": "049d2d88f8877e8369f53cbd7d695c41f14bce28aea312b1a86aa0e6c21571cb",
   "episodes_read": 350,

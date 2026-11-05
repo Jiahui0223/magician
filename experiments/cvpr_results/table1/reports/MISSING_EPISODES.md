@@ -30,3 +30,4 @@
 | V3-Y50K-H0 | 70 | 5 | sofia_church_s0 sofia_church_s1 sofia_church_s2 sofia_church_s3 sofia_church_s4 |
 | V3-YBEST-H3 | 70 | 5 | sofia_church_s0 sofia_church_s1 sofia_church_s2 sofia_church_s3 sofia_church_s4 |
 | V3-YD-COMBINED-Y50K-D1 | 70 | 5 | sofia_church_s0 sofia_church_s1 sofia_church_s2 sofia_church_s3 sofia_church_s4 |
+| V3-DV2-KSV | 70 | 5 | sofia_church_s0 sofia_church_s1 sofia_church_s2 sofia_church_s3 sofia_church_s4 |

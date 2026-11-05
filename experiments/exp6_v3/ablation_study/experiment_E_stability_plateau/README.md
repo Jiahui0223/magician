@@ -38,3 +38,5 @@
 - 任务文件在 `work_dirs/.../jobs/`。
 
 **后续 E2（2026-11-04）**：已观测几何一致性审计 + KSV 可见性约束的固定状态与闭环验证，见 `E2_observed_geometry/FINAL_REPORT.md`（新子目录，E 的已有数据未改动）。
+
+**后续 E3（2026-11-04）**：D-v2（D1 + 已观测表面可见性约束）的固定状态、colosseum / pisa、Dev-5 和 All-14 闭环验证，见 `E3_dv2_closed_loop/FINAL_REPORT.md`（新子目录，E / E2 的数据未改动；Table 1 新增行 V3-DV2-KSV）。

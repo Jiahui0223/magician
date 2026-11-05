@@ -41,6 +41,7 @@ run_sim() {   # model scene start root
     V3-Y50K-H0) $MG $X/exp6_v3/shared/sim_out_v3.py --v3-ckpt $R/work_dirs/exp6_v3/Y/runs/main/ema_050000.pt --group V2M --scene $s --start $k --root $root ;;
     V3-YBEST-H3) $MG $X/exp6_v3/H/scripts/sim_out_h.py --v3-ckpt $R/work_dirs/exp6_v3/Y/runs/main/ema_050000.pt --policy h3 --group V2M --scene $s --start $k --root $root ;;
     V3-YD-COMBINED-Y50K-D1) $MG $X/exp6_v3/ablation_study/experiment_D_h3_lookahead/scripts/sim_out_d.py --v3-ckpt $R/work_dirs/exp6_v3/Y/runs/main/ema_050000.pt --policy d1 --group V2M --scene $s --start $k --root $root ;;
+    V3-DV2-KSV) $MG $X/exp6_v3/ablation_study/experiment_E_stability_plateau/E3_dv2_closed_loop/scripts/e3_sim.py --v3-ckpt $R/work_dirs/exp6_v3/task1_xattn/checkpoints/final.pt --dv2 full --scene $s --start $k --rep 0 --root $root ;;
     *) echo "unknown model $m"; return 2 ;;
   esac
 }
