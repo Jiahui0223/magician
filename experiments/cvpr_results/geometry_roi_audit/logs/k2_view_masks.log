@@ -1,0 +1,7 @@
+/bsuhome/jiahuizhang/scratch/projects/occupancy/seen2scene/seen2scene/v3/predictor.py:80: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  ck = torch.load(ckpt_path, map_location=device)
+s0 t=50 j=5 cam [-15.  12. -65.] novel 1016 removed 1000
+s0 t=80 j=0 cam [ 65.   4. -55.] novel 801 removed 801
+s1 t=0 j=5 cam [15. 20. 35.] novel 2741 removed 5
+s2 t=80 j=0 cam [-65.   4.  55.] novel 808 removed 808
+s4 t=20 j=6 cam [ 5. 28. 65.] novel 837 removed 831

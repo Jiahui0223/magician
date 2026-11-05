@@ -1,0 +1,178 @@
+{
+ "views": [
+  {
+   "label": "A",
+   "start": 4,
+   "step": 20,
+   "candidate": 6,
+   "camera": [
+    5.0,
+    28.000003814697266,
+    65.0
+   ],
+   "camera_inside_roi": false,
+   "pixels": 466944,
+   "no_surface": 2.5699013157894735e-05,
+   "roi_target_visible": 0.331213164747807,
+   "outside_hides_roi": 0.11117393092105263,
+   "outside_other": 0.5575872053179824,
+   "of_rays_meeting_the_roi": {
+    "see_target": 0.7405431805558216,
+    "blocked_by_outside_surface": 0.24856830936009652,
+    "pass_through_and_hit_outside": 0.010888510084081898
+   },
+   "d1_expected_new_surface_weighted_rays": 837.2410260451287,
+   "removed_by_dv2_weighted_rays": 831.25
+  },
+  {
+   "label": "B",
+   "start": 0,
+   "step": 50,
+   "candidate": 5,
+   "camera": [
+    -14.99999713897705,
+    11.999998092651367,
+    -65.0
+   ],
+   "camera_inside_roi": false,
+   "pixels": 466944,
+   "no_surface": 0.0008759080317982456,
+   "roi_target_visible": 0.17904716625548245,
+   "outside_hides_roi": 0.42876233552631576,
+   "outside_other": 0.39131459018640347,
+   "of_rays_meeting_the_roi": {
+    "see_target": 0.2922495578067213,
+    "blocked_by_outside_surface": 0.6998468927620126,
+    "pass_through_and_hit_outside": 0.007903549431266036
+   },
+   "d1_expected_new_surface_weighted_rays": 1015.942889890986,
+   "removed_by_dv2_weighted_rays": 999.6492866474256
+  },
+  {
+   "label": "C",
+   "start": 2,
+   "step": 80,
+   "candidate": 0,
+   "camera": [
+    -65.0,
+    4.0,
+    55.000003814697266
+   ],
+   "camera_inside_roi": false,
+   "pixels": 466944,
+   "no_surface": 0.320715117872807,
+   "roi_target_visible": 0.055762575383771926,
+   "outside_hides_roi": 0.36528577302631576,
+   "outside_other": 0.25823653371710525,
+   "of_rays_meeting_the_roi": {
+    "see_target": 0.12903961186026575,
+    "blocked_by_outside_surface": 0.845304113825248,
+    "pass_through_and_hit_outside": 0.025656274314486357
+   },
+   "d1_expected_new_surface_weighted_rays": 808.4836851053853,
+   "removed_by_dv2_weighted_rays": 807.9686543963398
+  },
+  {
+   "label": "D",
+   "start": 0,
+   "step": 80,
+   "candidate": 0,
+   "camera": [
+    65.0,
+    3.9999961853027344,
+    -54.999996185302734
+   ],
+   "camera_inside_roi": false,
+   "pixels": 466944,
+   "no_surface": 4.497327302631579e-05,
+   "roi_target_visible": 0.10981402480811403,
+   "outside_hides_roi": 0.23632384183114033,
+   "outside_other": 0.6538171600877193,
+   "of_rays_meeting_the_roi": {
+    "see_target": 0.3140298982772664,
+    "blocked_by_outside_surface": 0.675803952549805,
+    "pass_through_and_hit_outside": 0.010166149172928648
+   },
+   "d1_expected_new_surface_weighted_rays": 801.2574164548103,
+   "removed_by_dv2_weighted_rays": 801.2574164548103
+  },
+  {
+   "label": "E",
+   "start": 1,
+   "step": 0,
+   "candidate": 5,
+   "camera": [
+    14.999995231628418,
+    19.999998092651367,
+    35.0
+   ],
+   "camera_inside_roi": true,
+   "pixels": 466944,
+   "no_surface": 0.024737441748903508,
+   "roi_target_visible": 0.9220120614035088,
+   "outside_hides_roi": 0.0,
+   "outside_other": 0.05325049684758772,
+   "of_rays_meeting_the_roi": {
+    "see_target": 0.9453988093800301,
+    "blocked_by_outside_surface": 0.0,
+    "pass_through_and_hit_outside": 0.05460119061997001
+   },
+   "d1_expected_new_surface_weighted_rays": 2740.7247969990162,
+   "removed_by_dv2_weighted_rays": 4.616278197212736
+  }
+ ],
+ "birdseye": {
+  "top_whole_mesh": {
+   "pixels": 1440000,
+   "no_surface": 0.44846250000000004,
+   "roi_target_visible": 0.08406875,
+   "outside_hides_roi": 0.0,
+   "outside_other": 0.46746875000000004,
+   "camera_inside_roi": false,
+   "of_rays_meeting_the_roi": {
+    "see_target": 0.7748867040479299,
+    "blocked_by_outside_surface": 0.0,
+    "pass_through_and_hit_outside": 0.22511329595207002
+   }
+  },
+  "top_camera_region": {
+   "pixels": 1440000,
+   "no_surface": 0.1312201388888889,
+   "roi_target_visible": 0.15764861111111111,
+   "outside_hides_roi": 0.0,
+   "outside_other": 0.71113125,
+   "camera_inside_roi": false,
+   "of_rays_meeting_the_roi": {
+    "see_target": 0.7084424277792168,
+    "blocked_by_outside_surface": 0.0,
+    "pass_through_and_hit_outside": 0.29155757222078327
+   }
+  },
+  "oblique_from_north": {
+   "pixels": 1440000,
+   "no_surface": 0.5629659722222222,
+   "roi_target_visible": 0.09911041666666667,
+   "outside_hides_roi": 0.02180486111111111,
+   "outside_other": 0.31611875,
+   "camera_inside_roi": false,
+   "of_rays_meeting_the_roi": {
+    "see_target": 0.6638679697275573,
+    "blocked_by_outside_surface": 0.14605476763062783,
+    "pass_through_and_hit_outside": 0.19007726264181488
+   }
+  },
+  "oblique_from_east": {
+   "pixels": 1440000,
+   "no_surface": 0.5511173611111111,
+   "roi_target_visible": 0.07654444444444444,
+   "outside_hides_roi": 0.018604861111111114,
+   "outside_other": 0.35373333333333334,
+   "camera_inside_roi": false,
+   "of_rays_meeting_the_roi": {
+    "see_target": 0.5947701837882172,
+    "blocked_by_outside_surface": 0.14456459567671404,
+    "pass_through_and_hit_outside": 0.2606652205350687
+   }
+  }
+ }
+}

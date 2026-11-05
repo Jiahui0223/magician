@@ -1,0 +1,36 @@
+{
+ "scene": "colosseum",
+ "source": "candidate views of the Table 1 D1 states (rep 0); the first four are views of results/top_rays_colosseum.json",
+ "views": [
+  {
+   "start": 4,
+   "t": 20,
+   "j": 6,
+   "role": "camera outside the ROI (audited ray #2)"
+  },
+  {
+   "start": 0,
+   "t": 50,
+   "j": 5,
+   "role": "camera outside the ROI (audited ray #1)"
+  },
+  {
+   "start": 2,
+   "t": 80,
+   "j": 0,
+   "role": "camera outside the ROI (audited ray #8)"
+  },
+  {
+   "start": 0,
+   "t": 80,
+   "j": 0,
+   "role": "camera outside the ROI (audited ray #10)"
+  },
+  {
+   "start": 1,
+   "t": 0,
+   "j": 5,
+   "role": "contrast: camera inside the ROI"
+  }
+ ]
+}
