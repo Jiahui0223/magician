@@ -1,0 +1,36 @@
+{
+ "planner_logs": 70,
+ "opens_total": 73290,
+ "denied_opens": 0,
+ "unique_path_categories": {
+  "code / config": 210,
+  "python / system files": 27300,
+  "settings.json (scene / camera boxes)": 70,
+  "other": 70,
+  "this episode's planner logs": 140,
+  "this episode's service records": 7000
+ },
+ "suspect_or_unclassified_paths": [
+  "/bsuscratch/jiahuizhang/envs/seen2scene/lib/python3.11/site-packages/coverage-7.12.0.dist-info/entry_points.txt",
+  "49"
+ ],
+ "service_record_keys": [
+  "R",
+  "T",
+  "cam_center",
+  "executed_pose_idx_history",
+  "legal_R",
+  "legal_T",
+  "legal_center",
+  "legal_idx",
+  "mask",
+  "pose_idx",
+  "sample_pixel_flat",
+  "sample_points",
+  "scene_key",
+  "start",
+  "t",
+  "zbuf"
+ ],
+ "service_record_keys_outside_whitelist": []
+}

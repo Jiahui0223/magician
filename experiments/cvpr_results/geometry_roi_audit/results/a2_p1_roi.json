@@ -1,0 +1,1940 @@
+{
+ "bannerman": {
+  "k_M": 21.676040169867605,
+  "voxel_rt": 0.23843644186854365,
+  "dims": [
+   393,
+   462,
+   256
+  ],
+  "n_windows": 4,
+  "roi_box": {
+   "lo": [
+    -44.70438003540039,
+    -16.598052978515625,
+    -58.586883544921875
+   ],
+   "hi": [
+    48.93708038330078,
+    44.44167709350586,
+    51.68331527709961
+   ]
+  },
+  "p1_grid_rt": {
+   "lo": [
+    -44.70438003540039,
+    -16.598052978515625,
+    -58.47431991249324
+   ],
+   "hi": [
+    49.001141618937254,
+    44.44167613983155,
+    51.683316230773926
+   ]
+  },
+  "p1_domain_rt": {
+   "lo": [
+    -44.70438003540039,
+    -16.598052978515625,
+    -57.04370126128198
+   ],
+   "hi": [
+    48.76270517706871,
+    44.44167613983155,
+    51.683316230773926
+   ]
+  },
+  "domain_minus_box": {
+   "lo": [
+    0.0,
+    0.0,
+    1.5431822836398936
+   ],
+   "hi": [
+    -0.17437520623207092,
+    -9.536743093008226e-07,
+    9.5367431640625e-07
+   ]
+  },
+  "grid_minus_box": {
+   "lo": [
+    0.0,
+    0.0,
+    0.11256363242863188
+   ],
+   "hi": [
+    0.0640612356364727,
+    -9.536743093008226e-07,
+    9.5367431640625e-07
+   ]
+  },
+  "domain_share_of_grid": 0.9845015035854731,
+  "domain_is_axis_aligned_box": true,
+  "domain_index_range": [
+   [
+    0,
+    391
+   ],
+   [
+    0,
+    455
+   ],
+   [
+    0,
+    255
+   ]
+  ],
+  "gt_points": {
+   "n": 43586,
+   "in_p1_grid": 0.9999311705593539,
+   "in_p1_domain": 0.9913963199192402,
+   "n_outside_domain": 375,
+   "missing": {
+    "n": 375,
+    "max_distance_to_nearest_box_face": 1.5423469543457031,
+    "by_axis_high_side": [
+     5,
+     0,
+     0
+    ]
+   }
+  },
+  "target_surface_area_weighted_in_domain": 0.9940663339086626,
+  "in_box_surface_by_point_in_domain": 0.9916274929765514,
+  "outside_box_surface_by_point_in_domain": 0.0,
+  "cameras": {
+   "n_positions": 840,
+   "action_space_in_roi_box": 0.7714285714285715,
+   "action_space_in_dv2_grid": 1.0,
+   "above_box_top": 0.14285714285714285,
+   "below_box_bottom": 0.0,
+   "lateral_outside_within_height": 0.08571428571428572,
+   "camera_box_lo": [
+    -45.0,
+    -5.714285373687744,
+    -55.41666793823242
+   ],
+   "camera_box_hi": [
+    45.0,
+    45.714290618896484,
+    45.41667175292969
+   ],
+   "executed_in_roi_box": 0.5544554455445545,
+   "n_executed": 505,
+   "legal_candidates_in_roi_box": 0.6167922497308934,
+   "n_legal": 3716
+  },
+  "observations": {
+   "frames": 10,
+   "d100_points": 912929,
+   "d100_outside_roi_box": 0.1514542751955519,
+   "d100_outside_dv2_grid": 0.0,
+   "s10_points": 91289,
+   "s10_outside_roi_box": 0.15391777760737876
+  },
+  "checks": {
+   "sample_vs_backprojection_max_abs": 0.000769215513273025,
+   "roundtrip_max_abs": 1.4210854715202004e-14,
+   "cam_center_vs_record_max_abs": 9.681530968919105e-06
+  }
+ },
+ "dunnottar": {
+  "k_M": 9.67031175440008,
+  "voxel_rt": 0.10637342929840088,
+  "dims": [
+   1110,
+   1588,
+   256
+  ],
+  "n_windows": 48,
+  "roi_box": {
+   "lo": [
+    -54.25546646118164,
+    -9.794584274291992,
+    -98.06743621826172
+   ],
+   "hi": [
+    63.77423858642578,
+    17.437013626098633,
+    70.88710021972656
+   ]
+  },
+  "p1_grid_rt": {
+   "lo": [
+    -54.25546646118164,
+    -9.794584512710571,
+    -98.03390264511108
+   ],
+   "hi": [
+    63.819040060043335,
+    17.437013387680054,
+    70.88710308074951
+   ]
+  },
+  "p1_domain_rt": {
+   "lo": [
+    -54.25546646118164,
+    -9.794584512710571,
+    -97.60840892791748
+   ],
+   "hi": [
+    63.18079948425293,
+    17.437013387680054,
+    70.88710308074951
+   ]
+  },
+  "domain_minus_box": {
+   "lo": [
+    0.0,
+    -2.384185791015625e-07,
+    0.4590272903442383
+   ],
+   "hi": [
+    -0.5934391021728516,
+    -2.384185791015625e-07,
+    2.86102294921875e-06
+   ]
+  },
+  "grid_minus_box": {
+   "lo": [
+    0.0,
+    -2.384185791015625e-07,
+    0.033533573150634766
+   ],
+   "hi": [
+    0.04480147361755371,
+    -2.384185791015625e-07,
+    2.86102294921875e-06
+   ]
+  },
+  "domain_share_of_grid": 0.9920893185376812,
+  "domain_is_axis_aligned_box": true,
+  "domain_index_range": [
+   [
+    0,
+    1103
+   ],
+   [
+    0,
+    1583
+   ],
+   [
+    0,
+    255
+   ]
+  ],
+  "gt_points": {
+   "n": 55022,
+   "in_p1_grid": 1.0,
+   "in_p1_domain": 0.9975827850677911,
+   "n_outside_domain": 133,
+   "missing": {
+    "n": 133,
+    "max_distance_to_nearest_box_face": 0.5921859741210938,
+    "by_axis_high_side": [
+     125,
+     0,
+     0
+    ]
+   }
+  },
+  "target_surface_area_weighted_in_domain": 0.9975051722039674,
+  "in_box_surface_by_point_in_domain": 0.9955638151189976,
+  "outside_box_surface_by_point_in_domain": 0.0,
+  "cameras": {
+   "n_positions": 540,
+   "action_space_in_roi_box": 0.5555555555555556,
+   "action_space_in_dv2_grid": 1.0,
+   "above_box_top": 0.3333333333333333,
+   "below_box_bottom": 0.0,
+   "lateral_outside_within_height": 0.1111111111111111,
+   "camera_box_lo": [
+    -54.58333206176758,
+    0.8333334922790527,
+    -94.33333587646484
+   ],
+   "camera_box_hi": [
+    64.58334350585938,
+    24.166667938232422,
+    64.33334350585938
+   ],
+   "executed_in_roi_box": 0.027722772277227723,
+   "n_executed": 505,
+   "legal_candidates_in_roi_box": 0.12854030501089325,
+   "n_legal": 3672
+  },
+  "observations": {
+   "frames": 10,
+   "d100_points": 635550,
+   "d100_outside_roi_box": 0.10567697270081032,
+   "d100_outside_dv2_grid": 0.0,
+   "s10_points": 63550,
+   "s10_outside_roi_box": 0.10657749803304485
+  },
+  "checks": {
+   "sample_vs_backprojection_max_abs": 0.0013280217299040942,
+   "roundtrip_max_abs": 1.4210854715202004e-14,
+   "cam_center_vs_record_max_abs": 1.536235140520148e-05
+  }
+ },
+ "fushimi": {
+  "k_M": 15.896272379904987,
+  "voxel_rt": 0.17485899617895484,
+  "dims": [
+   345,
+   421,
+   256
+  ],
+  "n_windows": 4,
+  "roi_box": {
+   "lo": [
+    -29.26720428466797,
+    -6.4675517082214355,
+    -38.80609893798828
+   ],
+   "hi": [
+    30.97529411315918,
+    38.29635238647461,
+    34.78157424926758
+   ]
+  },
+  "p1_grid_rt": {
+   "lo": [
+    -29.26720380783081,
+    -6.467551589012146,
+    -38.834064572583884
+   ],
+   "hi": [
+    31.059149873908616,
+    38.29635143280029,
+    34.7815728187561
+   ]
+  },
+  "p1_domain_rt": {
+   "lo": [
+    -29.26720380783081,
+    -6.467551589012146,
+    -37.95976959168911
+   ],
+   "hi": [
+    30.88429087772966,
+    38.29635143280029,
+    34.7815728187561
+   ]
+  },
+  "domain_minus_box": {
+   "lo": [
+    4.76837158203125e-07,
+    1.1920928955078125e-07,
+    0.8463293462991714
+   ],
+   "hi": [
+    -0.09100323542951827,
+    -9.5367431640625e-07,
+    -1.430511474609375e-06
+   ]
+  },
+  "grid_minus_box": {
+   "lo": [
+    4.76837158203125e-07,
+    1.1920928955078125e-07,
+    -0.02796563459560275
+   ],
+   "hi": [
+    0.08385576074943657,
+    -9.5367431640625e-07,
+    -1.430511474609375e-06
+   ]
+  },
+  "domain_share_of_grid": 0.9852593893077214,
+  "domain_is_axis_aligned_box": true,
+  "domain_index_range": [
+   [
+    0,
+    343
+   ],
+   [
+    0,
+    415
+   ],
+   [
+    0,
+    255
+   ]
+  ],
+  "gt_points": {
+   "n": 25081,
+   "in_p1_grid": 1.0,
+   "in_p1_domain": 0.9924245444758981,
+   "n_outside_domain": 190,
+   "missing": {
+    "n": 190,
+    "max_distance_to_nearest_box_face": 0.8459320068359375,
+    "by_axis_high_side": [
+     3,
+     0,
+     0
+    ]
+   }
+  },
+  "target_surface_area_weighted_in_domain": 0.9928815096720762,
+  "in_box_surface_by_point_in_domain": 0.9895705162008555,
+  "outside_box_surface_by_point_in_domain": 0.0,
+  "cameras": {
+   "n_positions": 600,
+   "action_space_in_roi_box": 0.35,
+   "action_space_in_dv2_grid": 1.0,
+   "above_box_top": 0.16666666666666666,
+   "below_box_bottom": 0.0,
+   "lateral_outside_within_height": 0.48333333333333334,
+   "camera_box_lo": [
+    -45.0,
+    4.1666669845581055,
+    -45.0
+   ],
+   "camera_box_hi": [
+    45.0,
+    45.833335876464844,
+    45.0
+   ],
+   "executed_in_roi_box": 0.06534653465346535,
+   "n_executed": 505,
+   "legal_candidates_in_roi_box": 0.09365721997300945,
+   "n_legal": 3705
+  },
+  "observations": {
+   "frames": 10,
+   "d100_points": 843874,
+   "d100_outside_roi_box": 0.5385863292387252,
+   "d100_outside_dv2_grid": 0.0,
+   "s10_points": 84383,
+   "s10_outside_roi_box": 0.5412701610513966
+  },
+  "checks": {
+   "sample_vs_backprojection_max_abs": 0.0007396222669342478,
+   "roundtrip_max_abs": 7.105427357601002e-15,
+   "cam_center_vs_record_max_abs": 8.940684836034052e-06
+  }
+ },
+ "liberty": {
+  "k_M": 28.71407994958149,
+  "voxel_rt": 0.31585487944539636,
+  "dims": [
+   256,
+   256,
+   256
+  ],
+  "n_windows": 1,
+  "roi_box": {
+   "lo": [
+    -19.431066513061523,
+    -0.6775461435317993,
+    -20.92813491821289
+   ],
+   "hi": [
+    22.808509826660156,
+    80.18130493164062,
+    25.825841903686523
+   ]
+  },
+  "p1_grid_rt": {
+   "lo": [
+    -19.431066513061523,
+    -0.6775461137294769,
+    -55.033007711172104
+   ],
+   "hi": [
+    61.427782624959946,
+    80.18130302429199,
+    25.825841426849365
+   ]
+  },
+  "p1_domain_rt": {
+   "lo": [
+    -19.431066513061523,
+    -0.6775461137294769,
+    -20.920680731069297
+   ],
+   "hi": [
+    22.89348733262159,
+    80.18130302429199,
+    25.825841426849365
+   ]
+  },
+  "domain_minus_box": {
+   "lo": [
+    0.0,
+    2.9802322387695312e-08,
+    0.0074541871435940266
+   ],
+   "hi": [
+    0.08497750596143305,
+    -1.9073486328125e-06,
+    -4.76837158203125e-07
+   ]
+  },
+  "grid_minus_box": {
+   "lo": [
+    0.0,
+    2.9802322387695312e-08,
+    -34.10487279295921
+   ],
+   "hi": [
+    38.61927279829979,
+    -1.9073486328125e-06,
+    -4.76837158203125e-07
+   ]
+  },
+  "domain_share_of_grid": 0.3026123046875,
+  "domain_is_axis_aligned_box": true,
+  "domain_index_range": [
+   [
+    0,
+    133
+   ],
+   [
+    0,
+    147
+   ],
+   [
+    0,
+    255
+   ]
+  ],
+  "gt_points": {
+   "n": 23568,
+   "in_p1_grid": 1.0,
+   "in_p1_domain": 1.0,
+   "n_outside_domain": 0,
+   "missing": null
+  },
+  "target_surface_area_weighted_in_domain": 1.0,
+  "in_box_surface_by_point_in_domain": 0.9997456980588285,
+  "outside_box_surface_by_point_in_domain": 0.0,
+  "cameras": {
+   "n_positions": 300,
+   "action_space_in_roi_box": 0.9,
+   "action_space_in_dv2_grid": 1.0,
+   "above_box_top": 0.1,
+   "below_box_bottom": 0.0,
+   "lateral_outside_within_height": 0.0,
+   "camera_box_lo": [
+    -16.0,
+    4.5,
+    -16.66666603088379
+   ],
+   "camera_box_hi": [
+    16.0,
+    85.5,
+    16.666667938232422
+   ],
+   "executed_in_roi_box": 0.906930693069307,
+   "n_executed": 505,
+   "legal_candidates_in_roi_box": 0.9127653387612679,
+   "n_legal": 3439
+  },
+  "observations": {
+   "frames": 10,
+   "d100_points": 585879,
+   "d100_outside_roi_box": 0.3411182172428095,
+   "d100_outside_dv2_grid": 0.00011606492125507143,
+   "s10_points": 58584,
+   "s10_outside_roi_box": 0.34111702854021575
+  },
+  "checks": {
+   "sample_vs_backprojection_max_abs": 0.0006812359014531921,
+   "roundtrip_max_abs": 3.552713678800501e-15,
+   "cam_center_vs_record_max_abs": 7.451377427969419e-06
+  }
+ },
+ "pisa": {
+  "k_M": 13.994587035003034,
+  "voxel_rt": 0.15394045738503337,
+  "dims": [
+   959,
+   363,
+   256
+  ],
+  "n_windows": 10,
+  "roi_box": {
+   "lo": [
+    -80.15641784667969,
+    -7.179202556610107,
+    -30.646114349365234
+   ],
+   "hi": [
+    67.53629302978516,
+    32.22955322265625,
+    25.21255111694336
+   ]
+  },
+  "p1_grid_rt": {
+   "lo": [
+    -80.15642166137695,
+    -7.179202437400818,
+    -30.66783586749807
+   ],
+   "hi": [
+    67.47247697087005,
+    32.229554653167725,
+    25.212550163269043
+   ]
+  },
+  "p1_domain_rt": {
+   "lo": [
+    -80.15642166137695,
+    -7.179202437400818,
+    -30.20601449534297
+   ],
+   "hi": [
+    66.39489376917481,
+    32.229554653167725,
+    25.212550163269043
+   ]
+  },
+  "domain_minus_box": {
+   "lo": [
+    -3.814697265625e-06,
+    1.1920928955078125e-07,
+    0.4400998540222645
+   ],
+   "hi": [
+    -1.141399260610342,
+    1.430511474609375e-06,
+    -9.5367431640625e-07
+   ]
+  },
+  "grid_minus_box": {
+   "lo": [
+    -3.814697265625e-06,
+    1.1920928955078125e-07,
+    -0.021721518132835627
+   ],
+   "hi": [
+    -0.06381605891510844,
+    1.430511474609375e-06,
+    -9.5367431640625e-07
+   ]
+  },
+  "domain_share_of_grid": 0.9844965916631477,
+  "domain_is_axis_aligned_box": true,
+  "domain_index_range": [
+   [
+    0,
+    951
+   ],
+   [
+    0,
+    359
+   ],
+   [
+    0,
+    255
+   ]
+  ],
+  "gt_points": {
+   "n": 47968,
+   "in_p1_grid": 1.0,
+   "in_p1_domain": 0.9970188458972649,
+   "n_outside_domain": 143,
+   "missing": {
+    "n": 143,
+    "max_distance_to_nearest_box_face": 1.1412887573242188,
+    "by_axis_high_side": [
+     119,
+     0,
+     0
+    ]
+   }
+  },
+  "target_surface_area_weighted_in_domain": 0.998119633860782,
+  "in_box_surface_by_point_in_domain": 0.9951084867754446,
+  "outside_box_surface_by_point_in_domain": 0.0,
+  "cameras": {
+   "n_positions": 560,
+   "action_space_in_roi_box": 0.6428571428571429,
+   "action_space_in_dv2_grid": 1.0,
+   "above_box_top": 0.2,
+   "below_box_bottom": 0.0,
+   "lateral_outside_within_height": 0.15714285714285714,
+   "camera_box_lo": [
+    -85.0,
+    4.0,
+    -35.0
+   ],
+   "camera_box_hi": [
+    65.0,
+    36.0,
+    25.0
+   ],
+   "executed_in_roi_box": 0.33861386138613864,
+   "n_executed": 505,
+   "legal_candidates_in_roi_box": 0.41523605150214593,
+   "n_legal": 3728
+  },
+  "observations": {
+   "frames": 10,
+   "d100_points": 858961,
+   "d100_outside_roi_box": 0.32563410911554774,
+   "d100_outside_dv2_grid": 0.0,
+   "s10_points": 85891,
+   "s10_outside_roi_box": 0.32679791829178845
+  },
+  "checks": {
+   "sample_vs_backprojection_max_abs": 0.0008163928186064595,
+   "roundtrip_max_abs": 8.881784197001252e-16,
+   "cam_center_vs_record_max_abs": 6.7092510107613634e-06
+  }
+ },
+ "redeemer": {
+  "k_M": 16.824237324974753,
+  "voxel_rt": 0.18506661057472226,
+  "dims": [
+   256,
+   386,
+   256
+  ],
+  "n_windows": 2,
+  "roi_box": {
+   "lo": [
+    -17.24464225769043,
+    11.454319953918457,
+    -14.225993156433105
+   ],
+   "hi": [
+    19.1739501953125,
+    58.83137130737305,
+    57.18632125854492
+   ]
+  },
+  "p1_grid_rt": {
+   "lo": [
+    -17.24464178085327,
+    11.454319953918457,
+    -14.249389469623551
+   ],
+   "hi": [
+    30.132410526275628,
+    58.831372261047356,
+    57.18632221221924
+   ]
+  },
+  "p1_domain_rt": {
+   "lo": [
+    -17.24464178085327,
+    11.454319953918457,
+    -13.879256248474121
+   ],
+   "hi": [
+    19.213480502367013,
+    58.831372261047356,
+    57.18632221221924
+   ]
+  },
+  "domain_minus_box": {
+   "lo": [
+    4.76837158203125e-07,
+    0.0,
+    0.3467369079589844
+   ],
+   "hi": [
+    0.03953030705451255,
+    9.536743093008226e-07,
+    9.5367431640625e-07
+   ]
+  },
+  "grid_minus_box": {
+   "lo": [
+    4.76837158203125e-07,
+    0.0,
+    -0.023396313190445994
+   ],
+   "hi": [
+    10.958460330963128,
+    9.536743093008226e-07,
+    9.5367431640625e-07
+   ]
+  },
+  "domain_share_of_grid": 0.7655440414507773,
+  "domain_is_axis_aligned_box": true,
+  "domain_index_range": [
+   [
+    0,
+    196
+   ],
+   [
+    0,
+    383
+   ],
+   [
+    0,
+    255
+   ]
+  ],
+  "gt_points": {
+   "n": 23942,
+   "in_p1_grid": 1.0,
+   "in_p1_domain": 0.9999164647899089,
+   "n_outside_domain": 2,
+   "missing": {
+    "n": 2,
+    "max_distance_to_nearest_box_face": 0.29821014404296875,
+    "by_axis_high_side": [
+     0,
+     0,
+     0
+    ]
+   }
+  },
+  "target_surface_area_weighted_in_domain": 1.0,
+  "in_box_surface_by_point_in_domain": 0.9912457912457913,
+  "outside_box_surface_by_point_in_domain": 1.004974624390734e-05,
+  "cameras": {
+   "n_positions": 360,
+   "action_space_in_roi_box": 0.6666666666666666,
+   "action_space_in_dv2_grid": 1.0,
+   "above_box_top": 0.25,
+   "below_box_bottom": 0.0,
+   "lateral_outside_within_height": 0.08333333333333333,
+   "camera_box_lo": [
+    -16.0,
+    23.125,
+    -15.55555534362793
+   ],
+   "camera_box_hi": [
+    16.0,
+    66.875,
+    55.55555725097656
+   ],
+   "executed_in_roi_box": 0.5524752475247525,
+   "n_executed": 505,
+   "legal_candidates_in_roi_box": 0.5926724137931034,
+   "n_legal": 3712
+  },
+  "observations": {
+   "frames": 10,
+   "d100_points": 350027,
+   "d100_outside_roi_box": 0.1567021972590686,
+   "d100_outside_dv2_grid": 0.01277901419033389,
+   "s10_points": 34998,
+   "s10_outside_roi_box": 0.15580890336590664
+  },
+  "checks": {
+   "sample_vs_backprojection_max_abs": 0.0005179288235908075,
+   "roundtrip_max_abs": 1.4210854715202004e-14,
+   "cam_center_vs_record_max_abs": 7.0918214873927354e-06
+  }
+ },
+ "barts": {
+  "k_M": 11.560969763774088,
+  "voxel_rt": 0.12717066740151495,
+  "dims": [
+   256,
+   256,
+   256
+  ],
+  "n_windows": 1,
+  "roi_box": {
+   "lo": [
+    -11.735160827636719,
+    -2.256589889526367,
+    -13.809889793395996
+   ],
+   "hi": [
+    18.991390228271484,
+    30.299100875854492,
+    13.59292984008789
+   ]
+  },
+  "p1_grid_rt": {
+   "lo": [
+    -11.73516035079956,
+    -2.2565899789333344,
+    -18.962761014699936
+   ],
+   "hi": [
+    20.820530503988266,
+    30.299100875854492,
+    13.59292984008789
+   ]
+  },
+  "p1_domain_rt": {
+   "lo": [
+    -11.73516035079956,
+    -2.2565899789333344,
+    -13.748763651237823
+   ],
+   "hi": [
+    19.04014116036706,
+    30.299100875854492,
+    13.59292984008789
+   ]
+  },
+  "domain_minus_box": {
+   "lo": [
+    4.76837158203125e-07,
+    -8.940696716308594e-08,
+    0.061126142158173025
+   ],
+   "hi": [
+    0.048750932095575905,
+    0.0,
+    0.0
+   ]
+  },
+  "grid_minus_box": {
+   "lo": [
+    4.76837158203125e-07,
+    -8.940696716308594e-08,
+    -5.15287122130394
+   ],
+   "hi": [
+    1.8291402757167816,
+    0.0,
+    0.0
+   ]
+  },
+  "domain_share_of_grid": 0.793914794921875,
+  "domain_is_axis_aligned_box": true,
+  "domain_index_range": [
+   [
+    0,
+    241
+   ],
+   [
+    0,
+    214
+   ],
+   [
+    0,
+    255
+   ]
+  ],
+  "gt_points": {
+   "n": 47885,
+   "in_p1_grid": 1.0,
+   "in_p1_domain": 0.9996449827712227,
+   "n_outside_domain": 17,
+   "missing": {
+    "n": 17,
+    "max_distance_to_nearest_box_face": 0.060333251953125,
+    "by_axis_high_side": [
+     0,
+     0,
+     0
+    ]
+   }
+  },
+  "target_surface_area_weighted_in_domain": 0.9997366666666667,
+  "in_box_surface_by_point_in_domain": 0.9997366666666667,
+  "outside_box_surface_by_point_in_domain": null,
+  "cameras": {
+   "n_positions": 315,
+   "action_space_in_roi_box": 1.0,
+   "action_space_in_dv2_grid": 1.0,
+   "above_box_top": 0.0,
+   "below_box_bottom": 0.0,
+   "lateral_outside_within_height": 0.0,
+   "camera_box_lo": [
+    -8.148531913757324,
+    -0.4255434274673462,
+    -10.600276947021484
+   ],
+   "camera_box_hi": [
+    15.894460678100586,
+    27.065929412841797,
+    8.782459259033203
+   ],
+   "executed_in_roi_box": 1.0,
+   "n_executed": 505,
+   "legal_candidates_in_roi_box": 1.0,
+   "n_legal": 3533
+  },
+  "observations": {
+   "frames": 10,
+   "d100_points": 1167360,
+   "d100_outside_roi_box": 0.0,
+   "d100_outside_dv2_grid": 0.0,
+   "s10_points": 116730,
+   "s10_outside_roi_box": 0.0
+  },
+  "checks": {
+   "sample_vs_backprojection_max_abs": 0.000118912408723304,
+   "roundtrip_max_abs": 3.552713678800501e-15,
+   "cam_center_vs_record_max_abs": 2.2871439568916685e-06
+  }
+ },
+ "colosseum": {
+  "k_M": 11.918797496367585,
+  "voxel_rt": 0.13110677246004343,
+  "dims": [
+   792,
+   628,
+   256
+  ],
+  "n_windows": 12,
+  "roi_box": {
+   "lo": [
+    -51.31645202636719,
+    -10.76814079284668,
+    -43.03718185424805
+   ],
+   "hi": [
+    52.55924606323242,
+    22.79519271850586,
+    39.306785583496094
+   ]
+  },
+  "p1_grid_rt": {
+   "lo": [
+    -51.31645202636719,
+    -10.7681405544281,
+    -43.02826704457402
+   ],
+   "hi": [
+    52.52011176198721,
+    22.795193195343018,
+    39.30678606033325
+   ]
+  },
+  "p1_domain_rt": {
+   "lo": [
+    -51.31645202636719,
+    -10.7681405544281,
+    -42.50383995473385
+   ],
+   "hi": [
+    52.52011176198721,
+    22.795193195343018,
+    39.30678606033325
+   ]
+  },
+  "domain_minus_box": {
+   "lo": [
+    0.0,
+    2.384185791015625e-07,
+    0.5333418995141983
+   ],
+   "hi": [
+    -0.039134301245212555,
+    4.76837158203125e-07,
+    4.76837158203125e-07
+   ]
+  },
+  "grid_minus_box": {
+   "lo": [
+    0.0,
+    2.384185791015625e-07,
+    0.008914809674024582
+   ],
+   "hi": [
+    -0.039134301245212555,
+    4.76837158203125e-07,
+    4.76837158203125e-07
+   ]
+  },
+  "domain_share_of_grid": 0.9936305732484076,
+  "domain_is_axis_aligned_box": true,
+  "domain_index_range": [
+   [
+    0,
+    791
+   ],
+   [
+    0,
+    623
+   ],
+   [
+    0,
+    255
+   ]
+  ],
+  "gt_points": {
+   "n": 49067,
+   "in_p1_grid": 1.0,
+   "in_p1_domain": 0.9990828866651721,
+   "n_outside_domain": 45,
+   "missing": {
+    "n": 45,
+    "max_distance_to_nearest_box_face": 0.5299606323242188,
+    "by_axis_high_side": [
+     0,
+     0,
+     0
+    ]
+   }
+  },
+  "target_surface_area_weighted_in_domain": 0.9990648147164157,
+  "in_box_surface_by_point_in_domain": 0.9977320929841876,
+  "outside_box_surface_by_point_in_domain": 0.0,
+  "cameras": {
+   "n_positions": 980,
+   "action_space_in_roi_box": 0.24489795918367346,
+   "action_space_in_dv2_grid": 1.0,
+   "above_box_top": 0.4,
+   "below_box_bottom": 0.0,
+   "lateral_outside_within_height": 0.3551020408163265,
+   "camera_box_lo": [
+    -65.0,
+    4.0,
+    -65.0
+   ],
+   "camera_box_hi": [
+    65.0,
+    36.0,
+    65.0
+   ],
+   "executed_in_roi_box": 0.03762376237623762,
+   "n_executed": 505,
+   "legal_candidates_in_roi_box": 0.047139830508474576,
+   "n_legal": 3776
+  },
+  "observations": {
+   "frames": 10,
+   "d100_points": 798593,
+   "d100_outside_roi_box": 0.353961279400145,
+   "d100_outside_dv2_grid": 0.0,
+   "s10_points": 79855,
+   "s10_outside_roi_box": 0.35164986538100307
+  },
+  "checks": {
+   "sample_vs_backprojection_max_abs": 0.0006762354070559695,
+   "roundtrip_max_abs": 8.881784197001252e-16,
+   "cam_center_vs_record_max_abs": 9.093555433992151e-06
+  }
+ },
+ "eiffel": {
+  "k_M": 33.66411012724381,
+  "voxel_rt": 0.37030521139968187,
+  "dims": [
+   256,
+   256,
+   256
+  ],
+  "n_windows": 1,
+  "roi_box": {
+   "lo": [
+    -20.427433013916016,
+    -2.3027498722076416,
+    -22.88304901123047
+   ],
+   "hi": [
+    24.20741844177246,
+    92.4953842163086,
+    22.415372848510742
+   ]
+  },
+  "p1_grid_rt": {
+   "lo": [
+    -20.4274320602417,
+    -2.302749902009964,
+    -72.38276079297066
+   ],
+   "hi": [
+    74.37070205807686,
+    92.4953842163086,
+    22.4153733253479
+   ]
+  },
+  "p1_domain_rt": {
+   "lo": [
+    -20.4274320602417,
+    -2.302749902009964,
+    -22.761862465413287
+   ],
+   "hi": [
+    24.379498519119807,
+    92.4953842163086,
+    22.4153733253479
+   ]
+  },
+  "domain_minus_box": {
+   "lo": [
+    9.5367431640625e-07,
+    -2.9802322387695312e-08,
+    0.12118654581718147
+   ],
+   "hi": [
+    0.17208007734734565,
+    0.0,
+    4.76837158203125e-07
+   ]
+  },
+  "grid_minus_box": {
+   "lo": [
+    9.5367431640625e-07,
+    -2.9802322387695312e-08,
+    -49.49971178174019
+   ],
+   "hi": [
+    50.1632836163044,
+    0.0,
+    4.76837158203125e-07
+   ]
+  },
+  "domain_share_of_grid": 0.225250244140625,
+  "domain_is_axis_aligned_box": true,
+  "domain_index_range": [
+   [
+    0,
+    120
+   ],
+   [
+    0,
+    121
+   ],
+   [
+    0,
+    255
+   ]
+  ],
+  "gt_points": {
+   "n": 22443,
+   "in_p1_grid": 1.0,
+   "in_p1_domain": 0.999955442677004,
+   "n_outside_domain": 1,
+   "missing": {
+    "n": 1,
+    "max_distance_to_nearest_box_face": 0.05585479736328125,
+    "by_axis_high_side": [
+     0,
+     0,
+     0
+    ]
+   }
+  },
+  "target_surface_area_weighted_in_domain": 0.9998480012159903,
+  "in_box_surface_by_point_in_domain": 0.9989791453988625,
+  "outside_box_surface_by_point_in_domain": 0.00011094052514234385,
+  "cameras": {
+   "n_positions": 432,
+   "action_space_in_roi_box": 0.4074074074074074,
+   "action_space_in_dv2_grid": 1.0,
+   "above_box_top": 0.08333333333333333,
+   "below_box_bottom": 0.0,
+   "lateral_outside_within_height": 0.5092592592592593,
+   "camera_box_lo": [
+    -25.0,
+    4.1666669845581055,
+    -25.0
+   ],
+   "camera_box_hi": [
+    25.0,
+    95.83334350585938,
+    25.0
+   ],
+   "executed_in_roi_box": 0.055445544554455446,
+   "n_executed": 505,
+   "legal_candidates_in_roi_box": 0.14479254868755292,
+   "n_legal": 3543
+  },
+  "observations": {
+   "frames": 10,
+   "d100_points": 556987,
+   "d100_outside_roi_box": 0.29639470939178114,
+   "d100_outside_dv2_grid": 0.0,
+   "s10_points": 55695,
+   "s10_outside_roi_box": 0.2955920639195619
+  },
+  "checks": {
+   "sample_vs_backprojection_max_abs": 0.0008718253229176298,
+   "roundtrip_max_abs": 7.105427357601002e-15,
+   "cam_center_vs_record_max_abs": 8.853456847646157e-06
+  }
+ },
+ "pantheon": {
+  "k_M": 17.012810990722343,
+  "voxel_rt": 0.18714092089794576,
+  "dims": [
+   401,
+   568,
+   256
+  ],
+  "n_windows": 6,
+  "roi_box": {
+   "lo": [
+    -36.37209701538086,
+    -2.647655963897705,
+    -66.1719970703125
+   ],
+   "hi": [
+    38.690494537353516,
+    45.26042175292969,
+    40.150238037109375
+   ]
+  },
+  "p1_grid_rt": {
+   "lo": [
+    -36.3720965385437,
+    -2.6476559042930603,
+    -66.14580598659813
+   ],
+   "hi": [
+    38.67141274153255,
+    45.260419845581055,
+    40.15023708343506
+   ]
+  },
+  "p1_domain_rt": {
+   "lo": [
+    -36.3720965385437,
+    -2.6476559042930603,
+    -66.14580598659813
+   ],
+   "hi": [
+    38.4842718206346,
+    45.260419845581055,
+    40.15023708343506
+   ]
+  },
+  "domain_minus_box": {
+   "lo": [
+    4.76837158203125e-07,
+    5.960464477539063e-08,
+    0.02619108371436596
+   ],
+   "hi": [
+    -0.20622271671891212,
+    -1.9073486328125e-06,
+    -9.5367431640625e-07
+   ]
+  },
+  "grid_minus_box": {
+   "lo": [
+    4.76837158203125e-07,
+    5.960464477539063e-08,
+    0.02619108371436596
+   ],
+   "hi": [
+    -0.019081795820966363,
+    -1.9073486328125e-06,
+    -9.5367431640625e-07
+   ]
+  },
+  "domain_share_of_grid": 0.9975062344139651,
+  "domain_is_axis_aligned_box": true,
+  "domain_index_range": [
+   [
+    0,
+    399
+   ],
+   [
+    0,
+    567
+   ],
+   [
+    0,
+    255
+   ]
+  ],
+  "gt_points": {
+   "n": 54170,
+   "in_p1_grid": 1.0,
+   "in_p1_domain": 0.9996677127561381,
+   "n_outside_domain": 18,
+   "missing": {
+    "n": 18,
+    "max_distance_to_nearest_box_face": 0.20294189453125,
+    "by_axis_high_side": [
+     18,
+     0,
+     0
+    ]
+   }
+  },
+  "target_surface_area_weighted_in_domain": 0.9996620960714222,
+  "in_box_surface_by_point_in_domain": 0.9983553782629995,
+  "outside_box_surface_by_point_in_domain": 0.0,
+  "cameras": {
+   "n_positions": 780,
+   "action_space_in_roi_box": 0.5641025641025641,
+   "action_space_in_dv2_grid": 1.0,
+   "above_box_top": 0.16666666666666666,
+   "below_box_bottom": 0.0,
+   "lateral_outside_within_height": 0.2692307692307692,
+   "camera_box_lo": [
+    -40.5,
+    5.0,
+    -70.19230651855469
+   ],
+   "camera_box_hi": [
+    40.5,
+    55.0,
+    45.19231414794922
+   ],
+   "executed_in_roi_box": 0.29504950495049503,
+   "n_executed": 505,
+   "legal_candidates_in_roi_box": 0.36391869000564653,
+   "n_legal": 3542
+  },
+  "observations": {
+   "frames": 10,
+   "d100_points": 962661,
+   "d100_outside_roi_box": 0.4350399569526552,
+   "d100_outside_dv2_grid": 0.0,
+   "s10_points": 96261,
+   "s10_outside_roi_box": 0.43535803700356324
+  },
+  "checks": {
+   "sample_vs_backprojection_max_abs": 0.001119698359133281,
+   "roundtrip_max_abs": 1.4210854715202004e-14,
+   "cam_center_vs_record_max_abs": 1.1566359944481519e-05
+  }
+ },
+ "sestino_museum": {
+  "k_M": 4.426036876710978,
+  "voxel_rt": 0.048686405643820756,
+  "dims": [
+   1286,
+   367,
+   256
+  ],
+  "n_windows": 14,
+  "roi_box": {
+   "lo": [
+    -21.13702964782715,
+    -1.3254499435424805,
+    -8.973079681396484
+   ],
+   "hi": [
+    41.46535873413086,
+    11.138269424438477,
+    8.906649589538574
+   ]
+  },
+  "p1_grid_rt": {
+   "lo": [
+    -21.137030124664307,
+    -1.3254499435424805,
+    -8.961260924115777
+   ],
+   "hi": [
+    41.47368753328919,
+    11.138269901275633,
+    8.906649947166443
+   ]
+  },
+  "p1_domain_rt": {
+   "lo": [
+    -21.137030124664307,
+    -1.3254499435424805,
+    -8.620456084609032
+   ],
+   "hi": [
+    41.18156909942626,
+    11.138269901275633,
+    8.906649947166443
+   ]
+  },
+  "domain_minus_box": {
+   "lo": [
+    -4.76837158203125e-07,
+    0.0,
+    0.3526235967874527
+   ],
+   "hi": [
+    -0.28378963470459695,
+    4.7683715642676816e-07,
+    3.5762786865234375e-07
+   ]
+  },
+  "grid_minus_box": {
+   "lo": [
+    -4.76837158203125e-07,
+    0.0,
+    0.01181875728070736
+   ],
+   "hi": [
+    0.008328799158327627,
+    4.7683715642676816e-07,
+    3.5762786865234375e-07
+   ]
+  },
+  "domain_share_of_grid": 0.976349790872994,
+  "domain_is_axis_aligned_box": true,
+  "domain_index_range": [
+   [
+    0,
+    1279
+   ],
+   [
+    0,
+    359
+   ],
+   [
+    0,
+    255
+   ]
+  ],
+  "gt_points": {
+   "n": 55514,
+   "in_p1_grid": 1.0,
+   "in_p1_domain": 0.9583528479302519,
+   "n_outside_domain": 2312,
+   "missing": {
+    "n": 2312,
+    "max_distance_to_nearest_box_face": 0.3518381118774414,
+    "by_axis_high_side": [
+     1504,
+     0,
+     0
+    ]
+   }
+  },
+  "target_surface_area_weighted_in_domain": 0.95396,
+  "in_box_surface_by_point_in_domain": 0.95396,
+  "outside_box_surface_by_point_in_domain": null,
+  "cameras": {
+   "n_positions": 315,
+   "action_space_in_roi_box": 1.0,
+   "action_space_in_dv2_grid": 1.0,
+   "above_box_top": 0.0,
+   "below_box_bottom": 0.0,
+   "lateral_outside_within_height": 0.0,
+   "camera_box_lo": [
+    -18.449838638305664,
+    1.2169140577316284,
+    -6.91765832901001
+   ],
+   "camera_box_hi": [
+    38.48102569580078,
+    8.851491928100586,
+    7.213376045227051
+   ],
+   "executed_in_roi_box": 1.0,
+   "n_executed": 505,
+   "legal_candidates_in_roi_box": 1.0,
+   "n_legal": 3496
+  },
+  "observations": {
+   "frames": 10,
+   "d100_points": 1067236,
+   "d100_outside_roi_box": 0.0006455929147817352,
+   "d100_outside_dv2_grid": 0.0,
+   "s10_points": 106718,
+   "s10_outside_roi_box": 0.0006840458029573268
+  },
+  "checks": {
+   "sample_vs_backprojection_max_abs": 0.0003030056787878266,
+   "roundtrip_max_abs": 1.7763568394002505e-15,
+   "cam_center_vs_record_max_abs": 3.2970339702842466e-06
+  }
+ },
+ "alhambra": {
+  "k_M": 16.463982914997775,
+  "voxel_rt": 0.18110381206497553,
+  "dims": [
+   505,
+   548,
+   256
+  ],
+  "n_windows": 9,
+  "roi_box": {
+   "lo": [
+    -58.018524169921875,
+    -5.7984299659729,
+    -81.8520278930664
+   ],
+   "hi": [
+    33.37197494506836,
+    40.56414794921875,
+    17.45645523071289
+   ]
+  },
+  "p1_grid_rt": {
+   "lo": [
+    -58.01852226257324,
+    -5.798429846763611,
+    -81.78843378089368
+   ],
+   "hi": [
+    33.4389028302394,
+    40.564146041870124,
+    17.45645523071289
+   ]
+  },
+  "p1_domain_rt": {
+   "lo": [
+    -58.01852226257324,
+    -5.798429846763611,
+    -81.0640185326338
+   ],
+   "hi": [
+    33.25779901817441,
+    40.564146041870124,
+    17.45645523071289
+   ]
+  },
+  "domain_minus_box": {
+   "lo": [
+    1.9073486328125e-06,
+    1.1920928955078125e-07,
+    0.7880093604326106
+   ],
+   "hi": [
+    -0.11417592689394951,
+    -1.9073486257070726e-06,
+    0.0
+   ]
+  },
+  "grid_minus_box": {
+   "lo": [
+    1.9073486328125e-06,
+    1.1920928955078125e-07,
+    0.06359411217272282
+   ],
+   "hi": [
+    0.0669278851710402,
+    -1.9073486257070726e-06,
+    0.0
+   ]
+  },
+  "domain_share_of_grid": 0.9907349859073499,
+  "domain_is_axis_aligned_box": true,
+  "domain_index_range": [
+   [
+    0,
+    503
+   ],
+   [
+    0,
+    543
+   ],
+   [
+    0,
+    255
+   ]
+  ],
+  "gt_points": {
+   "n": 45355,
+   "in_p1_grid": 1.0,
+   "in_p1_domain": 0.9999118068570169,
+   "n_outside_domain": 4,
+   "missing": {
+    "n": 4,
+    "max_distance_to_nearest_box_face": 0.7082595825195312,
+    "by_axis_high_side": [
+     3,
+     0,
+     0
+    ]
+   }
+  },
+  "target_surface_area_weighted_in_domain": 0.9998324646314222,
+  "in_box_surface_by_point_in_domain": 0.9985704074338814,
+  "outside_box_surface_by_point_in_domain": 0.0,
+  "cameras": {
+   "n_positions": 660,
+   "action_space_in_roi_box": 1.0,
+   "action_space_in_dv2_grid": 1.0,
+   "above_box_top": 0.0,
+   "below_box_bottom": 0.0,
+   "lateral_outside_within_height": 0.0,
+   "camera_box_lo": [
+    -55.5,
+    12.5,
+    -75.45454406738281
+   ],
+   "camera_box_hi": [
+    25.5,
+    37.5,
+    15.454544067382812
+   ],
+   "executed_in_roi_box": 1.0,
+   "n_executed": 505,
+   "legal_candidates_in_roi_box": 1.0,
+   "n_legal": 3699
+  },
+  "observations": {
+   "frames": 10,
+   "d100_points": 750622,
+   "d100_outside_roi_box": 0.09650263381568885,
+   "d100_outside_dv2_grid": 0.0,
+   "s10_points": 75059,
+   "s10_outside_roi_box": 0.09621764212153107
+  },
+  "checks": {
+   "sample_vs_backprojection_max_abs": 0.0006082656904027317,
+   "roundtrip_max_abs": 1.4210854715202004e-14,
+   "cam_center_vs_record_max_abs": 1.1014989695468103e-05
+  }
+ },
+ "bridge": {
+  "k_M": 12.470051349902695,
+  "voxel_rt": 0.13717056484892964,
+  "dims": [
+   1424,
+   500,
+   256
+  ],
+  "n_windows": 21,
+  "roi_box": {
+   "lo": [
+    -100.52140045166016,
+    -3.6069064140319824,
+    -32.743865966796875
+   ],
+   "hi": [
+    94.82716369628906,
+    31.508758544921875,
+    35.78557205200195
+   ]
+  },
+  "p1_grid_rt": {
+   "lo": [
+    -100.52140235900879,
+    -3.606906533241272,
+    -32.79970989562571
+   ],
+   "hi": [
+    94.80948198586702,
+    31.508758068084717,
+    35.78557252883911
+   ]
+  },
+  "p1_domain_rt": {
+   "lo": [
+    -100.52140235900879,
+    -3.606906533241272,
+    -32.25102763622999
+   ],
+   "hi": [
+    94.80948198586702,
+    31.508758068084717,
+    35.78557252883911
+   ]
+  },
+  "domain_minus_box": {
+   "lo": [
+    -1.9073486328125e-06,
+    -1.1920928955078125e-07,
+    0.4928383305668831
+   ],
+   "hi": [
+    -0.017681710422039032,
+    -4.76837158203125e-07,
+    4.76837158203125e-07
+   ]
+  },
+  "grid_minus_box": {
+   "lo": [
+    -1.9073486328125e-06,
+    -1.1920928955078125e-07,
+    -0.05584392882883549
+   ],
+   "hi": [
+    -0.017681710422039032,
+    -4.76837158203125e-07,
+    4.76837158203125e-07
+   ]
+  },
+  "domain_share_of_grid": 0.992,
+  "domain_is_axis_aligned_box": true,
+  "domain_index_range": [
+   [
+    0,
+    1423
+   ],
+   [
+    0,
+    495
+   ],
+   [
+    0,
+    255
+   ]
+  ],
+  "gt_points": {
+   "n": 40252,
+   "in_p1_grid": 1.0,
+   "in_p1_domain": 0.9998757825698102,
+   "n_outside_domain": 5,
+   "missing": {
+    "n": 5,
+    "max_distance_to_nearest_box_face": 0.4872856140136719,
+    "by_axis_high_side": [
+     0,
+     0,
+     0
+    ]
+   }
+  },
+  "target_surface_area_weighted_in_domain": 0.9996726983681676,
+  "in_box_surface_by_point_in_domain": 0.9960756332500892,
+  "outside_box_surface_by_point_in_domain": 0.0,
+  "cameras": {
+   "n_positions": 600,
+   "action_space_in_roi_box": 0.8,
+   "action_space_in_dv2_grid": 1.0,
+   "above_box_top": 0.2,
+   "below_box_bottom": 0.0,
+   "lateral_outside_within_height": 0.0,
+   "camera_box_lo": [
+    -93.33333587646484,
+    4.0,
+    -26.25
+   ],
+   "camera_box_hi": [
+    93.33334350585938,
+    36.0,
+    26.25
+   ],
+   "executed_in_roi_box": 0.5782178217821782,
+   "n_executed": 505,
+   "legal_candidates_in_roi_box": 0.6446065659197499,
+   "n_legal": 3838
+  },
+  "observations": {
+   "frames": 10,
+   "d100_points": 708390,
+   "d100_outside_roi_box": 0.23506684171148662,
+   "d100_outside_dv2_grid": 0.0,
+   "s10_points": 70834,
+   "s10_outside_roi_box": 0.232797808961798
+  },
+  "checks": {
+   "sample_vs_backprojection_max_abs": 0.0011066889175310735,
+   "roundtrip_max_abs": 7.105427357601002e-15,
+   "cam_center_vs_record_max_abs": 1.530436449570516e-05
+  }
+ },
+ "neuschwanstein": {
+  "k_M": 29.6409817581827,
+  "voxel_rt": 0.3260507993400097,
+  "dims": [
+   430,
+   256,
+   256
+  ],
+  "n_windows": 2,
+  "roi_box": {
+   "lo": [
+    -79.59075927734375,
+    -23.78207778930664,
+    -27.882043838500977
+   ],
+   "hi": [
+    60.67741775512695,
+    59.686927795410156,
+    33.0600471496582
+   ]
+  },
+  "p1_grid_rt": {
+   "lo": [
+    -79.59075927734375,
+    -23.782076835632324,
+    -50.40895700454712
+   ],
+   "hi": [
+    60.611084438860416,
+    59.686927795410156,
+    33.06004762649536
+   ]
+  },
+  "p1_domain_rt": {
+   "lo": [
+    -79.59075927734375,
+    -23.782076835632324,
+    -27.91145185008645
+   ],
+   "hi": [
+    58.65477964282036,
+    59.686927795410156,
+    33.06004762649536
+   ]
+  },
+  "domain_minus_box": {
+   "lo": [
+    0.0,
+    9.5367431640625e-07,
+    -0.029408011585474014
+   ],
+   "hi": [
+    -2.022638112306595,
+    0.0,
+    4.76837158203125e-07
+   ]
+  },
+  "grid_minus_box": {
+   "lo": [
+    0.0,
+    9.5367431640625e-07,
+    -22.526913166046143
+   ],
+   "hi": [
+    -0.06633331626653671,
+    0.0,
+    4.76837158203125e-07
+   ]
+  },
+  "domain_share_of_grid": 0.7202761627906977,
+  "domain_is_axis_aligned_box": true,
+  "domain_index_range": [
+   [
+    0,
+    423
+   ],
+   [
+    0,
+    186
+   ],
+   [
+    0,
+    255
+   ]
+  ],
+  "gt_points": {
+   "n": 68569,
+   "in_p1_grid": 1.0,
+   "in_p1_domain": 0.9934810191194271,
+   "n_outside_domain": 447,
+   "missing": {
+    "n": 447,
+    "max_distance_to_nearest_box_face": 2.0167999267578125,
+    "by_axis_high_side": [
+     439,
+     0,
+     4
+    ]
+   }
+  },
+  "target_surface_area_weighted_in_domain": 0.9925632429137458,
+  "in_box_surface_by_point_in_domain": 0.9884996461429583,
+  "outside_box_surface_by_point_in_domain": 4.592925481550572e-05,
+  "cameras": {
+   "n_positions": 784,
+   "action_space_in_roi_box": 0.6428571428571429,
+   "action_space_in_dv2_grid": 1.0,
+   "above_box_top": 0.14285714285714285,
+   "below_box_bottom": 0.0,
+   "lateral_outside_within_height": 0.21428571428571427,
+   "camera_box_lo": [
+    -85.0,
+    -4.285714149475098,
+    -25.0
+   ],
+   "camera_box_hi": [
+    65.0,
+    64.28571319580078,
+    35.0
+   ],
+   "executed_in_roi_box": 0.5722772277227722,
+   "n_executed": 505,
+   "legal_candidates_in_roi_box": 0.600960096009601,
+   "n_legal": 3333
+  },
+  "observations": {
+   "frames": 10,
+   "d100_points": 534794,
+   "d100_outside_roi_box": 0.22081025591162204,
+   "d100_outside_dv2_grid": 0.0,
+   "s10_points": 53477,
+   "s10_outside_roi_box": 0.22030031602371114
+  },
+  "checks": {
+   "sample_vs_backprojection_max_abs": 0.0009632908467267498,
+   "roundtrip_max_abs": 7.105427357601002e-15,
+   "cam_center_vs_record_max_abs": 6.8171996758792375e-06
+  }
+ }
+}

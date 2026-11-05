@@ -1,0 +1,324 @@
+{
+ "bannerman": {
+  "n_gt": 43586,
+  "gt_in_domain_share": 0.9913963199192402,
+  "visibility_ratio": 0.9996339845358466,
+  "V3-D1-H3-NORISK": {
+   "official_final": 0.8794114941379299,
+   "mono_final": 0.9903363232215664,
+   "uncapped_all": 0.9902215654840496,
+   "uncapped_in_domain_raw": 0.9906273865450926,
+   "uncapped_out_domain_raw": 0.9013333333333333,
+   "uncapped_in_domain_only_over_vis": 0.9909901042480704,
+   "s10_points_in_box": 839893
+  },
+  "V3-DV2-KSV": {
+   "official_final": 0.9048418087716292,
+   "mono_final": 0.9924937686868802,
+   "uncapped_all": 0.9923560594018602,
+   "uncapped_in_domain_raw": 0.9919927796163014,
+   "uncapped_out_domain_raw": 0.992,
+   "uncapped_in_domain_only_over_vis": 0.9923559972572429,
+   "s10_points_in_box": 747149
+  }
+ },
+ "dunnottar": {
+  "n_gt": 55022,
+  "gt_in_domain_share": 0.9975827850677911,
+  "visibility_ratio": 1.0,
+  "V3-D1-H3-NORISK": {
+   "official_final": 0.9707571516847806,
+   "mono_final": 0.9914579622696376,
+   "uncapped_all": 0.9913489149794628,
+   "uncapped_in_domain_raw": 0.9913461713640256,
+   "uncapped_out_domain_raw": 0.9924812030075187,
+   "uncapped_in_domain_only_over_vis": 0.9913461713640256,
+   "s10_points_in_box": 543380
+  },
+  "V3-DV2-KSV": {
+   "official_final": 0.973574206680964,
+   "mono_final": 0.9859147250190833,
+   "uncapped_all": 0.9857693286321835,
+   "uncapped_in_domain_raw": 0.9858623767968081,
+   "uncapped_out_domain_raw": 0.9473684210526315,
+   "uncapped_in_domain_only_over_vis": 0.9858623767968081,
+   "s10_points_in_box": 492084
+  }
+ },
+ "fushimi": {
+  "n_gt": 25081,
+  "gt_in_domain_share": 0.9924245444758981,
+  "visibility_ratio": 0.9999204265138856,
+  "V3-D1-H3-NORISK": {
+   "official_final": 0.9023085527576312,
+   "mono_final": 0.9526694039721298,
+   "uncapped_all": 0.9525497819977485,
+   "uncapped_in_domain_raw": 0.9527941826362942,
+   "uncapped_out_domain_raw": 0.9105263157894737,
+   "uncapped_in_domain_only_over_vis": 0.9528700058244716,
+   "s10_points_in_box": 461443
+  },
+  "V3-DV2-KSV": {
+   "official_final": 0.9359223275587574,
+   "mono_final": 0.9961719286554378,
+   "uncapped_all": 0.9961719286554378,
+   "uncapped_in_domain_raw": 0.9967458117391829,
+   "uncapped_out_domain_raw": 0.9105263157894737,
+   "uncapped_in_domain_only_over_vis": 0.9968251325900295,
+   "s10_points_in_box": 463686
+  }
+ },
+ "liberty": {
+  "n_gt": 23568,
+  "gt_in_domain_share": 1.0,
+  "visibility_ratio": 0.8632051499237676,
+  "V3-D1-H3-NORISK": {
+   "official_final": 0.9406695906555462,
+   "mono_final": 0.965246838673928,
+   "uncapped_all": 0.9651485296818546,
+   "uncapped_in_domain_raw": 0.8331211812627292,
+   "uncapped_out_domain_raw": null,
+   "uncapped_in_domain_only_over_vis": 0.9651485296818546,
+   "s10_points_in_box": 382649
+  },
+  "V3-DV2-KSV": {
+   "official_final": 0.9347218966350977,
+   "mono_final": 0.9650993751858178,
+   "uncapped_all": 0.965050220689781,
+   "uncapped_in_domain_raw": 0.8330363204344874,
+   "uncapped_out_domain_raw": null,
+   "uncapped_in_domain_only_over_vis": 0.965050220689781,
+   "s10_points_in_box": 349083
+  }
+ },
+ "pisa": {
+  "n_gt": 47968,
+  "gt_in_domain_share": 0.9970188458972649,
+  "visibility_ratio": 0.8036123018019893,
+  "V3-D1-H3-NORISK": {
+   "official_final": 0.9044903511541786,
+   "mono_final": 0.9239208356667262,
+   "uncapped_all": 0.9239208356667262,
+   "uncapped_in_domain_raw": 0.7417668583376895,
+   "uncapped_out_domain_raw": 0.9790209790209791,
+   "uncapped_in_domain_only_over_vis": 0.9230406959604527,
+   "s10_points_in_box": 712769
+  },
+  "V3-DV2-KSV": {
+   "official_final": 0.9469053607376434,
+   "mono_final": 0.9655316462917277,
+   "uncapped_all": 0.9655316462917277,
+   "uncapped_in_domain_raw": 0.7753058024046001,
+   "uncapped_out_domain_raw": 0.9790209790209791,
+   "uncapped_in_domain_only_over_vis": 0.9647759257369309,
+   "s10_points_in_box": 562029
+  }
+ },
+ "redeemer": {
+  "n_gt": 23942,
+  "gt_in_domain_share": 0.9999164647899089,
+  "visibility_ratio": 0.9566454636759291,
+  "V3-D1-H3-NORISK": {
+   "official_final": 0.9771653177886219,
+   "mono_final": 0.9829721623114712,
+   "uncapped_all": 0.9829721623114712,
+   "uncapped_in_domain_raw": 0.9403508771929825,
+   "uncapped_out_domain_raw": 1.0,
+   "uncapped_in_domain_only_over_vis": 0.982966953692192,
+   "s10_points_in_box": 283069
+  },
+  "V3-DV2-KSV": {
+   "official_final": 0.9724063249089938,
+   "mono_final": 0.9785187928277822,
+   "uncapped_all": 0.9783441508872455,
+   "uncapped_in_domain_raw": 0.935923141186299,
+   "uncapped_out_domain_raw": 1.0,
+   "uncapped_in_domain_only_over_vis": 0.978338555633762,
+   "s10_points_in_box": 302161
+  }
+ },
+ "barts": {
+  "n_gt": 47885,
+  "gt_in_domain_share": 0.9996449827712227,
+  "visibility_ratio": 1.0,
+  "V3-D1-H3-NORISK": {
+   "official_final": 0.9965542445442205,
+   "mono_final": 0.9988514148480735,
+   "uncapped_all": 0.9988514148480735,
+   "uncapped_in_domain_raw": 0.9988510069357399,
+   "uncapped_out_domain_raw": 1.0,
+   "uncapped_in_domain_only_over_vis": 0.9988510069357399,
+   "s10_points_in_box": 1162241
+  },
+  "V3-DV2-KSV": {
+   "official_final": 0.9970136786049911,
+   "mono_final": 0.9990393651456615,
+   "uncapped_all": 0.9990393651456615,
+   "uncapped_in_domain_raw": 0.9990390239826189,
+   "uncapped_out_domain_raw": 1.0,
+   "uncapped_in_domain_only_over_vis": 0.9990390239826189,
+   "s10_points_in_box": 1165973
+  }
+ },
+ "colosseum": {
+  "n_gt": 49067,
+  "gt_in_domain_share": 0.9990828866651721,
+  "visibility_ratio": 0.800203873598369,
+  "V3-D1-H3-NORISK": {
+   "official_final": 0.8477061976481138,
+   "mono_final": 0.877606662617435,
+   "uncapped_all": 0.877606662617435,
+   "uncapped_in_domain_raw": 0.7022561299008608,
+   "uncapped_out_domain_raw": 0.7111111111111111,
+   "uncapped_in_domain_only_over_vis": 0.8775965139270631,
+   "s10_points_in_box": 462444
+  },
+  "V3-DV2-KSV": {
+   "official_final": 0.8380789610566288,
+   "mono_final": 0.8695839654578642,
+   "uncapped_all": 0.8695839654578642,
+   "uncapped_in_domain_raw": 0.6958304434743584,
+   "uncapped_out_domain_raw": 0.7111111111111111,
+   "uncapped_in_domain_only_over_vis": 0.8695664522908861,
+   "s10_points_in_box": 532914
+  }
+ },
+ "eiffel": {
+  "n_gt": 22443,
+  "gt_in_domain_share": 0.999955442677004,
+  "visibility_ratio": 0.9678568248597632,
+  "V3-D1-H3-NORISK": {
+   "official_final": 0.940077615003496,
+   "mono_final": 0.9720734006267784,
+   "uncapped_all": 0.9720734006267784,
+   "uncapped_in_domain_raw": 0.9408252383923001,
+   "uncapped_out_domain_raw": 1.0,
+   "uncapped_in_domain_only_over_vis": 0.9720706763922652,
+   "s10_points_in_box": 367800
+  },
+  "V3-DV2-KSV": {
+   "official_final": 0.9352437193337914,
+   "mono_final": 0.9728560313542544,
+   "uncapped_all": 0.9728099942526381,
+   "uncapped_in_domain_raw": 0.9415381873273326,
+   "uncapped_out_domain_raw": 1.0,
+   "uncapped_in_domain_only_over_vis": 0.9728073028402274,
+   "s10_points_in_box": 435230
+  }
+ },
+ "pantheon": {
+  "n_gt": 54170,
+  "gt_in_domain_share": 0.9996677127561381,
+  "visibility_ratio": 0.7269438086096138,
+  "V3-D1-H3-NORISK": {
+   "official_final": 0.8595035454942039,
+   "mono_final": 0.8867264906212436,
+   "uncapped_all": 0.8867264906212436,
+   "uncapped_in_domain_raw": 0.6444821982567588,
+   "uncapped_out_domain_raw": 1.0,
+   "uncapped_in_domain_only_over_vis": 0.8865639828330405,
+   "s10_points_in_box": 613389
+  },
+  "V3-DV2-KSV": {
+   "official_final": 0.8315695532929505,
+   "mono_final": 0.8588686820350845,
+   "uncapped_all": 0.8584623694212482,
+   "uncapped_in_domain_raw": 0.623928940759344,
+   "uncapped_out_domain_raw": 1.0,
+   "uncapped_in_domain_only_over_vis": 0.8582904667042962,
+   "s10_points_in_box": 489115
+  }
+ },
+ "sestino_museum": {
+  "n_gt": 55514,
+  "gt_in_domain_share": 0.9583528479302519,
+  "visibility_ratio": 1.0,
+  "V3-D1-H3-NORISK": {
+   "official_final": 0.9889757538638903,
+   "mono_final": 0.9954425910581115,
+   "uncapped_all": 0.9949382137839103,
+   "uncapped_in_domain_raw": 0.9954512988233525,
+   "uncapped_out_domain_raw": 0.9831314878892734,
+   "uncapped_in_domain_only_over_vis": 0.9954512988233525,
+   "s10_points_in_box": 1132113
+  },
+  "V3-DV2-KSV": {
+   "official_final": 0.9766905645422777,
+   "mono_final": 0.9849947760925172,
+   "uncapped_all": 0.9840040350181936,
+   "uncapped_in_domain_raw": 0.9849441750310138,
+   "uncapped_out_domain_raw": 0.9623702422145328,
+   "uncapped_in_domain_only_over_vis": 0.9849441750310138,
+   "s10_points_in_box": 1091263
+  }
+ },
+ "alhambra": {
+  "n_gt": 45355,
+  "gt_in_domain_share": 0.9999118068570169,
+  "visibility_ratio": 0.8888594632768362,
+  "V3-D1-H3-NORISK": {
+   "official_final": 0.864608050773114,
+   "mono_final": 0.9041226429489679,
+   "uncapped_all": 0.9040482275211416,
+   "uncapped_in_domain_raw": 0.80357654737492,
+   "uncapped_out_domain_raw": 0.75,
+   "uncapped_in_domain_only_over_vis": 0.9040535434167339,
+   "s10_points_in_box": 854551
+  },
+  "V3-DV2-KSV": {
+   "official_final": 0.8586548165469965,
+   "mono_final": 0.8963090230271888,
+   "uncapped_all": 0.8962346075993624,
+   "uncapped_in_domain_raw": 0.7966307247910741,
+   "uncapped_out_domain_raw": 0.75,
+   "uncapped_in_domain_only_over_vis": 0.896239234326476,
+   "s10_points_in_box": 721695
+  }
+ },
+ "bridge": {
+  "n_gt": 40252,
+  "gt_in_domain_share": 0.9998757825698102,
+  "visibility_ratio": 0.9939173355935583,
+  "V3-D1-H3-NORISK": {
+   "official_final": 0.9388319351815692,
+   "mono_final": 0.9876232008225282,
+   "uncapped_all": 0.9875982052970974,
+   "uncapped_in_domain_raw": 0.9815886898402365,
+   "uncapped_out_domain_raw": 1.0,
+   "uncapped_in_domain_only_over_vis": 0.9875959042952407,
+   "s10_points_in_box": 530731
+  },
+  "V3-DV2-KSV": {
+   "official_final": 0.9388069396561383,
+   "mono_final": 0.9761002635989205,
+   "uncapped_all": 0.9761002635989205,
+   "uncapped_in_domain_raw": 0.9701592665291823,
+   "uncapped_out_domain_raw": 1.0,
+   "uncapped_in_domain_only_over_vis": 0.9760965341748588,
+   "s10_points_in_box": 640352
+  }
+ },
+ "neuschwanstein": {
+  "n_gt": 68569,
+  "gt_in_domain_share": 0.9934810191194271,
+  "visibility_ratio": 0.9944070444953927,
+  "V3-D1-H3-NORISK": {
+   "official_final": 0.9492487874279292,
+   "mono_final": 0.9570070355322069,
+   "uncapped_all": 0.9567577156498388,
+   "uncapped_in_domain_raw": 0.9516602565984558,
+   "uncapped_out_domain_raw": 0.912751677852349,
+   "uncapped_in_domain_only_over_vis": 0.9570127865308631,
+   "s10_points_in_box": 596458
+  },
+  "V3-DV2-KSV": {
+   "official_final": 0.9753980433257121,
+   "mono_final": 0.98088308073781,
+   "uncapped_all": 0.9806484267308755,
+   "uncapped_in_domain_raw": 0.9753090044332228,
+   "uncapped_out_domain_raw": 0.9530201342281879,
+   "uncapped_in_domain_only_over_vis": 0.980794544680784,
+   "s10_points_in_box": 488625
+  }
+ }
+}

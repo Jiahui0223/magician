@@ -1,0 +1,142 @@
+{
+ "colosseum": {
+  "cells_nonempty": 67,
+  "cells_at_capacity": 43,
+  "target_area_in_capped_cells": 0.9387984994527042,
+  "weight_ratio_min": 0.38240588321244917,
+  "weight_ratio_median": 1.3019453525529074,
+  "weight_ratio_max": 2.789477097178811,
+  "target_area": 73390.6215135353,
+  "area_per_gt_point": 1.4957226142526605
+ },
+ "bannerman": {
+  "cells_nonempty": 56,
+  "cells_at_capacity": 36,
+  "target_area_in_capped_cells": 0.9232915053412324,
+  "weight_ratio_min": 0.4502309041651397,
+  "weight_ratio_median": 1.3785939299272318,
+  "weight_ratio_max": 3.7912068477645726,
+  "target_area": 38152.022148902426,
+  "area_per_gt_point": 0.8753274480085905
+ },
+ "dunnottar": {
+  "cells_nonempty": 68,
+  "cells_at_capacity": 45,
+  "target_area_in_capped_cells": 0.9007545332846539,
+  "weight_ratio_min": 0.4539217747551435,
+  "weight_ratio_median": 1.159963741337442,
+  "weight_ratio_max": 3.607141758681143,
+  "target_area": 24360.246689510954,
+  "area_per_gt_point": 0.4427364815802943
+ },
+ "fushimi": {
+  "cells_nonempty": 30,
+  "cells_at_capacity": 23,
+  "target_area_in_capped_cells": 0.9787431230650919,
+  "weight_ratio_min": 0.4403242206053779,
+  "weight_ratio_median": 1.3121147443347796,
+  "weight_ratio_max": 4.343488578487183,
+  "target_area": 14130.610939220189,
+  "area_per_gt_point": 0.5633990247286866
+ },
+ "liberty": {
+  "cells_nonempty": 31,
+  "cells_at_capacity": 21,
+  "target_area_in_capped_cells": 0.9728946471189907,
+  "weight_ratio_min": 0.20476907382382406,
+  "weight_ratio_median": 2.0401377805971976,
+  "weight_ratio_max": 8.089146300067888,
+  "target_area": 14066.759015122123,
+  "area_per_gt_point": 0.5968584103497167
+ },
+ "pisa": {
+  "cells_nonempty": 70,
+  "cells_at_capacity": 29,
+  "target_area_in_capped_cells": 0.8104023273965801,
+  "weight_ratio_min": 0.3302979576791123,
+  "weight_ratio_median": 1.8985462575481122,
+  "weight_ratio_max": 2.9380003335557037,
+  "target_area": 49736.72161078763,
+  "area_per_gt_point": 1.0368729488573138
+ },
+ "redeemer": {
+  "cells_nonempty": 29,
+  "cells_at_capacity": 22,
+  "target_area_in_capped_cells": 0.9858712715855573,
+  "weight_ratio_min": 0.3855936871594276,
+  "weight_ratio_median": 1.478109134111139,
+  "weight_ratio_max": 9.179057722830173,
+  "target_area": 4832.4171483029695,
+  "area_per_gt_point": 0.2018384908655488
+ },
+ "barts": {
+  "cells_nonempty": 50,
+  "cells_at_capacity": 44,
+  "target_area_in_capped_cells": 0.9602633333333334,
+  "weight_ratio_min": 0.6124753074199862,
+  "weight_ratio_median": 1.0207766918996841,
+  "weight_ratio_max": 2.182858241670764,
+  "target_area": 6026.327953009335,
+  "area_per_gt_point": 0.12585001468120152
+ },
+ "eiffel": {
+  "cells_nonempty": 26,
+  "cells_at_capacity": 20,
+  "target_area_in_capped_cells": 0.959618989714749,
+  "weight_ratio_min": 0.3196757120947768,
+  "weight_ratio_median": 1.5605251905380702,
+  "weight_ratio_max": 4.287210934367064,
+  "target_area": 16013.385517684083,
+  "area_per_gt_point": 0.7135135907714691
+ },
+ "pantheon": {
+  "cells_nonempty": 65,
+  "cells_at_capacity": 40,
+  "target_area_in_capped_cells": 0.8584360383432037,
+  "weight_ratio_min": 0.4594997647708349,
+  "weight_ratio_median": 1.3073173408278538,
+  "weight_ratio_max": 2.346805146439149,
+  "target_area": 65260.02032695041,
+  "area_per_gt_point": 1.2047262382674988
+ },
+ "sestino_museum": {
+  "cells_nonempty": 56,
+  "cells_at_capacity": 53,
+  "target_area_in_capped_cells": 0.9746633333333333,
+  "weight_ratio_min": 0.7262521466984598,
+  "weight_ratio_median": 0.9957981460015278,
+  "weight_ratio_max": 1.848851295199189,
+  "target_area": 5562.412280815409,
+  "area_per_gt_point": 0.10019836943501476
+ },
+ "alhambra": {
+  "cells_nonempty": 57,
+  "cells_at_capacity": 38,
+  "target_area_in_capped_cells": 0.926433358153388,
+  "weight_ratio_min": 0.42929826395921605,
+  "weight_ratio_median": 1.4033577135823188,
+  "weight_ratio_max": 4.906940485377262,
+  "target_area": 42784.71244740332,
+  "area_per_gt_point": 0.9433295655915185
+ },
+ "bridge": {
+  "cells_nonempty": 45,
+  "cells_at_capacity": 36,
+  "target_area_in_capped_cells": 0.9606770468041332,
+  "weight_ratio_min": 0.2626434186326587,
+  "weight_ratio_median": 1.5094535110621268,
+  "weight_ratio_max": 3.71929345125708,
+  "target_area": 34060.50508875857,
+  "area_per_gt_point": 0.8461816826184678
+ },
+ "neuschwanstein": {
+  "cells_nonempty": 99,
+  "cells_at_capacity": 49,
+  "target_area_in_capped_cells": 0.8009143553794574,
+  "weight_ratio_min": 0.1435488340212049,
+  "weight_ratio_median": 1.291939506190844,
+  "weight_ratio_max": 2.870976680424098,
+  "target_area": 31044.20354951405,
+  "area_per_gt_point": 0.4527440031138569
+ }
+}

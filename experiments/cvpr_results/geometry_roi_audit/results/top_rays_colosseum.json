@@ -1,0 +1,723 @@
+{
+ "scene": "colosseum",
+ "roi_box": {
+  "lo": [
+   -51.31645202636719,
+   -10.76814079284668,
+   -43.03718185424805
+  ],
+  "hi": [
+   52.55924606323242,
+   22.79519271850586,
+   39.306785583496094
+  ]
+ },
+ "p1_grid_rt": {
+  "lo": [
+   -51.31645202636719,
+   -10.7681405544281,
+   -43.02826704457402
+  ],
+  "hi": [
+   52.52011176198721,
+   22.795193195343018,
+   39.30678606033325
+  ]
+ },
+ "p1_domain_rt": {
+  "lo": [
+   -51.31645202636719,
+   -10.7681405544281,
+   -42.50383995473385
+  ],
+  "hi": [
+   52.52011176198721,
+   22.795193195343018,
+   39.30678606033325
+  ]
+ },
+ "voxel_rt": 0.13110677246004343,
+ "dv2_rule": "removed iff t_pred > t_block_bundle + 1.0 (runtime units); t_block_bundle = max over the 5 bundle rays of the first observed 0.5 cell",
+ "rays": [
+  {
+   "episode": "colosseum_s0",
+   "start": 0,
+   "t": 50,
+   "candidate": 5,
+   "novelty_before": 684.8666173103092,
+   "novelty_after": 14.864870217616902,
+   "reduction": 670.0017470926922,
+   "cam": [
+    -15.00000758982116,
+    12.000003182183182,
+    -65.00000344243948
+   ],
+   "cam_in_box": false,
+   "cam_in_p1_grid": false,
+   "view_removed_value_occluder_outside_box": 0.999129348583243,
+   "view_removed_value_gt_verified": 0.998114969550566,
+   "final_score_d1": 1255.2183152560297,
+   "final_score_dv2": 264.30592532472843,
+   "one_step_d1_log": 684.8666173103092,
+   "one_step_dv2_planner": 14.864870217616902,
+   "ray": {
+    "k": 0,
+    "ray": 4741,
+    "w": 0.7790165113490124,
+    "t_pred": 33.387787009015405,
+    "t_block_bundle": 3.25,
+    "t_first_observed_centre": 2.5,
+    "t_true_gt": 2.7207365571113966,
+    "t_known_p1": null,
+    "dir": [
+     0.2935730739595844,
+     -0.6284723716625628,
+     0.7203036361859864
+    ],
+    "pred_hit": [
+     -5.198252324876629,
+     -8.983298503937231,
+     -40.95065905564245
+    ],
+    "block_bundle": [
+     -14.04589509945251,
+     9.957467974279853,
+     -62.659016624835026
+    ],
+    "first_observed_centre": [
+     -14.266074904922199,
+     10.428822253026775,
+     -63.199244351974514
+    ],
+    "pred_hit_in_box": true,
+    "pred_hit_in_domain": true,
+    "block_bundle_in_box": false,
+    "first_observed_in_box": false,
+    "observed_point": [
+     -14.0625,
+     10.9375,
+     -63.3125
+    ],
+    "observed_point_depth": 2.1584930419921875,
+    "observed_point_perp": 0.4431668221950531,
+    "observed_point_in_box": false,
+    "observed_point_in_domain": false
+   },
+   "rule_reproduced": true,
+   "replay_matches_planner_log": true,
+   "after_matches_planner": true
+  },
+  {
+   "episode": "colosseum_s4",
+   "start": 4,
+   "t": 20,
+   "candidate": 6,
+   "novelty_before": 662.7410260451287,
+   "novelty_after": 5.991026045128665,
+   "reduction": 656.75,
+   "cam": [
+    5.000001407117203,
+    27.999996739752604,
+    64.99999820440462
+   ],
+   "cam_in_box": false,
+   "cam_in_p1_grid": false,
+   "view_removed_value_occluder_outside_box": 0.9948872180451128,
+   "view_removed_value_gt_verified": 1.0,
+   "final_score_d1": 1078.2410260451288,
+   "final_score_dv2": 35.99102604512866,
+   "one_step_d1_log": 662.7410260451287,
+   "one_step_dv2_planner": 5.991026045128665,
+   "ray": {
+    "k": 0,
+    "ray": 2811,
+    "w": 1.0,
+    "t_pred": 46.42083457497635,
+    "t_block_bundle": 41.0,
+    "t_first_observed_centre": 40.5,
+    "t_true_gt": 40.6340274362939,
+    "t_known_p1": null,
+    "dir": [
+     0.3166197568400099,
+     -0.7501515221205148,
+     -0.5805382187581173
+    ],
+    "pred_hit": [
+     19.697754762556542,
+     -6.822662974770523,
+     38.050929586982626
+    ],
+    "block_bundle": [
+     17.98141143755761,
+     -2.7562156671885063,
+     41.19793123532181
+    ],
+    "first_observed_centre": [
+     17.823101559137605,
+     -2.381139906128247,
+     41.48820034470087
+    ],
+    "pred_hit_in_box": true,
+    "pred_hit_in_domain": true,
+    "block_bundle_in_box": false,
+    "first_observed_in_box": false,
+    "observed_point": [
+     17.4375,
+     -2.4375,
+     41.9375
+    ],
+    "observed_point_depth": 40.15935516357422,
+    "observed_point_perp": 0.48751503229141235,
+    "observed_point_in_box": false,
+    "observed_point_in_domain": false
+   },
+   "rule_reproduced": true,
+   "replay_matches_planner_log": true,
+   "after_matches_planner": true
+  },
+  {
+   "episode": "colosseum_s1",
+   "start": 1,
+   "t": 55,
+   "candidate": 7,
+   "novelty_before": 659.2422619775438,
+   "novelty_after": 11.75,
+   "reduction": 647.4922619775438,
+   "cam": [
+    15.000000222260852,
+    28.000008106403662,
+    65.0000152543812
+   ],
+   "cam_in_box": false,
+   "cam_in_p1_grid": false,
+   "view_removed_value_occluder_outside_box": 0.9985582339603022,
+   "view_removed_value_gt_verified": 1.0,
+   "final_score_d1": 935.7459642978421,
+   "final_score_dv2": 33.5,
+   "one_step_d1_log": 659.2422619775438,
+   "one_step_dv2_planner": 11.75,
+   "ray": {
+    "k": 0,
+    "ray": 5946,
+    "w": 1.0,
+    "t_pred": 51.49939743297573,
+    "t_block_bundle": 46.75,
+    "t_first_observed_centre": 46.25,
+    "t_true_gt": 46.88515658829604,
+    "t_known_p1": null,
+    "dir": [
+     -0.5462114164066744,
+     -0.6451449334188912,
+     -0.5342668841234209
+    ],
+    "pred_hit": [
+     -13.12955859369507,
+     -5.224567221606478,
+     37.48559265363156
+    ],
+    "block_bundle": [
+     -10.535383494751176,
+     -2.1605175309295035,
+     40.02303842161127
+    ],
+    "first_observed_centre": [
+     -10.262277786547838,
+     -1.837945064220058,
+     40.29017186367298
+    ],
+    "pred_hit_in_box": true,
+    "pred_hit_in_domain": true,
+    "block_bundle_in_box": false,
+    "first_observed_in_box": false,
+    "observed_point": [
+     -9.9375,
+     -2.1875,
+     40.4375
+    ],
+    "observed_point_depth": 46.21940231323242,
+    "observed_point_perp": 0.4985330104827881,
+    "observed_point_in_box": false,
+    "observed_point_in_domain": false
+   },
+   "rule_reproduced": true,
+   "replay_matches_planner_log": true,
+   "after_matches_planner": true
+  },
+  {
+   "episode": "colosseum_s2",
+   "start": 2,
+   "t": 25,
+   "candidate": 4,
+   "novelty_before": 664.5642740850085,
+   "novelty_after": 20.98575400830056,
+   "reduction": 643.578520076708,
+   "cam": [
+    15.000000222260852,
+    20.000008485956183,
+    65.0000152543812
+   ],
+   "cam_in_box": false,
+   "cam_in_p1_grid": false,
+   "view_removed_value_occluder_outside_box": 0.9970703853809054,
+   "view_removed_value_gt_verified": 1.0,
+   "final_score_d1": 1115.0874164509862,
+   "final_score_dv2": 66.883804514635,
+   "one_step_d1_log": 664.5642740850085,
+   "one_step_dv2_planner": 20.98575400830056,
+   "ray": {
+    "k": 0,
+    "ray": 5119,
+    "w": 1.0,
+    "t_pred": 50.17529625160989,
+    "t_block_bundle": 37.75,
+    "t_first_observed_centre": 37.0,
+    "t_true_gt": 37.30419881060471,
+    "t_known_p1": null,
+    "dir": [
+     0.635548970374947,
+     -0.5241473491436062,
+     -0.5668748209623315
+    ],
+    "pred_hit": [
+     46.88885809322946,
+     -6.299240036820262,
+     36.556903175017894
+    ],
+    "block_bundle": [
+     38.9919738539151,
+     0.21344605578504883,
+     43.60049076305318
+    ],
+    "first_observed_centre": [
+     38.51531212613389,
+     0.6065565676427553,
+     44.02564687877493
+    ],
+    "pred_hit_in_box": true,
+    "pred_hit_in_domain": true,
+    "block_bundle_in_box": false,
+    "first_observed_in_box": false,
+    "observed_point": [
+     38.0625,
+     0.4375,
+     44.4375
+    ],
+    "observed_point_depth": 36.56735610961914,
+    "observed_point_perp": 0.46495863795280457,
+    "observed_point_in_box": false,
+    "observed_point_in_domain": false
+   },
+   "rule_reproduced": true,
+   "replay_matches_planner_log": true,
+   "after_matches_planner": true
+  },
+  {
+   "episode": "colosseum_s4",
+   "start": 4,
+   "t": 35,
+   "candidate": 4,
+   "novelty_before": 643.75,
+   "novelty_after": 12.5,
+   "reduction": 631.25,
+   "cam": [
+    5.000001407117203,
+    28.000008106403662,
+    65.0000152543812
+   ],
+   "cam_in_box": false,
+   "cam_in_p1_grid": false,
+   "view_removed_value_occluder_outside_box": 1.0,
+   "view_removed_value_gt_verified": 1.0,
+   "final_score_d1": 1057.9280735856482,
+   "final_score_dv2": 66.25,
+   "one_step_d1_log": 643.75,
+   "one_step_dv2_planner": 12.5,
+   "ray": {
+    "k": 0,
+    "ray": 6300,
+    "w": 1.0,
+    "t_pred": 50.57271983908757,
+    "t_block_bundle": 41.5,
+    "t_first_observed_centre": 41.0,
+    "t_true_gt": 41.41354796617871,
+    "t_known_p1": null,
+    "dir": [
+     -0.40275463242518655,
+     -0.7315466960164493,
+     -0.5501164764006524
+    ],
+    "pred_hit": [
+     -15.36839578241645,
+     -8.996298000446387,
+     37.17912881450498
+    ],
+    "block_bundle": [
+     -11.714315838528037,
+     -2.359179778278982,
+     42.17018148375412
+    ],
+    "first_observed_centre": [
+     -11.512938522315444,
+     -1.9934064302707597,
+     42.44523972195445
+    ],
+    "pred_hit_in_box": true,
+    "pred_hit_in_domain": true,
+    "block_bundle_in_box": false,
+    "first_observed_in_box": false,
+    "observed_point": [
+     -11.4375,
+     -2.3125,
+     42.8125
+    ],
+    "observed_point_depth": 41.001014709472656,
+    "observed_point_perp": 0.4921254813671112,
+    "observed_point_in_box": false,
+    "observed_point_in_domain": false
+   },
+   "rule_reproduced": true,
+   "replay_matches_planner_log": true,
+   "after_matches_planner": true
+  },
+  {
+   "episode": "colosseum_s1",
+   "start": 1,
+   "t": 20,
+   "candidate": 6,
+   "novelty_before": 634.4412187132368,
+   "novelty_after": 14.441218713236871,
+   "reduction": 620.0,
+   "cam": [
+    -5.000000249689215,
+    27.999996739752604,
+    64.99999820440462
+   ],
+   "cam_in_box": false,
+   "cam_in_p1_grid": false,
+   "view_removed_value_occluder_outside_box": 0.995115597525236,
+   "view_removed_value_gt_verified": 0.9986974926733962,
+   "final_score_d1": 1059.9378587867345,
+   "final_score_dv2": 53.687858786734466,
+   "one_step_d1_log": 634.4412187132368,
+   "one_step_dv2_planner": 14.441218713236871,
+   "ray": {
+    "k": 0,
+    "ray": 2859,
+    "w": 1.0,
+    "t_pred": 59.102760606531064,
+    "t_block_bundle": 51.25,
+    "t_first_observed_centre": 50.5,
+    "t_true_gt": 51.00553750118086,
+    "t_known_p1": null,
+    "dir": [
+     -0.6488433410615253,
+     -0.6099716955513482,
+     -0.45490312087996315
+    ],
+    "pred_hit": [
+     -43.34843290759033,
+     -8.05101435917858,
+     38.1139679518723
+    ],
+    "block_bundle": [
+     -38.25322147909239,
+     -3.2610526572539946,
+     41.68621325930651
+    ],
+    "first_observed_centre": [
+     -37.766588973296244,
+     -2.803573885590481,
+     42.02739059996648
+    ],
+    "pred_hit_in_box": true,
+    "pred_hit_in_domain": true,
+    "block_bundle_in_box": false,
+    "first_observed_in_box": false,
+    "observed_point": [
+     -37.4375,
+     -3.0625,
+     42.1875
+    ],
+    "observed_point_depth": 50.37157440185547,
+    "observed_point_perp": 0.42990052700042725,
+    "observed_point_in_box": false,
+    "observed_point_in_domain": false
+   },
+   "rule_reproduced": true,
+   "replay_matches_planner_log": true,
+   "after_matches_planner": true
+  },
+  {
+   "episode": "colosseum_s4",
+   "start": 4,
+   "t": 25,
+   "candidate": 4,
+   "novelty_before": 635.0421304819733,
+   "novelty_after": 15.607235809496668,
+   "reduction": 619.4348946724767,
+   "cam": [
+    5.000001407117203,
+    12.000007444677326,
+    65.00001241271843
+   ],
+   "cam_in_box": false,
+   "cam_in_p1_grid": false,
+   "view_removed_value_occluder_outside_box": 0.9956492982337702,
+   "view_removed_value_gt_verified": 0.9991969525058405,
+   "final_score_d1": 1146.696359529571,
+   "final_score_dv2": 49.85983639222004,
+   "one_step_d1_log": 635.0421304819733,
+   "one_step_dv2_planner": 15.607235809496668,
+   "ray": {
+    "k": 0,
+    "ray": 4781,
+    "w": 0.9105635397489239,
+    "t_pred": 47.793011006978176,
+    "t_block_bundle": 25.75,
+    "t_first_observed_centre": 25.0,
+    "t_true_gt": 25.308761808063696,
+    "t_known_p1": null,
+    "dir": [
+     0.670275211846662,
+     -0.4746689204030207,
+     -0.5704564456532534
+    ],
+    "pred_hit": [
+     37.03447198460935,
+     -10.68584949281469,
+     37.736181226610846
+    ],
+    "block_bundle": [
+     22.25958811216875,
+     -0.22271725570045753,
+     50.310758937147156
+    ],
+    "first_observed_centre": [
+     21.756881703283753,
+     0.1332844346018085,
+     50.7386012713871
+    ],
+    "pred_hit_in_box": true,
+    "pred_hit_in_domain": true,
+    "block_bundle_in_box": false,
+    "first_observed_in_box": false,
+    "observed_point": [
+     21.1875,
+     -0.0625,
+     51.0625
+    ],
+    "observed_point_depth": 24.526519775390625,
+    "observed_point_perp": 0.4933023154735565,
+    "observed_point_in_box": false,
+    "observed_point_in_domain": false
+   },
+   "rule_reproduced": true,
+   "replay_matches_planner_log": true,
+   "after_matches_planner": true
+  },
+  {
+   "episode": "colosseum_s2",
+   "start": 2,
+   "t": 80,
+   "candidate": 0,
+   "novelty_before": 615.8357032672809,
+   "novelty_after": 0.5150307090453963,
+   "reduction": 615.3206725582355,
+   "cam": [
+    -65.00000166553943,
+    3.9999992992415585,
+    55.00000223092373
+   ],
+   "cam_in_box": false,
+   "cam_in_p1_grid": false,
+   "view_removed_value_occluder_outside_box": 1.0,
+   "view_removed_value_gt_verified": 1.0,
+   "final_score_d1": 1112.1278381780908,
+   "final_score_dv2": 115.14549105135745,
+   "one_step_d1_log": 615.8357032672809,
+   "one_step_dv2_planner": 0.5150307090453963,
+   "ray": {
+    "k": 0,
+    "ray": 5566,
+    "w": 1.0,
+    "t_pred": 52.17508800492432,
+    "t_block_bundle": 30.25,
+    "t_first_observed_centre": 28.25,
+    "t_true_gt": 29.98274824022104,
+    "t_known_p1": null,
+    "dir": [
+     0.9137397382877483,
+     -0.2398144149019841,
+     -0.32797673252695303
+    ],
+    "pred_hit": [
+     -17.32555040677964,
+     -8.512338903118897,
+     37.887787347762426
+    ],
+    "block_bundle": [
+     -37.35937458233504,
+     -3.2543867515434606,
+     45.0787060719834
+    ],
+    "first_observed_centre": [
+     -39.18685405891054,
+     -2.774757921739492,
+     45.7346595370373
+    ],
+    "pred_hit_in_box": true,
+    "pred_hit_in_domain": true,
+    "block_bundle_in_box": false,
+    "first_observed_in_box": false,
+    "observed_point": [
+     -39.5625,
+     -3.1875,
+     45.8125
+    ],
+    "observed_point_depth": 27.980207443237305,
+    "observed_point_perp": 0.4947231411933899,
+    "observed_point_in_box": false,
+    "observed_point_in_domain": false
+   },
+   "rule_reproduced": true,
+   "replay_matches_planner_log": true,
+   "after_matches_planner": true
+  },
+  {
+   "episode": "colosseum_s1",
+   "start": 1,
+   "t": 25,
+   "candidate": 6,
+   "novelty_before": 634.3486042851378,
+   "novelty_after": 21.952187826606107,
+   "reduction": 612.3964164585317,
+   "cam": [
+    5.000001407117203,
+    20.000008485956183,
+    65.0000152543812
+   ],
+   "cam_in_box": false,
+   "cam_in_p1_grid": false,
+   "view_removed_value_occluder_outside_box": 0.9969263127065211,
+   "view_removed_value_gt_verified": 1.0,
+   "final_score_d1": 1050.2018051061175,
+   "final_score_dv2": 68.1558083175019,
+   "one_step_d1_log": 634.3486042851378,
+   "one_step_dv2_planner": 21.952187826606107,
+   "ray": {
+    "k": 0,
+    "ray": 5237,
+    "w": 1.0,
+    "t_pred": 52.005321388096355,
+    "t_block_bundle": 38.25,
+    "t_first_observed_centre": 37.5,
+    "t_true_gt": 38.06947810206267,
+    "t_known_p1": null,
+    "dir": [
+     0.6649291480637789,
+     -0.5164064738017559,
+     -0.539623555704172
+    ],
+    "pred_hit": [
+     39.57985545248713,
+     -6.855876150997691,
+     36.93671881139842
+    ],
+    "block_bundle": [
+     30.433541320556746,
+     0.24746086303902004,
+     44.35941424869662
+    ],
+    "first_observed_centre": [
+     29.934844459508913,
+     0.6347657183903372,
+     44.76413191547475
+    ],
+    "pred_hit_in_box": true,
+    "pred_hit_in_domain": true,
+    "block_bundle_in_box": false,
+    "first_observed_in_box": false,
+    "observed_point": [
+     29.5625,
+     0.3125,
+     44.9375
+    ],
+    "observed_point_depth": 37.32528305053711,
+    "observed_point_perp": 0.49187737703323364,
+    "observed_point_in_box": false,
+    "observed_point_in_domain": false
+   },
+   "rule_reproduced": true,
+   "replay_matches_planner_log": true,
+   "after_matches_planner": true
+  },
+  {
+   "episode": "colosseum_s0",
+   "start": 0,
+   "t": 80,
+   "candidate": 0,
+   "novelty_before": 591.4340969097882,
+   "novelty_after": 0.0,
+   "reduction": 591.4340969097882,
+   "cam": [
+    64.99999998130465,
+    3.9999992992415585,
+    -55.00000462729582
+   ],
+   "cam_in_box": false,
+   "cam_in_p1_grid": false,
+   "view_removed_value_occluder_outside_box": 1.0,
+   "view_removed_value_gt_verified": 1.0,
+   "final_score_d1": 1097.6291982419348,
+   "final_score_dv2": 386.77603801142374,
+   "one_step_d1_log": 591.4340969097882,
+   "one_step_dv2_planner": 0.0,
+   "ray": {
+    "k": 0,
+    "ray": 2222,
+    "w": 0.46965327779346794,
+    "t_pred": 25.739377797330164,
+    "t_block_bundle": 16.25,
+    "t_first_observed_centre": 7.75,
+    "t_true_gt": 15.881276338663053,
+    "t_known_p1": null,
+    "dir": [
+     -0.5556073111858904,
+     -0.29641002006236367,
+     0.7768150460459775
+    ],
+    "pred_hit": [
+     50.69901349173224,
+     -3.6294101900578335,
+     -35.005268678467985
+    ],
+    "block_bundle": [
+     55.97138117453394,
+     -0.8166635267718512,
+     -42.37676012904869
+    ],
+    "first_observed_centre": [
+     60.694043319614,
+     1.7028216437582402,
+     -48.9796880204395
+    ],
+    "pred_hit_in_box": true,
+    "pred_hit_in_domain": true,
+    "block_bundle_in_box": false,
+    "first_observed_in_box": false,
+    "observed_point": [
+     60.8125,
+     1.3125,
+     -49.3125
+    ],
+    "observed_point_depth": 7.541346073150635,
+    "observed_point_perp": 0.48332643508911133,
+    "observed_point_in_box": false,
+    "observed_point_in_domain": false
+   },
+   "rule_reproduced": true,
+   "replay_matches_planner_log": true,
+   "after_matches_planner": true
+  }
+ ]
+}

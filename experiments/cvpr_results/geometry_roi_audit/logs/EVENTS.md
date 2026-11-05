@@ -1,0 +1,15 @@
+# Geometry / ROI audit — events (2026-11-04 / 05; facts only)
+
+| step | event |
+|---|---|
+| scope | read-only audit; no training, no closed-loop run, nothing written to E3, Table 1 or any checkpoint; new files only under `experiments/cvpr_results/geometry_roi_audit/` and `work_dirs/cvpr_results/geometry_roi_audit/` |
+| A1 | `a1_gt_target.py` (magician env): official GT target of all 14 scenes built with the frozen simulator code path and the frozen "gt" seed of start 0; smoke on colosseum, then All-14 (`logs/a1_gt_target.log`) |
+| A2 | `a2_p1_roi.py`: first call printed nothing because the output was piped through a filter that hid an empty result; rerun with a log file (`logs/a2_p1_roi.log`), exit 0 |
+| indoor | MP3D protocol read by a sub-agent (code only, with file:line evidence); its three key points (region refresh + record replay, region box, coverage target) were re-read by me and agree |
+| C (1st pass) | `c_ray_audit.py` smoke on colosseum s1, then 10 episodes. Stopped to add the occluder-location split of the GT check. The stop command (`pkill -f` with the script name) also matched the shell that issued it (this session runs on gpu115) -> that shell was killed (exit 144); nothing else was affected. Later stops build the pattern by string concatenation |
+| D | `d_roi_coverage.py`: service records exist for t = 0..99 only (the last observation has no planner call) -> the diagnostic uses step 99, compared with the official / mono value of step 99 |
+| C (2nd pass) | ray selection for the report changed from "largest weight" (massive ties at weight 1, not representative: 6 of the 10 first-pass rays had an in-ROI first observed point while 95.7 % of the removed value has it outside) to a seeded draw proportional to weight; GT-anchored P1-state diagnosis added; all 12 episodes rerun from scratch |
+| C (dunnottar) | dunnottar s1 ray audit failed with CUDA out of memory on an exclusive 46 GB GPU (451 M-voxel grid x 2 fusions plus the audit's own buffers); not retried, the ray-level audit covers 11 episodes of 9 scenes (220 states). The planner itself runs dunnottar within memory; this is a limit of the audit script only |
+| C (final) | 11 episodes done (colosseum s0-s4, pisa s1, neuschwanstein s4, bannerman s3, alhambra s0, barts s0, sestino_museum s0): 220 states, 26.7 M decoded hits; summary `results/f_ray_summary.json`; the 10 report rays in `results/top_rays_colosseum.*` reproduce the D-v2 rule and the planner's own values (before == planner log, after == planner D-v2 value) |
+| J | `j_lookahead_check.py`: full two-step D-v2 scoring on 8 states (colosseum s1, pisa s1): maps unchanged 8 / 8; the layer-1 / layer-2 filtered-ray counts equal the E3 fixed-state records of the same states |
+| note | alhambra / neuschwanstein (Test-3) appear here only as read-only diagnostics; no parameter, threshold or model was changed by this audit |
