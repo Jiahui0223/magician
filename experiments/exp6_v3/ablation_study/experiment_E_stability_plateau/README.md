@@ -36,3 +36,5 @@
 - GT 反事实：`bash <E>/scripts/e_oracle_queue.sh <GPU> <jobfile>`
 - 预测重建：`bash <E>/scripts/e_predict_queue.sh <GPU> <jobfile>`
 - 任务文件在 `work_dirs/.../jobs/`。
+
+**后续 E2（2026-11-04）**：已观测几何一致性审计 + KSV 可见性约束的固定状态与闭环验证，见 `E2_observed_geometry/FINAL_REPORT.md`（新子目录，E 的已有数据未改动）。

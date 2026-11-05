@@ -1,0 +1,23 @@
+/bsuhome/jiahuizhang/scratch/projects/occupancy/seen2scene/seen2scene/v3/predictor.py:80: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  ck = torch.load(ckpt_path, map_location=device)
+alhambra s0 t=0 3.8s
+alhambra s0 t=5 1.1s
+alhambra s0 t=10 1.3s
+alhambra s0 t=15 1.2s
+alhambra s0 t=20 1.1s
+alhambra s0 t=25 1.0s
+alhambra s0 t=30 1.3s
+alhambra s0 t=35 1.2s
+alhambra s0 t=40 1.3s
+alhambra s0 t=45 1.5s
+alhambra s0 t=50 1.3s
+alhambra s0 t=55 1.3s
+alhambra s0 t=60 1.5s
+alhambra s0 t=65 1.3s
+alhambra s0 t=70 1.3s
+alhambra s0 t=75 1.2s
+alhambra s0 t=80 1.3s
+alhambra s0 t=85 1.4s
+alhambra s0 t=90 1.4s
+alhambra s0 t=95 1.1s
+done alhambra 0 86s

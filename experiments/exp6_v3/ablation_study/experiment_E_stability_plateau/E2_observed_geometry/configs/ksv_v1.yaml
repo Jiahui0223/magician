@@ -1,0 +1,18 @@
+# E2-KSV-v1 Known-Surface Visibility constraint -- frozen before the full fixed-state A/B (2026-11-04).
+version: E2-KSV-v1
+base_planner: V3-T1 40K + D1 (D-v1 d1: depth 2, lambda 0), b2 D100 inputs / S10 scoring, R10, K 4, Euler 10 -- unchanged
+switch: off -> byte-identical to D1 (verified: fixed-state scores and picks == planner log)
+observed_grid: {cell_rt: 0.5, source: "every valid depth pixel (z < 70) of the agent's executed frames 0..t, incl. outside the P1 domain (p1_full.full_points)",
+                bounds: "settings scene box padded +-80 (x, z), -30 / +80 (y)"}
+ray_test: {step_rt: 0.25, min_t_rt: 1.0, margin_rt: 1.0, rule: "predicted hit with t_pred > t_obs + margin is not visible -> removed before value_cov (all lookahead layers)"}
+information: online only (past observations of the agent); GT used offline to score
+fixed_state_eval: {episodes: "D1 colosseum s0-s4, pisa s1, alhambra s0 (E-B oracle available)", state_every: 5,
+                   metrics: [regression OFF == log, Top-1 vs oracle one-step gain, selected true gain pp, Spearman, novel share beyond the true surface OFF vs ON, wrong-cut share, seconds]}
+closed_loop_gate: "run Task 3 only if, over all fixed states, ON improves the mean selected true gain and does not lower it on states t < 20 (early)"
+fixed_state_result: "140/140 OFF == log; gate PASS (mean selected true gain 0.88 -> 0.94 pp, t<20 3.35 -> 3.41, Top-1 0.39 -> 0.54); results/ksv_fixed_summary.json"
+closed_loop:   # pre-registered before any closed-loop episode (2026-11-04 18:40)
+  stage1: {what: "colosseum starts 0-4 x rep 0,1,2 (KSV on), paired with D1 (rep 0 = Table 1, rep 1/2 = experiment E E-D)", metrics: [AUC@20, AUC@100, Final, "plateau count (Final < 0.70)"]}
+  stage2: {what: "Dev-5 rep 0 (KSV on), paired with Table 1 D1 Dev-5", metrics: [AUC@20, AUC@100, Final, plateau frequency, planning time]}
+  continue_to_all14_if: "Dev-5 scene-equal (dAUC@100 >= +0.01 or dFinal >= +0.01) and dAUC@20 >= -0.005, and the colosseum plateau count is not higher than D1's"
+  never: tune on Test-3; change thresholds after seeing closed-loop results
+closed_loop_result: "colosseum 15 pairs: dAUC@20 -0.007 [-0.045, 0.017], dAUC@100 +0.094 [0.060, 0.125], dFinal +0.116 [0.068, 0.166], plateaus 5 -> 0; Dev-5 rep 0: dAUC@20 -0.008 [-0.016, -0.002] (0/5 scenes better), dAUC@100 +0.016 [-0.008, 0.056], dFinal +0.020 [-0.006, 0.060]; gate_all14 FAIL (dAUC@20 < -0.005) -> keep D1, no Table 1 registration, no All-14 (results/closed_loop_summary.json)"

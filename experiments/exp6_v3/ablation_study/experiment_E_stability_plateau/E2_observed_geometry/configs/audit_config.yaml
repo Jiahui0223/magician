@@ -1,0 +1,24 @@
+# E2 observed-geometry consistency audit -- frozen before running (2026-11-04).
+version: E2-audit-v1
+planner: V3-T1 40K (sha 639c9d3a...) + D1 (D-v1, depth 2, lambda 0), b2 = D100 inputs / S10 scoring, R10, K 4, Euler 10
+episodes:   # canonical CVPR Table 1 D1 episodes with E-B GT oracle available
+  - {scene: colosseum, start: 0}
+  - {scene: colosseum, start: 1}
+  - {scene: colosseum, start: 2}
+  - {scene: colosseum, start: 3}
+  - {scene: colosseum, start: 4}
+  - {scene: pisa, start: 1}
+  - {scene: alhambra, start: 0}
+state_every: 5            # replayed states t = 0, 5, ..., 95
+tolerances:
+  t_rt: 1.0               # runtime units along the ray (= official coverage eps): |t_pred - t_true| within -> consistent; t_pred > t_true + t_rt -> beyond the true first surface
+  d100_near_vox: 2        # D100 BAND voxel within 2 voxels (5x5x5 max-pool) of a point -> "point lies on a D100-observed surface"
+  s10_cov_eps_rt: 1.0     # value_cov novelty: no S10 observed point within 1.0 runtime units (frozen H-v1)
+classes:  # flags per predicted hit (ray x sample) that the D1 value (value_cov) counts as novel; flags may overlap
+  A: predicted hit beyond the true first surface AND the true occluder is not on any D100-observed surface (unknown geometry)
+  B: predicted hit beyond the true first surface AND the true occluder IS on a D100-observed surface (the ray slipped through known geometry)
+  C: predicted hit lies on a D100-observed surface (or is the decoded known-surface hit) but S10 scoring still counts it novel
+  T: predicted hit consistent with the true first surface (|dt| <= t_rt) and not on a D100-observed surface (genuinely new and correct)
+  F: predicted hit in front of the true first surface by more than t_rt (phantom in free space)
+  N: no GT surface along the ray within range (prediction where GT has nothing)
+ground_truth_use: offline only (GT mesh ray casting + E-B oracle gains for scoring); never passed to the planner

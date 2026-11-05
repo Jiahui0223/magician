@@ -1,0 +1,23 @@
+D_POLICY {"d_policy": "d1", "d_policy_file_sha256": "c8418279771e787eaaa0404f421602c9b95851e67d14aed1f717690230e48ecb", "h_policy_file_sha256": "ccfdf4af2783be3f1e7717bc644daf31a2fe994bcf312fdb4e4269ddf017a94a", "config_sha256": "e53c230db866e821b55fc40c0030c5eff448d12cbddcb2fbee00b4044b43c0b3", "config_version": "D-v1", "policy_cfg": {"depth": 2, "beam": null, "lambda_risk": 0.0, "doc": "D1_H3_NO_RISK: H3 with lambda 0", "kind": "cov", "eps_cov": 1.0, "cell_size": 1.0, "novelty": "hard", "c2_chunk": 16}}
+/bsuhome/jiahuizhang/scratch/projects/occupancy/seen2scene/seen2scene/v3/predictor.py:80: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  ck = torch.load(ckpt_path, map_location=device)
+colosseum s1 t=0 reg=True pick 5->5 4.4s/4.3s
+colosseum s1 t=5 reg=True pick 7->7 4.8s/4.8s
+colosseum s1 t=10 reg=True pick 5->5 3.3s/3.3s
+colosseum s1 t=15 reg=True pick 5->6 3.1s/3.1s
+colosseum s1 t=20 reg=True pick 1->5 3.0s/2.9s
+colosseum s1 t=25 reg=True pick 7->6 3.6s/3.4s
+colosseum s1 t=30 reg=True pick 4->4 2.2s/2.0s
+colosseum s1 t=35 reg=True pick 2->5 2.7s/2.4s
+colosseum s1 t=40 reg=True pick 0->1 2.3s/2.2s
+colosseum s1 t=45 reg=True pick 2->2 1.8s/1.6s
+colosseum s1 t=50 reg=True pick 6->6 3.1s/3.0s
+colosseum s1 t=55 reg=True pick 2->4 3.6s/3.4s
+colosseum s1 t=60 reg=True pick 2->0 3.5s/3.3s
+colosseum s1 t=65 reg=True pick 0->0 3.7s/3.4s
+colosseum s1 t=70 reg=True pick 6->5 3.0s/2.7s
+colosseum s1 t=75 reg=True pick 2->4 3.1s/2.7s
+colosseum s1 t=80 reg=True pick 4->4 3.4s/3.0s
+colosseum s1 t=85 reg=True pick 0->1 2.8s/2.4s
+colosseum s1 t=90 reg=True pick 7->0 3.5s/3.1s
+colosseum s1 t=95 reg=True pick 0->1 3.4s/3.0s

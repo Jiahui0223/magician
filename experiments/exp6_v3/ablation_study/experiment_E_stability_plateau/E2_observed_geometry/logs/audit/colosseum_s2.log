@@ -1,0 +1,33 @@
+/bsuhome/jiahuizhang/scratch/projects/occupancy/seen2scene/seen2scene/v3/predictor.py:80: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  ck = torch.load(ckpt_path, map_location=device)
+Traceback (most recent call last):
+  File "/bsuhome/jiahuizhang/scratch/projects/occupancy/seen2scene/experiments/exp6_v3/ablation_study/experiment_E_stability_plateau/E2_observed_geometry/scripts/geom_audit.py", line 261, in <module>
+    main()
+  File "/bsuhome/jiahuizhang/scratch/projects/occupancy/seen2scene/experiments/exp6_v3/ablation_study/experiment_E_stability_plateau/E2_observed_geometry/scripts/geom_audit.py", line 167, in main
+    dtree = cKDTree((np.asarray(list(dense_cells), np.float64) + 0.5) * 0.5)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "scipy/spatial/_ckdtree.pyx", line 556, in scipy.spatial._ckdtree.cKDTree.__init__
+ValueError: data must be of shape (n, m), where there are n points of dimension m
+/bsuhome/jiahuizhang/scratch/projects/occupancy/seen2scene/seen2scene/v3/predictor.py:80: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  ck = torch.load(ckpt_path, map_location=device)
+colosseum s2 t=0 3.9s
+colosseum s2 t=5 1.2s
+colosseum s2 t=10 1.6s
+colosseum s2 t=15 1.5s
+colosseum s2 t=20 1.2s
+colosseum s2 t=25 1.0s
+colosseum s2 t=30 1.2s
+colosseum s2 t=35 1.6s
+colosseum s2 t=40 1.0s
+colosseum s2 t=45 1.0s
+colosseum s2 t=50 1.2s
+colosseum s2 t=55 1.4s
+colosseum s2 t=60 1.2s
+colosseum s2 t=65 1.6s
+colosseum s2 t=70 1.6s
+colosseum s2 t=75 1.4s
+colosseum s2 t=80 1.3s
+colosseum s2 t=85 1.5s
+colosseum s2 t=90 1.6s
+colosseum s2 t=95 1.3s
+done colosseum 2 84s

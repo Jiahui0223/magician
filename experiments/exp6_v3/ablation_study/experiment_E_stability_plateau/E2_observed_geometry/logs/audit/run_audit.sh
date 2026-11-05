@@ -1,0 +1,5 @@
+#!/bin/bash
+# E2 audit worker: run geom_audit.py for a list of scene:start on one GPU.
+cd /bsuhome/jiahuizhang/scratch/projects/occupancy/seen2scene; export LD_PRELOAD=/bsuscratch/jiahuizhang/envs/seen2scene/lib/libtbb.so LD_LIBRARY_PATH=/bsuscratch/jiahuizhang/envs/seen2scene/lib PYTHONPATH=/bsuhome/jiahuizhang/scratch/projects/occupancy/seen2scene OMP_NUM_THREADS=4
+g=$1; shift
+for sk in "$@"; do s=${sk%:*}; k=${sk#*:}; CUDA_VISIBLE_DEVICES=$g /bsuscratch/jiahuizhang/envs/seen2scene/bin/python /bsuhome/jiahuizhang/scratch/projects/occupancy/seen2scene/experiments/exp6_v3/ablation_study/experiment_E_stability_plateau/E2_observed_geometry/scripts/geom_audit.py --scene $s --start $k >> /bsuhome/jiahuizhang/scratch/projects/occupancy/seen2scene/experiments/exp6_v3/ablation_study/experiment_E_stability_plateau/E2_observed_geometry/logs/audit/${s}_s${k}.log 2>&1; echo "exit $? $s $k $(date +%T)" >> /bsuhome/jiahuizhang/scratch/projects/occupancy/seen2scene/experiments/exp6_v3/ablation_study/experiment_E_stability_plateau/E2_observed_geometry/logs/audit/queue.log; done

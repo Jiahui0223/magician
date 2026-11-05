@@ -1,6 +1,6 @@
 # EXP6 V3 Ablation — 状态板（每次启动 / 结束一个运行就更新）
 
-**最近更新：2026-10-31 16:50（Experiment C 全部完成）**
+**最近更新：2026-11-04 19:20（Experiment E2 完成；无运行中任务。D / E / Y 的记录在各自目录的 FINAL_REPORT）**
 标记：✅ 完成 · 🔄 正在跑 · ⏳ 等待 · ❌ 失败 · ⬜ 未开始
 
 ## 0. 此刻在跑什么
@@ -47,3 +47,14 @@
 | C3 | 室外覆盖率（`c_out_cov.py`，60 条）| ✅ 16:27（官方曲线回放 60 / 60 逐位相等；在线单调覆盖 = 回放）|
 | C4 | `c_analyze.py`：9 组配对统计、曲线、停滞 / 诊断汇总 → `report/{C_GTDEPTH_G3, C_ORACLE_GAIN_G3, C_FAILURE_CASES, C_FINAL_REPORT}.md`；更新 `reports/V3_ABLATION_*.md`（表 8–10、总结 §7–8、偏差 C-1、资源）| ✅ 16:45：C1 − B2 AUC +0.023 / +0.011（CI 含 0）、Final −0.017 / −0.012 → 退化；C2 − C1 MP3D Final +0.101 [+0.043, +0.195]、Macarons++ AUC +0.030 [+0.007, +0.052] → DistP1 是主要损失；C2 MP3D Final 仍只 0.615 → 候选 / 视野上限 |
 | C5 | 阶段回复（C1 完成后 16:25）→ 自动继续 C2 → 总报告 → `[V3][ablation-c]` 提交 | ✅ |
+
+## E2 Observed Geometry Consistency Audit + 最小闭环验证（2026-11-04；`experiment_E_stability_plateau/E2_observed_geometry/FINAL_REPORT.md`）
+| 编号 | 内容 | 节点 / GPU | 状态 |
+|---|---|---|---|
+| E2.0 | 审计配置冻结（E2-audit-v1）+ 冒烟 colosseum s1 t ≤ 30 | gpu115 | ✅ 18:15 |
+| E2.1 | Task 1 审计 7 条 episode / 140 状态（colosseum s2 首帧无深度 → 修复空集保护后重跑） | gpu115 GPU 0–3 | ✅ 18:25：D1 重放误差 0；执行视角 novel 价值 65% 在 P1 域外已观测表面后（平台期 98%），B 5%，C 1% |
+| E2.2 | Task 2 KSV-v1 冻结 + 固定状态 A/B 140 状态 | gpu115 GPU 0–3 | ✅ 18:35：关 = 日志 140/140；Top-1 0.39 → 0.54，所选增益 0.88 → 0.94 pp；误截断 2%（早期 11%，alhambra 28%）；门槛 PASS |
+| E2.3a | 闭环回归：KSV 关，colosseum s0 = Table 1 D1 逐位 | gpu114 GPU 0 | ✅ 18:37 |
+| E2.3b | 闭环 35 条（colosseum 5 × 3 rep + Dev-4 × 5，rep 0），每卡 2 条 | gpu114 + gpu115 8 GPU | ✅ 19:10，35/35，0 重试 |
+| E2.3c | 分析：colosseum ΔFinal +0.116 显著、平台 5 → 0；Dev-5 ΔAUC@20 −0.008、ΔAUC@100 +0.016 n.s.、ΔFinal +0.020 n.s. → All-14 门槛 FAIL | CPU | ✅ 19:12：保留 D1，不登记 Table 1，不跑 All-14 |
+| E2.4 | FINAL_REPORT + 提交 | — | ✅ 19:20 |
