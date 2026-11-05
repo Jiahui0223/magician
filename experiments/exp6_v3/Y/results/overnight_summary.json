@@ -976,50 +976,19 @@
    "id": "V3-YD-COMBINED-Y50K-D1",
    "splits": {
     "train": {
-     "episodes": 0,
+     "episodes": 30,
      "episodes_total": 30,
-     "scenes_complete": 0,
+     "scenes_complete": 6,
      "scenes_total": 6,
-     "complete": false,
-     "auc10": null,
-     "auc20": null,
-     "auc50": null,
-     "auc100": null,
-     "cov20": null,
-     "cov50": null,
-     "final": null,
-     "missing": [
-      "bannerman_s0",
-      "bannerman_s1",
-      "bannerman_s2",
-      "bannerman_s3",
-      "bannerman_s4",
-      "dunnottar_s0",
-      "dunnottar_s1",
-      "dunnottar_s2",
-      "dunnottar_s3",
-      "dunnottar_s4",
-      "fushimi_s0",
-      "fushimi_s1",
-      "fushimi_s2",
-      "fushimi_s3",
-      "fushimi_s4",
-      "liberty_s0",
-      "liberty_s1",
-      "liberty_s2",
-      "liberty_s3",
-      "liberty_s4",
-      "pisa_s0",
-      "pisa_s1",
-      "pisa_s2",
-      "pisa_s3",
-      "pisa_s4",
-      "redeemer_s0",
-      "redeemer_s1",
-      "redeemer_s2",
-      "redeemer_s3",
-      "redeemer_s4"
-     ]
+     "complete": true,
+     "auc10": 0.3007911500070955,
+     "auc20": 0.43853110527478273,
+     "auc50": 0.6574734996124789,
+     "auc100": 0.7909482236932739,
+     "cov20": 0.6497019693150626,
+     "cov50": 0.888490858775139,
+     "final": 0.9415725870156341,
+     "missing": []
     },
     "dev": {
      "episodes": 25,
@@ -1037,102 +1006,40 @@
      "missing": []
     },
     "test": {
-     "episodes": 0,
+     "episodes": 15,
      "episodes_total": 15,
-     "scenes_complete": 0,
+     "scenes_complete": 3,
      "scenes_total": 3,
-     "complete": false,
-     "auc10": null,
-     "auc20": null,
-     "auc50": null,
-     "auc100": null,
-     "cov20": null,
-     "cov50": null,
-     "final": null,
-     "missing": [
-      "alhambra_s0",
-      "alhambra_s1",
-      "alhambra_s2",
-      "alhambra_s3",
-      "alhambra_s4",
-      "bridge_s0",
-      "bridge_s1",
-      "bridge_s2",
-      "bridge_s3",
-      "bridge_s4",
-      "neuschwanstein_s0",
-      "neuschwanstein_s1",
-      "neuschwanstein_s2",
-      "neuschwanstein_s3",
-      "neuschwanstein_s4"
-     ]
+     "complete": true,
+     "auc10": 0.22829732349476953,
+     "auc20": 0.3608448510009607,
+     "auc50": 0.5729534555533532,
+     "auc100": 0.7219860405216129,
+     "cov20": 0.5725019843331496,
+     "cov50": 0.8207271200424157,
+     "final": 0.8889305627335338,
+     "missing": []
     },
     "all14": {
-     "episodes": 25,
+     "episodes": 70,
      "episodes_total": 70,
-     "scenes_complete": 5,
+     "scenes_complete": 14,
      "scenes_total": 14,
-     "complete": false,
-     "auc10": 0.28584451756945195,
-     "auc20": 0.4450214978080026,
-     "auc50": 0.6572238940842737,
-     "auc100": 0.7679991764037839,
-     "cov20": 0.6981227485204785,
-     "cov50": 0.8533868688027789,
-     "final": 0.8908568281326295,
-     "missing": [
-      "alhambra_s0",
-      "alhambra_s1",
-      "alhambra_s2",
-      "alhambra_s3",
-      "alhambra_s4",
-      "bannerman_s0",
-      "bannerman_s1",
-      "bannerman_s2",
-      "bannerman_s3",
-      "bannerman_s4",
-      "bridge_s0",
-      "bridge_s1",
-      "bridge_s2",
-      "bridge_s3",
-      "bridge_s4",
-      "dunnottar_s0",
-      "dunnottar_s1",
-      "dunnottar_s2",
-      "dunnottar_s3",
-      "dunnottar_s4",
-      "fushimi_s0",
-      "fushimi_s1",
-      "fushimi_s2",
-      "fushimi_s3",
-      "fushimi_s4",
-      "liberty_s0",
-      "liberty_s1",
-      "liberty_s2",
-      "liberty_s3",
-      "liberty_s4",
-      "neuschwanstein_s0",
-      "neuschwanstein_s1",
-      "neuschwanstein_s2",
-      "neuschwanstein_s3",
-      "neuschwanstein_s4",
-      "pisa_s0",
-      "pisa_s1",
-      "pisa_s2",
-      "pisa_s3",
-      "pisa_s4",
-      "redeemer_s0",
-      "redeemer_s1",
-      "redeemer_s2",
-      "redeemer_s3",
-      "redeemer_s4"
-     ]
+     "complete": true,
+     "auc10": 0.2799186755981529,
+     "auc20": 0.42420204812082796,
+     "auc50": 0.6392729167683072,
+     "auc100": 0.7679745246959572,
+     "cov20": 0.6504522508208728,
+     "cov50": 0.861432918342284,
+     "final": 0.9121793822112538,
+     "missing": []
     }
    },
    "runtime": [
-    5.9677311182022095,
-    8.327797031402588,
-    8.694822788238525
+    6.9715046882629395,
+    10.701304388046266,
+    30.498456954956055
    ]
   },
   "B0": {
@@ -2649,6 +2556,37 @@
     "losses": 4
    }
   },
+  "V3-YD-COMBINED-Y50K-D1 \u2212 V3-D1-H3-NORISK | train": {
+   "n_scenes": 6,
+   "of": 6,
+   "auc20": {
+    "d": -0.0025316846568802323,
+    "ci": [
+     -0.0062459888247440865,
+     0.0023598058027245647
+    ],
+    "wins": 2,
+    "losses": 4
+   },
+   "auc100": {
+    "d": -0.002867522685078172,
+    "ci": [
+     -0.007930222108230281,
+     0.0038437288840436025
+    ],
+    "wins": 1,
+    "losses": 5
+   },
+   "final": {
+    "d": 0.007256713245043067,
+    "ci": [
+     0.0008212511145253935,
+     0.013929801783835757
+    ],
+    "wins": 4,
+    "losses": 2
+   }
+  },
   "V3-YD-COMBINED-Y50K-D1 \u2212 V3-D1-H3-NORISK | dev": {
    "n_scenes": 5,
    "of": 5,
@@ -2680,35 +2618,66 @@
     "losses": 2
    }
   },
-  "V3-YD-COMBINED-Y50K-D1 \u2212 V3-D1-H3-NORISK | all14": {
-   "n_scenes": 5,
-   "of": 14,
+  "V3-YD-COMBINED-Y50K-D1 \u2212 V3-D1-H3-NORISK | test": {
+   "n_scenes": 3,
+   "of": 3,
    "auc20": {
-    "d": -0.0018438043041494768,
+    "d": 0.00223704075050161,
     "ci": [
-     -0.009468745015342306,
-     0.009704814273104467
+     -0.0004782977734710814,
+     0.005565295003647663
     ],
-    "wins": 1,
-    "losses": 4
+    "wins": 2,
+    "losses": 1
    },
    "auc100": {
-    "d": 0.0025436466306793413,
+    "d": 0.014521640441608677,
     "ci": [
-     -0.002163423340845361,
-     0.0072507166022040435
+     0.006488559229330448,
+     0.02545989229891288
     ],
     "wins": 3,
-    "losses": 2
+    "losses": 0
    },
    "final": {
-    "d": -0.004700161857507856,
+    "d": 0.004293196885023868,
     "ci": [
-     -0.016663692821066854,
-     0.003939996039890948
+     0.0012781817600002743,
+     0.008334639449143588
     ],
     "wins": 3,
-    "losses": 2
+    "losses": 0
+   }
+  },
+  "V3-YD-COMBINED-Y50K-D1 \u2212 V3-D1-H3-NORISK | all14": {
+   "n_scenes": 14,
+   "of": 14,
+   "auc20": {
+    "d": -0.001264143372180282,
+    "ci": [
+     -0.005111055264939913,
+     0.003149046979453936
+    ],
+    "wins": 5,
+    "losses": 9
+   },
+   "auc100": {
+    "d": 0.002791287026268122,
+    "ci": [
+     -0.001965265221022478,
+     0.007989101353698359
+    ],
+    "wins": 7,
+    "losses": 7
+   },
+   "final": {
+    "d": 0.002351361488413623,
+    "ci": [
+     -0.003745480179318372,
+     0.007529714384196862
+    ],
+    "wins": 10,
+    "losses": 4
    }
   },
   "V3-D4-DEPTH4-B3 \u2212 V3-D1-H3-NORISK | train": {
@@ -2897,6 +2866,37 @@
     "losses": 2
    }
   },
+  "V3-YD-COMBINED-Y50K-D1 \u2212 V3-YBEST-H3 | train": {
+   "n_scenes": 6,
+   "of": 6,
+   "auc20": {
+    "d": -0.0017440577947100595,
+    "ci": [
+     -0.005183251836263401,
+     0.0010230002337835165
+    ],
+    "wins": 1,
+    "losses": 4
+   },
+   "auc100": {
+    "d": -0.002509665924401457,
+    "ci": [
+     -0.005282257467518851,
+     -0.00019967745162271142
+    ],
+    "wins": 3,
+    "losses": 3
+   },
+   "final": {
+    "d": -0.003276390890776156,
+    "ci": [
+     -0.0061930060040514085,
+     0.0002723906281299297
+    ],
+    "wins": 1,
+    "losses": 5
+   }
+  },
   "V3-YD-COMBINED-Y50K-D1 \u2212 V3-YBEST-H3 | dev": {
    "n_scenes": 5,
    "of": 5,
@@ -2928,35 +2928,66 @@
     "losses": 2
    }
   },
-  "V3-YD-COMBINED-Y50K-D1 \u2212 V3-YBEST-H3 | all14": {
-   "n_scenes": 5,
-   "of": 14,
+  "V3-YD-COMBINED-Y50K-D1 \u2212 V3-YBEST-H3 | test": {
+   "n_scenes": 3,
+   "of": 3,
    "auc20": {
-    "d": -0.003435473398365363,
+    "d": -0.003063393184721227,
     "ci": [
-     -0.016807887065494687,
-     0.010380130882556304
+     -0.0074153675536015595,
+     -5.316695218055001e-05
     ],
-    "wins": 2,
+    "wins": 0,
     "losses": 3
    },
    "auc100": {
-    "d": -0.0013566302010544317,
+    "d": -0.0006526952923187057,
     "ci": [
-     -0.014299783655507835,
-     0.012655101902190057
+     -0.01402584658281869,
+     0.008842209535373846
     ],
     "wins": 2,
-    "losses": 3
+    "losses": 1
    },
    "final": {
-    "d": 0.006056274900188385,
+    "d": 0.004071507031508122,
     "ci": [
-     -0.0034372228359515365,
-     0.021949186651713283
+     -0.014281762748629356,
+     0.014049537508566523
+    ],
+    "wins": 2,
+    "losses": 1
+   }
+  },
+  "V3-YD-COMBINED-Y50K-D1 \u2212 V3-YBEST-H3 | all14": {
+   "n_scenes": 14,
+   "of": 14,
+   "auc20": {
+    "d": -0.0026308495224464895,
+    "ci": [
+     -0.007917842450320699,
+     0.0025423453373796734
     ],
     "wins": 3,
-    "losses": 2
+    "losses": 10
+   },
+   "auc100": {
+    "d": -0.0016999451734740728,
+    "ci": [
+     -0.007202629943422119,
+     0.004241431981206225
+    ],
+    "wins": 7,
+    "losses": 7
+   },
+   "final": {
+    "d": 0.0016312535893435256,
+    "ci": [
+     -0.0039981747304147055,
+     0.008626146719991321
+    ],
+    "wins": 6,
+    "losses": 8
    }
   },
   "V3-D1-H3-NORISK \u2212 MAG-B | train": {

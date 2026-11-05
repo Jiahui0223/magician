@@ -9,6 +9,8 @@
 | `experiment_A_gtdepth_oracle/` | `scripts/a_analyze.py`（A1 / A2 / A3 表、拆分、停滞 / 高 regret 诊断、图）、`report/` |
 | `experiment_B_depth_uncertainty/` | `scripts/b_scorer.py`（P0 / P1 / P2 / RiskAware 纯函数）、`scripts/b_analyze.py`、`report/` |
 | `experiment_C_gtdepth_closed_loop/` | 2026-10-31 15:20 任务书：C1 GT depth + DistP1、C2 GT 单步增益 greedy 的完整 G3 闭环（自己的 `protocol.md`、`scripts/`、`tests/`、`report/C_{G0_VALIDATION,GTDEPTH_G3,ORACLE_GAIN_G3,FAILURE_CASES,FINAL_REPORT}.md`）；输出 `work_dirs/exp6_v3/ablation_study/experiment_C/` |
+| `experiment_D_h3_lookahead/` | H3 前瞻扩展 D1–D4（D-v1）：`FROZEN_PROTOCOL.md`、`scripts/`、`reports/` |
+| `experiment_E_stability_plateau/` | 2026-11-04：D1 vs YBEST-H3 稳定性（含 2 × 2）与 colosseum 低覆盖平台诊断（GT 反事实、预测重建、分支续跑、噪声重复）；`PROTOCOL.md`（E-v1）、`STABILITY_COMPARISON.md`、`COLOSSEUM_DIAGNOSIS.md`、`FINAL_REPORT.md`、`FIGURES/`；运行输出 `work_dirs/exp6_v3/ablation_study/experiment_E_stability_plateau/` |
 | `tests/` | 选择规则 / 指标 / DepthU 纯函数单测；1 状态冒烟 |
 | `reports/` | `V3_ABLATION_SUMMARY.md`、`V3_ABLATION_COMPARISON_TABLES.md`、`V3_ABLATION_DEVIATIONS.md`、`V3_ABLATION_RESOURCES.md` |
 
