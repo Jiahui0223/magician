@@ -1,0 +1,35 @@
+{
+ "frozen_from": "exploration layer (395 states), rules of configs/F_config.yaml selection_on_exploration",
+ "F1_gamma_star": 0.25,
+ "F2_variant_star": "s0.25_w",
+ "F3": "adaptive 4->8 (rule fixed in configs)",
+ "exploration_point_estimates": {
+  "F1": {
+   "d": -0.03463736511850756,
+   "n": 395,
+   "clusters": 4,
+   "ci": [
+    -0.10775807977855995,
+    0.017251898479633765
+   ]
+  },
+  "F2": {
+   "d": -0.012013803349499166,
+   "n": 395,
+   "clusters": 4,
+   "ci": [
+    -0.0580518743768809,
+    0.00620621062600173
+   ]
+  },
+  "F3_vs_K4": {
+   "d": -0.03209839036667033,
+   "n": 395,
+   "clusters": 4,
+   "ci": [
+    -0.10672286608147706,
+    0.008346005958260667
+   ]
+  }
+ }
+}

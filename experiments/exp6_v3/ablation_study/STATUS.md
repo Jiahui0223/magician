@@ -72,3 +72,6 @@
 | E3.3 | Dev-5（其余 4 场景 × 5 起点，rep 0） | gpu114 + gpu115 8 GPU × 2 | ✅ 21:08（20/20）：ΔAUC@20 −0.001、ΔAUC@100 +0.022 [0.004, 0.056]（5/5 场景）、ΔFinal +0.020 [−0.002, 0.056]（4/1），平台 2 → 1，规划时间 +1%；G1–G5 全部通过（去掉 colosseum：+0.005 / +0.002） |
 | E3.4 | All-14：登记 V3-DV2-KSV（MODEL_REGISTRY + t1_queue，已有条目未改），70 条经 Table 1 流水线（含 Dev-5 + pisa 的 30 条重跑，用于逐位核对） | gpu114（dunnottar 每卡 1 条）+ gpu115（每卡 2 条） | ✅ 22:21（70/70，0 失败，0 重试；重跑的 30 条与 E3 逐位一致）：All-14 ΔAUC@20 −0.001 [−0.003, +0.002]、ΔAUC@100 +0.010 [−0.001, +0.025]、ΔFinal +0.011 [−0.001, +0.026]（9 胜 5 负），低平台 3 → 1；Train-6 持平，Test-3 +0.011 / +0.011（不显著）；bannerman −0.019 / −0.015 |
 | E3.5 | Table 1 刷新（validate + aggregate official / mono + paper_tables refresh；已有行逐行未变）、FINAL_REPORT、提交 | CPU | ✅ 22:40 |
+
+## F Experiment F — Stochastic Future Views & Coverage-Aligned Decision Study（2026-11-05；`experiment_F_stochastic_coverage_decision/FINAL_REPORT.md`）
+- F0 PASS（755/755 逐位）；F1 γ=0.25 TREND、F2 σ=0.25·τ TREND、F3 自适应 K FAIL；Soft×K 交互 ≈ 0；F5 未进入。主行维持 D-v2。详见总板 P10。

@@ -146,3 +146,14 @@
 | P9.1 | 395 个固定状态（E3 120 + G2 275），8 GPU，01:03–01:34，0 失败 | ✅ |
 | P9.2 | 价值函数诊断（两轮）、案例重跑 + 真实渲染、汇总与图 | ✅ 02:20 |
 | P9.3 | 结论：A/B/C 都不是选错主因；CVAR 门槛 FAIL；同一价值函数用真实深度 Top-1 0.44 < 预测 0.55，覆盖 0.80–0.85 → 价值函数是瓶颈；不跑闭环 | ✅ |
+
+## P10 Experiment F — Stochastic Future Views & Coverage-Aligned Decision Study（2026-11-05；`ablation_study/experiment_F_stochastic_coverage_decision/FINAL_REPORT.md`）
+| 编号 | 内容 | 状态 |
+|---|---|---|
+| F-cfg | 协议入库（`EXPERIMENT_PLAN.md`）；`configs/F_config.yaml` + 确认层 `confirmation_set.json`（6 个新场景 × 起点 0/2/4，D-v2 Table 1 状态，360 个）在任何计算前冻结 | ✅ 03:05 |
+| F-orc | 确认层官方真值（E 的冻结 e_oracle），gpu115 4 卡，18/18 | ✅ 03:19 |
+| F-cache | 755 个状态缓存（K=4/8 逐样本集合、软覆盖变体、GT 深度审计），gpu114+gpu115 8 卡，03:20–04:19，0 失败，约 8 GPU-h | ✅ |
+| F0 | 755/755 逐位复现（确认层 = D-v2 闭环日志）PASS；GT 深度归因更正：原始 GT 深度含网格外命中（下标截断），可表达完美深度一步 regret 0.06–0.10 pp ≪ 预测 0.16–0.22 → 预测质量是主瓶颈 | ✅ |
+| F1–F3 | 探索层冻结 γ*=0.25 / σ*=0.25·τ 深度权重 / 自适应 4→8（`results/selection.json`）；确认层：F1 TREND −0.007 pp，F2 TREND −0.007 pp，F3 FAIL +0.017 pp | ✅ 04:20 |
+| F4 | Soft×K 交互 +0.000 [−0.026, +0.022]；无可采纳组合 | ✅ |
+| F5 | 未进入（无 PASS）；无闭环、无 AUC | ⛔ 按协议不执行 |

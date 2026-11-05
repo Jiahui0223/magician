@@ -1,0 +1,79 @@
+# Experiment F -- frozen executable configuration of EXPERIMENT_PLAN.md (F-v1.0). Written 2026-11-05 before any F computation.
+# Every later change is a new version with a reason in logs/EVENTS.md; nothing here is changed after seeing results.
+version: F-v1.0-exec
+plan: EXPERIMENT_PLAN.md (sha256 6de83e9dace6c721...)
+baseline:
+  model: "V3-T1 40K (task1_xattn final.pt, sha256 from experiments/exp6_v3/H/FROZEN_CONFIG.yaml, checked at load)"
+  planner: "D1 (d_policy d1: depth 2, lambda_risk 0) + D-v2 (E3 configs/dv2_v2.yaml, mode full); b2 = D100 input / S10 novelty; K 4; Euler 10; R10"
+  noise: "sha_seed of the planner's own keys (E3 / Table 1: v2_common.seed_key(scene, start, rep 0, t_refresh, k); G2: e2_fixed Rep.key(t_refresh, k)); k = 0..7"
+  evaluator: "official MAGICIAN coverage (unchanged); mono only as a sensitivity check"
+layers:
+  exploration: "the 395 states of multiview_coverage_study (E3 120: D1 trajectories colosseum s0-s4 + pisa s1; G2 275: Dev-3 B0 / B2); scenes colosseum, pisa,
+    barts, pantheon (4 clusters); used for diagnosis and for choosing at most ONE candidate per family"
+  confirmation: "configs/confirmation_set.json (18 D-v2 episodes, 6 unexplored scenes, 360 states); evaluated only after the candidates are frozen in
+    results/selection.json"
+  phases: {early: "t < 20", middle: "20 <= t < 50", late: "50 <= t < 100"}
+  ci: "paired bootstrap, 10000 draws, seed 0, clusters = scenes (episode-level variance reported separately)"
+truth:
+  official_one_step: "dcov_pp per legal candidate (E-B oracle / G2 oracle.npz / F oracle for confirmation)"
+  geo_one_step: "GT target points newly within 1.0 of the view's true first hits (114 x 64 rays, z < 70, in ROI box), not within 1.0 of past S10 points"
+  geo_two_step: "per path |N(c1) U N(c2)| (pp); per c1 the max over the planner's own children"
+F0:
+  regression: [
+    "recorded K = 4 sets -> two-step scores == the planner's scores (max rel 0)",
+    "hard switch, gamma = 1 and soft-off reproduce those scores and picks exactly",
+    "confirmation states: replayed D-v2 scores == the closed-loop D-v2 planner log (bitwise)",
+    "exploration states: D-v2 scores == the multiview study's stored scores (bitwise)",
+    "P1 / S10 / D-v2 grid checksums unchanged by scoring"]
+  gt_depth_audit: "the planner value function on TRUE depth (as in the multiview study) vs TRUE depth passed through the same projection gating
+    (perfect labels: geometry.encode_labels of the true first hit -> geometry.decode, i.e. the best output the model can express: the true hit
+    snapped to the nearest UNKNOWN sample on M_unknown rays, the projection outcome (t_known or no hit) on every other ray) with and without the
+    D-v2 filter; value share by label category"
+  stop_if_fail: true
+F1:
+  gamma_horizon: [0.0, 0.25, 0.5, 0.75, 1.0]
+  formula: "V1 = mean_k |S1_k|; V12 = mean_k |S1_k U S2_k| (D-v2's own per-sample union); dV2 = max(0, V12 - V1); J(c1) = V1 + gamma * max_c2 dV2;
+    gamma = 1 returns V12 itself (bitwise D-v2); no children -> V1"
+  source: "the planner's K = 4 run (cached sets)"
+F2:
+  grid: "the planner's 1.0-unit runtime cells (value_cov)"
+  sources: "the D-v2-novel hits of each sample (exactly the rays forming the hard set) with weight w(z) = min(1, (z / z0)^2) or 1 (area variant)"
+  kernel: "s_k[v] = max over source hits x of w(x) * exp(-d^2 / (2 sigma^2)), d = distance from x to the box of cell v (0 inside); truncated at d <= 2 sigma;
+    sigma = 0 -> own cell only (hard)"
+  gate_for_spread_cells: "cell centre in the P1 domain, not EMPTY in the D100 P1, no S10 point within ~1.0 (0.5-cell S10 occupancy dilated by 2 cells),
+    visible from the camera (centre not behind the D-v2 observed grid, single ray, margin 1.0); cells that contain a source hit always keep it"
+  sigma_over_tau_cov: [0.25, 0.5, 1.0, 2.0]          # tau_cov = 1.0 runtime unit (ROI audit)
+  weights: [w, area]
+  aggregate: "qbar[v] = mean over the samples of s_k[v]; V = sum_v qbar[v]"
+  union_primary: max
+  union_ablations: [clip_sum, noisy_or]               # computed for every variant on K-prefixes 1 and 4; the noisy-or assumes independence
+  controls: ["hard (D-v2 exact)", "hard_area (cells weight 1, per-sample union)", "avg0 (sigma 0, union on qbar: isolates 'averaging before the union')"]
+  K_subsets: ["first 1 / 2 / 4 / 8 of the K = 8 run", "each single sample (8)", "two disjoint quadruples"]
+F3:
+  K: [1, 2, 4, 8]
+  adaptive: "start at K = 4 (samples 0..3); upgrade the whole state (all candidates and children, same estimation rule) to K = 8 if
+    margin / sqrt(SE1^2 + SE2^2) < 1.0 for the top-2 two-step scores (SE from the per-sample path values of each top candidate's best child), OR the
+    top-1 changes in > 25 % of 200 bootstrap resamples of the 4 samples (seed 0)"
+  equal_budget_controls: ["random upgrade of the same share of states (mean over 50 seeds)", "fixed K = round(4 * (1 + upgrade share)) prefix"]
+  scoring: "hard (D-v2); Soft x K only if F2 passes"
+F4:
+  interaction: "[Gain(Soft,K4) - Gain(Soft,K1)] - [Gain(Hard,K4) - Gain(Hard,K1)], Gain = -official regret (and selected true gain); K1 = mean over the 8 single
+    samples, K4 = mean over the two quadruples and the first-4 prefix (both reported); scene-clustered CI"
+  combos: "D-v2; each passed single family; pairs / all of the passed ones only"
+selection_on_exploration:   # at most one candidate per family; frozen in results/selection.json before the confirmation layer is evaluated
+  F1: "gamma* = argmin over gamma < 1 of the official one-step regret (state mean); ties -> larger gamma"
+  F2: "variant* = argmin over the soft variants (sigma x weight, union max, K = 4 run) of the official one-step regret, among those whose geometric two-step regret
+    is <= hard + 0.02 pp; union ablation reported for variant* only"
+  F3: "the adaptive rule above (no tuning)"
+gates_confirmation:
+  pass: "candidate - D-v2 (hard, K = 4): official one-step regret point estimate < 0 AND scene-clustered 95 % CI upper bound < 0; geometric two-step regret
+    point estimate <= +0.05 pp and its CI lower bound <= 0"
+  F3_extra: "adaptive - equal-budget random control: official regret point < 0 and CI upper < 0"
+  trend: "point estimate in favour but the CI includes 0 -> reported as trend, not passed"
+  F5_entry: "at least one PASS (after F4 confirmation of the chosen combination)"
+F5_prereg:   # used only if F5 is reached; frozen now
+  smoke: "colosseum s1 rep 0 + barts s0 rep 0: switch off == D-v2 Table 1 bitwise; switch on completes 100 steps"
+  dev5: "25 episodes per policy, paired with the V3-DV2-KSV Table 1 episodes (same starts, noise keys, evaluator)"
+  go: "dAUC@20 >= -0.005 and no scene < -0.015; (dAUC@100 >= +0.005 or dFinal >= +0.005) with >= 3 of 5 scenes >= 0; at most one scene < -0.010 on AUC@100 or
+    Final; planning time <= 1.25 x D-v2"
+  all14: "only after go; Table 1 pipeline, new method id, old rows untouched"

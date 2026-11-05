@@ -1,0 +1,103 @@
+D_POLICY {"d_policy": "d1", "d_policy_file_sha256": "c8418279771e787eaaa0404f421602c9b95851e67d14aed1f717690230e48ecb", "h_policy_file_sha256": "ccfdf4af2783be3f1e7717bc644daf31a2fe994bcf312fdb4e4269ddf017a94a", "config_sha256": "e53c230db866e821b55fc40c0030c5eff448d12cbddcb2fbee00b4044b43c0b3", "config_version": "D-v1", "policy_cfg": {"depth": 2, "beam": null, "lambda_risk": 0.0, "doc": "D1_H3_NO_RISK: H3 with lambda 0", "kind": "cov", "eps_cov": 1.0, "cell_size": 1.0, "novelty": "hard", "c2_chunk": 16}}
+/bsuhome/jiahuizhang/scratch/projects/occupancy/seen2scene/seen2scene/v3/predictor.py:80: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  ck = torch.load(ckpt_path, map_location=device)
+/bsuhome/jiahuizhang/scratch/projects/occupancy/seen2scene/experiments/exp6_v3/ablation_study/experiment_F_stochastic_coverage_decision/scripts/f_core.py:157: UserWarning: scatter_reduce_cuda_prod_ does not have a deterministic implementation, but you set 'torch.use_deterministic_algorithms(True, warn_only=True)'. You can file an issue at https://github.com/pytorch/pytorch/issues to help us prioritize adding deterministic support for this operation. (Triggered internally at /home/conda/feedstock_root/build_artifacts/libtorch_1737583452020/work/aten/src/ATen/Context.cpp:83.)
+  p = torch.ones(len(u), dtype=torch.float64, device=u.device).scatter_reduce(0, inv, 1.0 - v.clamp(max=1.0), "prod", include_self=True)
+e3_colosseum_s4 t=0 n=9 paths=71 rec4 0.0e+00 g1 True ref True p1 True avg0 1.1e-13 | 42s mem 8.7GB
+e3_colosseum_s4 t=5 n=9 paths=77 rec4 0.0e+00 g1 True ref True p1 True avg0 5.7e-14 | 49s mem 8.8GB
+e3_colosseum_s4 t=10 n=9 paths=78 rec4 0.0e+00 g1 True ref True p1 True avg0 5.7e-14 | 47s mem 8.8GB
+e3_colosseum_s4 t=15 n=7 paths=50 rec4 0.0e+00 g1 True ref True p1 True avg0 1.4e-14 | 31s mem 8.8GB
+e3_colosseum_s4 t=20 n=7 paths=50 rec4 0.0e+00 g1 True ref True p1 True avg0 1.1e-16 | 27s mem 8.8GB
+e3_colosseum_s4 t=25 n=7 paths=49 rec4 0.0e+00 g1 True ref True p1 True avg0 0.0e+00 | 24s mem 8.8GB
+e3_colosseum_s4 t=30 n=7 paths=54 rec4 0.0e+00 g1 True ref True p1 True avg0 1.8e-15 | 31s mem 8.8GB
+e3_colosseum_s4 t=35 n=6 paths=37 rec4 0.0e+00 g1 True ref True p1 True avg0 4.4e-16 | 23s mem 8.8GB
+e3_colosseum_s4 t=40 n=7 paths=54 rec4 0.0e+00 g1 True ref True p1 True avg0 0.0e+00 | 32s mem 8.8GB
+e3_colosseum_s4 t=45 n=5 paths=34 rec4 0.0e+00 g1 True ref True p1 True avg0 0.0e+00 | 23s mem 8.8GB
+e3_colosseum_s4 t=50 n=6 paths=42 rec4 0.0e+00 g1 True ref True p1 True avg0 0.0e+00 | 24s mem 8.8GB
+e3_colosseum_s4 t=55 n=6 paths=36 rec4 0.0e+00 g1 True ref True p1 True avg0 7.1e-15 | 20s mem 8.8GB
+e3_colosseum_s4 t=60 n=8 paths=62 rec4 0.0e+00 g1 True ref True p1 True avg0 1.8e-15 | 32s mem 8.8GB
+e3_colosseum_s4 t=65 n=8 paths=63 rec4 0.0e+00 g1 True ref True p1 True avg0 7.1e-15 | 33s mem 8.8GB
+e3_colosseum_s4 t=70 n=7 paths=49 rec4 0.0e+00 g1 True ref True p1 True avg0 7.1e-15 | 29s mem 8.8GB
+e3_colosseum_s4 t=75 n=7 paths=49 rec4 0.0e+00 g1 True ref True p1 True avg0 0.0e+00 | 27s mem 8.8GB
+e3_colosseum_s4 t=80 n=7 paths=48 rec4 0.0e+00 g1 True ref True p1 True avg0 0.0e+00 | 25s mem 8.8GB
+e3_colosseum_s4 t=85 n=6 paths=42 rec4 0.0e+00 g1 True ref True p1 True avg0 3.6e-15 | 27s mem 8.8GB
+e3_colosseum_s4 t=90 n=8 paths=63 rec4 0.0e+00 g1 True ref True p1 True avg0 7.1e-15 | 40s mem 8.8GB
+e3_colosseum_s4 t=95 n=8 paths=63 rec4 0.0e+00 g1 True ref True p1 True avg0 7.1e-15 | 38s mem 8.8GB
+DONE e3_colosseum_s4 states 20 849s
+g2_B0_colosseum_s4 t=0 n=9 paths=71 rec4 0.0e+00 g1 True ref True p1 True avg0 1.1e-13 | 42s mem 8.8GB
+g2_B0_colosseum_s4 t=5 n=7 paths=50 rec4 0.0e+00 g1 True ref True p1 True avg0 3.6e-15 | 30s mem 8.8GB
+g2_B0_colosseum_s4 t=10 n=8 paths=63 rec4 0.0e+00 g1 True ref True p1 True avg0 2.8e-14 | 34s mem 8.8GB
+g2_B0_colosseum_s4 t=15 n=8 paths=62 rec4 0.0e+00 g1 True ref True p1 True avg0 1.1e-13 | 36s mem 8.8GB
+g2_B0_colosseum_s4 t=20 n=9 paths=79 rec4 0.0e+00 g1 True ref True p1 True avg0 2.8e-14 | 47s mem 8.8GB
+g2_B0_colosseum_s4 t=25 n=8 paths=64 rec4 0.0e+00 g1 True ref True p1 True avg0 7.1e-15 | 38s mem 8.8GB
+g2_B0_colosseum_s4 t=50 n=7 paths=49 rec4 0.0e+00 g1 True ref True p1 True avg0 0.0e+00 | 30s mem 8.8GB
+g2_B0_colosseum_s4 t=55 n=5 paths=35 rec4 0.0e+00 g1 True ref True p1 True avg0 1.8e-15 | 27s mem 8.8GB
+g2_B0_colosseum_s4 t=80 n=8 paths=63 rec4 0.0e+00 g1 True ref True p1 True avg0 1.8e-15 | 34s mem 8.8GB
+g2_B0_colosseum_s4 t=85 n=7 paths=48 rec4 0.0e+00 g1 True ref True p1 True avg0 1.8e-15 | 27s mem 8.8GB
+DONE g2_B0_colosseum_s4 states 10 577s
+g2_B2_colosseum_s0 t=10 n=8 paths=64 rec4 0.0e+00 g1 True ref True p1 True avg0 1.1e-13 | 41s mem 8.8GB
+g2_B2_colosseum_s0 t=15 n=9 paths=78 rec4 0.0e+00 g1 True ref True p1 True avg0 1.1e-13 | 44s mem 8.8GB
+g2_B2_colosseum_s0 t=20 n=8 paths=62 rec4 0.0e+00 g1 True ref True p1 True avg0 7.1e-15 | 37s mem 8.8GB
+g2_B2_colosseum_s0 t=25 n=8 paths=63 rec4 0.0e+00 g1 True ref True p1 True avg0 7.1e-15 | 39s mem 8.8GB
+g2_B2_colosseum_s0 t=50 n=5 paths=39 rec4 0.0e+00 g1 True ref True p1 True avg0 0.0e+00 | 24s mem 8.8GB
+g2_B2_colosseum_s0 t=55 n=5 paths=37 rec4 0.0e+00 g1 True ref True p1 True avg0 0.0e+00 | 22s mem 8.8GB
+g2_B2_colosseum_s0 t=80 n=7 paths=50 rec4 0.0e+00 g1 True ref True p1 True avg0 2.2e-16 | 32s mem 8.8GB
+g2_B2_colosseum_s0 t=85 n=6 paths=42 rec4 0.0e+00 g1 True ref True p1 True avg0 1.8e-15 | 26s mem 8.8GB
+DONE g2_B2_colosseum_s0 states 8 490s
+g2_B2_pantheon_s3 t=5 n=8 paths=64 rec4 0.0e+00 g1 True ref True p1 True avg0 2.8e-14 | 34s mem 4.3GB
+g2_B2_pantheon_s3 t=10 n=8 paths=62 rec4 0.0e+00 g1 True ref True p1 True avg0 1.1e-13 | 39s mem 4.3GB
+g2_B2_pantheon_s3 t=15 n=6 paths=38 rec4 0.0e+00 g1 True ref True p1 True avg0 2.8e-14 | 23s mem 4.3GB
+g2_B2_pantheon_s3 t=20 n=7 paths=49 rec4 0.0e+00 g1 True ref True p1 True avg0 3.6e-15 | 24s mem 4.3GB
+g2_B2_pantheon_s3 t=25 n=8 paths=65 rec4 0.0e+00 g1 True ref True p1 True avg0 2.2e-16 | 31s mem 4.3GB
+g2_B2_pantheon_s3 t=50 n=6 paths=46 rec4 0.0e+00 g1 True ref True p1 True avg0 7.1e-15 | 28s mem 4.3GB
+g2_B2_pantheon_s3 t=55 n=8 paths=59 rec4 0.0e+00 g1 True ref True p1 True avg0 7.1e-15 | 24s mem 4.3GB
+g2_B2_pantheon_s3 t=80 n=5 paths=34 rec4 0.0e+00 g1 True ref True p1 True avg0 0.0e+00 | 16s mem 4.3GB
+g2_B2_pantheon_s3 t=85 n=7 paths=48 rec4 0.0e+00 g1 True ref True p1 True avg0 0.0e+00 | 20s mem 4.3GB
+DONE g2_B2_pantheon_s3 states 9 402s
+D_POLICY {"d_policy": "d1", "d_policy_file_sha256": "c8418279771e787eaaa0404f421602c9b95851e67d14aed1f717690230e48ecb", "h_policy_file_sha256": "ccfdf4af2783be3f1e7717bc644daf31a2fe994bcf312fdb4e4269ddf017a94a", "config_sha256": "e53c230db866e821b55fc40c0030c5eff448d12cbddcb2fbee00b4044b43c0b3", "config_version": "D-v1", "policy_cfg": {"depth": 2, "beam": null, "lambda_risk": 0.0, "doc": "D1_H3_NO_RISK: H3 with lambda 0", "kind": "cov", "eps_cov": 1.0, "cell_size": 1.0, "novelty": "hard", "c2_chunk": 16}}
+/bsuhome/jiahuizhang/scratch/projects/occupancy/seen2scene/seen2scene/v3/predictor.py:80: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  ck = torch.load(ckpt_path, map_location=device)
+/bsuhome/jiahuizhang/scratch/projects/occupancy/seen2scene/experiments/exp6_v3/ablation_study/experiment_F_stochastic_coverage_decision/scripts/f_core.py:157: UserWarning: scatter_reduce_cuda_prod_ does not have a deterministic implementation, but you set 'torch.use_deterministic_algorithms(True, warn_only=True)'. You can file an issue at https://github.com/pytorch/pytorch/issues to help us prioritize adding deterministic support for this operation. (Triggered internally at /home/conda/feedstock_root/build_artifacts/libtorch_1737583452020/work/aten/src/ATen/Context.cpp:83.)
+  p = torch.ones(len(u), dtype=torch.float64, device=u.device).scatter_reduce(0, inv, 1.0 - v.clamp(max=1.0), "prod", include_self=True)
+conf_bannerman_s0 t=0 n=5 paths=20 rec4 0.0e+00 g1 True ref True p1 True avg0 7.1e-15 | 24s mem 3.9GB
+conf_bannerman_s0 t=5 n=8 paths=69 rec4 0.0e+00 g1 True ref True p1 True avg0 5.7e-14 | 44s mem 3.9GB
+conf_bannerman_s0 t=10 n=7 paths=56 rec4 0.0e+00 g1 True ref True p1 True avg0 5.7e-14 | 36s mem 3.9GB
+conf_bannerman_s0 t=15 n=8 paths=63 rec4 0.0e+00 g1 True ref True p1 True avg0 1.4e-14 | 35s mem 3.9GB
+conf_bannerman_s0 t=20 n=7 paths=51 rec4 0.0e+00 g1 True ref True p1 True avg0 0.0e+00 | 29s mem 3.9GB
+conf_bannerman_s0 t=25 n=7 paths=49 rec4 0.0e+00 g1 True ref True p1 True avg0 2.8e-14 | 30s mem 3.9GB
+conf_bannerman_s0 t=30 n=7 paths=49 rec4 0.0e+00 g1 True ref True p1 True avg0 1.4e-14 | 28s mem 3.9GB
+conf_bannerman_s0 t=35 n=7 paths=47 rec4 0.0e+00 g1 True ref True p1 True avg0 1.8e-15 | 30s mem 3.9GB
+conf_bannerman_s0 t=40 n=4 paths=25 rec4 0.0e+00 g1 True ref True p1 True avg0 3.6e-15 | 16s mem 3.9GB
+conf_bannerman_s0 t=45 n=6 paths=36 rec4 0.0e+00 g1 True ref True p1 True avg0 7.1e-15 | 22s mem 3.9GB
+conf_bannerman_s0 t=50 n=6 paths=36 rec4 0.0e+00 g1 True ref True p1 True avg0 2.8e-14 | 22s mem 3.9GB
+conf_bannerman_s0 t=55 n=7 paths=50 rec4 0.0e+00 g1 True ref True p1 True avg0 7.1e-15 | 26s mem 3.9GB
+conf_bannerman_s0 t=60 n=6 paths=37 rec4 0.0e+00 g1 True ref True p1 True avg0 0.0e+00 | 22s mem 3.9GB
+conf_bannerman_s0 t=65 n=7 paths=51 rec4 0.0e+00 g1 True ref True p1 True avg0 0.0e+00 | 28s mem 3.9GB
+conf_bannerman_s0 t=70 n=6 paths=39 rec4 0.0e+00 g1 True ref True p1 True avg0 4.4e-16 | 19s mem 3.9GB
+conf_bannerman_s0 t=75 n=6 paths=39 rec4 0.0e+00 g1 True ref True p1 True avg0 3.6e-15 | 20s mem 3.9GB
+conf_bannerman_s0 t=80 n=7 paths=49 rec4 0.0e+00 g1 True ref True p1 True avg0 4.4e-16 | 18s mem 3.9GB
+conf_bannerman_s0 t=85 n=8 paths=64 rec4 0.0e+00 g1 True ref True p1 True avg0 2.2e-16 | 24s mem 3.9GB
+conf_bannerman_s0 t=90 n=7 paths=49 rec4 0.0e+00 g1 True ref True p1 True avg0 8.9e-16 | 19s mem 3.9GB
+conf_bannerman_s0 t=95 n=7 paths=49 rec4 0.0e+00 g1 True ref True p1 True avg0 0.0e+00 | 18s mem 3.9GB
+DONE conf_bannerman_s0 states 20 704s
+conf_liberty_s4 t=0 n=7 paths=48 rec4 0.0e+00 g1 True ref True p1 True avg0 1.8e-15 | 21s mem 2.8GB
+conf_liberty_s4 t=5 n=7 paths=48 rec4 0.0e+00 g1 True ref True p1 True avg0 2.8e-14 | 22s mem 2.8GB
+conf_liberty_s4 t=10 n=7 paths=50 rec4 0.0e+00 g1 True ref True p1 True avg0 7.1e-15 | 20s mem 2.8GB
+conf_liberty_s4 t=15 n=7 paths=50 rec4 0.0e+00 g1 True ref True p1 True avg0 1.8e-15 | 21s mem 2.8GB
+conf_liberty_s4 t=20 n=7 paths=51 rec4 0.0e+00 g1 True ref True p1 True avg0 1.8e-15 | 17s mem 2.8GB
+conf_liberty_s4 t=25 n=7 paths=49 rec4 0.0e+00 g1 True ref True p1 True avg0 1.4e-14 | 18s mem 2.8GB
+conf_liberty_s4 t=30 n=5 paths=28 rec4 0.0e+00 g1 True ref True p1 True avg0 1.8e-15 | 11s mem 2.8GB
+conf_liberty_s4 t=35 n=7 paths=45 rec4 0.0e+00 g1 True ref True p1 True avg0 0.0e+00 | 15s mem 2.8GB
+conf_liberty_s4 t=40 n=7 paths=48 rec4 0.0e+00 g1 True ref True p1 True avg0 0.0e+00 | 14s mem 2.8GB
+conf_liberty_s4 t=45 n=7 paths=50 rec4 0.0e+00 g1 True ref True p1 True avg0 0.0e+00 | 18s mem 2.8GB
+conf_liberty_s4 t=50 n=8 paths=63 rec4 0.0e+00 g1 True ref True p1 True avg0 1.8e-15 | 20s mem 2.8GB
+conf_liberty_s4 t=55 n=7 paths=49 rec4 0.0e+00 g1 True ref True p1 True avg0 4.4e-16 | 17s mem 2.8GB
+conf_liberty_s4 t=60 n=8 paths=63 rec4 0.0e+00 g1 True ref True p1 True avg0 0.0e+00 | 19s mem 2.8GB
+conf_liberty_s4 t=65 n=6 paths=38 rec4 0.0e+00 g1 True ref True p1 True avg0 0.0e+00 | 13s mem 2.8GB
+conf_liberty_s4 t=70 n=7 paths=48 rec4 0.0e+00 g1 True ref True p1 True avg0 0.0e+00 | 13s mem 2.8GB
+conf_liberty_s4 t=75 n=6 paths=35 rec4 0.0e+00 g1 True ref True p1 True avg0 2.2e-16 | 11s mem 2.8GB
+conf_liberty_s4 t=80 n=7 paths=49 rec4 0.0e+00 g1 True ref True p1 True avg0 1.1e-16 | 14s mem 2.8GB
+conf_liberty_s4 t=85 n=7 paths=49 rec4 0.0e+00 g1 True ref True p1 True avg0 0.0e+00 | 12s mem 2.8GB
+conf_liberty_s4 t=90 n=7 paths=45 rec4 0.0e+00 g1 True ref True p1 True avg0 0.0e+00 | 14s mem 2.8GB
+conf_liberty_s4 t=95 n=8 paths=60 rec4 0.0e+00 g1 True ref True p1 True avg0 0.0e+00 | 17s mem 2.8GB
+DONE conf_liberty_s4 states 20 379s

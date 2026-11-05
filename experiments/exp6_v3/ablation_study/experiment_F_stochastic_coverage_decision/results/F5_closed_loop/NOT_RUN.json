@@ -1,0 +1,1 @@
+{"status": "not run", "reason": "pre-registered F5 entry requires at least one confirmation-layer PASS (configs/F_config.yaml gates_confirmation); results/F4_interaction/F_confirm_gates.json: F1 TREND, F2 TREND, F3 FAIL", "closed_loop_episodes": 0}

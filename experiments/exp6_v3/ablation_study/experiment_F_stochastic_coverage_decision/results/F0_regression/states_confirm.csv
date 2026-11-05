@@ -1,0 +1,1441 @@
+scene,start,t,tag,phase,n_legal,method,pick,off_regret,off_top1,geo2_regret,path_union
+bannerman,0,0,conf_bannerman_s0,early,5,D-v2,0,0.0,True,0.0,1.7236612175007449
+bannerman,0,5,conf_bannerman_s0,early,8,D-v2,0,0.19049784427771232,False,0.9570795308892279,7.0713717857786875
+bannerman,0,10,conf_bannerman_s0,early,7,D-v2,3,0.0,True,1.3679122311989937,3.557489863017516
+bannerman,0,15,conf_bannerman_s0,early,8,D-v2,6,0.2088590822803824,False,0.0,5.756248113837374
+bannerman,0,20,conf_bannerman_s0,middle,7,D-v2,5,0.0,True,0.0,4.822120130451484
+bannerman,0,25,conf_bannerman_s0,middle,7,D-v2,6,0.0,True,0.0,3.6607718267825406
+bannerman,0,30,conf_bannerman_s0,middle,7,D-v2,2,0.0,True,0.07574010676101794,1.6525114202403945
+bannerman,0,35,conf_bannerman_s0,middle,7,D-v2,6,0.22033485603205616,False,0.0,0.7252689011055065
+bannerman,0,40,conf_bannerman_s0,middle,4,D-v2,3,0.0,True,0.0,0.09869165426435689
+bannerman,0,45,conf_bannerman_s0,middle,6,D-v2,5,0.0,True,0.0,0.6449384848438207
+bannerman,0,50,conf_bannerman_s0,late,6,D-v2,0,0.23640093928437578,False,0.0,3.0158333419387198
+bannerman,0,55,conf_bannerman_s0,late,7,D-v2,4,0.17443176102537317,False,0.0,0.7596962223605147
+bannerman,0,60,conf_bannerman_s0,late,6,D-v2,0,0.0,True,0.0,0.42001331931110025
+bannerman,0,65,conf_bannerman_s0,late,7,D-v2,0,0.9180619001335599,False,0.05508371400801315,0.367224760053421
+bannerman,0,70,conf_bannerman_s0,late,6,D-v2,1,0.17902207052604702,False,0.025246702253672704,0.2823040342910674
+bannerman,0,75,conf_bannerman_s0,late,6,D-v2,1,0.7413349843578443,False,0.0,0.49804858082245224
+bannerman,0,80,conf_bannerman_s0,late,7,D-v2,2,0.3236168197970679,False,0.03213216650467434,0.02295154750333881
+bannerman,0,85,conf_bannerman_s0,late,8,D-v2,0,0.16525114202403657,False,0.004590309500667765,0.016066083252337167
+bannerman,0,90,conf_bannerman_s0,late,7,D-v2,1,0.1629559872737052,False,0.0,0.09639649951402302
+bannerman,0,95,conf_bannerman_s0,late,7,D-v2,0,0.02983701175434117,False,0.0,0.032132166504674334
+bannerman,2,0,conf_bannerman_s2,early,9,D-v2,7,2.156436672089562,False,1.4445140220919441,10.233313962546424
+bannerman,2,5,conf_bannerman_s2,early,9,D-v2,7,0.7945975383844397,False,0.277879485966813,6.9286149517510225
+bannerman,2,10,conf_bannerman_s2,early,7,D-v2,2,0.0,True,0.0,5.038575142241214
+bannerman,2,15,conf_bannerman_s2,early,6,D-v2,1,0.006889574032231671,False,0.09645403645129047,0.9232029203194932
+bannerman,2,20,conf_bannerman_s2,middle,7,D-v2,0,0.0,True,0.043633968870821827,0.19061154822516901
+bannerman,2,25,conf_bannerman_s2,middle,7,D-v2,1,0.0,True,0.0,1.6557942924138176
+bannerman,2,30,conf_bannerman_s2,middle,9,D-v2,3,0.0,True,0.0,1.6259394716074658
+bannerman,2,35,conf_bannerman_s2,middle,8,D-v2,5,0.0,True,0.0,2.535363243862489
+bannerman,2,40,conf_bannerman_s2,middle,7,D-v2,1,0.08497141306422762,False,0.11023318451576036,0.41337444193410144
+bannerman,2,45,conf_bannerman_s2,middle,8,D-v2,5,0.0,True,0.009186098709646706,0.9852090866096085
+bannerman,2,50,conf_bannerman_s2,late,7,D-v2,6,0.0,True,0.0,4.645869422403818
+bannerman,2,55,conf_bannerman_s2,late,8,D-v2,2,0.0,True,0.0,1.5501541572528805
+bannerman,2,60,conf_bannerman_s2,late,7,D-v2,2,0.39040919515996864,False,0.24802466516046084,0.2549142391926959
+bannerman,2,65,conf_bannerman_s2,late,6,D-v2,4,0.0,True,0.0,0.8014871124166745
+bannerman,2,70,conf_bannerman_s2,late,6,D-v2,2,0.0,True,0.018372197419293385,0.18831502354775734
+bannerman,2,75,conf_bannerman_s2,late,7,D-v2,5,0.03444787016118056,False,0.0,0.05052354290305684
+bannerman,2,80,conf_bannerman_s2,late,7,D-v2,5,0.0,True,0.0,0.0367443948385868
+bannerman,2,85,conf_bannerman_s2,late,8,D-v2,5,0.0,True,0.0,0.16764630145105225
+bannerman,2,90,conf_bannerman_s2,late,7,D-v2,5,0.09875056112870206,False,0.0,0.10334361048352536
+bannerman,2,95,conf_bannerman_s2,late,8,D-v2,2,0.07119226499976428,False,0.0,0.006889574032235024
+bannerman,4,0,conf_bannerman_s4,early,10,D-v2,3,0.0,True,0.0,16.815428789225503
+bannerman,4,5,conf_bannerman_s4,early,6,D-v2,2,0.0,True,0.0,7.448213326590442
+bannerman,4,10,conf_bannerman_s4,early,7,D-v2,6,0.0,True,0.0,5.678773707144026
+bannerman,4,15,conf_bannerman_s4,early,7,D-v2,2,0.0,True,0.07593173919600993,3.9070331259037907
+bannerman,4,20,conf_bannerman_s4,middle,7,D-v2,3,0.0,True,0.0,3.7275581059859486
+bannerman,4,25,conf_bannerman_s4,middle,5,D-v2,4,0.17717405812401887,False,0.0,0.7777250863106485
+bannerman,4,30,conf_bannerman_s4,middle,7,D-v2,0,0.40036735212442,False,0.0,1.1044616610328737
+bannerman,4,35,conf_bannerman_s4,middle,7,D-v2,2,0.39116350494914354,False,0.6074539135680805,0.704094308908457
+bannerman,4,40,conf_bannerman_s4,middle,7,D-v2,2,0.0,True,0.0,1.0699472341255964
+bannerman,4,45,conf_bannerman_s4,middle,7,D-v2,0,0.5637356394855297,False,0.0,0.34054234548513607
+bannerman,4,50,conf_bannerman_s4,late,6,D-v2,0,0.832948169362302,False,0.013805770762910924,0.14726155480438316
+bannerman,4,55,conf_bannerman_s4,late,8,D-v2,5,0.02761154152581824,False,0.00690288538145546,0.0
+bannerman,4,60,conf_bannerman_s4,late,9,D-v2,8,0.0023009617938218874,False,0.018407694350547895,0.0
+bannerman,4,65,conf_bannerman_s4,late,9,D-v2,1,0.47399812952659826,False,0.011504808969092437,0.01380577076291092
+bannerman,4,70,conf_bannerman_s4,late,9,D-v2,0,0.1380577076291023,False,0.016106732556729404,0.00690288538145546
+bannerman,4,75,conf_bannerman_s4,late,9,D-v2,8,0.10124231892800761,False,0.03221346511345881,0.011504808969092435
+bannerman,4,80,conf_bannerman_s4,late,9,D-v2,1,0.4993087092586057,False,0.0,0.016106732556729408
+bannerman,4,85,conf_bannerman_s4,late,7,D-v2,3,0.2623096444953066,False,0.0,0.08053366278364704
+bannerman,4,90,conf_bannerman_s4,late,8,D-v2,6,0.0,True,0.0,0.01380577076291092
+bannerman,4,95,conf_bannerman_s4,late,8,D-v2,4,0.4279788936502271,False,0.004601923587636975,0.0
+eiffel,0,0,conf_eiffel_s0,early,9,D-v2,3,1.2245869029918213,False,1.496205802527601,1.2982462655777953
+eiffel,0,5,conf_eiffel_s0,early,8,D-v2,1,0.0,True,0.0,12.572732451393472
+eiffel,0,10,conf_eiffel_s0,early,8,D-v2,2,0.28082631985902884,False,0.0,12.144587406362497
+eiffel,0,15,conf_eiffel_s0,early,8,D-v2,2,0.0,True,0.0,3.6369310276824764
+eiffel,0,20,conf_eiffel_s0,middle,7,D-v2,3,0.0,True,0.0,2.301855080811694
+eiffel,0,25,conf_eiffel_s0,middle,7,D-v2,4,0.0,True,0.28082631985902673,0.7504047563446122
+eiffel,0,30,conf_eiffel_s0,middle,7,D-v2,2,0.0,True,0.06445194226272744,1.0358347863652622
+eiffel,0,35,conf_eiffel_s0,middle,7,D-v2,3,0.1703372759800703,False,0.0,0.21637437759629924
+eiffel,0,40,conf_eiffel_s0,middle,8,D-v2,1,0.0,True,0.0,2.292647660488447
+eiffel,0,45,conf_eiffel_s0,middle,7,D-v2,6,0.0,True,0.0,1.1555312505674704
+eiffel,0,50,conf_eiffel_s0,late,5,D-v2,0,0.4787858568088388,False,0.9759865542641581,0.10128162355571453
+eiffel,0,55,conf_eiffel_s0,late,8,D-v2,3,0.7319899156981169,False,0.6076897413342872,0.26701518937415647
+eiffel,0,60,conf_eiffel_s0,late,7,D-v2,3,0.11048904387895853,False,0.1933558267881823,0.13350759468707823
+eiffel,0,65,conf_eiffel_s0,late,7,D-v2,4,0.0,True,0.03682968129298714,1.9151434272353294
+eiffel,0,70,conf_eiffel_s0,late,7,D-v2,2,0.4833895669704491,False,0.2900337401822734,0.04143339145461049
+eiffel,0,75,conf_eiffel_s0,late,7,D-v2,0,0.5846711905261648,False,0.03222597113136372,0.08286678290922098
+eiffel,0,80,conf_eiffel_s0,late,5,D-v2,3,0.04603710161622532,False,0.0,0.0368296812929871
+eiffel,0,85,conf_eiffel_s0,late,6,D-v2,1,0.0,True,0.0368296812929871,0.0
+eiffel,0,90,conf_eiffel_s0,late,7,D-v2,5,0.12430017436383389,False,0.04143339145461049,0.004603710161623388
+eiffel,0,95,conf_eiffel_s0,late,5,D-v2,0,0.1887521166265671,False,0.009207420323246777,0.0
+eiffel,2,0,conf_eiffel_s2,early,9,D-v2,3,0.0,True,0.0,0.142855050259878
+eiffel,2,5,conf_eiffel_s2,early,8,D-v2,3,0.0,True,2.2119491653142394,8.861621343540174
+eiffel,2,10,conf_eiffel_s2,early,6,D-v2,5,0.0,True,0.0,4.387032511206576
+eiffel,2,15,conf_eiffel_s2,early,8,D-v2,5,0.0,True,0.0,4.082889500975868
+eiffel,2,20,conf_eiffel_s2,middle,8,D-v2,6,0.0,True,0.0,2.2810725767303097
+eiffel,2,25,conf_eiffel_s2,middle,7,D-v2,2,0.16589618739857315,False,0.07373163884380796,0.7280999335826039
+eiffel,2,30,conf_eiffel_s2,middle,7,D-v2,0,0.0,True,0.05990695656059408,2.248814984736144
+eiffel,2,35,conf_eiffel_s2,middle,7,D-v2,4,0.0,True,0.02304113713869005,0.658976522166534
+eiffel,2,40,conf_eiffel_s2,middle,8,D-v2,3,0.4377816056351014,False,0.18432909710951995,0.52994615418987
+eiffel,2,45,conf_eiffel_s2,middle,8,D-v2,0,0.0,True,0.0,1.1520568569345
+eiffel,2,50,conf_eiffel_s2,late,7,D-v2,4,0.0,True,0.0,0.6912341141607
+eiffel,2,55,conf_eiffel_s2,late,7,D-v2,0,0.01843290971094147,False,0.073731638843808,0.059906956560594
+eiffel,2,60,conf_eiffel_s2,late,8,D-v2,0,0.0,True,0.023041137138689993,0.433173378207372
+eiffel,2,65,conf_eiffel_s2,late,8,D-v2,7,0.04608227427737033,False,0.16128795997083,0.027649364566427997
+eiffel,2,70,conf_eiffel_s2,late,6,D-v2,0,0.10138100341022804,False,0.0,0.188937324537258
+eiffel,2,75,conf_eiffel_s2,late,7,D-v2,5,0.032257591994167,False,0.0,0.027649364566427997
+eiffel,2,80,conf_eiffel_s2,late,7,D-v2,5,0.2350195988146453,False,0.0,0.101381003410236
+eiffel,2,85,conf_eiffel_s2,late,8,D-v2,7,0.0,True,0.032257591994166,0.018432909710952
+eiffel,2,90,conf_eiffel_s2,late,7,D-v2,3,0.027649364566417756,False,0.009216454855475995,0.018432909710952
+eiffel,2,95,conf_eiffel_s2,late,6,D-v2,0,0.05069050170510847,False,0.0,0.004608227427738
+eiffel,4,0,conf_eiffel_s4,early,8,D-v2,2,0.0,True,0.0,5.6707046087945585
+eiffel,4,5,conf_eiffel_s4,early,7,D-v2,6,0.0,True,0.0,9.443496708390613
+eiffel,4,10,conf_eiffel_s4,early,7,D-v2,0,0.8568245793954543,False,0.07831192392323949,3.4180851500613834
+eiffel,4,15,conf_eiffel_s4,early,7,D-v2,3,0.0,True,0.0,6.44000409674638
+eiffel,4,20,conf_eiffel_s4,middle,7,D-v2,6,0.11977117776494905,False,0.0,1.5017463058221172
+eiffel,4,25,conf_eiffel_s4,middle,8,D-v2,1,0.0,True,0.0,0.06909875640285815
+eiffel,4,30,conf_eiffel_s4,middle,8,D-v2,3,0.0,True,0.0,1.3681553767765913
+eiffel,4,35,conf_eiffel_s4,middle,7,D-v2,1,0.18426335040762076,False,0.0,0.7278402341101059
+eiffel,4,40,conf_eiffel_s4,middle,7,D-v2,1,0.0,True,0.0,0.34549378201429076
+eiffel,4,45,conf_eiffel_s4,middle,7,D-v2,1,0.2810016093716339,False,0.41919912217733946,0.11516459400476359
+eiffel,4,50,conf_eiffel_s4,late,8,D-v2,7,0.00921316752039436,False,0.20729626920857447,0.14280409656590684
+eiffel,4,55,conf_eiffel_s4,late,8,D-v2,5,0.05527900512227735,False,0.0,1.4648936357405928
+eiffel,4,60,conf_eiffel_s4,late,7,D-v2,2,0.09213167520381038,False,0.05988558888247707,0.018426335040762173
+eiffel,4,65,conf_eiffel_s4,late,6,D-v2,4,0.0,True,0.0,0.3408871982541002
+eiffel,4,70,conf_eiffel_s4,late,8,D-v2,5,0.4284122896977327,False,0.1289843452853352,0.0322460863213338
+eiffel,4,75,conf_eiffel_s4,late,7,D-v2,6,0.2211160204891427,False,0.023032918800952706,0.009213167520381087
+eiffel,4,80,conf_eiffel_s4,late,7,D-v2,2,0.06909875640285223,False,0.00921316752038108,0.046065837601905434
+eiffel,4,85,conf_eiffel_s4,late,8,D-v2,7,0.05527900512228845,False,0.0,0.0
+eiffel,4,90,conf_eiffel_s4,late,5,D-v2,0,0.0,True,0.03685267008152435,0.0
+eiffel,4,95,conf_eiffel_s4,late,3,D-v2,0,0.03685267008154414,False,0.0,0.0
+fushimi,0,0,conf_fushimi_s0,early,10,D-v2,3,0.0,True,0.0,29.534665474726122
+fushimi,0,5,conf_fushimi_s0,early,7,D-v2,6,0.2312691504703812,False,0.0,1.50723687720352
+fushimi,0,10,conf_fushimi_s0,early,9,D-v2,1,0.0,True,0.0,2.3047167064117318
+fushimi,0,15,conf_fushimi_s0,early,8,D-v2,4,0.03189919316832768,False,0.0,1.1523583532058659
+fushimi,0,20,conf_fushimi_s0,middle,8,D-v2,2,0.0,True,0.0,6.312052848182995
+fushimi,0,25,conf_fushimi_s0,middle,7,D-v2,1,0.0,True,0.0,1.1722953489360712
+fushimi,0,30,conf_fushimi_s0,middle,7,D-v2,0,0.16747076413373696,False,0.0,0.11164717608914965
+fushimi,0,35,conf_fushimi_s0,middle,8,D-v2,0,0.0,True,0.0,2.7672550073524946
+fushimi,0,40,conf_fushimi_s0,middle,8,D-v2,2,0.5741854770299093,False,0.0,0.9370387993196487
+fushimi,0,45,conf_fushimi_s0,middle,8,D-v2,1,0.1594959658416384,False,0.0,0.2113321547401761
+fushimi,0,50,conf_fushimi_s0,late,8,D-v2,0,0.22329435217830484,False,0.1714581632797655,0.0
+fushimi,0,55,conf_fushimi_s0,late,8,D-v2,1,0.07576058377477546,False,0.0,0.1435463692574781
+fushimi,0,60,conf_fushimi_s0,late,8,D-v2,3,0.0,True,0.0,0.2990549359530794
+fushimi,0,65,conf_fushimi_s0,late,9,D-v2,6,0.0,True,0.0,0.45855090179472174
+fushimi,0,70,conf_fushimi_s0,late,6,D-v2,4,0.0,True,0.0,0.10367237779706752
+fushimi,0,75,conf_fushimi_s0,late,7,D-v2,6,0.5582358804457455,False,0.02791179402228741,0.15152116754956022
+fushimi,0,80,conf_fushimi_s0,late,7,D-v2,6,0.31500453253723304,False,0.0,0.07576058377478011
+fushimi,0,85,conf_fushimi_s0,late,6,D-v2,5,0.0,True,0.0,0.0
+fushimi,0,90,conf_fushimi_s0,late,7,D-v2,1,0.04784878975250262,False,0.007974798292082117,0.0
+fushimi,0,95,conf_fushimi_s0,late,6,D-v2,0,0.08772278121289556,False,0.0,0.007974798292082117
+fushimi,2,0,conf_fushimi_s2,early,8,D-v2,2,1.2891930606398212,False,0.7560082763011309,9.223300970873787
+fushimi,2,5,conf_fushimi_s2,early,7,D-v2,2,0.0,True,0.0,15.315136081489733
+fushimi,2,10,conf_fushimi_s2,early,6,D-v2,0,0.0,True,0.2108865191787359,5.455196562151838
+fushimi,2,15,conf_fushimi_s2,early,6,D-v2,2,0.6406175393920188,False,0.5013528569154859,1.9457265637434347
+fushimi,2,20,conf_fushimi_s2,middle,7,D-v2,5,0.0,True,0.0,3.1314658602578387
+fushimi,2,25,conf_fushimi_s2,middle,6,D-v2,4,0.06764284577431834,False,0.027852936495304736,0.7520292853732293
+fushimi,2,30,conf_fushimi_s2,middle,6,D-v2,5,0.17109660989973463,False,0.11539073690911983,0.529205793410791
+fushimi,2,35,conf_fushimi_s2,middle,8,D-v2,1,0.16313862804393509,False,0.0,0.9231258952729587
+fushimi,2,40,conf_fushimi_s2,middle,8,D-v2,4,0.07162183670221811,False,0.16711761897182875,0.6247015756804074
+fushimi,2,45,conf_fushimi_s2,middle,8,D-v2,2,0.3780041381505672,False,0.0,0.36606716536686296
+fushimi,2,50,conf_fushimi_s2,late,8,D-v2,5,0.051726882062708146,False,0.0,0.4734999204201814
+fushimi,2,55,conf_fushimi_s2,late,7,D-v2,1,0.0,True,0.0,0.680407448671017
+fushimi,2,60,conf_fushimi_s2,late,7,D-v2,4,0.011936972783699318,False,0.051726882062708895,0.0
+fushimi,2,65,conf_fushimi_s2,late,7,D-v2,5,0.05570587299060792,False,0.015915963711602737,0.023873945567404103
+fushimi,2,70,conf_fushimi_s2,late,8,D-v2,3,0.0,True,0.0,0.07957981855801369
+fushimi,2,75,conf_fushimi_s2,late,7,D-v2,0,0.0,True,0.0,0.06764284577431164
+fushimi,2,80,conf_fushimi_s2,late,7,D-v2,0,0.5968486391851102,False,0.0,0.019894954639503422
+fushimi,2,85,conf_fushimi_s2,late,8,D-v2,0,0.0,True,0.0,0.7599872672290306
+fushimi,2,90,conf_fushimi_s2,late,8,D-v2,2,0.12334871876492626,False,0.011936972783702052,0.051726882062708895
+fushimi,2,95,conf_fushimi_s2,late,7,D-v2,3,0.0,True,0.011936972783702052,0.0
+fushimi,4,0,conf_fushimi_s4,early,9,D-v2,4,0.0,True,0.0,10.782400374840368
+fushimi,4,5,conf_fushimi_s4,early,8,D-v2,1,2.6159664129505655,False,4.515229699065353,4.304200445052599
+fushimi,4,10,conf_fushimi_s4,early,9,D-v2,7,0.003981684037979605,False,0.1035237849873889,7.071470851446268
+fushimi,4,15,conf_fushimi_s4,early,9,D-v2,2,0.0,True,0.0,3.1176586017356014
+fushimi,4,20,conf_fushimi_s4,middle,8,D-v2,3,0.0,True,0.0,2.110292540127546
+fushimi,4,25,conf_fushimi_s4,middle,7,D-v2,5,0.0,True,0.023890104227858977,2.4487356833555487
+fushimi,4,30,conf_fushimi_s4,middle,8,D-v2,1,0.0,True,0.0,1.7479592926716845
+fushimi,4,35,conf_fushimi_s4,middle,7,D-v2,5,0.0,True,0.0,0.7366115470256529
+fushimi,4,40,conf_fushimi_s4,middle,7,D-v2,6,0.0,True,0.0,0.14732230940513058
+fushimi,4,45,conf_fushimi_s4,middle,8,D-v2,2,0.0,True,0.003981684037976607,0.9794942733422195
+fushimi,4,50,conf_fushimi_s4,late,7,D-v2,6,0.2309376742026359,False,0.035835156341788466,1.1666334231271152
+fushimi,4,55,conf_fushimi_s4,late,7,D-v2,0,0.25482777843049975,False,0.0,0.09954210094941256
+fushimi,4,60,conf_fushimi_s4,late,6,D-v2,0,0.059725260569643,False,0.0,0.4937288207090863
+fushimi,4,65,conf_fushimi_s4,late,7,D-v2,3,0.0,True,0.0,0.11945052113929507
+fushimi,4,70,conf_fushimi_s4,late,8,D-v2,1,0.0,True,0.0,0.3105713549621672
+fushimi,4,75,conf_fushimi_s4,late,6,D-v2,2,0.13139557325321238,False,0.019908420189882512,0.0
+fushimi,4,80,conf_fushimi_s4,late,9,D-v2,6,0.2906629347722789,False,0.0,0.019908420189882512
+fushimi,4,85,conf_fushimi_s4,late,3,D-v2,1,0.0,True,0.0,0.0
+fushimi,4,90,conf_fushimi_s4,late,6,D-v2,5,0.01592673615190554,False,0.0,0.04379852441774153
+fushimi,4,95,conf_fushimi_s4,late,6,D-v2,4,0.0,True,0.0,0.1592673615190601
+liberty,0,0,conf_liberty_s0,early,9,D-v2,7,0.0,True,0.0,10.720595585618154
+liberty,0,5,conf_liberty_s0,early,7,D-v2,6,0.0,True,0.0,16.466756172315826
+liberty,0,10,conf_liberty_s0,early,7,D-v2,6,0.0,True,0.0,2.9050307157727326
+liberty,0,15,conf_liberty_s0,early,7,D-v2,0,0.1523789377139595,False,0.08356264326249818,0.5456149060080767
+liberty,0,20,conf_liberty_s0,middle,7,D-v2,0,0.0,True,0.0,2.94926976220582
+liberty,0,25,conf_liberty_s0,middle,7,D-v2,1,0.0,True,0.0,4.246948457576381
+liberty,0,30,conf_liberty_s0,middle,6,D-v2,4,0.0,True,0.078647193658822,1.8039700045492264
+liberty,0,35,conf_liberty_s0,middle,7,D-v2,1,0.15729438731765244,False,0.0,0.3834050690867566
+liberty,0,40,conf_liberty_s0,middle,7,D-v2,1,0.04915449603676292,False,0.0,0.28509607701322925
+liberty,0,45,conf_liberty_s0,middle,8,D-v2,5,0.009830899207352584,False,0.004915449603676366,0.0
+liberty,0,50,conf_liberty_s0,late,8,D-v2,7,0.0,True,0.0,0.0
+liberty,0,55,conf_liberty_s0,late,8,D-v2,3,0.004915449603681843,False,0.0,0.0147463488110291
+liberty,0,60,conf_liberty_s0,late,6,D-v2,1,0.0,True,0.0,0.3047578754279347
+liberty,0,65,conf_liberty_s0,late,7,D-v2,0,0.0,True,0.0,0.7520637893624841
+liberty,0,70,conf_liberty_s0,late,8,D-v2,4,0.32441967384264636,False,0.014746348811029097,0.009830899207352733
+liberty,0,75,conf_liberty_s0,late,6,D-v2,4,0.05406994564044476,False,0.009830899207352733,0.004915449603676366
+liberty,0,80,conf_liberty_s0,late,6,D-v2,0,0.039323596829410334,False,0.0,0.009830899207352733
+liberty,0,85,conf_liberty_s0,late,7,D-v2,5,0.009830899207352584,False,0.0,0.0
+liberty,0,90,conf_liberty_s0,late,8,D-v2,2,0.0,True,0.0,0.0
+liberty,0,95,conf_liberty_s0,late,6,D-v2,1,0.0,True,0.0,0.0
+liberty,2,0,conf_liberty_s2,early,9,D-v2,0,0.0,True,0.0,15.07065176412282
+liberty,2,5,conf_liberty_s2,early,6,D-v2,4,0.0,True,0.0,2.090270313375229
+liberty,2,10,conf_liberty_s2,early,6,D-v2,3,0.0640884765893357,False,0.1971953125825685,4.239699220525229
+liberty,2,15,conf_liberty_s2,early,7,D-v2,3,0.28593320324472593,False,0.9021685550652523,0.3253722657612385
+liberty,2,20,conf_liberty_s2,middle,7,D-v2,1,0.0,True,0.0,6.882116409131651
+liberty,2,25,conf_liberty_s2,middle,6,D-v2,5,0.0,True,0.0,3.1354054700628438
+liberty,2,30,conf_liberty_s2,middle,6,D-v2,1,0.0,True,0.0,5.777822658669265
+liberty,2,35,conf_liberty_s2,middle,8,D-v2,6,0.22677460946995964,False,0.13310683599323395,0.22677460946995412
+liberty,2,40,conf_liberty_s2,middle,7,D-v2,4,0.009859765629116612,False,0.0,0.05915859377477064
+liberty,2,45,conf_liberty_s2,middle,6,D-v2,1,0.0,True,0.0,0.30565273450298164
+liberty,2,50,conf_liberty_s2,late,8,D-v2,7,0.0,True,0.0,1.1782419926808485
+liberty,2,55,conf_liberty_s2,late,6,D-v2,3,0.044368945331074716,False,0.22677460946995412,0.00492988281456422
+liberty,2,60,conf_liberty_s2,late,7,D-v2,2,0.0,True,0.0,1.0007662113565365
+liberty,2,65,conf_liberty_s2,late,7,D-v2,5,0.22677460946994854,False,0.18733554695344035,0.0
+liberty,2,70,conf_liberty_s2,late,6,D-v2,0,0.004929882814563857,False,0.0,0.00985976562912844
+liberty,2,75,conf_liberty_s2,late,7,D-v2,2,0.15282636725150178,False,0.0,0.0
+liberty,2,80,conf_liberty_s2,late,8,D-v2,6,0.0,True,0.01478964844369266,0.0
+liberty,2,85,conf_liberty_s2,late,7,D-v2,6,0.0,True,0.01478964844369266,0.0
+liberty,2,90,conf_liberty_s2,late,6,D-v2,0,0.1281769531786714,False,0.0,0.0
+liberty,2,95,conf_liberty_s2,late,7,D-v2,4,0.0,True,0.0,0.0
+liberty,4,0,conf_liberty_s4,early,7,D-v2,3,0.0,True,0.0,3.8374700251567835
+liberty,4,5,conf_liberty_s4,early,7,D-v2,3,1.5645070102562215,False,0.0,19.339864960117072
+liberty,4,10,conf_liberty_s4,early,7,D-v2,6,0.0,True,0.0,2.77478601819029
+liberty,4,15,conf_liberty_s4,early,7,D-v2,0,0.0,True,0.0,10.371008734654486
+liberty,4,20,conf_liberty_s4,middle,7,D-v2,5,0.21647266808577648,False,0.024599166827928176,1.2889963417834325
+liberty,4,25,conf_liberty_s4,middle,7,D-v2,4,0.0,True,0.0,3.7538328579418283
+liberty,4,30,conf_liberty_s4,middle,5,D-v2,0,0.0,True,0.1475950009675686,0.5608610036767607
+liberty,4,35,conf_liberty_s4,middle,7,D-v2,1,0.06887766711819454,False,0.014759500096756861,0.10823633404288364
+liberty,4,40,conf_liberty_s4,middle,7,D-v2,0,0.0,True,0.0,0.7724138383969423
+liberty,4,45,conf_liberty_s4,middle,7,D-v2,4,0.0,True,0.20663300135459606,0.4378651695371202
+liberty,4,50,conf_liberty_s4,late,8,D-v2,7,0.12299583413962756,False,0.029519000193513723,0.16235450106432547
+liberty,4,55,conf_liberty_s4,late,7,D-v2,0,0.2705908351072095,False,0.10823633404288364,0.0
+liberty,4,60,conf_liberty_s4,late,8,D-v2,7,0.09347683394612671,False,0.05903800038702744,0.0245991668279281
+liberty,4,65,conf_liberty_s4,late,6,D-v2,5,0.06887766711820564,False,0.03443883355909934,0.044278500290270584
+liberty,4,70,conf_liberty_s4,late,7,D-v2,4,0.0049198333655908755,False,0.00983966673117124,0.0
+liberty,4,75,conf_liberty_s4,late,6,D-v2,2,0.0393586669246937,False,0.0245991668279281,0.014759500096756861
+liberty,4,80,conf_liberty_s4,late,7,D-v2,2,0.014759500096761524,False,0.0,0.0
+liberty,4,85,conf_liberty_s4,late,7,D-v2,1,0.009839666731170649,False,0.0,0.0
+liberty,4,90,conf_liberty_s4,late,7,D-v2,6,0.0,True,0.029519000193513723,0.014759500096756861
+liberty,4,95,conf_liberty_s4,late,8,D-v2,1,0.08855700058053584,False,0.044278500290270584,0.0
+redeemer,0,0,conf_redeemer_s0,early,8,D-v2,2,0.0,True,0.0,10.456686189641882
+redeemer,0,5,conf_redeemer_s0,early,8,D-v2,5,8.474500164549013,False,14.311907026992102,7.5270676371367875
+redeemer,0,10,conf_redeemer_s0,early,7,D-v2,1,0.1091512128355121,False,2.4187908764349073,1.1089763224087843
+redeemer,0,15,conf_redeemer_s0,early,6,D-v2,4,0.4628011424225642,False,0.0,3.226509851417683
+redeemer,0,20,conf_redeemer_s0,middle,7,D-v2,0,0.0,True,0.0,0.3449178325602124
+redeemer,0,25,conf_redeemer_s0,middle,8,D-v2,4,0.0,True,0.0,20.1929743745694
+redeemer,0,30,conf_redeemer_s0,middle,9,D-v2,0,0.0,True,0.02619629108052246,0.3798462206675757
+redeemer,0,35,conf_redeemer_s0,middle,8,D-v2,3,0.2794271048589092,False,0.0,0.5632202582312329
+redeemer,0,40,conf_redeemer_s0,middle,8,D-v2,2,0.0,True,0.0,2.3751303913007034
+redeemer,0,45,conf_redeemer_s0,middle,8,D-v2,1,0.0,True,0.0,0.18337403756365722
+redeemer,0,50,conf_redeemer_s0,late,8,D-v2,4,0.030562339593953602,False,0.01746419405368164,0.0
+redeemer,0,55,conf_redeemer_s0,late,9,D-v2,1,0.0,True,0.00873209702684082,0.0
+redeemer,0,60,conf_redeemer_s0,late,7,D-v2,2,0.0,True,0.00873209702684082,0.0
+redeemer,0,65,conf_redeemer_s0,late,6,D-v2,1,0.0,True,0.0,0.0
+redeemer,0,70,conf_redeemer_s0,late,7,D-v2,0,0.0,True,0.0,0.0
+redeemer,0,75,conf_redeemer_s0,late,7,D-v2,6,0.0130981455402579,False,0.01746419405368164,0.0
+redeemer,0,80,conf_redeemer_s0,late,8,D-v2,0,0.0,True,0.00436604851342041,0.0
+redeemer,0,85,conf_redeemer_s0,late,9,D-v2,6,0.0,True,0.03056233959394287,0.0
+redeemer,0,90,conf_redeemer_s0,late,9,D-v2,4,0.0,True,0.0,0.0
+redeemer,0,95,conf_redeemer_s0,late,5,D-v2,4,0.2401326682381133,False,0.00873209702684082,0.0
+redeemer,2,0,conf_redeemer_s2,early,9,D-v2,2,1.8058351759873918,False,0.0,17.16641857076091
+redeemer,2,5,conf_redeemer_s2,early,8,D-v2,5,0.0,True,1.2610089915045766,5.457049363932699
+redeemer,2,10,conf_redeemer_s2,early,8,D-v2,4,0.0,True,0.0,10.830617296372063
+redeemer,2,15,conf_redeemer_s2,early,8,D-v2,2,0.171356622538954,False,0.10984398880701884,1.1819213195635232
+redeemer,2,20,conf_redeemer_s2,middle,7,D-v2,6,0.0,True,0.0,1.3269153847887882
+redeemer,2,25,conf_redeemer_s2,middle,7,D-v2,5,0.0,True,0.06590639328421133,0.27241309224140686
+redeemer,2,30,conf_redeemer_s2,middle,7,D-v2,2,0.07469391238876799,False,0.008787519104561492,0.1274190270161419
+redeemer,2,35,conf_redeemer_s2,middle,8,D-v2,1,0.03954383597052358,False,0.05272511462736906,0.02636255731368453
+redeemer,2,40,conf_redeemer_s2,middle,7,D-v2,1,0.00878751910456943,False,0.008787519104561513,0.0043937595522807555
+redeemer,2,45,conf_redeemer_s2,middle,7,D-v2,0,0.0,True,0.0,0.0043937595522807555
+redeemer,2,50,conf_redeemer_s2,late,7,D-v2,1,0.08348143149333742,False,0.0,0.6019450586624635
+redeemer,2,55,conf_redeemer_s2,late,7,D-v2,6,0.0,True,0.0,0.02636255731368453
+redeemer,2,60,conf_redeemer_s2,late,8,D-v2,2,0.0,True,0.0,0.98859589926317
+redeemer,2,65,conf_redeemer_s2,late,8,D-v2,6,0.0,True,0.0,0.0
+redeemer,2,70,conf_redeemer_s2,late,7,D-v2,5,0.026362557313674984,False,0.0043937595522807555,0.0
+redeemer,2,75,conf_redeemer_s2,late,9,D-v2,6,0.0,True,0.0,0.0
+redeemer,2,80,conf_redeemer_s2,late,8,D-v2,0,0.0,True,0.0,0.0
+redeemer,2,85,conf_redeemer_s2,late,8,D-v2,5,0.0,True,0.0,0.0
+redeemer,2,90,conf_redeemer_s2,late,8,D-v2,3,0.0,True,0.0,0.0
+redeemer,2,95,conf_redeemer_s2,late,8,D-v2,3,0.0,True,0.0,0.0
+redeemer,4,0,conf_redeemer_s4,early,8,D-v2,7,0.0,True,0.0,7.463438142049892
+redeemer,4,5,conf_redeemer_s4,early,8,D-v2,4,0.0,True,0.0,21.080708789721907
+redeemer,4,10,conf_redeemer_s4,early,7,D-v2,2,0.5387340912395011,False,1.2789459726986903,0.4336152441683916
+redeemer,4,15,conf_redeemer_s4,early,8,D-v2,5,0.0,True,0.0,1.1519273658210807
+redeemer,4,20,conf_redeemer_s4,middle,7,D-v2,2,0.1051188470711284,False,0.0,0.08321908726464082
+redeemer,4,25,conf_redeemer_s4,middle,7,D-v2,6,0.0,True,0.38981572455542274,0.39419567651671966
+redeemer,4,30,conf_redeemer_s4,middle,8,D-v2,2,0.0,True,0.0,1.3096056364277686
+redeemer,4,35,conf_redeemer_s4,middle,8,D-v2,3,0.4336152441683949,False,1.1869669815114552,2.9871272376044757
+redeemer,4,40,conf_redeemer_s4,middle,6,D-v2,2,1.2964657805438762,False,0.0,8.229929735276848
+redeemer,4,45,conf_redeemer_s4,middle,8,D-v2,0,0.10949879903242588,False,0.03941956765167198,0.5518739471234075
+redeemer,4,50,conf_redeemer_s4,late,6,D-v2,0,0.017519807845178814,False,0.0,0.09197899118723459
+redeemer,4,55,conf_redeemer_s4,late,8,D-v2,6,0.026279711767784875,False,0.00875990392259377,0.0
+redeemer,4,60,conf_redeemer_s4,late,8,D-v2,6,0.026279711767784875,False,0.04379951961296885,0.013139855883890654
+redeemer,4,65,conf_redeemer_s4,late,7,D-v2,1,0.008759903922594958,False,0.0,0.0
+redeemer,4,70,conf_redeemer_s4,late,6,D-v2,4,0.021899759806487396,False,0.008759903922593768,0.026279711767781308
+redeemer,4,75,conf_redeemer_s4,late,7,D-v2,6,0.0,True,0.008759903922593768,0.004379951961296885
+redeemer,4,80,conf_redeemer_s4,late,7,D-v2,0,0.004379951961297479,False,0.0,0.013139855883890654
+redeemer,4,85,conf_redeemer_s4,late,7,D-v2,2,0.0,True,0.0,0.004379951961296885
+redeemer,4,90,conf_redeemer_s4,late,7,D-v2,3,0.013139855883892437,False,0.0,0.004379951961296885
+redeemer,4,95,conf_redeemer_s4,late,8,D-v2,4,0.0,True,0.0,0.0
+sestino_museum,0,0,conf_sestino_museum_s0,early,7,D-v2,1,0.0,True,0.0,7.131534387722016
+sestino_museum,0,5,conf_sestino_museum_s0,early,8,D-v2,5,0.0,True,0.0,4.429513275930396
+sestino_museum,0,10,conf_sestino_museum_s0,early,8,D-v2,7,0.0,True,0.0,14.99621717044349
+sestino_museum,0,15,conf_sestino_museum_s0,early,9,D-v2,4,0.0,True,0.0,11.180963360593724
+sestino_museum,0,20,conf_sestino_museum_s0,middle,7,D-v2,0,0.1314983607738629,False,0.0,0.2161616889433296
+sestino_museum,0,25,conf_sestino_museum_s0,middle,8,D-v2,6,0.0,True,0.5872392549627121,2.7128291962387863
+sestino_museum,0,30,conf_sestino_museum_s0,middle,8,D-v2,7,0.04323233778866786,False,0.04863638001224915,0.01621212667074972
+sestino_museum,0,35,conf_sestino_museum_s0,middle,6,D-v2,2,0.014410779262885587,False,0.0,0.05584176964369348
+sestino_museum,0,40,conf_sestino_museum_s0,middle,9,D-v2,4,0.009006737039307655,False,0.0,0.02521886371005512
+sestino_museum,0,45,conf_sestino_museum_s0,middle,6,D-v2,5,0.003602694815718621,False,0.0,0.0
+sestino_museum,0,50,conf_sestino_museum_s0,late,7,D-v2,2,0.0,True,0.0,0.0
+sestino_museum,0,55,conf_sestino_museum_s0,late,5,D-v2,0,0.0,True,0.0,0.0
+sestino_museum,0,60,conf_sestino_museum_s0,late,8,D-v2,0,0.0,True,0.0,0.0
+sestino_museum,0,65,conf_sestino_museum_s0,late,6,D-v2,0,0.0,True,0.0,0.0
+sestino_museum,0,70,conf_sestino_museum_s0,late,5,D-v2,3,0.0,True,0.0,0.0
+sestino_museum,0,75,conf_sestino_museum_s0,late,8,D-v2,7,0.0,True,0.0,0.0
+sestino_museum,0,80,conf_sestino_museum_s0,late,6,D-v2,5,0.0,True,0.0,0.0
+sestino_museum,0,85,conf_sestino_museum_s0,late,8,D-v2,6,0.06845120149872042,False,0.0,0.0
+sestino_museum,0,90,conf_sestino_museum_s0,late,5,D-v2,3,0.0,True,0.0,0.0
+sestino_museum,0,95,conf_sestino_museum_s0,late,8,D-v2,5,0.0,True,0.0,0.0
+sestino_museum,2,0,conf_sestino_museum_s2,early,6,D-v2,2,3.763663539284364,False,6.983486701121896,6.225351605409591
+sestino_museum,2,5,conf_sestino_museum_s2,early,8,D-v2,6,0.0,True,0.0,6.626929102663377
+sestino_museum,2,10,conf_sestino_museum_s2,early,9,D-v2,0,1.0804775710864245,False,0.0,11.935675568601322
+sestino_museum,2,15,conf_sestino_museum_s2,early,8,D-v2,7,0.0,True,4.2210657110442815,4.637049575912553
+sestino_museum,2,20,conf_sestino_museum_s2,middle,8,D-v2,3,0.1026453692532181,False,0.045019898795267466,1.0552664277610704
+sestino_museum,2,25,conf_sestino_museum_s2,middle,8,D-v2,5,0.0,True,0.322342475374116,6.142514991626299
+sestino_museum,2,30,conf_sestino_museum_s2,middle,6,D-v2,4,0.0,True,0.005402387855432067,0.23230267778358035
+sestino_museum,2,35,conf_sestino_museum_s2,middle,8,D-v2,7,0.0,True,0.05222308260251032,0.14586447209666673
+sestino_museum,2,40,conf_sestino_museum_s2,middle,8,D-v2,2,0.025211143325343244,False,0.0,0.021609551421728403
+sestino_museum,2,45,conf_sestino_museum_s2,middle,8,D-v2,1,0.009003979759047986,False,0.0,0.005402387855432101
+sestino_museum,2,50,conf_sestino_museum_s2,late,5,D-v2,2,0.0,True,0.0,0.0
+sestino_museum,2,55,conf_sestino_museum_s2,late,8,D-v2,2,0.0,True,0.0,0.0
+sestino_museum,2,60,conf_sestino_museum_s2,late,7,D-v2,1,0.0,True,0.0,0.0
+sestino_museum,2,65,conf_sestino_museum_s2,late,7,D-v2,4,0.0,True,0.0,0.0018007959518107004
+sestino_museum,2,70,conf_sestino_museum_s2,late,8,D-v2,5,0.03961751093982668,False,0.07563342997604941,0.041418306891646106
+sestino_museum,2,75,conf_sestino_museum_s2,late,8,D-v2,1,0.032414327132590515,False,0.0,0.05042228665069961
+sestino_museum,2,80,conf_sestino_museum_s2,late,6,D-v2,5,0.05582467450613304,False,0.06482865426518522,0.037816714988024705
+sestino_museum,2,85,conf_sestino_museum_s2,late,7,D-v2,1,0.025211143325354346,False,0.0036015919036213994,0.0
+sestino_museum,2,90,conf_sestino_museum_s2,late,7,D-v2,6,0.0414183068916496,False,0.0,0.023410347373539104
+sestino_museum,2,95,conf_sestino_museum_s2,late,5,D-v2,4,0.0,True,0.0,0.0
+sestino_museum,4,0,conf_sestino_museum_s4,early,9,D-v2,6,0.953923686105111,False,4.134269258459325,8.428725701943845
+sestino_museum,4,5,conf_sestino_museum_s4,early,8,D-v2,0,1.4074874010079226,False,14.134269258459321,5.345572354211663
+sestino_museum,4,10,conf_sestino_museum_s4,early,6,D-v2,5,0.0,True,0.0,14.751619870410368
+sestino_museum,4,15,conf_sestino_museum_s4,early,7,D-v2,6,0.0,True,0.0,8.565514758819294
+sestino_museum,4,20,conf_sestino_museum_s4,middle,7,D-v2,0,0.0,True,0.0,1.3660907127429807
+sestino_museum,4,25,conf_sestino_museum_s4,middle,9,D-v2,7,0.14398848092151972,False,0.4229661627069835,0.12419006479481642
+sestino_museum,4,30,conf_sestino_museum_s4,middle,6,D-v2,5,0.1673866090712739,False,0.17458603311735063,0.06839452843772498
+sestino_museum,4,35,conf_sestino_museum_s4,middle,8,D-v2,1,0.10439164866810069,False,0.0,0.2447804175665947
+sestino_museum,4,40,conf_sestino_museum_s4,middle,7,D-v2,3,0.017998560115195517,False,0.010799136069114479,0.05579553635709143
+sestino_museum,4,45,conf_sestino_museum_s4,middle,6,D-v2,1,0.0,True,0.0,0.0017998560115190785
+sestino_museum,4,50,conf_sestino_museum_s4,late,7,D-v2,1,0.0035997120230391033,False,0.0,0.0
+sestino_museum,4,55,conf_sestino_museum_s4,late,4,D-v2,1,0.0,True,0.0,0.0
+sestino_museum,4,60,conf_sestino_museum_s4,late,3,D-v2,1,0.0,True,0.0,0.0
+sestino_museum,4,65,conf_sestino_museum_s4,late,5,D-v2,4,0.0,True,0.0,0.0
+sestino_museum,4,70,conf_sestino_museum_s4,late,8,D-v2,7,0.0,True,0.0,0.0
+sestino_museum,4,75,conf_sestino_museum_s4,late,7,D-v2,3,0.0,True,0.0,0.0
+sestino_museum,4,80,conf_sestino_museum_s4,late,7,D-v2,3,0.0017998560115195517,False,0.012598992080633545,0.09899208063354932
+sestino_museum,4,85,conf_sestino_museum_s4,late,6,D-v2,4,0.02339812814974307,False,0.0053995680345572325,0.03959683225341973
+sestino_museum,4,90,conf_sestino_museum_s4,late,9,D-v2,8,0.10619150467963134,False,0.025197984161267117,0.2501799856011519
+sestino_museum,4,95,conf_sestino_museum_s4,late,8,D-v2,3,0.0629949604031732,False,0.02159827213822893,0.15658747300215983
+bannerman,0,0,conf_bannerman_s0,early,5,F1 gamma*,0,0.0,True,0.0,1.7236612175007449
+bannerman,0,5,conf_bannerman_s0,early,8,F1 gamma*,0,0.19049784427771232,False,0.9570795308892279,7.0713717857786875
+bannerman,0,10,conf_bannerman_s0,early,7,F1 gamma*,5,0.5210001283257935,False,0.3764053790547566,5.636900066820012
+bannerman,0,15,conf_bannerman_s0,early,8,F1 gamma*,6,0.2088590822803824,False,0.0,5.756248113837374
+bannerman,0,20,conf_bannerman_s0,middle,7,F1 gamma*,5,0.0,True,0.0,4.822120130451484
+bannerman,0,25,conf_bannerman_s0,middle,7,F1 gamma*,6,0.0,True,0.0,3.6607718267825406
+bannerman,0,30,conf_bannerman_s0,middle,7,F1 gamma*,2,0.0,True,0.07574010676101794,1.6525114202403945
+bannerman,0,35,conf_bannerman_s0,middle,7,F1 gamma*,6,0.22033485603205616,False,0.0,0.7252689011055065
+bannerman,0,40,conf_bannerman_s0,middle,4,F1 gamma*,3,0.0,True,0.0,0.09869165426435689
+bannerman,0,45,conf_bannerman_s0,middle,6,F1 gamma*,5,0.0,True,0.0,0.6449384848438207
+bannerman,0,50,conf_bannerman_s0,late,6,F1 gamma*,0,0.23640093928437578,False,0.0,3.0158333419387198
+bannerman,0,55,conf_bannerman_s0,late,7,F1 gamma*,0,0.0,True,0.18131722527637661,0.44526002156477296
+bannerman,0,60,conf_bannerman_s0,late,6,F1 gamma*,0,0.0,True,0.0,0.42001331931110025
+bannerman,0,65,conf_bannerman_s0,late,7,F1 gamma*,0,0.9180619001335599,False,0.05508371400801315,0.367224760053421
+bannerman,0,70,conf_bannerman_s0,late,6,F1 gamma*,1,0.17902207052604702,False,0.025246702253672704,0.2823040342910674
+bannerman,0,75,conf_bannerman_s0,late,6,F1 gamma*,1,0.7413349843578443,False,0.0,0.49804858082245224
+bannerman,0,80,conf_bannerman_s0,late,7,F1 gamma*,2,0.3236168197970679,False,0.03213216650467434,0.02295154750333881
+bannerman,0,85,conf_bannerman_s0,late,8,F1 gamma*,0,0.16525114202403657,False,0.004590309500667765,0.016066083252337167
+bannerman,0,90,conf_bannerman_s0,late,7,F1 gamma*,1,0.1629559872737052,False,0.0,0.09639649951402302
+bannerman,0,95,conf_bannerman_s0,late,7,F1 gamma*,0,0.02983701175434117,False,0.0,0.032132166504674334
+bannerman,2,0,conf_bannerman_s2,early,9,F1 gamma*,7,2.156436672089562,False,1.4445140220919441,10.233313962546424
+bannerman,2,5,conf_bannerman_s2,early,9,F1 gamma*,7,0.7945975383844397,False,0.277879485966813,6.9286149517510225
+bannerman,2,10,conf_bannerman_s2,early,7,F1 gamma*,2,0.0,True,0.0,5.038575142241214
+bannerman,2,15,conf_bannerman_s2,early,6,F1 gamma*,1,0.006889574032231671,False,0.09645403645129047,0.9232029203194932
+bannerman,2,20,conf_bannerman_s2,middle,7,F1 gamma*,0,0.0,True,0.043633968870821827,0.19061154822516901
+bannerman,2,25,conf_bannerman_s2,middle,7,F1 gamma*,1,0.0,True,0.0,1.6557942924138176
+bannerman,2,30,conf_bannerman_s2,middle,9,F1 gamma*,3,0.0,True,0.0,1.6259394716074658
+bannerman,2,35,conf_bannerman_s2,middle,8,F1 gamma*,5,0.0,True,0.0,2.535363243862489
+bannerman,2,40,conf_bannerman_s2,middle,7,F1 gamma*,3,0.0482270182256439,False,0.06430269096752683,0.459304935482335
+bannerman,2,45,conf_bannerman_s2,middle,8,F1 gamma*,5,0.0,True,0.009186098709646706,0.9852090866096085
+bannerman,2,50,conf_bannerman_s2,late,7,F1 gamma*,6,0.0,True,0.0,4.645869422403818
+bannerman,2,55,conf_bannerman_s2,late,8,F1 gamma*,2,0.0,True,0.0,1.5501541572528805
+bannerman,2,60,conf_bannerman_s2,late,7,F1 gamma*,2,0.39040919515996864,False,0.24802466516046084,0.2549142391926959
+bannerman,2,65,conf_bannerman_s2,late,6,F1 gamma*,4,0.0,True,0.0,0.8014871124166745
+bannerman,2,70,conf_bannerman_s2,late,6,F1 gamma*,2,0.0,True,0.018372197419293385,0.18831502354775734
+bannerman,2,75,conf_bannerman_s2,late,7,F1 gamma*,5,0.03444787016118056,False,0.0,0.05052354290305684
+bannerman,2,80,conf_bannerman_s2,late,7,F1 gamma*,5,0.0,True,0.0,0.0367443948385868
+bannerman,2,85,conf_bannerman_s2,late,8,F1 gamma*,5,0.0,True,0.0,0.16764630145105225
+bannerman,2,90,conf_bannerman_s2,late,7,F1 gamma*,5,0.09875056112870206,False,0.0,0.10334361048352536
+bannerman,2,95,conf_bannerman_s2,late,8,F1 gamma*,0,0.0,True,0.00459304935482335,0.006889574032235024
+bannerman,4,0,conf_bannerman_s4,early,10,F1 gamma*,3,0.0,True,0.0,16.815428789225503
+bannerman,4,5,conf_bannerman_s4,early,6,F1 gamma*,4,0.9733068387852208,False,3.8633148518212392,2.3216704499628533
+bannerman,4,10,conf_bannerman_s4,early,7,F1 gamma*,6,0.0,True,0.0,5.678773707144026
+bannerman,4,15,conf_bannerman_s4,early,7,F1 gamma*,2,0.0,True,0.07593173919600993,3.9070331259037907
+bannerman,4,20,conf_bannerman_s4,middle,7,F1 gamma*,3,0.0,True,0.0,3.7275581059859486
+bannerman,4,25,conf_bannerman_s4,middle,5,F1 gamma*,4,0.17717405812401887,False,0.0,0.7777250863106485
+bannerman,4,30,conf_bannerman_s4,middle,7,F1 gamma*,0,0.40036735212442,False,0.0,1.1044616610328737
+bannerman,4,35,conf_bannerman_s4,middle,7,F1 gamma*,2,0.39116350494914354,False,0.6074539135680805,0.704094308908457
+bannerman,4,40,conf_bannerman_s4,middle,7,F1 gamma*,2,0.0,True,0.0,1.0699472341255964
+bannerman,4,45,conf_bannerman_s4,middle,7,F1 gamma*,0,0.5637356394855297,False,0.0,0.34054234548513607
+bannerman,4,50,conf_bannerman_s4,late,6,F1 gamma*,0,0.832948169362302,False,0.013805770762910924,0.14726155480438316
+bannerman,4,55,conf_bannerman_s4,late,8,F1 gamma*,5,0.02761154152581824,False,0.00690288538145546,0.0
+bannerman,4,60,conf_bannerman_s4,late,9,F1 gamma*,8,0.0023009617938218874,False,0.018407694350547895,0.0
+bannerman,4,65,conf_bannerman_s4,late,9,F1 gamma*,6,0.15186347839201142,False,0.016106732556729408,0.009203847175273948
+bannerman,4,70,conf_bannerman_s4,late,9,F1 gamma*,0,0.1380577076291023,False,0.016106732556729404,0.00690288538145546
+bannerman,4,75,conf_bannerman_s4,late,9,F1 gamma*,8,0.10124231892800761,False,0.03221346511345881,0.011504808969092435
+bannerman,4,80,conf_bannerman_s4,late,9,F1 gamma*,1,0.4993087092586057,False,0.0,0.016106732556729408
+bannerman,4,85,conf_bannerman_s4,late,7,F1 gamma*,6,0.06212596843310214,False,0.0023009617938184873,0.07823270098982855
+bannerman,4,90,conf_bannerman_s4,late,8,F1 gamma*,6,0.0,True,0.0,0.01380577076291092
+bannerman,4,95,conf_bannerman_s4,late,8,F1 gamma*,4,0.4279788936502271,False,0.004601923587636975,0.0
+eiffel,0,0,conf_eiffel_s0,early,9,F1 gamma*,3,1.2245869029918213,False,1.496205802527601,1.2982462655777953
+eiffel,0,5,conf_eiffel_s0,early,8,F1 gamma*,1,0.0,True,0.0,12.572732451393472
+eiffel,0,10,conf_eiffel_s0,early,8,F1 gamma*,2,0.28082631985902884,False,0.0,12.144587406362497
+eiffel,0,15,conf_eiffel_s0,early,8,F1 gamma*,2,0.0,True,0.0,3.6369310276824764
+eiffel,0,20,conf_eiffel_s0,middle,7,F1 gamma*,3,0.0,True,0.0,2.301855080811694
+eiffel,0,25,conf_eiffel_s0,middle,7,F1 gamma*,4,0.0,True,0.28082631985902673,0.7504047563446122
+eiffel,0,30,conf_eiffel_s0,middle,7,F1 gamma*,2,0.0,True,0.06445194226272744,1.0358347863652622
+eiffel,0,35,conf_eiffel_s0,middle,7,F1 gamma*,3,0.1703372759800703,False,0.0,0.21637437759629924
+eiffel,0,40,conf_eiffel_s0,middle,8,F1 gamma*,1,0.0,True,0.0,2.292647660488447
+eiffel,0,45,conf_eiffel_s0,middle,7,F1 gamma*,6,0.0,True,0.0,1.1555312505674704
+eiffel,0,50,conf_eiffel_s0,late,5,F1 gamma*,0,0.4787858568088388,False,0.9759865542641581,0.10128162355571453
+eiffel,0,55,conf_eiffel_s0,late,8,F1 gamma*,3,0.7319899156981169,False,0.6076897413342872,0.26701518937415647
+eiffel,0,60,conf_eiffel_s0,late,7,F1 gamma*,3,0.11048904387895853,False,0.1933558267881823,0.13350759468707823
+eiffel,0,65,conf_eiffel_s0,late,7,F1 gamma*,4,0.0,True,0.03682968129298714,1.9151434272353294
+eiffel,0,70,conf_eiffel_s0,late,7,F1 gamma*,2,0.4833895669704491,False,0.2900337401822734,0.04143339145461049
+eiffel,0,75,conf_eiffel_s0,late,7,F1 gamma*,1,0.0,True,0.13811130484870165,0.09207420323246776
+eiffel,0,80,conf_eiffel_s0,late,5,F1 gamma*,3,0.04603710161622532,False,0.0,0.0368296812929871
+eiffel,0,85,conf_eiffel_s0,late,6,F1 gamma*,1,0.0,True,0.0368296812929871,0.0
+eiffel,0,90,conf_eiffel_s0,late,7,F1 gamma*,0,0.17494098614169173,False,0.04143339145461049,0.004603710161623388
+eiffel,0,95,conf_eiffel_s0,late,5,F1 gamma*,0,0.1887521166265671,False,0.009207420323246777,0.0
+eiffel,2,0,conf_eiffel_s2,early,9,F1 gamma*,3,0.0,True,0.0,0.142855050259878
+eiffel,2,5,conf_eiffel_s2,early,8,F1 gamma*,3,0.0,True,2.2119491653142394,8.861621343540174
+eiffel,2,10,conf_eiffel_s2,early,6,F1 gamma*,5,0.0,True,0.0,4.387032511206576
+eiffel,2,15,conf_eiffel_s2,early,8,F1 gamma*,7,0.4838638799124828,False,2.2119491653142394,2.35019598814638
+eiffel,2,20,conf_eiffel_s2,middle,8,F1 gamma*,6,0.0,True,0.0,2.2810725767303097
+eiffel,2,25,conf_eiffel_s2,middle,7,F1 gamma*,2,0.16589618739857315,False,0.07373163884380796,0.7280999335826039
+eiffel,2,30,conf_eiffel_s2,middle,7,F1 gamma*,0,0.0,True,0.05990695656059408,2.248814984736144
+eiffel,2,35,conf_eiffel_s2,middle,7,F1 gamma*,4,0.0,True,0.02304113713869005,0.658976522166534
+eiffel,2,40,conf_eiffel_s2,middle,8,F1 gamma*,3,0.4377816056351014,False,0.18432909710951995,0.52994615418987
+eiffel,2,45,conf_eiffel_s2,middle,8,F1 gamma*,0,0.0,True,0.0,1.1520568569345
+eiffel,2,50,conf_eiffel_s2,late,7,F1 gamma*,4,0.0,True,0.0,0.6912341141607
+eiffel,2,55,conf_eiffel_s2,late,7,F1 gamma*,0,0.01843290971094147,False,0.073731638843808,0.059906956560594
+eiffel,2,60,conf_eiffel_s2,late,8,F1 gamma*,0,0.0,True,0.023041137138689993,0.433173378207372
+eiffel,2,65,conf_eiffel_s2,late,8,F1 gamma*,7,0.04608227427737033,False,0.16128795997083,0.027649364566427997
+eiffel,2,70,conf_eiffel_s2,late,6,F1 gamma*,4,0.0,True,0.013824682283214013,0.175112642254044
+eiffel,2,75,conf_eiffel_s2,late,7,F1 gamma*,1,0.21197846167595458,False,0.027649364566427997,0.0
+eiffel,2,80,conf_eiffel_s2,late,7,F1 gamma*,5,0.2350195988146453,False,0.0,0.101381003410236
+eiffel,2,85,conf_eiffel_s2,late,8,F1 gamma*,7,0.0,True,0.032257591994166,0.018432909710952
+eiffel,2,90,conf_eiffel_s2,late,7,F1 gamma*,3,0.027649364566417756,False,0.009216454855475995,0.018432909710952
+eiffel,2,95,conf_eiffel_s2,late,6,F1 gamma*,0,0.05069050170510847,False,0.0,0.004608227427738
+eiffel,4,0,conf_eiffel_s4,early,8,F1 gamma*,2,0.0,True,0.0,5.6707046087945585
+eiffel,4,5,conf_eiffel_s4,early,7,F1 gamma*,6,0.0,True,0.0,9.443496708390613
+eiffel,4,10,conf_eiffel_s4,early,7,F1 gamma*,0,0.8568245793954543,False,0.07831192392323949,3.4180851500613834
+eiffel,4,15,conf_eiffel_s4,early,7,F1 gamma*,3,0.0,True,0.0,6.44000409674638
+eiffel,4,20,conf_eiffel_s4,middle,7,F1 gamma*,6,0.11977117776494905,False,0.0,1.5017463058221172
+eiffel,4,25,conf_eiffel_s4,middle,8,F1 gamma*,1,0.0,True,0.0,0.06909875640285815
+eiffel,4,30,conf_eiffel_s4,middle,8,F1 gamma*,3,0.0,True,0.0,1.3681553767765913
+eiffel,4,35,conf_eiffel_s4,middle,7,F1 gamma*,3,0.29482136065220876,False,0.22111602048914614,0.5804295537840085
+eiffel,4,40,conf_eiffel_s4,middle,7,F1 gamma*,2,0.2994279444124004,False,0.21650943672895556,0.36392011705505295
+eiffel,4,45,conf_eiffel_s4,middle,7,F1 gamma*,1,0.2810016093716339,False,0.41919912217733946,0.11516459400476359
+eiffel,4,50,conf_eiffel_s4,late,8,F1 gamma*,7,0.00921316752039436,False,0.20729626920857447,0.14280409656590684
+eiffel,4,55,conf_eiffel_s4,late,8,F1 gamma*,5,0.05527900512227735,False,0.0,1.4648936357405928
+eiffel,4,60,conf_eiffel_s4,late,7,F1 gamma*,2,0.09213167520381038,False,0.05988558888247707,0.018426335040762173
+eiffel,4,65,conf_eiffel_s4,late,6,F1 gamma*,4,0.0,True,0.0,0.3408871982541002
+eiffel,4,70,conf_eiffel_s4,late,8,F1 gamma*,5,0.4284122896977327,False,0.1289843452853352,0.0322460863213338
+eiffel,4,75,conf_eiffel_s4,late,7,F1 gamma*,6,0.2211160204891427,False,0.023032918800952706,0.009213167520381087
+eiffel,4,80,conf_eiffel_s4,late,7,F1 gamma*,2,0.06909875640285223,False,0.00921316752038108,0.046065837601905434
+eiffel,4,85,conf_eiffel_s4,late,8,F1 gamma*,6,0.11977117776496016,False,0.01381975128057163,0.0
+eiffel,4,90,conf_eiffel_s4,late,5,F1 gamma*,0,0.0,True,0.03685267008152435,0.0
+eiffel,4,95,conf_eiffel_s4,late,3,F1 gamma*,2,0.00921316752039436,False,0.0,0.0
+fushimi,0,0,conf_fushimi_s0,early,10,F1 gamma*,3,0.0,True,0.0,29.534665474726122
+fushimi,0,5,conf_fushimi_s0,early,7,F1 gamma*,6,0.2312691504703812,False,0.0,1.50723687720352
+fushimi,0,10,conf_fushimi_s0,early,9,F1 gamma*,1,0.0,True,0.0,2.3047167064117318
+fushimi,0,15,conf_fushimi_s0,early,8,F1 gamma*,1,0.0,True,0.1555085666956012,0.9968497865102647
+fushimi,0,20,conf_fushimi_s0,middle,8,F1 gamma*,2,0.0,True,0.0,6.312052848182995
+fushimi,0,25,conf_fushimi_s0,middle,7,F1 gamma*,1,0.0,True,0.0,1.1722953489360712
+fushimi,0,30,conf_fushimi_s0,middle,7,F1 gamma*,0,0.16747076413373696,False,0.0,0.11164717608914965
+fushimi,0,35,conf_fushimi_s0,middle,8,F1 gamma*,0,0.0,True,0.0,2.7672550073524946
+fushimi,0,40,conf_fushimi_s0,middle,8,F1 gamma*,2,0.5741854770299093,False,0.0,0.9370387993196487
+fushimi,0,45,conf_fushimi_s0,middle,8,F1 gamma*,1,0.1594959658416384,False,0.0,0.2113321547401761
+fushimi,0,50,conf_fushimi_s0,late,8,F1 gamma*,0,0.22329435217830484,False,0.1714581632797655,0.0
+fushimi,0,55,conf_fushimi_s0,late,8,F1 gamma*,0,0.0,True,0.08772278121290328,0.05582358804457482
+fushimi,0,60,conf_fushimi_s0,late,8,F1 gamma*,3,0.0,True,0.0,0.2990549359530794
+fushimi,0,65,conf_fushimi_s0,late,9,F1 gamma*,6,0.0,True,0.0,0.45855090179472174
+fushimi,0,70,conf_fushimi_s0,late,6,F1 gamma*,4,0.0,True,0.0,0.10367237779706752
+fushimi,0,75,conf_fushimi_s0,late,7,F1 gamma*,6,0.5582358804457455,False,0.02791179402228741,0.15152116754956022
+fushimi,0,80,conf_fushimi_s0,late,7,F1 gamma*,6,0.31500453253723304,False,0.0,0.07576058377478011
+fushimi,0,85,conf_fushimi_s0,late,6,F1 gamma*,5,0.0,True,0.0,0.0
+fushimi,0,90,conf_fushimi_s0,late,7,F1 gamma*,1,0.04784878975250262,False,0.007974798292082117,0.0
+fushimi,0,95,conf_fushimi_s0,late,6,F1 gamma*,0,0.08772278121289556,False,0.0,0.007974798292082117
+fushimi,2,0,conf_fushimi_s2,early,8,F1 gamma*,2,1.2891930606398212,False,0.7560082763011309,9.223300970873787
+fushimi,2,5,conf_fushimi_s2,early,7,F1 gamma*,2,0.0,True,0.0,15.315136081489733
+fushimi,2,10,conf_fushimi_s2,early,6,F1 gamma*,0,0.0,True,0.2108865191787359,5.455196562151838
+fushimi,2,15,conf_fushimi_s2,early,6,F1 gamma*,2,0.6406175393920188,False,0.5013528569154859,1.9457265637434347
+fushimi,2,20,conf_fushimi_s2,middle,7,F1 gamma*,5,0.0,True,0.0,3.1314658602578387
+fushimi,2,25,conf_fushimi_s2,middle,6,F1 gamma*,4,0.06764284577431834,False,0.027852936495304736,0.7520292853732293
+fushimi,2,30,conf_fushimi_s2,middle,6,F1 gamma*,5,0.17109660989973463,False,0.11539073690911983,0.529205793410791
+fushimi,2,35,conf_fushimi_s2,middle,8,F1 gamma*,1,0.16313862804393509,False,0.0,0.9231258952729587
+fushimi,2,40,conf_fushimi_s2,middle,8,F1 gamma*,4,0.07162183670221811,False,0.16711761897182875,0.6247015756804074
+fushimi,2,45,conf_fushimi_s2,middle,8,F1 gamma*,7,0.3222982651599593,False,0.08753780041381498,0.5411427661944931
+fushimi,2,50,conf_fushimi_s2,late,8,F1 gamma*,5,0.051726882062708146,False,0.0,0.4734999204201814
+fushimi,2,55,conf_fushimi_s2,late,7,F1 gamma*,1,0.0,True,0.0,0.680407448671017
+fushimi,2,60,conf_fushimi_s2,late,7,F1 gamma*,6,0.03581091835109795,False,0.039789909279006844,0.003978990927900684
+fushimi,2,65,conf_fushimi_s2,late,7,F1 gamma*,5,0.05570587299060792,False,0.015915963711602737,0.023873945567404103
+fushimi,2,70,conf_fushimi_s2,late,8,F1 gamma*,3,0.0,True,0.0,0.07957981855801369
+fushimi,2,75,conf_fushimi_s2,late,7,F1 gamma*,0,0.0,True,0.0,0.06764284577431164
+fushimi,2,80,conf_fushimi_s2,late,7,F1 gamma*,0,0.5968486391851102,False,0.0,0.019894954639503422
+fushimi,2,85,conf_fushimi_s2,late,8,F1 gamma*,0,0.0,True,0.0,0.7599872672290306
+fushimi,2,90,conf_fushimi_s2,late,8,F1 gamma*,2,0.12334871876492626,False,0.011936972783702052,0.051726882062708895
+fushimi,2,95,conf_fushimi_s2,late,7,F1 gamma*,3,0.0,True,0.011936972783702052,0.0
+fushimi,4,0,conf_fushimi_s4,early,9,F1 gamma*,4,0.0,True,0.0,10.782400374840368
+fushimi,4,5,conf_fushimi_s4,early,8,F1 gamma*,1,2.6159664129505655,False,4.515229699065353,4.304200445052599
+fushimi,4,10,conf_fushimi_s4,early,9,F1 gamma*,7,0.003981684037979605,False,0.1035237849873889,7.071470851446268
+fushimi,4,15,conf_fushimi_s4,early,9,F1 gamma*,2,0.0,True,0.0,3.1176586017356014
+fushimi,4,20,conf_fushimi_s4,middle,8,F1 gamma*,3,0.0,True,0.0,2.110292540127546
+fushimi,4,25,conf_fushimi_s4,middle,7,F1 gamma*,5,0.0,True,0.023890104227858977,2.4487356833555487
+fushimi,4,30,conf_fushimi_s4,middle,8,F1 gamma*,1,0.0,True,0.0,1.7479592926716845
+fushimi,4,35,conf_fushimi_s4,middle,7,F1 gamma*,5,0.0,True,0.0,0.7366115470256529
+fushimi,4,40,conf_fushimi_s4,middle,7,F1 gamma*,6,0.0,True,0.0,0.14732230940513058
+fushimi,4,45,conf_fushimi_s4,middle,8,F1 gamma*,2,0.0,True,0.003981684037976607,0.9794942733422195
+fushimi,4,50,conf_fushimi_s4,late,7,F1 gamma*,6,0.2309376742026359,False,0.035835156341788466,1.1666334231271152
+fushimi,4,55,conf_fushimi_s4,late,7,F1 gamma*,0,0.25482777843049975,False,0.0,0.09954210094941256
+fushimi,4,60,conf_fushimi_s4,late,6,F1 gamma*,0,0.059725260569643,False,0.0,0.4937288207090863
+fushimi,4,65,conf_fushimi_s4,late,7,F1 gamma*,3,0.0,True,0.0,0.11945052113929507
+fushimi,4,70,conf_fushimi_s4,late,8,F1 gamma*,1,0.0,True,0.0,0.3105713549621672
+fushimi,4,75,conf_fushimi_s4,late,6,F1 gamma*,4,0.01194505211392638,False,0.007963368075953006,0.01592673615190601
+fushimi,4,80,conf_fushimi_s4,late,9,F1 gamma*,6,0.2906629347722789,False,0.0,0.019908420189882512
+fushimi,4,85,conf_fushimi_s4,late,3,F1 gamma*,1,0.0,True,0.0,0.0
+fushimi,4,90,conf_fushimi_s4,late,6,F1 gamma*,5,0.01592673615190554,False,0.0,0.04379852441774153
+fushimi,4,95,conf_fushimi_s4,late,6,F1 gamma*,4,0.0,True,0.0,0.1592673615190601
+liberty,0,0,conf_liberty_s0,early,9,F1 gamma*,7,0.0,True,0.0,10.720595585618154
+liberty,0,5,conf_liberty_s0,early,7,F1 gamma*,6,0.0,True,0.0,16.466756172315826
+liberty,0,10,conf_liberty_s0,early,7,F1 gamma*,6,0.0,True,0.0,2.9050307157727326
+liberty,0,15,conf_liberty_s0,early,7,F1 gamma*,0,0.1523789377139595,False,0.08356264326249818,0.5456149060080767
+liberty,0,20,conf_liberty_s0,middle,7,F1 gamma*,0,0.0,True,0.0,2.94926976220582
+liberty,0,25,conf_liberty_s0,middle,7,F1 gamma*,1,0.0,True,0.0,4.246948457576381
+liberty,0,30,conf_liberty_s0,middle,6,F1 gamma*,4,0.0,True,0.078647193658822,1.8039700045492264
+liberty,0,35,conf_liberty_s0,middle,7,F1 gamma*,1,0.15729438731765244,False,0.0,0.3834050690867566
+liberty,0,40,conf_liberty_s0,middle,7,F1 gamma*,1,0.04915449603676292,False,0.0,0.28509607701322925
+liberty,0,45,conf_liberty_s0,middle,8,F1 gamma*,5,0.009830899207352584,False,0.004915449603676366,0.0
+liberty,0,50,conf_liberty_s0,late,8,F1 gamma*,7,0.0,True,0.0,0.0
+liberty,0,55,conf_liberty_s0,late,8,F1 gamma*,6,0.0,True,0.0147463488110291,0.0
+liberty,0,60,conf_liberty_s0,late,6,F1 gamma*,1,0.0,True,0.0,0.3047578754279347
+liberty,0,65,conf_liberty_s0,late,7,F1 gamma*,0,0.0,True,0.0,0.7520637893624841
+liberty,0,70,conf_liberty_s0,late,8,F1 gamma*,6,0.1769561857323576,False,0.0442390464330873,0.0147463488110291
+liberty,0,75,conf_liberty_s0,late,6,F1 gamma*,2,0.014746348811034427,False,0.009830899207352733,0.0
+liberty,0,80,conf_liberty_s0,late,6,F1 gamma*,0,0.039323596829410334,False,0.0,0.009830899207352733
+liberty,0,85,conf_liberty_s0,late,7,F1 gamma*,5,0.009830899207352584,False,0.0,0.0
+liberty,0,90,conf_liberty_s0,late,8,F1 gamma*,3,0.024577248018375908,False,0.0,0.0
+liberty,0,95,conf_liberty_s0,late,6,F1 gamma*,1,0.0,True,0.0,0.0
+liberty,2,0,conf_liberty_s2,early,9,F1 gamma*,0,0.0,True,0.0,15.07065176412282
+liberty,2,5,conf_liberty_s2,early,6,F1 gamma*,4,0.0,True,0.0,2.090270313375229
+liberty,2,10,conf_liberty_s2,early,6,F1 gamma*,3,0.0640884765893357,False,0.1971953125825685,4.239699220525229
+liberty,2,15,conf_liberty_s2,early,7,F1 gamma*,3,0.28593320324472593,False,0.9021685550652523,0.3253722657612385
+liberty,2,20,conf_liberty_s2,middle,7,F1 gamma*,1,0.0,True,0.0,6.882116409131651
+liberty,2,25,conf_liberty_s2,middle,6,F1 gamma*,5,0.0,True,0.0,3.1354054700628438
+liberty,2,30,conf_liberty_s2,middle,6,F1 gamma*,1,0.0,True,0.0,5.777822658669265
+liberty,2,35,conf_liberty_s2,middle,8,F1 gamma*,7,0.1725458985097572,False,0.23663437509908258,0.06408847658933486
+liberty,2,40,conf_liberty_s2,middle,7,F1 gamma*,4,0.009859765629116612,False,0.0,0.05915859377477064
+liberty,2,45,conf_liberty_s2,middle,6,F1 gamma*,1,0.0,True,0.0,0.30565273450298164
+liberty,2,50,conf_liberty_s2,late,8,F1 gamma*,6,0.6556744143370485,False,0.5225675783438073,0.08380800784759174
+liberty,2,55,conf_liberty_s2,late,6,F1 gamma*,3,0.044368945331074716,False,0.22677460946995412,0.00492988281456422
+liberty,2,60,conf_liberty_s2,late,7,F1 gamma*,2,0.0,True,0.0,1.0007662113565365
+liberty,2,65,conf_liberty_s2,late,7,F1 gamma*,5,0.22677460946994854,False,0.18733554695344035,0.0
+liberty,2,70,conf_liberty_s2,late,6,F1 gamma*,0,0.004929882814563857,False,0.0,0.00985976562912844
+liberty,2,75,conf_liberty_s2,late,7,F1 gamma*,5,0.11338730473497982,False,0.01478964844369266,0.0
+liberty,2,80,conf_liberty_s2,late,8,F1 gamma*,6,0.0,True,0.01478964844369266,0.0
+liberty,2,85,conf_liberty_s2,late,7,F1 gamma*,6,0.0,True,0.01478964844369266,0.0
+liberty,2,90,conf_liberty_s2,late,6,F1 gamma*,1,0.10845742192041596,False,0.0,0.0
+liberty,2,95,conf_liberty_s2,late,7,F1 gamma*,4,0.0,True,0.0,0.0
+liberty,4,0,conf_liberty_s4,early,7,F1 gamma*,3,0.0,True,0.0,3.8374700251567835
+liberty,4,5,conf_liberty_s4,early,7,F1 gamma*,3,1.5645070102562215,False,0.0,19.339864960117072
+liberty,4,10,conf_liberty_s4,early,7,F1 gamma*,6,0.0,True,0.0,2.77478601819029
+liberty,4,15,conf_liberty_s4,early,7,F1 gamma*,0,0.0,True,0.0,10.371008734654486
+liberty,4,20,conf_liberty_s4,middle,7,F1 gamma*,4,0.0,True,0.09839666731171248,1.2151988412996482
+liberty,4,25,conf_liberty_s4,middle,7,F1 gamma*,4,0.0,True,0.0,3.7538328579418283
+liberty,4,30,conf_liberty_s4,middle,5,F1 gamma*,0,0.0,True,0.1475950009675686,0.5608610036767607
+liberty,4,35,conf_liberty_s4,middle,7,F1 gamma*,1,0.06887766711819454,False,0.014759500096756861,0.10823633404288364
+liberty,4,40,conf_liberty_s4,middle,7,F1 gamma*,0,0.0,True,0.0,0.7724138383969423
+liberty,4,45,conf_liberty_s4,middle,7,F1 gamma*,4,0.0,True,0.20663300135459606,0.4378651695371202
+liberty,4,50,conf_liberty_s4,late,8,F1 gamma*,7,0.12299583413962756,False,0.029519000193513723,0.16235450106432547
+liberty,4,55,conf_liberty_s4,late,7,F1 gamma*,0,0.2705908351072095,False,0.10823633404288364,0.0
+liberty,4,60,conf_liberty_s4,late,8,F1 gamma*,7,0.09347683394612671,False,0.05903800038702744,0.0245991668279281
+liberty,4,65,conf_liberty_s4,late,6,F1 gamma*,5,0.06887766711820564,False,0.03443883355909934,0.044278500290270584
+liberty,4,70,conf_liberty_s4,late,7,F1 gamma*,1,0.009839666731181751,False,0.00491983336558562,0.0
+liberty,4,75,conf_liberty_s4,late,6,F1 gamma*,2,0.0393586669246937,False,0.0245991668279281,0.014759500096756861
+liberty,4,80,conf_liberty_s4,late,7,F1 gamma*,6,0.0,True,0.0,0.0
+liberty,4,85,conf_liberty_s4,late,7,F1 gamma*,1,0.009839666731170649,False,0.0,0.0
+liberty,4,90,conf_liberty_s4,late,7,F1 gamma*,6,0.0,True,0.029519000193513723,0.014759500096756861
+liberty,4,95,conf_liberty_s4,late,8,F1 gamma*,1,0.08855700058053584,False,0.044278500290270584,0.0
+redeemer,0,0,conf_redeemer_s0,early,8,F1 gamma*,2,0.0,True,0.0,10.456686189641882
+redeemer,0,5,conf_redeemer_s0,early,8,F1 gamma*,6,6.317672198919338,False,0.0,16.28536095505813
+redeemer,0,10,conf_redeemer_s0,early,7,F1 gamma*,1,0.1091512128355121,False,2.4187908764349073,1.1089763224087843
+redeemer,0,15,conf_redeemer_s0,early,6,F1 gamma*,4,0.4628011424225642,False,0.0,3.226509851417683
+redeemer,0,20,conf_redeemer_s0,middle,7,F1 gamma*,0,0.0,True,0.0,0.3449178325602124
+redeemer,0,25,conf_redeemer_s0,middle,8,F1 gamma*,4,0.0,True,0.0,20.1929743745694
+redeemer,0,30,conf_redeemer_s0,middle,9,F1 gamma*,0,0.0,True,0.02619629108052246,0.3798462206675757
+redeemer,0,35,conf_redeemer_s0,middle,8,F1 gamma*,3,0.2794271048589092,False,0.0,0.5632202582312329
+redeemer,0,40,conf_redeemer_s0,middle,8,F1 gamma*,2,0.0,True,0.0,2.3751303913007034
+redeemer,0,45,conf_redeemer_s0,middle,8,F1 gamma*,1,0.0,True,0.0,0.18337403756365722
+redeemer,0,50,conf_redeemer_s0,late,8,F1 gamma*,4,0.030562339593953602,False,0.01746419405368164,0.0
+redeemer,0,55,conf_redeemer_s0,late,9,F1 gamma*,1,0.0,True,0.00873209702684082,0.0
+redeemer,0,60,conf_redeemer_s0,late,7,F1 gamma*,2,0.0,True,0.00873209702684082,0.0
+redeemer,0,65,conf_redeemer_s0,late,6,F1 gamma*,0,0.0,True,0.0,0.0
+redeemer,0,70,conf_redeemer_s0,late,7,F1 gamma*,0,0.0,True,0.0,0.0
+redeemer,0,75,conf_redeemer_s0,late,7,F1 gamma*,6,0.0130981455402579,False,0.01746419405368164,0.0
+redeemer,0,80,conf_redeemer_s0,late,8,F1 gamma*,0,0.0,True,0.00436604851342041,0.0
+redeemer,0,85,conf_redeemer_s0,late,9,F1 gamma*,6,0.0,True,0.03056233959394287,0.0
+redeemer,0,90,conf_redeemer_s0,late,9,F1 gamma*,4,0.0,True,0.0,0.0
+redeemer,0,95,conf_redeemer_s0,late,5,F1 gamma*,4,0.2401326682381133,False,0.00873209702684082,0.0
+redeemer,2,0,conf_redeemer_s2,early,9,F1 gamma*,2,1.8058351759873918,False,0.0,17.16641857076091
+redeemer,2,5,conf_redeemer_s2,early,8,F1 gamma*,5,0.0,True,1.2610089915045766,5.457049363932699
+redeemer,2,10,conf_redeemer_s2,early,8,F1 gamma*,4,0.0,True,0.0,10.830617296372063
+redeemer,2,15,conf_redeemer_s2,early,8,F1 gamma*,2,0.171356622538954,False,0.10984398880701884,1.1819213195635232
+redeemer,2,20,conf_redeemer_s2,middle,7,F1 gamma*,6,0.0,True,0.0,1.3269153847887882
+redeemer,2,25,conf_redeemer_s2,middle,7,F1 gamma*,5,0.0,True,0.06590639328421133,0.27241309224140686
+redeemer,2,30,conf_redeemer_s2,middle,7,F1 gamma*,2,0.07469391238876799,False,0.008787519104561492,0.1274190270161419
+redeemer,2,35,conf_redeemer_s2,middle,8,F1 gamma*,1,0.03954383597052358,False,0.05272511462736906,0.02636255731368453
+redeemer,2,40,conf_redeemer_s2,middle,7,F1 gamma*,1,0.00878751910456943,False,0.008787519104561513,0.0043937595522807555
+redeemer,2,45,conf_redeemer_s2,middle,7,F1 gamma*,0,0.0,True,0.0,0.0043937595522807555
+redeemer,2,50,conf_redeemer_s2,late,7,F1 gamma*,1,0.08348143149333742,False,0.0,0.6019450586624635
+redeemer,2,55,conf_redeemer_s2,late,7,F1 gamma*,6,0.0,True,0.0,0.02636255731368453
+redeemer,2,60,conf_redeemer_s2,late,8,F1 gamma*,2,0.0,True,0.0,0.98859589926317
+redeemer,2,65,conf_redeemer_s2,late,8,F1 gamma*,6,0.0,True,0.0,0.0
+redeemer,2,70,conf_redeemer_s2,late,7,F1 gamma*,5,0.026362557313674984,False,0.0043937595522807555,0.0
+redeemer,2,75,conf_redeemer_s2,late,9,F1 gamma*,6,0.0,True,0.0,0.0
+redeemer,2,80,conf_redeemer_s2,late,8,F1 gamma*,0,0.0,True,0.0,0.0
+redeemer,2,85,conf_redeemer_s2,late,8,F1 gamma*,5,0.0,True,0.0,0.0
+redeemer,2,90,conf_redeemer_s2,late,8,F1 gamma*,3,0.0,True,0.0,0.0
+redeemer,2,95,conf_redeemer_s2,late,8,F1 gamma*,3,0.0,True,0.0,0.0
+redeemer,4,0,conf_redeemer_s4,early,8,F1 gamma*,7,0.0,True,0.0,7.463438142049892
+redeemer,4,5,conf_redeemer_s4,early,8,F1 gamma*,4,0.0,True,0.0,21.080708789721907
+redeemer,4,10,conf_redeemer_s4,early,7,F1 gamma*,2,0.5387340912395011,False,1.2789459726986903,0.4336152441683916
+redeemer,4,15,conf_redeemer_s4,early,8,F1 gamma*,5,0.0,True,0.0,1.1519273658210807
+redeemer,4,20,conf_redeemer_s4,middle,7,F1 gamma*,2,0.1051188470711284,False,0.0,0.08321908726464082
+redeemer,4,25,conf_redeemer_s4,middle,7,F1 gamma*,6,0.0,True,0.38981572455542274,0.39419567651671966
+redeemer,4,30,conf_redeemer_s4,middle,8,F1 gamma*,2,0.0,True,0.0,1.3096056364277686
+redeemer,4,35,conf_redeemer_s4,middle,8,F1 gamma*,3,0.4336152441683949,False,1.1869669815114552,2.9871272376044757
+redeemer,4,40,conf_redeemer_s4,middle,6,F1 gamma*,2,1.2964657805438762,False,0.0,8.229929735276848
+redeemer,4,45,conf_redeemer_s4,middle,8,F1 gamma*,0,0.10949879903242588,False,0.03941956765167198,0.5518739471234075
+redeemer,4,50,conf_redeemer_s4,late,6,F1 gamma*,0,0.017519807845178814,False,0.0,0.09197899118723459
+redeemer,4,55,conf_redeemer_s4,late,8,F1 gamma*,6,0.026279711767784875,False,0.00875990392259377,0.0
+redeemer,4,60,conf_redeemer_s4,late,8,F1 gamma*,6,0.026279711767784875,False,0.04379951961296885,0.013139855883890654
+redeemer,4,65,conf_redeemer_s4,late,7,F1 gamma*,1,0.008759903922594958,False,0.0,0.0
+redeemer,4,70,conf_redeemer_s4,late,6,F1 gamma*,4,0.021899759806487396,False,0.008759903922593768,0.026279711767781308
+redeemer,4,75,conf_redeemer_s4,late,7,F1 gamma*,6,0.0,True,0.008759903922593768,0.004379951961296885
+redeemer,4,80,conf_redeemer_s4,late,7,F1 gamma*,0,0.004379951961297479,False,0.0,0.013139855883890654
+redeemer,4,85,conf_redeemer_s4,late,7,F1 gamma*,2,0.0,True,0.0,0.004379951961296885
+redeemer,4,90,conf_redeemer_s4,late,7,F1 gamma*,3,0.013139855883892437,False,0.0,0.004379951961296885
+redeemer,4,95,conf_redeemer_s4,late,8,F1 gamma*,4,0.0,True,0.0,0.0
+sestino_museum,0,0,conf_sestino_museum_s0,early,7,F1 gamma*,1,0.0,True,0.0,7.131534387722016
+sestino_museum,0,5,conf_sestino_museum_s0,early,8,F1 gamma*,5,0.0,True,0.0,4.429513275930396
+sestino_museum,0,10,conf_sestino_museum_s0,early,8,F1 gamma*,7,0.0,True,0.0,14.99621717044349
+sestino_museum,0,15,conf_sestino_museum_s0,early,9,F1 gamma*,0,1.977879453831466,False,6.848722844687827,1.3203876499621716
+sestino_museum,0,20,conf_sestino_museum_s0,middle,7,F1 gamma*,0,0.1314983607738629,False,0.0,0.2161616889433296
+sestino_museum,0,25,conf_sestino_museum_s0,middle,8,F1 gamma*,6,0.0,True,0.5872392549627121,2.7128291962387863
+sestino_museum,0,30,conf_sestino_museum_s0,middle,8,F1 gamma*,7,0.04323233778866786,False,0.04863638001224915,0.01621212667074972
+sestino_museum,0,35,conf_sestino_museum_s0,middle,6,F1 gamma*,2,0.014410779262885587,False,0.0,0.05584176964369348
+sestino_museum,0,40,conf_sestino_museum_s0,middle,9,F1 gamma*,4,0.009006737039307655,False,0.0,0.02521886371005512
+sestino_museum,0,45,conf_sestino_museum_s0,middle,6,F1 gamma*,5,0.003602694815718621,False,0.0,0.0
+sestino_museum,0,50,conf_sestino_museum_s0,late,7,F1 gamma*,2,0.0,True,0.0,0.0
+sestino_museum,0,55,conf_sestino_museum_s0,late,5,F1 gamma*,0,0.0,True,0.0,0.0
+sestino_museum,0,60,conf_sestino_museum_s0,late,8,F1 gamma*,0,0.0,True,0.0,0.0
+sestino_museum,0,65,conf_sestino_museum_s0,late,6,F1 gamma*,0,0.0,True,0.0,0.0
+sestino_museum,0,70,conf_sestino_museum_s0,late,5,F1 gamma*,3,0.0,True,0.0,0.0
+sestino_museum,0,75,conf_sestino_museum_s0,late,8,F1 gamma*,7,0.0,True,0.0,0.0
+sestino_museum,0,80,conf_sestino_museum_s0,late,6,F1 gamma*,5,0.0,True,0.0,0.0
+sestino_museum,0,85,conf_sestino_museum_s0,late,8,F1 gamma*,6,0.06845120149872042,False,0.0,0.0
+sestino_museum,0,90,conf_sestino_museum_s0,late,5,F1 gamma*,3,0.0,True,0.0,0.0
+sestino_museum,0,95,conf_sestino_museum_s0,late,8,F1 gamma*,5,0.0,True,0.0,0.0
+sestino_museum,2,0,conf_sestino_museum_s2,early,6,F1 gamma*,5,0.0,True,0.0,15.856008355693216
+sestino_museum,2,5,conf_sestino_museum_s2,early,8,F1 gamma*,6,0.0,True,0.0,6.626929102663377
+sestino_museum,2,10,conf_sestino_museum_s2,early,9,F1 gamma*,0,1.0804775710864245,False,0.0,11.935675568601322
+sestino_museum,2,15,conf_sestino_museum_s2,early,8,F1 gamma*,7,0.0,True,4.2210657110442815,4.637049575912553
+sestino_museum,2,20,conf_sestino_museum_s2,middle,8,F1 gamma*,3,0.1026453692532181,False,0.045019898795267466,1.0552664277610704
+sestino_museum,2,25,conf_sestino_museum_s2,middle,8,F1 gamma*,5,0.0,True,0.322342475374116,6.142514991626299
+sestino_museum,2,30,conf_sestino_museum_s2,middle,6,F1 gamma*,4,0.0,True,0.005402387855432067,0.23230267778358035
+sestino_museum,2,35,conf_sestino_museum_s2,middle,8,F1 gamma*,7,0.0,True,0.05222308260251032,0.14586447209666673
+sestino_museum,2,40,conf_sestino_museum_s2,middle,8,F1 gamma*,2,0.025211143325343244,False,0.0,0.021609551421728403
+sestino_museum,2,45,conf_sestino_museum_s2,middle,8,F1 gamma*,1,0.009003979759047986,False,0.0,0.005402387855432101
+sestino_museum,2,50,conf_sestino_museum_s2,late,5,F1 gamma*,2,0.0,True,0.0,0.0
+sestino_museum,2,55,conf_sestino_museum_s2,late,8,F1 gamma*,2,0.0,True,0.0,0.0
+sestino_museum,2,60,conf_sestino_museum_s2,late,7,F1 gamma*,1,0.0,True,0.0,0.0
+sestino_museum,2,65,conf_sestino_museum_s2,late,7,F1 gamma*,4,0.0,True,0.0,0.0018007959518107004
+sestino_museum,2,70,conf_sestino_museum_s2,late,8,F1 gamma*,5,0.03961751093982668,False,0.07563342997604941,0.041418306891646106
+sestino_museum,2,75,conf_sestino_museum_s2,late,8,F1 gamma*,1,0.032414327132590515,False,0.0,0.05042228665069961
+sestino_museum,2,80,conf_sestino_museum_s2,late,6,F1 gamma*,4,0.05942626640975668,False,0.06662945021699593,0.028812735228971206
+sestino_museum,2,85,conf_sestino_museum_s2,late,7,F1 gamma*,1,0.025211143325354346,False,0.0036015919036213994,0.0
+sestino_museum,2,90,conf_sestino_museum_s2,late,7,F1 gamma*,6,0.0414183068916496,False,0.0,0.023410347373539104
+sestino_museum,2,95,conf_sestino_museum_s2,late,5,F1 gamma*,4,0.0,True,0.0,0.0
+sestino_museum,4,0,conf_sestino_museum_s4,early,9,F1 gamma*,8,0.0,True,0.6119510439164877,11.97264218862491
+sestino_museum,4,5,conf_sestino_museum_s4,early,8,F1 gamma*,0,1.4074874010079226,False,14.134269258459321,5.345572354211663
+sestino_museum,4,10,conf_sestino_museum_s4,early,6,F1 gamma*,0,1.5532757379409627,False,9.26025917926566,5.388768898488121
+sestino_museum,4,15,conf_sestino_museum_s4,early,7,F1 gamma*,6,0.0,True,0.0,8.565514758819294
+sestino_museum,4,20,conf_sestino_museum_s4,middle,7,F1 gamma*,0,0.0,True,0.0,1.3660907127429807
+sestino_museum,4,25,conf_sestino_museum_s4,middle,9,F1 gamma*,7,0.14398848092151972,False,0.4229661627069835,0.12419006479481642
+sestino_museum,4,30,conf_sestino_museum_s4,middle,6,F1 gamma*,3,0.0,True,0.0,0.2429805615550756
+sestino_museum,4,35,conf_sestino_museum_s4,middle,8,F1 gamma*,3,0.0,True,0.008999280057595399,0.2357811375089993
+sestino_museum,4,40,conf_sestino_museum_s4,middle,7,F1 gamma*,3,0.017998560115195517,False,0.010799136069114479,0.05579553635709143
+sestino_museum,4,45,conf_sestino_museum_s4,middle,6,F1 gamma*,1,0.0,True,0.0,0.0017998560115190785
+sestino_museum,4,50,conf_sestino_museum_s4,late,7,F1 gamma*,1,0.0035997120230391033,False,0.0,0.0
+sestino_museum,4,55,conf_sestino_museum_s4,late,4,F1 gamma*,2,0.0,True,0.0,0.0
+sestino_museum,4,60,conf_sestino_museum_s4,late,3,F1 gamma*,2,0.0,True,0.0,0.0
+sestino_museum,4,65,conf_sestino_museum_s4,late,5,F1 gamma*,4,0.0,True,0.0,0.0
+sestino_museum,4,70,conf_sestino_museum_s4,late,8,F1 gamma*,7,0.0,True,0.0,0.0
+sestino_museum,4,75,conf_sestino_museum_s4,late,7,F1 gamma*,3,0.0,True,0.0,0.0
+sestino_museum,4,80,conf_sestino_museum_s4,late,7,F1 gamma*,3,0.0017998560115195517,False,0.012598992080633545,0.09899208063354932
+sestino_museum,4,85,conf_sestino_museum_s4,late,6,F1 gamma*,4,0.02339812814974307,False,0.0053995680345572325,0.03959683225341973
+sestino_museum,4,90,conf_sestino_museum_s4,late,9,F1 gamma*,8,0.10619150467963134,False,0.025197984161267117,0.2501799856011519
+sestino_museum,4,95,conf_sestino_museum_s4,late,8,F1 gamma*,3,0.0629949604031732,False,0.02159827213822893,0.15658747300215983
+bannerman,0,0,conf_bannerman_s0,early,5,F2 soft*,0,0.0,True,0.0,1.7236612175007449
+bannerman,0,5,conf_bannerman_s0,early,8,F2 soft*,0,0.19049784427771232,False,0.9570795308892279,7.0713717857786875
+bannerman,0,10,conf_bannerman_s0,early,7,F2 soft*,3,0.0,True,1.3679122311989937,3.557489863017516
+bannerman,0,15,conf_bannerman_s0,early,8,F2 soft*,6,0.2088590822803824,False,0.0,5.756248113837374
+bannerman,0,20,conf_bannerman_s0,middle,7,F2 soft*,5,0.0,True,0.0,4.822120130451484
+bannerman,0,25,conf_bannerman_s0,middle,7,F2 soft*,6,0.0,True,0.0,3.6607718267825406
+bannerman,0,30,conf_bannerman_s0,middle,7,F2 soft*,2,0.0,True,0.07574010676101794,1.7420224555034158
+bannerman,0,35,conf_bannerman_s0,middle,7,F2 soft*,6,0.22033485603205616,False,0.0,0.7252689011055065
+bannerman,0,40,conf_bannerman_s0,middle,4,F2 soft*,3,0.0,True,0.0,0.09869165426435689
+bannerman,0,45,conf_bannerman_s0,middle,6,F2 soft*,5,0.0,True,0.0,0.6449384848438207
+bannerman,0,50,conf_bannerman_s0,late,6,F2 soft*,0,0.23640093928437578,False,0.0,3.0158333419387198
+bannerman,0,55,conf_bannerman_s0,late,7,F2 soft*,4,0.17443176102537317,False,0.0,0.7596962223605147
+bannerman,0,60,conf_bannerman_s0,late,6,F2 soft*,0,0.0,True,0.0,0.42001331931110025
+bannerman,0,65,conf_bannerman_s0,late,7,F2 soft*,0,0.9180619001335599,False,0.05508371400801315,0.367224760053421
+bannerman,0,70,conf_bannerman_s0,late,6,F2 soft*,1,0.17902207052604702,False,0.025246702253672704,0.2823040342910674
+bannerman,0,75,conf_bannerman_s0,late,6,F2 soft*,1,0.7413349843578443,False,0.0,0.49804858082245224
+bannerman,0,80,conf_bannerman_s0,late,7,F2 soft*,2,0.3236168197970679,False,0.03213216650467434,0.02295154750333881
+bannerman,0,85,conf_bannerman_s0,late,8,F2 soft*,0,0.16525114202403657,False,0.004590309500667765,0.016066083252337167
+bannerman,0,90,conf_bannerman_s0,late,7,F2 soft*,1,0.1629559872737052,False,0.0,0.09639649951402302
+bannerman,0,95,conf_bannerman_s0,late,7,F2 soft*,0,0.02983701175434117,False,0.0,0.032132166504674334
+bannerman,2,0,conf_bannerman_s2,early,9,F2 soft*,5,0.0,True,0.8359349825778501,10.423925510771593
+bannerman,2,5,conf_bannerman_s2,early,9,F2 soft*,7,0.7945975383844397,False,0.277879485966813,6.9286149517510225
+bannerman,2,10,conf_bannerman_s2,early,7,F2 soft*,2,0.0,True,0.0,5.038575142241214
+bannerman,2,15,conf_bannerman_s2,early,6,F2 soft*,3,0.0,True,0.0,1.0541048269319588
+bannerman,2,20,conf_bannerman_s2,middle,7,F2 soft*,0,0.0,True,0.043633968870821827,0.19061154822516901
+bannerman,2,25,conf_bannerman_s2,middle,7,F2 soft*,1,0.0,True,0.0,1.6557942924138176
+bannerman,2,30,conf_bannerman_s2,middle,9,F2 soft*,3,0.0,True,0.0,1.6259394716074658
+bannerman,2,35,conf_bannerman_s2,middle,8,F2 soft*,5,0.0,True,0.0,2.535363243862489
+bannerman,2,40,conf_bannerman_s2,middle,7,F2 soft*,1,0.08497141306422762,False,0.11023318451576036,0.41337444193410144
+bannerman,2,45,conf_bannerman_s2,middle,8,F2 soft*,5,0.0,True,0.009186098709646706,0.9852090866096085
+bannerman,2,50,conf_bannerman_s2,late,7,F2 soft*,6,0.0,True,0.0,4.645869422403818
+bannerman,2,55,conf_bannerman_s2,late,8,F2 soft*,7,0.06200616629011835,False,0.649916483707504,0.8887550501583181
+bannerman,2,60,conf_bannerman_s2,late,7,F2 soft*,2,0.39040919515996864,False,0.24802466516046084,0.6774747798364441
+bannerman,2,65,conf_bannerman_s2,late,6,F2 soft*,4,0.0,True,0.0,0.8014871124166745
+bannerman,2,70,conf_bannerman_s2,late,6,F2 soft*,5,0.21128027032187857,False,0.1561636780639939,0.027558296128940098
+bannerman,2,75,conf_bannerman_s2,late,7,F2 soft*,5,0.03444787016118056,False,0.0,0.05052354290305684
+bannerman,2,80,conf_bannerman_s2,late,7,F2 soft*,5,0.0,True,0.0,0.0367443948385868
+bannerman,2,85,conf_bannerman_s2,late,8,F2 soft*,5,0.0,True,0.0,0.16764630145105225
+bannerman,2,90,conf_bannerman_s2,late,7,F2 soft*,5,0.09875056112870206,False,0.0,0.10334361048352536
+bannerman,2,95,conf_bannerman_s2,late,8,F2 soft*,2,0.07119226499976428,False,0.0,0.013779148064470049
+bannerman,4,0,conf_bannerman_s4,early,10,F2 soft*,3,0.0,True,0.0,16.815428789225503
+bannerman,4,5,conf_bannerman_s4,early,6,F2 soft*,4,0.9733068387852208,False,3.8633148518212392,2.126088697488282
+bannerman,4,10,conf_bannerman_s4,early,7,F2 soft*,6,0.0,True,0.0,5.678773707144026
+bannerman,4,15,conf_bannerman_s4,early,7,F2 soft*,2,0.0,True,0.07593173919600993,3.9070331259037907
+bannerman,4,20,conf_bannerman_s4,middle,7,F2 soft*,3,0.0,True,0.0,3.7275581059859486
+bannerman,4,25,conf_bannerman_s4,middle,5,F2 soft*,4,0.17717405812401887,False,0.0,0.7777250863106485
+bannerman,4,30,conf_bannerman_s4,middle,7,F2 soft*,0,0.40036735212442,False,0.0,1.1044616610328737
+bannerman,4,35,conf_bannerman_s4,middle,7,F2 soft*,3,0.0,True,0.0,1.843070396848608
+bannerman,4,40,conf_bannerman_s4,middle,7,F2 soft*,2,0.0,True,0.0,1.0699472341255964
+bannerman,4,45,conf_bannerman_s4,middle,7,F2 soft*,0,0.5637356394855297,False,0.0,0.47860005311424525
+bannerman,4,50,conf_bannerman_s4,late,6,F2 soft*,0,0.832948169362302,False,0.013805770762910924,0.14726155480438316
+bannerman,4,55,conf_bannerman_s4,late,8,F2 soft*,7,0.04141731228872736,False,0.004601923587636973,0.0
+bannerman,4,60,conf_bannerman_s4,late,9,F2 soft*,8,0.0023009617938218874,False,0.018407694350547895,0.0
+bannerman,4,65,conf_bannerman_s4,late,9,F2 soft*,6,0.15186347839201142,False,0.016106732556729408,0.009203847175273948
+bannerman,4,70,conf_bannerman_s4,late,9,F2 soft*,0,0.1380577076291023,False,0.016106732556729404,0.00690288538145546
+bannerman,4,75,conf_bannerman_s4,late,9,F2 soft*,8,0.10124231892800761,False,0.03221346511345881,0.011504808969092435
+bannerman,4,80,conf_bannerman_s4,late,9,F2 soft*,1,0.4993087092586057,False,0.0,0.016106732556729408
+bannerman,4,85,conf_bannerman_s4,late,7,F2 soft*,6,0.06212596843310214,False,0.0023009617938184873,0.07823270098982855
+bannerman,4,90,conf_bannerman_s4,late,8,F2 soft*,6,0.0,True,0.0,0.01380577076291092
+bannerman,4,95,conf_bannerman_s4,late,8,F2 soft*,4,0.4279788936502271,False,0.004601923587636975,0.0
+eiffel,0,0,conf_eiffel_s0,early,9,F2 soft*,3,1.2245869029918213,False,1.496205802527601,1.2982462655777953
+eiffel,0,5,conf_eiffel_s0,early,8,F2 soft*,1,0.0,True,0.0,12.572732451393472
+eiffel,0,10,conf_eiffel_s0,early,8,F2 soft*,2,0.28082631985902884,False,0.0,12.144587406362497
+eiffel,0,15,conf_eiffel_s0,early,8,F2 soft*,2,0.0,True,0.0,3.6369310276824764
+eiffel,0,20,conf_eiffel_s0,middle,7,F2 soft*,3,0.0,True,0.0,2.301855080811694
+eiffel,0,25,conf_eiffel_s0,middle,7,F2 soft*,0,0.02762226096973963,False,0.0,1.031231076203639
+eiffel,0,30,conf_eiffel_s0,middle,7,F2 soft*,2,0.0,True,0.06445194226272744,1.0358347863652622
+eiffel,0,35,conf_eiffel_s0,middle,7,F2 soft*,3,0.1703372759800703,False,0.0,0.21637437759629924
+eiffel,0,40,conf_eiffel_s0,middle,8,F2 soft*,1,0.0,True,0.0,2.292647660488447
+eiffel,0,45,conf_eiffel_s0,middle,7,F2 soft*,6,0.0,True,0.0,1.1555312505674704
+eiffel,0,50,conf_eiffel_s0,late,5,F2 soft*,4,0.0,True,0.0,0.6675379734353912
+eiffel,0,55,conf_eiffel_s0,late,8,F2 soft*,3,0.7319899156981169,False,0.6076897413342872,0.26701518937415647
+eiffel,0,60,conf_eiffel_s0,late,7,F2 soft*,3,0.11048904387895853,False,0.1933558267881823,0.13350759468707823
+eiffel,0,65,conf_eiffel_s0,late,7,F2 soft*,4,0.0,True,0.03682968129298714,1.9151434272353294
+eiffel,0,70,conf_eiffel_s0,late,7,F2 soft*,6,0.2532040588892892,False,0.0,0.10128162355571453
+eiffel,0,75,conf_eiffel_s0,late,7,F2 soft*,0,0.5846711905261648,False,0.03222597113136372,0.08286678290922098
+eiffel,0,80,conf_eiffel_s0,late,5,F2 soft*,3,0.04603710161622532,False,0.0,0.0368296812929871
+eiffel,0,85,conf_eiffel_s0,late,6,F2 soft*,1,0.0,True,0.0368296812929871,0.0
+eiffel,0,90,conf_eiffel_s0,late,7,F2 soft*,5,0.12430017436383389,False,0.04143339145461049,0.004603710161623388
+eiffel,0,95,conf_eiffel_s0,late,5,F2 soft*,0,0.1887521166265671,False,0.009207420323246777,0.0
+eiffel,2,0,conf_eiffel_s2,early,9,F2 soft*,3,0.0,True,0.0,0.142855050259878
+eiffel,2,5,conf_eiffel_s2,early,8,F2 soft*,5,2.658947225804826,False,1.1197992649403332,9.95377124391408
+eiffel,2,10,conf_eiffel_s2,early,6,F2 soft*,5,0.0,True,0.0,4.387032511206576
+eiffel,2,15,conf_eiffel_s2,early,8,F2 soft*,5,0.0,True,0.0,4.082889500975868
+eiffel,2,20,conf_eiffel_s2,middle,8,F2 soft*,6,0.0,True,0.0,2.617473178955184
+eiffel,2,25,conf_eiffel_s2,middle,7,F2 soft*,0,0.0,True,0.004608227427737921,0.986160669535932
+eiffel,2,30,conf_eiffel_s2,middle,7,F2 soft*,0,0.0,True,0.05990695656059408,2.248814984736144
+eiffel,2,35,conf_eiffel_s2,middle,7,F2 soft*,4,0.0,True,0.02304113713869005,0.658976522166534
+eiffel,2,40,conf_eiffel_s2,middle,8,F2 soft*,3,0.4377816056351014,False,0.18432909710951995,0.52994615418987
+eiffel,2,45,conf_eiffel_s2,middle,8,F2 soft*,0,0.0,True,0.0,1.1520568569345
+eiffel,2,50,conf_eiffel_s2,late,7,F2 soft*,4,0.0,True,0.0,0.6912341141607
+eiffel,2,55,conf_eiffel_s2,late,7,F2 soft*,0,0.01843290971094147,False,0.073731638843808,0.059906956560594
+eiffel,2,60,conf_eiffel_s2,late,8,F2 soft*,0,0.0,True,0.023041137138689993,0.433173378207372
+eiffel,2,65,conf_eiffel_s2,late,8,F2 soft*,7,0.04608227427737033,False,0.16128795997083,0.027649364566427997
+eiffel,2,70,conf_eiffel_s2,late,6,F2 soft*,0,0.10138100341022804,False,0.0,0.188937324537258
+eiffel,2,75,conf_eiffel_s2,late,7,F2 soft*,5,0.032257591994167,False,0.0,0.027649364566427997
+eiffel,2,80,conf_eiffel_s2,late,7,F2 soft*,5,0.2350195988146453,False,0.0,0.101381003410236
+eiffel,2,85,conf_eiffel_s2,late,8,F2 soft*,7,0.0,True,0.032257591994166,0.018432909710952
+eiffel,2,90,conf_eiffel_s2,late,7,F2 soft*,3,0.027649364566417756,False,0.009216454855475995,0.018432909710952
+eiffel,2,95,conf_eiffel_s2,late,6,F2 soft*,0,0.05069050170510847,False,0.0,0.004608227427738
+eiffel,4,0,conf_eiffel_s4,early,8,F2 soft*,2,0.0,True,0.0,5.6707046087945585
+eiffel,4,5,conf_eiffel_s4,early,7,F2 soft*,6,0.0,True,0.0,9.443496708390613
+eiffel,4,10,conf_eiffel_s4,early,7,F2 soft*,1,0.0,True,0.0,3.8418908559989133
+eiffel,4,15,conf_eiffel_s4,early,7,F2 soft*,3,0.0,True,0.0,6.44000409674638
+eiffel,4,20,conf_eiffel_s4,middle,7,F2 soft*,6,0.11977117776494905,False,0.0,1.5017463058221172
+eiffel,4,25,conf_eiffel_s4,middle,8,F2 soft*,1,0.0,True,0.0,0.06909875640285815
+eiffel,4,30,conf_eiffel_s4,middle,8,F2 soft*,3,0.0,True,0.0,1.3681553767765913
+eiffel,4,35,conf_eiffel_s4,middle,7,F2 soft*,1,0.18426335040762076,False,0.0,0.7278402341101059
+eiffel,4,40,conf_eiffel_s4,middle,7,F2 soft*,1,0.0,True,0.0,0.34549378201429076
+eiffel,4,45,conf_eiffel_s4,middle,7,F2 soft*,0,0.0,True,0.0,0.7370534016304869
+eiffel,4,50,conf_eiffel_s4,late,8,F2 soft*,7,0.00921316752039436,False,0.20729626920857447,0.14280409656590684
+eiffel,4,55,conf_eiffel_s4,late,8,F2 soft*,5,0.05527900512227735,False,0.0,1.4648936357405928
+eiffel,4,60,conf_eiffel_s4,late,7,F2 soft*,2,0.09213167520381038,False,0.05988558888247707,0.018426335040762173
+eiffel,4,65,conf_eiffel_s4,late,6,F2 soft*,4,0.0,True,0.0,0.3408871982541002
+eiffel,4,70,conf_eiffel_s4,late,8,F2 soft*,5,0.4284122896977327,False,0.1289843452853352,0.0322460863213338
+eiffel,4,75,conf_eiffel_s4,late,7,F2 soft*,6,0.2211160204891427,False,0.023032918800952706,0.009213167520381087
+eiffel,4,80,conf_eiffel_s4,late,7,F2 soft*,2,0.06909875640285223,False,0.00921316752038108,0.046065837601905434
+eiffel,4,85,conf_eiffel_s4,late,8,F2 soft*,7,0.05527900512228845,False,0.0,0.0
+eiffel,4,90,conf_eiffel_s4,late,5,F2 soft*,0,0.0,True,0.03685267008152435,0.0
+eiffel,4,95,conf_eiffel_s4,late,3,F2 soft*,0,0.03685267008154414,False,0.0,0.0
+fushimi,0,0,conf_fushimi_s0,early,10,F2 soft*,3,0.0,True,0.0,29.534665474726122
+fushimi,0,5,conf_fushimi_s0,early,7,F2 soft*,6,0.2312691504703812,False,0.0,1.50723687720352
+fushimi,0,10,conf_fushimi_s0,early,9,F2 soft*,1,0.0,True,0.0,2.3047167064117318
+fushimi,0,15,conf_fushimi_s0,early,8,F2 soft*,4,0.03189919316832768,False,0.0,1.1523583532058659
+fushimi,0,20,conf_fushimi_s0,middle,8,F2 soft*,2,0.0,True,0.0,6.312052848182995
+fushimi,0,25,conf_fushimi_s0,middle,7,F2 soft*,1,0.0,True,0.0,1.1722953489360712
+fushimi,0,30,conf_fushimi_s0,middle,7,F2 soft*,0,0.16747076413373696,False,0.0,0.11164717608914965
+fushimi,0,35,conf_fushimi_s0,middle,8,F2 soft*,0,0.0,True,0.0,2.7672550073524946
+fushimi,0,40,conf_fushimi_s0,middle,8,F2 soft*,2,0.5741854770299093,False,0.0,0.9370387993196487
+fushimi,0,45,conf_fushimi_s0,middle,8,F2 soft*,1,0.1594959658416384,False,0.0,0.2113321547401761
+fushimi,0,50,conf_fushimi_s0,late,8,F2 soft*,5,0.22329435217830484,False,0.0,0.15152116754956022
+fushimi,0,55,conf_fushimi_s0,late,8,F2 soft*,1,0.07576058377477546,False,0.0,0.1435463692574781
+fushimi,0,60,conf_fushimi_s0,late,8,F2 soft*,3,0.0,True,0.0,0.2990549359530794
+fushimi,0,65,conf_fushimi_s0,late,9,F2 soft*,6,0.0,True,0.0,0.45855090179472174
+fushimi,0,70,conf_fushimi_s0,late,6,F2 soft*,4,0.0,True,0.0,0.10367237779706752
+fushimi,0,75,conf_fushimi_s0,late,7,F2 soft*,6,0.5582358804457455,False,0.02791179402228741,0.15152116754956022
+fushimi,0,80,conf_fushimi_s0,late,7,F2 soft*,6,0.31500453253723304,False,0.0,0.07576058377478011
+fushimi,0,85,conf_fushimi_s0,late,6,F2 soft*,5,0.0,True,0.0,0.0
+fushimi,0,90,conf_fushimi_s0,late,7,F2 soft*,1,0.04784878975250262,False,0.007974798292082117,0.0
+fushimi,0,95,conf_fushimi_s0,late,6,F2 soft*,0,0.08772278121289556,False,0.0,0.0039873991460410586
+fushimi,2,0,conf_fushimi_s2,early,8,F2 soft*,2,1.2891930606398212,False,0.7560082763011309,9.223300970873787
+fushimi,2,5,conf_fushimi_s2,early,7,F2 soft*,2,0.0,True,0.0,15.315136081489733
+fushimi,2,10,conf_fushimi_s2,early,6,F2 soft*,0,0.0,True,0.2108865191787359,5.455196562151838
+fushimi,2,15,conf_fushimi_s2,early,6,F2 soft*,2,0.6406175393920188,False,0.5013528569154859,1.9457265637434347
+fushimi,2,20,conf_fushimi_s2,middle,7,F2 soft*,5,0.0,True,0.0,3.1314658602578387
+fushimi,2,25,conf_fushimi_s2,middle,6,F2 soft*,4,0.06764284577431834,False,0.027852936495304736,0.7520292853732293
+fushimi,2,30,conf_fushimi_s2,middle,6,F2 soft*,5,0.17109660989973463,False,0.11539073690911983,0.2466974375298424
+fushimi,2,35,conf_fushimi_s2,middle,8,F2 soft*,1,0.16313862804393509,False,0.0,0.9231258952729587
+fushimi,2,40,conf_fushimi_s2,middle,8,F2 soft*,4,0.07162183670221811,False,0.16711761897182875,0.6247015756804074
+fushimi,2,45,conf_fushimi_s2,middle,8,F2 soft*,6,0.0,True,0.04774789113480815,0.5809326754734999
+fushimi,2,50,conf_fushimi_s2,late,8,F2 soft*,5,0.051726882062708146,False,0.0,0.4734999204201814
+fushimi,2,55,conf_fushimi_s2,late,7,F2 soft*,1,0.0,True,0.0,0.680407448671017
+fushimi,2,60,conf_fushimi_s2,late,7,F2 soft*,4,0.011936972783699318,False,0.051726882062708895,0.0
+fushimi,2,65,conf_fushimi_s2,late,7,F2 soft*,5,0.05570587299060792,False,0.015915963711602737,0.023873945567404103
+fushimi,2,70,conf_fushimi_s2,late,8,F2 soft*,3,0.0,True,0.0,0.06366385484641095
+fushimi,2,75,conf_fushimi_s2,late,7,F2 soft*,0,0.0,True,0.0,0.06764284577431164
+fushimi,2,80,conf_fushimi_s2,late,7,F2 soft*,0,0.5968486391851102,False,0.0,0.019894954639503422
+fushimi,2,85,conf_fushimi_s2,late,8,F2 soft*,0,0.0,True,0.0,0.7599872672290306
+fushimi,2,90,conf_fushimi_s2,late,8,F2 soft*,5,0.07957981855800655,False,0.055705872990609584,0.04774789113480821
+fushimi,2,95,conf_fushimi_s2,late,7,F2 soft*,3,0.0,True,0.011936972783702052,0.0
+fushimi,4,0,conf_fushimi_s4,early,9,F2 soft*,4,0.0,True,0.0,10.782400374840368
+fushimi,4,5,conf_fushimi_s4,early,8,F2 soft*,5,0.0,True,0.0,5.315548190698631
+fushimi,4,10,conf_fushimi_s4,early,9,F2 soft*,7,0.003981684037979605,False,0.1035237849873889,7.071470851446268
+fushimi,4,15,conf_fushimi_s4,early,9,F2 soft*,4,0.2906629347722789,False,0.06370694460762394,3.145530390001437
+fushimi,4,20,conf_fushimi_s4,middle,8,F2 soft*,3,0.0,True,0.0,2.110292540127546
+fushimi,4,25,conf_fushimi_s4,middle,7,F2 soft*,5,0.0,True,0.023890104227858977,2.4487356833555487
+fushimi,4,30,conf_fushimi_s4,middle,8,F2 soft*,1,0.0,True,0.0,1.7479592926716845
+fushimi,4,35,conf_fushimi_s4,middle,7,F2 soft*,5,0.0,True,0.0,0.7366115470256529
+fushimi,4,40,conf_fushimi_s4,middle,7,F2 soft*,6,0.0,True,0.0,0.21501093805073113
+fushimi,4,45,conf_fushimi_s4,middle,8,F2 soft*,3,0.1592673615190554,False,0.0,0.9834759573801961
+fushimi,4,50,conf_fushimi_s4,late,7,F2 soft*,6,0.2309376742026359,False,0.035835156341788466,1.1666334231271152
+fushimi,4,55,conf_fushimi_s4,late,7,F2 soft*,0,0.25482777843049975,False,0.0,0.09157873287345955
+fushimi,4,60,conf_fushimi_s4,late,6,F2 soft*,0,0.059725260569643,False,0.0,0.4937288207090863
+fushimi,4,65,conf_fushimi_s4,late,7,F2 soft*,3,0.0,True,0.0,0.11945052113929507
+fushimi,4,70,conf_fushimi_s4,late,8,F2 soft*,1,0.0,True,0.0,0.3105713549621672
+fushimi,4,75,conf_fushimi_s4,late,6,F2 soft*,4,0.01194505211392638,False,0.007963368075953006,0.01592673615190601
+fushimi,4,80,conf_fushimi_s4,late,9,F2 soft*,6,0.2906629347722789,False,0.0,0.019908420189882512
+fushimi,4,85,conf_fushimi_s4,late,3,F2 soft*,1,0.0,True,0.0,0.0
+fushimi,4,90,conf_fushimi_s4,late,6,F2 soft*,5,0.01592673615190554,False,0.0,0.02389010422785901
+fushimi,4,95,conf_fushimi_s4,late,6,F2 soft*,4,0.0,True,0.0,0.1592673615190601
+liberty,0,0,conf_liberty_s0,early,9,F2 soft*,7,0.0,True,0.0,10.720595585618154
+liberty,0,5,conf_liberty_s0,early,7,F2 soft*,6,0.0,True,0.0,16.466756172315826
+liberty,0,10,conf_liberty_s0,early,7,F2 soft*,6,0.0,True,0.0,2.9050307157727326
+liberty,0,15,conf_liberty_s0,early,7,F2 soft*,1,0.0,True,0.0,0.6291775492705749
+liberty,0,20,conf_liberty_s0,middle,7,F2 soft*,0,0.0,True,0.0,2.94926976220582
+liberty,0,25,conf_liberty_s0,middle,7,F2 soft*,1,0.0,True,0.0,4.246948457576381
+liberty,0,30,conf_liberty_s0,middle,6,F2 soft*,4,0.0,True,0.078647193658822,1.8039700045492264
+liberty,0,35,conf_liberty_s0,middle,7,F2 soft*,1,0.15729438731765244,False,0.0,0.3834050690867566
+liberty,0,40,conf_liberty_s0,middle,7,F2 soft*,1,0.04915449603676292,False,0.0,0.28509607701322925
+liberty,0,45,conf_liberty_s0,middle,8,F2 soft*,5,0.009830899207352584,False,0.004915449603676366,0.0
+liberty,0,50,conf_liberty_s0,late,8,F2 soft*,7,0.0,True,0.0,0.0
+liberty,0,55,conf_liberty_s0,late,8,F2 soft*,3,0.004915449603681843,False,0.0,0.0147463488110291
+liberty,0,60,conf_liberty_s0,late,6,F2 soft*,1,0.0,True,0.0,0.3047578754279347
+liberty,0,65,conf_liberty_s0,late,7,F2 soft*,0,0.0,True,0.0,0.7520637893624841
+liberty,0,70,conf_liberty_s0,late,8,F2 soft*,4,0.32441967384264636,False,0.014746348811029097,0.009830899207352733
+liberty,0,75,conf_liberty_s0,late,6,F2 soft*,4,0.05406994564044476,False,0.009830899207352733,0.004915449603676366
+liberty,0,80,conf_liberty_s0,late,6,F2 soft*,0,0.039323596829410334,False,0.0,0.009830899207352733
+liberty,0,85,conf_liberty_s0,late,7,F2 soft*,5,0.009830899207352584,False,0.0,0.0
+liberty,0,90,conf_liberty_s0,late,8,F2 soft*,2,0.0,True,0.0,0.0
+liberty,0,95,conf_liberty_s0,late,6,F2 soft*,1,0.0,True,0.0,0.0
+liberty,2,0,conf_liberty_s2,early,9,F2 soft*,0,0.0,True,0.0,15.07065176412282
+liberty,2,5,conf_liberty_s2,early,6,F2 soft*,4,0.0,True,0.0,2.090270313375229
+liberty,2,10,conf_liberty_s2,early,6,F2 soft*,3,0.0640884765893357,False,0.1971953125825685,4.747477150425344
+liberty,2,15,conf_liberty_s2,early,7,F2 soft*,3,0.28593320324472593,False,0.9021685550652523,0.3253722657612385
+liberty,2,20,conf_liberty_s2,middle,7,F2 soft*,1,0.0,True,0.0,6.882116409131651
+liberty,2,25,conf_liberty_s2,middle,6,F2 soft*,5,0.0,True,0.0,3.1354054700628438
+liberty,2,30,conf_liberty_s2,middle,6,F2 soft*,1,0.0,True,0.0,5.777822658669265
+liberty,2,35,conf_liberty_s2,middle,8,F2 soft*,6,0.22677460946995964,False,0.13310683599323395,0.22677460946995412
+liberty,2,40,conf_liberty_s2,middle,7,F2 soft*,4,0.009859765629116612,False,0.0,0.05915859377477064
+liberty,2,45,conf_liberty_s2,middle,6,F2 soft*,1,0.0,True,0.0,0.30565273450298164
+liberty,2,50,conf_liberty_s2,late,8,F2 soft*,7,0.0,True,0.0,1.1782419926808485
+liberty,2,55,conf_liberty_s2,late,6,F2 soft*,3,0.044368945331074716,False,0.22677460946995412,0.00492988281456422
+liberty,2,60,conf_liberty_s2,late,7,F2 soft*,2,0.0,True,0.0,1.0007662113565365
+liberty,2,65,conf_liberty_s2,late,7,F2 soft*,5,0.22677460946994854,False,0.18733554695344035,0.0
+liberty,2,70,conf_liberty_s2,late,6,F2 soft*,0,0.004929882814563857,False,0.0,0.00985976562912844
+liberty,2,75,conf_liberty_s2,late,7,F2 soft*,2,0.15282636725150178,False,0.0,0.0
+liberty,2,80,conf_liberty_s2,late,8,F2 soft*,6,0.0,True,0.01478964844369266,0.0
+liberty,2,85,conf_liberty_s2,late,7,F2 soft*,6,0.0,True,0.01478964844369266,0.0
+liberty,2,90,conf_liberty_s2,late,6,F2 soft*,0,0.1281769531786714,False,0.0,0.0
+liberty,2,95,conf_liberty_s2,late,7,F2 soft*,4,0.0,True,0.0,0.0
+liberty,4,0,conf_liberty_s4,early,7,F2 soft*,3,0.0,True,0.0,3.8374700251567835
+liberty,4,5,conf_liberty_s4,early,7,F2 soft*,3,1.5645070102562215,False,0.0,19.339864960117072
+liberty,4,10,conf_liberty_s4,early,7,F2 soft*,6,0.0,True,0.0,2.77478601819029
+liberty,4,15,conf_liberty_s4,early,7,F2 soft*,0,0.0,True,0.0,10.371008734654486
+liberty,4,20,conf_liberty_s4,middle,7,F2 soft*,5,0.21647266808577648,False,0.024599166827928176,1.2889963417834325
+liberty,4,25,conf_liberty_s4,middle,7,F2 soft*,4,0.0,True,0.0,3.7538328579418283
+liberty,4,30,conf_liberty_s4,middle,5,F2 soft*,0,0.0,True,0.1475950009675686,0.5608610036767607
+liberty,4,35,conf_liberty_s4,middle,7,F2 soft*,1,0.06887766711819454,False,0.014759500096756861,0.10823633404288364
+liberty,4,40,conf_liberty_s4,middle,7,F2 soft*,0,0.0,True,0.0,0.7724138383969423
+liberty,4,45,conf_liberty_s4,middle,7,F2 soft*,4,0.0,True,0.20663300135459606,0.3935866692468496
+liberty,4,50,conf_liberty_s4,late,8,F2 soft*,7,0.12299583413962756,False,0.029519000193513723,0.16235450106432547
+liberty,4,55,conf_liberty_s4,late,7,F2 soft*,0,0.2705908351072095,False,0.10823633404288364,0.0
+liberty,4,60,conf_liberty_s4,late,8,F2 soft*,7,0.09347683394612671,False,0.05903800038702744,0.0245991668279281
+liberty,4,65,conf_liberty_s4,late,6,F2 soft*,5,0.06887766711820564,False,0.03443883355909934,0.044278500290270584
+liberty,4,70,conf_liberty_s4,late,7,F2 soft*,4,0.0049198333655908755,False,0.00983966673117124,0.0
+liberty,4,75,conf_liberty_s4,late,6,F2 soft*,2,0.0393586669246937,False,0.0245991668279281,0.014759500096756861
+liberty,4,80,conf_liberty_s4,late,7,F2 soft*,2,0.014759500096761524,False,0.0,0.0
+liberty,4,85,conf_liberty_s4,late,7,F2 soft*,1,0.009839666731170649,False,0.0,0.0
+liberty,4,90,conf_liberty_s4,late,7,F2 soft*,6,0.0,True,0.029519000193513723,0.014759500096756861
+liberty,4,95,conf_liberty_s4,late,8,F2 soft*,1,0.08855700058053584,False,0.044278500290270584,0.0
+redeemer,0,0,conf_redeemer_s0,early,8,F2 soft*,2,0.0,True,0.0,10.456686189641882
+redeemer,0,5,conf_redeemer_s0,early,8,F2 soft*,5,8.474500164549013,False,14.311907026992102,7.5270676371367875
+redeemer,0,10,conf_redeemer_s0,early,7,F2 soft*,1,0.1091512128355121,False,2.4187908764349073,1.1089763224087843
+redeemer,0,15,conf_redeemer_s0,early,6,F2 soft*,4,0.4628011424225642,False,0.0,3.226509851417683
+redeemer,0,20,conf_redeemer_s0,middle,7,F2 soft*,0,0.0,True,0.0,0.3449178325602124
+redeemer,0,25,conf_redeemer_s0,middle,8,F2 soft*,4,0.0,True,0.0,20.1929743745694
+redeemer,0,30,conf_redeemer_s0,middle,9,F2 soft*,0,0.0,True,0.02619629108052246,0.3798462206675757
+redeemer,0,35,conf_redeemer_s0,middle,8,F2 soft*,3,0.2794271048589092,False,0.0,0.5632202582312329
+redeemer,0,40,conf_redeemer_s0,middle,8,F2 soft*,2,0.0,True,0.0,2.3751303913007034
+redeemer,0,45,conf_redeemer_s0,middle,8,F2 soft*,1,0.0,True,0.0,0.18337403756365722
+redeemer,0,50,conf_redeemer_s0,late,8,F2 soft*,4,0.030562339593953602,False,0.01746419405368164,0.0
+redeemer,0,55,conf_redeemer_s0,late,9,F2 soft*,1,0.0,True,0.00873209702684082,0.0
+redeemer,0,60,conf_redeemer_s0,late,7,F2 soft*,2,0.0,True,0.00873209702684082,0.0
+redeemer,0,65,conf_redeemer_s0,late,6,F2 soft*,1,0.0,True,0.0,0.0
+redeemer,0,70,conf_redeemer_s0,late,7,F2 soft*,0,0.0,True,0.0,0.0
+redeemer,0,75,conf_redeemer_s0,late,7,F2 soft*,6,0.0130981455402579,False,0.01746419405368164,0.0
+redeemer,0,80,conf_redeemer_s0,late,8,F2 soft*,0,0.0,True,0.00436604851342041,0.0
+redeemer,0,85,conf_redeemer_s0,late,9,F2 soft*,6,0.0,True,0.03056233959394287,0.0
+redeemer,0,90,conf_redeemer_s0,late,9,F2 soft*,4,0.0,True,0.0,0.0
+redeemer,0,95,conf_redeemer_s0,late,5,F2 soft*,4,0.2401326682381133,False,0.00873209702684082,0.0
+redeemer,2,0,conf_redeemer_s2,early,9,F2 soft*,2,1.8058351759873918,False,0.0,17.16641857076091
+redeemer,2,5,conf_redeemer_s2,early,8,F2 soft*,5,0.0,True,1.2610089915045766,5.940362914683582
+redeemer,2,10,conf_redeemer_s2,early,8,F2 soft*,4,0.0,True,0.0,10.830617296372063
+redeemer,2,15,conf_redeemer_s2,early,8,F2 soft*,2,0.171356622538954,False,0.10984398880701884,1.1819213195635232
+redeemer,2,20,conf_redeemer_s2,middle,7,F2 soft*,6,0.0,True,0.0,1.3269153847887882
+redeemer,2,25,conf_redeemer_s2,middle,7,F2 soft*,5,0.0,True,0.06590639328421133,0.27241309224140686
+redeemer,2,30,conf_redeemer_s2,middle,7,F2 soft*,2,0.07469391238876799,False,0.008787519104561492,0.1274190270161419
+redeemer,2,35,conf_redeemer_s2,middle,8,F2 soft*,1,0.03954383597052358,False,0.05272511462736906,0.017575038209123022
+redeemer,2,40,conf_redeemer_s2,middle,7,F2 soft*,1,0.00878751910456943,False,0.008787519104561513,0.0043937595522807555
+redeemer,2,45,conf_redeemer_s2,middle,7,F2 soft*,0,0.0,True,0.0,0.0043937595522807555
+redeemer,2,50,conf_redeemer_s2,late,7,F2 soft*,1,0.08348143149333742,False,0.0,0.6019450586624635
+redeemer,2,55,conf_redeemer_s2,late,7,F2 soft*,6,0.0,True,0.0,0.02636255731368453
+redeemer,2,60,conf_redeemer_s2,late,8,F2 soft*,2,0.0,True,0.0,0.98859589926317
+redeemer,2,65,conf_redeemer_s2,late,8,F2 soft*,6,0.0,True,0.0,0.0
+redeemer,2,70,conf_redeemer_s2,late,7,F2 soft*,5,0.026362557313674984,False,0.0043937595522807555,0.0
+redeemer,2,75,conf_redeemer_s2,late,9,F2 soft*,6,0.0,True,0.0,0.0
+redeemer,2,80,conf_redeemer_s2,late,8,F2 soft*,0,0.0,True,0.0,0.0
+redeemer,2,85,conf_redeemer_s2,late,8,F2 soft*,5,0.0,True,0.0,0.0
+redeemer,2,90,conf_redeemer_s2,late,8,F2 soft*,3,0.0,True,0.0,0.0
+redeemer,2,95,conf_redeemer_s2,late,8,F2 soft*,3,0.0,True,0.0,0.0
+redeemer,4,0,conf_redeemer_s4,early,8,F2 soft*,7,0.0,True,0.0,7.463438142049892
+redeemer,4,5,conf_redeemer_s4,early,8,F2 soft*,4,0.0,True,0.0,37.312810758288165
+redeemer,4,10,conf_redeemer_s4,early,7,F2 soft*,2,0.5387340912395011,False,1.2789459726986903,0.4336152441683916
+redeemer,4,15,conf_redeemer_s4,early,8,F2 soft*,5,0.0,True,0.0,1.935938766893223
+redeemer,4,20,conf_redeemer_s4,middle,7,F2 soft*,2,0.1051188470711284,False,0.0,0.08321908726464082
+redeemer,4,25,conf_redeemer_s4,middle,7,F2 soft*,6,0.0,True,0.38981572455542274,0.39419567651671966
+redeemer,4,30,conf_redeemer_s4,middle,8,F2 soft*,2,0.0,True,0.0,1.3096056364277686
+redeemer,4,35,conf_redeemer_s4,middle,8,F2 soft*,3,0.4336152441683949,False,1.1869669815114552,2.9871272376044757
+redeemer,4,40,conf_redeemer_s4,middle,6,F2 soft*,2,1.2964657805438762,False,0.0,8.229929735276848
+redeemer,4,45,conf_redeemer_s4,middle,8,F2 soft*,0,0.10949879903242588,False,0.03941956765167198,0.5518739471234075
+redeemer,4,50,conf_redeemer_s4,late,6,F2 soft*,0,0.017519807845178814,False,0.0,0.09197899118723459
+redeemer,4,55,conf_redeemer_s4,late,8,F2 soft*,6,0.026279711767784875,False,0.00875990392259377,0.0
+redeemer,4,60,conf_redeemer_s4,late,8,F2 soft*,6,0.026279711767784875,False,0.04379951961296885,0.013139855883890654
+redeemer,4,65,conf_redeemer_s4,late,7,F2 soft*,1,0.008759903922594958,False,0.0,0.0
+redeemer,4,70,conf_redeemer_s4,late,6,F2 soft*,4,0.021899759806487396,False,0.008759903922593768,0.026279711767781308
+redeemer,4,75,conf_redeemer_s4,late,7,F2 soft*,6,0.0,True,0.008759903922593768,0.004379951961296885
+redeemer,4,80,conf_redeemer_s4,late,7,F2 soft*,0,0.004379951961297479,False,0.0,0.013139855883890654
+redeemer,4,85,conf_redeemer_s4,late,7,F2 soft*,2,0.0,True,0.0,0.004379951961296885
+redeemer,4,90,conf_redeemer_s4,late,7,F2 soft*,3,0.013139855883892437,False,0.0,0.004379951961296885
+redeemer,4,95,conf_redeemer_s4,late,8,F2 soft*,4,0.0,True,0.0,0.0
+sestino_museum,0,0,conf_sestino_museum_s0,early,7,F2 soft*,1,0.0,True,0.0,7.131534387722016
+sestino_museum,0,5,conf_sestino_museum_s0,early,8,F2 soft*,5,0.0,True,0.0,4.429513275930396
+sestino_museum,0,10,conf_sestino_museum_s0,early,8,F2 soft*,7,0.0,True,0.0,14.99621717044349
+sestino_museum,0,15,conf_sestino_museum_s0,early,9,F2 soft*,4,0.0,True,0.0,11.180963360593724
+sestino_museum,0,20,conf_sestino_museum_s0,middle,7,F2 soft*,0,0.1314983607738629,False,0.0,0.3800843030586879
+sestino_museum,0,25,conf_sestino_museum_s0,middle,8,F2 soft*,0,1.1258421299131793,False,0.0,3.3000684512014984
+sestino_museum,0,30,conf_sestino_museum_s0,middle,8,F2 soft*,7,0.04323233778866786,False,0.04863638001224915,0.01621212667074972
+sestino_museum,0,35,conf_sestino_museum_s0,middle,6,F2 soft*,2,0.014410779262885587,False,0.0,0.05584176964369348
+sestino_museum,0,40,conf_sestino_museum_s0,middle,9,F2 soft*,2,0.009006737039307655,False,0.02521886371005512,0.0
+sestino_museum,0,45,conf_sestino_museum_s0,middle,6,F2 soft*,5,0.003602694815718621,False,0.0,0.0
+sestino_museum,0,50,conf_sestino_museum_s0,late,7,F2 soft*,2,0.0,True,0.0,0.0
+sestino_museum,0,55,conf_sestino_museum_s0,late,5,F2 soft*,0,0.0,True,0.0,0.0
+sestino_museum,0,60,conf_sestino_museum_s0,late,8,F2 soft*,0,0.0,True,0.0,0.0
+sestino_museum,0,65,conf_sestino_museum_s0,late,6,F2 soft*,0,0.0,True,0.0,0.0
+sestino_museum,0,70,conf_sestino_museum_s0,late,5,F2 soft*,3,0.0,True,0.0,0.0
+sestino_museum,0,75,conf_sestino_museum_s0,late,8,F2 soft*,7,0.0,True,0.0,0.0
+sestino_museum,0,80,conf_sestino_museum_s0,late,6,F2 soft*,5,0.0,True,0.0,0.0
+sestino_museum,0,85,conf_sestino_museum_s0,late,8,F2 soft*,6,0.06845120149872042,False,0.0,0.0
+sestino_museum,0,90,conf_sestino_museum_s0,late,5,F2 soft*,3,0.0,True,0.0,0.0
+sestino_museum,0,95,conf_sestino_museum_s0,late,8,F2 soft*,5,0.0,True,0.0,0.0
+sestino_museum,2,0,conf_sestino_museum_s2,early,6,F2 soft*,2,3.763663539284364,False,6.983486701121896,6.225351605409591
+sestino_museum,2,5,conf_sestino_museum_s2,early,8,F2 soft*,6,0.0,True,0.0,6.626929102663377
+sestino_museum,2,10,conf_sestino_museum_s2,early,9,F2 soft*,0,1.0804775710864245,False,0.0,11.935675568601322
+sestino_museum,2,15,conf_sestino_museum_s2,early,8,F2 soft*,7,0.0,True,4.2210657110442815,4.637049575912553
+sestino_museum,2,20,conf_sestino_museum_s2,middle,8,F2 soft*,3,0.1026453692532181,False,0.045019898795267466,1.0552664277610704
+sestino_museum,2,25,conf_sestino_museum_s2,middle,8,F2 soft*,5,0.0,True,0.322342475374116,2.762420990077614
+sestino_museum,2,30,conf_sestino_museum_s2,middle,6,F2 soft*,4,0.0,True,0.005402387855432067,0.23230267778358035
+sestino_museum,2,35,conf_sestino_museum_s2,middle,8,F2 soft*,7,0.0,True,0.05222308260251032,0.14586447209666673
+sestino_museum,2,40,conf_sestino_museum_s2,middle,8,F2 soft*,2,0.025211143325343244,False,0.0,0.0324143271325926
+sestino_museum,2,45,conf_sestino_museum_s2,middle,8,F2 soft*,1,0.009003979759047986,False,0.0,0.005402387855432101
+sestino_museum,2,50,conf_sestino_museum_s2,late,5,F2 soft*,2,0.0,True,0.0,0.0
+sestino_museum,2,55,conf_sestino_museum_s2,late,8,F2 soft*,2,0.0,True,0.0,0.0
+sestino_museum,2,60,conf_sestino_museum_s2,late,7,F2 soft*,1,0.0,True,0.0,0.0
+sestino_museum,2,65,conf_sestino_museum_s2,late,7,F2 soft*,4,0.0,True,0.0,0.0018007959518107004
+sestino_museum,2,70,conf_sestino_museum_s2,late,8,F2 soft*,7,0.007203183807236169,False,0.0,0.09364138949415642
+sestino_museum,2,75,conf_sestino_museum_s2,late,8,F2 soft*,1,0.032414327132590515,False,0.0,0.07743422592786012
+sestino_museum,2,80,conf_sestino_museum_s2,late,6,F2 soft*,5,0.05582467450613304,False,0.06482865426518522,0.037816714988024705
+sestino_museum,2,85,conf_sestino_museum_s2,late,7,F2 soft*,2,0.0,True,0.0,0.010804775710864202
+sestino_museum,2,90,conf_sestino_museum_s2,late,7,F2 soft*,6,0.0414183068916496,False,0.0,0.023410347373539104
+sestino_museum,2,95,conf_sestino_museum_s2,late,5,F2 soft*,4,0.0,True,0.0,0.0
+sestino_museum,4,0,conf_sestino_museum_s4,early,9,F2 soft*,6,0.953923686105111,False,4.134269258459325,8.428725701943845
+sestino_museum,4,5,conf_sestino_museum_s4,early,8,F2 soft*,6,2.059035277177829,False,8.783297336213101,10.278977681785458
+sestino_museum,4,10,conf_sestino_museum_s4,early,6,F2 soft*,5,0.0,True,0.0,14.751619870410368
+sestino_museum,4,15,conf_sestino_museum_s4,early,7,F2 soft*,6,0.0,True,0.0,8.565514758819294
+sestino_museum,4,20,conf_sestino_museum_s4,middle,7,F2 soft*,0,0.0,True,0.0,1.3660907127429807
+sestino_museum,4,25,conf_sestino_museum_s4,middle,9,F2 soft*,6,0.2447804175665924,False,0.3995680345572355,0.13138948884089274
+sestino_museum,4,30,conf_sestino_museum_s4,middle,6,F2 soft*,3,0.0,True,0.0,0.20698344132469404
+sestino_museum,4,35,conf_sestino_museum_s4,middle,8,F2 soft*,1,0.10439164866810069,False,0.0,0.2447804175665947
+sestino_museum,4,40,conf_sestino_museum_s4,middle,7,F2 soft*,3,0.017998560115195517,False,0.010799136069114479,0.05579553635709143
+sestino_museum,4,45,conf_sestino_museum_s4,middle,6,F2 soft*,1,0.0,True,0.0,0.0017998560115190785
+sestino_museum,4,50,conf_sestino_museum_s4,late,7,F2 soft*,1,0.0035997120230391033,False,0.0,0.0
+sestino_museum,4,55,conf_sestino_museum_s4,late,4,F2 soft*,1,0.0,True,0.0,0.0
+sestino_museum,4,60,conf_sestino_museum_s4,late,3,F2 soft*,1,0.0,True,0.0,0.0
+sestino_museum,4,65,conf_sestino_museum_s4,late,5,F2 soft*,4,0.0,True,0.0,0.0
+sestino_museum,4,70,conf_sestino_museum_s4,late,8,F2 soft*,7,0.0,True,0.0,0.0
+sestino_museum,4,75,conf_sestino_museum_s4,late,7,F2 soft*,3,0.0,True,0.0,0.0
+sestino_museum,4,80,conf_sestino_museum_s4,late,7,F2 soft*,6,0.0017998560115195517,False,0.0,0.11159107271418287
+sestino_museum,4,85,conf_sestino_museum_s4,late,6,F2 soft*,4,0.02339812814974307,False,0.0053995680345572325,0.03959683225341973
+sestino_museum,4,90,conf_sestino_museum_s4,late,9,F2 soft*,8,0.10619150467963134,False,0.025197984161267117,0.2501799856011519
+sestino_museum,4,95,conf_sestino_museum_s4,late,8,F2 soft*,3,0.0629949604031732,False,0.02159827213822893,0.15658747300215983
+bannerman,0,0,conf_bannerman_s0,early,5,F3 adaptive,0,0.0,True,0.0,1.7236612175007449
+bannerman,0,5,conf_bannerman_s0,early,8,F3 adaptive,0,0.19049784427771232,False,0.9570795308892279,7.0713717857786875
+bannerman,0,10,conf_bannerman_s0,early,7,F3 adaptive,5,0.5210001283257935,False,0.3764053790547566,5.636900066820012
+bannerman,0,15,conf_bannerman_s0,early,8,F3 adaptive,6,0.2088590822803824,False,0.0,5.756248113837374
+bannerman,0,20,conf_bannerman_s0,middle,7,F3 adaptive,5,0.0,True,0.0,4.822120130451484
+bannerman,0,25,conf_bannerman_s0,middle,7,F3 adaptive,6,0.0,True,0.0,3.6607718267825406
+bannerman,0,30,conf_bannerman_s0,middle,7,F3 adaptive,2,0.0,True,0.07574010676101794,1.6525114202403945
+bannerman,0,35,conf_bannerman_s0,middle,7,F3 adaptive,6,0.22033485603205616,False,0.0,0.7252689011055065
+bannerman,0,40,conf_bannerman_s0,middle,4,F3 adaptive,3,0.0,True,0.0,0.09869165426435689
+bannerman,0,45,conf_bannerman_s0,middle,6,F3 adaptive,5,0.0,True,0.0,0.6449384848438207
+bannerman,0,50,conf_bannerman_s0,late,6,F3 adaptive,0,0.23640093928437578,False,0.0,3.0158333419387198
+bannerman,0,55,conf_bannerman_s0,late,7,F3 adaptive,4,0.17443176102537317,False,0.0,0.7596962223605147
+bannerman,0,60,conf_bannerman_s0,late,6,F3 adaptive,0,0.0,True,0.0,0.42001331931110025
+bannerman,0,65,conf_bannerman_s0,late,7,F3 adaptive,0,0.9180619001335599,False,0.05508371400801315,0.367224760053421
+bannerman,0,70,conf_bannerman_s0,late,6,F3 adaptive,1,0.17902207052604702,False,0.025246702253672704,0.2823040342910674
+bannerman,0,75,conf_bannerman_s0,late,6,F3 adaptive,1,0.7413349843578443,False,0.0,0.49804858082245224
+bannerman,0,80,conf_bannerman_s0,late,7,F3 adaptive,2,0.3236168197970679,False,0.03213216650467434,0.02295154750333881
+bannerman,0,85,conf_bannerman_s0,late,8,F3 adaptive,0,0.16525114202403657,False,0.004590309500667765,0.016066083252337167
+bannerman,0,90,conf_bannerman_s0,late,7,F3 adaptive,1,0.1629559872737052,False,0.0,0.09639649951402302
+bannerman,0,95,conf_bannerman_s0,late,7,F3 adaptive,0,0.02983701175434117,False,0.0,0.032132166504674334
+bannerman,2,0,conf_bannerman_s2,early,9,F3 adaptive,7,2.156436672089562,False,1.4445140220919441,10.233313962546424
+bannerman,2,5,conf_bannerman_s2,early,9,F3 adaptive,4,0.0,True,0.0,7.091668203847251
+bannerman,2,10,conf_bannerman_s2,early,7,F3 adaptive,2,0.0,True,0.0,5.038575142241214
+bannerman,2,15,conf_bannerman_s2,early,6,F3 adaptive,1,0.006889574032231671,False,0.09645403645129047,0.9232029203194932
+bannerman,2,20,conf_bannerman_s2,middle,7,F3 adaptive,0,0.0,True,0.043633968870821827,0.19061154822516901
+bannerman,2,25,conf_bannerman_s2,middle,7,F3 adaptive,1,0.0,True,0.0,1.6557942924138176
+bannerman,2,30,conf_bannerman_s2,middle,9,F3 adaptive,3,0.0,True,0.0,1.6259394716074658
+bannerman,2,35,conf_bannerman_s2,middle,8,F3 adaptive,5,0.0,True,0.0,2.535363243862489
+bannerman,2,40,conf_bannerman_s2,middle,7,F3 adaptive,1,0.08497141306422762,False,0.11023318451576036,0.41337444193410144
+bannerman,2,45,conf_bannerman_s2,middle,8,F3 adaptive,5,0.0,True,0.009186098709646706,0.9852090866096085
+bannerman,2,50,conf_bannerman_s2,late,7,F3 adaptive,6,0.0,True,0.0,4.645869422403818
+bannerman,2,55,conf_bannerman_s2,late,8,F3 adaptive,2,0.0,True,0.0,1.5501541572528805
+bannerman,2,60,conf_bannerman_s2,late,7,F3 adaptive,2,0.39040919515996864,False,0.24802466516046084,0.2549142391926959
+bannerman,2,65,conf_bannerman_s2,late,6,F3 adaptive,4,0.0,True,0.0,0.8014871124166745
+bannerman,2,70,conf_bannerman_s2,late,6,F3 adaptive,2,0.0,True,0.018372197419293385,0.18831502354775734
+bannerman,2,75,conf_bannerman_s2,late,7,F3 adaptive,5,0.03444787016118056,False,0.0,0.05052354290305684
+bannerman,2,80,conf_bannerman_s2,late,7,F3 adaptive,5,0.0,True,0.0,0.0367443948385868
+bannerman,2,85,conf_bannerman_s2,late,8,F3 adaptive,5,0.0,True,0.0,0.16764630145105225
+bannerman,2,90,conf_bannerman_s2,late,7,F3 adaptive,5,0.09875056112870206,False,0.0,0.10334361048352536
+bannerman,2,95,conf_bannerman_s2,late,8,F3 adaptive,2,0.07119226499976428,False,0.0,0.006889574032235024
+bannerman,4,0,conf_bannerman_s4,early,10,F3 adaptive,3,0.0,True,0.0,16.815428789225503
+bannerman,4,5,conf_bannerman_s4,early,6,F3 adaptive,4,0.9733068387852208,False,3.8633148518212392,3.5848984747692025
+bannerman,4,10,conf_bannerman_s4,early,7,F3 adaptive,6,0.0,True,0.0,5.678773707144026
+bannerman,4,15,conf_bannerman_s4,early,7,F3 adaptive,2,0.0,True,0.07593173919600993,3.9070331259037907
+bannerman,4,20,conf_bannerman_s4,middle,7,F3 adaptive,3,0.0,True,0.0,3.7275581059859486
+bannerman,4,25,conf_bannerman_s4,middle,5,F3 adaptive,4,0.17717405812401887,False,0.0,0.7777250863106485
+bannerman,4,30,conf_bannerman_s4,middle,7,F3 adaptive,0,0.40036735212442,False,0.0,1.1044616610328737
+bannerman,4,35,conf_bannerman_s4,middle,7,F3 adaptive,2,0.39116350494914354,False,0.6074539135680805,1.2356164832805274
+bannerman,4,40,conf_bannerman_s4,middle,7,F3 adaptive,2,0.0,True,0.0,1.0699472341255964
+bannerman,4,45,conf_bannerman_s4,middle,7,F3 adaptive,0,0.5637356394855297,False,0.0,0.47860005311424525
+bannerman,4,50,conf_bannerman_s4,late,6,F3 adaptive,0,0.832948169362302,False,0.013805770762910924,0.14726155480438316
+bannerman,4,55,conf_bannerman_s4,late,8,F3 adaptive,5,0.02761154152581824,False,0.00690288538145546,0.0
+bannerman,4,60,conf_bannerman_s4,late,9,F3 adaptive,4,0.0,True,0.0023009617938184873,0.0
+bannerman,4,65,conf_bannerman_s4,late,9,F3 adaptive,1,0.47399812952659826,False,0.011504808969092437,0.01380577076291092
+bannerman,4,70,conf_bannerman_s4,late,9,F3 adaptive,2,0.09203847175273117,False,0.0069028853814554585,0.009203847175273948
+bannerman,4,75,conf_bannerman_s4,late,9,F3 adaptive,8,0.10124231892800761,False,0.03221346511345881,0.011504808969092435
+bannerman,4,80,conf_bannerman_s4,late,9,F3 adaptive,1,0.4993087092586057,False,0.0,0.016106732556729408
+bannerman,4,85,conf_bannerman_s4,late,7,F3 adaptive,3,0.2623096444953066,False,0.0,0.08053366278364704
+bannerman,4,90,conf_bannerman_s4,late,8,F3 adaptive,6,0.0,True,0.0,0.011504808969092435
+bannerman,4,95,conf_bannerman_s4,late,8,F3 adaptive,4,0.4279788936502271,False,0.004601923587636975,0.0
+eiffel,0,0,conf_eiffel_s0,early,9,F3 adaptive,1,0.0,True,0.0,1.8967285865888357
+eiffel,0,5,conf_eiffel_s0,early,8,F3 adaptive,1,0.0,True,0.0,12.572732451393472
+eiffel,0,10,conf_eiffel_s0,early,8,F3 adaptive,2,0.28082631985902884,False,0.0,12.144587406362497
+eiffel,0,15,conf_eiffel_s0,early,8,F3 adaptive,2,0.0,True,0.0,3.6369310276824764
+eiffel,0,20,conf_eiffel_s0,middle,7,F3 adaptive,3,0.0,True,0.0,2.301855080811694
+eiffel,0,25,conf_eiffel_s0,middle,7,F3 adaptive,4,0.0,True,0.28082631985902673,0.7504047563446122
+eiffel,0,30,conf_eiffel_s0,middle,7,F3 adaptive,2,0.0,True,0.06445194226272744,1.0358347863652622
+eiffel,0,35,conf_eiffel_s0,middle,7,F3 adaptive,3,0.1703372759800703,False,0.0,0.21637437759629924
+eiffel,0,40,conf_eiffel_s0,middle,8,F3 adaptive,1,0.0,True,0.0,2.292647660488447
+eiffel,0,45,conf_eiffel_s0,middle,7,F3 adaptive,6,0.0,True,0.0,1.1555312505674704
+eiffel,0,50,conf_eiffel_s0,late,5,F3 adaptive,0,0.4787858568088388,False,0.9759865542641581,0.10128162355571453
+eiffel,0,55,conf_eiffel_s0,late,8,F3 adaptive,3,0.7319899156981169,False,0.6076897413342872,0.26701518937415647
+eiffel,0,60,conf_eiffel_s0,late,7,F3 adaptive,3,0.11048904387895853,False,0.1933558267881823,0.13350759468707823
+eiffel,0,65,conf_eiffel_s0,late,7,F3 adaptive,4,0.0,True,0.03682968129298714,1.9151434272353294
+eiffel,0,70,conf_eiffel_s0,late,7,F3 adaptive,2,0.4833895669704491,False,0.2900337401822734,0.04143339145461049
+eiffel,0,75,conf_eiffel_s0,late,7,F3 adaptive,0,0.5846711905261648,False,0.03222597113136372,0.08286678290922098
+eiffel,0,80,conf_eiffel_s0,late,5,F3 adaptive,3,0.04603710161622532,False,0.0,0.0368296812929871
+eiffel,0,85,conf_eiffel_s0,late,6,F3 adaptive,1,0.0,True,0.0368296812929871,0.0
+eiffel,0,90,conf_eiffel_s0,late,7,F3 adaptive,5,0.12430017436383389,False,0.04143339145461049,0.004603710161623388
+eiffel,0,95,conf_eiffel_s0,late,5,F3 adaptive,0,0.1887521166265671,False,0.009207420323246777,0.0
+eiffel,2,0,conf_eiffel_s2,early,9,F3 adaptive,3,0.0,True,0.0,0.142855050259878
+eiffel,2,5,conf_eiffel_s2,early,8,F3 adaptive,3,0.0,True,2.2119491653142394,8.861621343540174
+eiffel,2,10,conf_eiffel_s2,early,6,F3 adaptive,5,0.0,True,0.0,4.387032511206576
+eiffel,2,15,conf_eiffel_s2,early,8,F3 adaptive,5,0.0,True,0.0,4.082889500975868
+eiffel,2,20,conf_eiffel_s2,middle,8,F3 adaptive,6,0.0,True,0.0,2.2810725767303097
+eiffel,2,25,conf_eiffel_s2,middle,7,F3 adaptive,2,0.16589618739857315,False,0.07373163884380796,0.7280999335826039
+eiffel,2,30,conf_eiffel_s2,middle,7,F3 adaptive,0,0.0,True,0.05990695656059408,2.248814984736144
+eiffel,2,35,conf_eiffel_s2,middle,7,F3 adaptive,4,0.0,True,0.02304113713869005,0.658976522166534
+eiffel,2,40,conf_eiffel_s2,middle,8,F3 adaptive,3,0.4377816056351014,False,0.18432909710951995,0.52994615418987
+eiffel,2,45,conf_eiffel_s2,middle,8,F3 adaptive,0,0.0,True,0.0,1.1520568569345
+eiffel,2,50,conf_eiffel_s2,late,7,F3 adaptive,4,0.0,True,0.0,0.6912341141607
+eiffel,2,55,conf_eiffel_s2,late,7,F3 adaptive,0,0.01843290971094147,False,0.073731638843808,0.059906956560594
+eiffel,2,60,conf_eiffel_s2,late,8,F3 adaptive,0,0.0,True,0.023041137138689993,0.433173378207372
+eiffel,2,65,conf_eiffel_s2,late,8,F3 adaptive,7,0.04608227427737033,False,0.16128795997083,0.027649364566427997
+eiffel,2,70,conf_eiffel_s2,late,6,F3 adaptive,0,0.10138100341022804,False,0.0,0.188937324537258
+eiffel,2,75,conf_eiffel_s2,late,7,F3 adaptive,5,0.032257591994167,False,0.0,0.027649364566427997
+eiffel,2,80,conf_eiffel_s2,late,7,F3 adaptive,5,0.2350195988146453,False,0.0,0.101381003410236
+eiffel,2,85,conf_eiffel_s2,late,8,F3 adaptive,7,0.0,True,0.032257591994166,0.018432909710952
+eiffel,2,90,conf_eiffel_s2,late,7,F3 adaptive,3,0.027649364566417756,False,0.009216454855475995,0.018432909710952
+eiffel,2,95,conf_eiffel_s2,late,6,F3 adaptive,0,0.05069050170510847,False,0.0,0.004608227427738
+eiffel,4,0,conf_eiffel_s4,early,8,F3 adaptive,2,0.0,True,0.0,6.803924213801433
+eiffel,4,5,conf_eiffel_s4,early,7,F3 adaptive,6,0.0,True,0.0,9.443496708390613
+eiffel,4,10,conf_eiffel_s4,early,7,F3 adaptive,0,0.8568245793954543,False,0.07831192392323949,3.4180851500613834
+eiffel,4,15,conf_eiffel_s4,early,7,F3 adaptive,3,0.0,True,0.0,6.44000409674638
+eiffel,4,20,conf_eiffel_s4,middle,7,F3 adaptive,6,0.11977117776494905,False,0.0,1.5017463058221172
+eiffel,4,25,conf_eiffel_s4,middle,8,F3 adaptive,1,0.0,True,0.0,0.06909875640285815
+eiffel,4,30,conf_eiffel_s4,middle,8,F3 adaptive,3,0.0,True,0.0,1.3681553767765913
+eiffel,4,35,conf_eiffel_s4,middle,7,F3 adaptive,1,0.18426335040762076,False,0.0,0.7278402341101059
+eiffel,4,40,conf_eiffel_s4,middle,7,F3 adaptive,1,0.0,True,0.0,0.34549378201429076
+eiffel,4,45,conf_eiffel_s4,middle,7,F3 adaptive,1,0.2810016093716339,False,0.41919912217733946,0.11516459400476359
+eiffel,4,50,conf_eiffel_s4,late,8,F3 adaptive,7,0.00921316752039436,False,0.20729626920857447,0.14280409656590684
+eiffel,4,55,conf_eiffel_s4,late,8,F3 adaptive,5,0.05527900512227735,False,0.0,1.4648936357405928
+eiffel,4,60,conf_eiffel_s4,late,7,F3 adaptive,2,0.09213167520381038,False,0.05988558888247707,0.018426335040762173
+eiffel,4,65,conf_eiffel_s4,late,6,F3 adaptive,4,0.0,True,0.0,0.3408871982541002
+eiffel,4,70,conf_eiffel_s4,late,8,F3 adaptive,5,0.4284122896977327,False,0.1289843452853352,0.0322460863213338
+eiffel,4,75,conf_eiffel_s4,late,7,F3 adaptive,6,0.2211160204891427,False,0.023032918800952706,0.009213167520381087
+eiffel,4,80,conf_eiffel_s4,late,7,F3 adaptive,2,0.06909875640285223,False,0.00921316752038108,0.046065837601905434
+eiffel,4,85,conf_eiffel_s4,late,8,F3 adaptive,7,0.05527900512228845,False,0.0,0.0
+eiffel,4,90,conf_eiffel_s4,late,5,F3 adaptive,0,0.0,True,0.03685267008152435,0.0
+eiffel,4,95,conf_eiffel_s4,late,3,F3 adaptive,0,0.03685267008154414,False,0.0,0.0
+fushimi,0,0,conf_fushimi_s0,early,10,F3 adaptive,3,0.0,True,0.0,29.534665474726122
+fushimi,0,5,conf_fushimi_s0,early,7,F3 adaptive,6,0.2312691504703812,False,0.0,1.50723687720352
+fushimi,0,10,conf_fushimi_s0,early,9,F3 adaptive,1,0.0,True,0.0,2.3047167064117318
+fushimi,0,15,conf_fushimi_s0,early,8,F3 adaptive,4,0.03189919316832768,False,0.0,1.1523583532058659
+fushimi,0,20,conf_fushimi_s0,middle,8,F3 adaptive,2,0.0,True,0.0,6.312052848182995
+fushimi,0,25,conf_fushimi_s0,middle,7,F3 adaptive,1,0.0,True,0.0,1.1722953489360712
+fushimi,0,30,conf_fushimi_s0,middle,7,F3 adaptive,0,0.16747076413373696,False,0.0,0.11164717608914965
+fushimi,0,35,conf_fushimi_s0,middle,8,F3 adaptive,0,0.0,True,0.0,2.7672550073524946
+fushimi,0,40,conf_fushimi_s0,middle,8,F3 adaptive,2,0.5741854770299093,False,0.0,0.9370387993196487
+fushimi,0,45,conf_fushimi_s0,middle,8,F3 adaptive,1,0.1594959658416384,False,0.0,0.2113321547401761
+fushimi,0,50,conf_fushimi_s0,late,8,F3 adaptive,0,0.22329435217830484,False,0.1714581632797655,0.0
+fushimi,0,55,conf_fushimi_s0,late,8,F3 adaptive,1,0.07576058377477546,False,0.0,0.1435463692574781
+fushimi,0,60,conf_fushimi_s0,late,8,F3 adaptive,3,0.0,True,0.0,0.2990549359530794
+fushimi,0,65,conf_fushimi_s0,late,9,F3 adaptive,6,0.0,True,0.0,0.45855090179472174
+fushimi,0,70,conf_fushimi_s0,late,6,F3 adaptive,4,0.0,True,0.0,0.10367237779706752
+fushimi,0,75,conf_fushimi_s0,late,7,F3 adaptive,6,0.5582358804457455,False,0.02791179402228741,0.15152116754956022
+fushimi,0,80,conf_fushimi_s0,late,7,F3 adaptive,6,0.31500453253723304,False,0.0,0.07576058377478011
+fushimi,0,85,conf_fushimi_s0,late,6,F3 adaptive,5,0.0,True,0.0,0.0
+fushimi,0,90,conf_fushimi_s0,late,7,F3 adaptive,1,0.04784878975250262,False,0.007974798292082117,0.0
+fushimi,0,95,conf_fushimi_s0,late,6,F3 adaptive,0,0.08772278121289556,False,0.0,0.0039873991460410586
+fushimi,2,0,conf_fushimi_s2,early,8,F3 adaptive,2,1.2891930606398212,False,0.7560082763011309,9.223300970873787
+fushimi,2,5,conf_fushimi_s2,early,7,F3 adaptive,2,0.0,True,0.0,15.315136081489733
+fushimi,2,10,conf_fushimi_s2,early,6,F3 adaptive,0,0.0,True,0.2108865191787359,5.455196562151838
+fushimi,2,15,conf_fushimi_s2,early,6,F3 adaptive,2,0.6406175393920188,False,0.5013528569154859,1.5358904981696642
+fushimi,2,20,conf_fushimi_s2,middle,7,F3 adaptive,5,0.0,True,0.0,3.1314658602578387
+fushimi,2,25,conf_fushimi_s2,middle,6,F3 adaptive,4,0.06764284577431834,False,0.027852936495304736,0.7520292853732293
+fushimi,2,30,conf_fushimi_s2,middle,6,F3 adaptive,5,0.17109660989973463,False,0.11539073690911983,0.23873945567404106
+fushimi,2,35,conf_fushimi_s2,middle,8,F3 adaptive,1,0.16313862804393509,False,0.0,0.9231258952729587
+fushimi,2,40,conf_fushimi_s2,middle,8,F3 adaptive,4,0.07162183670221811,False,0.16711761897182875,0.6247015756804074
+fushimi,2,45,conf_fushimi_s2,middle,8,F3 adaptive,6,0.0,True,0.04774789113480815,0.5809326754734999
+fushimi,2,50,conf_fushimi_s2,late,8,F3 adaptive,5,0.051726882062708146,False,0.0,0.4734999204201814
+fushimi,2,55,conf_fushimi_s2,late,7,F3 adaptive,1,0.0,True,0.0,0.680407448671017
+fushimi,2,60,conf_fushimi_s2,late,7,F3 adaptive,6,0.03581091835109795,False,0.039789909279006844,0.011936972783702052
+fushimi,2,65,conf_fushimi_s2,late,7,F3 adaptive,5,0.05570587299060792,False,0.015915963711602737,0.023873945567404103
+fushimi,2,70,conf_fushimi_s2,late,8,F3 adaptive,3,0.0,True,0.0,0.07957981855801369
+fushimi,2,75,conf_fushimi_s2,late,7,F3 adaptive,0,0.0,True,0.0,0.06764284577431164
+fushimi,2,80,conf_fushimi_s2,late,7,F3 adaptive,0,0.5968486391851102,False,0.0,0.019894954639503422
+fushimi,2,85,conf_fushimi_s2,late,8,F3 adaptive,0,0.0,True,0.0,0.7599872672290306
+fushimi,2,90,conf_fushimi_s2,late,8,F3 adaptive,2,0.12334871876492626,False,0.011936972783702052,0.051726882062708895
+fushimi,2,95,conf_fushimi_s2,late,7,F3 adaptive,3,0.0,True,0.011936972783702052,0.0
+fushimi,4,0,conf_fushimi_s4,early,9,F3 adaptive,4,0.0,True,0.0,10.782400374840368
+fushimi,4,5,conf_fushimi_s4,early,8,F3 adaptive,1,2.6159664129505655,False,4.515229699065353,4.304200445052599
+fushimi,4,10,conf_fushimi_s4,early,9,F3 adaptive,7,0.003981684037979605,False,0.1035237849873889,7.071470851446268
+fushimi,4,15,conf_fushimi_s4,early,9,F3 adaptive,2,0.0,True,0.0,3.1176586017356014
+fushimi,4,20,conf_fushimi_s4,middle,8,F3 adaptive,3,0.0,True,0.0,2.110292540127546
+fushimi,4,25,conf_fushimi_s4,middle,7,F3 adaptive,5,0.0,True,0.023890104227858977,2.4487356833555487
+fushimi,4,30,conf_fushimi_s4,middle,8,F3 adaptive,1,0.0,True,0.0,1.7479592926716845
+fushimi,4,35,conf_fushimi_s4,middle,7,F3 adaptive,5,0.0,True,0.0,0.7366115470256529
+fushimi,4,40,conf_fushimi_s4,middle,7,F3 adaptive,6,0.0,True,0.0,0.14732230940513058
+fushimi,4,45,conf_fushimi_s4,middle,8,F3 adaptive,3,0.1592673615190554,False,0.0,0.9834759573801961
+fushimi,4,50,conf_fushimi_s4,late,7,F3 adaptive,6,0.2309376742026359,False,0.035835156341788466,1.1666334231271152
+fushimi,4,55,conf_fushimi_s4,late,7,F3 adaptive,0,0.25482777843049975,False,0.0,0.09954210094941256
+fushimi,4,60,conf_fushimi_s4,late,6,F3 adaptive,0,0.059725260569643,False,0.0,0.4937288207090863
+fushimi,4,65,conf_fushimi_s4,late,7,F3 adaptive,3,0.0,True,0.0,0.11945052113929507
+fushimi,4,70,conf_fushimi_s4,late,8,F3 adaptive,1,0.0,True,0.0,0.3105713549621672
+fushimi,4,75,conf_fushimi_s4,late,6,F3 adaptive,4,0.01194505211392638,False,0.007963368075953006,0.027871788265835515
+fushimi,4,80,conf_fushimi_s4,late,9,F3 adaptive,6,0.2906629347722789,False,0.0,0.019908420189882512
+fushimi,4,85,conf_fushimi_s4,late,3,F3 adaptive,1,0.0,True,0.0,0.0
+fushimi,4,90,conf_fushimi_s4,late,6,F3 adaptive,5,0.01592673615190554,False,0.0,0.04379852441774153
+fushimi,4,95,conf_fushimi_s4,late,6,F3 adaptive,4,0.0,True,0.0,0.1592673615190601
+liberty,0,0,conf_liberty_s0,early,9,F3 adaptive,7,0.0,True,0.0,10.720595585618154
+liberty,0,5,conf_liberty_s0,early,7,F3 adaptive,6,0.0,True,0.0,16.466756172315826
+liberty,0,10,conf_liberty_s0,early,7,F3 adaptive,6,0.0,True,0.0,2.9050307157727326
+liberty,0,15,conf_liberty_s0,early,7,F3 adaptive,0,0.1523789377139595,False,0.08356264326249818,0.5456149060080767
+liberty,0,20,conf_liberty_s0,middle,7,F3 adaptive,0,0.0,True,0.0,2.94926976220582
+liberty,0,25,conf_liberty_s0,middle,7,F3 adaptive,1,0.0,True,0.0,4.246948457576381
+liberty,0,30,conf_liberty_s0,middle,6,F3 adaptive,4,0.0,True,0.078647193658822,1.8039700045492264
+liberty,0,35,conf_liberty_s0,middle,7,F3 adaptive,1,0.15729438731765244,False,0.0,0.3834050690867566
+liberty,0,40,conf_liberty_s0,middle,7,F3 adaptive,1,0.04915449603676292,False,0.0,0.28509607701322925
+liberty,0,45,conf_liberty_s0,middle,8,F3 adaptive,5,0.009830899207352584,False,0.004915449603676366,0.0
+liberty,0,50,conf_liberty_s0,late,8,F3 adaptive,7,0.0,True,0.0,0.0
+liberty,0,55,conf_liberty_s0,late,8,F3 adaptive,6,0.0,True,0.0147463488110291,0.0
+liberty,0,60,conf_liberty_s0,late,6,F3 adaptive,1,0.0,True,0.0,0.3047578754279347
+liberty,0,65,conf_liberty_s0,late,7,F3 adaptive,0,0.0,True,0.0,0.7520637893624841
+liberty,0,70,conf_liberty_s0,late,8,F3 adaptive,6,0.1769561857323576,False,0.0442390464330873,0.0147463488110291
+liberty,0,75,conf_liberty_s0,late,6,F3 adaptive,4,0.05406994564044476,False,0.009830899207352733,0.004915449603676366
+liberty,0,80,conf_liberty_s0,late,6,F3 adaptive,0,0.039323596829410334,False,0.0,0.009830899207352733
+liberty,0,85,conf_liberty_s0,late,7,F3 adaptive,5,0.009830899207352584,False,0.0,0.0
+liberty,0,90,conf_liberty_s0,late,8,F3 adaptive,2,0.0,True,0.0,0.0
+liberty,0,95,conf_liberty_s0,late,6,F3 adaptive,1,0.0,True,0.0,0.0
+liberty,2,0,conf_liberty_s2,early,9,F3 adaptive,6,2.923420509036581,False,8.158956058103785,10.495720512207225
+liberty,2,5,conf_liberty_s2,early,6,F3 adaptive,4,0.0,True,0.0,2.090270313375229
+liberty,2,10,conf_liberty_s2,early,6,F3 adaptive,3,0.0640884765893357,False,0.1971953125825685,4.239699220525229
+liberty,2,15,conf_liberty_s2,early,7,F3 adaptive,3,0.28593320324472593,False,0.9021685550652523,0.3253722657612385
+liberty,2,20,conf_liberty_s2,middle,7,F3 adaptive,1,0.0,True,0.0,6.882116409131651
+liberty,2,25,conf_liberty_s2,middle,6,F3 adaptive,5,0.0,True,0.0,3.1354054700628438
+liberty,2,30,conf_liberty_s2,middle,6,F3 adaptive,1,0.0,True,0.0,5.777822658669265
+liberty,2,35,conf_liberty_s2,middle,8,F3 adaptive,7,0.1725458985097572,False,0.23663437509908258,0.06408847658933486
+liberty,2,40,conf_liberty_s2,middle,7,F3 adaptive,4,0.009859765629116612,False,0.0,0.05915859377477064
+liberty,2,45,conf_liberty_s2,middle,6,F3 adaptive,1,0.0,True,0.0,0.5373572267875
+liberty,2,50,conf_liberty_s2,late,8,F3 adaptive,7,0.0,True,0.0,1.1782419926808485
+liberty,2,55,conf_liberty_s2,late,6,F3 adaptive,3,0.044368945331074716,False,0.22677460946995412,0.00492988281456422
+liberty,2,60,conf_liberty_s2,late,7,F3 adaptive,2,0.0,True,0.0,1.0007662113565365
+liberty,2,65,conf_liberty_s2,late,7,F3 adaptive,5,0.22677460946994854,False,0.18733554695344035,0.0
+liberty,2,70,conf_liberty_s2,late,6,F3 adaptive,0,0.004929882814563857,False,0.0,0.00985976562912844
+liberty,2,75,conf_liberty_s2,late,7,F3 adaptive,2,0.15282636725150178,False,0.0,0.0
+liberty,2,80,conf_liberty_s2,late,8,F3 adaptive,6,0.0,True,0.01478964844369266,0.0
+liberty,2,85,conf_liberty_s2,late,7,F3 adaptive,6,0.0,True,0.01478964844369266,0.0
+liberty,2,90,conf_liberty_s2,late,6,F3 adaptive,0,0.1281769531786714,False,0.0,0.0
+liberty,2,95,conf_liberty_s2,late,7,F3 adaptive,4,0.0,True,0.0,0.0
+liberty,4,0,conf_liberty_s4,early,7,F3 adaptive,3,0.0,True,0.0,3.8374700251567835
+liberty,4,5,conf_liberty_s4,early,7,F3 adaptive,3,1.5645070102562215,False,0.0,19.339864960117072
+liberty,4,10,conf_liberty_s4,early,7,F3 adaptive,6,0.0,True,0.0,2.77478601819029
+liberty,4,15,conf_liberty_s4,early,7,F3 adaptive,0,0.0,True,0.0,10.371008734654486
+liberty,4,20,conf_liberty_s4,middle,7,F3 adaptive,5,0.21647266808577648,False,0.024599166827928176,1.2889963417834325
+liberty,4,25,conf_liberty_s4,middle,7,F3 adaptive,4,0.0,True,0.0,3.7538328579418283
+liberty,4,30,conf_liberty_s4,middle,5,F3 adaptive,0,0.0,True,0.1475950009675686,0.5608610036767607
+liberty,4,35,conf_liberty_s4,middle,7,F3 adaptive,1,0.06887766711819454,False,0.014759500096756861,0.13283550087081175
+liberty,4,40,conf_liberty_s4,middle,7,F3 adaptive,0,0.0,True,0.0,0.7724138383969423
+liberty,4,45,conf_liberty_s4,middle,7,F3 adaptive,4,0.0,True,0.20663300135459606,0.4378651695371202
+liberty,4,50,conf_liberty_s4,late,8,F3 adaptive,6,0.10331650067729736,False,0.05411816702144184,0.044278500290270584
+liberty,4,55,conf_liberty_s4,late,7,F3 adaptive,2,0.30010983530072144,False,0.0,0.06395783375261306
+liberty,4,60,conf_liberty_s4,late,8,F3 adaptive,7,0.09347683394612671,False,0.05903800038702744,0.0245991668279281
+liberty,4,65,conf_liberty_s4,late,6,F3 adaptive,5,0.06887766711820564,False,0.03443883355909934,0.044278500290270584
+liberty,4,70,conf_liberty_s4,late,7,F3 adaptive,4,0.0049198333655908755,False,0.00983966673117124,0.0
+liberty,4,75,conf_liberty_s4,late,6,F3 adaptive,2,0.0393586669246937,False,0.0245991668279281,0.014759500096756861
+liberty,4,80,conf_liberty_s4,late,7,F3 adaptive,2,0.014759500096761524,False,0.0,0.0
+liberty,4,85,conf_liberty_s4,late,7,F3 adaptive,1,0.009839666731170649,False,0.0,0.0
+liberty,4,90,conf_liberty_s4,late,7,F3 adaptive,6,0.0,True,0.029519000193513723,0.014759500096756861
+liberty,4,95,conf_liberty_s4,late,8,F3 adaptive,1,0.08855700058053584,False,0.044278500290270584,0.0
+redeemer,0,0,conf_redeemer_s0,early,8,F3 adaptive,2,0.0,True,0.0,10.456686189641882
+redeemer,0,5,conf_redeemer_s0,early,8,F3 adaptive,5,8.474500164549013,False,14.311907026992102,7.5270676371367875
+redeemer,0,10,conf_redeemer_s0,early,7,F3 adaptive,1,0.1091512128355121,False,2.4187908764349073,1.1089763224087843
+redeemer,0,15,conf_redeemer_s0,early,6,F3 adaptive,4,0.4628011424225642,False,0.0,3.226509851417683
+redeemer,0,20,conf_redeemer_s0,middle,7,F3 adaptive,3,0.2401326682381244,False,0.02619629108052246,0.6723714710667432
+redeemer,0,25,conf_redeemer_s0,middle,8,F3 adaptive,4,0.0,True,0.0,20.1929743745694
+redeemer,0,30,conf_redeemer_s0,middle,9,F3 adaptive,0,0.0,True,0.02619629108052246,0.3798462206675757
+redeemer,0,35,conf_redeemer_s0,middle,8,F3 adaptive,3,0.2794271048589092,False,0.0,0.5632202582312329
+redeemer,0,40,conf_redeemer_s0,middle,8,F3 adaptive,2,0.0,True,0.0,2.3751303913007034
+redeemer,0,45,conf_redeemer_s0,middle,8,F3 adaptive,1,0.0,True,0.0,0.18337403756365722
+redeemer,0,50,conf_redeemer_s0,late,8,F3 adaptive,4,0.030562339593953602,False,0.01746419405368164,0.0
+redeemer,0,55,conf_redeemer_s0,late,9,F3 adaptive,1,0.0,True,0.00873209702684082,0.0
+redeemer,0,60,conf_redeemer_s0,late,7,F3 adaptive,2,0.0,True,0.00873209702684082,0.0
+redeemer,0,65,conf_redeemer_s0,late,6,F3 adaptive,1,0.0,True,0.0,0.0
+redeemer,0,70,conf_redeemer_s0,late,7,F3 adaptive,0,0.0,True,0.0,0.0
+redeemer,0,75,conf_redeemer_s0,late,7,F3 adaptive,6,0.0130981455402579,False,0.01746419405368164,0.0
+redeemer,0,80,conf_redeemer_s0,late,8,F3 adaptive,0,0.0,True,0.00436604851342041,0.0
+redeemer,0,85,conf_redeemer_s0,late,9,F3 adaptive,6,0.0,True,0.03056233959394287,0.0
+redeemer,0,90,conf_redeemer_s0,late,9,F3 adaptive,4,0.0,True,0.0,0.0
+redeemer,0,95,conf_redeemer_s0,late,5,F3 adaptive,4,0.2401326682381133,False,0.00873209702684082,0.0
+redeemer,2,0,conf_redeemer_s2,early,9,F3 adaptive,2,1.8058351759873918,False,0.0,17.16641857076091
+redeemer,2,5,conf_redeemer_s2,early,8,F3 adaptive,5,0.0,True,1.2610089915045766,5.457049363932699
+redeemer,2,10,conf_redeemer_s2,early,8,F3 adaptive,4,0.0,True,0.0,10.830617296372063
+redeemer,2,15,conf_redeemer_s2,early,8,F3 adaptive,2,0.171356622538954,False,0.10984398880701884,1.1819213195635232
+redeemer,2,20,conf_redeemer_s2,middle,7,F3 adaptive,6,0.0,True,0.0,1.3269153847887882
+redeemer,2,25,conf_redeemer_s2,middle,7,F3 adaptive,3,0.09226895059789575,False,0.2021129394049147,0.32074444731649515
+redeemer,2,30,conf_redeemer_s2,middle,7,F3 adaptive,2,0.07469391238876799,False,0.008787519104561492,0.1274190270161419
+redeemer,2,35,conf_redeemer_s2,middle,8,F3 adaptive,1,0.03954383597052358,False,0.05272511462736906,0.008787519104561511
+redeemer,2,40,conf_redeemer_s2,middle,7,F3 adaptive,1,0.00878751910456943,False,0.008787519104561513,0.0043937595522807555
+redeemer,2,45,conf_redeemer_s2,middle,7,F3 adaptive,2,0.0,True,0.0043937595522807555,0.0
+redeemer,2,50,conf_redeemer_s2,late,7,F3 adaptive,1,0.08348143149333742,False,0.0,0.6019450586624635
+redeemer,2,55,conf_redeemer_s2,late,7,F3 adaptive,6,0.0,True,0.0,0.02636255731368453
+redeemer,2,60,conf_redeemer_s2,late,8,F3 adaptive,2,0.0,True,0.0,0.98859589926317
+redeemer,2,65,conf_redeemer_s2,late,8,F3 adaptive,6,0.0,True,0.0,0.0
+redeemer,2,70,conf_redeemer_s2,late,7,F3 adaptive,5,0.026362557313674984,False,0.0043937595522807555,0.0
+redeemer,2,75,conf_redeemer_s2,late,9,F3 adaptive,6,0.0,True,0.0,0.0
+redeemer,2,80,conf_redeemer_s2,late,8,F3 adaptive,0,0.0,True,0.0,0.0
+redeemer,2,85,conf_redeemer_s2,late,8,F3 adaptive,5,0.0,True,0.0,0.0
+redeemer,2,90,conf_redeemer_s2,late,8,F3 adaptive,3,0.0,True,0.0,0.0
+redeemer,2,95,conf_redeemer_s2,late,8,F3 adaptive,3,0.0,True,0.0,0.0
+redeemer,4,0,conf_redeemer_s4,early,8,F3 adaptive,7,0.0,True,0.0,7.463438142049892
+redeemer,4,5,conf_redeemer_s4,early,8,F3 adaptive,4,0.0,True,0.0,21.080708789721907
+redeemer,4,10,conf_redeemer_s4,early,7,F3 adaptive,2,0.5387340912395011,False,1.2789459726986903,0.4336152441683916
+redeemer,4,15,conf_redeemer_s4,early,8,F3 adaptive,5,0.0,True,0.0,1.935938766893223
+redeemer,4,20,conf_redeemer_s4,middle,7,F3 adaptive,2,0.1051188470711284,False,0.0,0.08321908726464082
+redeemer,4,25,conf_redeemer_s4,middle,7,F3 adaptive,6,0.0,True,0.38981572455542274,0.39419567651671966
+redeemer,4,30,conf_redeemer_s4,middle,8,F3 adaptive,2,0.0,True,0.0,1.3096056364277686
+redeemer,4,35,conf_redeemer_s4,middle,8,F3 adaptive,3,0.4336152441683949,False,1.1869669815114552,2.9871272376044757
+redeemer,4,40,conf_redeemer_s4,middle,6,F3 adaptive,2,1.2964657805438762,False,0.0,8.229929735276848
+redeemer,4,45,conf_redeemer_s4,middle,8,F3 adaptive,0,0.10949879903242588,False,0.03941956765167198,0.5518739471234075
+redeemer,4,50,conf_redeemer_s4,late,6,F3 adaptive,0,0.017519807845178814,False,0.0,0.09197899118723459
+redeemer,4,55,conf_redeemer_s4,late,8,F3 adaptive,6,0.026279711767784875,False,0.00875990392259377,0.0
+redeemer,4,60,conf_redeemer_s4,late,8,F3 adaptive,6,0.026279711767784875,False,0.04379951961296885,0.013139855883890654
+redeemer,4,65,conf_redeemer_s4,late,7,F3 adaptive,1,0.008759903922594958,False,0.0,0.0
+redeemer,4,70,conf_redeemer_s4,late,6,F3 adaptive,4,0.021899759806487396,False,0.008759903922593768,0.026279711767781308
+redeemer,4,75,conf_redeemer_s4,late,7,F3 adaptive,6,0.0,True,0.008759903922593768,0.004379951961296885
+redeemer,4,80,conf_redeemer_s4,late,7,F3 adaptive,0,0.004379951961297479,False,0.0,0.013139855883890654
+redeemer,4,85,conf_redeemer_s4,late,7,F3 adaptive,2,0.0,True,0.0,0.004379951961296885
+redeemer,4,90,conf_redeemer_s4,late,7,F3 adaptive,3,0.013139855883892437,False,0.0,0.004379951961296885
+redeemer,4,95,conf_redeemer_s4,late,8,F3 adaptive,4,0.0,True,0.0,0.0
+sestino_museum,0,0,conf_sestino_museum_s0,early,7,F3 adaptive,1,0.0,True,0.0,7.131534387722016
+sestino_museum,0,5,conf_sestino_museum_s0,early,8,F3 adaptive,5,0.0,True,0.0,4.429513275930396
+sestino_museum,0,10,conf_sestino_museum_s0,early,8,F3 adaptive,7,0.0,True,0.0,14.99621717044349
+sestino_museum,0,15,conf_sestino_museum_s0,early,9,F3 adaptive,4,0.0,True,0.0,11.180963360593724
+sestino_museum,0,20,conf_sestino_museum_s0,middle,7,F3 adaptive,0,0.1314983607738629,False,0.0,0.2161616889433296
+sestino_museum,0,25,conf_sestino_museum_s0,middle,8,F3 adaptive,0,1.1258421299131793,False,0.0,3.3000684512014984
+sestino_museum,0,30,conf_sestino_museum_s0,middle,8,F3 adaptive,7,0.04323233778866786,False,0.04863638001224915,0.01621212667074972
+sestino_museum,0,35,conf_sestino_museum_s0,middle,6,F3 adaptive,2,0.014410779262885587,False,0.0,0.05584176964369348
+sestino_museum,0,40,conf_sestino_museum_s0,middle,9,F3 adaptive,4,0.009006737039307655,False,0.0,0.02521886371005512
+sestino_museum,0,45,conf_sestino_museum_s0,middle,6,F3 adaptive,5,0.003602694815718621,False,0.0,0.0
+sestino_museum,0,50,conf_sestino_museum_s0,late,7,F3 adaptive,2,0.0,True,0.0,0.0
+sestino_museum,0,55,conf_sestino_museum_s0,late,5,F3 adaptive,0,0.0,True,0.0,0.0
+sestino_museum,0,60,conf_sestino_museum_s0,late,8,F3 adaptive,0,0.0,True,0.0,0.0
+sestino_museum,0,65,conf_sestino_museum_s0,late,6,F3 adaptive,0,0.0,True,0.0,0.0
+sestino_museum,0,70,conf_sestino_museum_s0,late,5,F3 adaptive,3,0.0,True,0.0,0.0
+sestino_museum,0,75,conf_sestino_museum_s0,late,8,F3 adaptive,7,0.0,True,0.0,0.0
+sestino_museum,0,80,conf_sestino_museum_s0,late,6,F3 adaptive,5,0.0,True,0.0,0.0
+sestino_museum,0,85,conf_sestino_museum_s0,late,8,F3 adaptive,6,0.06845120149872042,False,0.0,0.0
+sestino_museum,0,90,conf_sestino_museum_s0,late,5,F3 adaptive,3,0.0,True,0.0,0.0
+sestino_museum,0,95,conf_sestino_museum_s0,late,8,F3 adaptive,5,0.0,True,0.0,0.0
+sestino_museum,2,0,conf_sestino_museum_s2,early,6,F3 adaptive,2,3.763663539284364,False,6.983486701121896,6.225351605409591
+sestino_museum,2,5,conf_sestino_museum_s2,early,8,F3 adaptive,6,0.0,True,0.0,6.626929102663377
+sestino_museum,2,10,conf_sestino_museum_s2,early,9,F3 adaptive,0,1.0804775710864245,False,0.0,11.935675568601322
+sestino_museum,2,15,conf_sestino_museum_s2,early,8,F3 adaptive,7,0.0,True,4.2210657110442815,4.637049575912553
+sestino_museum,2,20,conf_sestino_museum_s2,middle,8,F3 adaptive,3,0.1026453692532181,False,0.045019898795267466,1.0552664277610704
+sestino_museum,2,25,conf_sestino_museum_s2,middle,8,F3 adaptive,5,0.0,True,0.322342475374116,6.142514991626299
+sestino_museum,2,30,conf_sestino_museum_s2,middle,6,F3 adaptive,4,0.0,True,0.005402387855432067,0.23230267778358035
+sestino_museum,2,35,conf_sestino_museum_s2,middle,8,F3 adaptive,7,0.0,True,0.05222308260251032,0.14586447209666673
+sestino_museum,2,40,conf_sestino_museum_s2,middle,8,F3 adaptive,2,0.025211143325343244,False,0.0,0.021609551421728403
+sestino_museum,2,45,conf_sestino_museum_s2,middle,8,F3 adaptive,1,0.009003979759047986,False,0.0,0.005402387855432101
+sestino_museum,2,50,conf_sestino_museum_s2,late,5,F3 adaptive,2,0.0,True,0.0,0.0
+sestino_museum,2,55,conf_sestino_museum_s2,late,8,F3 adaptive,2,0.0,True,0.0,0.0
+sestino_museum,2,60,conf_sestino_museum_s2,late,7,F3 adaptive,1,0.0,True,0.0,0.0
+sestino_museum,2,65,conf_sestino_museum_s2,late,7,F3 adaptive,4,0.0,True,0.0,0.0018007959518107004
+sestino_museum,2,70,conf_sestino_museum_s2,late,8,F3 adaptive,5,0.03961751093982668,False,0.07563342997604941,0.041418306891646106
+sestino_museum,2,75,conf_sestino_museum_s2,late,8,F3 adaptive,1,0.032414327132590515,False,0.0,0.05042228665069961
+sestino_museum,2,80,conf_sestino_museum_s2,late,6,F3 adaptive,1,0.0,True,0.0,0.10264536925320993
+sestino_museum,2,85,conf_sestino_museum_s2,late,7,F3 adaptive,2,0.0,True,0.0,0.0162071635662963
+sestino_museum,2,90,conf_sestino_museum_s2,late,7,F3 adaptive,6,0.0414183068916496,False,0.0,0.023410347373539104
+sestino_museum,2,95,conf_sestino_museum_s2,late,5,F3 adaptive,4,0.0,True,0.0,0.0
+sestino_museum,4,0,conf_sestino_museum_s4,early,9,F3 adaptive,3,3.774298056155508,False,0.0,12.584593232541398
+sestino_museum,4,5,conf_sestino_museum_s4,early,8,F3 adaptive,0,1.4074874010079226,False,14.134269258459321,5.345572354211663
+sestino_museum,4,10,conf_sestino_museum_s4,early,6,F3 adaptive,5,0.0,True,0.0,14.751619870410368
+sestino_museum,4,15,conf_sestino_museum_s4,early,7,F3 adaptive,6,0.0,True,0.0,8.565514758819294
+sestino_museum,4,20,conf_sestino_museum_s4,middle,7,F3 adaptive,0,0.0,True,0.0,1.3660907127429807
+sestino_museum,4,25,conf_sestino_museum_s4,middle,9,F3 adaptive,7,0.14398848092151972,False,0.4229661627069835,0.12419006479481642
+sestino_museum,4,30,conf_sestino_museum_s4,middle,6,F3 adaptive,5,0.1673866090712739,False,0.17458603311735063,0.06839452843772498
+sestino_museum,4,35,conf_sestino_museum_s4,middle,8,F3 adaptive,1,0.10439164866810069,False,0.0,0.2447804175665947
+sestino_museum,4,40,conf_sestino_museum_s4,middle,7,F3 adaptive,3,0.017998560115195517,False,0.010799136069114479,0.05579553635709143
+sestino_museum,4,45,conf_sestino_museum_s4,middle,6,F3 adaptive,1,0.0,True,0.0,0.0017998560115190785
+sestino_museum,4,50,conf_sestino_museum_s4,late,7,F3 adaptive,1,0.0035997120230391033,False,0.0,0.0
+sestino_museum,4,55,conf_sestino_museum_s4,late,4,F3 adaptive,2,0.0,True,0.0,0.0
+sestino_museum,4,60,conf_sestino_museum_s4,late,3,F3 adaptive,1,0.0,True,0.0,0.0
+sestino_museum,4,65,conf_sestino_museum_s4,late,5,F3 adaptive,4,0.0,True,0.0,0.0
+sestino_museum,4,70,conf_sestino_museum_s4,late,8,F3 adaptive,7,0.0,True,0.0,0.0
+sestino_museum,4,75,conf_sestino_museum_s4,late,7,F3 adaptive,3,0.0,True,0.0,0.0
+sestino_museum,4,80,conf_sestino_museum_s4,late,7,F3 adaptive,6,0.0017998560115195517,False,0.0,0.11159107271418287
+sestino_museum,4,85,conf_sestino_museum_s4,late,6,F3 adaptive,4,0.02339812814974307,False,0.0053995680345572325,0.03959683225341973
+sestino_museum,4,90,conf_sestino_museum_s4,late,9,F3 adaptive,8,0.10619150467963134,False,0.025197984161267117,0.2501799856011519
+sestino_museum,4,95,conf_sestino_museum_s4,late,8,F3 adaptive,3,0.0629949604031732,False,0.02159827213822893,0.15658747300215983

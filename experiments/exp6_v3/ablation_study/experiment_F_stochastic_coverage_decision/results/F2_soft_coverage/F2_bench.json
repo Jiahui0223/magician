@@ -1,0 +1,55 @@
+{
+ "tag": "conf_eiffel_s0",
+ "variant": "s0.25_w",
+ "rows": [
+  {
+   "t": 0,
+   "n_legal": 9,
+   "n_views": 50,
+   "planner_K4_s": 3.655332326889038,
+   "soft_extra_s": 0.7741553783416748,
+   "planner_peak_gb": 2.770930290222168,
+   "soft_peak_gb": 1.6649389266967773
+  },
+  {
+   "t": 10,
+   "n_legal": 8,
+   "n_views": 45,
+   "planner_K4_s": 3.4159607887268066,
+   "soft_extra_s": 1.1997206211090088,
+   "planner_peak_gb": 2.8138837814331055,
+   "soft_peak_gb": 1.6610651016235352
+  },
+  {
+   "t": 20,
+   "n_legal": 7,
+   "n_views": 38,
+   "planner_K4_s": 2.7267868518829346,
+   "soft_extra_s": 0.7668905258178711,
+   "planner_peak_gb": 2.79581356048584,
+   "soft_peak_gb": 1.6573619842529297
+  },
+  {
+   "t": 30,
+   "n_legal": 7,
+   "n_views": 37,
+   "planner_K4_s": 2.725820302963257,
+   "soft_extra_s": 0.9104201793670654,
+   "planner_peak_gb": 2.7884016036987305,
+   "soft_peak_gb": 1.6563639640808105
+  },
+  {
+   "t": 40,
+   "n_legal": 8,
+   "n_views": 45,
+   "planner_K4_s": 3.5809783935546875,
+   "soft_extra_s": 1.4116737842559814,
+   "planner_peak_gb": 2.802901268005371,
+   "soft_peak_gb": 1.6655983924865723
+  }
+ ],
+ "planner_K4_s_mean": 3.220975732803345,
+ "soft_extra_s_mean": 1.0125720977783204,
+ "soft_peak_gb_max": 1.6655983924865723,
+ "note": "soft_extra_s = rebuilding the soft maps from the recorded K = 4 hits of every first-layer view and child + max-union scoring; unoptimised Python/torch"
+}
