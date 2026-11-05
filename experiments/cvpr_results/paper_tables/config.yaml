@@ -1,0 +1,42 @@
+# CVPR paper tables / figures -- configuration (paper-tables-v1, 2026-11-04).
+# Display layer only: every number of OUR runs is read from the validated CVPR Table 1 outputs; MAGICIAN paper values are read
+# from table1/SCENE_REGISTRY.yaml (transcribed from MAGICIAN App. Tab. 6 / 7, p.12, and re-checked against the PDF text in
+# protocol_audit/results/metric_audit.json: 0 mismatches). Nothing here is typed by hand.
+version: paper-tables-v1
+sources:
+  per_scene: experiments/cvpr_results/table1/results/per_scene.csv        # aggregate.py output (official coverage)
+  per_model: experiments/cvpr_results/table1/results/per_model.csv        # aggregate.py output, used to cross-check averages
+  validation: experiments/cvpr_results/table1/results/validation.json     # validate.py output
+  episodes: work_dirs/cvpr_results/table1/episodes                       # canonical per-episode records (curves)
+  scene_registry: experiments/cvpr_results/table1/SCENE_REGISTRY.yaml
+  model_registry: experiments/cvpr_results/table1/MODEL_REGISTRY.yaml
+# MAGICIAN paper scene order (App. Tab. 6 / 7)
+scene_order: [dunnottar, colosseum, bannerman, pantheon, redeemer, liberty, pisa, fushimi, alhambra, neuschwanstein, eiffel, bridge, sofia_church, barts, sestino_museum]
+scene_labels: {dunnottar: Dunnottar Castle, colosseum: Colosseum, bannerman: Bannerman Castle, pantheon: Pantheon, redeemer: Christ the Redeemer,
+               liberty: Statue of Liberty, pisa: Pisa Cathedral, fushimi: Fushimi Castle, alhambra: Alhambra Palace, neuschwanstein: Neuschwanstein Castle,
+               eiffel: Eiffel Tower, bridge: Manhattan Bridge, sofia_church: St. Sofia Church, barts: Barts, sestino_museum: Sestino Museum}
+split_of: {bannerman: train, dunnottar: train, fushimi: train, liberty: train, pisa: train, redeemer: train, barts: dev, colosseum: dev, eiffel: dev,
+           pantheon: dev, sestino_museum: dev, alhambra: test, bridge: test, neuschwanstein: test, sofia_church: other}
+paper_methods: [random_walk, scone, macarons, fisherrf, magician]
+paper_labels: {random_walk: Rand. Walk, scone: SCONE, macarons: MACARONS, fisherrf: FisherRF, magician: MAGICIAN}
+# re-evaluated columns (CVPR Table 1 model ids); main = paper body, supp = supplementary
+main_models: [MAG-B, B2, V3-D1-H3-NORISK]
+supp_models: [MAG-B, MAG-G, B0, B2, V3, V3-D1-H3-NORISK, V3-YBEST-H3]
+curve_models: [MAG-B, B2, V3, V3-D1-H3-NORISK, V3-YBEST-H3]
+improvement_models: [V3-D1-H3-NORISK, B2]
+improvement_reference: MAG-B
+radar_models: [MAG-B, B2, V3-D1-H3-NORISK, V3-YBEST-H3]
+model_labels: {MAG-B: "MAGICIAN (re-eval.)", MAG-G: "MAGICIAN-Greedy (re-eval.)", B0: "B0", B2: "B2", V3: "V3-T1 (H0)",
+               V3-D1-H3-NORISK: "V3-D1", V3-YBEST-H3: "V3-YBEST-H3"}
+# fixed entity colours (Okabe-Ito, colour-blind safe) + line styles / markers so that print in black and white stays readable
+style:
+  MAG-B: {color: "#555555", ls: "--", marker: "s"}
+  MAG-G: {color: "#999999", ls: ":", marker: "x"}
+  B0: {color: "#56B4E9", ls: "-.", marker: "v"}
+  B2: {color: "#0072B2", ls: "-.", marker: "^"}
+  V3: {color: "#009E73", ls: ":", marker: "D"}
+  V3-D1-H3-NORISK: {color: "#D55E00", ls: "-", marker: "o"}
+  V3-YBEST-H3: {color: "#CC79A7", ls: [0, [5, 1.5]], marker: "P"}
+groups: {all14: All-14, dev: Dev-5, test: Test-3, train: Train-6}
+bootstrap: {n: 10000, seed: 0}
+dpi: 300

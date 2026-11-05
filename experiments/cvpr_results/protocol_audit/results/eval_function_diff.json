@@ -1,0 +1,128 @@
+{
+ "macarons/utility/macarons_utils.py::load_scene": {
+  "official": true,
+  "fork": true,
+  "status": "\u4e0d\u540c",
+  "changed_lines": 2
+ },
+ "macarons/utility/macarons_utils.py::get_scene_gt_surface": {
+  "official": true,
+  "fork": true,
+  "status": "\u9010\u5b57\u76f8\u540c",
+  "changed_lines": 0
+ },
+ "macarons/utility/macarons_utils.py::Scene.scene_coverage": {
+  "official": true,
+  "fork": true,
+  "status": "\u9010\u5b57\u76f8\u540c",
+  "changed_lines": 0
+ },
+ "macarons/utility/macarons_utils.py::Scene.fill_cells": {
+  "official": true,
+  "fork": true,
+  "status": "\u9010\u5b57\u76f8\u540c",
+  "changed_lines": 0
+ },
+ "macarons/utility/macarons_utils.py::Scene.get_covered_points": {
+  "official": true,
+  "fork": true,
+  "status": "\u9010\u5b57\u76f8\u540c",
+  "changed_lines": 0
+ },
+ "macarons/utility/macarons_utils.py::Camera.compute_partial_point_cloud": {
+  "official": true,
+  "fork": true,
+  "status": "\u9010\u5b57\u76f8\u540c",
+  "changed_lines": 0
+ },
+ "macarons/utility/macarons_utils.py::Camera.update_camera": {
+  "official": true,
+  "fork": true,
+  "status": "\u9010\u5b57\u76f8\u540c",
+  "changed_lines": 0
+ },
+ "macarons/utility/macarons_utils.py::Camera.capture_image": {
+  "official": true,
+  "fork": true,
+  "status": "\u9010\u5b57\u76f8\u540c",
+  "changed_lines": 0
+ },
+ "macarons/utility/macarons_utils.py::Camera.get_idx_from_key": {
+  "official": true,
+  "fork": true,
+  "status": "\u9010\u5b57\u76f8\u540c",
+  "changed_lines": 0
+ },
+ "macarons/utility/macarons_utils.py::Camera.get_key_from_idx": {
+  "official": true,
+  "fork": true,
+  "status": "\u9010\u5b57\u76f8\u540c",
+  "changed_lines": 0
+ },
+ "macarons/utility/macarons_utils.py::Camera.__init__": {
+  "official": true,
+  "fork": true,
+  "status": "\u4e0d\u540c",
+  "changed_lines": 32
+ },
+ "macarons/utility/macarons_utils.py::Settings.__init__": {
+  "official": true,
+  "fork": true,
+  "status": "\u9010\u5b57\u76f8\u540c",
+  "changed_lines": 0
+ },
+ "macarons/utility/macarons_utils.py::Camera.get_neighboring_poses": {
+  "official": true,
+  "fork": true,
+  "status": "\u9010\u5b57\u76f8\u540c",
+  "changed_lines": 0
+ },
+ "macarons/utility/macarons_utils.py::Camera.get_valid_neighbors": {
+  "official": true,
+  "fork": true,
+  "status": "\u9010\u5b57\u76f8\u540c",
+  "changed_lines": 0
+ },
+ "macarons/testers/magician_planning.py::setup_test_scene": {
+  "official": true,
+  "fork": true,
+  "status": "\u9010\u5b57\u76f8\u540c",
+  "changed_lines": 0
+ },
+ "macarons/testers/magician_planning.py::setup_test_camera": {
+  "official": true,
+  "fork": true,
+  "status": "\u4e0d\u540c",
+  "changed_lines": 3
+ },
+ "macarons/testers/magician_planning.py::load_current_frame_perfect_depth": {
+  "official": true,
+  "fork": true,
+  "status": "\u9010\u5b57\u76f8\u540c",
+  "changed_lines": 0
+ },
+ "macarons/testers/magician_planning.py::apply_perfect_depth_simple": {
+  "official": true,
+  "fork": true,
+  "status": "\u9010\u5b57\u76f8\u540c",
+  "changed_lines": 0
+ },
+ "macarons/utility/magician_utils.py::line_segment_mesh_intersection": {
+  "official": true,
+  "fork": true,
+  "status": "\u9010\u5b57\u76f8\u540c",
+  "changed_lines": 0
+ },
+ "macarons/utility/magician_utils.py::get_valid_neighbors": {
+  "official": false,
+  "fork": false,
+  "status": "\u4e24\u8fb9\u90fd\u6ca1\u6709\u8be5\u51fd\u6570",
+  "changed_lines": 0
+ },
+ "macarons/utility/magician_utils.py::get_neighboring_poses": {
+  "official": false,
+  "fork": false,
+  "status": "\u4e24\u8fb9\u90fd\u6ca1\u6709\u8be5\u51fd\u6570",
+  "changed_lines": 0
+ }
+}

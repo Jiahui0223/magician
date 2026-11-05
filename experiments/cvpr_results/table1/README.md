@@ -46,3 +46,4 @@ $PY baseline_report.py                # reports/BASELINE_REPRODUCTION.md
 | 2026-11-04 | 加入 EXP6 V3 / H 的 V3-H1 / V3-H2 / V3-H3（role h；冻结 V3-T1 + 新评分 / 规划；H0 = V3 行）。各 70 / 70，由本流水线运行，0 次失败。已有模型的结果没有改动 |
 | 2026-11-04 | 加入 EXP6 V3 夜间 Y / D 的行（role y / d / yd）：V3-D1-H3-NORISK、V3-YBEST-H3、V3-Y50K-H0 各 70 / 70；V3-D2-DEPTH3-B3、V3-D3-DEPTH3-B5、V3-D4-DEPTH4-B3 各 30 / 70（Dev-5 + pisa，partial）；V3-Y45K-H0 与 V3-YD-COMBINED-Y50K-D1 当时为 Dev-5（25 / 70，partial）。均由本流水线运行，已有模型的结果没有改动 |
 | 2026-11-04 | 补齐 V3-YD-COMBINED-Y50K-D1 的 Train-6 / Test-3（45 条），现为 70 / 70，用于 EXP6 V3 Experiment E 的 2 × 2（权重 × 风险项）。dunnottar 的 5 条因与诊断进程同卡而 OOM 并用尽 3 次重试；锁文件删除后每卡一条重新排队，failed 目录全部保留，s2 从 t = 35 逐位续跑（`logs/requeue.log`）。已有模型的结果没有改动 |
+| 2026-11-04 | 新增两个独立目录：`../protocol_audit/`（MAGICIAN 评估与训练协议审计）和 `../paper_tables/`（论文风格的表与图，只读本目录的 `results/` 与规范 episode，`refresh.sh` 一键刷新）。本目录的文件与数值没有改动；审计对已有审计文档的 4 处更正记录在 `../protocol_audit/MAGICIAN_TRAINING_AUDIT.md` §D |

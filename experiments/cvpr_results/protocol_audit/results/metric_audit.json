@@ -1,0 +1,686 @@
+{
+ "formula_tests": {
+  "constant 1": {
+   "table1_auc100": 1.0,
+   "table1_auc20": 1.0,
+   "table1_auc50": 1.0,
+   "table1_final": 1.0,
+   "A_trapz101_div100": 1.0,
+   "B_mean101": 1.0,
+   "C_lmdb_raw": 99.0,
+   "C_div99": 1.0,
+   "C_div100": 0.99,
+   "mean_c1_100": 1.0,
+   "final_c100": 1.0,
+   "max_c0_100": 1.0,
+   "max_c0_99": 1.0
+  },
+  "ramp t/100": {
+   "table1_auc100": 0.5,
+   "table1_auc20": 0.1,
+   "table1_auc50": 0.24999999999999997,
+   "table1_final": 1.0,
+   "A_trapz101_div100": 0.5,
+   "B_mean101": 0.49999999999999994,
+   "C_lmdb_raw": 49.005,
+   "C_div99": 0.49500000000000005,
+   "C_div100": 0.49005000000000004,
+   "mean_c1_100": 0.505,
+   "final_c100": 1.0,
+   "max_c0_100": 1.0,
+   "max_c0_99": 0.99
+  },
+  "late step (1 from t=50)": {
+   "table1_auc100": 0.505,
+   "table1_auc20": 0.0,
+   "table1_auc50": 0.01,
+   "table1_final": 1.0,
+   "A_trapz101_div100": 0.505,
+   "B_mean101": 0.504950495049505,
+   "C_lmdb_raw": 49.5,
+   "C_div99": 0.5,
+   "C_div100": 0.495,
+   "mean_c1_100": 0.51,
+   "final_c100": 1.0,
+   "max_c0_100": 1.0,
+   "max_c0_99": 1.0
+  },
+  "start only (c0=1)": {
+   "table1_auc100": 0.005,
+   "table1_auc20": 0.025,
+   "table1_auc50": 0.01,
+   "table1_final": 0.0,
+   "A_trapz101_div100": 0.005,
+   "B_mean101": 0.009900990099009901,
+   "C_lmdb_raw": 0.5,
+   "C_div99": 0.005050505050505051,
+   "C_div100": 0.005,
+   "mean_c1_100": 0.0,
+   "final_c100": 0.0,
+   "max_c0_100": 1.0,
+   "max_c0_99": 1.0
+  },
+  "end only (c100=1)": {
+   "table1_auc100": 0.005,
+   "table1_auc20": 0.0,
+   "table1_auc50": 0.0,
+   "table1_final": 1.0,
+   "A_trapz101_div100": 0.005,
+   "B_mean101": 0.009900990099009901,
+   "C_lmdb_raw": 0.0,
+   "C_div99": 0.0,
+   "C_div100": 0.0,
+   "mean_c1_100": 0.01,
+   "final_c100": 1.0,
+   "max_c0_100": 1.0,
+   "max_c0_99": 0.0
+  }
+ },
+ "formula_expected": {
+  "constant 1": 1.0,
+  "ramp t/100": 0.5,
+  "late step (1 from t=50)": 0.505,
+  "start only (c0=1)": 0.005,
+  "end only (c100=1)": 0.005
+ },
+ "formula_ok": {
+  "constant 1": true,
+  "ramp t/100": true,
+  "late step (1 from t=50)": true,
+  "start only (c0=1)": true,
+  "end only (c100=1)": true
+ },
+ "paper_transcription_vs_registry_mismatches": [],
+ "paper_avg_check": {
+  "random_walk": {
+   "auc_mean15": 0.2410666666666667,
+   "auc_reported": 0.241,
+   "final_mean15": 0.3244,
+   "final_reported": 0.324
+  },
+  "scone": {
+   "auc_mean15": 0.5344666666666666,
+   "auc_reported": 0.534,
+   "final_mean15": 0.6698,
+   "final_reported": 0.67
+  },
+  "macarons": {
+   "auc_mean15": 0.6474666666666667,
+   "auc_reported": 0.647,
+   "final_mean15": 0.8186,
+   "final_reported": 0.819
+  },
+  "fisherrf": {
+   "auc_mean15": 0.5459333333333334,
+   "auc_reported": 0.546,
+   "final_mean15": 0.7721333333333334,
+   "final_reported": 0.786
+  },
+  "magician": {
+   "auc_mean15": 0.7206,
+   "auc_reported": 0.721,
+   "final_mean15": 0.9191333333333334,
+   "final_reported": 0.919
+  }
+ },
+ "table1_definitions": {
+  "B0": {
+   "episodes": 70,
+   "complete_scenes": 14,
+   "share_nonmonotone": 0.9714285714285714,
+   "max_drop_mean": 0.007593511363825438,
+   "final_vs_max_mean_gap": 0.003939480438088373,
+   "share_final_below_max": 0.5571428571428572,
+   "scene_first": {
+    "auc100": 0.7481729092937419,
+    "final": 0.8972953642650815,
+    "final_max": 0.9012348447031698,
+    "auc100_mono": 0.7698880458188648,
+    "final_mono": 0.9291669440228044
+   },
+   "episode_pooled": {
+    "auc100": 0.748172909293742,
+    "final": 0.8972953642650813
+   }
+  },
+  "B1": {
+   "episodes": 70,
+   "complete_scenes": 14,
+   "share_nonmonotone": 0.9571428571428572,
+   "max_drop_mean": 0.007301947755273462,
+   "final_vs_max_mean_gap": 0.004261228316735907,
+   "share_final_below_max": 0.6,
+   "scene_first": {
+    "auc100": 0.7288284689838623,
+    "final": 0.8849076886544286,
+    "final_max": 0.8891689169711644,
+    "auc100_mono": 0.749995062272135,
+    "final_mono": 0.9169163885502247
+   },
+   "episode_pooled": {
+    "auc100": 0.7288284689838622,
+    "final": 0.8849076886544284
+   }
+  },
+  "B2": {
+   "episodes": 70,
+   "complete_scenes": 14,
+   "share_nonmonotone": 0.9571428571428572,
+   "max_drop_mean": 0.005328445338389446,
+   "final_vs_max_mean_gap": 0.0018438538020218982,
+   "share_final_below_max": 0.5571428571428572,
+   "scene_first": {
+    "auc100": 0.7423506554481453,
+    "final": 0.907248935039679,
+    "final_max": 0.9090927888417009,
+    "auc100_mono": 0.7632691079677619,
+    "final_mono": 0.936300729527898
+   },
+   "episode_pooled": {
+    "auc100": 0.7423506554481453,
+    "final": 0.9072489350396792
+   }
+  },
+  "E2D": {
+   "episodes": 70,
+   "complete_scenes": 14,
+   "share_nonmonotone": 0.9571428571428572,
+   "max_drop_mean": 0.0068469300664053415,
+   "final_vs_max_mean_gap": 0.0041017713955998295,
+   "share_final_below_max": 0.6,
+   "scene_first": {
+    "auc100": 0.7385835009827952,
+    "final": 0.8899905082953623,
+    "final_max": 0.8940922796909624,
+    "auc100_mono": 0.759917208021111,
+    "final_mono": 0.9208396556787123
+   },
+   "episode_pooled": {
+    "auc100": 0.7385835009827953,
+    "final": 0.8899905082953624
+   }
+  },
+  "E2S": {
+   "episodes": 70,
+   "complete_scenes": 14,
+   "share_nonmonotone": 0.9571428571428572,
+   "max_drop_mean": 0.006588072301514279,
+   "final_vs_max_mean_gap": 0.004277245861962052,
+   "share_final_below_max": 0.6428571428571429,
+   "scene_first": {
+    "auc100": 0.7472300254944179,
+    "final": 0.894609430944653,
+    "final_max": 0.8988866768066149,
+    "auc100_mono": 0.7684499027168392,
+    "final_mono": 0.9255662307047279
+   },
+   "episode_pooled": {
+    "auc100": 0.7472300254944176,
+    "final": 0.894609430944653
+   }
+  },
+  "F1-CONT-v1@2k": {
+   "episodes": 70,
+   "complete_scenes": 14,
+   "share_nonmonotone": 0.9571428571428572,
+   "max_drop_mean": 0.006562881981529379,
+   "final_vs_max_mean_gap": 0.003999501763493566,
+   "share_final_below_max": 0.5428571428571428,
+   "scene_first": {
+    "auc100": 0.741417774857772,
+    "final": 0.8862541526987845,
+    "final_max": 0.8902536544622782,
+    "auc100_mono": 0.763062096688192,
+    "final_mono": 0.9178270610374911
+   },
+   "episode_pooled": {
+    "auc100": 0.7414177748577722,
+    "final": 0.8862541526987845
+   }
+  },
+  "F1-GQ-v1@5k": {
+   "episodes": 70,
+   "complete_scenes": 14,
+   "share_nonmonotone": 0.9714285714285714,
+   "max_drop_mean": 0.006817899954175503,
+   "final_vs_max_mean_gap": 0.0035273561280747007,
+   "share_final_below_max": 0.5714285714285714,
+   "scene_first": {
+    "auc100": 0.7450130453780683,
+    "final": 0.8883272118230767,
+    "final_max": 0.8918545679511515,
+    "auc100_mono": 0.766139702686989,
+    "final_mono": 0.9183401669368144
+   },
+   "episode_pooled": {
+    "auc100": 0.7450130453780682,
+    "final": 0.8883272118230767
+   }
+  },
+  "MAG-B": {
+   "episodes": 70,
+   "complete_scenes": 14,
+   "share_nonmonotone": 0.9571428571428572,
+   "max_drop_mean": 0.0035453720472769785,
+   "final_vs_max_mean_gap": 0.0022193840254676324,
+   "share_final_below_max": 0.5142857142857142,
+   "scene_first": {
+    "auc100": 0.7108436347316849,
+    "final": 0.9063261550858411,
+    "final_max": 0.9085455391113085,
+    "auc100_mono": 0.7299261575857798,
+    "final_mono": 0.9324341537682744
+   },
+   "episode_pooled": {
+    "auc100": 0.7108436347316849,
+    "final": 0.906326155085841
+   }
+  },
+  "MAG-G": {
+   "episodes": 70,
+   "complete_scenes": 14,
+   "share_nonmonotone": 0.9714285714285714,
+   "max_drop_mean": 0.0038487065817958133,
+   "final_vs_max_mean_gap": 0.0025332148189954845,
+   "share_final_below_max": 0.4857142857142857,
+   "scene_first": {
+    "auc100": 0.7032989353920736,
+    "final": 0.9014397552288098,
+    "final_max": 0.9039729700478052,
+    "auc100_mono": 0.7223879082534097,
+    "final_mono": 0.9283309931326583
+   },
+   "episode_pooled": {
+    "auc100": 0.7032989353920736,
+    "final": 0.9014397552288097
+   }
+  },
+  "V2O": {
+   "episodes": 70,
+   "complete_scenes": 14,
+   "share_nonmonotone": 0.9571428571428572,
+   "max_drop_mean": 0.007440411863099242,
+   "final_vs_max_mean_gap": 0.004566139476981165,
+   "share_final_below_max": 0.6285714285714286,
+   "scene_first": {
+    "auc100": 0.7371217231312958,
+    "final": 0.8962404192745446,
+    "final_max": 0.9008065587515258,
+    "auc100_mono": 0.7585737094968291,
+    "final_mono": 0.9289087863188098
+   },
+   "episode_pooled": {
+    "auc100": 0.737121723131296,
+    "final": 0.8962404192745443
+   }
+  },
+  "V3": {
+   "episodes": 70,
+   "complete_scenes": 14,
+   "share_nonmonotone": 0.9428571428571428,
+   "max_drop_mean": 0.004672569066818218,
+   "final_vs_max_mean_gap": 0.0023793396598304675,
+   "share_final_below_max": 0.5857142857142857,
+   "scene_first": {
+    "auc100": 0.7435409028500389,
+    "final": 0.9031464341781834,
+    "final_max": 0.9055257738380138,
+    "auc100_mono": 0.7648254282119027,
+    "final_mono": 0.9325666889622245
+   },
+   "episode_pooled": {
+    "auc100": 0.7435409028500389,
+    "final": 0.9031464341781833
+   }
+  },
+  "V3-D1-H3-NORISK": {
+   "episodes": 70,
+   "complete_scenes": 14,
+   "share_nonmonotone": 0.9714285714285714,
+   "max_drop_mean": 0.007131881944340993,
+   "final_vs_max_mean_gap": 0.004836747360088992,
+   "share_final_below_max": 0.5428571428571428,
+   "scene_first": {
+    "auc100": 0.765183237669689,
+    "final": 0.9098280207228403,
+    "final_max": 0.9146647680829292,
+    "auc100_mono": 0.7857319164596436,
+    "final_mono": 0.9397845677881166
+   },
+   "episode_pooled": {
+    "auc100": 0.7651832376696891,
+    "final": 0.9098280207228401
+   }
+  },
+  "V3-D2-DEPTH3-B3": {
+   "episodes": 30,
+   "complete_scenes": 6,
+   "share_nonmonotone": 0.9333333333333333,
+   "max_drop_mean": 0.0036858434412037695,
+   "final_vs_max_mean_gap": 0.0017173818612278957,
+   "share_final_below_max": 0.5,
+   "scene_first": {
+    "auc100": 0.7593424178708043,
+    "final": 0.9023134058509981,
+    "final_max": 0.9040307877122259,
+    "auc100_mono": 0.7755852086737702,
+    "final_mono": 0.9223494647198907
+   },
+   "episode_pooled": {
+    "auc100": 0.7593424178708044,
+    "final": 0.902313405850998
+   }
+  },
+  "V3-D3-DEPTH3-B5": {
+   "episodes": 30,
+   "complete_scenes": 6,
+   "share_nonmonotone": 0.9333333333333333,
+   "max_drop_mean": 0.0038594974646259145,
+   "final_vs_max_mean_gap": 0.001517666948828474,
+   "share_final_below_max": 0.6333333333333333,
+   "scene_first": {
+    "auc100": 0.7591575573934609,
+    "final": 0.9019732282640945,
+    "final_max": 0.903490895212923,
+    "auc100_mono": 0.7756533497083722,
+    "final_mono": 0.9223999534373708
+   },
+   "episode_pooled": {
+    "auc100": 0.7591575573934611,
+    "final": 0.9019732282640944
+   }
+  },
+  "V3-D4-DEPTH4-B3": {
+   "episodes": 30,
+   "complete_scenes": 6,
+   "share_nonmonotone": 0.9666666666666667,
+   "max_drop_mean": 0.003864762727615336,
+   "final_vs_max_mean_gap": 0.0025825064507175254,
+   "share_final_below_max": 0.6,
+   "scene_first": {
+    "auc100": 0.772514849290553,
+    "final": 0.9089405051042098,
+    "final_max": 0.9115230115549272,
+    "auc100_mono": 0.7890292682499994,
+    "final_mono": 0.9308750036102569
+   },
+   "episode_pooled": {
+    "auc100": 0.7725148492905529,
+    "final": 0.9089405051042099
+   }
+  },
+  "V3-H1": {
+   "episodes": 70,
+   "complete_scenes": 14,
+   "share_nonmonotone": 0.9571428571428572,
+   "max_drop_mean": 0.004971514733424542,
+   "final_vs_max_mean_gap": 0.0024660392018861104,
+   "share_final_below_max": 0.5857142857142857,
+   "scene_first": {
+    "auc100": 0.7420785745929386,
+    "final": 0.8938837515299304,
+    "final_max": 0.8963497907318162,
+    "auc100_mono": 0.7622044253594942,
+    "final_mono": 0.9230158981135153
+   },
+   "episode_pooled": {
+    "auc100": 0.7420785745929388,
+    "final": 0.8938837515299302
+   }
+  },
+  "V3-H2": {
+   "episodes": 70,
+   "complete_scenes": 14,
+   "share_nonmonotone": 0.9428571428571428,
+   "max_drop_mean": 0.006154932372504634,
+   "final_vs_max_mean_gap": 0.003049547120506186,
+   "share_final_below_max": 0.5428571428571428,
+   "scene_first": {
+    "auc100": 0.7443549661128758,
+    "final": 0.8893348892984567,
+    "final_max": 0.8923844364189628,
+    "auc100_mono": 0.7646358184751191,
+    "final_mono": 0.9180213675711969
+   },
+   "episode_pooled": {
+    "auc100": 0.7443549661128759,
+    "final": 0.8893348892984568
+   }
+  },
+  "V3-H3": {
+   "episodes": 70,
+   "complete_scenes": 14,
+   "share_nonmonotone": 0.9285714285714286,
+   "max_drop_mean": 0.006693771171614218,
+   "final_vs_max_mean_gap": 0.003765333624151858,
+   "share_final_below_max": 0.5428571428571428,
+   "scene_first": {
+    "auc100": 0.7618592955889397,
+    "final": 0.9009780859243353,
+    "final_max": 0.904743419548487,
+    "auc100_mono": 0.782427303525041,
+    "final_mono": 0.9302359933799674
+   },
+   "episode_pooled": {
+    "auc100": 0.7618592955889398,
+    "final": 0.9009780859243353
+   }
+  },
+  "V3-Y45K-H0": {
+   "episodes": 25,
+   "complete_scenes": 5,
+   "share_nonmonotone": 1.0,
+   "max_drop_mean": 0.005208042983607362,
+   "final_vs_max_mean_gap": 0.002931946054570136,
+   "share_final_below_max": 0.6,
+   "scene_first": {
+    "auc100": 0.7324902865623102,
+    "final": 0.8938411146753836,
+    "final_max": 0.8967730607299538,
+    "auc100_mono": 0.7501191010528805,
+    "final_mono": 0.9190107524635117
+   },
+   "episode_pooled": {
+    "auc100": 0.7324902865623099,
+    "final": 0.8938411146753836
+   }
+  },
+  "V3-Y50K-H0": {
+   "episodes": 70,
+   "complete_scenes": 14,
+   "share_nonmonotone": 0.9714285714285714,
+   "max_drop_mean": 0.007908010637214725,
+   "final_vs_max_mean_gap": 0.004516649360717191,
+   "share_final_below_max": 0.6428571428571429,
+   "scene_first": {
+    "auc100": 0.7383596041944711,
+    "final": 0.8938404031672603,
+    "final_max": 0.8983570525279775,
+    "auc100_mono": 0.7599048158510043,
+    "final_mono": 0.9255883639476441
+   },
+   "episode_pooled": {
+    "auc100": 0.7383596041944709,
+    "final": 0.8938404031672603
+   }
+  },
+  "V3-YBEST-H3": {
+   "episodes": 70,
+   "complete_scenes": 14,
+   "share_nonmonotone": 0.9428571428571428,
+   "max_drop_mean": 0.004634571662172905,
+   "final_vs_max_mean_gap": 0.0025106769992817675,
+   "share_final_below_max": 0.5857142857142857,
+   "scene_first": {
+    "auc100": 0.7696744698694313,
+    "final": 0.9105481286219101,
+    "final_max": 0.913058805621192,
+    "auc100_mono": 0.7898055905139255,
+    "final_mono": 0.9376083384909004
+   },
+   "episode_pooled": {
+    "auc100": 0.7696744698694313,
+    "final": 0.9105481286219101
+   }
+  },
+  "V3-YD-COMBINED-Y50K-D1": {
+   "episodes": 70,
+   "complete_scenes": 14,
+   "share_nonmonotone": 0.9571428571428572,
+   "max_drop_mean": 0.005633476389108006,
+   "final_vs_max_mean_gap": 0.0029209718677297492,
+   "share_final_below_max": 0.6,
+   "scene_first": {
+    "auc100": 0.7679745246959572,
+    "final": 0.9121793822112538,
+    "final_max": 0.9151003540789835,
+    "auc100_mono": 0.788539899421618,
+    "final_mono": 0.9403942539945153
+   },
+   "episode_pooled": {
+    "auc100": 0.7679745246959573,
+    "final": 0.9121793822112536
+   }
+  },
+  "V3.1": {
+   "episodes": 70,
+   "complete_scenes": 14,
+   "share_nonmonotone": 0.9857142857142858,
+   "max_drop_mean": 0.005622109842236532,
+   "final_vs_max_mean_gap": 0.0031701307088789947,
+   "share_final_below_max": 0.5857142857142857,
+   "scene_first": {
+    "auc100": 0.7310312196715433,
+    "final": 0.8871506823658957,
+    "final_max": 0.8903208130747748,
+    "auc100_mono": 0.7524330475653821,
+    "final_mono": 0.9173125522150116
+   },
+   "episode_pooled": {
+    "auc100": 0.7310312196715434,
+    "final": 0.887150682365896
+   }
+  },
+  "V4": {
+   "episodes": 70,
+   "complete_scenes": 14,
+   "share_nonmonotone": 0.9285714285714286,
+   "max_drop_mean": 0.006210458818058184,
+   "final_vs_max_mean_gap": 0.003620053891270863,
+   "share_final_below_max": 0.5428571428571428,
+   "scene_first": {
+    "auc100": 0.7364973861275769,
+    "final": 0.8956234962582229,
+    "final_max": 0.8992435501494939,
+    "auc100_mono": 0.7578858059352003,
+    "final_mono": 0.9260455680233416
+   },
+   "episode_pooled": {
+    "auc100": 0.7364973861275769,
+    "final": 0.8956234962582231
+   }
+  },
+  "V4C": {
+   "episodes": 70,
+   "complete_scenes": 14,
+   "share_nonmonotone": 0.9714285714285714,
+   "max_drop_mean": 0.006122846108754721,
+   "final_vs_max_mean_gap": 0.0034478932573095583,
+   "share_final_below_max": 0.6571428571428571,
+   "scene_first": {
+    "auc100": 0.7422851323068781,
+    "final": 0.9003012639082572,
+    "final_max": 0.9037491571655669,
+    "auc100_mono": 0.764170209246242,
+    "final_mono": 0.9318381488674082
+   },
+   "episode_pooled": {
+    "auc100": 0.7422851323068779,
+    "final": 0.9003012639082574
+   }
+  },
+  "V5": {
+   "episodes": 70,
+   "complete_scenes": 14,
+   "share_nonmonotone": 0.9428571428571428,
+   "max_drop_mean": 0.005833468099377745,
+   "final_vs_max_mean_gap": 0.0030976791586861904,
+   "share_final_below_max": 0.5428571428571428,
+   "scene_first": {
+    "auc100": 0.7367685578586346,
+    "final": 0.9003505526813783,
+    "final_max": 0.9034482318400645,
+    "auc100_mono": 0.7581875794785073,
+    "final_mono": 0.9309500047263584
+   },
+   "episode_pooled": {
+    "auc100": 0.7367685578586347,
+    "final": 0.9003505526813782
+   }
+  }
+ },
+ "paper_vs_reproduced": {
+  "paper_all15": {
+   "auc": 0.7206,
+   "final": 0.9191333333333334
+  },
+  "paper_all14": {
+   "auc": 0.7213571428571429,
+   "final": 0.9211428571428572
+  },
+  "rep_magb": {
+   "A_trapz101_div100": 0.710843634731685,
+   "B_mean101": 0.7084917727001286,
+   "C_div99": 0.7088742141078413,
+   "C_div100": 0.7017854719667632,
+   "final_c100": 0.9063261550858409,
+   "max_c0_99": 0.9073230673705464,
+   "max_c0_100": 0.9085455391113084,
+   "diff_auc_mean": -0.010513508125457847,
+   "diff_auc_ci": [
+    -0.025405462715505586,
+    0.0022766692598781176
+   ],
+   "diff_final_mean": -0.014816702057016184,
+   "diff_final_ci": [
+    -0.03202980395360067,
+    -0.0011100835887095219
+   ],
+   "scenes_rep_below_paper_auc": 9,
+   "scenes_rep_below_paper_final": 10,
+   "scenes_auc_within_2se": 14,
+   "scenes_final_within_2se": 11,
+   "corr_auc_with_paper": 0.9644885366270055,
+   "corr_final_with_paper": 0.940348301970192
+  },
+  "rep_lmdb": {
+   "A_trapz101_div100": 0.7110899105999474,
+   "B_mean101": 0.7087353282028449,
+   "C_div99": 0.7091244633928653,
+   "C_div100": 0.7020332187589367,
+   "final_c100": 0.9059516437842677,
+   "max_c0_99": 0.9073981836499643,
+   "max_c0_100": 0.9079971189591268,
+   "diff_auc_mean": -0.010267232257195471,
+   "diff_auc_ci": [
+    -0.026730114192989193,
+    0.004011707514024476
+   ],
+   "diff_final_mean": -0.015191213358589481,
+   "diff_final_ci": [
+    -0.031198431394477727,
+    -0.0029323920158942285
+   ],
+   "scenes_rep_below_paper_auc": 9,
+   "scenes_rep_below_paper_final": 9,
+   "scenes_auc_within_2se": 13,
+   "scenes_final_within_2se": 11,
+   "corr_auc_with_paper": 0.9500185619548478,
+   "corr_final_with_paper": 0.9312607428984359
+  },
+  "magb_vs_lmdb": {
+   "auc_mean_diff": -0.00024627586826237683,
+   "final_mean_diff": 0.00037451130157329607
+  }
+ }
+}

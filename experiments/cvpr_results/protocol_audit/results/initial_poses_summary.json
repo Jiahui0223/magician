@@ -1,0 +1,185 @@
+{
+ "lmdb_available": true,
+ "models": [
+  "B0",
+  "B1",
+  "B2",
+  "E2D",
+  "E2S",
+  "F1-CONT-v1@2k",
+  "F1-GQ-v1@5k",
+  "MAG-B",
+  "MAG-G",
+  "V2O",
+  "V3",
+  "V3-D1-H3-NORISK",
+  "V3-D2-DEPTH3-B3",
+  "V3-D3-DEPTH3-B5",
+  "V3-D4-DEPTH4-B3",
+  "V3-H1",
+  "V3-H2",
+  "V3-H3",
+  "V3-Y45K-H0",
+  "V3-Y50K-H0",
+  "V3-YBEST-H3",
+  "V3-YD-COMBINED-Y50K-D1",
+  "V3.1",
+  "V4",
+  "V4C",
+  "V5"
+ ],
+ "scenes": {
+  "dunnottar": {
+   "split": "train",
+   "n_starts": 5,
+   "unique": true
+  },
+  "colosseum": {
+   "split": "dev",
+   "n_starts": 5,
+   "unique": true
+  },
+  "bannerman": {
+   "split": "train",
+   "n_starts": 5,
+   "unique": true
+  },
+  "pantheon": {
+   "split": "dev",
+   "n_starts": 5,
+   "unique": true
+  },
+  "redeemer": {
+   "split": "train",
+   "n_starts": 5,
+   "unique": true
+  },
+  "liberty": {
+   "split": "train",
+   "n_starts": 5,
+   "unique": true
+  },
+  "pisa": {
+   "split": "train",
+   "n_starts": 5,
+   "unique": true
+  },
+  "fushimi": {
+   "split": "train",
+   "n_starts": 5,
+   "unique": true
+  },
+  "alhambra": {
+   "split": "test",
+   "n_starts": 5,
+   "unique": true
+  },
+  "neuschwanstein": {
+   "split": "test",
+   "n_starts": 5,
+   "unique": true
+  },
+  "eiffel": {
+   "split": "dev",
+   "n_starts": 5,
+   "unique": true
+  },
+  "bridge": {
+   "split": "test",
+   "n_starts": 5,
+   "unique": true
+  },
+  "sofia_church": {
+   "split": "other",
+   "n_starts": 5,
+   "unique": true
+  },
+  "barts": {
+   "split": "dev",
+   "n_starts": 5,
+   "unique": true
+  },
+  "sestino_museum": {
+   "split": "dev",
+   "n_starts": 5,
+   "unique": true
+  }
+ },
+ "all14": {
+  "start_rows": 70,
+  "lmdb_match": 70,
+  "episodes_checked": 1655,
+  "episodes_t0_match": 1655,
+  "all_starts_unique": true,
+  "train6_starts_first_pose_any_trajectory": {
+   "bannerman": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "dunnottar": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "fushimi": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "liberty": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "pisa": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "redeemer": [
+    0,
+    1,
+    2,
+    3
+   ]
+  },
+  "train6_starts_first_pose_training_split": {
+   "bannerman": [
+    1,
+    2,
+    3
+   ],
+   "dunnottar": [
+    0,
+    1,
+    2
+   ],
+   "fushimi": [
+    1,
+    2,
+    3
+   ],
+   "liberty": [
+    0,
+    1,
+    3
+   ],
+   "pisa": [
+    0,
+    1,
+    2
+   ],
+   "redeemer": [
+    1,
+    2,
+    3
+   ]
+  }
+ }
+}

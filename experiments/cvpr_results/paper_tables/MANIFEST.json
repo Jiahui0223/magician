@@ -1,0 +1,2448 @@
+{
+ "tables": {
+  "generated": "2026-11-04T17:50:40",
+  "git_head_at_generation": "5ff7c05",
+  "config_version": "paper-tables-v1",
+  "config_sha256": "049d2d88f8877e8369f53cbd7d695c41f14bce28aea312b1a86aa0e6c21571cb",
+  "script": "experiments/cvpr_results/paper_tables/scripts/make_tables.py",
+  "inputs": {
+   "per_scene": {
+    "path": "experiments/cvpr_results/table1/results/per_scene.csv",
+    "sha256": "d784b6ed51b84b638175b028e6c2b25610a9e73f9bf4b5d713429ca2a691b898"
+   },
+   "per_model": {
+    "path": "experiments/cvpr_results/table1/results/per_model.csv",
+    "sha256": "9557db6ccb8a50cbe0b409647a07a062354300d0d9e25d62ad4c297ef7e52d10"
+   },
+   "validation": {
+    "path": "experiments/cvpr_results/table1/results/validation.json",
+    "sha256": "fef5405a69ea3194231a3d17162fd01dbed3c52911f361d38d95e77c81bb8760"
+   },
+   "scene_registry": {
+    "path": "experiments/cvpr_results/table1/SCENE_REGISTRY.yaml",
+    "sha256": "726d7cb7d99056daa3252b2e3d8166e53c5bedab5326b6253d7eecfaffa1ea9b"
+   },
+   "model_registry": {
+    "path": "experiments/cvpr_results/table1/MODEL_REGISTRY.yaml",
+    "sha256": "88e631858ffd0ad03b778675e62cd99ce32d6d03ec58a6bc339aecd62c48a765"
+   }
+  },
+  "outputs": {
+   "table_auc_full_scenes": {
+    "models": [
+     "MAG-B",
+     "B2",
+     "V3-D1-H3-NORISK"
+    ],
+    "all14": {
+     "MAG-B": 0.710843634731685,
+     "B2": 0.742350655448145,
+     "V3-D1-H3-NORISK": 0.7651832376696891
+    },
+    "paper_all14": {
+     "random_walk": 0.2382857142857143,
+     "scone": 0.5346428571428571,
+     "macarons": 0.649357142857143,
+     "fisherrf": 0.5415,
+     "magician": 0.7213571428571429
+    }
+   },
+   "table_auc_full_scenes_supp": {
+    "models": [
+     "MAG-B",
+     "MAG-G",
+     "B0",
+     "B2",
+     "V3",
+     "V3-D1-H3-NORISK",
+     "V3-YBEST-H3"
+    ],
+    "all14": {
+     "MAG-B": 0.710843634731685,
+     "MAG-G": 0.7032989353920736,
+     "B0": 0.748172909293742,
+     "B2": 0.742350655448145,
+     "V3": 0.7435409028500392,
+     "V3-D1-H3-NORISK": 0.7651832376696891,
+     "V3-YBEST-H3": 0.7696744698694313
+    },
+    "paper_all14": {
+     "random_walk": 0.2382857142857143,
+     "scone": 0.5346428571428571,
+     "macarons": 0.649357142857143,
+     "fisherrf": 0.5415,
+     "magician": 0.7213571428571429
+    }
+   },
+   "table_final_full_scenes": {
+    "models": [
+     "MAG-B",
+     "B2",
+     "V3-D1-H3-NORISK"
+    ],
+    "all14": {
+     "MAG-B": 0.9063261550858409,
+     "B2": 0.9072489350396788,
+     "V3-D1-H3-NORISK": 0.9098280207228403
+    },
+    "paper_all14": {
+     "random_walk": 0.32392857142857145,
+     "scone": 0.6734285714285714,
+     "macarons": 0.8202857142857143,
+     "fisherrf": 0.7655000000000002,
+     "magician": 0.9211428571428572
+    }
+   },
+   "table_final_full_scenes_supp": {
+    "models": [
+     "MAG-B",
+     "MAG-G",
+     "B0",
+     "B2",
+     "V3",
+     "V3-D1-H3-NORISK",
+     "V3-YBEST-H3"
+    ],
+    "all14": {
+     "MAG-B": 0.9063261550858409,
+     "MAG-G": 0.9014397552288098,
+     "B0": 0.8972953642650813,
+     "B2": 0.9072489350396788,
+     "V3": 0.9031464341781833,
+     "V3-D1-H3-NORISK": 0.9098280207228403,
+     "V3-YBEST-H3": 0.9105481286219103
+    },
+    "paper_all14": {
+     "random_walk": 0.32392857142857145,
+     "scone": 0.6734285714285714,
+     "macarons": 0.8202857142857143,
+     "fisherrf": 0.7655000000000002,
+     "magician": 0.9211428571428572
+    }
+   }
+  },
+  "checks": [
+   {
+    "ok": true,
+    "check": "MAG-B: registry status READY"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B: no invalid episodes in validation.json"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B: All-14 auc100 mean of rows == per_model.csv (0.710844)"
+   },
+   {
+    "ok": true,
+    "check": "B2: registry status READY"
+   },
+   {
+    "ok": true,
+    "check": "B2: no invalid episodes in validation.json"
+   },
+   {
+    "ok": true,
+    "check": "B2: All-14 auc100 mean of rows == per_model.csv (0.742351)"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK: registry status READY"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK: no invalid episodes in validation.json"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK: All-14 auc100 mean of rows == per_model.csv (0.765183)"
+   },
+   {
+    "ok": true,
+    "check": "table_auc_full_scenes: 15 scene rows, 14 in All-14"
+   },
+   {
+    "ok": true,
+    "check": "table_auc_full_scenes: complete models have all 14 scenes"
+   },
+   {
+    "ok": true,
+    "check": "table_auc_full_scenes: no re-evaluated value for sofia_church"
+   },
+   {
+    "ok": true,
+    "check": "table_auc_full_scenes: paper random_walk 15-scene mean of rows (0.2411) == reported average (0.241) within rounding"
+   },
+   {
+    "ok": true,
+    "check": "table_auc_full_scenes: paper scone 15-scene mean of rows (0.5345) == reported average (0.534) within rounding"
+   },
+   {
+    "ok": true,
+    "check": "table_auc_full_scenes: paper macarons 15-scene mean of rows (0.6475) == reported average (0.647) within rounding"
+   },
+   {
+    "ok": true,
+    "check": "table_auc_full_scenes: paper fisherrf 15-scene mean of rows (0.5459) == reported average (0.546) within rounding"
+   },
+   {
+    "ok": true,
+    "check": "table_auc_full_scenes: paper magician 15-scene mean of rows (0.7206) == reported average (0.721) within rounding"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 10 columns: Scene & Rand. Walk & SCONE & MACARONS & "
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 10 columns: Dunnottar Castle & 0.149 & 0.366 & 0.618"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 10 columns: Colosseum & 0.219 & 0.589 & 0.656 & 0.55"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 10 columns: Bannerman Castle & 0.192 & 0.559 & 0.575"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 10 columns: Pantheon & 0.198 & 0.465 & 0.601 & 0.270"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 10 columns: Christ the Redeemer & 0.439 & 0.772 & 0."
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 10 columns: Statue of Liberty & 0.323 & 0.632 & 0.71"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 10 columns: Pisa Cathedral & 0.290 & 0.486 & 0.678 &"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 10 columns: Fushimi Castle & 0.279 & 0.689 & 0.718 &"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 10 columns: Alhambra Palace & 0.126 & 0.369 & 0.567 "
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 10 columns: Neuschwanstein Castle & 0.184 & 0.325 & "
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 10 columns: Eiffel Tower & 0.333 & 0.683 & 0.709 & 0"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 10 columns: Manhattan Bridge & 0.258 & 0.632 & 0.750"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 10 columns: St. Sofia Church & 0.280 & 0.532 & 0.621"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 10 columns: Barts & 0.214 & 0.551 & 0.660 & 0.673 & "
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 10 columns: Sestino Museum & 0.132 & 0.367 & 0.537 &"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 10 columns: Average (All-14) & 0.238 & 0.535 & 0.649"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 10 columns: Average (All-15, reported) & 0.241 & 0.5"
+   },
+   {
+    "ok": true,
+    "check": "tab:table-auc-full-scenes: balanced braces"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B: registry status READY"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B: no invalid episodes in validation.json"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B: All-14 auc100 mean of rows == per_model.csv (0.710844)"
+   },
+   {
+    "ok": true,
+    "check": "MAG-G: registry status READY"
+   },
+   {
+    "ok": true,
+    "check": "MAG-G: no invalid episodes in validation.json"
+   },
+   {
+    "ok": true,
+    "check": "MAG-G: All-14 auc100 mean of rows == per_model.csv (0.703299)"
+   },
+   {
+    "ok": true,
+    "check": "B0: registry status READY"
+   },
+   {
+    "ok": true,
+    "check": "B0: no invalid episodes in validation.json"
+   },
+   {
+    "ok": true,
+    "check": "B0: All-14 auc100 mean of rows == per_model.csv (0.748173)"
+   },
+   {
+    "ok": true,
+    "check": "B2: registry status READY"
+   },
+   {
+    "ok": true,
+    "check": "B2: no invalid episodes in validation.json"
+   },
+   {
+    "ok": true,
+    "check": "B2: All-14 auc100 mean of rows == per_model.csv (0.742351)"
+   },
+   {
+    "ok": true,
+    "check": "V3: registry status READY"
+   },
+   {
+    "ok": true,
+    "check": "V3: no invalid episodes in validation.json"
+   },
+   {
+    "ok": true,
+    "check": "V3: All-14 auc100 mean of rows == per_model.csv (0.743541)"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK: registry status READY"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK: no invalid episodes in validation.json"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK: All-14 auc100 mean of rows == per_model.csv (0.765183)"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3: registry status READY"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3: no invalid episodes in validation.json"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3: All-14 auc100 mean of rows == per_model.csv (0.769674)"
+   },
+   {
+    "ok": true,
+    "check": "table_auc_full_scenes_supp: 15 scene rows, 14 in All-14"
+   },
+   {
+    "ok": true,
+    "check": "table_auc_full_scenes_supp: complete models have all 14 scenes"
+   },
+   {
+    "ok": true,
+    "check": "table_auc_full_scenes_supp: no re-evaluated value for sofia_church"
+   },
+   {
+    "ok": true,
+    "check": "table_auc_full_scenes_supp: paper random_walk 15-scene mean of rows (0.2411) == reported average (0.241) within rounding"
+   },
+   {
+    "ok": true,
+    "check": "table_auc_full_scenes_supp: paper scone 15-scene mean of rows (0.5345) == reported average (0.534) within rounding"
+   },
+   {
+    "ok": true,
+    "check": "table_auc_full_scenes_supp: paper macarons 15-scene mean of rows (0.6475) == reported average (0.647) within rounding"
+   },
+   {
+    "ok": true,
+    "check": "table_auc_full_scenes_supp: paper fisherrf 15-scene mean of rows (0.5459) == reported average (0.546) within rounding"
+   },
+   {
+    "ok": true,
+    "check": "table_auc_full_scenes_supp: paper magician 15-scene mean of rows (0.7206) == reported average (0.721) within rounding"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 14 columns: Scene & Rand. Walk & SCONE & MACARONS & "
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 14 columns: Dunnottar Castle & 0.149 & 0.366 & 0.618"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 14 columns: Colosseum & 0.219 & 0.589 & 0.656 & 0.55"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 14 columns: Bannerman Castle & 0.192 & 0.559 & 0.575"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 14 columns: Pantheon & 0.198 & 0.465 & 0.601 & 0.270"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 14 columns: Christ the Redeemer & 0.439 & 0.772 & 0."
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 14 columns: Statue of Liberty & 0.323 & 0.632 & 0.71"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 14 columns: Pisa Cathedral & 0.290 & 0.486 & 0.678 &"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 14 columns: Fushimi Castle & 0.279 & 0.689 & 0.718 &"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 14 columns: Alhambra Palace & 0.126 & 0.369 & 0.567 "
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 14 columns: Neuschwanstein Castle & 0.184 & 0.325 & "
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 14 columns: Eiffel Tower & 0.333 & 0.683 & 0.709 & 0"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 14 columns: Manhattan Bridge & 0.258 & 0.632 & 0.750"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 14 columns: St. Sofia Church & 0.280 & 0.532 & 0.621"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 14 columns: Barts & 0.214 & 0.551 & 0.660 & 0.673 & "
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 14 columns: Sestino Museum & 0.132 & 0.367 & 0.537 &"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 14 columns: Average (All-14) & 0.238 & 0.535 & 0.649"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 14 columns: Average (All-15, reported) & 0.241 & 0.5"
+   },
+   {
+    "ok": true,
+    "check": "tab:table-auc-full-scenes-supp: balanced braces"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B: registry status READY"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B: no invalid episodes in validation.json"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B: All-14 final mean of rows == per_model.csv (0.906326)"
+   },
+   {
+    "ok": true,
+    "check": "B2: registry status READY"
+   },
+   {
+    "ok": true,
+    "check": "B2: no invalid episodes in validation.json"
+   },
+   {
+    "ok": true,
+    "check": "B2: All-14 final mean of rows == per_model.csv (0.907249)"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK: registry status READY"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK: no invalid episodes in validation.json"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK: All-14 final mean of rows == per_model.csv (0.909828)"
+   },
+   {
+    "ok": true,
+    "check": "table_final_full_scenes: 15 scene rows, 14 in All-14"
+   },
+   {
+    "ok": true,
+    "check": "table_final_full_scenes: complete models have all 14 scenes"
+   },
+   {
+    "ok": true,
+    "check": "table_final_full_scenes: no re-evaluated value for sofia_church"
+   },
+   {
+    "ok": true,
+    "check": "table_final_full_scenes: paper random_walk 15-scene mean of rows (0.3244) == reported average (0.324) within rounding"
+   },
+   {
+    "ok": true,
+    "check": "table_final_full_scenes: paper scone 15-scene mean of rows (0.6698) == reported average (0.67) within rounding"
+   },
+   {
+    "ok": true,
+    "check": "table_final_full_scenes: paper macarons 15-scene mean of rows (0.8186) == reported average (0.819) within rounding"
+   },
+   {
+    "ok": true,
+    "check": "table_final_full_scenes: paper magician 15-scene mean of rows (0.9191) == reported average (0.919) within rounding"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 10 columns: Scene & Rand. Walk & SCONE & MACARONS & "
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 10 columns: Dunnottar Castle & 0.225 & 0.527 & 0.820"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 10 columns: Colosseum & 0.272 & 0.755 & 0.794 & 0.75"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 10 columns: Bannerman Castle & 0.240 & 0.722 & 0.834"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 10 columns: Pantheon & 0.309 & 0.610 & 0.796 & 0.444"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 10 columns: Christ the Redeemer & 0.581 & 0.924 & 0."
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 10 columns: Statue of Liberty & 0.443 & 0.819 & 0.90"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 10 columns: Pisa Cathedral & 0.353 & 0.566 & 0.865 &"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 10 columns: Fushimi Castle & 0.449 & 0.844 & 0.853 &"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 10 columns: Alhambra Palace & 0.162 & 0.473 & 0.775 "
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 10 columns: Neuschwanstein Castle & 0.223 & 0.444 & "
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 10 columns: Eiffel Tower & 0.541 & 0.856 & 0.915 & 0"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 10 columns: Manhattan Bridge & 0.356 & 0.781 & 0.924"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 10 columns: St. Sofia Church & 0.331 & 0.619 & 0.795"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 10 columns: Barts & 0.240 & 0.677 & 0.768 & 0.878 & "
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 10 columns: Sestino Museum & 0.141 & 0.430 & 0.713 &"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 10 columns: Average (All-14) & 0.324 & 0.673 & 0.820"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 10 columns: Average (All-15, reported) & 0.324 & 0.6"
+   },
+   {
+    "ok": true,
+    "check": "tab:table-final-full-scenes: balanced braces"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B: registry status READY"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B: no invalid episodes in validation.json"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B: All-14 final mean of rows == per_model.csv (0.906326)"
+   },
+   {
+    "ok": true,
+    "check": "MAG-G: registry status READY"
+   },
+   {
+    "ok": true,
+    "check": "MAG-G: no invalid episodes in validation.json"
+   },
+   {
+    "ok": true,
+    "check": "MAG-G: All-14 final mean of rows == per_model.csv (0.901440)"
+   },
+   {
+    "ok": true,
+    "check": "B0: registry status READY"
+   },
+   {
+    "ok": true,
+    "check": "B0: no invalid episodes in validation.json"
+   },
+   {
+    "ok": true,
+    "check": "B0: All-14 final mean of rows == per_model.csv (0.897295)"
+   },
+   {
+    "ok": true,
+    "check": "B2: registry status READY"
+   },
+   {
+    "ok": true,
+    "check": "B2: no invalid episodes in validation.json"
+   },
+   {
+    "ok": true,
+    "check": "B2: All-14 final mean of rows == per_model.csv (0.907249)"
+   },
+   {
+    "ok": true,
+    "check": "V3: registry status READY"
+   },
+   {
+    "ok": true,
+    "check": "V3: no invalid episodes in validation.json"
+   },
+   {
+    "ok": true,
+    "check": "V3: All-14 final mean of rows == per_model.csv (0.903146)"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK: registry status READY"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK: no invalid episodes in validation.json"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK: All-14 final mean of rows == per_model.csv (0.909828)"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3: registry status READY"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3: no invalid episodes in validation.json"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3: All-14 final mean of rows == per_model.csv (0.910548)"
+   },
+   {
+    "ok": true,
+    "check": "table_final_full_scenes_supp: 15 scene rows, 14 in All-14"
+   },
+   {
+    "ok": true,
+    "check": "table_final_full_scenes_supp: complete models have all 14 scenes"
+   },
+   {
+    "ok": true,
+    "check": "table_final_full_scenes_supp: no re-evaluated value for sofia_church"
+   },
+   {
+    "ok": true,
+    "check": "table_final_full_scenes_supp: paper random_walk 15-scene mean of rows (0.3244) == reported average (0.324) within rounding"
+   },
+   {
+    "ok": true,
+    "check": "table_final_full_scenes_supp: paper scone 15-scene mean of rows (0.6698) == reported average (0.67) within rounding"
+   },
+   {
+    "ok": true,
+    "check": "table_final_full_scenes_supp: paper macarons 15-scene mean of rows (0.8186) == reported average (0.819) within rounding"
+   },
+   {
+    "ok": true,
+    "check": "table_final_full_scenes_supp: paper magician 15-scene mean of rows (0.9191) == reported average (0.919) within rounding"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 14 columns: Scene & Rand. Walk & SCONE & MACARONS & "
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 14 columns: Dunnottar Castle & 0.225 & 0.527 & 0.820"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 14 columns: Colosseum & 0.272 & 0.755 & 0.794 & 0.75"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 14 columns: Bannerman Castle & 0.240 & 0.722 & 0.834"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 14 columns: Pantheon & 0.309 & 0.610 & 0.796 & 0.444"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 14 columns: Christ the Redeemer & 0.581 & 0.924 & 0."
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 14 columns: Statue of Liberty & 0.443 & 0.819 & 0.90"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 14 columns: Pisa Cathedral & 0.353 & 0.566 & 0.865 &"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 14 columns: Fushimi Castle & 0.449 & 0.844 & 0.853 &"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 14 columns: Alhambra Palace & 0.162 & 0.473 & 0.775 "
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 14 columns: Neuschwanstein Castle & 0.223 & 0.444 & "
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 14 columns: Eiffel Tower & 0.541 & 0.856 & 0.915 & 0"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 14 columns: Manhattan Bridge & 0.356 & 0.781 & 0.924"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 14 columns: St. Sofia Church & 0.331 & 0.619 & 0.795"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 14 columns: Barts & 0.240 & 0.677 & 0.768 & 0.878 & "
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 14 columns: Sestino Museum & 0.141 & 0.430 & 0.713 &"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 14 columns: Average (All-14) & 0.324 & 0.673 & 0.820"
+   },
+   {
+    "ok": true,
+    "check": "TeX row has 14 columns: Average (All-15, reported) & 0.324 & 0.6"
+   },
+   {
+    "ok": true,
+    "check": "tab:table-final-full-scenes-supp: balanced braces"
+   }
+  ]
+ },
+ "figures": {
+  "generated": "2026-11-04T17:50:43",
+  "git_head_at_generation": "5ff7c05",
+  "script": "experiments/cvpr_results/paper_tables/scripts/make_figures.py",
+  "config_sha256": "049d2d88f8877e8369f53cbd7d695c41f14bce28aea312b1a86aa0e6c21571cb",
+  "episodes_read": 350,
+  "models": [
+   "B2",
+   "MAG-B",
+   "V3",
+   "V3-D1-H3-NORISK",
+   "V3-YBEST-H3"
+  ],
+  "band_models": [
+   "MAG-B",
+   "V3-D1-H3-NORISK"
+  ],
+  "excluded_partial": {},
+  "improvement": {
+   "V3-D1-H3-NORISK|auc20": {
+    "mean": 0.11837617361516939,
+    "ci": [
+     0.08055087873580236,
+     0.15770853686310324
+    ],
+    "wins": 13,
+    "losses": 1,
+    "per_scene": {
+     "dunnottar": 0.21040049621378923,
+     "colosseum": 0.08871950565616399,
+     "bannerman": -0.011099293632136626,
+     "pantheon": 0.06557676335322254,
+     "redeemer": 0.2722452479248406,
+     "liberty": 0.02940644652386658,
+     "pisa": 0.08809290976393942,
+     "fushimi": 0.09916779421677603,
+     "alhambra": 0.04042295847004395,
+     "neuschwanstein": 0.13023382668673636,
+     "eiffel": 0.13832438970008845,
+     "bridge": 0.1490015861073269,
+     "barts": 0.1663212761579186,
+     "sestino_museum": 0.19045252346979508
+    }
+   },
+   "B2|auc20": {
+    "mean": 0.08047844622894769,
+    "ci": [
+     0.04635200452592141,
+     0.11971752589437154
+    ],
+    "wins": 12,
+    "losses": 2,
+    "per_scene": {
+     "dunnottar": 0.15022407135659152,
+     "colosseum": 0.011617152933850749,
+     "bannerman": -0.003966605629693804,
+     "pantheon": 0.05692761501018775,
+     "redeemer": 0.27418311600383694,
+     "liberty": -0.011690205863279911,
+     "pisa": 0.09692458537917868,
+     "fushimi": 0.06987539146250851,
+     "alhambra": 0.010110568290788857,
+     "neuschwanstein": 0.11383658523015687,
+     "eiffel": 0.09851283015985905,
+     "bridge": 0.09089034143019252,
+     "barts": 0.09997950606304815,
+     "sestino_museum": 0.06927329537804185
+    }
+   },
+   "V3-D1-H3-NORISK|auc100": {
+    "mean": 0.05433960293800412,
+    "ci": [
+     0.022858254002160013,
+     0.0919658190316771
+    ],
+    "wins": 12,
+    "losses": 2,
+    "per_scene": {
+     "dunnottar": 0.04423506877289614,
+     "colosseum": -0.06043092365735274,
+     "bannerman": -0.015202813208727895,
+     "pantheon": 0.04703681010524546,
+     "redeemer": 0.09033866680062083,
+     "liberty": 0.02159433984619603,
+     "pisa": 0.028413122964118888,
+     "fushimi": 0.030414347744270365,
+     "alhambra": 0.04813009908626205,
+     "neuschwanstein": 0.08222618297260963,
+     "eiffel": 0.04244619898280597,
+     "bridge": 0.07891217539164316,
+     "barts": 0.06917735563186478,
+     "sestino_museum": 0.25346380969960497
+    }
+   },
+   "B2|auc100": {
+    "mean": 0.031507020716460256,
+    "ci": [
+     0.006878779276285013,
+     0.057087107742540645
+    ],
+    "wins": 11,
+    "losses": 3,
+    "per_scene": {
+     "dunnottar": 0.010265848649479149,
+     "colosseum": -0.010104250904446332,
+     "bannerman": -0.040814994635779624,
+     "pantheon": 0.020706586139279382,
+     "redeemer": 0.09899747763603262,
+     "liberty": 0.006437067061522983,
+     "pisa": 0.02932946163690935,
+     "fushimi": -0.03916546391758313,
+     "alhambra": 0.026602687508683286,
+     "neuschwanstein": 0.0996420646900045,
+     "eiffel": 0.0021095238266737315,
+     "bridge": 0.06414029221491688,
+     "barts": 0.04708195195796563,
+     "sestino_museum": 0.12587003816678513
+    }
+   },
+   "V3-D1-H3-NORISK|final": {
+    "mean": 0.003501865636999228,
+    "ci": [
+     -0.02034977716473877,
+     0.02776518905625779
+    ],
+    "wins": 6,
+    "losses": 8,
+    "per_scene": {
+     "dunnottar": -0.018769754459908028,
+     "colosseum": -0.09933807298709221,
+     "bannerman": -0.017919665114180507,
+     "pantheon": 0.055358809360085096,
+     "redeemer": 0.004608495419714332,
+     "liberty": -0.0015862391651331853,
+     "pisa": -0.028786857159211632,
+     "fushimi": -0.004608627485506056,
+     "alhambra": 0.012002810098301642,
+     "neuschwanstein": 0.04705834315975431,
+     "eiffel": 0.0012883566402650982,
+     "bridge": -0.007262578384225016,
+     "barts": -0.005983756366590209,
+     "sestino_museum": 0.11296485536171556
+    }
+   },
+   "B2|final": {
+    "mean": 0.0009227799538381232,
+    "ci": [
+     -0.019875598362767984,
+     0.024359383678470212
+    ],
+    "wins": 6,
+    "losses": 8,
+    "per_scene": {
+     "dunnottar": -0.04819331962195748,
+     "colosseum": -0.028608016786903855,
+     "bannerman": -0.007574733198216421,
+     "pantheon": 0.013447067320817208,
+     "redeemer": 0.005394420663600541,
+     "liberty": -0.003780870899246458,
+     "pisa": -0.028334395321447037,
+     "fushimi": -0.06089650943332155,
+     "alhambra": 0.014075877947021764,
+     "neuschwanstein": 0.06947548373786004,
+     "eiffel": -0.023884137122232342,
+     "bridge": -0.002747090799527041,
+     "barts": 0.0023589332461455338,
+     "sestino_museum": 0.11218620962114083
+    }
+   }
+  },
+  "checks": [
+   {
+    "ok": true,
+    "check": "B2 dunnottar s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 dunnottar s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 dunnottar s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 dunnottar s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 dunnottar s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 colosseum s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 colosseum s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 colosseum s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 colosseum s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 colosseum s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 bannerman s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 bannerman s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 bannerman s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 bannerman s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 bannerman s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 pantheon s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 pantheon s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 pantheon s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 pantheon s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 pantheon s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 redeemer s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 redeemer s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 redeemer s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 redeemer s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 redeemer s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 liberty s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 liberty s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 liberty s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 liberty s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 liberty s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 pisa s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 pisa s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 pisa s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 pisa s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 pisa s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 fushimi s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 fushimi s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 fushimi s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 fushimi s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 fushimi s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 alhambra s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 alhambra s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 alhambra s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 alhambra s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 alhambra s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 neuschwanstein s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 neuschwanstein s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 neuschwanstein s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 neuschwanstein s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 neuschwanstein s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 eiffel s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 eiffel s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 eiffel s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 eiffel s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 eiffel s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 bridge s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 bridge s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 bridge s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 bridge s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 bridge s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 barts s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 barts s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 barts s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 barts s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 barts s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 sestino_museum s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 sestino_museum s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 sestino_museum s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 sestino_museum s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "B2 sestino_museum s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B dunnottar s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B dunnottar s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B dunnottar s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B dunnottar s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B dunnottar s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B colosseum s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B colosseum s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B colosseum s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B colosseum s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B colosseum s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B bannerman s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B bannerman s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B bannerman s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B bannerman s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B bannerman s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B pantheon s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B pantheon s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B pantheon s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B pantheon s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B pantheon s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B redeemer s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B redeemer s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B redeemer s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B redeemer s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B redeemer s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B liberty s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B liberty s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B liberty s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B liberty s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B liberty s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B pisa s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B pisa s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B pisa s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B pisa s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B pisa s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B fushimi s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B fushimi s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B fushimi s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B fushimi s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B fushimi s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B alhambra s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B alhambra s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B alhambra s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B alhambra s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B alhambra s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B neuschwanstein s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B neuschwanstein s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B neuschwanstein s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B neuschwanstein s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B neuschwanstein s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B eiffel s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B eiffel s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B eiffel s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B eiffel s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B eiffel s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B bridge s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B bridge s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B bridge s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B bridge s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B bridge s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B barts s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B barts s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B barts s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B barts s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B barts s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B sestino_museum s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B sestino_museum s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B sestino_museum s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B sestino_museum s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B sestino_museum s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 dunnottar s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 dunnottar s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 dunnottar s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 dunnottar s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 dunnottar s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 colosseum s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 colosseum s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 colosseum s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 colosseum s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 colosseum s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 bannerman s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 bannerman s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 bannerman s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 bannerman s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 bannerman s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 pantheon s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 pantheon s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 pantheon s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 pantheon s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 pantheon s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 redeemer s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 redeemer s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 redeemer s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 redeemer s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 redeemer s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 liberty s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 liberty s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 liberty s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 liberty s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 liberty s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 pisa s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 pisa s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 pisa s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 pisa s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 pisa s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 fushimi s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 fushimi s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 fushimi s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 fushimi s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 fushimi s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 alhambra s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 alhambra s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 alhambra s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 alhambra s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 alhambra s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 neuschwanstein s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 neuschwanstein s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 neuschwanstein s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 neuschwanstein s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 neuschwanstein s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 eiffel s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 eiffel s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 eiffel s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 eiffel s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 eiffel s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 bridge s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 bridge s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 bridge s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 bridge s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 bridge s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 barts s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 barts s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 barts s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 barts s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 barts s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 sestino_museum s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 sestino_museum s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 sestino_museum s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 sestino_museum s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3 sestino_museum s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK dunnottar s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK dunnottar s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK dunnottar s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK dunnottar s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK dunnottar s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK colosseum s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK colosseum s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK colosseum s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK colosseum s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK colosseum s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK bannerman s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK bannerman s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK bannerman s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK bannerman s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK bannerman s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK pantheon s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK pantheon s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK pantheon s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK pantheon s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK pantheon s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK redeemer s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK redeemer s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK redeemer s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK redeemer s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK redeemer s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK liberty s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK liberty s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK liberty s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK liberty s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK liberty s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK pisa s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK pisa s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK pisa s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK pisa s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK pisa s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK fushimi s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK fushimi s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK fushimi s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK fushimi s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK fushimi s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK alhambra s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK alhambra s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK alhambra s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK alhambra s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK alhambra s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK neuschwanstein s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK neuschwanstein s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK neuschwanstein s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK neuschwanstein s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK neuschwanstein s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK eiffel s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK eiffel s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK eiffel s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK eiffel s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK eiffel s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK bridge s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK bridge s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK bridge s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK bridge s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK bridge s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK barts s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK barts s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK barts s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK barts s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK barts s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK sestino_museum s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK sestino_museum s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK sestino_museum s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK sestino_museum s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK sestino_museum s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 dunnottar s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 dunnottar s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 dunnottar s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 dunnottar s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 dunnottar s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 colosseum s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 colosseum s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 colosseum s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 colosseum s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 colosseum s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 bannerman s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 bannerman s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 bannerman s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 bannerman s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 bannerman s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 pantheon s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 pantheon s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 pantheon s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 pantheon s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 pantheon s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 redeemer s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 redeemer s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 redeemer s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 redeemer s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 redeemer s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 liberty s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 liberty s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 liberty s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 liberty s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 liberty s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 pisa s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 pisa s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 pisa s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 pisa s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 pisa s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 fushimi s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 fushimi s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 fushimi s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 fushimi s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 fushimi s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 alhambra s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 alhambra s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 alhambra s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 alhambra s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 alhambra s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 neuschwanstein s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 neuschwanstein s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 neuschwanstein s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 neuschwanstein s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 neuschwanstein s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 eiffel s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 eiffel s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 eiffel s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 eiffel s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 eiffel s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 bridge s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 bridge s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 bridge s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 bridge s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 bridge s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 barts s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 barts s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 barts s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 barts s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 barts s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 sestino_museum s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 sestino_museum s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 sestino_museum s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 sestino_museum s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 sestino_museum s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "reference model complete"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B all14: curve[20] == per_model cov20"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B all14: curve[50] == per_model cov50"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B all14: curve[100] == per_model final"
+   },
+   {
+    "ok": true,
+    "check": "MAG-B all14: trapz(curve)/100 == per_model auc100"
+   },
+   {
+    "ok": true,
+    "check": "B2 all14: curve[20] == per_model cov20"
+   },
+   {
+    "ok": true,
+    "check": "B2 all14: curve[50] == per_model cov50"
+   },
+   {
+    "ok": true,
+    "check": "B2 all14: curve[100] == per_model final"
+   },
+   {
+    "ok": true,
+    "check": "B2 all14: trapz(curve)/100 == per_model auc100"
+   },
+   {
+    "ok": true,
+    "check": "V3 all14: curve[20] == per_model cov20"
+   },
+   {
+    "ok": true,
+    "check": "V3 all14: curve[50] == per_model cov50"
+   },
+   {
+    "ok": true,
+    "check": "V3 all14: curve[100] == per_model final"
+   },
+   {
+    "ok": true,
+    "check": "V3 all14: trapz(curve)/100 == per_model auc100"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK all14: curve[20] == per_model cov20"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK all14: curve[50] == per_model cov50"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK all14: curve[100] == per_model final"
+   },
+   {
+    "ok": true,
+    "check": "V3-D1-H3-NORISK all14: trapz(curve)/100 == per_model auc100"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 all14: curve[20] == per_model cov20"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 all14: curve[50] == per_model cov50"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 all14: curve[100] == per_model final"
+   },
+   {
+    "ok": true,
+    "check": "V3-YBEST-H3 all14: trapz(curve)/100 == per_model auc100"
+   }
+  ]
+ }
+}
