@@ -42,3 +42,7 @@
   (4) the run-manifest glob counts restarts correctly. Tested end to end on a synthetic 70 + 6 episode set built from the Table 1 V3-H3 records and the T0 indoor episodes
   (reproduces the known H3 row 0.424 / 0.762 / 0.901 and the paired differences vs D1), on the REG_T1 output and on a 12-move smoke output (flagged, not aggregated).
   manifests/code_hashes.json is refreshed; code_hashes.frozen.json keeps the version of 19:34 (the difference is aggregate.py only).
+- 21:54 progress: xa_s2d step 5100, xa_sr step 5450, both 1.38 s / step, peak 33.3 GB per rank, no restart. Validation at step 0 is identical to T1 / T0 for both (same initial function).
+  Validation at 5000 (auxiliary, never a gate): fair ES indoor / outdoor xa_s2d 9.524 / 8.920, xa_sr 9.565 / 8.898, T1 at the same step 9.581 / 8.952, T0 9.582 / 9.001 -- within 1 %.
+- 21:55 user request: report and record every time a result arrives. Cadence: per variant (a) training finished + selected checkpoint + validation curve, (b) closed loops finished + tables;
+  each time STATUS.md (P12 result log), this file and reports/FINAL_REPORT.md (living report) are updated and committed.
