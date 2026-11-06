@@ -1,2 +1,5 @@
 2026-11-05 19:34:47 gpu115 xa_sr START
 2026-11-05 19:34:47 gpu115 xa_sr train attempt 1 (scratch) 
+2026-11-06 11:45:22 gpu115 xa_sr TRAINED
+published /bsuscratch/jiahuizhang/projects/occupancy/seen2scene/work_dirs/exp6_v3/ablation_study/experiment_XA_multiscale_ray_scene/checkpoints/xa_sr/final.pt step 40000 60069dc4c1419c32
+2026-11-06 11:45:28 gpu115 xa_sr eval round 1 (outdoor 0/70, indoor 0/6)

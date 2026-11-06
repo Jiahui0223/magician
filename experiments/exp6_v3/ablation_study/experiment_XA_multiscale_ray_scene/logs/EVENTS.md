@@ -52,3 +52,12 @@
   Closed-loop time re-estimated from the archived T1 + D1 episodes (8.8-12.7 min per outdoor episode, dunnottar 9.2 min, 12.8 worker-hours for 70) and the T1 indoor episodes (5.8-7.1 min):
   about 1.2-2 h per variant on 4 GPUs (the earlier 2.7 h was pessimistic; not yet measured for an XA model). Expected ends: round 1 about 11-06 13:15-13:30, round 2 about 11-07 07:00-07:30,
   round 3 about 11-08 01:00-03:00 (M variants may train 3-10 % slower).
+
+## 2026-11-06
+- 11:45:22 xa_sr TRAINED (gpu115): 40000 steps in 16 h 10 min 35 s, one attempt, EXIT 0, median 1.372 s / step, peak 33.4 GB per rank. select_final.py: step 40000 (score 1.3884; all scores in
+  checkpoints/xa_sr/final.json), final.pt sha256 60069dc4c1419c32231f84f152bc012b72b547d9086cfba86fa667daed3f5ce7. Closed loops started 11:45:28.
+- 11:53:22 xa_s2d TRAINED (gpu114): 40000 steps in 16 h 08 min 14 s, one attempt, EXIT 0, median 1.371 s / step, peak 33.3 GB per rank. Selected step 40000 (score 1.3927),
+  final.pt sha256 939b7d79f0bb2f898a6be62abc914ae7388a8e82a52b490164ea68fbf7bbf606. Closed loops started 11:53:28.
+- Validation at 40000 (auxiliary; fair ES indoor / outdoor): xa_sr 6.367 / 6.431, xa_s2d 6.434 / 6.396, T1 6.425 / 6.482, T0 6.366 / 6.444. Selection score xa_sr 1.3884, xa_s2d 1.3927, T1 1.3946, T0 1.3803.
+  All within about 1 % of each other; no confidence interval exists for these numbers, so no difference is claimed.
+- 11:54 xa_sr closed loop: the four dunnottar episodes at steps 84-90 after 8.5 min; planner peak memory 31.1 GB (T1 30.5 GB); no error.
