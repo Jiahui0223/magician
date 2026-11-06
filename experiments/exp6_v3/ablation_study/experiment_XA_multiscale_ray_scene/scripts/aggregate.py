@@ -20,7 +20,7 @@ import yaml
 HERE = os.path.dirname(os.path.abspath(__file__))
 X = os.path.dirname(HERE)
 R = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(X))))
-W = os.path.join(R, "work_dirs", "exp6_v3", "ablation_study", "experiment_XA_multiscale_ray_scene")
+W = os.environ.get("XA_TEST_W") or os.path.join(R, "work_dirs", "exp6_v3", "ablation_study", "experiment_XA_multiscale_ray_scene")
 TB = os.path.join(R, "work_dirs", "cvpr_results", "table1", "episodes")
 T1_IN = os.path.join(R, "work_dirs", "exp6_v3", "eval", "closed_loop", "indoor", "T1", "V2M")
 IDS = tuple(os.environ["XA_TEST_IDS"].split(",")) if os.environ.get("XA_TEST_IDS") else ("xa_s2d", "xa_sr", "xa_si", "xa_m2d", "xa_mr", "xa_mi")   # XA_TEST_IDS + XA_TEST_OUT: pipeline test only
@@ -72,10 +72,12 @@ def outdoor(vid):
         mf = os.path.join(root, "metrics", "V2M", f"V2M_{e['scene']}_s{e['start']}_r0.json")
         m = json.load(open(mf)) if os.path.exists(mf) else None
         pl = [x["planner"] for x in e["steps"] if x.get("planner")]
+        sp = os.path.join(root, "outdoor", "V2M", "planner_logs", f"pl_V2M_{e['scene']}_s{e['start']}_r0.steps.jsonl")
+        pm = [json.loads(x).get("peak_mem_gb") or 0.0 for x in open(sp)] if os.path.exists(sp) else []
         out[(e["scene"], int(e["start"]))] = {"c": e["coverage"], "mono": m["cov_mono"] if m else None, "replay_ok": bool(m and m["official_equal_stored"]), "moves": e["moves"],
                                               "n_hover": e.get("n_hover"), "sha": (e["planner_hello"][0] or {}).get("ckpt_sha256") if e.get("planner_hello") else None,
                                               "decision_s": float(np.mean([p["decision_s"] for p in pl])) if pl else None, "resumed": e.get("resume") is not None,
-                                              "seconds": e.get("seconds_this_process"), "keys": e["executed_keys"]}
+                                              "seconds": e.get("seconds_this_process"), "keys": e["executed_keys"], "planner_peak_gb": max(pm) if pm else None}
     return out
 
 
@@ -177,23 +179,26 @@ def main():
     OUT = os.environ.get("XA_TEST_OUT") or X
     os.makedirs(os.path.join(OUT, "reports"), exist_ok=True)
     for vid in IDS:
-        E, I = outdoor(vid), indoor(vid)
-        if not E and not I and not os.path.exists(os.path.join(W, "runs", vid)):
+        E_all, I_all = outdoor(vid), indoor(vid)
+        if not E_all and not I_all and not os.path.exists(os.path.join(W, "runs", vid)):
             continue
+        E = {k: e for k, e in E_all.items() if len(e["c"]) == 101}          # a curve of another length is never aggregated (listed as bad)
+        I = {k: e for k, e in I_all.items() if len(e["c"]) == 151}
         od = os.path.join(OUT, "results", vid)
         os.makedirs(od, exist_ok=True)
         tr = train_info(vid)
         g, per = group_stats(E, base)
-        bad = [f"{k[0]}_s{k[1]}" for k, e in E.items() if len(e["c"]) != 101 or not e["replay_ok"] or e["moves"] != 100]
+        bad = [f"{k[0]}_s{k[1]}" for k, e in E_all.items() if len(e["c"]) != 101 or not e["replay_ok"] or e["moves"] != 100]
         shas = sorted({e["sha"] for e in E.values() if e["sha"]})
         st = {"id": vid, "trained": tr.get("last_step") == 40000, "selected": "final" in tr, "outdoor_episodes": len(E), "outdoor_bad": bad, "indoor_episodes": len(I),
-              "indoor_bad": [f"{k[0]}_S{k[1]}" for k, e in I.items() if len(e["c"]) != 151], "planner_ckpt_sha": shas,
+              "indoor_bad": [f"{k[0]}_S{k[1]}" for k, e in I_all.items() if len(e["c"]) != 151], "planner_ckpt_sha": shas,
               "sha_matches_final": bool(shas and tr.get("final") and shas == [tr["final"]["sha256"]])}
         st["complete"] = bool(st["trained"] and st["selected"] and len(E) == 70 and not bad and len(I) == 6 and not st["indoor_bad"] and st["sha_matches_final"])
         json.dump(st, open(os.path.join(od, "status.json"), "w"), indent=1)
         cost = {"decision_s_outdoor": float(np.mean([e["decision_s"] for e in E.values() if e["decision_s"]])) if E else None,
                 "decision_s_indoor": float(np.mean([e["decision_s"] for e in I.values()])) if I else None, "resumed_episodes": int(sum(e["resumed"] for e in E.values())),
-                "identical_to_T1_trajectories": int(sum(e["keys"] == base.get(k, {}).get("keys") for k, e in E.items()))}
+                "identical_to_T1_trajectories": int(sum(e["keys"] == base.get(k, {}).get("keys") for k, e in E.items())),
+                "planner_peak_gb_outdoor": max([e["planner_peak_gb"] or 0.0 for e in E.values()], default=None)}
         ql = os.path.join(W, "eval", vid, "logs", "queue.log")
         if os.path.exists(ql):
             q = [x.split() for x in open(ql)]

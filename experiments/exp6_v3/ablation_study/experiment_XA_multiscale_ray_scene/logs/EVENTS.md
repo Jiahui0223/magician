@@ -37,3 +37,8 @@
   Expected: about 16.5 h training + 2.5-3 h closed loops per variant; chains end around 2026-11-08 06:00 (gpu114 allocation ends 11-08 18:30, gpu115 11-09 15:12).
 - Deviation (FROZEN_PROTOCOL §6): no sbatch / afterok -- the account's 8-GPU QOS limit is filled by these two allocations; the chain scripts provide the retries and the stage order.
 - Rule while the chains run: scripts/run_chain.sh and scripts/xa_eval_queue.sh are not edited (bash reads a running script from disk).
+- 19:57 scripts/aggregate.py changed after the freeze (analysis code only; no model, training or evaluation code): (1) an episode whose curve is not 101 (outdoor) / 151 (indoor) values long is
+  listed as bad and never aggregated (before, it would have raised an error); (2) planner peak memory is read from the planner step logs; (3) test-only overrides XA_TEST_IDS / XA_TEST_W / XA_TEST_OUT;
+  (4) the run-manifest glob counts restarts correctly. Tested end to end on a synthetic 70 + 6 episode set built from the Table 1 V3-H3 records and the T0 indoor episodes
+  (reproduces the known H3 row 0.424 / 0.762 / 0.901 and the paired differences vs D1), on the REG_T1 output and on a 12-move smoke output (flagged, not aggregated).
+  manifests/code_hashes.json is refreshed; code_hashes.frozen.json keeps the version of 19:34 (the difference is aggregate.py only).

@@ -1,18 +1,20 @@
 {
- "time": "2026-11-05 19:34:31",
+ "time": "2026-11-05 19:56:35",
  "git": {
-  "head": "f7d8f069f8572c89fd44f8c8f2f95288fa117f53",
+  "head": "845e5b9ac899074c0463d082ae80671266ba92ba",
   "status": [
-   " M experiments/exp6_v3/STATUS.md",
+   " M experiments/exp6_v3/ablation_study/experiment_XA_multiscale_ray_scene/logs/EVENTS.md",
+   " M experiments/exp6_v3/ablation_study/experiment_XA_multiscale_ray_scene/scripts/aggregate.py",
    "?? EXP4_NextStage_Task0_Task1_V2_Research_Plan.md",
    "?? data.md",
    "?? experiments/cvpr_results/CVPR_V3_Model_Audit_Protocol.md",
    "?? experiments/exp6_v3/CVPR_MODEL_AUDIT.md",
    "?? experiments/exp6_v3/V3_Experiment_F_Coverage_Decision_Study.md",
-   "?? experiments/exp6_v3/XA_Experiment_Protocol.md",
-   "?? experiments/exp6_v3/ablation_study/experiment_CT_continued_training/",
-   "?? experiments/exp6_v3/ablation_study/experiment_XA_multiscale_ray_scene/",
-   "?? seen2scene/v3/xa/"
+   "?? experiments/exp6_v3/ablation_study/experiment_XA_multiscale_ray_scene/logs/.aggregate.lock",
+   "?? experiments/exp6_v3/ablation_study/experiment_XA_multiscale_ray_scene/logs/chain_gpu114.log",
+   "?? experiments/exp6_v3/ablation_study/experiment_XA_multiscale_ray_scene/logs/chain_gpu114.stdout",
+   "?? experiments/exp6_v3/ablation_study/experiment_XA_multiscale_ray_scene/logs/chain_gpu115.log",
+   "?? experiments/exp6_v3/ablation_study/experiment_XA_multiscale_ray_scene/logs/chain_gpu115.stdout"
   ]
  },
  "files": {
@@ -44,7 +46,7 @@
   "experiments/exp6_v3/ablation_study/experiment_XA_multiscale_ray_scene/configs/train_xa_s2d.json": "4cb19490520ffeb2f56fb1c7d27c9053273da7c0e98ef3963f4671787b2003f8",
   "experiments/exp6_v3/ablation_study/experiment_XA_multiscale_ray_scene/configs/train_xa_si.json": "03378d20b217c4d1d8e35758573d222dd0bc69864e195c3814921d8c3fc570c6",
   "experiments/exp6_v3/ablation_study/experiment_XA_multiscale_ray_scene/configs/train_xa_sr.json": "d20db0818c9e84125028cb816aa055d1e372df6abab470b4cb5af2f478dfed7d",
-  "experiments/exp6_v3/ablation_study/experiment_XA_multiscale_ray_scene/scripts/aggregate.py": "86ae05f091d7327a3db4744e1cb97ddd430db5a853bcca61220657ca53673970",
+  "experiments/exp6_v3/ablation_study/experiment_XA_multiscale_ray_scene/scripts/aggregate.py": "958a4ffe96e0cbd28c5286f2ebaf3d23fac65acc0110b90f9328b10b0b9aa0cd",
   "experiments/exp6_v3/ablation_study/experiment_XA_multiscale_ray_scene/scripts/planner_xa.py": "6215aa29db7cc5d791cddbee96bc1b3f95262144c11eaabc8ad34058d1855149",
   "experiments/exp6_v3/ablation_study/experiment_XA_multiscale_ray_scene/scripts/run_chain.sh": "acd4748737f683c8527b803df7ba9d29e7c5fbb4f249372e0bd9cde399c21cff",
   "experiments/exp6_v3/ablation_study/experiment_XA_multiscale_ray_scene/scripts/select_final.py": "3169632a547263054af617bc3170903b92ffc9755749502354793c56797dbc13",
