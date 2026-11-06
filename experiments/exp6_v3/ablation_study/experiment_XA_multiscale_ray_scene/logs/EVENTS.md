@@ -29,3 +29,11 @@
   (final coverage 0.5054 outdoor, 0.1206 indoor): checked that each planner loaded its own checkpoint (six different sha256) and that the scores differ between variants (by about 3 on
   values around 740-1060). The smoke EMAs are 200-step EMAs (decay 0.999) of networks that start as the same function, so they are still nearly identical; this is not a result.
 - 19:34 the CT counterfactual workers on gpu115 were stopped (wrappers first, then workers; they write each trajectory atomically): 26 of 63 trajectories complete, resumable. gpu115 free.
+- 19:34 code, configs, FROZEN_PROTOCOL.md and manifests committed as 7ae012e (manifests/*.frozen.json re-written just before; clean tree).
+- 19:34:47 chain gpu115 launched inside allocation 3465477: `run_chain.sh 29642 xa_sr xa_m2d xa_mi` (setsid nohup; log logs/chain_gpu115.log).
+- 19:45:08 chain gpu114 launched inside allocation 3461041 after CT-M was archived (step 42000) and stopped: `run_chain.sh 29641 xa_s2d xa_si xa_mr` (log logs/chain_gpu114.log).
+- 19:54 both first runs train: xa_sr and xa_s2d report common_init_sha256 == T1, data manifest == T1 (9f432c3f...), world 4, git 7ae012e clean. Step-1 loss 3.674514578066773 is bitwise the
+  V3-T1 step-1 loss (same seed, sample stream and initial function); at steps 50-450 the losses follow T1 to 3-4 digits. 1.33-1.44 s / step and 30.8-32.7 GB per rank, the same as T1.
+  Expected: about 16.5 h training + 2.5-3 h closed loops per variant; chains end around 2026-11-08 06:00 (gpu114 allocation ends 11-08 18:30, gpu115 11-09 15:12).
+- Deviation (FROZEN_PROTOCOL §6): no sbatch / afterok -- the account's 8-GPU QOS limit is filled by these two allocations; the chain scripts provide the retries and the stage order.
+- Rule while the chains run: scripts/run_chain.sh and scripts/xa_eval_queue.sh are not edited (bash reads a running script from disk).

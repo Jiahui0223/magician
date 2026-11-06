@@ -1,6 +1,6 @@
 # EXP6 V3 — 全局状态板（每次启动 / 结束一个运行就更新）
 
-**最近更新：2026-11-05 19:35（Experiment XA 启动中，见 P12；Experiment CT 按 XA 任务书存档后暂停，见 P11）**
+**最近更新：2026-11-05 19:55（Experiment XA 两条链在跑，见 P12：gpu114 XA-S2D、gpu115 XA-SR 训练中；Experiment CT 已存档并暂停，见 P11）**
 标记：✅ 完成 · 🔄 正在跑 · ⏳ 等待（排队或依赖前项）· ❌ 失败（后面跟修复行）· ⬜ 未开始
 
 ## 0. 此刻在跑什么
@@ -164,10 +164,10 @@
 | CT-cfg | `EXPERIMENT_PLAN.md`、`configs/CT_config.yaml`（CT-v1）、`configs/train_ct.json` 在任何 CT 评估或训练之前冻结 | ✅ 18:15 |
 | CT0 | 谱系审计 `results/CT0_checkpoint_audit/CT0.json`：Y50K 是真实续训（恢复 model / EMA / AdamW，数据 / 损失相同），只有 LR 计划不同 | ✅ |
 | CT1-fixed-g1 | 固定状态（Indoor 90 + Outdoor 755）A_40K + B_Y50K；8 卡；40K 回归 845/845 逐位；Y50K 深度误差显著改善，regret 未改善 | ✅ 18:55 |
-| CT3-cf | 40K 决策反事实（去 FP / 去 FN / 深度 oracle），gpu115 g0-3，作业 3465477，日志 `logs/fixed/cf_A_40K_*` | ⏸ 18:57 起；XA 启动时停止，只完成部分轨迹（见 CT 报告） |
+| CT3-cf | 40K 决策反事实（去 FP / 去 FN / 深度 oracle），gpu115 g0-3，作业 3465477，日志 `logs/fixed/cf_A_40K_*` | ⏸ 19:34 停止：63 条轨迹完成 26 条（室内 9 / 9，室外 17 / 54），可续跑 |
 | CT4-regress | 40K 闭环回归（barts s0 + Z6MFQCViBuw_L0 S6），gpu115 | ✅ 两条的执行位姿和覆盖都与存档一致 |
 | CT4-Y50K | Y50K 小规模闭环（Dev-5 + Indoor），gpu115 | ❌ 19:08 起，与同卡的其他任务抢显存，5 次规划器失败（OOM）；19:20 由我停止，**未完成** |
-| CT1-C | CT-M 续训 40K → 60K：gpu114 g0-3，作业 3461041，`runs/ct_m/train.log` | ⏸ 18:57 起；按 XA 任务书 §1 在周期检查点存档后停止（`CT_PAUSED_MANIFEST.md`），没有 45K / 50K 的 EMA |
+| CT1-C | CT-M 续训 40K → 60K：gpu114 g0-3，作业 3461041，`runs/ct_m/train.log` | ⏸ 19:44:54 停止；可恢复检查点 step 42000 已存档并校验（sha256 `5b82500b…`，`CT_PAUSED_MANIFEST.md`）；没有 45K / 50K 的 EMA |
 | CT3 | 预测误差分解（40K vs Y50K 固定状态部分） | ✅ 部分（`results/CT3_prediction_diagnostics/`） |
 | CT4 | 小规模闭环（CT50K / CT60K）、All-14 | ⬜ 未执行（CT 暂停） |
 | CT1-D / CT2 | 80K / 域平衡 | ⬜ 未执行 |
@@ -178,11 +178,11 @@
 
 | 编号 | 内容 | 节点 / GPU / 作业 | 日志 | 状态 |
 |---|---|---|---|---|
-| XA-eng | 模型代码 `seen2scene/v3/xa/`、六组配置、工程检查 6/6、过拟合冒烟 6/6、大场景显存、短闭环冒烟、T1 回归 | gpu115 | `results/engineering_checks.json`、`results/regression.json`、`logs/EVENTS.md` | 🔄 |
-| XA-S2D | 训练 → 选模 → 闭环 → 聚合 | gpu114 g0-3，3461041 | `work_dirs/.../runs/xa_s2d/train.log` | ⏳ |
-| XA-SI | 同上（链内第 2 个） | gpu114 | `runs/xa_si/train.log` | ⏳ |
-| XA-MR | 同上（链内第 3 个） | gpu114 | `runs/xa_mr/train.log` | ⏳ |
-| XA-SR | 训练 → 选模 → 闭环 → 聚合 | gpu115 g0-3，3465477 | `runs/xa_sr/train.log` | ⏳ |
-| XA-M2D | 同上（链内第 2 个） | gpu115 | `runs/xa_m2d/train.log` | ⏳ |
-| XA-MI | 同上（链内第 3 个） | gpu115 | `runs/xa_mi/train.log` | ⏳ |
+| XA-eng | 模型代码 `seen2scene/v3/xa/`、六组配置、工程检查 6/6、过拟合冒烟 6/6、大场景显存（M 系列比 T1 多约 1.2 GB）、短闭环冒烟 12/12、T1 回归（室内外逐位一致） | gpu115 | `results/engineering_checks.json`、`results/regression.json`、`logs/EVENTS.md` | ✅ 19:34（提交 `7ae012e`） |
+| XA-S2D | 训练 → 选模 → 闭环 → 聚合 | gpu114 g0-3，3461041 | `work_dirs/.../runs/xa_s2d/train.log` | 🔄 训练 19:45 起，预计 11-06 12:30 训完、约 15:15 评估完 |
+| XA-SI | 同上（链内第 2 个） | gpu114 | `runs/xa_si/train.log` | ⏳ 预计 11-06 15:15 起，11-07 约 10:45 完 |
+| XA-MR | 同上（链内第 3 个） | gpu114 | `runs/xa_mr/train.log` | ⏳ 预计 11-07 10:45 起，11-08 约 06:15 完（分配 11-08 18:30 到期） |
+| XA-SR | 训练 → 选模 → 闭环 → 聚合 | gpu115 g0-3，3465477 | `runs/xa_sr/train.log` | 🔄 训练 19:35 起，预计 11-06 12:20 训完、约 15:00 评估完 |
+| XA-M2D | 同上（链内第 2 个） | gpu115 | `runs/xa_m2d/train.log` | ⏳ 预计 11-06 15:00 起，11-07 约 10:30 完 |
+| XA-MI | 同上（链内第 3 个） | gpu115 | `runs/xa_mi/train.log` | ⏳ 预计 11-07 10:30 起，11-08 约 06:00 完（分配 11-09 15:12 到期） |
 | XA-report | `reports/MASTER_TABLE.csv`、`PER_SCENE.csv`、`EARLY_CURVES.png`、`FINAL_REPORT.md` | CPU | — | ⬜ |
