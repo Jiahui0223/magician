@@ -1,0 +1,45 @@
+oLBMNvg9in8_L1_S78 V2M 0 cov 0.011 dec 5.4s
+oLBMNvg9in8_L1_S78 V2M 1 cov 0.034 dec 3.6s
+oLBMNvg9in8_L1_S78 V2M 2 cov 0.066 dec 2.3s
+oLBMNvg9in8_L1_S78 V2M 3 cov 0.091 dec 2.4s
+oLBMNvg9in8_L1_S78 V2M 4 cov 0.149 dec 2.9s
+oLBMNvg9in8_L1_S78 V2M 5 cov 0.177 dec 2.8s
+oLBMNvg9in8_L1_S78 V2M 6 cov 0.207 dec 4.3s
+oLBMNvg9in8_L1_S78 V2M 7 cov 0.222 dec 3.9s
+oLBMNvg9in8_L1_S78 V2M 8 cov 0.248 dec 2.5s
+oLBMNvg9in8_L1_S78 V2M 9 cov 0.260 dec 2.6s
+oLBMNvg9in8_L1_S78 V2M 10 cov 0.274 dec 13.5s
+oLBMNvg9in8_L1_S78 V2M 11 cov 0.292 dec 3.0s
+oLBMNvg9in8_L1_S78 V2M 12 cov 0.297 dec 3.4s
+oLBMNvg9in8_L1_S78 V2M 13 cov 0.309 dec 4.1s
+oLBMNvg9in8_L1_S78 V2M 14 cov 0.321 dec 2.2s
+oLBMNvg9in8_L1_S78 V2M 15 cov 0.336 dec 2.6s
+oLBMNvg9in8_L1_S78 V2M 16 cov 0.345 dec 2.3s
+oLBMNvg9in8_L1_S78 V2M 17 cov 0.361 dec 2.5s
+oLBMNvg9in8_L1_S78 V2M 18 cov 0.368 dec 2.8s
+oLBMNvg9in8_L1_S78 V2M 19 cov 0.375 dec 2.2s
+oLBMNvg9in8_L1_S78 V2M 20 cov 0.380 dec 26.4s
+oLBMNvg9in8_L1_S78 V2M 21 cov 0.385 dec 2.1s
+oLBMNvg9in8_L1_S78 V2M 22 cov 0.389 dec 2.8s
+oLBMNvg9in8_L1_S78 V2M 23 cov 0.390 dec 4.5s
+oLBMNvg9in8_L1_S78 V2M 24 cov 0.392 dec 2.2s
+oLBMNvg9in8_L1_S78 V2M 25 cov 0.392 dec 2.9s
+oLBMNvg9in8_L1_S78 V2M 26 cov 0.395 dec 3.0s
+oLBMNvg9in8_L1_S78 V2M 27 cov 0.395 dec 3.7s
+oLBMNvg9in8_L1_S78 V2M 28 cov 0.396 dec 4.7s
+oLBMNvg9in8_L1_S78 V2M 29 cov 0.399 dec 3.1s
+oLBMNvg9in8_L1_S78 V2M 30 cov 0.401 dec 35.4s
+oLBMNvg9in8_L1_S78 V2M 31 cov 0.412 dec 2.1s
+oLBMNvg9in8_L1_S78 V2M 32 cov 0.416 dec 1.9s
+Traceback (most recent call last):
+  File "/bsuhome/jiahuizhang/scratch/projects/occupancy/seen2scene/experiments/exp6_v3/shared/sim_in_v3.py", line 34, in <module>
+    T23.main()
+  File "/bsuhome/jiahuizhang/scratch/projects/occupancy/seen2scene/experiments/exp5_future_view/task2/scripts/t23_in_sim.py", line 99, in main
+    ans = json.loads(proc.stdout.readline())
+  File "/bsuscratch/jiahuizhang/envs/magician/lib/python3.9/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/bsuscratch/jiahuizhang/envs/magician/lib/python3.9/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/bsuscratch/jiahuizhang/envs/magician/lib/python3.9/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)

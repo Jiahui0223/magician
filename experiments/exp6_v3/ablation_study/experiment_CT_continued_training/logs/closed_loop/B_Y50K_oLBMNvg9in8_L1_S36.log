@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/bsuhome/jiahuizhang/scratch/projects/occupancy/seen2scene/experiments/exp6_v3/shared/sim_in_v3.py", line 34, in <module>
+    T23.main()
+  File "/bsuhome/jiahuizhang/scratch/projects/occupancy/seen2scene/experiments/exp5_future_view/task2/scripts/t23_in_sim.py", line 99, in main
+    ans = json.loads(proc.stdout.readline())
+  File "/bsuscratch/jiahuizhang/envs/magician/lib/python3.9/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/bsuscratch/jiahuizhang/envs/magician/lib/python3.9/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/bsuscratch/jiahuizhang/envs/magician/lib/python3.9/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)

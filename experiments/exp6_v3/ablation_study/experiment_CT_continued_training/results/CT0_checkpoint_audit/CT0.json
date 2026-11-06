@@ -1,0 +1,280 @@
+{
+ "checkpoints": {
+  "A_40K": {
+   "path": "work_dirs/exp6_v3/task1_xattn/checkpoints/final.pt",
+   "sha256": "639c9d3ae3f3c069dc0399dc4cdd44102be2bf20e70d666a6a529c6affc62bdb",
+   "keys": [
+    "arm",
+    "ema",
+    "model_cfg",
+    "step"
+   ],
+   "step": 40000,
+   "arm": "t1",
+   "kind": "EMA 0.999 of the 40K run; byte-identical to runs/main/ema_040000.pt",
+   "source_run": {
+    "host": "gpu115",
+    "slurm_job": "3435033",
+    "started": "Fri Oct 30 11:18:33 2026",
+    "finished": "Sat Oct 31 03:26:14 2026",
+    "git": {
+     "sha": "2021604931d6731462e16c6accee45fff55a2d57",
+     "dirty": true,
+     "diff_sha256": "bc222222c03fff62b0b7192fd9a69e63988bce4a4252c1ebbcea058210ac1834"
+    },
+    "world_size": 4,
+    "resumed_at": 0,
+    "data_manifest_sha256": "9f432c3f943a891ab1d0090745f2bbc39534e49a7858577fa611bace6c25d3aa",
+    "config_sha256": "a076e0880f20730c0b470a7fee4221badc20c2f4bd5406ef383c63fc63eff2e8"
+   }
+  },
+  "parent_state": {
+   "path": "work_dirs/exp6_v3/task1_xattn/runs/main/ckpt_last.pt",
+   "sha256": "3d81978206c88068c5dd5eda9cb221c8023948854549184b8aa35274c5941ce9",
+   "keys": [
+    "ema",
+    "model",
+    "np_rng",
+    "opt",
+    "step",
+    "torch_cuda_rng",
+    "torch_rng"
+   ],
+   "step": 40000,
+   "opt_lr": 1.6222229670681544e-13,
+   "opt_state_tensors": 394,
+   "ema_equals_final": true,
+   "raw_vs_ema_rel_l2": 0.00014607771299779415,
+   "scheduler_object": "none: the LR is a pure function of step (trainer.lr_at), so nothing to restore"
+  },
+  "B_Y50K": {
+   "path": "work_dirs/exp6_v3/Y/runs/main/ema_050000.pt",
+   "sha256": "64cea1d62e7b2a30322117de80664e9381f6a7dc802740e20ea77f982d70332c",
+   "keys": [
+    "arm",
+    "ema",
+    "model_cfg",
+    "step"
+   ],
+   "step": 50000,
+   "arm": "t1",
+   "rel_l2_to_40K_ema": 0.029806246981024742,
+   "source_run": {
+    "host": "gpu114",
+    "slurm_job": null,
+    "started": "Wed Nov  4 04:20:15 2026",
+    "git": {
+     "sha": "6468076fc6d6f162fa6079aedcf8fc312179c0be",
+     "dirty": true,
+     "diff_sha256": "3a15016fbd5c70d41d812beb3003bf46a03c5c1feb7792037c0bc3aa08712e51"
+    },
+    "world_size": 4,
+    "resumed_at": 40000,
+    "data_manifest_sha256": "9f432c3f943a891ab1d0090745f2bbc39534e49a7858577fa611bace6c25d3aa",
+    "config_sha256": "766244b7cdbf51f7b6e80f64f918e29cd201a1cd85d6b972d2551ee49484dc68"
+   }
+  },
+  "Y45K": {
+   "path": "work_dirs/exp6_v3/Y/runs/main/ema_045000.pt",
+   "sha256": "37da75b2bd9542932d52efe395842cb4760c5a9dfc3efae469faaf87f39021cd",
+   "rel_l2_to_40K_ema": 0.020850634202361107
+  }
+ },
+ "q3_50K_from_40K": {
+  "answer": true,
+  "evidence": "experiments/exp6_v3/Y/scripts/train_y.sh checks the parent sha256 before seeding; run manifest resumed_at = 40000; same model_cfg sha256"
+ },
+ "q4_q5_conditions_50K_vs_40K": {
+  "same": [
+   "data manifest sha256 9f432c3f (same shards, same rank sharding)",
+   "model cfg",
+   "losses (lambda_rec 1, beta 0.02)",
+   "batch 32 + 32, stale, state weights",
+   "AdamW restored (394 state tensors)",
+   "EMA restored, decay 0.999",
+   "grad clip, bf16, seed 0, world 4"
+  ],
+  "different": {
+   "cont_peak": [
+    null,
+    2e-05
+   ],
+   "cont_start": [
+    null,
+    40000
+   ],
+   "cont_warmup": [
+    null,
+    500
+   ],
+   "early_stop": [
+    {
+     "after_fraction": 0.667,
+     "patience_evals": 2,
+     "rule": "stop if the selection score has not improved for 2 consecutive evaluations after 2/3 of the budget (same rule for both arms)"
+    },
+    null
+   ],
+   "milestones": [
+    null,
+    [
+     45000,
+     50000,
+     55000
+    ]
+   ],
+   "model": [
+    "model_v3.json",
+    "../../configs/model_v3.json"
+   ],
+   "steps": [
+    40000,
+    55000
+   ]
+  },
+  "lr_plan": "40K: warmup 1000 to 1e-4, cosine to 0 at 40000. Y: warmup 500 to 2e-5, cosine to 0 at 55000, stopped by control.json at 50000 with lr 5.3e-6",
+  "rng": "per-rank generators re-seeded from (seed, rank, 40000): a different sample stream from an uninterrupted run",
+  "not_changed": "no training loss, data, risk or lambda change in the checkpoint; the planner lambda only differs between Table 1 rows (YBEST-H3 lambda 0.25, YD lambda 0) and is not a property of the weights",
+  "incident": "a parallel duplicate start existed for about 90 s at 04:19-04:20 and died on OOM before writing a checkpoint; the surviving process started from the untouched parent (experiments/exp6_v3/Y/reports/DEVIATIONS.md)"
+ },
+ "q6_lr_at_40K": {
+  "final_lr_step_40000": 1.6222229670681544e-13,
+  "lr_step_39900": 1.6548204986310823e-09,
+  "conclusion": "the original cosine has reached 1.6e-13 at 40K, so plain resuming would train with zero LR"
+ },
+ "q7_resumable": {
+  "optimizer": true,
+  "ema": true,
+  "scheduler": "function of step",
+  "numpy_rng": "rank 0 only, not used on resume",
+  "trainer_rule": "seen2scene/v3/trainer.py:179-188"
+ },
+ "q8_data": {
+  "indoor": {
+   "train_trajectories": 228,
+   "train_floors": 114,
+   "train_houses": 59,
+   "train_views": 263358,
+   "valsel_trajectories": 9,
+   "valsel_views": 10473,
+   "missing_shard_or_cache": 0,
+   "policies": {
+    "rnv": 114,
+    "ogr": 114
+   }
+  },
+  "outdoor": {
+   "train_trajectories": 138,
+   "train_views": 98887,
+   "sc_trajectories": 42,
+   "sc_views": 31027,
+   "missing_shard_or_cache": 0,
+   "train_policies": {
+    "fr": 26,
+    "rw": 35,
+    "rwm": 29,
+    "cg": 39,
+    "mg": 9
+   }
+  },
+  "per_step": "32 + 32 views global (8 + 8 per rank); each rank owns sorted(list)[rank::4] of the trajectories",
+  "labelled_rays_rank0_log": {
+   "indoor_mean": 17717.134831460673,
+   "outdoor_mean": 15051.911360799002,
+   "indoor_share": 0.5406667843644961
+  },
+  "epochs_at_40K": {
+   "indoor": 4.860304224667563,
+   "outdoor": 12.944067470951692
+  },
+  "loss_normalisation": "L_FM = sum over labelled rays of the squared velocity error / (2 x global labelled rays): rays are pooled across domains"
+ },
+ "validation_curves": {
+  "T1": [
+   {
+    "step": 0,
+    "fm_in": 1.9339119336331543,
+    "fm_out": 1.9460980482945553,
+    "es_in": 17.24117064239608,
+    "es_out": 19.595694072728847
+   },
+   {
+    "step": 5000,
+    "fm_in": 0.13075237898448447,
+    "fm_out": 0.04409482986686851,
+    "es_in": 9.581425882983115,
+    "es_out": 8.951798032723236
+   },
+   {
+    "step": 10000,
+    "fm_in": 0.10794995444759942,
+    "fm_out": 0.03402763685337801,
+    "es_in": 8.141545051899016,
+    "es_out": 7.847267043834765
+   },
+   {
+    "step": 15000,
+    "fm_in": 0.10032757437820024,
+    "fm_out": 0.03097408398294506,
+    "es_in": 7.3980522864955365,
+    "es_out": 7.606687589066525
+   },
+   {
+    "step": 20000,
+    "fm_in": 0.09590453026618694,
+    "fm_out": 0.029420057974640337,
+    "es_in": 6.989562872588781,
+    "es_out": 7.1098656768674875
+   },
+   {
+    "step": 25000,
+    "fm_in": 0.09313990370794573,
+    "fm_out": 0.028308892462592855,
+    "es_in": 6.737930882883328,
+    "es_out": 6.830488244321553
+   },
+   {
+    "step": 30000,
+    "fm_in": 0.09137419231648106,
+    "fm_out": 0.027660091520807485,
+    "es_in": 6.523902919884737,
+    "es_out": 6.6045436765450765
+   },
+   {
+    "step": 35000,
+    "fm_in": 0.09035264876208823,
+    "fm_out": 0.027314286772988104,
+    "es_in": 6.449473153361256,
+    "es_out": 6.555492798506125
+   },
+   {
+    "step": 40000,
+    "fm_in": 0.09004365598336095,
+    "fm_out": 0.027218916636708168,
+    "es_in": 6.42480919252042,
+    "es_out": 6.481835455403749
+   }
+  ],
+  "Y": [
+   {
+    "step": 45000,
+    "fm_in": 0.08979806770745426,
+    "fm_out": 0.02704871450251589,
+    "es_in": 6.327288492091859,
+    "es_out": 6.413513860158357
+   },
+   {
+    "step": 50000,
+    "fm_in": 0.08890003304293717,
+    "fm_out": 0.02680887109301514,
+    "es_in": 6.240150460557551,
+    "es_out": 6.4342148318757735
+   }
+  ]
+ },
+ "verdict": {
+  "label": "Resume Training with a new LR plan (not a pure steps-only change, not fine-tuning from weights alone)",
+  "usable_as_CT1_B": true,
+  "why_new_branch": "Y's LR horizon is 55K and it stopped at 50K (lr 5.3e-6); it cannot supply a 60K point under one plan. CT-M uses the same mechanism and peak, horizon 60K, so its 50K and 60K share one plan; Y50K and CT50K differ only by the LR horizon after step 40500"
+ }
+}

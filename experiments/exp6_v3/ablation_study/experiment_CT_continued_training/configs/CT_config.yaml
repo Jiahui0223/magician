@@ -1,0 +1,68 @@
+# Experiment CT -- frozen executable protocol (CT-v1, 2026-11-05, before any CT evaluation or training). Later changes = new version + reason in logs/EVENTS.md.
+version: CT-v1
+plan: EXPERIMENT_PLAN.md
+frozen_system:
+  network: "V3-T1 (seen2scene/v3, experiments/exp6_v3/configs/model_v3.json, xattn on); no architecture, input channel, output or label change"
+  outdoor_planner: "D-v2 = D1 (d_config d1: depth 2, lambda 0) + known-surface visibility (E3 configs/dv2_v2.yaml, mode full); D100 input, S10 novelty, K 4, Euler 10, R10, global P1, 100 steps"
+  indoor_planner: "frozen Task 2 V2-planner path with a V3 model (shared/sim_in_v3.py -> v3_in_planner.py -> t23_v2_in_planner: H0 DistP1, Greedy-NV prefer-unvisited, K 4, Euler 10, R10, local P1 n_win 5, 150 steps). D-v2, H1-H3, D1 have NO indoor entry point (audit: NOT_FOUND); indoor stays H0, one-step"
+checkpoints:
+  A_40K: {path: work_dirs/exp6_v3/task1_xattn/checkpoints/final.pt, sha256: 639c9d3ae3f3c069dc0399dc4cdd44102be2bf20e70d666a6a529c6affc62bdb, role: "frozen baseline"}
+  B_Y50K: {path: work_dirs/exp6_v3/Y/runs/main/ema_050000.pt, sha256: 64cea1d62e7b2a30322117de80664e9381f6a7dc802740e20ea77f982d70332c, role: "existing 50K (Y branch: LR horizon 55K, stopped at 50K)"}
+  C_CT50K: {path: work_dirs/exp6_v3/ablation_study/experiment_CT_continued_training/runs/ct_m/ema_050000.pt, role: "CT-M branch 50K"}
+  C_CT60K: {path: work_dirs/exp6_v3/ablation_study/experiment_CT_continued_training/runs/ct_m/ema_060000.pt, role: "CT-M branch 60K"}
+CT1_C_training:          # CT-M: Resume Training (model + EMA + AdamW + step) with a NEW frozen LR plan, because the original cosine is 1.6e-13 at 40K
+  parent: {path: work_dirs/exp6_v3/task1_xattn/runs/main/ckpt_last.pt, sha256: 3d81978206c88068c5dd5eda9cb221c8023948854549184b8aa35274c5941ce9, step: 40000}
+  trainer: "seen2scene/v3/trainer.py unchanged (arm t1); module hooks only: CFG_DIR, lr_at (scripts/train_ct.py, the Y mechanism)"
+  config: configs/train_ct.json
+  lr: "step < 40500: 2e-5 * (step - 40000 + 1) / 500; then 2e-5 * 0.5 * (1 + cos(pi * (step - 40500) / 19500)); 0 at 60000. Same peak and warmup as Y, horizon 60K"
+  same_as_T1: "data manifest 9f432c3f..., rank sharding, 32 + 32 views per step, state weights t <= 20 x 2, stale p 0.5 / max 9, loss L_FM + L_recon + 0.02 KL, AdamW betas / wd, grad clip 1, bf16, EMA 0.999, seed 0, world 4"
+  rng: "trainer rule: per-rank generators re-seeded from (seed, rank, step) at every resume"
+  milestones: "EMA every 5000 (45K, 50K, 55K, 60K) with the trainer's validation; ckpt_last every 1000; automatic restart from ckpt_last at most 2 times (logged)"
+  run_gate: "CT1-C runs unless CT0 finds a data / checkpoint fault; it is the arm that makes 50K and 60K comparable under one LR plan"
+CT1_D_80K:               # conditional, not started without this gate
+  gate: "CT60K - 40K on the Dev layers: official regret CI upper < 0 in at least one domain, no significant degradation in the other, AND closed-loop Dev-5 GO (below); otherwise NOT_RUN"
+  lr_if_run: "from the CT60K state: warmup 500 to 1e-5, cosine to 0 at 80000"
+fixed_states:
+  indoor_valsel: "experiments/exp5_future_view e2/valsel: 9 MP3D VALSEL floors, 90 states (t 0,5,20,25,50,55,100,105,140,145), oracle gain + t* of oracle.npz; clusters = floors"
+  outdoor_dev: "Experiment F pool on Dev-5 scenes (colosseum, barts, pantheon, eiffel, sestino_museum): 495 states; clusters = scenes; used for selection"
+  outdoor_train: "Experiment F pool on Train-6 scenes (pisa, bannerman, fushimi, liberty, redeemer): 260 states; reported as seen scenes, never used for selection"
+  excluded: "Test-3, dunnottar, sofia_church, MP3D evaluation floors"
+  note: "F pool truth reused: official one-step gain, geometric one- and two-step truth, children lists; states come from 40K / D1 / B0 / B2 / D-v2 trajectories, so they are fixed, not on-policy for new weights"
+  regression: "40K: outdoor two-step scores == F rows bitwise (per-sample V1 / V12 too); indoor DistP1 == eval_fixed valsel_s_final T1 rows (bitwise or <= 1e-11 relative with same argmax, deviation #10b)"
+  noise: "the planner's own keys, K = 4, same for every checkpoint"
+  phases: {early: "t < 20", middle: "20 <= t < 50", late: "t >= 50"}
+metrics:
+  validation: "trainer eval.jsonl on the same fixed subsets (VALSEL 2048, S-c 2048 views): FM, Brier, false wall, fair ES, spread"
+  prediction_on_labelled_unknown_rays: "per camera, K = 4: HIT / NOHIT confusion (TP, FP (NOHIT / KNOWN), FN, TN), precision, recall, Brier; depth error |z_hat - z*| on true positives in runtime z-depth (MP3D / 7 = metres; Macarons++ scene units) and relative"
+  first_hit_mae: "|z_hat - z*| on rays with finite truth and finite prediction: all rays, UNKNOWN rays"
+  novelty: "ray-level predicted-new vs truly-new confusion under the domain's scoring rule"
+  diversity: "pairwise |z_i - z_j| and relative std on all-K-hit rays, hit disagreement, t* inside [min, max] of the samples, best-sample error, spread-error Spearman, each by phase"
+  decision: "official regret and Top-1 of the planner's score (outdoor two-step D-v2; indoor H0), per-state Spearman of score vs official gain, geometric two-step regret (outdoor), K = 1 vs K = 4 with the same samples"
+  blocked: "share of BLOCKED rays per scene and phase; no new loss"
+  ideal: "expressible perfect depth (encode_labels -> decode) one-step reference: outdoor F rows, indoor H0 on it"
+  ci: "paired bootstrap of clusters (10000 draws, seed 0): floors indoor, scenes outdoor; states are never independent samples"
+fixed_state_gate:
+  improved: "official regret point < 0 and cluster CI upper < 0"
+  degraded: "official regret point > 0 and cluster CI lower > 0"
+  trend: "point in favour, CI includes 0"
+CT4_closed_loop:
+  note: "the small closed loop is pre-registered as a control for training length, independent of the fixed-state result"
+  stage_small:
+    models: [B_Y50K, C_CT50K, C_CT60K]
+    outdoor: "Dev-5 x 5 starts (25 episodes per model), e3_sim.py --dv2 full --rep 0, paired with Table 1 V3-DV2-KSV of the 40K (same starts, noise keys, official coverage)"
+    indoor: "the 10 Task 2 episodes (5 val floors x 2 starts), sim_in_v3.py, paired with exp6_v3 eval T1 episodes of the 40K (same starts, seeds, C_obs)"
+    regression: "one 40K rerun per domain (barts s0, Z6MFQCViBuw_L0 S6) must equal the archived episode (executed poses and coverage)"
+  selection: "candidate = highest Dev-5 official AUC@100 under D-v2 among the three models; difference < 0.002 -> the earlier step"
+  all14_go: "candidate - 40K: Dev-5 dAUC@20 >= -0.005 and no scene < -0.015; (dAUC@100 >= +0.005 or dFinal >= +0.005) with >= 3 of 5 scenes >= 0; at most one scene < -0.010 on AUC@100 or Final; indoor dAUC@150 >= -0.005 and dFinal >= -0.010"
+  all14: "only after GO: remaining 45 episodes (Train-6 + Test-3) of the candidate; results stored in CT's work dir; Table 1 is not modified"
+CT2_domain_balance:
+  trigger_any: [
+    "validation: CT60K vs 40K, fair ES or FM improves >= 1 % in one domain and worsens >= 1 % in the other",
+    "fixed states: official regret changes in opposite directions, |d| >= 0.01 pp in both, CI excludes 0 in at least one",
+    "closed loop: indoor dAUC@150 or dFinal >= +0.010 while outdoor dAUC@100 or dFinal <= -0.005 (or the mirror case)"]
+  recipe_if_triggered: "CT-B: same parent, seed, LR plan, cumulative steps, data stream; L_FM = 0.5 sum_in / (2 N_in) + 0.5 sum_out / (2 N_out) with N global per domain (replaces the pooled ray mean; L_recon and KL unchanged)"
+  loss_audit: "original L_FM = sum over labelled rays / (2 x global labelled rays): rays are pooled, so domains weigh by ray count (rank-0 log: indoor share 0.54); views are 1:1"
+decision_cases: "A / B / C / D / E of EXPERIMENT_PLAN §8, stated explicitly in the report"
+resources:
+  allocations: "own Slurm jobs 3461041 (gpu114) and 3465477 (gpu115), 4 x L40S each; the account's QOS is full with these 8 GPUs, so CT runs inside them (Job IDs logged) instead of new sbatch jobs"
+  policy: "training on gpu114 only; evaluation workers never write into a run directory"

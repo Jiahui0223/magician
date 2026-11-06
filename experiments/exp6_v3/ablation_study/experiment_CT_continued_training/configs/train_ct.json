@@ -1,0 +1,75 @@
+{
+ "version": "ct_m_v1",
+ "note": "EXP6 V3 / CT-M (frozen 2026-11-05 before any CT training): continuation of V3-T1 from the real 40K training state; same data / losses / batch / EMA / clip as train_v3.json; LR: linear warmup 40000->40500 to 2e-5, cosine to 0 at 60000; early stop off.",
+ "model": "../../../configs/model_v3.json",
+ "seed": 0,
+ "steps": 60000,
+ "warmup": 1000,
+ "lr": 0.0001,
+ "betas": [
+  0.9,
+  0.99
+ ],
+ "weight_decay": 0.01,
+ "grad_clip": 1.0,
+ "ema": 0.999,
+ "precision": "bf16",
+ "batch_views": 64,
+ "states_per_batch": 8,
+ "accum": 1,
+ "max_cands_per_state": 8,
+ "stale_p": 0.5,
+ "stale_max": 9,
+ "state_weight_t_le": 20,
+ "state_weight_factor": 2.0,
+ "lambda_rec": 1.0,
+ "kl": {
+  "beta": 0.02,
+  "start": 0,
+  "warmup": 5000
+ },
+ "eval_every": 5000,
+ "ckpt_every": 1000,
+ "log_every": 50,
+ "eval_tau": [
+  0.1,
+  0.3,
+  0.5,
+  0.7,
+  0.9
+ ],
+ "eval_sets": {
+  "in_val": 2048,
+  "out_sc": 2048,
+  "in_train": 1024,
+  "out_train": 1024
+ },
+ "selection": {
+  "metric": "fair_es_arclength_vox",
+  "score": "ES_in_val / ES_in_val(step 5000) + ES_out_sc / ES_out_sc(step 5000)",
+  "choose": "minimum over evaluated steps >= 5000, ties -> later step; never an evaluation scene; the chosen EMA is copied to checkpoints/final.pt"
+ },
+ "smoke": {
+  "overfit_steps": 200,
+  "short_steps": 300,
+  "profile_steps": 100,
+  "emulate_world": 4
+ },
+ "early_stop": null,
+ "cont_start": 40000,
+ "cont_warmup": 500,
+ "cont_peak": 2e-05,
+ "milestones": [
+  45000,
+  50000,
+  55000,
+  60000
+ ],
+ "parent": {
+  "ckpt_last": "work_dirs/exp6_v3/task1_xattn/runs/main/ckpt_last.pt",
+  "ckpt_last_sha256": "3d81978206c88068c5dd5eda9cb221c8023948854549184b8aa35274c5941ce9",
+  "final_ema": "work_dirs/exp6_v3/task1_xattn/checkpoints/final.pt",
+  "final_ema_sha256": "639c9d3ae3f3c069dc0399dc4cdd44102be2bf20e70d666a6a529c6affc62bdb",
+  "step": 40000
+ }
+}

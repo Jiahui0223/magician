@@ -1,0 +1,39 @@
+{
+ "A_40K": {
+  "bitwise_eval_fixed": [
+   90,
+   90
+  ],
+  "maxrel_eval_fixed": 0.0,
+  "same_argmax": [
+   90,
+   90
+  ],
+  "paths_eq_F": [
+   755,
+   755
+  ],
+  "keys_eq_F": [
+   755,
+   755
+  ],
+  "scores_bitwise_F": [
+   755,
+   755
+  ],
+  "V12_bitwise_F": [
+   755,
+   755
+  ]
+ },
+ "B_Y50K": {
+  "paths_eq_F": [
+   755,
+   755
+  ],
+  "keys_eq_F": [
+   755,
+   755
+  ]
+ }
+}
