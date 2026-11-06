@@ -1,0 +1,6 @@
+exit 0 overfit xa_s2d gpu115 g3 2026-11-05T19:20:36
+exit 0 overfit xa_sr gpu115 g0 2026-11-05T19:23:36
+exit 0 overfit xa_si gpu115 g1 2026-11-05T19:24:06
+exit 0 overfit xa_m2d gpu115 g2 2026-11-05T19:24:09
+exit 0 overfit xa_mr gpu115 g0 2026-11-05T19:27:06
+exit 0 overfit xa_mi gpu115 g1 2026-11-05T19:27:31

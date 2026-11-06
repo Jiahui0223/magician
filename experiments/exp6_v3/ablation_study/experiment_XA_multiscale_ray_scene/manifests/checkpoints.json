@@ -1,0 +1,21 @@
+{
+ "T1_40K": {
+  "path": "work_dirs/exp6_v3/task1_xattn/checkpoints/final.pt",
+  "sha256": "639c9d3ae3f3c069dc0399dc4cdd44102be2bf20e70d666a6a529c6affc62bdb"
+ },
+ "baseline_T1_D1_outdoor": {
+  "records": "work_dirs/cvpr_results/table1/episodes/V3-D1-H3-NORISK",
+  "episodes": 70,
+  "sha256_of_official_curves": "a4b4fbeb1bf1d58eb8bd42b1e7bc7a9c197d7a49a39a954c8a42318262fa47f9"
+ },
+ "table1_csv_sha256": "340c08587bc0b750d9d8671ae41b96d8213d5067e0fd20de997582cde7db5f78",
+ "baseline_T1_H0_indoor": {
+  "Z6MFQCViBuw_L0_S6": "0fe898c7f9993c0c6bbe840fd8a158857ba9feb0b6c900748b1bd78911f32015",
+  "Z6MFQCViBuw_L0_S17": "1f350167545e9c92e64b822faa6111fda39b7dbe2766f3e889fa0a03c0be9b91",
+  "oLBMNvg9in8_L1_S36": "e6447b627a563263d08f2b00ecc7ebe2a3a86d0bc7e7e706fb02ea81ed3ca1b3",
+  "oLBMNvg9in8_L1_S78": "ac16997f7246f1b711cad2a664566db69fb4edcef0ada8c5317a922e26ab7aa7",
+  "QUCTc6BB5sX_L1_S34": "9e5f8c9d79ba299be28e755d6d67ad4e1f256439240969a47e8250c66d125c72",
+  "QUCTc6BB5sX_L1_S135": "9c762aaba6c9677fa1d652dfdc28b69a92e9664e71a6979d2074a904476d7875"
+ },
+ "T1_common_init_sha256": "6a9d6071a22564c362177bcd2fac0ea8652fe83f3e60de655f299eed0363b513"
+}

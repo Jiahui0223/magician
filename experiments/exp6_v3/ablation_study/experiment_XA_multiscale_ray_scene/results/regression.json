@@ -1,0 +1,126 @@
+{
+ "outdoor_barts_s0_D1": {
+  "moves": 100,
+  "values": 101,
+  "executed_keys_equal": true,
+  "coverage_bitwise_equal": true,
+  "max_abs_coverage_diff": 0.0,
+  "replay_official_equal_stored": true,
+  "ckpt_sha_equal": true,
+  "final": 0.9965542445442205
+ },
+ "indoor_Z6MFQCViBuw_L0_S6_H0": {
+  "moves": 150,
+  "values": 151,
+  "coverage_bitwise_equal": true,
+  "executed_equal": true,
+  "picks_equal": true,
+  "max_abs_coverage_diff": 0.0,
+  "final": 0.4499857020303117
+ },
+ "smoke_closed_loops": {
+  "SMOKE_xa_m2d": {
+   "outdoor": {
+    "moves": 12,
+    "values": 13,
+    "final": 0.5053565834812571,
+    "replay_ok": true
+   },
+   "indoor": {
+    "moves": 12,
+    "values": 13,
+    "final": 0.12055711618361957
+   },
+   "queue": [
+    "try 1 exit 0 out_barts_s0 gpu115 g1 181s 2026-11-05T19:30:59",
+    "try 1 exit 0 in_Z6MFQCViBuw_L0_S6 gpu115 g3 42s 2026-11-05T19:31:33"
+   ]
+  },
+  "SMOKE_xa_mi": {
+   "outdoor": {
+    "moves": 12,
+    "values": 13,
+    "final": 0.5053565834812571,
+    "replay_ok": true
+   },
+   "indoor": {
+    "moves": 12,
+    "values": 13,
+    "final": 0.12055711618361957
+   },
+   "queue": [
+    "try 1 exit 0 out_barts_s0 gpu115 g1 190s 2026-11-05T19:31:10",
+    "try 1 exit 0 in_Z6MFQCViBuw_L0_S6 gpu115 g3 39s 2026-11-05T19:32:50"
+   ]
+  },
+  "SMOKE_xa_mr": {
+   "outdoor": {
+    "moves": 12,
+    "values": 13,
+    "final": 0.5053565834812571,
+    "replay_ok": true
+   },
+   "indoor": {
+    "moves": 12,
+    "values": 13,
+    "final": 0.12055711618361957
+   },
+   "queue": [
+    "try 1 exit 0 out_barts_s0 gpu115 g1 191s 2026-11-05T19:31:10",
+    "try 1 exit 0 in_Z6MFQCViBuw_L0_S6 gpu115 g3 38s 2026-11-05T19:32:11"
+   ]
+  },
+  "SMOKE_xa_s2d": {
+   "outdoor": {
+    "moves": 12,
+    "values": 13,
+    "final": 0.5053565834812571,
+    "replay_ok": true
+   },
+   "indoor": {
+    "moves": 12,
+    "values": 13,
+    "final": 0.12055711618361957
+   },
+   "queue": [
+    "try 1 exit 0 in_Z6MFQCViBuw_L0_S6 gpu115 g3 63s 2026-11-05T19:29:20",
+    "try 1 exit 0 out_barts_s0 gpu115 g0 167s 2026-11-05T19:30:42"
+   ]
+  },
+  "SMOKE_xa_si": {
+   "outdoor": {
+    "moves": 12,
+    "values": 13,
+    "final": 0.5053565834812571,
+    "replay_ok": true
+   },
+   "indoor": {
+    "moves": 12,
+    "values": 13,
+    "final": 0.12055711618361957
+   },
+   "queue": [
+    "try 1 exit 0 in_Z6MFQCViBuw_L0_S6 gpu115 g3 43s 2026-11-05T19:30:51",
+    "try 1 exit 0 out_barts_s0 gpu115 g0 177s 2026-11-05T19:30:54"
+   ]
+  },
+  "SMOKE_xa_sr": {
+   "outdoor": {
+    "moves": 12,
+    "values": 13,
+    "final": 0.5053565834812571,
+    "replay_ok": true
+   },
+   "indoor": {
+    "moves": 12,
+    "values": 13,
+    "final": 0.12055711618361957
+   },
+   "queue": [
+    "try 1 exit 0 in_Z6MFQCViBuw_L0_S6 gpu115 g3 48s 2026-11-05T19:30:08",
+    "try 1 exit 0 out_barts_s0 gpu115 g0 178s 2026-11-05T19:30:54"
+   ]
+  }
+ },
+ "PASS": true
+}

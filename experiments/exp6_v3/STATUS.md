@@ -1,6 +1,6 @@
 # EXP6 V3 — 全局状态板（每次启动 / 结束一个运行就更新）
 
-**最近更新：2026-11-05 02:30（Multi-View Coverage Reasoning Study 完成；无运行中任务。E2 / E3 见 `ablation_study/STATUS.md`）**
+**最近更新：2026-11-05 19:35（Experiment XA 启动中，见 P12；Experiment CT 按 XA 任务书存档后暂停，见 P11）**
 标记：✅ 完成 · 🔄 正在跑 · ⏳ 等待（排队或依赖前项）· ❌ 失败（后面跟修复行）· ⬜ 未开始
 
 ## 0. 此刻在跑什么
@@ -157,3 +157,32 @@
 | F1–F3 | 探索层冻结 γ*=0.25 / σ*=0.25·τ 深度权重 / 自适应 4→8（`results/selection.json`）；确认层：F1 TREND −0.007 pp，F2 TREND −0.007 pp，F3 FAIL +0.017 pp | ✅ 04:20 |
 | F4 | Soft×K 交互 +0.000 [−0.026, +0.022]；无可采纳组合 | ✅ |
 | F5 | 未进入（无 PASS）；无闭环、无 AUC | ⛔ 按协议不执行 |
+
+## P11 Experiment CT — V3 Continued Training & Cross-Domain Generalization（2026-11-05 起；`ablation_study/experiment_CT_continued_training/`）
+| 编号 | 内容 | 状态 |
+|---|---|---|
+| CT-cfg | `EXPERIMENT_PLAN.md`、`configs/CT_config.yaml`（CT-v1）、`configs/train_ct.json` 在任何 CT 评估或训练之前冻结 | ✅ 18:15 |
+| CT0 | 谱系审计 `results/CT0_checkpoint_audit/CT0.json`：Y50K 是真实续训（恢复 model / EMA / AdamW，数据 / 损失相同），只有 LR 计划不同 | ✅ |
+| CT1-fixed-g1 | 固定状态（Indoor 90 + Outdoor 755）A_40K + B_Y50K；8 卡；40K 回归 845/845 逐位；Y50K 深度误差显著改善，regret 未改善 | ✅ 18:55 |
+| CT3-cf | 40K 决策反事实（去 FP / 去 FN / 深度 oracle），gpu115 g0-3，作业 3465477，日志 `logs/fixed/cf_A_40K_*` | ⏸ 18:57 起；XA 启动时停止，只完成部分轨迹（见 CT 报告） |
+| CT4-regress | 40K 闭环回归（barts s0 + Z6MFQCViBuw_L0 S6），gpu115 | ✅ 两条的执行位姿和覆盖都与存档一致 |
+| CT4-Y50K | Y50K 小规模闭环（Dev-5 + Indoor），gpu115 | ❌ 19:08 起，与同卡的其他任务抢显存，5 次规划器失败（OOM）；19:20 由我停止，**未完成** |
+| CT1-C | CT-M 续训 40K → 60K：gpu114 g0-3，作业 3461041，`runs/ct_m/train.log` | ⏸ 18:57 起；按 XA 任务书 §1 在周期检查点存档后停止（`CT_PAUSED_MANIFEST.md`），没有 45K / 50K 的 EMA |
+| CT3 | 预测误差分解（40K vs Y50K 固定状态部分） | ✅ 部分（`results/CT3_prediction_diagnostics/`） |
+| CT4 | 小规模闭环（CT50K / CT60K）、All-14 | ⬜ 未执行（CT 暂停） |
+| CT1-D / CT2 | 80K / 域平衡 | ⬜ 未执行 |
+
+## P12 Experiment XA — Multi-Scale Geometry-Aware Ray–Scene Attention（2026-11-05 起；`ablation_study/experiment_XA_multiscale_ray_scene/`）
+任务书 `XA_Experiment_Protocol.md`；冻结协议 `FROZEN_PROTOCOL.md`（XA-v1）。六个变体各从零训练 40,000 步 → 室外 D1 70 条 × 100 步 + 室内 H0 6 条 × 150 步 → 聚合；不按指标取消。
+两条链在现有分配内无人值守运行（QOS 的 8 卡上限已被这两个分配占满，无法另开 sbatch）：链日志 `logs/chain_gpu114.log`、`logs/chain_gpu115.log`。
+
+| 编号 | 内容 | 节点 / GPU / 作业 | 日志 | 状态 |
+|---|---|---|---|---|
+| XA-eng | 模型代码 `seen2scene/v3/xa/`、六组配置、工程检查 6/6、过拟合冒烟 6/6、大场景显存、短闭环冒烟、T1 回归 | gpu115 | `results/engineering_checks.json`、`results/regression.json`、`logs/EVENTS.md` | 🔄 |
+| XA-S2D | 训练 → 选模 → 闭环 → 聚合 | gpu114 g0-3，3461041 | `work_dirs/.../runs/xa_s2d/train.log` | ⏳ |
+| XA-SI | 同上（链内第 2 个） | gpu114 | `runs/xa_si/train.log` | ⏳ |
+| XA-MR | 同上（链内第 3 个） | gpu114 | `runs/xa_mr/train.log` | ⏳ |
+| XA-SR | 训练 → 选模 → 闭环 → 聚合 | gpu115 g0-3，3465477 | `runs/xa_sr/train.log` | ⏳ |
+| XA-M2D | 同上（链内第 2 个） | gpu115 | `runs/xa_m2d/train.log` | ⏳ |
+| XA-MI | 同上（链内第 3 个） | gpu115 | `runs/xa_mi/train.log` | ⏳ |
+| XA-report | `reports/MASTER_TABLE.csv`、`PER_SCENE.csv`、`EARLY_CURVES.png`、`FINAL_REPORT.md` | CPU | — | ⬜ |

@@ -1,0 +1,71 @@
+{
+ "version": "xa_model_v1",
+ "note": "Experiment XA xa_s2d: V3 model config (model_v3.json) with the T1 bottleneck cross-attention replaced by one XABlock at the 16 x 32 level; frozen 2026-11-05 before any XA training.",
+ "input": {
+  "factor": 4,
+  "pad_to": 8,
+  "channels": [
+   "sdf",
+   "band",
+   "free"
+  ],
+  "valid_channel": true
+ },
+ "vae": {
+  "in_ch": 4,
+  "ch": [
+   32,
+   64
+  ],
+  "latent_ch": 16,
+  "groups": 8,
+  "act_ckpt": true,
+  "latent_stride_fine_voxels": 8
+ },
+ "ray": {
+  "n_points": 32,
+  "hidden": 64,
+  "out_ch": 64
+ },
+ "proj_ch": 11,
+ "flow": {
+  "x_ch": 2,
+  "euler_steps": 10,
+  "K": 4
+ },
+ "unet": {
+  "ch": [
+   64,
+   128,
+   192,
+   256
+  ],
+  "blocks_per_level": 2,
+  "attn_levels": [
+   3
+  ],
+  "heads": 4,
+  "t_emb": 256,
+  "groups": 16
+ },
+ "xattn": {
+  "enabled": false,
+  "heads": 4,
+  "budget": 512,
+  "n_freq": 8,
+  "fov_margin_deg": 10.0
+ },
+ "xa": {
+  "id": "xa_s2d",
+  "memory": "s",
+  "query": "2d",
+  "heads": 4,
+  "n_freq": 8,
+  "fov_margin_deg": 10.0,
+  "budget_s": 512,
+  "budget_f8": 256,
+  "budget_f16": 256,
+  "n_local": 16,
+  "max_intervals": 4
+ }
+}

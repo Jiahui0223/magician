@@ -1,0 +1,1060 @@
+{
+ "states": {
+  "outdoor": [
+   "pisa",
+   "cg-A-0000"
+  ],
+  "indoor": [
+   "17DRP5sb8fy_L0",
+   "ogr_p42"
+  ]
+ },
+ "variants": {
+  "xa_s2d": {
+   "params": {
+    "total": 23720486,
+    "xattn": 180864,
+    "vae_decoder_train_only": 585188,
+    "inference": 23135298
+   },
+   "common_init_sha256": "6a9d6071a22564c362177bcd2fac0ea8652fe83f3e60de655f299eed0363b513",
+   "common_init_equals_T1": true,
+   "xattn_params": {
+    "ln_q.weight": 192,
+    "ln_q.bias": 192,
+    "ln_k.weight": 192,
+    "ln_k.bias": 192,
+    "e_q.weight": 18432,
+    "e_q.bias": 192,
+    "e_g.0.weight": 13056,
+    "e_g.0.bias": 192,
+    "wq.weight": 36864,
+    "wq.bias": 192,
+    "wk.weight": 36864,
+    "wk.bias": 192,
+    "wv.weight": 36864,
+    "wv.bias": 192,
+    "wo.weight": 36864,
+    "wo.bias": 192
+   },
+   "outdoor": {
+    "views": 5,
+    "G": [
+     5,
+     512,
+     70
+    ],
+    "Q": [
+     5,
+     512,
+     98
+    ],
+    "L": [
+     5,
+     1,
+     1,
+     1
+    ],
+    "dtypes": [
+     "torch.float32",
+     "torch.float32",
+     "torch.float32"
+    ],
+    "global_tokens_per_view": [
+     512.0,
+     512.0,
+     512.0,
+     512.0,
+     512.0
+    ],
+    "queries_per_view": [
+     464.0,
+     464.0,
+     464.0,
+     464.0,
+     464.0
+    ],
+    "global_by_scale": [
+     512.0,
+     0.0
+    ],
+    "local_valid_share": null,
+    "finite": true,
+    "cond_equals_T0": true,
+    "velocity_equals_T0_at_init": true,
+    "encode_cond_s": 0.11438155174255371,
+    "velocity_s": 0.055698394775390625,
+    "peak_gb_eval": 1.0026049613952637,
+    "attention_pairs_per_view": 262144,
+    "deterministic": true,
+    "loss": 3.5550954341888428,
+    "grad_xattn_all_nonzero_finite": true,
+    "grad_xattn_zero": [],
+    "grad_vae_enc": 3.9223029613494873,
+    "grad_all_finite": true,
+    "peak_gb_train_1state": 4.282561302185059,
+    "sample_s_K4_E10": 0.24276423454284668,
+    "sample_deterministic": true,
+    "sample_shape": [
+     5,
+     4,
+     7296
+    ],
+    "sample_zero_outside_unknown": true,
+    "sample_finite": true
+   },
+   "indoor": {
+    "views": 7,
+    "G": [
+     7,
+     512,
+     70
+    ],
+    "Q": [
+     7,
+     512,
+     98
+    ],
+    "L": [
+     7,
+     1,
+     1,
+     1
+    ],
+    "dtypes": [
+     "torch.float32",
+     "torch.float32",
+     "torch.float32"
+    ],
+    "global_tokens_per_view": [
+     512.0,
+     512.0,
+     512.0,
+     512.0,
+     512.0,
+     512.0,
+     512.0
+    ],
+    "queries_per_view": [
+     464.0,
+     464.0,
+     464.0,
+     464.0,
+     464.0,
+     464.0,
+     464.0
+    ],
+    "global_by_scale": [
+     512.0,
+     0.0
+    ],
+    "local_valid_share": null,
+    "finite": true,
+    "cond_equals_T0": true,
+    "velocity_equals_T0_at_init": true,
+    "encode_cond_s": 0.07534408569335938,
+    "velocity_s": 0.01054692268371582,
+    "peak_gb_eval": 1.7955632209777832,
+    "attention_pairs_per_view": 262144,
+    "deterministic": true,
+    "loss": 3.6278903484344482,
+    "grad_xattn_all_nonzero_finite": true,
+    "grad_xattn_zero": [],
+    "grad_vae_enc": 2.7493369579315186,
+    "grad_all_finite": true,
+    "peak_gb_train_1state": 7.877599716186523,
+    "sample_s_K4_E10": 0.35665369033813477,
+    "sample_deterministic": true,
+    "sample_shape": [
+     7,
+     4,
+     7296
+    ],
+    "sample_zero_outside_unknown": true,
+    "sample_finite": true
+   },
+   "PASS": true
+  },
+  "xa_sr": {
+   "params": {
+    "total": 23744678,
+    "xattn": 205056,
+    "vae_decoder_train_only": 585188,
+    "inference": 23159490
+   },
+   "common_init_sha256": "6a9d6071a22564c362177bcd2fac0ea8652fe83f3e60de655f299eed0363b513",
+   "common_init_equals_T1": true,
+   "xattn_params": {
+    "ln_q.weight": 192,
+    "ln_q.bias": 192,
+    "ln_k.weight": 192,
+    "ln_k.bias": 192,
+    "e_q.weight": 42624,
+    "e_q.bias": 192,
+    "e_g.0.weight": 13056,
+    "e_g.0.bias": 192,
+    "wq.weight": 36864,
+    "wq.bias": 192,
+    "wk.weight": 36864,
+    "wk.bias": 192,
+    "wv.weight": 36864,
+    "wv.bias": 192,
+    "wo.weight": 36864,
+    "wo.bias": 192
+   },
+   "outdoor": {
+    "views": 5,
+    "G": [
+     5,
+     512,
+     70
+    ],
+    "Q": [
+     5,
+     512,
+     224
+    ],
+    "L": [
+     5,
+     1,
+     1,
+     1
+    ],
+    "dtypes": [
+     "torch.float32",
+     "torch.float32",
+     "torch.float32"
+    ],
+    "global_tokens_per_view": [
+     512.0,
+     512.0,
+     512.0,
+     512.0,
+     512.0
+    ],
+    "queries_per_view": [
+     464.0,
+     464.0,
+     464.0,
+     464.0,
+     464.0
+    ],
+    "global_by_scale": [
+     512.0,
+     0.0
+    ],
+    "local_valid_share": null,
+    "finite": true,
+    "cond_equals_T0": true,
+    "velocity_equals_T0_at_init": true,
+    "encode_cond_s": 0.052515506744384766,
+    "velocity_s": 0.018253326416015625,
+    "peak_gb_eval": 1.4919166564941406,
+    "attention_pairs_per_view": 262144,
+    "deterministic": true,
+    "loss": 3.5548810958862305,
+    "grad_xattn_all_nonzero_finite": true,
+    "grad_xattn_zero": [],
+    "grad_vae_enc": 3.92553973197937,
+    "grad_all_finite": true,
+    "peak_gb_train_1state": 4.493136405944824,
+    "sample_s_K4_E10": 0.2171461582183838,
+    "sample_deterministic": true,
+    "sample_shape": [
+     5,
+     4,
+     7296
+    ],
+    "sample_zero_outside_unknown": true,
+    "sample_finite": true
+   },
+   "indoor": {
+    "views": 7,
+    "G": [
+     7,
+     512,
+     70
+    ],
+    "Q": [
+     7,
+     512,
+     224
+    ],
+    "L": [
+     7,
+     1,
+     1,
+     1
+    ],
+    "dtypes": [
+     "torch.float32",
+     "torch.float32",
+     "torch.float32"
+    ],
+    "global_tokens_per_view": [
+     512.0,
+     512.0,
+     512.0,
+     512.0,
+     512.0,
+     512.0,
+     512.0
+    ],
+    "queries_per_view": [
+     464.0,
+     464.0,
+     464.0,
+     464.0,
+     464.0,
+     464.0,
+     464.0
+    ],
+    "global_by_scale": [
+     512.0,
+     0.0
+    ],
+    "local_valid_share": null,
+    "finite": true,
+    "cond_equals_T0": true,
+    "velocity_equals_T0_at_init": true,
+    "encode_cond_s": 0.09424448013305664,
+    "velocity_s": 0.014225959777832031,
+    "peak_gb_eval": 1.7954530715942383,
+    "attention_pairs_per_view": 262144,
+    "deterministic": true,
+    "loss": 3.6277620792388916,
+    "grad_xattn_all_nonzero_finite": true,
+    "grad_xattn_zero": [],
+    "grad_vae_enc": 2.7475454807281494,
+    "grad_all_finite": true,
+    "peak_gb_train_1state": 7.89836311340332,
+    "sample_s_K4_E10": 0.620513916015625,
+    "sample_deterministic": true,
+    "sample_shape": [
+     7,
+     4,
+     7296
+    ],
+    "sample_zero_outside_unknown": true,
+    "sample_finite": true
+   },
+   "PASS": true
+  },
+  "xa_si": {
+   "params": {
+    "total": 23746598,
+    "xattn": 206976,
+    "vae_decoder_train_only": 585188,
+    "inference": 23161410
+   },
+   "common_init_sha256": "6a9d6071a22564c362177bcd2fac0ea8652fe83f3e60de655f299eed0363b513",
+   "common_init_equals_T1": true,
+   "xattn_params": {
+    "ln_q.weight": 192,
+    "ln_q.bias": 192,
+    "ln_k.weight": 192,
+    "ln_k.bias": 192,
+    "e_q.weight": 44544,
+    "e_q.bias": 192,
+    "e_g.0.weight": 13056,
+    "e_g.0.bias": 192,
+    "wq.weight": 36864,
+    "wq.bias": 192,
+    "wk.weight": 36864,
+    "wk.bias": 192,
+    "wv.weight": 36864,
+    "wv.bias": 192,
+    "wo.weight": 36864,
+    "wo.bias": 192
+   },
+   "outdoor": {
+    "views": 5,
+    "G": [
+     5,
+     512,
+     70
+    ],
+    "Q": [
+     5,
+     512,
+     234
+    ],
+    "L": [
+     5,
+     1,
+     1,
+     1
+    ],
+    "dtypes": [
+     "torch.float32",
+     "torch.float32",
+     "torch.float32"
+    ],
+    "global_tokens_per_view": [
+     512.0,
+     512.0,
+     512.0,
+     512.0,
+     512.0
+    ],
+    "queries_per_view": [
+     512.0,
+     512.0,
+     464.0,
+     512.0,
+     37.0
+    ],
+    "global_by_scale": [
+     512.0,
+     0.0
+    ],
+    "local_valid_share": null,
+    "finite": true,
+    "cond_equals_T0": true,
+    "velocity_equals_T0_at_init": true,
+    "encode_cond_s": 0.048577070236206055,
+    "velocity_s": 0.012431859970092773,
+    "peak_gb_eval": 1.4928817749023438,
+    "attention_pairs_per_view": 262144,
+    "interval": {
+     "intervals": 439.79998779296875,
+     "selected": 407.3999938964844,
+     "rays_with_interval": 374.79998779296875,
+     "rays_covered": 374.79998779296875,
+     "from_stats": 286.79998779296875,
+     "rays_valid": 464.0,
+     "ray_coverage": 1.0,
+     "selected_share": 0.9451241493225098,
+     "max_queries_per_cell": 4
+    },
+    "deterministic": true,
+    "loss": 3.555166482925415,
+    "grad_xattn_all_nonzero_finite": true,
+    "grad_xattn_zero": [],
+    "grad_vae_enc": 3.9273383617401123,
+    "grad_all_finite": true,
+    "peak_gb_train_1state": 4.50382661819458,
+    "sample_s_K4_E10": 0.21276402473449707,
+    "sample_deterministic": true,
+    "sample_shape": [
+     5,
+     4,
+     7296
+    ],
+    "sample_zero_outside_unknown": true,
+    "sample_finite": true
+   },
+   "indoor": {
+    "views": 7,
+    "G": [
+     7,
+     512,
+     70
+    ],
+    "Q": [
+     7,
+     512,
+     234
+    ],
+    "L": [
+     7,
+     1,
+     1,
+     1
+    ],
+    "dtypes": [
+     "torch.float32",
+     "torch.float32",
+     "torch.float32"
+    ],
+    "global_tokens_per_view": [
+     512.0,
+     512.0,
+     512.0,
+     512.0,
+     512.0,
+     512.0,
+     512.0
+    ],
+    "queries_per_view": [
+     480.0,
+     349.0,
+     512.0,
+     276.0,
+     334.0,
+     512.0,
+     374.0
+    ],
+    "global_by_scale": [
+     512.0,
+     0.0
+    ],
+    "local_valid_share": null,
+    "finite": true,
+    "cond_equals_T0": true,
+    "velocity_equals_T0_at_init": true,
+    "encode_cond_s": 0.08237099647521973,
+    "velocity_s": 0.012085914611816406,
+    "peak_gb_eval": 1.7946710586547852,
+    "attention_pairs_per_view": 262144,
+    "interval": {
+     "intervals": 428.71429443359375,
+     "selected": 405.28570556640625,
+     "rays_with_interval": 322.5714416503906,
+     "rays_covered": 322.5714416503906,
+     "from_stats": 136.42857360839844,
+     "rays_valid": 464.0,
+     "ray_coverage": 1.0,
+     "selected_share": 0.9606026411056519,
+     "max_queries_per_cell": 4
+    },
+    "deterministic": true,
+    "loss": 3.627580404281616,
+    "grad_xattn_all_nonzero_finite": true,
+    "grad_xattn_zero": [],
+    "grad_vae_enc": 2.7464094161987305,
+    "grad_all_finite": true,
+    "peak_gb_train_1state": 7.905776500701904,
+    "sample_s_K4_E10": 0.6185920238494873,
+    "sample_deterministic": true,
+    "sample_shape": [
+     7,
+     4,
+     7296
+    ],
+    "sample_zero_outside_unknown": true,
+    "sample_finite": true
+   },
+   "PASS": true
+  },
+  "xa_m2d": {
+   "params": {
+    "total": 23745638,
+    "xattn": 206016,
+    "vae_decoder_train_only": 585188,
+    "inference": 23160450
+   },
+   "common_init_sha256": "6a9d6071a22564c362177bcd2fac0ea8652fe83f3e60de655f299eed0363b513",
+   "common_init_equals_T1": true,
+   "xattn_params": {
+    "ln_q.weight": 192,
+    "ln_q.bias": 192,
+    "ln_k.weight": 192,
+    "ln_k.bias": 192,
+    "e_q.weight": 18432,
+    "e_q.bias": 192,
+    "e_g.0.weight": 13056,
+    "e_g.0.bias": 192,
+    "e_g.1.weight": 13056,
+    "e_g.1.bias": 192,
+    "e_l.weight": 11712,
+    "e_l.bias": 192,
+    "wq.weight": 36864,
+    "wq.bias": 192,
+    "wk.weight": 36864,
+    "wk.bias": 192,
+    "wv.weight": 36864,
+    "wv.bias": 192,
+    "wo.weight": 36864,
+    "wo.bias": 192
+   },
+   "outdoor": {
+    "views": 5,
+    "G": [
+     5,
+     512,
+     70
+    ],
+    "Q": [
+     5,
+     512,
+     98
+    ],
+    "L": [
+     5,
+     512,
+     16,
+     62
+    ],
+    "dtypes": [
+     "torch.float32",
+     "torch.float32",
+     "torch.float32"
+    ],
+    "global_tokens_per_view": [
+     512.0,
+     512.0,
+     512.0,
+     512.0,
+     512.0
+    ],
+    "queries_per_view": [
+     464.0,
+     464.0,
+     464.0,
+     464.0,
+     464.0
+    ],
+    "global_by_scale": [
+     256.0,
+     256.0
+    ],
+    "local_valid_share": 0.25700685381889343,
+    "finite": true,
+    "cond_equals_T0": true,
+    "velocity_equals_T0_at_init": true,
+    "encode_cond_s": 0.049706220626831055,
+    "velocity_s": 0.012977123260498047,
+    "peak_gb_eval": 1.49721097946167,
+    "attention_pairs_per_view": 270336,
+    "deterministic": true,
+    "loss": 3.5550782680511475,
+    "grad_xattn_all_nonzero_finite": true,
+    "grad_xattn_zero": [],
+    "grad_vae_enc": 3.9247312545776367,
+    "grad_all_finite": true,
+    "peak_gb_train_1state": 4.7952094078063965,
+    "sample_s_K4_E10": 0.34241628646850586,
+    "sample_deterministic": true,
+    "sample_shape": [
+     5,
+     4,
+     7296
+    ],
+    "sample_zero_outside_unknown": true,
+    "sample_finite": true
+   },
+   "indoor": {
+    "views": 7,
+    "G": [
+     7,
+     512,
+     70
+    ],
+    "Q": [
+     7,
+     512,
+     98
+    ],
+    "L": [
+     7,
+     512,
+     16,
+     62
+    ],
+    "dtypes": [
+     "torch.float32",
+     "torch.float32",
+     "torch.float32"
+    ],
+    "global_tokens_per_view": [
+     512.0,
+     512.0,
+     512.0,
+     512.0,
+     512.0,
+     512.0,
+     512.0
+    ],
+    "queries_per_view": [
+     464.0,
+     464.0,
+     464.0,
+     464.0,
+     464.0,
+     464.0,
+     464.0
+    ],
+    "global_by_scale": [
+     256.0,
+     256.0
+    ],
+    "local_valid_share": 0.2472447156906128,
+    "finite": true,
+    "cond_equals_T0": true,
+    "velocity_equals_T0_at_init": true,
+    "encode_cond_s": 0.1285078525543213,
+    "velocity_s": 0.010602474212646484,
+    "peak_gb_eval": 1.8169260025024414,
+    "attention_pairs_per_view": 270336,
+    "deterministic": true,
+    "loss": 3.6279425621032715,
+    "grad_xattn_all_nonzero_finite": true,
+    "grad_xattn_zero": [],
+    "grad_vae_enc": 2.7483716011047363,
+    "grad_all_finite": true,
+    "peak_gb_train_1state": 8.430852890014648,
+    "sample_s_K4_E10": 0.715329647064209,
+    "sample_deterministic": true,
+    "sample_shape": [
+     7,
+     4,
+     7296
+    ],
+    "sample_zero_outside_unknown": true,
+    "sample_finite": true
+   },
+   "PASS": true
+  },
+  "xa_mr": {
+   "params": {
+    "total": 23769830,
+    "xattn": 230208,
+    "vae_decoder_train_only": 585188,
+    "inference": 23184642
+   },
+   "common_init_sha256": "6a9d6071a22564c362177bcd2fac0ea8652fe83f3e60de655f299eed0363b513",
+   "common_init_equals_T1": true,
+   "xattn_params": {
+    "ln_q.weight": 192,
+    "ln_q.bias": 192,
+    "ln_k.weight": 192,
+    "ln_k.bias": 192,
+    "e_q.weight": 42624,
+    "e_q.bias": 192,
+    "e_g.0.weight": 13056,
+    "e_g.0.bias": 192,
+    "e_g.1.weight": 13056,
+    "e_g.1.bias": 192,
+    "e_l.weight": 11712,
+    "e_l.bias": 192,
+    "wq.weight": 36864,
+    "wq.bias": 192,
+    "wk.weight": 36864,
+    "wk.bias": 192,
+    "wv.weight": 36864,
+    "wv.bias": 192,
+    "wo.weight": 36864,
+    "wo.bias": 192
+   },
+   "outdoor": {
+    "views": 5,
+    "G": [
+     5,
+     512,
+     70
+    ],
+    "Q": [
+     5,
+     512,
+     224
+    ],
+    "L": [
+     5,
+     512,
+     16,
+     62
+    ],
+    "dtypes": [
+     "torch.float32",
+     "torch.float32",
+     "torch.float32"
+    ],
+    "global_tokens_per_view": [
+     512.0,
+     512.0,
+     512.0,
+     512.0,
+     512.0
+    ],
+    "queries_per_view": [
+     464.0,
+     464.0,
+     464.0,
+     464.0,
+     464.0
+    ],
+    "global_by_scale": [
+     256.0,
+     256.0
+    ],
+    "local_valid_share": 0.7727295160293579,
+    "finite": true,
+    "cond_equals_T0": true,
+    "velocity_equals_T0_at_init": true,
+    "encode_cond_s": 0.0452427864074707,
+    "velocity_s": 0.01044321060180664,
+    "peak_gb_eval": 1.5251994132995605,
+    "attention_pairs_per_view": 270336,
+    "deterministic": true,
+    "loss": 3.5550308227539062,
+    "grad_xattn_all_nonzero_finite": true,
+    "grad_xattn_zero": [],
+    "grad_vae_enc": 3.9235963821411133,
+    "grad_all_finite": true,
+    "peak_gb_train_1state": 4.799650192260742,
+    "sample_s_K4_E10": 0.2628903388977051,
+    "sample_deterministic": true,
+    "sample_shape": [
+     5,
+     4,
+     7296
+    ],
+    "sample_zero_outside_unknown": true,
+    "sample_finite": true
+   },
+   "indoor": {
+    "views": 7,
+    "G": [
+     7,
+     512,
+     70
+    ],
+    "Q": [
+     7,
+     512,
+     224
+    ],
+    "L": [
+     7,
+     512,
+     16,
+     62
+    ],
+    "dtypes": [
+     "torch.float32",
+     "torch.float32",
+     "torch.float32"
+    ],
+    "global_tokens_per_view": [
+     512.0,
+     512.0,
+     512.0,
+     512.0,
+     512.0,
+     512.0,
+     512.0
+    ],
+    "queries_per_view": [
+     464.0,
+     464.0,
+     464.0,
+     464.0,
+     464.0,
+     464.0,
+     464.0
+    ],
+    "global_by_scale": [
+     256.0,
+     256.0
+    ],
+    "local_valid_share": 0.8543701767921448,
+    "finite": true,
+    "cond_equals_T0": true,
+    "velocity_equals_T0_at_init": true,
+    "encode_cond_s": 0.11263728141784668,
+    "velocity_s": 0.010584831237792969,
+    "peak_gb_eval": 1.8222403526306152,
+    "attention_pairs_per_view": 270336,
+    "deterministic": true,
+    "loss": 3.627537488937378,
+    "grad_xattn_all_nonzero_finite": true,
+    "grad_xattn_zero": [],
+    "grad_vae_enc": 2.7472119331359863,
+    "grad_all_finite": true,
+    "peak_gb_train_1state": 8.448411464691162,
+    "sample_s_K4_E10": 0.38436436653137207,
+    "sample_deterministic": true,
+    "sample_shape": [
+     7,
+     4,
+     7296
+    ],
+    "sample_zero_outside_unknown": true,
+    "sample_finite": true
+   },
+   "PASS": true
+  },
+  "xa_mi": {
+   "params": {
+    "total": 23771750,
+    "xattn": 232128,
+    "vae_decoder_train_only": 585188,
+    "inference": 23186562
+   },
+   "common_init_sha256": "6a9d6071a22564c362177bcd2fac0ea8652fe83f3e60de655f299eed0363b513",
+   "common_init_equals_T1": true,
+   "xattn_params": {
+    "ln_q.weight": 192,
+    "ln_q.bias": 192,
+    "ln_k.weight": 192,
+    "ln_k.bias": 192,
+    "e_q.weight": 44544,
+    "e_q.bias": 192,
+    "e_g.0.weight": 13056,
+    "e_g.0.bias": 192,
+    "e_g.1.weight": 13056,
+    "e_g.1.bias": 192,
+    "e_l.weight": 11712,
+    "e_l.bias": 192,
+    "wq.weight": 36864,
+    "wq.bias": 192,
+    "wk.weight": 36864,
+    "wk.bias": 192,
+    "wv.weight": 36864,
+    "wv.bias": 192,
+    "wo.weight": 36864,
+    "wo.bias": 192
+   },
+   "outdoor": {
+    "views": 5,
+    "G": [
+     5,
+     512,
+     70
+    ],
+    "Q": [
+     5,
+     512,
+     234
+    ],
+    "L": [
+     5,
+     512,
+     16,
+     62
+    ],
+    "dtypes": [
+     "torch.float32",
+     "torch.float32",
+     "torch.float32"
+    ],
+    "global_tokens_per_view": [
+     512.0,
+     512.0,
+     512.0,
+     512.0,
+     512.0
+    ],
+    "queries_per_view": [
+     512.0,
+     512.0,
+     464.0,
+     512.0,
+     37.0
+    ],
+    "global_by_scale": [
+     256.0,
+     256.0
+    ],
+    "local_valid_share": 0.7947754263877869,
+    "finite": true,
+    "cond_equals_T0": true,
+    "velocity_equals_T0_at_init": true,
+    "encode_cond_s": 0.15466952323913574,
+    "velocity_s": 0.015749216079711914,
+    "peak_gb_eval": 1.5268611907958984,
+    "attention_pairs_per_view": 270336,
+    "interval": {
+     "intervals": 439.79998779296875,
+     "selected": 407.3999938964844,
+     "rays_with_interval": 374.79998779296875,
+     "rays_covered": 374.79998779296875,
+     "from_stats": 286.79998779296875,
+     "rays_valid": 464.0,
+     "ray_coverage": 1.0,
+     "selected_share": 0.9451241493225098,
+     "max_queries_per_cell": 4
+    },
+    "deterministic": true,
+    "loss": 3.5552303791046143,
+    "grad_xattn_all_nonzero_finite": true,
+    "grad_xattn_zero": [],
+    "grad_vae_enc": 3.9222960472106934,
+    "grad_all_finite": true,
+    "peak_gb_train_1state": 4.809295177459717,
+    "sample_s_K4_E10": 0.2550933361053467,
+    "sample_deterministic": true,
+    "sample_shape": [
+     5,
+     4,
+     7296
+    ],
+    "sample_zero_outside_unknown": true,
+    "sample_finite": true
+   },
+   "indoor": {
+    "views": 7,
+    "G": [
+     7,
+     512,
+     70
+    ],
+    "Q": [
+     7,
+     512,
+     234
+    ],
+    "L": [
+     7,
+     512,
+     16,
+     62
+    ],
+    "dtypes": [
+     "torch.float32",
+     "torch.float32",
+     "torch.float32"
+    ],
+    "global_tokens_per_view": [
+     512.0,
+     512.0,
+     512.0,
+     512.0,
+     512.0,
+     512.0,
+     512.0
+    ],
+    "queries_per_view": [
+     480.0,
+     349.0,
+     512.0,
+     276.0,
+     334.0,
+     512.0,
+     374.0
+    ],
+    "global_by_scale": [
+     256.0,
+     256.0
+    ],
+    "local_valid_share": 0.7604631781578064,
+    "finite": true,
+    "cond_equals_T0": true,
+    "velocity_equals_T0_at_init": true,
+    "encode_cond_s": 0.09229254722595215,
+    "velocity_s": 0.01078176498413086,
+    "peak_gb_eval": 1.8203577995300293,
+    "attention_pairs_per_view": 270336,
+    "interval": {
+     "intervals": 428.71429443359375,
+     "selected": 405.28570556640625,
+     "rays_with_interval": 322.5714416503906,
+     "rays_covered": 322.5714416503906,
+     "from_stats": 136.42857360839844,
+     "rays_valid": 464.0,
+     "ray_coverage": 1.0,
+     "selected_share": 0.9606026411056519,
+     "max_queries_per_cell": 4
+    },
+    "deterministic": true,
+    "loss": 3.627868175506592,
+    "grad_xattn_all_nonzero_finite": true,
+    "grad_xattn_zero": [],
+    "grad_vae_enc": 2.7441282272338867,
+    "grad_all_finite": true,
+    "peak_gb_train_1state": 8.455603122711182,
+    "sample_s_K4_E10": 0.7220468521118164,
+    "sample_deterministic": true,
+    "sample_shape": [
+     7,
+     4,
+     7296
+    ],
+    "sample_zero_outside_unknown": true,
+    "sample_finite": true
+   },
+   "PASS": true
+  }
+ }
+}
