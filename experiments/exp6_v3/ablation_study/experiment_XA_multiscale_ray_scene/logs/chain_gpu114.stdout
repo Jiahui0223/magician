@@ -1,0 +1,1 @@
+/bsuhome/jiahuizhang/scratch/projects/occupancy/seen2scene/experiments/exp6_v3/ablation_study/experiment_XA_multiscale_ray_scene/scripts/xa_eval_queue.sh: line 19: 15107 Terminated              CUDA_VISIBLE_DEVICES=$g $MG $E/scripts/xa_sim_out.py --ckpt $R/$ck --policy d1 --group V2M --scene $a --start $b --root $root/outdoor/V2M --moves $mv >> $root/logs/$id.log 2>&1

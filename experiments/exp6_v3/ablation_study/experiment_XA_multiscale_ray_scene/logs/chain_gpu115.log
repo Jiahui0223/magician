@@ -3,3 +3,10 @@
 2026-11-06 11:45:22 gpu115 xa_sr TRAINED
 published /bsuscratch/jiahuizhang/projects/occupancy/seen2scene/work_dirs/exp6_v3/ablation_study/experiment_XA_multiscale_ray_scene/checkpoints/xa_sr/final.pt step 40000 60069dc4c1419c32
 2026-11-06 11:45:28 gpu115 xa_sr eval round 1 (outdoor 0/70, indoor 0/6)
+2026-11-06 15:10:58 gpu115 xa_sr eval round 2 (outdoor 69/70, indoor 6/6)
+2026-11-06 15:19:17 gpu115 xa_sr EVALUATED outdoor 70/70 indoor 6/6
+aggregated [('V3-D1-H3-NORISK', 'reference (CVPR Table 1 records)', 'All-14', 70), ('V3', 'reference (CVPR Table 1 records)', 'All-14', 70), ('MAG-B', 'reference (CVPR Table 1 records)', 'All-14', 70), ('B0', 'reference (CVPR Table 1 records)', 'All-14', 70), ('B2', 'reference (CVPR Table 1 records)', 'All-14', 70), ('xa_s2d', 'COMPLETE', 'Dev-5', 25), ('xa_s2d', 'COMPLETE', 'All-14', 70), ('xa_sr', 'COMPLETE', 'Dev-5', 25), ('xa_sr', 'COMPLETE', 'All-14', 70)]
+8c5759c91c90dfe5 MASTER_TABLE.csv
+2026-11-06 15:19:21 gpu115 xa_sr COMPLETE
+2026-11-06 15:19:21 gpu115 xa_m2d START
+2026-11-06 15:19:21 gpu115 xa_m2d train attempt 1 (scratch) 

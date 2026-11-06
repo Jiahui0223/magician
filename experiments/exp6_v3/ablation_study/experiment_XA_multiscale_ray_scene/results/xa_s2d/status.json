@@ -1,0 +1,14 @@
+{
+ "id": "xa_s2d",
+ "trained": true,
+ "selected": true,
+ "outdoor_episodes": 70,
+ "outdoor_bad": [],
+ "indoor_episodes": 6,
+ "indoor_bad": [],
+ "planner_ckpt_sha": [
+  "939b7d79f0bb2f898a6be62abc914ae7388a8e82a52b490164ea68fbf7bbf606"
+ ],
+ "sha_matches_final": true,
+ "complete": true
+}

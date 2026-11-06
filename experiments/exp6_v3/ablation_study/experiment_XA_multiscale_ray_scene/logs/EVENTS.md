@@ -61,3 +61,30 @@
 - Validation at 40000 (auxiliary; fair ES indoor / outdoor): xa_sr 6.367 / 6.431, xa_s2d 6.434 / 6.396, T1 6.425 / 6.482, T0 6.366 / 6.444. Selection score xa_sr 1.3884, xa_s2d 1.3927, T1 1.3946, T0 1.3803.
   All within about 1 % of each other; no confidence interval exists for these numbers, so no difference is claimed.
 - 11:54 xa_sr closed loop: the four dunnottar episodes at steps 84-90 after 8.5 min; planner peak memory 31.1 GB (T1 30.5 GB); no error.
+- 11:45-14:02 closed loops of xa_sr / xa_s2d, round 1. Big phase (dunnottar x 5 + indoor x 6, one job per GPU): all exit 0 (dunnottar about 10 min, indoor about 7 min each; planner peak 31.1 GB).
+  Small phase (65 outdoor episodes, 16 workers = 4 per GPU -- my change of 2026-11-05 19:25 from 3 to 4 per GPU): two engineering failures, both caused by that concurrency:
+  (1) 12:12-12:18 the per-user thread limit was hit (RLIMIT_NPROC 4096; one episode = simulator about 70 + planner about 130 threads): planners failed to start ("CUDA device busy or unavailable",
+      OpenBLAS "pthread_create failed"), exit 139 (segfault); 16 failed tries on gpu115, 4 on gpu114; one simulator per node kept spinning without progress (xa_sr pisa s2, xa_s2d pisa s0);
+  (2) 13:24-13:41 GPU out of memory at planner start for bridge episodes (bridge planner peaks at 12.6 GB; four jobs with large scenes on one 44.5 GB card).
+  The other episodes finished (xa_sr 68 / 70 by 13:49, xa_s2d 69 / 70 by 14:02; median 22 min per episode at 4 per GPU). The two hung simulators blocked the chains' `wait`:
+  both nodes were idle from 13:49 / 14:02 until 15:01 (about 1 h 05 min on 8 GPUs). My watcher only checked training logs for staleness, not the closed-loop phase, and the previous
+  session had ended, so nobody noticed until the user asked at 14:58.
+- 15:01 the two hung simulators were terminated (SIGTERM; their planners exited): the queue workers logged the failed try and continued (gpu115: bridge s1, then the chain's round 2 retries pisa s2;
+  gpu114: pisa s0 try 2). One orphaned planner (xa_sr pisa s0, parent dead since 12:12, no GPU memory, episode already redone by another worker) was removed at 15:07.
+  No result file was deleted or edited; failed tries stay in eval/<id>/logs and eval/<id>/failed.
+- 15:07 scripts/xa_eval_queue.sh replaced by v2 (atomic rename; scheduling only, the commands that run an episode are unchanged): at most 3 workers per GPU; a job starts only when the GPU's
+  memory reservations allow it (measured per-scene peaks: dunnottar 40, bridge 18, colosseum / sestino 14, pisa 11, alhambra 10, others 9, indoor 24 GB; budget 42 GB); an episode running
+  longer than 90 min is terminated and retried; an orphaned planner is removed after a failed try. Tested on gpu115 GPU 0 with 5 workers and 6 three-step jobs (run TESTQ): 3 workers admitted,
+  reservations 18 + 14 + 9, 6 / 6 exit 0, locks released. scripts/run_chain.sh is unchanged (it still starts 16 workers; 4 of them now exit at once).
+  manifests/code_hashes.json refreshed (changed since the freeze: aggregate.py, xa_eval_queue.sh). The watcher now also reports a closed-loop phase without progress for 50 min.
+- 15:10:01 xa_s2d EVALUATED 70 / 70 + 6 / 6 (pisa s0 succeeded on try 2 after the hung process was removed); aggregate.py; 15:10:28 xa_s2d COMPLETE (status.json: replay check 70 / 70,
+  planner checkpoint sha == final.pt). 81 episode tries, 5 failed. 15:10:28 xa_si START on gpu114 (scratch).
+- 15:10:58 xa_sr eval round 2 (69 / 70) with the v2 queue script: pisa s2 exit 0 in 498 s. 15:19:17 EVALUATED 70 / 70 + 6 / 6; 15:19:21 xa_sr COMPLETE. 93 tries, 17 failed.
+  15:19:21 xa_m2d START on gpu115 (scratch).
+- Results (All-14, official coverage, scene-equal; difference vs V3-T1 + D1 with scene bootstrap 95 % CI):
+  xa_s2d AUC@20 0.418 (-0.008 [-0.016, -0.001]), Cov@20 0.648 (-0.006 [-0.021, +0.009]), AUC@100 0.758 (-0.007 [-0.015, -0.000]), Final 0.897 (-0.013 [-0.031, +0.001]);
+  xa_sr  AUC@20 0.423 (-0.003 [-0.012, +0.006]), Cov@20 0.660 (+0.006 [-0.009, +0.020]), AUC@100 0.765 (+0.000 [-0.005, +0.005]), Final 0.906 (-0.004 [-0.015, +0.004]).
+  xa_sr - xa_s2d (scene-paired): AUC@20 +0.005 [-0.004, +0.013], Cov@20 +0.012 [-0.007, +0.029], AUC@100 +0.007 [-0.002, +0.017], Final +0.008 [-0.002, +0.024].
+  Indoor sanity (6 episodes, C_obs AUC@150 / Final): xa_s2d 0.350 / 0.497, xa_sr 0.338 / 0.501, T1 + H0 0.329 / 0.520.
+  One training seed per variant; differences of this size are not interpreted as a ranking.
+- Measured closed-loop time per variant in round 1: about 2 h (11:45 -> 13:49 and 11:53 -> 14:02 for everything except the hung episode).

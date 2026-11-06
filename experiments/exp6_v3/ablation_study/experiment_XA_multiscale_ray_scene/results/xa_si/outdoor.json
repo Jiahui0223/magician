@@ -1,0 +1,67 @@
+{
+ "groups": {},
+ "per_scene": {},
+ "cost": {
+  "decision_s_outdoor": null,
+  "decision_s_indoor": null,
+  "resumed_episodes": 0,
+  "identical_to_T1_trajectories": 0,
+  "planner_peak_gb_outdoor": null
+ },
+ "train": {
+  "params": {
+   "total": 23746598,
+   "xattn": 206976,
+   "vae_decoder_train_only": 585188,
+   "inference": 23161410
+  },
+  "common_init_sha256": "6a9d6071a22564c362177bcd2fac0ea8652fe83f3e60de655f299eed0363b513",
+  "git": {
+   "sha": "37c94486dfe950aab92291b9c5e9a702b4045200",
+   "dirty": true,
+   "diff_sha256": "fccd45e7a8b33ee5cef1793d372b38572b3e249ff893283feafd926698ed6720"
+  },
+  "config_sha256": "03378d20b217c4d1d8e35758573d222dd0bc69864e195c3814921d8c3fc570c6",
+  "model_cfg_sha256": "e502d2ebed8383d134a2a114e570ae318116af71da761d29337d12b228301266",
+  "data_manifest_sha256": "9f432c3f943a891ab1d0090745f2bbc39534e49a7858577fa611bace6c25d3aa",
+  "host": "gpu114",
+  "world_size": 4,
+  "resumed_runs": 0,
+  "last_step": 50,
+  "s_per_step_median": 1.3450279140472412,
+  "peak_mem_gb": 30.799068450927734,
+  "final_loss": {
+   "loss": 3.5992966225495167,
+   "fm": 1.857397340077018,
+   "rec": 1.5662663578987122,
+   "kl": 0.1045569684356451
+  },
+  "curve": [
+   {
+    "step": 1,
+    "loss": 3.674514578066773,
+    "fm": 1.9323333583044477,
+    "rec": 1.7421808540821075,
+    "kl": 0.09142005443572998,
+    "lr": 1.0000000000000001e-07
+   }
+  ],
+  "validation": [
+   {
+    "step": 0,
+    "fm_in": 1.9339119336331543,
+    "fm_out": 1.9460980482945553,
+    "es_in": 17.24117064239608,
+    "es_out": 19.595694072728847,
+    "brier_in": 0.27750975074787093,
+    "brier_out": 0.26342770229561874,
+    "false_wall_in": 0.4211081055378861,
+    "false_wall_out": 0.4205569845249917,
+    "hit_ratio_in": 1.691188330807558,
+    "hit_ratio_out": 2.6192356086555537
+   }
+  ],
+  "train_starts": 1,
+  "train_exits": []
+ }
+}
