@@ -46,3 +46,9 @@
   Validation at 5000 (auxiliary, never a gate): fair ES indoor / outdoor xa_s2d 9.524 / 8.920, xa_sr 9.565 / 8.898, T1 at the same step 9.581 / 8.952, T0 9.582 / 9.001 -- within 1 %.
 - 21:55 user request: report and record every time a result arrives. Cadence: per variant (a) training finished + selected checkpoint + validation curve, (b) closed loops finished + tables;
   each time STATUS.md (P12 result log), this file and reports/FINAL_REPORT.md (living report) are updated and committed.
+- 23:56 progress and re-estimate (user request): xa_s2d step 10150, xa_sr step 10550, no restart, peak 33.3-33.4 GB per rank. Measured wall clock between validations: 2 h 00 min per 5000 steps
+  including the validation (xa_sr 19:42:48 -> 21:42:48 -> 23:43:14; xa_s2d 19:51:56 -> 21:51:41 -> 23:51:58), so 16.0 h per variant after the step-0 validation.
+  Validation at 10000 (auxiliary): fair ES indoor / outdoor xa_s2d 8.145 / 7.750, xa_sr 8.116 / 7.849, T1 8.142 / 7.847, T0 8.106 / 7.857.
+  Closed-loop time re-estimated from the archived T1 + D1 episodes (8.8-12.7 min per outdoor episode, dunnottar 9.2 min, 12.8 worker-hours for 70) and the T1 indoor episodes (5.8-7.1 min):
+  about 1.2-2 h per variant on 4 GPUs (the earlier 2.7 h was pessimistic; not yet measured for an XA model). Expected ends: round 1 about 11-06 13:15-13:30, round 2 about 11-07 07:00-07:30,
+  round 3 about 11-08 01:00-03:00 (M variants may train 3-10 % slower).
