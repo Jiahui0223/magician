@@ -1,14 +1,45 @@
 # xa_si — generated summary (`scripts/aggregate.py`)
 
-Status: **INCOMPLETE** — outdoor 0/70, indoor 0/6, trained False, selected False.
+Status: **COMPLETE** — outdoor 70/70, indoor 6/6, trained True, selected True.
 
-- Parameters 23,746,598 (new block 206,976); training 1.35 s/step, peak 30.8 GB per rank; restarts 0.
-- Checkpoint: step None, sha256 `None…` (rule: ES ratio on VALSEL + S-c).
+- Parameters 23,746,598 (new block 206,976); training 1.38 s/step, peak 33.4 GB per rank; restarts 0.
+- Checkpoint: step 40000, sha256 `af5ac851fd31ce08…` (rule: ES ratio on VALSEL + S-c).
+- Planning: 8.25 s/step outdoor (D1), 2.50 s/step indoor (H0); episode tries 76 (failed 0).
 
 ## Outdoor (official coverage; scene-equal; difference vs V3-T1 + D1 with scene-bootstrap 95 % CI and scene wins/losses)
 
 | group | scenes | AUC@20 | Cov@20 | AUC@50 | AUC@100 | Final | ΔAUC@20 | ΔCov@20 | ΔAUC@100 | ΔFinal |
 |---|---|---|---|---|---|---|---|---|---|---|
+| Train-6 | 6/6 | 0.433 | 0.655 | 0.658 | 0.790 | 0.938 | -0.008 [-0.011, -0.005] 0/6 | +0.002 [-0.014, +0.017] 4/2 | -0.004 [-0.014, +0.005] 2/4 | +0.004 [-0.008, +0.016] 4/2 |
+| Dev-5 | 5/5 | 0.443 | 0.690 | 0.657 | 0.763 | 0.878 | -0.004 [-0.011, +0.005] 1/4 | -0.006 [-0.033, +0.013] 2/3 | -0.003 [-0.010, +0.005] 2/3 | -0.017 [-0.040, -0.002] 1/4 |
+| Test-3 | 3/3 | 0.371 | 0.585 | 0.575 | 0.714 | 0.883 | +0.012 [+0.003, +0.030] 3/0 | +0.001 [-0.020, +0.029] 1/2 | +0.007 [+0.007, +0.007] 3/0 | -0.002 [-0.011, +0.008] 1/2 |
+| Unseen-8 | 8/8 | 0.416 | 0.651 | 0.626 | 0.745 | 0.880 | +0.002 [-0.007, +0.012] 4/4 | -0.004 [-0.023, +0.012] 3/5 | +0.001 [-0.005, +0.006] 5/3 | -0.011 [-0.027, -0.000] 2/6 |
+| All-14 | 14/14 | 0.423 | 0.653 | 0.640 | 0.764 | 0.905 | -0.002 [-0.008, +0.004] 4/10 | -0.001 [-0.014, +0.010] 7/7 | -0.001 [-0.007, +0.004] 7/7 | -0.005 [-0.016, +0.004] 6/8 |
 
 | scene | split | AUC@20 | AUC@100 | Final | ΔAUC@20 | ΔAUC@100 | ΔFinal |
 |---|---|---|---|---|---|---|---|
+| alhambra | test | 0.313 | 0.671 | 0.859 | +0.030 | +0.007 | -0.002 |
+| bannerman | train | 0.347 | 0.744 | 0.886 | -0.015 | -0.005 | +0.009 |
+| barts | dev | 0.594 | 0.905 | 0.990 | +0.012 | +0.009 | +0.001 |
+| bridge | test | 0.447 | 0.817 | 0.957 | +0.003 | +0.007 | +0.008 |
+| colosseum | dev | 0.431 | 0.634 | 0.708 | -0.009 | -0.015 | -0.063 |
+| dunnottar | train | 0.407 | 0.739 | 0.934 | -0.003 | -0.026 | -0.020 |
+| eiffel | dev | 0.478 | 0.815 | 0.931 | -0.001 | +0.007 | -0.001 |
+| fushimi | train | 0.492 | 0.801 | 0.939 | -0.008 | -0.010 | +0.004 |
+| liberty | train | 0.410 | 0.812 | 0.946 | -0.009 | -0.001 | +0.000 |
+| neuschwanstein | test | 0.352 | 0.655 | 0.833 | +0.003 | +0.007 | -0.011 |
+| pantheon | dev | 0.245 | 0.601 | 0.784 | -0.010 | -0.007 | -0.011 |
+| pisa | train | 0.378 | 0.762 | 0.941 | -0.005 | +0.013 | +0.029 |
+| redeemer | train | 0.566 | 0.879 | 0.981 | -0.007 | +0.004 | -0.001 |
+| sestino_museum | dev | 0.466 | 0.858 | 0.979 | -0.014 | -0.006 | -0.012 |
+
+## Indoor sanity (C_obs, H0; 3 floors × 2 starts; not comparable with the outdoor coverage)
+
+| episode | AUC@20 | Cov@20 | AUC@100 | Cov@100 | AUC@150 | Final | ΔAUC@150 vs T1 | ΔFinal vs T1 |
+|---|---|---|---|---|---|---|---|---|
+| Z6MFQCViBuw_L0_S6 | 0.101 | 0.142 | 0.174 | 0.277 | 0.229 | 0.399 | -0.033 | -0.051 |
+| Z6MFQCViBuw_L0_S17 | 0.075 | 0.100 | 0.169 | 0.305 | 0.224 | 0.346 | -0.035 | -0.081 |
+| oLBMNvg9in8_L1_S36 | 0.255 | 0.385 | 0.556 | 0.850 | 0.657 | 0.862 | +0.026 | -0.072 |
+| oLBMNvg9in8_L1_S78 | 0.206 | 0.302 | 0.552 | 0.793 | 0.634 | 0.804 | +0.168 | +0.090 |
+| QUCTc6BB5sX_L1_S34 | 0.047 | 0.060 | 0.088 | 0.166 | 0.117 | 0.180 | -0.054 | -0.088 |
+| QUCTc6BB5sX_L1_S135 | 0.056 | 0.075 | 0.132 | 0.234 | 0.177 | 0.337 | -0.007 | +0.009 |

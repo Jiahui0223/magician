@@ -1,0 +1,75 @@
+{
+ "groups": {},
+ "per_scene": {},
+ "cost": {
+  "decision_s_outdoor": null,
+  "decision_s_indoor": null,
+  "resumed_episodes": 0,
+  "identical_to_T1_trajectories": 0,
+  "planner_peak_gb_outdoor": null
+ },
+ "train": {
+  "params": {
+   "total": 23769830,
+   "xattn": 230208,
+   "vae_decoder_train_only": 585188,
+   "inference": 23184642
+  },
+  "common_init_sha256": "6a9d6071a22564c362177bcd2fac0ea8652fe83f3e60de655f299eed0363b513",
+  "git": {
+   "sha": "5b24a5ccd907862c35d7ce545e222048bf966182",
+   "dirty": true,
+   "diff_sha256": "9f7ff10c43ba235104531e0dfa80f1272e64f5b4d20770796659871433cb7fbc"
+  },
+  "config_sha256": "c829555c1a49382525966ce07e3037a03d710dbb41d16a26567d042706c9e0d8",
+  "model_cfg_sha256": "2619676c8e60f34b1917b76e36f6ee60adb48074c8b8e65bec1b61ae620daae6",
+  "data_manifest_sha256": "9f432c3f943a891ab1d0090745f2bbc39534e49a7858577fa611bace6c25d3aa",
+  "host": "gpu114",
+  "world_size": 4,
+  "resumed_runs": 0,
+  "last_step": 1050,
+  "s_per_step_median": 1.4147573566436769,
+  "peak_mem_gb": 35.92261791229248,
+  "final_loss": {
+   "loss": 0.4332798793555926,
+   "fm": 0.17504692517663006,
+   "rec": 0.17263958603143692,
+   "kl": 0.4528711885213852
+  },
+  "curve": [
+   {
+    "step": 1,
+    "loss": 3.674514578066773,
+    "fm": 1.9323333583044477,
+    "rec": 1.7421808540821075,
+    "kl": 0.09142005443572998,
+    "lr": 1.0000000000000001e-07
+   },
+   {
+    "step": 1000,
+    "loss": 0.4419578243489871,
+    "fm": 0.3497791048361001,
+    "rec": 0.1794835515320301,
+    "kl": 0.4803779199719429,
+    "lr": 0.0001
+   }
+  ],
+  "validation": [
+   {
+    "step": 0,
+    "fm_in": 1.9339119336331543,
+    "fm_out": 1.9460980482945553,
+    "es_in": 17.24117064239608,
+    "es_out": 19.595694072728847,
+    "brier_in": 0.27750975074787093,
+    "brier_out": 0.26342770229561874,
+    "false_wall_in": 0.4211081055378861,
+    "false_wall_out": 0.4205569845249917,
+    "hit_ratio_in": 1.691188330807558,
+    "hit_ratio_out": 2.6192356086555537
+   }
+  ],
+  "train_starts": 1,
+  "train_exits": []
+ }
+}

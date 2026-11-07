@@ -9,3 +9,12 @@ aggregated [('V3-D1-H3-NORISK', 'reference (CVPR Table 1 records)', 'All-14', 70
 2026-11-06 15:10:28 gpu114 xa_s2d COMPLETE
 2026-11-06 15:10:28 gpu114 xa_si START
 2026-11-06 15:10:28 gpu114 xa_si train attempt 1 (scratch) 
+2026-11-07 07:29:47 gpu114 xa_si TRAINED
+published /bsuscratch/jiahuizhang/projects/occupancy/seen2scene/work_dirs/exp6_v3/ablation_study/experiment_XA_multiscale_ray_scene/checkpoints/xa_si/final.pt step 40000 af5ac851fd31ce08
+2026-11-07 07:29:52 gpu114 xa_si eval round 1 (outdoor 0/70, indoor 0/6)
+2026-11-07 09:40:01 gpu114 xa_si EVALUATED outdoor 70/70 indoor 6/6
+aggregated [('V3-D1-H3-NORISK', 'reference (CVPR Table 1 records)', 'All-14', 70), ('V3', 'reference (CVPR Table 1 records)', 'All-14', 70), ('MAG-B', 'reference (CVPR Table 1 records)', 'All-14', 70), ('B0', 'reference (CVPR Table 1 records)', 'All-14', 70), ('B2', 'reference (CVPR Table 1 records)', 'All-14', 70), ('xa_s2d', 'COMPLETE', 'Dev-5', 25), ('xa_s2d', 'COMPLETE', 'All-14', 70), ('xa_sr', 'COMPLETE', 'Dev-5', 25), ('xa_sr', 'COMPLETE', 'All-14', 70), ('xa_si', 'COMPLETE', 'Dev-5', 25), ('xa_si', 'COMPLETE', 'All-14', 70), ('xa_m2d', 'INCOMPLETE', 'Dev-5', 20), ('xa_m2d', 'INCOMPLETE', 'All-14', 50)]
+a93ef96461f33c92 MASTER_TABLE.csv
+2026-11-07 09:40:15 gpu114 xa_si COMPLETE
+2026-11-07 09:40:15 gpu114 xa_mr START
+2026-11-07 09:40:15 gpu114 xa_mr train attempt 1 (scratch) 

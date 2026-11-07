@@ -1,0 +1,12 @@
+{
+ "id": "xa_mr",
+ "trained": false,
+ "selected": false,
+ "outdoor_episodes": 0,
+ "outdoor_bad": [],
+ "indoor_episodes": 0,
+ "indoor_bad": [],
+ "planner_ckpt_sha": [],
+ "sha_matches_final": false,
+ "complete": false
+}

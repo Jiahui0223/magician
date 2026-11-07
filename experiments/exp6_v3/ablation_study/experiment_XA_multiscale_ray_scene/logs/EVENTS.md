@@ -91,3 +91,17 @@
 - 20:24 progress check (user request): xa_si step 12750 (1.389 s / step, 5000 steps per 2 h 01 min, peak 33.4 GB), xa_m2d step 12150 (1.402 s / step, 2 h 03 min per 5000, peak 36.6 GB); no restart,
   watcher alive, allocations 3461041 (1 d 22 h left) / 3465477 (2 d 18 h left). Validation at 10000 (auxiliary, fair ES in / out): xa_si 8.095 / 7.730, xa_m2d 8.104 / 7.944, T1 8.142 / 7.847.
   ETA: xa_si trained about 11-07 07:30, xa_m2d about 07:50; closed loops about 2 h each.
+
+## 2026-11-07
+- 07:29:47 xa_si TRAINED (gpu114): 40000 steps in 16 h 19 min, one attempt, median 1.385 s / step, peak 33.4 GB. Selected step 40000 (score 1.4134), final.pt sha256 af5ac851fd31ce08a9faebabaaafd186f92561fe7e07a6bb025a3993937ab49e.
+  Closed loops 07:29:52 -> 09:40:01 with the v2 queue: 76 tries, 0 failed. 09:40:15 xa_si COMPLETE; xa_mr START (gpu114, scratch).
+- 07:52:52 xa_m2d TRAINED (gpu115): 16 h 33 min, one attempt, median 1.400 s / step, peak 36.6 GB. Selected step 40000 (score 1.3960), sha256 e5d0fb545db2f08ee4497c523a737cc031c93c2ef2f1f679bb950483f8b9b8ee.
+  Closed loops 07:52:56 -> 10:12:07: 76 tries, 0 failed. 10:12:23 xa_m2d COMPLETE; xa_mi START (gpu115, scratch).
+- Results (All-14, official coverage, scene-equal; difference vs V3-T1 + D1 with scene bootstrap 95 % CI):
+  xa_si  AUC@20 0.423 (-0.002 [-0.008, +0.004]), Cov@20 0.653 (-0.001 [-0.014, +0.010]), AUC@100 0.764 (-0.001 [-0.007, +0.004]), Final 0.905 (-0.005 [-0.016, +0.004]);
+  xa_m2d AUC@20 0.424 (-0.001 [-0.010, +0.006]), Cov@20 0.648 (-0.006 [-0.024, +0.010]), AUC@100 0.759 (-0.006 [-0.015, +0.002]), Final 0.903 (-0.007 [-0.022, +0.004]).
+  Single-factor pairs (scene-paired): si - s2d AUC@20 +0.005 [-0.002, +0.013], AUC@100 +0.006 [-0.002, +0.015]; si - sr AUC@20 +0.000, AUC@100 -0.001; m2d - s2d AUC@20 +0.006 [-0.004, +0.017] (11 / 3), AUC@100 +0.001 [-0.009, +0.013].
+  Indoor sanity (C_obs AUC@150 / Final): xa_si 0.340 / 0.488, xa_m2d 0.322 / 0.479 (T1 + H0 0.329 / 0.520).
+- 15:27 progress check (the session had been suspended; the 07:29 watcher event was only seen now): xa_mr step 14000 (1.404 s / step, peak 36.6 GB), xa_mi step 12500 (1.418 s / step, peak 36.7 GB), no restart.
+  Validation at 10000 (auxiliary, fair ES in / out): xa_mr 7.81 / 7.74, xa_mi 7.52 / 7.70 vs T1 8.14 / 7.85 -- the first visible early difference (4-8 % lower indoor); not a gate.
+  ETA: xa_mr trained about 11-08 02:15, complete about 04:30; xa_mi trained about 03:00, complete about 05:15.
