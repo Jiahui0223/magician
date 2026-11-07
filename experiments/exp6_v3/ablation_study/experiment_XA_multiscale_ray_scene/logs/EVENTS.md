@@ -88,3 +88,6 @@
   Indoor sanity (6 episodes, C_obs AUC@150 / Final): xa_s2d 0.350 / 0.497, xa_sr 0.338 / 0.501, T1 + H0 0.329 / 0.520.
   One training seed per variant; differences of this size are not interpreted as a ranking.
 - Measured closed-loop time per variant in round 1: about 2 h (11:45 -> 13:49 and 11:53 -> 14:02 for everything except the hung episode).
+- 20:24 progress check (user request): xa_si step 12750 (1.389 s / step, 5000 steps per 2 h 01 min, peak 33.4 GB), xa_m2d step 12150 (1.402 s / step, 2 h 03 min per 5000, peak 36.6 GB); no restart,
+  watcher alive, allocations 3461041 (1 d 22 h left) / 3465477 (2 d 18 h left). Validation at 10000 (auxiliary, fair ES in / out): xa_si 8.095 / 7.730, xa_m2d 8.104 / 7.944, T1 8.142 / 7.847.
+  ETA: xa_si trained about 11-07 07:30, xa_m2d about 07:50; closed loops about 2 h each.
