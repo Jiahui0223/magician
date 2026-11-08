@@ -105,3 +105,6 @@
 - 15:27 progress check (the session had been suspended; the 07:29 watcher event was only seen now): xa_mr step 14000 (1.404 s / step, peak 36.6 GB), xa_mi step 12500 (1.418 s / step, peak 36.7 GB), no restart.
   Validation at 10000 (auxiliary, fair ES in / out): xa_mr 7.81 / 7.74, xa_mi 7.52 / 7.70 vs T1 8.14 / 7.85 -- the first visible early difference (4-8 % lower indoor); not a gate.
   ETA: xa_mr trained about 11-08 02:15, complete about 04:30; xa_mi trained about 03:00, complete about 05:15.
+- 23:00 progress check (user request): xa_mr step 32150 (1.402 s / step), xa_mi step 30450 (1.417 s / step); no restart; 2 h 03-05 min per 5000 steps; watcher alive.
+  Validation (auxiliary, fair ES in / out) at 30000: xa_mr 6.04 / 6.36, xa_mi 6.30 / 6.60, T1 6.52 / 6.60, T0 6.51 / 6.57; xa_mr is below T1 at every milestone since 10000
+  (15k 6.88 / 7.37, 20k 6.41 / 6.90, 25k 6.19 / 6.60). ETA: xa_mr trained about 11-08 02:15 (complete about 04:30), xa_mi trained about 02:57 (complete about 05:10).
