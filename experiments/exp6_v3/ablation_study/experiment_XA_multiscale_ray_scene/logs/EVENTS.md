@@ -122,3 +122,9 @@
   Single-factor pairs: mr - sr (memory at Ray query) AUC@20 -0.005 [-0.015, +0.005], AUC@100 -0.001; mr - m2d (query at M memory) AUC@20 -0.006 [-0.014, +0.002], AUC@100 +0.005 [-0.004, +0.015].
   Indoor sanity: AUC@150 0.343 / Final 0.524 (T1 0.329 / 0.520). The variant with the clearly better validation (fair ES -7.8 % / -4.7 %) does not improve the D1 closed loop.
 - 05:05 xa_mi closed loop: outdoor 60 / 70, indoor 6 / 6, 66 tries 0 failed; expected COMPLETE about 05:25.
+- 05:18:53 xa_mi EVALUATED 70 / 70 + 6 / 6 (76 tries, 0 failed, 2 h 21 min); 05:19:11 xa_mi COMPLETE; CHAIN END on gpu115 (xa_sr, xa_m2d, xa_mi all COMPLETE). Both nodes idle; the watcher was stopped.
+  Results (All-14 vs V3-T1 + D1): AUC@20 0.423 (-0.003 [-0.010, +0.005]), Cov@20 0.659 (+0.004 [-0.006, +0.015]), AUC@100 0.765 (-0.000 [-0.007, +0.005]), Final 0.899 (-0.011 [-0.024, -0.000]).
+  Indoor: AUC@150 0.304 / Final 0.458 (T1 0.329 / 0.520; -0.025 [-0.035, -0.018] / -0.062 [-0.077, -0.040], all three floors lower).
+- 05:25 final aggregation over all six variants (aggregate.py; MASTER_TABLE.csv sha256 c3187f48...; EARLY_CURVES.png with all six); every status.json complete == true.
+  Pooled mean difference of the six variants vs T1 + D1 (All-14): AUC@20 -0.004, Cov@20 -0.001, AUC@100 -0.003, Final -0.008. Total 454 GPU-hours (training 394, closed loops 60).
+  manifests refreshed (code changed since the freeze: aggregate.py, xa_eval_queue.sh only). reports/FINAL_REPORT.md written as the final report (COMPLETE 6 / 6).

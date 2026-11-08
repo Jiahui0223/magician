@@ -22,3 +22,8 @@ f2feab57b595aac5 MASTER_TABLE.csv
 2026-11-08 02:57:15 gpu115 xa_mi TRAINED
 published /bsuscratch/jiahuizhang/projects/occupancy/seen2scene/work_dirs/exp6_v3/ablation_study/experiment_XA_multiscale_ray_scene/checkpoints/xa_mi/final.pt step 40000 71825e2f02f9b6d1
 2026-11-08 02:57:20 gpu115 xa_mi eval round 1 (outdoor 0/70, indoor 0/6)
+2026-11-08 05:18:53 gpu115 xa_mi EVALUATED outdoor 70/70 indoor 6/6
+aggregated [('V3-D1-H3-NORISK', 'reference (CVPR Table 1 records)', 'All-14', 70), ('V3', 'reference (CVPR Table 1 records)', 'All-14', 70), ('MAG-B', 'reference (CVPR Table 1 records)', 'All-14', 70), ('B0', 'reference (CVPR Table 1 records)', 'All-14', 70), ('B2', 'reference (CVPR Table 1 records)', 'All-14', 70), ('xa_s2d', 'COMPLETE', 'Dev-5', 25), ('xa_s2d', 'COMPLETE', 'All-14', 70), ('xa_sr', 'COMPLETE', 'Dev-5', 25), ('xa_sr', 'COMPLETE', 'All-14', 70), ('xa_si', 'COMPLETE', 'Dev-5', 25), ('xa_si', 'COMPLETE', 'All-14', 70), ('xa_m2d', 'COMPLETE', 'Dev-5', 25), ('xa_m2d', 'COMPLETE', 'All-14', 70), ('xa_mr', 'COMPLETE', 'Dev-5', 25), ('xa_mr', 'COMPLETE', 'All-14', 70), ('xa_mi', 'COMPLETE', 'Dev-5', 25), ('xa_mi', 'COMPLETE', 'All-14', 70)]
+c3187f4845aa7ba6 MASTER_TABLE.csv
+2026-11-08 05:19:11 gpu115 xa_mi COMPLETE
+2026-11-08 05:19:11 gpu115 CHAIN END xa_sr xa_m2d xa_mi

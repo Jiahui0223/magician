@@ -1,18 +1,21 @@
 {
- "time": "2026-11-06 15:08:12",
+ "time": "2026-11-08 05:20:28",
  "git": {
-  "head": "37c94486dfe950aab92291b9c5e9a702b4045200",
+  "head": "eeb7762fd42354dc57c854b3ccbae77cd79f3a59",
   "status": [
-   " M experiments/exp6_v3/ablation_study/experiment_XA_multiscale_ray_scene/logs/EVENTS.md",
-   " M experiments/exp6_v3/ablation_study/experiment_XA_multiscale_ray_scene/logs/chain_gpu114.stdout",
-   " M experiments/exp6_v3/ablation_study/experiment_XA_multiscale_ray_scene/logs/chain_gpu115.stdout",
-   " M experiments/exp6_v3/ablation_study/experiment_XA_multiscale_ray_scene/scripts/xa_eval_queue.sh",
+   " M experiments/exp6_v3/ablation_study/experiment_XA_multiscale_ray_scene/logs/chain_gpu115.log",
+   " M experiments/exp6_v3/ablation_study/experiment_XA_multiscale_ray_scene/reports/EARLY_CURVES.png",
+   " M experiments/exp6_v3/ablation_study/experiment_XA_multiscale_ray_scene/reports/MASTER_TABLE.csv",
+   " M experiments/exp6_v3/ablation_study/experiment_XA_multiscale_ray_scene/reports/PER_SCENE.csv",
+   " M experiments/exp6_v3/ablation_study/experiment_XA_multiscale_ray_scene/results/xa_mi/episodes.csv",
+   " M experiments/exp6_v3/ablation_study/experiment_XA_multiscale_ray_scene/results/xa_mi/outdoor.json",
+   " M experiments/exp6_v3/ablation_study/experiment_XA_multiscale_ray_scene/results/xa_mi/report.md",
+   " M experiments/exp6_v3/ablation_study/experiment_XA_multiscale_ray_scene/results/xa_mi/status.json",
    "?? EXP4_NextStage_Task0_Task1_V2_Research_Plan.md",
    "?? data.md",
    "?? experiments/cvpr_results/CVPR_V3_Model_Audit_Protocol.md",
    "?? experiments/exp6_v3/CVPR_MODEL_AUDIT.md",
-   "?? experiments/exp6_v3/V3_Experiment_F_Coverage_Decision_Study.md",
-   "?? experiments/exp6_v3/ablation_study/experiment_XA_multiscale_ray_scene/scripts/.nfs000000023800396700000dc3"
+   "?? experiments/exp6_v3/V3_Experiment_F_Coverage_Decision_Study.md"
   ]
  },
  "files": {

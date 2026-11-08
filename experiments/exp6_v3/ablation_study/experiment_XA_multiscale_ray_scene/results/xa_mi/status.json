@@ -2,15 +2,13 @@
  "id": "xa_mi",
  "trained": true,
  "selected": true,
- "outdoor_episodes": 43,
- "outdoor_bad": [
-  "eiffel_s2"
- ],
+ "outdoor_episodes": 70,
+ "outdoor_bad": [],
  "indoor_episodes": 6,
  "indoor_bad": [],
  "planner_ckpt_sha": [
   "71825e2f02f9b6d1137ff5d15b9ab45b541dddfb186b385e7b30c893c362cc42"
  ],
  "sha_matches_final": true,
- "complete": false
+ "complete": true
 }
