@@ -1,12 +1,14 @@
 {
  "id": "xa_mr",
- "trained": false,
- "selected": false,
- "outdoor_episodes": 0,
+ "trained": true,
+ "selected": true,
+ "outdoor_episodes": 70,
  "outdoor_bad": [],
- "indoor_episodes": 0,
+ "indoor_episodes": 6,
  "indoor_bad": [],
- "planner_ckpt_sha": [],
- "sha_matches_final": false,
- "complete": false
+ "planner_ckpt_sha": [
+  "d758d4df0aca69b7691a918af04c3e4b973e416deb508fb5a686c5d4e222d2e1"
+ ],
+ "sha_matches_final": true,
+ "complete": true
 }

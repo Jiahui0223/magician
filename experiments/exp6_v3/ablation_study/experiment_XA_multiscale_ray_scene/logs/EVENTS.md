@@ -116,3 +116,9 @@
   Closed loops started 02:57:20 (03:16: outdoor 4 / 70, indoor 3 / 6, 0 failed).
 - Validation at 40000 (auxiliary; fair ES in / out, Brier in / out): xa_mr 5.921 / 6.179, 0.0707 / 0.0281; xa_mi 6.244 / 6.415, 0.0785 / 0.0292; T1 6.425 / 6.482, 0.0797 / 0.0291.
   xa_mr is 7.8 % / 4.7 % below T1 and was below at every milestone since 10000; the four S / M2D variants never left the 1.5 % band. No confidence interval; closed loops decide.
+- 04:33:41 xa_mr EVALUATED 70 / 70 + 6 / 6 (76 tries, 0 failed, 2 h 18 min); 04:33:57 xa_mr COMPLETE; CHAIN END on gpu114 (xa_s2d, xa_si, xa_mr all COMPLETE). gpu114 is idle from 04:34.
+  Results (All-14 vs V3-T1 + D1): AUC@20 0.418 (-0.007 [-0.016, +0.002]), Cov@20 0.651 (-0.003 [-0.019, +0.012]), AUC@100 0.764 (-0.001 [-0.011, +0.009]), Final 0.904 (-0.006 [-0.023, +0.005]).
+  Dev-5 AUC@20 -0.023 [-0.034, -0.009] (colosseum -0.037 / Final -0.106, eiffel -0.034, pantheon -0.022, sestino -0.022); Test-3 AUC@20 +0.014 [+0.000, +0.032], AUC@100 +0.023 [+0.010, +0.031], Cov@50 +0.052 (3 / 3).
+  Single-factor pairs: mr - sr (memory at Ray query) AUC@20 -0.005 [-0.015, +0.005], AUC@100 -0.001; mr - m2d (query at M memory) AUC@20 -0.006 [-0.014, +0.002], AUC@100 +0.005 [-0.004, +0.015].
+  Indoor sanity: AUC@150 0.343 / Final 0.524 (T1 0.329 / 0.520). The variant with the clearly better validation (fair ES -7.8 % / -4.7 %) does not improve the D1 closed loop.
+- 05:05 xa_mi closed loop: outdoor 60 / 70, indoor 6 / 6, 66 tries 0 failed; expected COMPLETE about 05:25.
