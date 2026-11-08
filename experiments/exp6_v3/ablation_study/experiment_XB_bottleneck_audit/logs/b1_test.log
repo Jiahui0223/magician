@@ -1,0 +1,12 @@
+D_POLICY {"d_policy": "d1", "d_policy_file_sha256": "c8418279771e787eaaa0404f421602c9b95851e67d14aed1f717690230e48ecb", "h_policy_file_sha256": "ccfdf4af2783be3f1e7717bc644daf31a2fe994bcf312fdb4e4269ddf017a94a", "config_sha256": "e53c230db866e821b55fc40c0030c5eff448d12cbddcb2fbee00b4044b43c0b3", "config_version": "D-v1", "policy_cfg": {"depth": 2, "beam": null, "lambda_risk": 0.0, "doc": "D1_H3_NO_RISK: H3 with lambda 0", "kind": "cov", "eps_cov": 1.0, "cell_size": 1.0, "novelty": "hard", "c2_chunk": 16}}
+g2_B0_barts_s0 t=0 pts 116736 dom 1.000 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 3330 (<=1/64: 0) | unk boundary 6450 parent-obs 3440
+g2_B0_barts_s0 t=5 pts 700416 dom 0.999 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 10339 (<=1/64: 0) | unk boundary 12515 parent-obs 6844
+g2_B0_barts_s0 t=10 pts 1277135 dom 0.999 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 17266 (<=1/64: 0) | unk boundary 16926 parent-obs 8588
+g2_B0_barts_s0 t=15 pts 1860815 dom 0.999 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 22827 (<=1/64: 0) | unk boundary 20109 parent-obs 10370
+g2_B0_barts_s0 t=20 pts 2444492 dom 1.000 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 32996 (<=1/64: 0) | unk boundary 25592 parent-obs 14151
+g2_B0_barts_s0 t=25 pts 3028172 dom 1.000 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 35234 (<=1/64: 0) | unk boundary 22850 parent-obs 12028
+g2_B0_barts_s0 t=50 pts 5946529 dom 1.000 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 45717 (<=1/64: 0) | unk boundary 17399 parent-obs 7748
+g2_B0_barts_s0 t=55 pts 6530209 dom 1.000 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 46562 (<=1/64: 0) | unk boundary 17180 parent-obs 7353
+g2_B0_barts_s0 t=80 pts 9448609 dom 1.000 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 47709 (<=1/64: 0) | unk boundary 17117 parent-obs 7386
+g2_B0_barts_s0 t=85 pts 10032289 dom 1.000 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 47844 (<=1/64: 0) | unk boundary 17104 parent-obs 7363
+B1 exit 0

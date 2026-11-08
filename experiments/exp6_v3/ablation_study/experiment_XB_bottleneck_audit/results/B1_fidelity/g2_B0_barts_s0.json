@@ -1,0 +1,728 @@
+{
+ "tag": "g2_B0_barts_s0",
+ "scene": "barts",
+ "start": 0,
+ "set": "explore",
+ "states": {
+  "0": {
+   "n_points": 116736,
+   "n_records": 1,
+   "by_distance": {
+    "0-10": {
+     "n": 11678,
+     "n_dom": 11678,
+     "s10_vox": 1.0,
+     "d100_vox": 1.0,
+     "s10_4x": 1.0,
+     "d100_4x": 1.0,
+     "d100_8x_obs": 1.0,
+     "s10_8x_obs": 1.0,
+     "d100_4x_thin": 0.0
+    },
+    "10-25": {
+     "n": 105058,
+     "n_dom": 105058,
+     "s10_vox": 1.0,
+     "d100_vox": 1.0,
+     "s10_4x": 1.0,
+     "d100_4x": 1.0,
+     "d100_8x_obs": 1.0,
+     "s10_8x_obs": 1.0,
+     "d100_4x_thin": 0.0
+    },
+    "25-45": {
+     "n": 0,
+     "n_dom": 0,
+     "s10_vox": null,
+     "d100_vox": null,
+     "s10_4x": null,
+     "d100_4x": null,
+     "d100_8x_obs": null,
+     "s10_8x_obs": null,
+     "d100_4x_thin": null
+    },
+    "45-70": {
+     "n": 0,
+     "n_dom": 0,
+     "s10_vox": null,
+     "d100_vox": null,
+     "s10_4x": null,
+     "d100_4x": null,
+     "d100_8x_obs": null,
+     "s10_8x_obs": null,
+     "d100_4x_thin": null
+    }
+   },
+   "overall": {
+    "s10_vox": 1.0,
+    "d100_vox": 1.0,
+    "s10_4x": 1.0,
+    "d100_4x": 1.0,
+    "d100_8x_obs": 1.0,
+    "s10_8x_obs": 1.0,
+    "d100_4x_thin": 0.0
+   },
+   "in_domain_share": 1.0,
+   "map_4x": {
+    "band_cells": 3330,
+    "band_cells_ratio_le_1_64": 0,
+    "band_cells_ratio_le_2_64": 65,
+    "band_cells_ratio_ge_8_64": 3006,
+    "unknown_cells": 200016,
+    "free_cells": 7470
+   },
+   "unknown_boundary_4x": {
+    "cells": 6450,
+    "parent_8x_observed": 3440
+   }
+  },
+  "5": {
+   "n_points": 700416,
+   "n_records": 6,
+   "by_distance": {
+    "0-10": {
+     "n": 165421,
+     "n_dom": 165421,
+     "s10_vox": 1.0,
+     "d100_vox": 1.0,
+     "s10_4x": 1.0,
+     "d100_4x": 1.0,
+     "d100_8x_obs": 1.0,
+     "s10_8x_obs": 1.0,
+     "d100_4x_thin": 0.0
+    },
+    "10-25": {
+     "n": 534995,
+     "n_dom": 534468,
+     "s10_vox": 1.0,
+     "d100_vox": 1.0,
+     "s10_4x": 1.0,
+     "d100_4x": 1.0,
+     "d100_8x_obs": 1.0,
+     "s10_8x_obs": 1.0,
+     "d100_4x_thin": 3.742038870768738e-06
+    },
+    "25-45": {
+     "n": 0,
+     "n_dom": 0,
+     "s10_vox": null,
+     "d100_vox": null,
+     "s10_4x": null,
+     "d100_4x": null,
+     "d100_8x_obs": null,
+     "s10_8x_obs": null,
+     "d100_4x_thin": null
+    },
+    "45-70": {
+     "n": 0,
+     "n_dom": 0,
+     "s10_vox": null,
+     "d100_vox": null,
+     "s10_4x": null,
+     "d100_4x": null,
+     "d100_8x_obs": null,
+     "s10_8x_obs": null,
+     "d100_4x_thin": null
+    }
+   },
+   "overall": {
+    "s10_vox": 1.0,
+    "d100_vox": 1.0,
+    "s10_4x": 1.0,
+    "d100_4x": 1.0,
+    "d100_8x_obs": 1.0,
+    "s10_8x_obs": 1.0,
+    "d100_4x_thin": 2.8575959731824696e-06
+   },
+   "in_domain_share": 0.9992476105690002,
+   "map_4x": {
+    "band_cells": 10339,
+    "band_cells_ratio_le_1_64": 0,
+    "band_cells_ratio_le_2_64": 251,
+    "band_cells_ratio_ge_8_64": 9078,
+    "unknown_cells": 178540,
+    "free_cells": 21937
+   },
+   "unknown_boundary_4x": {
+    "cells": 12515,
+    "parent_8x_observed": 6844
+   }
+  },
+  "10": {
+   "n_points": 1277135,
+   "n_records": 11,
+   "by_distance": {
+    "0-10": {
+     "n": 412337,
+     "n_dom": 412337,
+     "s10_vox": 1.0,
+     "d100_vox": 1.0,
+     "s10_4x": 1.0,
+     "d100_4x": 1.0,
+     "d100_8x_obs": 1.0,
+     "s10_8x_obs": 1.0,
+     "d100_4x_thin": 4.850401637668256e-06
+    },
+    "10-25": {
+     "n": 841857,
+     "n_dom": 841330,
+     "s10_vox": 1.0,
+     "d100_vox": 1.0,
+     "s10_4x": 1.0,
+     "d100_4x": 1.0,
+     "d100_8x_obs": 1.0,
+     "s10_8x_obs": 1.0,
+     "d100_4x_thin": 3.5657828902913025e-06
+    },
+    "25-45": {
+     "n": 22941,
+     "n_dom": 22456,
+     "s10_vox": 1.0,
+     "d100_vox": 1.0,
+     "s10_4x": 1.0,
+     "d100_4x": 1.0,
+     "d100_8x_obs": 1.0,
+     "s10_8x_obs": 1.0,
+     "d100_4x_thin": 0.0
+    },
+    "45-70": {
+     "n": 0,
+     "n_dom": 0,
+     "s10_vox": null,
+     "d100_vox": null,
+     "s10_4x": null,
+     "d100_4x": null,
+     "d100_8x_obs": null,
+     "s10_8x_obs": null,
+     "d100_4x_thin": null
+    }
+   },
+   "overall": {
+    "s10_vox": 1.0,
+    "d100_vox": 1.0,
+    "s10_4x": 1.0,
+    "d100_4x": 1.0,
+    "d100_8x_obs": 1.0,
+    "s10_8x_obs": 1.0,
+    "d100_4x_thin": 3.918117727153003e-06
+   },
+   "in_domain_share": 0.999207615852356,
+   "map_4x": {
+    "band_cells": 17266,
+    "band_cells_ratio_le_1_64": 0,
+    "band_cells_ratio_le_2_64": 459,
+    "band_cells_ratio_ge_8_64": 15144,
+    "unknown_cells": 151420,
+    "free_cells": 42130
+   },
+   "unknown_boundary_4x": {
+    "cells": 16926,
+    "parent_8x_observed": 8588
+   }
+  },
+  "15": {
+   "n_points": 1860815,
+   "n_records": 16,
+   "by_distance": {
+    "0-10": {
+     "n": 647480,
+     "n_dom": 647480,
+     "s10_vox": 1.0,
+     "d100_vox": 1.0,
+     "s10_4x": 1.0,
+     "d100_4x": 1.0,
+     "d100_8x_obs": 1.0,
+     "s10_8x_obs": 1.0,
+     "d100_4x_thin": 1.5444492191818426e-06
+    },
+    "10-25": {
+     "n": 1177580,
+     "n_dom": 1176997,
+     "s10_vox": 1.0,
+     "d100_vox": 1.0,
+     "s10_4x": 1.0,
+     "d100_4x": 1.0,
+     "d100_8x_obs": 1.0,
+     "s10_8x_obs": 1.0,
+     "d100_4x_thin": 2.5488593564659823e-06
+    },
+    "25-45": {
+     "n": 35755,
+     "n_dom": 35203,
+     "s10_vox": 1.0,
+     "d100_vox": 1.0,
+     "s10_4x": 1.0,
+     "d100_4x": 1.0,
+     "d100_8x_obs": 1.0,
+     "s10_8x_obs": 1.0,
+     "d100_4x_thin": 0.0
+    },
+    "45-70": {
+     "n": 0,
+     "n_dom": 0,
+     "s10_vox": null,
+     "d100_vox": null,
+     "s10_4x": null,
+     "d100_4x": null,
+     "d100_8x_obs": null,
+     "s10_8x_obs": null,
+     "d100_4x_thin": null
+    }
+   },
+   "overall": {
+    "s10_vox": 1.0,
+    "d100_vox": 1.0,
+    "s10_4x": 1.0,
+    "d100_4x": 1.0,
+    "d100_8x_obs": 1.0,
+    "s10_8x_obs": 1.0,
+    "d100_4x_thin": 2.150907675968483e-06
+   },
+   "in_domain_share": 0.9993900656700134,
+   "map_4x": {
+    "band_cells": 22827,
+    "band_cells_ratio_le_1_64": 0,
+    "band_cells_ratio_le_2_64": 569,
+    "band_cells_ratio_ge_8_64": 20202,
+    "unknown_cells": 128282,
+    "free_cells": 59707
+   },
+   "unknown_boundary_4x": {
+    "cells": 20109,
+    "parent_8x_observed": 10370
+   }
+  },
+  "20": {
+   "n_points": 2444492,
+   "n_records": 21,
+   "by_distance": {
+    "0-10": {
+     "n": 736828,
+     "n_dom": 736828,
+     "s10_vox": 1.0,
+     "d100_vox": 1.0,
+     "s10_4x": 1.0,
+     "d100_4x": 1.0,
+     "d100_8x_obs": 1.0,
+     "s10_8x_obs": 1.0,
+     "d100_4x_thin": 0.0
+    },
+    "10-25": {
+     "n": 1629910,
+     "n_dom": 1629327,
+     "s10_vox": 1.0,
+     "d100_vox": 1.0,
+     "s10_4x": 1.0,
+     "d100_4x": 1.0,
+     "d100_8x_obs": 1.0,
+     "s10_8x_obs": 1.0,
+     "d100_4x_thin": 2.4550013222324196e-06
+    },
+    "25-45": {
+     "n": 77754,
+     "n_dom": 77202,
+     "s10_vox": 1.0,
+     "d100_vox": 1.0,
+     "s10_4x": 1.0,
+     "d100_4x": 1.0,
+     "d100_8x_obs": 1.0,
+     "s10_8x_obs": 1.0,
+     "d100_4x_thin": 1.2953032637597062e-05
+    },
+    "45-70": {
+     "n": 0,
+     "n_dom": 0,
+     "s10_vox": null,
+     "d100_vox": null,
+     "s10_4x": null,
+     "d100_4x": null,
+     "d100_8x_obs": null,
+     "s10_8x_obs": null,
+     "d100_4x_thin": null
+    }
+   },
+   "overall": {
+    "s10_vox": 1.0,
+    "d100_vox": 1.0,
+    "s10_4x": 1.0,
+    "d100_4x": 1.0,
+    "d100_8x_obs": 1.0,
+    "s10_8x_obs": 1.0,
+    "d100_4x_thin": 2.046364897978492e-06
+   },
+   "in_domain_share": 0.9995356798171997,
+   "map_4x": {
+    "band_cells": 32996,
+    "band_cells_ratio_le_1_64": 0,
+    "band_cells_ratio_le_2_64": 735,
+    "band_cells_ratio_ge_8_64": 29405,
+    "unknown_cells": 83571,
+    "free_cells": 94249
+   },
+   "unknown_boundary_4x": {
+    "cells": 25592,
+    "parent_8x_observed": 14151
+   }
+  },
+  "25": {
+   "n_points": 3028172,
+   "n_records": 26,
+   "by_distance": {
+    "0-10": {
+     "n": 802316,
+     "n_dom": 802316,
+     "s10_vox": 1.0,
+     "d100_vox": 1.0,
+     "s10_4x": 1.0,
+     "d100_4x": 1.0,
+     "d100_8x_obs": 1.0,
+     "s10_8x_obs": 1.0,
+     "d100_4x_thin": 0.0
+    },
+    "10-25": {
+     "n": 2080828,
+     "n_dom": 2080245,
+     "s10_vox": 1.0,
+     "d100_vox": 1.0,
+     "s10_4x": 1.0,
+     "d100_4x": 1.0,
+     "d100_8x_obs": 1.0,
+     "s10_8x_obs": 1.0,
+     "d100_4x_thin": 1.4421378864426515e-06
+    },
+    "25-45": {
+     "n": 145028,
+     "n_dom": 144370,
+     "s10_vox": 1.0,
+     "d100_vox": 1.0,
+     "s10_4x": 1.0,
+     "d100_4x": 1.0,
+     "d100_8x_obs": 1.0,
+     "s10_8x_obs": 1.0,
+     "d100_4x_thin": 1.385329323966289e-05
+    },
+    "45-70": {
+     "n": 0,
+     "n_dom": 0,
+     "s10_vox": null,
+     "d100_vox": null,
+     "s10_4x": null,
+     "d100_4x": null,
+     "d100_8x_obs": null,
+     "s10_8x_obs": null,
+     "d100_4x_thin": null
+    }
+   },
+   "overall": {
+    "s10_vox": 0.9999999403953552,
+    "d100_vox": 0.9999999403953552,
+    "s10_4x": 0.9999999403953552,
+    "d100_4x": 0.9999999403953552,
+    "d100_8x_obs": 0.9999999403953552,
+    "s10_8x_obs": 0.9999999403953552,
+    "d100_4x_thin": 1.6518380334673566e-06
+   },
+   "in_domain_share": 0.9995902180671692,
+   "map_4x": {
+    "band_cells": 35234,
+    "band_cells_ratio_le_1_64": 0,
+    "band_cells_ratio_le_2_64": 726,
+    "band_cells_ratio_ge_8_64": 31617,
+    "unknown_cells": 79160,
+    "free_cells": 96422
+   },
+   "unknown_boundary_4x": {
+    "cells": 22850,
+    "parent_8x_observed": 12028
+   }
+  },
+  "50": {
+   "n_points": 5946529,
+   "n_records": 51,
+   "by_distance": {
+    "0-10": {
+     "n": 1021053,
+     "n_dom": 1021053,
+     "s10_vox": 1.0,
+     "d100_vox": 1.0,
+     "s10_4x": 1.0,
+     "d100_4x": 1.0,
+     "d100_8x_obs": 1.0,
+     "s10_8x_obs": 1.0,
+     "d100_4x_thin": 0.0
+    },
+    "10-25": {
+     "n": 4294766,
+     "n_dom": 4294080,
+     "s10_vox": 1.0,
+     "d100_vox": 1.0,
+     "s10_4x": 1.0,
+     "d100_4x": 1.0,
+     "d100_8x_obs": 1.0,
+     "s10_8x_obs": 1.0,
+     "d100_4x_thin": 9.315149895883224e-07
+    },
+    "25-45": {
+     "n": 630710,
+     "n_dom": 629463,
+     "s10_vox": 1.0,
+     "d100_vox": 1.0,
+     "s10_4x": 1.0,
+     "d100_4x": 1.0,
+     "d100_8x_obs": 1.0,
+     "s10_8x_obs": 1.0,
+     "d100_4x_thin": 1.5886557775957044e-06
+    },
+    "45-70": {
+     "n": 0,
+     "n_dom": 0,
+     "s10_vox": null,
+     "d100_vox": null,
+     "s10_4x": null,
+     "d100_4x": null,
+     "d100_8x_obs": null,
+     "s10_8x_obs": null,
+     "d100_4x_thin": null
+    }
+   },
+   "overall": {
+    "s10_vox": 1.0,
+    "d100_vox": 1.0,
+    "s10_4x": 1.0,
+    "d100_4x": 1.0,
+    "d100_8x_obs": 1.0,
+    "s10_8x_obs": 1.0,
+    "d100_4x_thin": 8.411000749219966e-07
+   },
+   "in_domain_share": 0.999674916267395,
+   "map_4x": {
+    "band_cells": 45717,
+    "band_cells_ratio_le_1_64": 0,
+    "band_cells_ratio_le_2_64": 783,
+    "band_cells_ratio_ge_8_64": 41679,
+    "unknown_cells": 53888,
+    "free_cells": 111211
+   },
+   "unknown_boundary_4x": {
+    "cells": 17399,
+    "parent_8x_observed": 7748
+   }
+  },
+  "55": {
+   "n_points": 6530209,
+   "n_records": 56,
+   "by_distance": {
+    "0-10": {
+     "n": 1082032,
+     "n_dom": 1082032,
+     "s10_vox": 1.0,
+     "d100_vox": 1.0,
+     "s10_4x": 1.0,
+     "d100_4x": 1.0,
+     "d100_8x_obs": 1.0,
+     "s10_8x_obs": 1.0,
+     "d100_4x_thin": 0.0
+    },
+    "10-25": {
+     "n": 4810681,
+     "n_dom": 4809995,
+     "s10_vox": 1.0,
+     "d100_vox": 1.0,
+     "s10_4x": 1.0,
+     "d100_4x": 1.0,
+     "d100_8x_obs": 1.0,
+     "s10_8x_obs": 1.0,
+     "d100_4x_thin": 6.237012826204591e-07
+    },
+    "25-45": {
+     "n": 637496,
+     "n_dom": 636249,
+     "s10_vox": 1.0,
+     "d100_vox": 1.0,
+     "s10_4x": 1.0,
+     "d100_4x": 1.0,
+     "d100_8x_obs": 1.0,
+     "s10_8x_obs": 1.0,
+     "d100_4x_thin": 0.0
+    },
+    "45-70": {
+     "n": 0,
+     "n_dom": 0,
+     "s10_vox": null,
+     "d100_vox": null,
+     "s10_4x": null,
+     "d100_4x": null,
+     "d100_8x_obs": null,
+     "s10_8x_obs": null,
+     "d100_4x_thin": null
+    }
+   },
+   "overall": {
+    "s10_vox": 1.0,
+    "d100_vox": 1.0,
+    "s10_4x": 1.0,
+    "d100_4x": 1.0,
+    "d100_8x_obs": 1.0,
+    "s10_8x_obs": 1.0,
+    "d100_4x_thin": 4.595393932049774e-07
+   },
+   "in_domain_share": 0.9997039437294006,
+   "map_4x": {
+    "band_cells": 46562,
+    "band_cells_ratio_le_1_64": 0,
+    "band_cells_ratio_le_2_64": 758,
+    "band_cells_ratio_ge_8_64": 42617,
+    "unknown_cells": 53405,
+    "free_cells": 110849
+   },
+   "unknown_boundary_4x": {
+    "cells": 17180,
+    "parent_8x_observed": 7353
+   }
+  },
+  "80": {
+   "n_points": 9448609,
+   "n_records": 81,
+   "by_distance": {
+    "0-10": {
+     "n": 1758816,
+     "n_dom": 1758816,
+     "s10_vox": 1.0,
+     "d100_vox": 1.0,
+     "s10_4x": 1.0,
+     "d100_4x": 1.0,
+     "d100_8x_obs": 1.0,
+     "s10_8x_obs": 1.0,
+     "d100_4x_thin": 0.0
+    },
+    "10-25": {
+     "n": 6536948,
+     "n_dom": 6536262,
+     "s10_vox": 1.0,
+     "d100_vox": 1.0,
+     "s10_4x": 1.0,
+     "d100_4x": 1.0,
+     "d100_8x_obs": 1.0,
+     "s10_8x_obs": 1.0,
+     "d100_4x_thin": 3.059852815567865e-07
+    },
+    "25-45": {
+     "n": 1152845,
+     "n_dom": 1151583,
+     "s10_vox": 1.0,
+     "d100_vox": 1.0,
+     "s10_4x": 1.0,
+     "d100_4x": 1.0,
+     "d100_8x_obs": 1.0,
+     "s10_8x_obs": 1.0,
+     "d100_4x_thin": 0.0
+    },
+    "45-70": {
+     "n": 0,
+     "n_dom": 0,
+     "s10_vox": null,
+     "d100_vox": null,
+     "s10_4x": null,
+     "d100_4x": null,
+     "d100_8x_obs": null,
+     "s10_8x_obs": null,
+     "d100_4x_thin": null
+    }
+   },
+   "overall": {
+    "s10_vox": 1.0,
+    "d100_vox": 1.0,
+    "s10_4x": 1.0,
+    "d100_4x": 1.0,
+    "d100_8x_obs": 1.0,
+    "s10_8x_obs": 1.0,
+    "d100_4x_thin": 2.1171501884964528e-07
+   },
+   "in_domain_share": 0.9997938275337219,
+   "map_4x": {
+    "band_cells": 47709,
+    "band_cells_ratio_le_1_64": 0,
+    "band_cells_ratio_le_2_64": 758,
+    "band_cells_ratio_ge_8_64": 43782,
+    "unknown_cells": 52910,
+    "free_cells": 110197
+   },
+   "unknown_boundary_4x": {
+    "cells": 17117,
+    "parent_8x_observed": 7386
+   }
+  },
+  "85": {
+   "n_points": 10032289,
+   "n_records": 86,
+   "by_distance": {
+    "0-10": {
+     "n": 1899346,
+     "n_dom": 1899346,
+     "s10_vox": 0.9999999403953552,
+     "d100_vox": 0.9999999403953552,
+     "s10_4x": 0.9999999403953552,
+     "d100_4x": 0.9999999403953552,
+     "d100_8x_obs": 0.9999999403953552,
+     "s10_8x_obs": 0.9999999403953552,
+     "d100_4x_thin": 0.0
+    },
+    "10-25": {
+     "n": 6839843,
+     "n_dom": 6839138,
+     "s10_vox": 1.0,
+     "d100_vox": 1.0,
+     "s10_4x": 1.0,
+     "d100_4x": 1.0,
+     "d100_8x_obs": 1.0,
+     "s10_8x_obs": 1.0,
+     "d100_4x_thin": 2.9243452104310563e-07
+    },
+    "25-45": {
+     "n": 1293100,
+     "n_dom": 1291838,
+     "s10_vox": 1.0,
+     "d100_vox": 1.0,
+     "s10_4x": 1.0,
+     "d100_4x": 1.0,
+     "d100_8x_obs": 1.0,
+     "s10_8x_obs": 1.0,
+     "d100_4x_thin": 0.0
+    },
+    "45-70": {
+     "n": 0,
+     "n_dom": 0,
+     "s10_vox": null,
+     "d100_vox": null,
+     "s10_4x": null,
+     "d100_4x": null,
+     "d100_8x_obs": null,
+     "s10_8x_obs": null,
+     "d100_4x_thin": null
+    }
+   },
+   "overall": {
+    "s10_vox": 0.9999999403953552,
+    "d100_vox": 0.9999999403953552,
+    "s10_4x": 0.9999999403953552,
+    "d100_4x": 0.9999999403953552,
+    "d100_8x_obs": 0.9999999403953552,
+    "s10_8x_obs": 0.9999999403953552,
+    "d100_4x_thin": 1.993953873125065e-07
+   },
+   "in_domain_share": 0.999803900718689,
+   "map_4x": {
+    "band_cells": 47844,
+    "band_cells_ratio_le_1_64": 0,
+    "band_cells_ratio_le_2_64": 767,
+    "band_cells_ratio_ge_8_64": 43887,
+    "unknown_cells": 52863,
+    "free_cells": 110109
+   },
+   "unknown_boundary_4x": {
+    "cells": 17104,
+    "parent_8x_observed": 7363
+   }
+  }
+ }
+}

@@ -1,0 +1,10 @@
+D_POLICY {"d_policy": "d1", "d_policy_file_sha256": "c8418279771e787eaaa0404f421602c9b95851e67d14aed1f717690230e48ecb", "h_policy_file_sha256": "ccfdf4af2783be3f1e7717bc644daf31a2fe994bcf312fdb4e4269ddf017a94a", "config_sha256": "e53c230db866e821b55fc40c0030c5eff448d12cbddcb2fbee00b4044b43c0b3", "config_version": "D-v1", "policy_cfg": {"depth": 2, "beam": null, "lambda_risk": 0.0, "doc": "D1_H3_NO_RISK: H3 with lambda 0", "kind": "cov", "eps_cov": 1.0, "cell_size": 1.0, "novelty": "hard", "c2_chunk": 16}}
+g2_B0_pantheon_s0 t=0 pts 84965 dom 0.824 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 2384 (<=1/64: 0) | unk boundary 11126 parent-obs 6857
+g2_B0_pantheon_s0 t=5 pts 646698 dom 0.725 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 10504 (<=1/64: 0) | unk boundary 21933 parent-obs 13009
+g2_B0_pantheon_s0 t=10 pts 1149175 dom 0.764 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 26487 (<=1/64: 0) | unk boundary 54038 parent-obs 32256
+g2_B0_pantheon_s0 t=15 pts 1680726 dom 0.717 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 33668 (<=1/64: 0) | unk boundary 53180 parent-obs 30830
+g2_B0_pantheon_s0 t=20 pts 2239133 dom 0.616 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 38144 (<=1/64: 0) | unk boundary 58058 parent-obs 34512
+g2_B0_pantheon_s0 t=25 pts 2817636 dom 0.562 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 41365 (<=1/64: 0) | unk boundary 59180 parent-obs 34456
+g2_B0_pantheon_s0 t=50 pts 5524490 dom 0.583 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 63659 (<=1/64: 0) | unk boundary 67896 parent-obs 38791
+g2_B0_pantheon_s0 t=55 pts 6049487 dom 0.582 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 66868 (<=1/64: 0) | unk boundary 62807 parent-obs 35730
+g2_B0_pantheon_s0 t=80 pts 8854045 dom 0.570 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 76076 (<=1/64: 0) | unk boundary 60750 parent-obs 33724
