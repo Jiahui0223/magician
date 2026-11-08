@@ -1,6 +1,6 @@
 # EXP6 V3 — 全局状态板（每次启动 / 结束一个运行就更新）
 
-**最近更新：2026-11-08 05:30（Experiment XA 全部完成，6 / 6 COMPLETE，见 P12 和 `ablation_study/experiment_XA_multiscale_ray_scene/reports/FINAL_REPORT.md`；两个节点空闲；Experiment CT 已存档并暂停，见 P11）**
+**最近更新：2026-11-08 17:00（Experiment XB 进行中，见 P13：Task C 训练 gpu115；Task A 室内完成、室外跑 gpu114；B1 / B2 / B3 在 gpu115 与训练并行；XA 已完成，见 P12）**
 标记：✅ 完成 · 🔄 正在跑 · ⏳ 等待（排队或依赖前项）· ❌ 失败（后面跟修复行）· ⬜ 未开始
 
 ## 0. 此刻在跑什么
@@ -208,3 +208,14 @@
 | 11-08 04:34 | XA-MR | **闭环完成，COMPLETE** | All-14：AUC@20 0.418 / Cov@20 0.651 / AUC@100 0.764 / Final 0.904；对 T1 + D1：−0.007 [−0.016, +0.002] / −0.003 [−0.019, +0.012] / −0.001 [−0.011, +0.009] / −0.006 [−0.023, +0.005]——持平。Dev-5 变差（AUC@20 −0.023 [−0.034, −0.009]，colosseum Final −0.106），Test-3 变好（AUC@100 +0.023 [+0.010, +0.031]，3 / 3）。验证指标的明显改善没有转化为覆盖改善。室内 AUC@150 0.343 / Final 0.524 |
 | 11-08 05:19 | XA-MI | **闭环完成，COMPLETE** | All-14：AUC@20 0.423 / Cov@20 0.659 / AUC@100 0.765 / Final 0.899；对 T1 + D1：−0.003 [−0.010, +0.005] / +0.004 [−0.006, +0.015] / −0.000 [−0.007, +0.005] / −0.011 [−0.024, −0.000]——持平（Final 区间触 0）。室内 AUC@150 0.304 / Final 0.458，三层一致低于 T1（唯一） |
 | 11-08 05:30 | 全部 | **Experiment XA 完成** | 6 / 6 COMPLETE；平均差 AUC@20 −0.004、Cov@20 −0.001、AUC@100 −0.003、Final −0.008；九对单因子比较区间全含 0；`FINAL_REPORT.md` 定稿；两个节点空闲 |
+
+## P13 Experiment XB — Data, Geometry, and Attention Bottleneck Audit（2026-11-08 起；`ablation_study/experiment_XB_bottleneck_audit/`）
+任务书 `XB_Experiment_Protocol.md`；冻结协议 `FROZEN_PROTOCOL.md`（XB-v1）。不改网络；分离 Data / Geometry / Attention / Training-variance 四种解释。
+| 编号 | 内容 | 节点 / GPU / 作业 | 日志 | 状态 |
+|---|---|---|---|---|
+| XB-0 | 基线审计 `AUDIT_BASELINE.md`（D100 / S10 / R10、VAE 编码、梯度路径、Query 实现、采样分布、XA 一致性） | CPU | — | ✅ 16:50 |
+| XB-C | Task C：V3-T1 Reduced-3（bannerman、fushimi、liberty）从零 40K → 选模 → 室外 D1 70 条 + 室内 6 条 → 聚合 | gpu115 g0-3，3465477 | `work_dirs/.../runs/xb_t1_red3/train.log`、`logs/chain_gpu115.log` | 🔄 训练 16:33 起，预计 11-09 约 08:50 训完、11:10 闭环完（分配 15:12 到期） |
+| XB-A | Task A：注意力贡献审计（T1 / XA-SR / XA-MI × 6–9 种干预 = 21 个核，室内 90 + 室外 Dev 80 + Train 60 个状态） | gpu114 4 卡（18:30 到期，剩余轨迹改到 gpu115） | `logs/a/queue.log`、`results/A_attention/` | 🔄 室内 9 / 9 完成（T1 注意力无效：所有干预选择不变；XA 注意力被使用：MI 置零后 regret 0.147 → 0.267），室外 8 条进行中 |
+| XB-B | Task B：B1 观测几何保真（8 条室外轨迹）、B2 反事实上界（3 模型 × 15 条）、B3 误差分层（3 模型 × 17 条） | gpu115 g1 / g2–3 / g0，与训练并行 | `logs/b1 b2 b3/queue.log` | 🔄 16:52 起（B1 首条 barts：观测点在 S10 / D100 / 4× / 8× 各级保留率 100%） |
+| XB-D | Task D：不确定性分解（已有 7 个模型 × 70 条曲线） | CPU | `results/D_uncertainty.json` | ✅ 16:50：7 个近似等价模型的 All-14 标准差 0.003 / 0.005 / 0.003 / 0.004；起点间 sd 0.06–0.09（约 20–30 倍）；分辨 0.005 需 3–7 个种子（上界） |
+| XB-report | `AUDIT_BASELINE.md`、`A_ATTENTION_AUDIT.md`、`B_GEOMETRY_AUDIT.md`、`C_DATA_SCALING.md`、`FINAL_REPORT.md`、`MASTER_TABLE.csv`、`PER_SCENE.csv`、`EARLY_CURVES.png` | CPU | — | ⬜ |
