@@ -18,3 +18,6 @@ a93ef96461f33c92 MASTER_TABLE.csv
 2026-11-07 09:40:15 gpu114 xa_si COMPLETE
 2026-11-07 09:40:15 gpu114 xa_mr START
 2026-11-07 09:40:15 gpu114 xa_mr train attempt 1 (scratch) 
+2026-11-08 02:15:18 gpu114 xa_mr TRAINED
+published /bsuscratch/jiahuizhang/projects/occupancy/seen2scene/work_dirs/exp6_v3/ablation_study/experiment_XA_multiscale_ray_scene/checkpoints/xa_mr/final.pt step 40000 d758d4df0aca69b7
+2026-11-08 02:15:24 gpu114 xa_mr eval round 1 (outdoor 0/70, indoor 0/6)

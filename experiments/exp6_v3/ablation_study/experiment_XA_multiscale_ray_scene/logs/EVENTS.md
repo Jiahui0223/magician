@@ -108,3 +108,11 @@
 - 23:00 progress check (user request): xa_mr step 32150 (1.402 s / step), xa_mi step 30450 (1.417 s / step); no restart; 2 h 03-05 min per 5000 steps; watcher alive.
   Validation (auxiliary, fair ES in / out) at 30000: xa_mr 6.04 / 6.36, xa_mi 6.30 / 6.60, T1 6.52 / 6.60, T0 6.51 / 6.57; xa_mr is below T1 at every milestone since 10000
   (15k 6.88 / 7.37, 20k 6.41 / 6.90, 25k 6.19 / 6.60). ETA: xa_mr trained about 11-08 02:15 (complete about 04:30), xa_mi trained about 02:57 (complete about 05:10).
+
+## 2026-11-08
+- 02:15:18 xa_mr TRAINED (gpu114): 40000 steps in 16 h 35 min, one attempt, EXIT 0, median 1.403 s / step, peak 36.6 GB. Selected step 40000 (score 1.3184, the lowest of all eight models),
+  final.pt sha256 d758d4df0aca69b7... Closed loops started 02:15:24 (03:16: outdoor 19 / 70, indoor 6 / 6, 0 failed tries).
+- 02:57:15 xa_mi TRAINED (gpu115): 16 h 45 min, one attempt, EXIT 0, median 1.415 s / step, peak 36.7 GB. Selected step 40000 (score 1.4301), final.pt sha256 71825e2f02f9b6d1...
+  Closed loops started 02:57:20 (03:16: outdoor 4 / 70, indoor 3 / 6, 0 failed).
+- Validation at 40000 (auxiliary; fair ES in / out, Brier in / out): xa_mr 5.921 / 6.179, 0.0707 / 0.0281; xa_mi 6.244 / 6.415, 0.0785 / 0.0292; T1 6.425 / 6.482, 0.0797 / 0.0291.
+  xa_mr is 7.8 % / 4.7 % below T1 and was below at every milestone since 10000; the four S / M2D variants never left the 1.5 % band. No confidence interval; closed loops decide.

@@ -19,3 +19,6 @@ f2feab57b595aac5 MASTER_TABLE.csv
 2026-11-07 10:12:23 gpu115 xa_m2d COMPLETE
 2026-11-07 10:12:24 gpu115 xa_mi START
 2026-11-07 10:12:24 gpu115 xa_mi train attempt 1 (scratch) 
+2026-11-08 02:57:15 gpu115 xa_mi TRAINED
+published /bsuscratch/jiahuizhang/projects/occupancy/seen2scene/work_dirs/exp6_v3/ablation_study/experiment_XA_multiscale_ray_scene/checkpoints/xa_mi/final.pt step 40000 71825e2f02f9b6d1
+2026-11-08 02:57:20 gpu115 xa_mi eval round 1 (outdoor 0/70, indoor 0/6)
