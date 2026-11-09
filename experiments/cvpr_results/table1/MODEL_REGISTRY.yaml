@@ -614,6 +614,19 @@ models:
       command: |
         CUDA_VISIBLE_DEVICES=$G $MG experiments/exp6_v3/ablation_study/experiment_D_h3_lookahead/scripts/sim_out_d.py --v3-ckpt $R/work_dirs/exp6_v3/task1_xattn/checkpoints/final.pt --policy d1 --group V2M --scene $S --start $K --root $T1W/closed_loop/outdoor/V3-D1-H3-NORISK/V2M
     historical_outdoor: {reusable_episodes: 0}
+  - id: V3-T0-D1
+    label: "V3-T0-D1: V3-T0 (no cross-attention) + D1 (H3 depth 2, lambda 0)"
+    role: d
+    status: READY
+    status_reason: 2026-11-08 用户要求补跑：V3-T0（EXP6 V3 task0_vae，与 V3-T1 同数据 / 同配方 / 同 seed，仅 xattn.enabled = false，23,539,622 参数）+ 冻结 D1 规划器（与 V3-D1-H3-NORISK 完全相同的 d_policy / d_config）。XB Task A 证明 V3-T1 的交叉注意力在推理时惰性，此行给出无注意力模型在 Table 1 协议下的数值；首次运行，无历史 episode 可比
+    sha256: 7ed0ddd72bb91d1e8c6563f3192201c24a49fe862b49d2387ea8770915145ab6
+    checkpoint: work_dirs/exp6_v3/task0_vae/checkpoints/final.pt (= work_dirs/checkpoints/exp6_v3/T0_vae/v3t0_ema40000.pt, EMA step 40000)
+    policy: {id: d1, code: experiments/exp6_v3/ablation_study/experiment_D_h3_lookahead/scripts/d_policy.py, hashes: "规划器 stderr 的 D_POLICY 行"}
+    inference: {p1_mode: b2, inference_density: D100, scoring_density: S10, refresh: R10, planner: "Greedy-NV + d1", K: 4, euler_steps: 10, planning_region: 整个场景}
+    launch:
+      command: |
+        CUDA_VISIBLE_DEVICES=$G $MG experiments/exp6_v3/ablation_study/experiment_D_h3_lookahead/scripts/sim_out_d.py --v3-ckpt $R/work_dirs/exp6_v3/task0_vae/checkpoints/final.pt --policy d1 --group V2M --scene $S --start $K --root $T1W/closed_loop/outdoor/V3-T0-D1/V2M
+    historical_outdoor: {reusable_episodes: 0}
   - id: V3-D2-DEPTH3-B3
     label: "V3-D2: V3-T1 + lookahead depth 3, beam 3"
     role: d

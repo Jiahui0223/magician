@@ -34,6 +34,7 @@ run_sim() {   # model scene start root
     V3-H2) $MG $X/exp6_v3/H/scripts/sim_out_h.py --v3-ckpt $R/work_dirs/exp6_v3/task1_xattn/checkpoints/final.pt --policy h2 --group V2M --scene $s --start $k --root $root ;;
     V3-H3) $MG $X/exp6_v3/H/scripts/sim_out_h.py --v3-ckpt $R/work_dirs/exp6_v3/task1_xattn/checkpoints/final.pt --policy h3 --group V2M --scene $s --start $k --root $root ;;
     V3-D1-H3-NORISK) $MG $X/exp6_v3/ablation_study/experiment_D_h3_lookahead/scripts/sim_out_d.py --v3-ckpt $R/work_dirs/exp6_v3/task1_xattn/checkpoints/final.pt --policy d1 --group V2M --scene $s --start $k --root $root ;;
+    V3-T0-D1) $MG $X/exp6_v3/ablation_study/experiment_D_h3_lookahead/scripts/sim_out_d.py --v3-ckpt $R/work_dirs/exp6_v3/task0_vae/checkpoints/final.pt --policy d1 --group V2M --scene $s --start $k --root $root ;;
     V3-D2-DEPTH3-B3) $MG $X/exp6_v3/ablation_study/experiment_D_h3_lookahead/scripts/sim_out_d.py --v3-ckpt $R/work_dirs/exp6_v3/task1_xattn/checkpoints/final.pt --policy d2 --group V2M --scene $s --start $k --root $root ;;
     V3-D3-DEPTH3-B5) $MG $X/exp6_v3/ablation_study/experiment_D_h3_lookahead/scripts/sim_out_d.py --v3-ckpt $R/work_dirs/exp6_v3/task1_xattn/checkpoints/final.pt --policy d3 --group V2M --scene $s --start $k --root $root ;;
     V3-D4-DEPTH4-B3) $MG $X/exp6_v3/ablation_study/experiment_D_h3_lookahead/scripts/sim_out_d.py --v3-ckpt $R/work_dirs/exp6_v3/task1_xattn/checkpoints/final.pt --policy d4 --group V2M --scene $s --start $k --root $root ;;

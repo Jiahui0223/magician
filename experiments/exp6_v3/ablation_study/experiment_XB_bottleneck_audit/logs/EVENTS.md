@@ -40,3 +40,11 @@
 - `xb_a_analyze.py` 在完整池上重跑（`logs/a/analyze_final.log`）：T1@none 对 CT g1 选择一致 228 / 230。
 - 结论写入 `A_ATTENTION_AUDIT.md`：T1 注意力惰性（所有干预结果相同）；XA 注意力被使用但方向在域间相反；最有用的 K/V 是局部 F4 沿射线样本（XA-MI drop_local：Dev FNR 0.257 → 0.436）；drop_f16 反而降低 FNR。
 - 同时刻其他任务：Task C step 5,500（16:31 开始，0.80 step/s，预计 11-09 ~06:30 训练完、~09:00 闭环完）；B2 8 / 45（T1@none 室内 8 条）；B3 4 / 17。gpu114 到期后 B2 / B3 仅在 gpu115 与训练并行。
+
+## 2026-11-08 18:55 — XB 暂停（用户指令：优先补跑 Table 1 闭环）
+- 用户 18:50：先用 `experiments/cvpr_results/table1` 的流水线跑 V3-T0 + D1 的 All-14 闭环，拿到可对比的 AUC / Final；其他实验暂停，闭环跑完后再恢复。
+- 停止：Task C 训练链（`xb_chain.sh 29651 xb_t1_red3 train_t1_red3.json`，step 6,800，`ckpt_last.pt` = step 6,000，恢复时重跑 800 步）；B2 队列（gpu 2 / 3，10 / 45 完成）；B3 队列（gpu 0，5 / 17 完成）；看门狗。被中断的 3 个诊断任务（B2 `EU6Fwq7SyZv_L1_ogr_p50__XA_SR@none`、`EU6Fwq7SyZv_L2_ogr_p11__XA_SR@none`；B3 `X7HyMhZNoso_L1_rnv_p71`）的 claim 已清除，恢复时自动重跑。
+- 恢复命令（在 gpu115 分配内，`setsid nohup`）：
+  - 训练：`bash scripts/xb_chain.sh 29651 xb_t1_red3 train_t1_red3.json`（自动 resume）
+  - B2：`bash scripts/xb_b2_queue.sh <GPU> work_dirs/.../jobs_b2.txt`（两卡）；B3：`bash scripts/xb_b3_queue.sh <GPU> work_dirs/.../jobs_a.txt`
+- 偏差记录：Task C 的训练被中断一次并从 step 6,000 的 `ckpt_last.pt` 恢复；数据流 / 采样器状态随 checkpoint 恢复，与 XA 的 OOM 重试恢复机制相同。

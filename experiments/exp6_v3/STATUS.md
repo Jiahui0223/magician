@@ -1,6 +1,6 @@
 # EXP6 V3 — 全局状态板（每次启动 / 结束一个运行就更新）
 
-**最近更新：2026-11-08 18:35（Experiment XB 进行中，见 P13：Task C 训练 gpu115 step 5.5K；Task A 完成（A_ATTENTION_AUDIT.md）；B1 完成；B2 / B3 在 gpu115 与训练并行；gpu114 已到期；XA 已完成，见 P12）**
+**最近更新：2026-11-08 18:55（P14 CVPR Table 1 补跑 V3-T0 + D1 All-14 闭环，gpu115 4 卡，预计 ~21:00 完成；Experiment XB（P13）按用户指令暂停：Task C 停在 step 6.8K（ckpt 6K），B2 10 / 45，B3 5 / 17，闭环结束后恢复；Task A 完成；XA 已完成，见 P12）**
 标记：✅ 完成 · 🔄 正在跑 · ⏳ 等待（排队或依赖前项）· ❌ 失败（后面跟修复行）· ⬜ 未开始
 
 ## 0. 此刻在跑什么
@@ -214,8 +214,16 @@
 | 编号 | 内容 | 节点 / GPU / 作业 | 日志 | 状态 |
 |---|---|---|---|---|
 | XB-0 | 基线审计 `AUDIT_BASELINE.md`（D100 / S10 / R10、VAE 编码、梯度路径、Query 实现、采样分布、XA 一致性） | CPU | — | ✅ 16:50 |
-| XB-C | Task C：V3-T1 Reduced-3（bannerman、fushimi、liberty）从零 40K → 选模 → 室外 D1 70 条 + 室内 6 条 → 聚合 | gpu115 g0-3，3465477 | `work_dirs/.../runs/xb_t1_red3/train.log`、`logs/chain_gpu115.log` | 🔄 训练 16:32 起，18:26 step 5,500（0.80 step/s），预计 11-09 约 06:30 训完、09:00 闭环完（分配 15:12 到期） |
+| XB-C | Task C：V3-T1 Reduced-3（bannerman、fushimi、liberty）从零 40K → 选模 → 室外 D1 70 条 + 室内 6 条 → 聚合 | gpu115 g0-3，3465477 | `work_dirs/.../runs/xb_t1_red3/train.log`、`logs/chain_gpu115.log` | ⏸ 暂停 18:55（用户指令，让卡给 P14）：step 6,800，ckpt_last = 6,000；恢复 `bash scripts/xb_chain.sh 29651 xb_t1_red3 train_t1_red3.json`；剩余 ≈ 11.5 h 训练 + 2.2 h 闭环，分配 11-09 15:12 到期，恢复后大概率需要新分配 |
 | XB-A | Task A：注意力贡献审计（T1 / XA-SR / XA-MI × 6–9 种干预 = 21 个核，室内 90 + 室外 Dev 80 + Train 60 个状态） | gpu114 4 卡（17:52 全部完成，18:30 到期） | `A_ATTENTION_AUDIT.md`、`results/A_attention/`、`logs/a/` | ✅ 17 / 17 完成 18:30。T1 注意力惰性（三域所有干预结果相同）；XA 注意力被使用但方向在域间相反（MI 室内 zero_wo regret 0.158 → 0.266，室外 Dev 0.258 → 0.218）；最有用的 K/V = 局部 F4 沿射线样本（MI drop_local Dev FNR 0.257 → 0.436），drop_f16 反而降 FNR |
-| XB-B | Task B：B1 观测几何保真（8 条室外轨迹）、B2 反事实上界（3 模型 × 15 条）、B3 误差分层（3 模型 × 17 条） | gpu115 g1 / g2–3 / g0，与训练并行 | `logs/b1 b2 b3/queue.log` | 🔄 B1 ✅ 8 / 8（各级保留率 100%，薄格子 1.4–3.6%）；B2 8 / 45（T1@none 室内）；B3 4 / 17；gpu114 到期后仅 gpu115 g0 / g2–3 与训练并行 |
+| XB-B | Task B：B1 观测几何保真（8 条室外轨迹）、B2 反事实上界（3 模型 × 15 条）、B3 误差分层（3 模型 × 17 条） | gpu115 g1 / g2–3 / g0，与训练并行 | `logs/b1 b2 b3/queue.log` | ⏸ B1 ✅ 8 / 8（各级保留率 100%，薄格子 1.4–3.6%）；B2 10 / 45、B3 5 / 17 暂停 18:55（claim 已清理，恢复即续跑） |
 | XB-D | Task D：不确定性分解（已有 7 个模型 × 70 条曲线） | CPU | `results/D_uncertainty.json` | ✅ 16:50：7 个近似等价模型的 All-14 标准差 0.003 / 0.005 / 0.003 / 0.004；起点间 sd 0.06–0.09（约 20–30 倍）；分辨 0.005 需 3–7 个种子（上界） |
 | XB-report | `AUDIT_BASELINE.md`、`A_ATTENTION_AUDIT.md`、`B_GEOMETRY_AUDIT.md`、`C_DATA_SCALING.md`、`FINAL_REPORT.md`、`MASTER_TABLE.csv`、`PER_SCENE.csv`、`EARLY_CURVES.png` | CPU | — | ⬜ |
+
+## P14 CVPR Table 1 补跑：V3-T0 + D1（2026-11-08 18:55 起；`experiments/cvpr_results/table1/`）
+
+| 编号 | 内容 | 资源 | 日志 / 结果 | 状态 |
+|---|---|---|---|---|
+| T1-T0D1 | 新行 `V3-T0-D1`：V3-T0（task0_vae final.pt，sha 7ed0ddd7…，无交叉注意力）+ 冻结 D1（与 V3-D1-H3-NORISK 同 d_policy / d_config），All-14 × 5 起点 = 70 条，官方覆盖重放核对后写入规范记录 | gpu115 4 卡，每卡 3 个 worker（dunnottar 单独先跑），`scripts/run_t0d1.sh` | `work_dirs/cvpr_results/table1/g3/logs/queue_gpu115_*.log`、`episodes/V3-T0-D1/` | 🔄 18:55 启动；历史 D1 单条 9–14 min，预计 ~2 h |
+| T1-T0D1-post | validate → aggregate → paper_tables refresh（加入 supp / curve 列表）→ README 变更日志 → 与 MAG-B、V3-T1 + D1 的配对比较 | CPU | `table1/results/`、`paper_tables/` | ⏳ |
+
