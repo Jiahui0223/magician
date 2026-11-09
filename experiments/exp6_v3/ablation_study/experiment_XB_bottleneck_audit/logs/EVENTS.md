@@ -57,3 +57,9 @@
 - B2 45 / 45（jobs_b2.txt）于 01:18 完成，`xb_b2_analyze.py` → `results/B2_oracle/ladder.json`；B3 17 / 17 于 00:27 完成，新写 `xb_b3_analyze.py` → `results/B3_strata/{summary.json,summary.md}`（690 行）。
 - `B_GEOMETRY_AUDIT.md`：存在性保留 100%，丢的是位置 / 薄结构；no_fn ≈ hit_oracle（室外 Dev 一步 regret 0.433 → 0.224 / 0.187），depth_oracle 无收益（Train 两步反而 +0.064）；完美预测仍剩 0.06–0.31 regret；FNR 随 UNKNOWN 段长度（短段 0.34–0.42 vs 长段 0.08–0.10）、起点距离、极近 / 极远深度、训练场景后期上升。
 - 待办：B2 的 colosseum / sestino × 3 模型（6 个任务）在 Task C 链结束后补跑（`jobs_b2_tail.txt`）；Task C 训练 01:21 在 step 19,500（0.82 step/s），预计 ~08:20 训完。
+
+## 2026-11-09 07:11 — Task C 训练完成（Reduced-3），闭环开始
+- `xb_t1_red3` 到 40,000 步，`EXIT 0`；训练时间 16:31–18:55（0 → 6,800）+ 20:45–07:11（6,000 → 40,000，resume 重跑 800 步），合计约 12 h 50 min，0.82 step/s（4 rank，与训练并行的 B2 / B3 诊断占了部分 GPU）。
+- 选模：规则不变（ES 比值和，VALSEL + S-c），单调下降，选 **EMA @ 40,000**，分数 1.418（T1 基线 1.395）；`checkpoints/xb_t1_red3/final.pt` sha `83cc68a2…`。
+- 验证 @40k（Reduced-3 vs T1）：fair ES 室内 6.46 vs 6.42（+0.5%），**室外 S-c 6.92 vs 6.48（+6.7%）**；L_FM 室内 0.091 vs 0.090，室外 0.028 vs 0.027；Brier 室内 0.080 vs 0.080，室外 0.031 vs 0.029。室外曲线从 15k 起持续落后，差距随步数扩大（20k +2.4% → 40k +6.7%）；室内全程相同。rank-0 分片室外训练视角 12,192（T1 25,225，48%）。
+- 07:11:47 进入闭环：70 条室外 D1 + 6 条室内 H0（队列 v2，大场景阶段 → 小场景阶段），预计 ~09:30 完成；分配 15:12 到期。
