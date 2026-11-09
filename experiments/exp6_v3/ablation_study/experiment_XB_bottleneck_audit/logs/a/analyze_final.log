@@ -1,0 +1,89 @@
+regression T1@none vs CT g1 A_40K: {'n': 230, 'bitwise': 32, 'same_pick': 228}
+== indoor
+  T1@drop_band         n  90 | prec 0.767 rec 0.796 fnr 0.204 brier 0.1039 maeU 1.927 | top1 0.467 regret 0.155 | agree@none 1.0 rho@none 0.999 dscore 0.001
+  T1@drop_free         n  90 | prec 0.768 rec 0.796 fnr 0.204 brier 0.1039 maeU 1.927 | top1 0.467 regret 0.155 | agree@none 1.0 rho@none 0.999 dscore 0.004
+  T1@none              n  90 | prec 0.767 rec 0.796 fnr 0.204 brier 0.1039 maeU 1.927 | top1 0.467 regret 0.155 | agree@none None rho@none None dscore None
+  T1@shuffle_pe        n  90 | prec 0.767 rec 0.796 fnr 0.204 brier 0.1039 maeU 1.927 | top1 0.467 regret 0.155 | agree@none 1.0 rho@none 0.999 dscore 0.004
+  T1@shuffle_tok       n  90 | prec 0.767 rec 0.796 fnr 0.204 brier 0.1039 maeU 1.927 | top1 0.467 regret 0.155 | agree@none 1.0 rho@none 0.999 dscore 0.005
+  T1@zero_wo           n  90 | prec 0.767 rec 0.796 fnr 0.204 brier 0.1039 maeU 1.927 | top1 0.467 regret 0.155 | agree@none 1.0 rho@none 1.0 dscore 0.004
+  XA_MI@drop_band      n  90 | prec 0.774 rec 0.771 fnr 0.229 brier 0.1076 maeU 1.886 | top1 0.456 regret 0.159 | agree@none 0.978 rho@none 0.99 dscore 0.031
+  XA_MI@drop_f16       n  90 | prec 0.745 rec 0.836 fnr 0.164 brier 0.1050 maeU 2.135 | top1 0.444 regret 0.156 | agree@none 0.956 rho@none 0.984 dscore 0.108
+  XA_MI@drop_f8        n  90 | prec 0.787 rec 0.717 fnr 0.283 brier 0.1155 maeU 1.825 | top1 0.422 regret 0.325 | agree@none 0.9 rho@none 0.967 dscore 0.08
+  XA_MI@drop_free      n  90 | prec 0.745 rec 0.844 fnr 0.156 brier 0.1061 maeU 2.184 | top1 0.444 regret 0.216 | agree@none 0.911 rho@none 0.978 dscore 0.067
+  XA_MI@drop_local     n  90 | prec 0.793 rec 0.736 fnr 0.264 brier 0.1111 maeU 2.019 | top1 0.433 regret 0.309 | agree@none 0.811 rho@none 0.953 dscore 0.495
+  XA_MI@none           n  90 | prec 0.769 rec 0.804 fnr 0.196 brier 0.1030 maeU 1.945 | top1 0.467 regret 0.158 | agree@none None rho@none None dscore None
+  XA_MI@shuffle_pe     n  90 | prec 0.760 rec 0.806 fnr 0.194 brier 0.1060 maeU 2.023 | top1 0.456 regret 0.188 | agree@none 0.944 rho@none 0.985 dscore 0.062
+  XA_MI@shuffle_tok    n  90 | prec 0.764 rec 0.805 fnr 0.195 brier 0.1054 maeU 1.999 | top1 0.456 regret 0.158 | agree@none 0.956 rho@none 0.989 dscore 0.05
+  XA_MI@zero_wo        n  90 | prec 0.749 rec 0.789 fnr 0.211 brier 0.1064 maeU 2.179 | top1 0.467 regret 0.266 | agree@none 0.856 rho@none 0.949 dscore 1.27
+  XA_SR@drop_band      n  90 | prec 0.779 rec 0.735 fnr 0.265 brier 0.1131 maeU 1.839 | top1 0.467 regret 0.16 | agree@none 0.967 rho@none 0.982 dscore 0.065
+  XA_SR@drop_free      n  90 | prec 0.742 rec 0.823 fnr 0.177 brier 0.1083 maeU 2.051 | top1 0.456 regret 0.163 | agree@none 0.911 rho@none 0.955 dscore 0.13
+  XA_SR@none           n  90 | prec 0.772 rec 0.774 fnr 0.226 brier 0.1065 maeU 1.869 | top1 0.444 regret 0.175 | agree@none None rho@none None dscore None
+  XA_SR@shuffle_pe     n  90 | prec 0.777 rec 0.759 fnr 0.241 brier 0.1079 maeU 1.862 | top1 0.456 regret 0.177 | agree@none 0.967 rho@none 0.99 dscore 0.038
+  XA_SR@shuffle_tok    n  90 | prec 0.778 rec 0.758 fnr 0.242 brier 0.1082 maeU 1.862 | top1 0.456 regret 0.177 | agree@none 0.967 rho@none 0.989 dscore 0.037
+  XA_SR@zero_wo        n  90 | prec 0.782 rec 0.755 fnr 0.245 brier 0.1079 maeU 1.859 | top1 0.456 regret 0.185 | agree@none 0.933 rho@none 0.981 dscore 0.061
+== outdoor_dev
+  T1@drop_band         n  80 | prec 0.899 rec 0.767 fnr 0.233 brier 0.0753 maeU 2.650 | top1 0.562 regret 0.258 | agree@none 1.0 rho@none 0.998 dscore 0.003
+  T1@drop_free         n  80 | prec 0.899 rec 0.767 fnr 0.233 brier 0.0752 maeU 2.650 | top1 0.55 regret 0.258 | agree@none 0.988 rho@none 0.998 dscore 0.003
+  T1@none              n  80 | prec 0.899 rec 0.767 fnr 0.233 brier 0.0752 maeU 2.650 | top1 0.562 regret 0.258 | agree@none None rho@none None dscore None
+  T1@shuffle_pe        n  80 | prec 0.899 rec 0.767 fnr 0.233 brier 0.0752 maeU 2.650 | top1 0.575 regret 0.258 | agree@none 0.988 rho@none 0.999 dscore 0.004
+  T1@shuffle_tok       n  80 | prec 0.899 rec 0.767 fnr 0.233 brier 0.0753 maeU 2.650 | top1 0.562 regret 0.258 | agree@none 0.975 rho@none 0.994 dscore 0.009
+  T1@zero_wo           n  80 | prec 0.899 rec 0.767 fnr 0.233 brier 0.0752 maeU 2.650 | top1 0.562 regret 0.258 | agree@none 1.0 rho@none 0.996 dscore 0.009
+  XA_MI@drop_band      n  80 | prec 0.899 rec 0.725 fnr 0.275 brier 0.0862 maeU 2.707 | top1 0.562 regret 0.24 | agree@none 0.988 rho@none 0.985 dscore 0.051
+  XA_MI@drop_f16       n  80 | prec 0.886 rec 0.792 fnr 0.208 brier 0.0742 maeU 2.732 | top1 0.537 regret 0.185 | agree@none 0.863 rho@none 0.965 dscore 0.249
+  XA_MI@drop_f8        n  80 | prec 0.902 rec 0.682 fnr 0.318 brier 0.0968 maeU 2.678 | top1 0.537 regret 0.232 | agree@none 0.925 rho@none 0.956 dscore 0.1
+  XA_MI@drop_free      n  80 | prec 0.893 rec 0.781 fnr 0.219 brier 0.0752 maeU 2.724 | top1 0.537 regret 0.215 | agree@none 0.925 rho@none 0.979 dscore 0.091
+  XA_MI@drop_local     n  80 | prec 0.910 rec 0.564 fnr 0.436 brier 0.1323 maeU 2.650 | top1 0.537 regret 0.252 | agree@none 0.838 rho@none 0.849 dscore 0.561
+  XA_MI@none           n  80 | prec 0.899 rec 0.743 fnr 0.257 brier 0.0825 maeU 2.721 | top1 0.55 regret 0.258 | agree@none None rho@none None dscore None
+  XA_MI@shuffle_pe     n  80 | prec 0.892 rec 0.742 fnr 0.258 brier 0.0846 maeU 2.696 | top1 0.55 regret 0.244 | agree@none 0.95 rho@none 0.965 dscore 79135.647
+  XA_MI@shuffle_tok    n  80 | prec 0.897 rec 0.745 fnr 0.255 brier 0.0817 maeU 2.750 | top1 0.575 regret 0.182 | agree@none 0.95 rho@none 0.962 dscore 0.136
+  XA_MI@zero_wo        n  80 | prec 0.879 rec 0.730 fnr 0.270 brier 0.0858 maeU 2.899 | top1 0.55 regret 0.218 | agree@none 0.812 rho@none 0.88 dscore 142278.678
+  XA_SR@drop_band      n  80 | prec 0.893 rec 0.694 fnr 0.306 brier 0.0934 maeU 2.633 | top1 0.487 regret 0.303 | agree@none 0.912 rho@none 0.958 dscore 0.1
+  XA_SR@drop_free      n  80 | prec 0.901 rec 0.774 fnr 0.226 brier 0.0736 maeU 2.819 | top1 0.475 regret 0.24 | agree@none 0.925 rho@none 0.955 dscore 0.16
+  XA_SR@none           n  80 | prec 0.898 rec 0.735 fnr 0.265 brier 0.0822 maeU 2.675 | top1 0.475 regret 0.234 | agree@none None rho@none None dscore None
+  XA_SR@shuffle_pe     n  80 | prec 0.897 rec 0.728 fnr 0.272 brier 0.0841 maeU 2.696 | top1 0.5 regret 0.216 | agree@none 0.963 rho@none 0.987 dscore 0.055
+  XA_SR@shuffle_tok    n  80 | prec 0.897 rec 0.727 fnr 0.273 brier 0.0842 maeU 2.697 | top1 0.512 regret 0.215 | agree@none 0.963 rho@none 0.983 dscore 0.049
+  XA_SR@zero_wo        n  80 | prec 0.899 rec 0.729 fnr 0.271 brier 0.0831 maeU 2.671 | top1 0.512 regret 0.288 | agree@none 0.912 rho@none 0.953 dscore 0.131
+== outdoor_train
+  T1@drop_band         n  60 | prec 0.888 rec 0.853 fnr 0.147 brier 0.0233 maeU 1.943 | top1 0.5 regret 0.11 | agree@none 1.0 rho@none 0.999 dscore 0.003
+  T1@drop_free         n  60 | prec 0.888 rec 0.853 fnr 0.147 brier 0.0233 maeU 1.943 | top1 0.5 regret 0.11 | agree@none 1.0 rho@none 0.999 dscore 0.003
+  T1@none              n  60 | prec 0.888 rec 0.853 fnr 0.147 brier 0.0233 maeU 1.943 | top1 0.5 regret 0.11 | agree@none None rho@none None dscore None
+  T1@shuffle_pe        n  60 | prec 0.888 rec 0.853 fnr 0.147 brier 0.0233 maeU 1.943 | top1 0.5 regret 0.11 | agree@none 1.0 rho@none 0.999 dscore 0.003
+  T1@shuffle_tok       n  60 | prec 0.888 rec 0.853 fnr 0.147 brier 0.0233 maeU 1.943 | top1 0.5 regret 0.11 | agree@none 1.0 rho@none 0.999 dscore 0.003
+  T1@zero_wo           n  60 | prec 0.888 rec 0.852 fnr 0.148 brier 0.0233 maeU 1.943 | top1 0.5 regret 0.11 | agree@none 1.0 rho@none 1.0 dscore 0.003
+  XA_MI@drop_band      n  60 | prec 0.883 rec 0.858 fnr 0.142 brier 0.0236 maeU 1.893 | top1 0.483 regret 0.106 | agree@none 0.967 rho@none 0.993 dscore 0.022
+  XA_MI@drop_f16       n  60 | prec 0.806 rec 0.894 fnr 0.106 brier 0.0285 maeU 2.305 | top1 0.483 regret 0.125 | agree@none 0.867 rho@none 0.932 dscore 0.18
+  XA_MI@drop_f8        n  60 | prec 0.895 rec 0.837 fnr 0.163 brier 0.0249 maeU 1.871 | top1 0.5 regret 0.122 | agree@none 0.883 rho@none 0.962 dscore 0.089
+  XA_MI@drop_free      n  60 | prec 0.851 rec 0.885 fnr 0.115 brier 0.0244 maeU 2.030 | top1 0.5 regret 0.102 | agree@none 0.933 rho@none 0.943 dscore 0.097
+  XA_MI@drop_local     n  60 | prec 0.909 rec 0.766 fnr 0.234 brier 0.0310 maeU 2.044 | top1 0.5 regret 0.142 | agree@none 0.833 rho@none 0.907 dscore 0.288
+  XA_MI@none           n  60 | prec 0.881 rec 0.862 fnr 0.138 brier 0.0232 maeU 1.904 | top1 0.45 regret 0.135 | agree@none None rho@none None dscore None
+  XA_MI@shuffle_pe     n  60 | prec 0.875 rec 0.864 fnr 0.136 brier 0.0236 maeU 1.958 | top1 0.467 regret 0.128 | agree@none 0.983 rho@none 0.982 dscore 0.052
+  XA_MI@shuffle_tok    n  60 | prec 0.882 rec 0.857 fnr 0.143 brier 0.0234 maeU 1.944 | top1 0.467 regret 0.128 | agree@none 0.983 rho@none 0.981 dscore 0.043
+  XA_MI@zero_wo        n  60 | prec 0.804 rec 0.863 fnr 0.137 brier 0.0299 maeU 2.455 | top1 0.467 regret 0.119 | agree@none 0.717 rho@none 0.834 dscore 0.584
+  XA_SR@drop_band      n  60 | prec 0.895 rec 0.845 fnr 0.155 brier 0.0229 maeU 1.904 | top1 0.5 regret 0.099 | agree@none 0.967 rho@none 0.985 dscore 0.07
+  XA_SR@drop_free      n  60 | prec 0.838 rec 0.879 fnr 0.121 brier 0.0255 maeU 2.069 | top1 0.5 regret 0.114 | agree@none 0.9 rho@none 0.932 dscore 0.198
+  XA_SR@none           n  60 | prec 0.891 rec 0.859 fnr 0.141 brier 0.0220 maeU 1.934 | top1 0.533 regret 0.086 | agree@none None rho@none None dscore None
+  XA_SR@shuffle_pe     n  60 | prec 0.892 rec 0.858 fnr 0.142 brier 0.0221 maeU 1.933 | top1 0.533 regret 0.086 | agree@none 1.0 rho@none 0.993 dscore 0.02
+  XA_SR@shuffle_tok    n  60 | prec 0.891 rec 0.858 fnr 0.142 brier 0.0221 maeU 1.932 | top1 0.533 regret 0.086 | agree@none 1.0 rho@none 0.996 dscore 0.018
+  XA_SR@zero_wo        n  60 | prec 0.882 rec 0.861 fnr 0.139 brier 0.0228 maeU 1.950 | top1 0.5 regret 0.096 | agree@none 0.95 rho@none 0.968 dscore 0.076
+== A1
+  T1@none              {'entropy': 5.842, 'entropy_uniform': 5.878, 'mass_band': 0.216, 'mass_free_only': 0.74, 'max_w': 0.008, 'n_keys_valid': 473.473, 'ratio': 0.069, 'rms_in': 0.81, 'rms_res': 0.056}
+  T1@zero_wo           {}
+  T1@shuffle_tok       {'entropy': 5.842, 'entropy_uniform': 5.878, 'mass_band': 0.216, 'mass_free_only': 0.74, 'max_w': 0.008, 'n_keys_valid': 473.473, 'ratio': 0.069, 'rms_in': 0.81, 'rms_res': 0.056}
+  T1@shuffle_pe        {'entropy': 5.842, 'entropy_uniform': 5.878, 'mass_band': 0.216, 'mass_free_only': 0.74, 'max_w': 0.008, 'n_keys_valid': 473.473, 'ratio': 0.069, 'rms_in': 0.81, 'rms_res': 0.056}
+  T1@drop_band         {'entropy': 5.579, 'entropy_uniform': 5.613, 'mass_band': 0.0, 'mass_free_only': 0.952, 'max_w': 0.009, 'n_keys_valid': 372.648, 'ratio': 0.07, 'rms_in': 0.81, 'rms_res': 0.057}
+  T1@drop_free         {'entropy': 4.216, 'entropy_uniform': 4.25, 'mass_band': 0.945, 'mass_free_only': 0.0, 'max_w': 0.027, 'n_keys_valid': 100.825, 'ratio': 0.141, 'rms_in': 0.81, 'rms_res': 0.114}
+  XA_SR@none           {'entropy': 4.68, 'entropy_uniform': 5.878, 'mass_band': 0.264, 'mass_f16': 0.0, 'mass_f8': 0.956, 'mass_free_only': 0.691, 'max_w': 0.068, 'n_keys_valid': 473.473, 'ratio': 0.449, 'rms_in': 0.592, 'rms_res': 0.264}
+  XA_SR@zero_wo        {}
+  XA_SR@shuffle_tok    {'entropy': 4.661, 'entropy_uniform': 5.878, 'mass_band': 0.202, 'mass_f16': 0.0, 'mass_f8': 0.956, 'mass_free_only': 0.754, 'max_w': 0.075, 'n_keys_valid': 473.473, 'ratio': 0.397, 'rms_in': 0.592, 'rms_res': 0.233}
+  XA_SR@shuffle_pe     {'entropy': 4.66, 'entropy_uniform': 5.878, 'mass_band': 0.202, 'mass_f16': 0.0, 'mass_f8': 0.956, 'mass_free_only': 0.753, 'max_w': 0.075, 'n_keys_valid': 473.473, 'ratio': 0.398, 'rms_in': 0.592, 'rms_res': 0.234}
+  XA_SR@drop_band      {'entropy': 4.523, 'entropy_uniform': 5.613, 'mass_band': 0.0, 'mass_f16': 0.0, 'mass_f8': 0.952, 'mass_free_only': 0.952, 'max_w': 0.087, 'n_keys_valid': 372.648, 'ratio': 0.493, 'rms_in': 0.592, 'rms_res': 0.291}
+  XA_SR@drop_free      {'entropy': 3.278, 'entropy_uniform': 4.25, 'mass_band': 0.945, 'mass_f16': 0.0, 'mass_f8': 0.945, 'mass_free_only': 0.0, 'max_w': 0.157, 'n_keys_valid': 100.824, 'ratio': 0.57, 'rms_in': 0.593, 'rms_res': 0.336}
+  XA_MI@none           {'entropy': 4.481, 'entropy_uniform': 5.872, 'mass_band': 0.204, 'mass_f16': 0.283, 'mass_f8': 0.547, 'mass_free_only': 0.626, 'mass_local': 0.159, 'max_w': 0.033, 'n_keys_valid': 467.214, 'ratio': 0.314, 'rms_in': 0.875, 'rms_res': 0.263}
+  XA_MI@zero_wo        {}
+  XA_MI@shuffle_tok    {'entropy': 4.463, 'entropy_uniform': 5.872, 'mass_band': 0.217, 'mass_f16': 0.287, 'mass_f8': 0.541, 'mass_free_only': 0.611, 'mass_local': 0.161, 'max_w': 0.034, 'n_keys_valid': 467.214, 'ratio': 0.299, 'rms_in': 0.875, 'rms_res': 0.25}
+  XA_MI@shuffle_pe     {'entropy': 4.437, 'entropy_uniform': 5.872, 'mass_band': 0.21, 'mass_f16': 0.302, 'mass_f8': 0.519, 'mass_free_only': 0.611, 'mass_local': 0.168, 'max_w': 0.036, 'n_keys_valid': 467.214, 'ratio': 0.295, 'rms_in': 0.875, 'rms_res': 0.247}
+  XA_MI@drop_band      {'entropy': 4.178, 'entropy_uniform': 5.534, 'mass_band': 0.0, 'mass_f16': 0.247, 'mass_f8': 0.57, 'mass_free_only': 0.817, 'mass_local': 0.17, 'max_w': 0.039, 'n_keys_valid': 342.884, 'ratio': 0.339, 'rms_in': 0.875, 'rms_res': 0.284}
+  XA_MI@drop_free      {'entropy': 3.075, 'entropy_uniform': 4.48, 'mass_band': 0.753, 'mass_f16': 0.347, 'mass_f8': 0.407, 'mass_free_only': 0.0, 'mass_local': 0.231, 'max_w': 0.076, 'n_keys_valid': 124.33, 'ratio': 0.379, 'rms_in': 0.876, 'rms_res': 0.32}
+  XA_MI@drop_f16       {'entropy': 4.015, 'entropy_uniform': 5.243, 'mass_band': 0.153, 'mass_f16': 0.0, 'mass_f8': 0.8, 'mass_free_only': 0.646, 'mass_local': 0.188, 'max_w': 0.037, 'n_keys_valid': 239.385, 'ratio': 0.309, 'rms_in': 0.876, 'rms_res': 0.259}
+  XA_MI@drop_f8        {'entropy': 3.736, 'entropy_uniform': 5.141, 'mass_band': 0.304, 'mass_f16': 0.757, 'mass_f8': 0.0, 'mass_free_only': 0.453, 'mass_local': 0.231, 'max_w': 0.04, 'n_keys_valid': 227.828, 'ratio': 0.468, 'rms_in': 0.874, 'rms_res': 0.395}
+  XA_MI@drop_local     {'entropy': 5.056, 'entropy_uniform': 5.872, 'mass_band': 0.239, 'mass_f16': 0.346, 'mass_f8': 0.613, 'mass_free_only': 0.72, 'mass_local': 0.0, 'max_w': 0.044, 'n_keys_valid': 467.214, 'ratio': 0.189, 'rms_in': 0.868, 'rms_res': 0.154}
