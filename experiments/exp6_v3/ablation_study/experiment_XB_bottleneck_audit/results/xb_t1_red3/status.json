@@ -1,0 +1,14 @@
+{
+ "id": "xb_t1_red3",
+ "trained": true,
+ "selected": true,
+ "outdoor_episodes": 70,
+ "outdoor_bad": [],
+ "indoor_episodes": 6,
+ "indoor_bad": [],
+ "planner_ckpt_sha": [
+  "83cc68a297dc65dc8046b01ae10027271eeff874e8a3f4e39dd288b92ae2ca6b"
+ ],
+ "sha_matches_final": true,
+ "complete": true
+}

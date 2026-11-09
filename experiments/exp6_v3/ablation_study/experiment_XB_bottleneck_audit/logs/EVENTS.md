@@ -63,3 +63,9 @@
 - 选模：规则不变（ES 比值和，VALSEL + S-c），单调下降，选 **EMA @ 40,000**，分数 1.418（T1 基线 1.395）；`checkpoints/xb_t1_red3/final.pt` sha `83cc68a2…`。
 - 验证 @40k（Reduced-3 vs T1）：fair ES 室内 6.46 vs 6.42（+0.5%），**室外 S-c 6.92 vs 6.48（+6.7%）**；L_FM 室内 0.091 vs 0.090，室外 0.028 vs 0.027；Brier 室内 0.080 vs 0.080，室外 0.031 vs 0.029。室外曲线从 15k 起持续落后，差距随步数扩大（20k +2.4% → 40k +6.7%）；室内全程相同。rank-0 分片室外训练视角 12,192（T1 25,225，48%）。
 - 07:11:47 进入闭环：70 条室外 D1 + 6 条室内 H0（队列 v2，大场景阶段 → 小场景阶段），预计 ~09:30 完成；分配 15:12 到期。
+2026-11-09 09:22:34 B2 tail launched (6 jobs: colosseum / sestino x T1, XA_SR, XA_MI) on gpu115 g0-2
+
+## 2026-11-09 09:21 — Task C 闭环完成，XB 主体任务全部完成
+- `xb_t1_red3` 闭环 07:12–09:18：70 / 70 室外 D1 + 6 / 6 室内 H0，0 失败；aggregate → `results/xb_t1_red3/`、`reports/{MASTER_TABLE,PER_SCENE}.csv`、`reports/EARLY_CURVES.png`。
+- All-14 对 V3-T1 + D1：AUC@20 −0.003 [−0.011, +0.005]、Cov@20 +0.000、AUC@100 +0.002 [−0.007, +0.011]、Final −0.002 [−0.007, +0.005]；保留 / 去掉场景组无模式。`C_DATA_SCALING.md` 已写：数据减半 → 验证 ES +6.7%、闭环不变。
+- 09:22 B2 tail（colosseum / sestino × 3）在 g0–2 启动，预计 ~09:45 完成；之后更新 `B_GEOMETRY_AUDIT.md` 的 B2 表并写 `FINAL_REPORT.md`。
