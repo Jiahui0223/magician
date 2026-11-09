@@ -1,0 +1,31 @@
+{
+ "task_c": {
+  "id": "xb_t1_red3",
+  "outdoor_train_scenes": [
+   "bannerman",
+   "fushimi",
+   "liberty"
+  ],
+  "outdoor_views_rank0": 12192,
+  "baseline_outdoor_views_rank0": 25225,
+  "selected_step": 40000,
+  "selection_score": 1.4183826403621693
+ },
+ "fixed_state_pool": {
+  "indoor_tags": 9,
+  "outdoor_explore": 4,
+  "outdoor_confirm": 4,
+  "states": {
+   "indoor": 90,
+   "outdoor_dev": 80,
+   "outdoor_train": 60
+  }
+ },
+ "table1_refs": [
+  "V3-D1-H3-NORISK",
+  "V3",
+  "MAG-B",
+  "B0",
+  "B2"
+ ]
+}

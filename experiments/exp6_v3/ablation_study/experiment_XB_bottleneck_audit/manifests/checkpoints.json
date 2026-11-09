@@ -1,0 +1,27 @@
+{
+ "V3-T1@40K": {
+  "path": "work_dirs/exp6_v3/task1_xattn/checkpoints/final.pt",
+  "sha256": "639c9d3ae3f3c069dc0399dc4cdd44102be2bf20e70d666a6a529c6affc62bdb",
+  "bytes": 95060040
+ },
+ "V3-T0@40K": {
+  "path": "work_dirs/exp6_v3/task0_vae/checkpoints/final.pt",
+  "sha256": "7ed0ddd72bb91d1e8c6563f3192201c24a49fe862b49d2387ea8770915145ab6",
+  "bytes": 94289914
+ },
+ "XA-SR": {
+  "path": "work_dirs/exp6_v3/ablation_study/experiment_XA_multiscale_ray_scene/checkpoints/xa_sr/final.pt",
+  "sha256": "60069dc4c1419c32231f84f152bc012b72b547d9086cfba86fa667daed3f5ce7",
+  "bytes": 95115786
+ },
+ "XA-MI": {
+  "path": "work_dirs/exp6_v3/ablation_study/experiment_XA_multiscale_ray_scene/checkpoints/xa_mi/final.pt",
+  "sha256": "71825e2f02f9b6d1137ff5d15b9ab45b541dddfb186b385e7b30c893c362cc42",
+  "bytes": 95225422
+ },
+ "xb_t1_red3": {
+  "path": "work_dirs/exp6_v3/ablation_study/experiment_XB_bottleneck_audit/checkpoints/xb_t1_red3/final.pt",
+  "sha256": "83cc68a297dc65dc8046b01ae10027271eeff874e8a3f4e39dd288b92ae2ca6b",
+  "bytes": 95060040
+ }
+}

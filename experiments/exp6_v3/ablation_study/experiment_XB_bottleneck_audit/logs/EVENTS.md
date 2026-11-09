@@ -69,3 +69,8 @@
 - `xb_t1_red3` 闭环 07:12–09:18：70 / 70 室外 D1 + 6 / 6 室内 H0，0 失败；aggregate → `results/xb_t1_red3/`、`reports/{MASTER_TABLE,PER_SCENE}.csv`、`reports/EARLY_CURVES.png`。
 - All-14 对 V3-T1 + D1：AUC@20 −0.003 [−0.011, +0.005]、Cov@20 +0.000、AUC@100 +0.002 [−0.007, +0.011]、Final −0.002 [−0.007, +0.005]；保留 / 去掉场景组无模式。`C_DATA_SCALING.md` 已写：数据减半 → 验证 ES +6.7%、闭环不变。
 - 09:22 B2 tail（colosseum / sestino × 3）在 g0–2 启动，预计 ~09:45 完成；之后更新 `B_GEOMETRY_AUDIT.md` 的 B2 表并写 `FINAL_REPORT.md`。
+
+## 2026-11-09 09:45 — XB COMPLETE
+- B2 tail 6 / 6 于 09:35 完成（51 / 51），`xb_b2_analyze.py` 重跑，`B_GEOMETRY_AUDIT.md` 的 Dev 行更新为 n 80（形状不变：no_fn ≈ hit_oracle，depth_oracle 无收益，perfect 仍剩 0.11–0.18）。
+- `FINAL_REPORT.md` 写毕（7 个问题 + 四种解释的区分）；`manifests/{checkpoints,code_hashes,splits}.json`；MASTER_TABLE / PER_SCENE / EARLY_CURVES 复制到实验根目录。
+- GPU 全部空闲；gpu115 分配 15:12 到期；是否用剩余时间跑 Table 1 `V3-T0-H0` 待用户决定。

@@ -1,0 +1,120 @@
+== T1@none outdoor_dev/one
+   pred          n  80 top1 0.525 regret 0.272 
+   no_fp         n  80 top1 0.525 regret 0.263 d -0.009 [-0.022, +0.001]
+   no_fn         n  80 top1 0.575 regret 0.149 d -0.123 [-0.452, -0.022]
+   hit_oracle    n  80 top1 0.613 regret 0.130 d -0.142 [-0.466, -0.030]
+   depth_oracle  n  80 top1 0.550 regret 0.219 d -0.053 [-0.185, +0.107]
+   perfect       n  80 top1 0.625 regret 0.110 d -0.162 [-0.571, +0.066]
+   perfect_all   n  80 top1 0.625 regret 0.110 d -0.162 [-0.570, +0.066]
+== T1@none outdoor_dev/two
+   pred          n  80 top1 0.562 regret 0.258 
+   no_fp         n  80 top1 0.550 regret 0.252 d -0.006 [-0.100, +0.036]
+   no_fn         n  80 top1 0.575 regret 0.145 d -0.113 [-0.462, -0.005]
+   hit_oracle    n  80 top1 0.575 regret 0.131 d -0.126 [-0.462, -0.015]
+   depth_oracle  n  80 top1 0.512 regret 0.245 d -0.013 [-0.204, +0.076]
+   perfect       n  80 top1 0.562 regret 0.179 d -0.078 [-0.393, +0.056]
+   perfect_all   n  80 top1 0.562 regret 0.154 d -0.103 [-0.485, +0.040]
+== T1@none indoor/one
+   pred          n  90 top1 0.467 regret 0.155 
+   no_fp         n  90 top1 0.500 regret 0.159 d +0.004 [-0.025, +0.033]
+   no_fn         n  90 top1 0.500 regret 0.115 d -0.040 [-0.094, +0.000]
+   hit_oracle    n  90 top1 0.511 regret 0.115 d -0.040 [-0.096, +0.001]
+   depth_oracle  n  90 top1 0.478 regret 0.119 d -0.036 [-0.161, +0.080]
+   perfect       n  90 top1 0.544 regret 0.060 d -0.095 [-0.202, -0.013]
+   perfect_all   n  90 top1 0.544 regret 0.056 d -0.099 [-0.205, -0.017]
+== T1@none outdoor_train/one
+   pred          n  60 top1 0.500 regret 0.141 
+   no_fp         n  60 top1 0.533 regret 0.132 d -0.009 [-0.019, -0.003]
+   no_fn         n  60 top1 0.583 regret 0.085 d -0.056 [-0.103, +0.000]
+   hit_oracle    n  60 top1 0.617 regret 0.067 d -0.074 [-0.134, -0.019]
+   depth_oracle  n  60 top1 0.467 regret 0.157 d +0.016 [-0.031, +0.080]
+   perfect       n  60 top1 0.617 regret 0.074 d -0.067 [-0.140, +0.008]
+   perfect_all   n  60 top1 0.617 regret 0.116 d -0.025 [-0.190, +0.201]
+== T1@none outdoor_train/two
+   pred          n  60 top1 0.500 regret 0.110 
+   no_fp         n  60 top1 0.500 regret 0.125 d +0.016 [-0.001, +0.047]
+   no_fn         n  60 top1 0.533 regret 0.092 d -0.018 [-0.091, +0.037]
+   hit_oracle    n  60 top1 0.567 regret 0.078 d -0.031 [-0.087, -0.000]
+   depth_oracle  n  60 top1 0.433 regret 0.174 d +0.064 [+0.020, +0.106]
+   perfect       n  60 top1 0.517 regret 0.148 d +0.039 [-0.071, +0.106]
+   perfect_all   n  60 top1 0.583 regret 0.121 d +0.011 [-0.092, +0.106]
+== XA_MI@none outdoor_dev/one
+   pred          n  80 top1 0.588 regret 0.240 
+   no_fp         n  80 top1 0.562 regret 0.206 d -0.034 [-0.184, +0.009]
+   no_fn         n  80 top1 0.637 regret 0.122 d -0.118 [-0.548, +0.035]
+   hit_oracle    n  80 top1 0.625 regret 0.116 d -0.124 [-0.523, +0.012]
+   depth_oracle  n  80 top1 0.613 regret 0.192 d -0.048 [-0.208, +0.030]
+   perfect       n  80 top1 0.637 regret 0.114 d -0.126 [-0.524, +0.011]
+   perfect_all   n  80 top1 0.625 regret 0.110 d -0.130 [-0.526, +0.011]
+== XA_MI@none outdoor_dev/two
+   pred          n  80 top1 0.550 regret 0.258 
+   no_fp         n  80 top1 0.550 regret 0.254 d -0.004 [-0.018, +0.009]
+   no_fn         n  80 top1 0.575 regret 0.135 d -0.122 [-0.557, +0.026]
+   hit_oracle    n  80 top1 0.588 regret 0.132 d -0.126 [-0.562, +0.016]
+   depth_oracle  n  80 top1 0.575 regret 0.261 d +0.003 [-0.111, +0.081]
+   perfect       n  80 top1 0.562 regret 0.179 d -0.079 [-0.395, +0.068]
+   perfect_all   n  80 top1 0.562 regret 0.154 d -0.104 [-0.483, +0.047]
+== XA_MI@none indoor/one
+   pred          n  90 top1 0.467 regret 0.158 
+   no_fp         n  90 top1 0.478 regret 0.169 d +0.010 [-0.002, +0.033]
+   no_fn         n  90 top1 0.467 regret 0.126 d -0.033 [-0.085, +0.001]
+   hit_oracle    n  90 top1 0.511 regret 0.115 d -0.043 [-0.097, -0.003]
+   depth_oracle  n  90 top1 0.489 regret 0.086 d -0.073 [-0.177, -0.002]
+   perfect       n  90 top1 0.544 regret 0.060 d -0.099 [-0.205, -0.018]
+   perfect_all   n  90 top1 0.544 regret 0.056 d -0.102 [-0.209, -0.022]
+== XA_MI@none outdoor_train/one
+   pred          n  60 top1 0.517 regret 0.138 
+   no_fp         n  60 top1 0.583 regret 0.098 d -0.039 [-0.066, -0.006]
+   no_fn         n  60 top1 0.550 regret 0.102 d -0.036 [-0.061, +0.000]
+   hit_oracle    n  60 top1 0.633 regret 0.076 d -0.062 [-0.113, -0.006]
+   depth_oracle  n  60 top1 0.517 regret 0.149 d +0.011 [-0.008, +0.041]
+   perfect       n  60 top1 0.600 regret 0.152 d +0.014 [-0.146, +0.213]
+   perfect_all   n  60 top1 0.617 regret 0.116 d -0.022 [-0.196, +0.213]
+== XA_MI@none outdoor_train/two
+   pred          n  60 top1 0.450 regret 0.135 
+   no_fp         n  60 top1 0.517 regret 0.092 d -0.043 [-0.066, -0.001]
+   no_fn         n  60 top1 0.500 regret 0.110 d -0.025 [-0.091, +0.015]
+   hit_oracle    n  60 top1 0.533 regret 0.088 d -0.047 [-0.086, -0.001]
+   depth_oracle  n  60 top1 0.467 regret 0.175 d +0.039 [+0.015, +0.085]
+   perfect       n  60 top1 0.533 regret 0.128 d -0.008 [-0.070, +0.091]
+   perfect_all   n  60 top1 0.583 regret 0.121 d -0.015 [-0.092, +0.091]
+== XA_SR@none outdoor_dev/one
+   pred          n  80 top1 0.487 regret 0.269 
+   no_fp         n  80 top1 0.512 regret 0.265 d -0.004 [-0.015, +0.005]
+   no_fn         n  80 top1 0.588 regret 0.119 d -0.150 [-0.534, -0.026]
+   hit_oracle    n  80 top1 0.600 regret 0.121 d -0.148 [-0.534, -0.025]
+   depth_oracle  n  80 top1 0.537 regret 0.215 d -0.053 [-0.230, +0.044]
+   perfect       n  80 top1 0.625 regret 0.111 d -0.158 [-0.559, -0.004]
+   perfect_all   n  80 top1 0.625 regret 0.110 d -0.158 [-0.560, -0.003]
+== XA_SR@none outdoor_dev/two
+   pred          n  80 top1 0.475 regret 0.234 
+   no_fp         n  80 top1 0.512 regret 0.216 d -0.018 [-0.071, +0.001]
+   no_fn         n  80 top1 0.525 regret 0.187 d -0.047 [-0.159, +0.020]
+   hit_oracle    n  80 top1 0.525 regret 0.189 d -0.045 [-0.159, +0.016]
+   depth_oracle  n  80 top1 0.487 regret 0.312 d +0.078 [+0.006, +0.286]
+   perfect       n  80 top1 0.550 regret 0.179 d -0.054 [-0.133, +0.011]
+   perfect_all   n  80 top1 0.562 regret 0.154 d -0.080 [-0.220, +0.002]
+== XA_SR@none indoor/one
+   pred          n  90 top1 0.444 regret 0.175 
+   no_fp         n  90 top1 0.478 regret 0.168 d -0.007 [-0.028, +0.007]
+   no_fn         n  90 top1 0.478 regret 0.141 d -0.034 [-0.088, +0.004]
+   hit_oracle    n  90 top1 0.511 regret 0.115 d -0.060 [-0.119, -0.009]
+   depth_oracle  n  90 top1 0.511 regret 0.076 d -0.099 [-0.206, -0.018]
+   perfect       n  90 top1 0.544 regret 0.060 d -0.115 [-0.221, -0.029]
+   perfect_all   n  90 top1 0.544 regret 0.056 d -0.119 [-0.223, -0.034]
+== XA_SR@none outdoor_train/one
+   pred          n  60 top1 0.517 regret 0.115 
+   no_fp         n  60 top1 0.533 regret 0.132 d +0.017 [-0.012, +0.063]
+   no_fn         n  60 top1 0.600 regret 0.079 d -0.036 [-0.109, +0.000]
+   hit_oracle    n  60 top1 0.600 regret 0.079 d -0.036 [-0.103, -0.001]
+   depth_oracle  n  60 top1 0.500 regret 0.142 d +0.027 [+0.000, +0.066]
+   perfect       n  60 top1 0.617 regret 0.074 d -0.041 [-0.146, +0.026]
+   perfect_all   n  60 top1 0.617 regret 0.116 d +0.001 [-0.196, +0.218]
+== XA_SR@none outdoor_train/two
+   pred          n  60 top1 0.533 regret 0.086 
+   no_fp         n  60 top1 0.500 regret 0.123 d +0.036 [+0.006, +0.065]
+   no_fn         n  60 top1 0.567 regret 0.092 d +0.005 [-0.025, +0.041]
+   hit_oracle    n  60 top1 0.583 regret 0.074 d -0.012 [-0.026, +0.006]
+   depth_oracle  n  60 top1 0.450 regret 0.169 d +0.083 [+0.049, +0.114]
+   perfect       n  60 top1 0.500 regret 0.149 d +0.062 [-0.004, +0.120]
+   perfect_all   n  60 top1 0.583 regret 0.121 d +0.034 [-0.027, +0.120]

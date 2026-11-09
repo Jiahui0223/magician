@@ -1,6 +1,6 @@
 # EXP6 V3 — 全局状态板（每次启动 / 结束一个运行就更新）
 
-**最近更新：2026-11-09 09:25（P13 XB：Task A / B / C / D 全部完成（C：数据减半 → 验证 +6.7% 变差、闭环不变）；B2 的 6 个 colosseum / sestino 补跑中（~09:45），之后写 FINAL_REPORT；gpu115 分配 15:12 到期，GPU 3 空闲；P14 ✅ V3-T0-D1 = T1 + D1）**
+**最近更新：2026-11-09 09:45（P13 XB ✅ COMPLETE：FINAL_REPORT.md（注意力排除、输入几何未丢信息、数据减半闭环不变、漏报 + 价值函数是剩余瓶颈）；P14 ✅ V3-T0-D1 = T1 + D1；gpu115 四卡空闲至 15:12，V3-T0-H0 待用户决定）**
 标记：✅ 完成 · 🔄 正在跑 · ⏳ 等待（排队或依赖前项）· ❌ 失败（后面跟修复行）· ⬜ 未开始
 
 ## 0. 此刻在跑什么
@@ -216,7 +216,7 @@
 | XB-0 | 基线审计 `AUDIT_BASELINE.md`（D100 / S10 / R10、VAE 编码、梯度路径、Query 实现、采样分布、XA 一致性） | CPU | — | ✅ 16:50 |
 | XB-C | Task C：V3-T1 Reduced-3（bannerman、fushimi、liberty）从零 40K → 选模 → 室外 D1 70 条 + 室内 6 条 → 聚合 | gpu115 g0-3，3465477 | `work_dirs/.../runs/xb_t1_red3/train.log`、`logs/chain_gpu115.log` | ✅ 训练 07:11（40K，EMA@40k；验证 ES 室内持平、室外 **+6.7% 变差**）；闭环 09:18 完成 76 / 76 0 失败：All-14 AUC@20 0.422 / AUC@100 0.767 / Final 0.908，对 T1 + D1 −0.003 / +0.002 / −0.002（CI 含 0）；保留 / 去掉场景无模式 → **数据减半：预测变差、闭环不变**（`C_DATA_SCALING.md`） |
 | XB-A | Task A：注意力贡献审计（T1 / XA-SR / XA-MI × 6–9 种干预 = 21 个核，室内 90 + 室外 Dev 80 + Train 60 个状态） | gpu114 4 卡（17:52 全部完成，18:30 到期） | `A_ATTENTION_AUDIT.md`、`results/A_attention/`、`logs/a/` | ✅ 17 / 17 完成 18:30。T1 注意力惰性（三域所有干预结果相同）；XA 注意力被使用但方向在域间相反（MI 室内 zero_wo regret 0.158 → 0.266，室外 Dev 0.258 → 0.218）；最有用的 K/V = 局部 F4 沿射线样本（MI drop_local Dev FNR 0.257 → 0.436），drop_f16 反而降 FNR |
-| XB-B | Task B：B1 观测几何保真（8 条室外轨迹）、B2 反事实上界（3 模型 × 15 条）、B3 误差分层（3 模型 × 17 条） | gpu115 g1 / g2–3 / g0，与训练并行 | `logs/b1 b2 b3/queue.log` | ✅ 01:40：B1 8 / 8、B2 45 / 45（colosseum / sestino × 3 共 6 个待 Task C 后补）、B3 17 / 17；`B_GEOMETRY_AUDIT.md`：存在性保留 100%、丢位置 / 薄结构；no_fn ≈ hit_oracle 拿到几乎全部上界（Dev 一步 regret 0.43 → 0.19），depth_oracle 无收益；完美预测仍剩 0.06–0.31 regret；FNR 由 UNKNOWN 段长度驱动（短段 0.34–0.42 vs 长段 0.08–0.10） |
+| XB-B | Task B：B1 观测几何保真（8 条室外轨迹）、B2 反事实上界（3 模型 × 15 条）、B3 误差分层（3 模型 × 17 条） | gpu115 g1 / g2–3 / g0，与训练并行 | `logs/b1 b2 b3/queue.log` | ✅ 09:35：B1 8 / 8、B2 51 / 51、B3 17 / 17；`B_GEOMETRY_AUDIT.md`：存在性保留 100%、丢位置 / 薄结构；no_fn ≈ hit_oracle 拿到几乎全部上界（Dev 一步 regret 0.43 → 0.19），depth_oracle 无收益；完美预测仍剩 0.06–0.31 regret；FNR 由 UNKNOWN 段长度驱动（短段 0.34–0.42 vs 长段 0.08–0.10） |
 | XB-D | Task D：不确定性分解（已有 7 个模型 × 70 条曲线） | CPU | `results/D_uncertainty.json` | ✅ 16:50：7 个近似等价模型的 All-14 标准差 0.003 / 0.005 / 0.003 / 0.004；起点间 sd 0.06–0.09（约 20–30 倍）；分辨 0.005 需 3–7 个种子（上界） |
 | XB-report | `AUDIT_BASELINE.md`、`A_ATTENTION_AUDIT.md`、`B_GEOMETRY_AUDIT.md`、`C_DATA_SCALING.md`、`FINAL_REPORT.md`、`MASTER_TABLE.csv`、`PER_SCENE.csv`、`EARLY_CURVES.png` | CPU | — | ⬜ |
 
