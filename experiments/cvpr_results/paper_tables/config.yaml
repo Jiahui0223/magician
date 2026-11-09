@@ -21,13 +21,13 @@ paper_methods: [random_walk, scone, macarons, fisherrf, magician]
 paper_labels: {random_walk: Rand. Walk, scone: SCONE, macarons: MACARONS, fisherrf: FisherRF, magician: MAGICIAN}
 # re-evaluated columns (CVPR Table 1 model ids); main = paper body, supp = supplementary
 main_models: [MAG-B, B2, V3-D1-H3-NORISK]
-supp_models: [MAG-B, MAG-G, B0, B2, V3, V3-D1-H3-NORISK, V3-YBEST-H3]
-curve_models: [MAG-B, B2, V3, V3-D1-H3-NORISK, V3-YBEST-H3]
-improvement_models: [V3-D1-H3-NORISK, B2]
+supp_models: [MAG-B, MAG-G, B0, B2, V3, V3-D1-H3-NORISK, V3-T0-D1, V3-YBEST-H3]
+curve_models: [MAG-B, B2, V3, V3-D1-H3-NORISK, V3-T0-D1]
+improvement_models: [V3-D1-H3-NORISK, V3-T0-D1, B2]
 improvement_reference: MAG-B
 radar_models: [MAG-B, B2, V3-D1-H3-NORISK, V3-YBEST-H3]
 model_labels: {MAG-B: "MAGICIAN (re-eval.)", MAG-G: "MAGICIAN-Greedy (re-eval.)", B0: "B0", B2: "B2", V3: "V3-T1 (H0)",
-               V3-D1-H3-NORISK: "V3-D1", V3-YBEST-H3: "V3-YBEST-H3"}
+               V3-D1-H3-NORISK: "V3-D1", V3-T0-D1: "V3-T0-D1 (no x-attn)", V3-YBEST-H3: "V3-YBEST-H3"}
 # fixed entity colours (Okabe-Ito, colour-blind safe) + line styles / markers so that print in black and white stays readable
 style:
   MAG-B: {color: "#555555", ls: "--", marker: "s"}
@@ -36,6 +36,7 @@ style:
   B2: {color: "#0072B2", ls: "-.", marker: "^"}
   V3: {color: "#009E73", ls: ":", marker: "D"}
   V3-D1-H3-NORISK: {color: "#D55E00", ls: "-", marker: "o"}
+  V3-T0-D1: {color: "#E69F00", ls: "-", marker: "*"}
   V3-YBEST-H3: {color: "#CC79A7", ls: [0, [5, 1.5]], marker: "P"}
 groups: {all14: All-14, dev: Dev-5, test: Test-3, train: Train-6}
 bootstrap: {n: 10000, seed: 0}
