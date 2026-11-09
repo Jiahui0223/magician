@@ -52,3 +52,8 @@
 ## 2026-11-08 20:45 — XB 恢复
 - Table 1 的 V3-T0-D1 闭环 20:44 完成（70 / 70），gpu115 四卡空出；20:45 按原命令恢复：Task C 训练链 `xb_chain.sh 29651 xb_t1_red3 train_t1_red3.json`（resume，从 step 6,000 续训，首条日志 step 6001）、B3 队列 gpu0、B2 队列 gpu2 / gpu3；看门狗重启。
 - 预计：Task C 训练 ~08:30（11-09）完成，选模 + 闭环 ~10:45；分配 15:12 到期。
+
+## 2026-11-09 01:40 — Task B 完成（B2 差 6 个 colosseum / sestino 任务）
+- B2 45 / 45（jobs_b2.txt）于 01:18 完成，`xb_b2_analyze.py` → `results/B2_oracle/ladder.json`；B3 17 / 17 于 00:27 完成，新写 `xb_b3_analyze.py` → `results/B3_strata/{summary.json,summary.md}`（690 行）。
+- `B_GEOMETRY_AUDIT.md`：存在性保留 100%，丢的是位置 / 薄结构；no_fn ≈ hit_oracle（室外 Dev 一步 regret 0.433 → 0.224 / 0.187），depth_oracle 无收益（Train 两步反而 +0.064）；完美预测仍剩 0.06–0.31 regret；FNR 随 UNKNOWN 段长度（短段 0.34–0.42 vs 长段 0.08–0.10）、起点距离、极近 / 极远深度、训练场景后期上升。
+- 待办：B2 的 colosseum / sestino × 3 模型（6 个任务）在 Task C 链结束后补跑（`jobs_b2_tail.txt`）；Task C 训练 01:21 在 step 19,500（0.82 step/s），预计 ~08:20 训完。
