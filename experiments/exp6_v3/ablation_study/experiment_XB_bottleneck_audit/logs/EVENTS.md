@@ -48,3 +48,7 @@
   - 训练：`bash scripts/xb_chain.sh 29651 xb_t1_red3 train_t1_red3.json`（自动 resume）
   - B2：`bash scripts/xb_b2_queue.sh <GPU> work_dirs/.../jobs_b2.txt`（两卡）；B3：`bash scripts/xb_b3_queue.sh <GPU> work_dirs/.../jobs_a.txt`
 - 偏差记录：Task C 的训练被中断一次并从 step 6,000 的 `ckpt_last.pt` 恢复；数据流 / 采样器状态随 checkpoint 恢复，与 XA 的 OOM 重试恢复机制相同。
+
+## 2026-11-08 20:45 — XB 恢复
+- Table 1 的 V3-T0-D1 闭环 20:44 完成（70 / 70），gpu115 四卡空出；20:45 按原命令恢复：Task C 训练链 `xb_chain.sh 29651 xb_t1_red3 train_t1_red3.json`（resume，从 step 6,000 续训，首条日志 step 6001）、B3 队列 gpu0、B2 队列 gpu2 / gpu3；看门狗重启。
+- 预计：Task C 训练 ~08:30（11-09）完成，选模 + 闭环 ~10:45；分配 15:12 到期。

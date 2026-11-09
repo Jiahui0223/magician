@@ -19,6 +19,7 @@
   "V3-H2": 70,
   "V3-H3": 70,
   "V3-D1-H3-NORISK": 70,
+  "V3-T0-D1": 70,
   "V3-D2-DEPTH3-B3": 30,
   "V3-D3-DEPTH3-B5": 30,
   "V3-D4-DEPTH4-B3": 30,
@@ -156,6 +157,13 @@
    "sofia_church_s4"
   ],
   "V3-D1-H3-NORISK": [
+   "sofia_church_s0",
+   "sofia_church_s1",
+   "sofia_church_s2",
+   "sofia_church_s3",
+   "sofia_church_s4"
+  ],
+  "V3-T0-D1": [
    "sofia_church_s0",
    "sofia_church_s1",
    "sofia_church_s2",

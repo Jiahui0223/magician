@@ -1,22 +1,22 @@
 {
  "tables": {
-  "generated": "2026-11-04T22:22:42",
-  "git_head_at_generation": "8f986d8",
+  "generated": "2026-11-08T20:47:00",
+  "git_head_at_generation": "866d0e4",
   "config_version": "paper-tables-v1",
-  "config_sha256": "049d2d88f8877e8369f53cbd7d695c41f14bce28aea312b1a86aa0e6c21571cb",
+  "config_sha256": "257ccb77d7a651b32c2b062bbdec1cbec3934da62315ebc875e021d22a9e8b97",
   "script": "experiments/cvpr_results/paper_tables/scripts/make_tables.py",
   "inputs": {
    "per_scene": {
     "path": "experiments/cvpr_results/table1/results/per_scene.csv",
-    "sha256": "e1f0c3aa66fdeac62be6cdcf413de096d2ab22258c66559ba7982c38d364462f"
+    "sha256": "05493dd8c0fe543095c5df5420b6ddad08d39a28972dc8e78bd32d537c5b25be"
    },
    "per_model": {
     "path": "experiments/cvpr_results/table1/results/per_model.csv",
-    "sha256": "c4dd521c37748ae5b39f94f65e1b0e550fa17dd7148a61f795a1e5e54ec5fcc9"
+    "sha256": "1eae2930a87dd0675009252f0e062b82789c1762521101da7155b9d023215acd"
    },
    "validation": {
     "path": "experiments/cvpr_results/table1/results/validation.json",
-    "sha256": "34e424bcbb2beea1acc2c1021978547bda1d500662dcacaeab09b62856ec0880"
+    "sha256": "9ec14d28a71dc452ab60247a5ccf7bbdecda3de97e6507e922993e8508069c6c"
    },
    "scene_registry": {
     "path": "experiments/cvpr_results/table1/SCENE_REGISTRY.yaml",
@@ -24,7 +24,7 @@
    },
    "model_registry": {
     "path": "experiments/cvpr_results/table1/MODEL_REGISTRY.yaml",
-    "sha256": "2b37d55c7dfd6ad820497ca830b7488312a9c0e67f93ccbe90aff04722bfd319"
+    "sha256": "1942206983316c072192533ed74552e95cc39ab5332b410964994e9872c685da"
    }
   },
   "outputs": {
@@ -55,6 +55,7 @@
      "B2",
      "V3",
      "V3-D1-H3-NORISK",
+     "V3-T0-D1",
      "V3-YBEST-H3"
     ],
     "all14": {
@@ -64,6 +65,7 @@
      "B2": 0.742350655448145,
      "V3": 0.7435409028500392,
      "V3-D1-H3-NORISK": 0.7651832376696891,
+     "V3-T0-D1": 0.7634993910866157,
      "V3-YBEST-H3": 0.7696744698694313
     },
     "paper_all14": {
@@ -101,6 +103,7 @@
      "B2",
      "V3",
      "V3-D1-H3-NORISK",
+     "V3-T0-D1",
      "V3-YBEST-H3"
     ],
     "all14": {
@@ -110,6 +113,7 @@
      "B2": 0.9072489350396788,
      "V3": 0.9031464341781833,
      "V3-D1-H3-NORISK": 0.9098280207228403,
+     "V3-T0-D1": 0.9106882237620285,
      "V3-YBEST-H3": 0.9105481286219103
     },
     "paper_all14": {
@@ -340,6 +344,18 @@
    },
    {
     "ok": true,
+    "check": "V3-T0-D1: registry status READY"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1: no invalid episodes in validation.json"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1: All-14 auc100 mean of rows == per_model.csv (0.763499)"
+   },
+   {
+    "ok": true,
     "check": "V3-YBEST-H3: registry status READY"
    },
    {
@@ -384,75 +400,75 @@
    },
    {
     "ok": true,
-    "check": "TeX row has 14 columns: Scene & Rand. Walk & SCONE & MACARONS & "
+    "check": "TeX row has 15 columns: Scene & Rand. Walk & SCONE & MACARONS & "
    },
    {
     "ok": true,
-    "check": "TeX row has 14 columns: Dunnottar Castle & 0.149 & 0.366 & 0.618"
+    "check": "TeX row has 15 columns: Dunnottar Castle & 0.149 & 0.366 & 0.618"
    },
    {
     "ok": true,
-    "check": "TeX row has 14 columns: Colosseum & 0.219 & 0.589 & 0.656 & 0.55"
+    "check": "TeX row has 15 columns: Colosseum & 0.219 & 0.589 & 0.656 & 0.55"
    },
    {
     "ok": true,
-    "check": "TeX row has 14 columns: Bannerman Castle & 0.192 & 0.559 & 0.575"
+    "check": "TeX row has 15 columns: Bannerman Castle & 0.192 & 0.559 & 0.575"
    },
    {
     "ok": true,
-    "check": "TeX row has 14 columns: Pantheon & 0.198 & 0.465 & 0.601 & 0.270"
+    "check": "TeX row has 15 columns: Pantheon & 0.198 & 0.465 & 0.601 & 0.270"
    },
    {
     "ok": true,
-    "check": "TeX row has 14 columns: Christ the Redeemer & 0.439 & 0.772 & 0."
+    "check": "TeX row has 15 columns: Christ the Redeemer & 0.439 & 0.772 & 0."
    },
    {
     "ok": true,
-    "check": "TeX row has 14 columns: Statue of Liberty & 0.323 & 0.632 & 0.71"
+    "check": "TeX row has 15 columns: Statue of Liberty & 0.323 & 0.632 & 0.71"
    },
    {
     "ok": true,
-    "check": "TeX row has 14 columns: Pisa Cathedral & 0.290 & 0.486 & 0.678 &"
+    "check": "TeX row has 15 columns: Pisa Cathedral & 0.290 & 0.486 & 0.678 &"
    },
    {
     "ok": true,
-    "check": "TeX row has 14 columns: Fushimi Castle & 0.279 & 0.689 & 0.718 &"
+    "check": "TeX row has 15 columns: Fushimi Castle & 0.279 & 0.689 & 0.718 &"
    },
    {
     "ok": true,
-    "check": "TeX row has 14 columns: Alhambra Palace & 0.126 & 0.369 & 0.567 "
+    "check": "TeX row has 15 columns: Alhambra Palace & 0.126 & 0.369 & 0.567 "
    },
    {
     "ok": true,
-    "check": "TeX row has 14 columns: Neuschwanstein Castle & 0.184 & 0.325 & "
+    "check": "TeX row has 15 columns: Neuschwanstein Castle & 0.184 & 0.325 & "
    },
    {
     "ok": true,
-    "check": "TeX row has 14 columns: Eiffel Tower & 0.333 & 0.683 & 0.709 & 0"
+    "check": "TeX row has 15 columns: Eiffel Tower & 0.333 & 0.683 & 0.709 & 0"
    },
    {
     "ok": true,
-    "check": "TeX row has 14 columns: Manhattan Bridge & 0.258 & 0.632 & 0.750"
+    "check": "TeX row has 15 columns: Manhattan Bridge & 0.258 & 0.632 & 0.750"
    },
    {
     "ok": true,
-    "check": "TeX row has 14 columns: St. Sofia Church & 0.280 & 0.532 & 0.621"
+    "check": "TeX row has 15 columns: St. Sofia Church & 0.280 & 0.532 & 0.621"
    },
    {
     "ok": true,
-    "check": "TeX row has 14 columns: Barts & 0.214 & 0.551 & 0.660 & 0.673 & "
+    "check": "TeX row has 15 columns: Barts & 0.214 & 0.551 & 0.660 & 0.673 & "
    },
    {
     "ok": true,
-    "check": "TeX row has 14 columns: Sestino Museum & 0.132 & 0.367 & 0.537 &"
+    "check": "TeX row has 15 columns: Sestino Museum & 0.132 & 0.367 & 0.537 &"
    },
    {
     "ok": true,
-    "check": "TeX row has 14 columns: Average (All-14) & 0.238 & 0.535 & 0.649"
+    "check": "TeX row has 15 columns: Average (All-14) & 0.238 & 0.535 & 0.649"
    },
    {
     "ok": true,
-    "check": "TeX row has 14 columns: Average (All-15, reported) & 0.241 & 0.5"
+    "check": "TeX row has 15 columns: Average (All-15, reported) & 0.241 & 0.5"
    },
    {
     "ok": true,
@@ -672,6 +688,18 @@
    },
    {
     "ok": true,
+    "check": "V3-T0-D1: registry status READY"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1: no invalid episodes in validation.json"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1: All-14 final mean of rows == per_model.csv (0.910688)"
+   },
+   {
+    "ok": true,
     "check": "V3-YBEST-H3: registry status READY"
    },
    {
@@ -712,75 +740,75 @@
    },
    {
     "ok": true,
-    "check": "TeX row has 14 columns: Scene & Rand. Walk & SCONE & MACARONS & "
+    "check": "TeX row has 15 columns: Scene & Rand. Walk & SCONE & MACARONS & "
    },
    {
     "ok": true,
-    "check": "TeX row has 14 columns: Dunnottar Castle & 0.225 & 0.527 & 0.820"
+    "check": "TeX row has 15 columns: Dunnottar Castle & 0.225 & 0.527 & 0.820"
    },
    {
     "ok": true,
-    "check": "TeX row has 14 columns: Colosseum & 0.272 & 0.755 & 0.794 & 0.75"
+    "check": "TeX row has 15 columns: Colosseum & 0.272 & 0.755 & 0.794 & 0.75"
    },
    {
     "ok": true,
-    "check": "TeX row has 14 columns: Bannerman Castle & 0.240 & 0.722 & 0.834"
+    "check": "TeX row has 15 columns: Bannerman Castle & 0.240 & 0.722 & 0.834"
    },
    {
     "ok": true,
-    "check": "TeX row has 14 columns: Pantheon & 0.309 & 0.610 & 0.796 & 0.444"
+    "check": "TeX row has 15 columns: Pantheon & 0.309 & 0.610 & 0.796 & 0.444"
    },
    {
     "ok": true,
-    "check": "TeX row has 14 columns: Christ the Redeemer & 0.581 & 0.924 & 0."
+    "check": "TeX row has 15 columns: Christ the Redeemer & 0.581 & 0.924 & 0."
    },
    {
     "ok": true,
-    "check": "TeX row has 14 columns: Statue of Liberty & 0.443 & 0.819 & 0.90"
+    "check": "TeX row has 15 columns: Statue of Liberty & 0.443 & 0.819 & 0.90"
    },
    {
     "ok": true,
-    "check": "TeX row has 14 columns: Pisa Cathedral & 0.353 & 0.566 & 0.865 &"
+    "check": "TeX row has 15 columns: Pisa Cathedral & 0.353 & 0.566 & 0.865 &"
    },
    {
     "ok": true,
-    "check": "TeX row has 14 columns: Fushimi Castle & 0.449 & 0.844 & 0.853 &"
+    "check": "TeX row has 15 columns: Fushimi Castle & 0.449 & 0.844 & 0.853 &"
    },
    {
     "ok": true,
-    "check": "TeX row has 14 columns: Alhambra Palace & 0.162 & 0.473 & 0.775 "
+    "check": "TeX row has 15 columns: Alhambra Palace & 0.162 & 0.473 & 0.775 "
    },
    {
     "ok": true,
-    "check": "TeX row has 14 columns: Neuschwanstein Castle & 0.223 & 0.444 & "
+    "check": "TeX row has 15 columns: Neuschwanstein Castle & 0.223 & 0.444 & "
    },
    {
     "ok": true,
-    "check": "TeX row has 14 columns: Eiffel Tower & 0.541 & 0.856 & 0.915 & 0"
+    "check": "TeX row has 15 columns: Eiffel Tower & 0.541 & 0.856 & 0.915 & 0"
    },
    {
     "ok": true,
-    "check": "TeX row has 14 columns: Manhattan Bridge & 0.356 & 0.781 & 0.924"
+    "check": "TeX row has 15 columns: Manhattan Bridge & 0.356 & 0.781 & 0.924"
    },
    {
     "ok": true,
-    "check": "TeX row has 14 columns: St. Sofia Church & 0.331 & 0.619 & 0.795"
+    "check": "TeX row has 15 columns: St. Sofia Church & 0.331 & 0.619 & 0.795"
    },
    {
     "ok": true,
-    "check": "TeX row has 14 columns: Barts & 0.240 & 0.677 & 0.768 & 0.878 & "
+    "check": "TeX row has 15 columns: Barts & 0.240 & 0.677 & 0.768 & 0.878 & "
    },
    {
     "ok": true,
-    "check": "TeX row has 14 columns: Sestino Museum & 0.141 & 0.430 & 0.713 &"
+    "check": "TeX row has 15 columns: Sestino Museum & 0.141 & 0.430 & 0.713 &"
    },
    {
     "ok": true,
-    "check": "TeX row has 14 columns: Average (All-14) & 0.324 & 0.673 & 0.820"
+    "check": "TeX row has 15 columns: Average (All-14) & 0.324 & 0.673 & 0.820"
    },
    {
     "ok": true,
-    "check": "TeX row has 14 columns: Average (All-15, reported) & 0.324 & 0.6"
+    "check": "TeX row has 15 columns: Average (All-15, reported) & 0.324 & 0.6"
    },
    {
     "ok": true,
@@ -789,16 +817,17 @@
   ]
  },
  "figures": {
-  "generated": "2026-11-04T22:22:45",
-  "git_head_at_generation": "8f986d8",
+  "generated": "2026-11-08T20:47:03",
+  "git_head_at_generation": "866d0e4",
   "script": "experiments/cvpr_results/paper_tables/scripts/make_figures.py",
-  "config_sha256": "049d2d88f8877e8369f53cbd7d695c41f14bce28aea312b1a86aa0e6c21571cb",
-  "episodes_read": 350,
+  "config_sha256": "257ccb77d7a651b32c2b062bbdec1cbec3934da62315ebc875e021d22a9e8b97",
+  "episodes_read": 420,
   "models": [
    "B2",
    "MAG-B",
    "V3",
    "V3-D1-H3-NORISK",
+   "V3-T0-D1",
    "V3-YBEST-H3"
   ],
   "band_models": [
@@ -830,6 +859,31 @@
      "bridge": 0.1490015861073269,
      "barts": 0.1663212761579186,
      "sestino_museum": 0.19045252346979508
+    }
+   },
+   "V3-T0-D1|auc20": {
+    "mean": 0.11337453910042929,
+    "ci": [
+     0.07299453749081161,
+     0.15452475666074791
+    ],
+    "wins": 13,
+    "losses": 1,
+    "per_scene": {
+     "dunnottar": 0.21904482166115055,
+     "colosseum": 0.08308529562541112,
+     "bannerman": -0.031018859326668008,
+     "pantheon": 0.04069754956917937,
+     "redeemer": 0.2696939642333013,
+     "liberty": 0.02132553370607949,
+     "pisa": 0.09430272229677909,
+     "fushimi": 0.09548545685686938,
+     "alhambra": 0.04436231236013098,
+     "neuschwanstein": 0.10392069743573278,
+     "eiffel": 0.1336646781165444,
+     "bridge": 0.1619983621113407,
+     "barts": 0.18850950355500712,
+     "sestino_museum": 0.1621715092051519
     }
    },
    "B2|auc20": {
@@ -882,6 +936,31 @@
      "sestino_museum": 0.25346380969960497
     }
    },
+   "V3-T0-D1|auc100": {
+    "mean": 0.0526557563549307,
+    "ci": [
+     0.019208478920960982,
+     0.09095064203540607
+    ],
+    "wins": 12,
+    "losses": 2,
+    "per_scene": {
+     "dunnottar": 0.054681465450560185,
+     "colosseum": -0.07153251910404364,
+     "bannerman": -0.02680311910987685,
+     "pantheon": 0.02026177461719352,
+     "redeemer": 0.09340957852478111,
+     "liberty": 0.013054768354018021,
+     "pisa": 0.04074961883249857,
+     "fushimi": 0.031048748904387292,
+     "alhambra": 0.0452806750658745,
+     "neuschwanstein": 0.0760495760305121,
+     "eiffel": 0.04489989679775548,
+     "bridge": 0.0875214775242453,
+     "barts": 0.08067466539719674,
+     "sestino_museum": 0.2478839816839275
+    }
+   },
    "B2|auc100": {
     "mean": 0.031507020716460256,
     "ci": [
@@ -930,6 +1009,31 @@
      "bridge": -0.007262578384225016,
      "barts": -0.005983756366590209,
      "sestino_museum": 0.11296485536171556
+    }
+   },
+   "V3-T0-D1|final": {
+    "mean": 0.004362068676187339,
+    "ci": [
+     -0.02655224939974394,
+     0.03223436008443333
+    ],
+    "wins": 6,
+    "losses": 8,
+    "per_scene": {
+     "dunnottar": -0.004272014787301393,
+     "colosseum": -0.150174346793382,
+     "bannerman": -0.00789508948549309,
+     "pantheon": 0.06535959785260745,
+     "redeemer": 0.0027556186151124207,
+     "liberty": -0.0017373834030274705,
+     "pisa": -0.014376148297263348,
+     "fushimi": -0.005083062049720932,
+     "alhambra": 0.003688810737620107,
+     "neuschwanstein": 0.06372647587970016,
+     "eiffel": -0.0010258503265423435,
+     "bridge": -0.004767241535481937,
+     "barts": 0.0022802550810336665,
+     "sestino_museum": 0.11258933997876144
     }
    },
    "B2|final": {
@@ -2081,6 +2185,286 @@
    },
    {
     "ok": true,
+    "check": "V3-T0-D1 dunnottar s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 dunnottar s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 dunnottar s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 dunnottar s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 dunnottar s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 colosseum s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 colosseum s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 colosseum s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 colosseum s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 colosseum s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 bannerman s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 bannerman s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 bannerman s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 bannerman s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 bannerman s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 pantheon s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 pantheon s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 pantheon s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 pantheon s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 pantheon s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 redeemer s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 redeemer s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 redeemer s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 redeemer s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 redeemer s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 liberty s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 liberty s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 liberty s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 liberty s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 liberty s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 pisa s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 pisa s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 pisa s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 pisa s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 pisa s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 fushimi s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 fushimi s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 fushimi s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 fushimi s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 fushimi s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 alhambra s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 alhambra s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 alhambra s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 alhambra s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 alhambra s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 neuschwanstein s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 neuschwanstein s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 neuschwanstein s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 neuschwanstein s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 neuschwanstein s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 eiffel s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 eiffel s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 eiffel s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 eiffel s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 eiffel s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 bridge s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 bridge s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 bridge s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 bridge s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 bridge s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 barts s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 barts s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 barts s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 barts s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 barts s4: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 sestino_museum s0: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 sestino_museum s1: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 sestino_museum s2: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 sestino_museum s3: 101-value official curve"
+   },
+   {
+    "ok": true,
+    "check": "V3-T0-D1 sestino_museum s4: 101-value official curve"
+   },
+   {
+    "ok": true,
     "check": "V3-YBEST-H3 dunnottar s0: 101-value official curve"
    },
    {
@@ -2429,19 +2813,19 @@
    },
    {
     "ok": true,
-    "check": "V3-YBEST-H3 all14: curve[20] == per_model cov20"
+    "check": "V3-T0-D1 all14: curve[20] == per_model cov20"
    },
    {
     "ok": true,
-    "check": "V3-YBEST-H3 all14: curve[50] == per_model cov50"
+    "check": "V3-T0-D1 all14: curve[50] == per_model cov50"
    },
    {
     "ok": true,
-    "check": "V3-YBEST-H3 all14: curve[100] == per_model final"
+    "check": "V3-T0-D1 all14: curve[100] == per_model final"
    },
    {
     "ok": true,
-    "check": "V3-YBEST-H3 all14: trapz(curve)/100 == per_model auc100"
+    "check": "V3-T0-D1 all14: trapz(curve)/100 == per_model auc100"
    }
   ]
  }
