@@ -1,4 +1,4 @@
-# VALIDATION — 自动质量关口（生成于 2026-11-10 15:44:06，git 60230b300dd6）
+# VALIDATION — 自动质量关口（生成于 2026-11-10 15:53:32，git 5d16124d9c18）
 
 由 `experiments/cvpr_results/scripts/validate.py` 生成；每一项都从磁盘上的文件重新计算。PENDING = 相关运行尚未完成，不能判定，**不等于通过**。
 

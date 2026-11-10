@@ -1,5 +1,6 @@
-"""CVPR Table 1, paper layout v2 (CPU): two-level header (AUC up | Coverage up), best bold / second-best underlined, a
-'Delta vs. MAGICIAN' row (scene-paired difference, * = scene-bootstrap 95 % CI excludes 0), unavailable baselines greyed.
+"""CVPR Table 1, paper layout v2 (CPU): two-level header (AUC up | Coverage up), best bold / second-best underlined, unavailable
+baselines greyed. Under every value of the Ours row: the absolute gain over the STRONGEST baseline of that column (scene-paired
+difference of the scene-equal means; * = its scene-bootstrap 95 % CI excludes 0). No separate Delta row (user decision 2026-11-10).
 Same numbers as table1_paper.csv (read from table1_all14_full.csv / table1_paired_ours_minus_baseline.csv, which are generated
 from manifest/episodes.csv). Output: fig/table1/table1_v2.{pdf,png,tex,csv}. No LaTeX on the cluster: the PDF / PNG are drawn
 with matplotlib (STIX = Times-compatible, vector, embedded TrueType); the .tex is booktabs and only syntax-checked here."""
@@ -24,6 +25,17 @@ def load():
     return full, pr
 
 
+def gains(full, pr):
+    """per metric: (strongest complete baseline, paired diff Ours - that baseline, significant?)."""
+    out = {}
+    base = [m for m in L.TABLE1 if m != "V3-T0-D1" and full[m]["status"] == "COMPLETE"]
+    for _, _, k in COLS:
+        b = max(base, key=lambda m: float(full[m][k]))
+        r = pr[(b, k)]
+        out[k] = (b, float(r["mean_diff"]), float(r["ci95_lo"]) > 0 or float(r["ci95_hi"]) < 0, float(r["ci95_lo"]), float(r["ci95_hi"]))
+    return out
+
+
 def ranks(full):
     """per metric: (best set, second set) among complete methods, compared after rounding to 3 decimals."""
     comp = [m for m in L.TABLE1 if full[m]["status"] == "COMPLETE"]
@@ -36,8 +48,9 @@ def ranks(full):
 
 def draw(full, pr, base, width=3.35, fs=8.0):
     rk = ranks(full)
+    gn = gains(full, pr)
     methods = L.TABLE1
-    nrow = len(methods) + 1
+    nrow = len(methods) + 0.75
     cw = [1.10] + [(width - 1.10 - 0.05) / len(COLS)] * len(COLS)
     rh = 0.165
     H = rh * (nrow + 2.5) + 0.55
@@ -65,8 +78,10 @@ def draw(full, pr, base, width=3.35, fs=8.0):
             y -= rh * 0.08
             ax.plot([0.03, xr], [y, y], color="k", lw=0.35)
             y -= rh * 0.12
-        yc = y - rh / 2                                                                      # row centre
-        y -= rh
+        ours = m == "V3-T0-D1"
+        hgt = rh * (1.75 if ours else 1.0)
+        yc = y - (rh * 0.5 if not ours else rh * 0.55)                                       # value line centre
+        y -= hgt
         avail = full[m]["status"] == "COMPLETE"
         col = "k" if avail else "#9A9A9A"
         ax.text(x0[0] + 0.03, yc, NAMES[m], fontsize=fs, va="center", ha="left", color=col, fontweight="bold" if m == "V3-T0-D1" else "normal")
@@ -78,13 +93,9 @@ def draw(full, pr, base, width=3.35, fs=8.0):
             t = ax.text(xc[j], yc, f"{float(full[m][k]):.3f}", fontsize=fs, ha="center", va="center", fontweight="bold" if m in best else "normal")
             if m in second:
                 texts.append(t)
-    yc = y - rh * 0.5
-    y -= rh
-    ax.text(x0[0] + 0.03, yc, "$\\Delta$ vs. MAGICIAN", fontsize=fs - 1.0, va="center", ha="left", color="#444444", style="italic")
-    for j, (_, _, k) in enumerate(COLS, 1):
-        r = pr[(base, k)]
-        sig = float(r["ci95_lo"]) > 0 or float(r["ci95_hi"]) < 0
-        ax.text(xc[j], yc, f"{float(r['mean_diff']):+.3f}" + ("$^{*}$" if sig else ""), fontsize=fs - 1.0, ha="center", va="center", color="#444444", style="italic")
+            if ours:
+                _, d, sig, _, _ = gn[k]
+                ax.text(xc[j], yc - rh * 0.72, f"({d:+.3f}" + ("$^{*}$" if sig else "") + ")", fontsize=fs - 1.6, ha="center", va="center", color="#1B7837")
     y -= rh * 0.1
     ax.plot([0.03, xr], [y, y], color="k", lw=0.9)                                           # bottom rule
     fig.canvas.draw()
@@ -94,8 +105,9 @@ def draw(full, pr, base, width=3.35, fs=8.0):
         (a, b_), (c, _) = inv.transform([(bb.x0, bb.y0), (bb.x1, bb.y0)])
         ax.plot([a, c], [b_ - 0.008, b_ - 0.008], color="k", lw=0.5)
     notes = ["Macarons++ All-14 (14 scenes $\\times$ 5 official starts, 100 steps); official coverage, scene-equal mean.",
-             "Bold: best; underline: second best. $\\dagger$ adapted under the same frozen protocol; – no runnable",
-             "implementation under this protocol. $^{*}$ scene-bootstrap 95% CI of the paired difference excludes 0."]
+             "Bold: best; underline: second best. Green: absolute gain of Ours over the strongest baseline in",
+             "that column; $^{*}$ its scene-bootstrap 95% CI excludes 0. $\\dagger$ adapted under the same frozen",
+             "protocol; – no runnable implementation under this protocol."]
     for n in notes:
         y -= 0.135
         ax.text(0.03, y, n, fontsize=fs - 2.3, va="center", ha="left", color="#333333")
@@ -105,7 +117,7 @@ def draw(full, pr, base, width=3.35, fs=8.0):
 def tex(full, pr, base):
     rk = ranks(full)
     L_ = [r"% Table 1 (paper layout v2), generated by experiments/cvpr_results/scripts/make_table1_v2.py -- do not edit by hand",
-          r"% needs \usepackage{booktabs} (and \usepackage{xcolor} for the grey rows)", r"\begin{table}[t]", r"\centering", r"\small", r"\setlength{\tabcolsep}{4pt}",
+          r"% needs \usepackage{booktabs} and \usepackage[dvipsnames]{xcolor} (grey rows, ForestGreen gains)", r"\begin{table}[t]", r"\centering", r"\small", r"\setlength{\tabcolsep}{4pt}",
           r"\begin{tabular}{@{}lccccc@{}}", r"\toprule", r" & \multicolumn{3}{c}{AUC $\uparrow$} & \multicolumn{2}{c}{Coverage $\uparrow$} \\", r"\cmidrule(lr){2-4} \cmidrule(l){5-6}",
           r"Method & @20 & @50 & @100 & @20 & Final \\", r"\midrule"]
     for m in L.TABLE1:
@@ -119,16 +131,15 @@ def tex(full, pr, base):
             v = f"{float(full[m][k]):.3f}"
             best, second = rk[k]
             cells.append(r"\textbf{" + v + "}" if m in best else (r"\underline{" + v + "}" if m in second else v))
+        if m == "V3-T0-D1":
+            gn = gains(full, pr)
+            cells = [r"\begin{tabular}[c]{@{}c@{}}" + c + r" \\[-2pt] {\scriptsize\color{ForestGreen}(" + f"{gn[k][1]:+.3f}".replace("-", "$-$") + (r"$^{*}$" if gn[k][2] else "") + r")}\end{tabular}"
+                     for c, (_, _, k) in zip(cells, COLS)]
         L_.append((r"\textbf{Ours}" if m == "V3-T0-D1" else TEXN[m]) + " & " + " & ".join(cells) + r" \\")
-    d = []
-    for _, _, k in COLS:
-        r = pr[(base, k)]
-        sig = float(r["ci95_lo"]) > 0 or float(r["ci95_hi"]) < 0
-        d.append(r"\textit{" + f"{float(r['mean_diff']):+.3f}".replace("-", "$-$") + "}" + (r"$^{*}$" if sig else ""))
-    L_ += [r"\textit{\footnotesize $\Delta$ vs.\ MAGICIAN} & " + " & ".join(r"{\footnotesize " + x + "}" for x in d) + r" \\", r"\bottomrule", r"\end{tabular}",
+    L_ += [r"\bottomrule", r"\end{tabular}",
            r"\caption{Active reconstruction on Macarons++ (14 scenes $\times$ 5 official start poses, 100 steps, official coverage; scene-equal means). "
-           r"Bold: best; underline: second best. $^{\dagger}$Adapted under the same frozen protocol. --: no runnable implementation under this protocol. "
-           r"$\Delta$: scene-paired difference to MAGICIAN; $^{*}$its scene-bootstrap 95\% CI excludes 0.}", r"\label{tab:main}", r"\end{table}"]
+           r"Bold: best; underline: second best. Green: absolute gain of Ours over the strongest baseline in that column (scene-paired); "
+           r"$^{*}$its scene-bootstrap 95\% CI excludes 0. $^{\dagger}$Adapted under the same frozen protocol. --: no runnable implementation under this protocol.}", r"\label{tab:main}", r"\end{table}"]
     return "\n".join(L_) + "\n"
 
 
@@ -138,6 +149,10 @@ if __name__ == "__main__":
     RD.save(fig, os.path.join(OUT, "table1_v2"))
     open(os.path.join(OUT, "table1_v2.tex"), "w").write(tex(full, pr, "MAG-B"))
     rows = [[L.METHODS[m]["display"], full[m]["status"]] + ([f"{float(full[m][k]):.3f}" for _, _, k in COLS] if full[m]["status"] == "COMPLETE" else [""] * len(COLS)) for m in L.TABLE1]
-    rows.append(["Delta vs. MAGICIAN (scene-paired)", ""] + [f"{float(pr[('MAG-B', k)]['mean_diff']):+.3f} [{float(pr[('MAG-B', k)]['ci95_lo']):+.3f}, {float(pr[('MAG-B', k)]['ci95_hi']):+.3f}]" for _, _, k in COLS])
+    gn = gains(full, pr)
+    rows.append(["Ours gain over the strongest baseline of the column (scene-paired, 95% CI)", ""] + [f"{gn[k][1]:+.3f} [{gn[k][3]:+.3f}, {gn[k][4]:+.3f}] vs {L.METHODS[gn[k][0]]['display']}" for _, _, k in COLS])
+    for k in [c[2] for c in COLS]:
+        b_ = gn[k][0]; o = float(full["V3-T0-D1"][k]); v = float(full[b_][k])
+        print(f"{k}: strongest baseline {b_} {v:.3f} | Ours {o:.3f} | gain {gn[k][1]:+.3f} [{gn[k][3]:+.3f}, {gn[k][4]:+.3f}]{' *' if gn[k][2] else ''} | relative {100 * (o - v) / v:+.1f}%")
     L.write_csv(os.path.join(OUT, "table1_v2.csv"), ["Method", "status", "AUC@20 (up)", "AUC@50 (up)", "AUC@100 (up)", "Coverage@20 (up)", "Final coverage = Coverage@100 (up)"], rows)
     print("table1_v2 written")

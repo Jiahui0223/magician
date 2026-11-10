@@ -1,4 +1,4 @@
-# RESULTS — CVPR overnight 2026-11-10（生成于 2026-11-10 15:44:06，git 60230b300dd6）
+# RESULTS — CVPR overnight 2026-11-10（生成于 2026-11-10 15:53:32，git 5d16124d9c18）
 
 由 `scripts/make_reports.py` 从生成的 CSV / manifest 自动汇总。所有数值 = 冻结协议（14 场景 × 5 官方起点 × 100 步，MAGICIAN 官方覆盖，场景等权）下的真实 episode；未跑满 70 条的方法不出现在 All-14 数值里。CI = 场景级配对 bootstrap 95%（重抽样单位 = 场景）。
 
