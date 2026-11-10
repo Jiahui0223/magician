@@ -52,10 +52,10 @@ def table1():
         else:
             rows_paper.append([disp + (f" ({len(E)}/70)" if st == "PARTIAL" else "")] + ["—"] * len(PAPER))
     comp = [i for i, m in enumerate(L.TABLE1) if status_of(m, data[m]) == "COMPLETE"]
-    for j, n in enumerate(PAPER):
+    for j, n in enumerate(PAPER):                                        # bold = best after rounding to the 3 printed decimals (ties all bold)
         if comp:
-            best = max(comp, key=lambda i: L.group_mean(tabs[L.TABLE1[i]], L.SCENE_ORDER, n)[0])
-            bold.add((best, j + 1))
+            r3 = {i: round(L.group_mean(tabs[L.TABLE1[i]], L.SCENE_ORDER, n)[0], 3) for i in comp}
+            bold |= {(i, j + 1) for i, v in r3.items() if v == max(r3.values())}
     L.write_csv(os.path.join(out, "table1_all14_full.csv"), ["method_id", "method", "source", "status", "n_completed", "n_expected", "n_scenes_complete", "n_scenes_expected"] + ALLM, rows_full)
     L.write_csv(os.path.join(out, "table1_paper.csv"), ["Method"] + PAPER, rows_paper)
     # every step T = 1..100 (long + wide)
@@ -97,12 +97,13 @@ def table1():
         d, st = L.METHODS[m], status_of(m, data[m])
         same = "yes" if not d.get("blocked") else "n/a"
         pv.append([m, d["display"], st, f"{len(data[m])}/70", d["source"], impl.get(m, ""), d["ckpt"], same, same, same, same, same,
-                   "deterministic (seeded)" if m in ("RANDOM", "V3-T0-D1") else ("native randomness, single run" if m in ("MACARONS", "MAG-B") else ""),
+                   {"RANDOM": "deterministic (seed 0)", "V3-T0-D1": "deterministic (frozen noise keys)", "MACARONS": "seeded planner RNG (seed 0), single run; the barts_s0 re-run is bitwise equal to the archived T7a run",
+                    "MAG-B": "seeded (seed key per scene / start), single run"}.get(m, ""),
                    pa["auc"].get(pkey.get(m, ""), ""), pa["final"].get(pkey.get(m, ""), ""), d.get("blocked") or notes.get(m, "")])
     L.write_csv(os.path.join(out, "provenance.csv"), ["method_id", "method", "status", "episodes", "source", "implementation", "weights_sha256", "same_simulator", "same_5_official_starts", "same_legal_action_list",
                                                      "same_official_coverage_replay", "same_100_step_budget", "randomness", "paper_reported_AUC@100_14scenes_NOT_same_protocol",
                                                      "paper_reported_Final_14scenes_NOT_same_protocol", "notes"], pv)
-    n_note = ["All-14: 14 Macarons++ scenes x 5 official starts x 100 steps, official MAGICIAN coverage, scene-equal mean. Bold = best among the methods re-evaluated under this protocol.",
+    n_note = ["All-14: 14 Macarons++ scenes x 5 official starts x 100 steps, official MAGICIAN coverage, scene-equal mean. Bold = best (after rounding) among the methods re-evaluated under this protocol.",
               "† adapted implementation under the frozen protocol (see provenance.csv).  — = no runnable implementation under this protocol (BLOCKED) or not complete; paper-reported numbers are never mixed in."]
     RD.table(os.path.join(out, "table1"), ["Method"] + PAPER, rows_paper, bold=bold, notes=n_note, col_w=[2.6] + [0.85] * len(PAPER))
     RD.tex(os.path.join(out, "table1.tex"), ["Method"] + PAPER, rows_paper, bold=bold, caption="Main benchmark on Macarons++ (All-14: 14 scenes x 5 starts, 100 steps, official coverage; scene-equal means). "
@@ -117,14 +118,15 @@ def table2():
     meth = [m for m in ("RANDOM", "MACARONS", "MAG-B", "V3-T0-D1") if len(valid(m)[0]) == 70]
     tabs = {m: L.scene_table(valid(m)[0], mets) for m in meth}
     rows, paper, bold, rules = [], [], set(), []
-    for g in ("Train-6", "Dev-5", "Test-3", "Dev+Test-8", "All-14"):
+    for g in ("Train-6", "Dev-5", "Test-3", "Dev+Test-8", "All-14"):          # long format: one row per split x method (or paired difference) x metric
         ss = L.GROUPS[g]
         for m in meth:
-            rows.append([g, len(ss), m, L.METHODS[m]["display"], "value"] + [repr(L.group_mean(tabs[m], ss, n)[0]) for n in mets] + [""] * 3)
+            for n in mets:
+                rows.append([g, len(ss), "scene_mean", m, L.METHODS[m]["display"], n, repr(L.group_mean(tabs[m], ss, n)[0]), "", "", len(ss), "", ""])
         for b in [m for m in meth if m != "V3-T0-D1"]:
             for n in mets:
                 m_, lo, hi, ns, w, l = L.paired(tabs["V3-T0-D1"], tabs[b], ss, n)
-                rows.append([g, len(ss), f"V3-T0-D1 minus {b}", "paired scene difference", n, repr(m_), repr(lo), repr(hi), "", "", ns, w, l])
+                rows.append([g, len(ss), "paired_difference", f"V3-T0-D1 minus {b}", f"{L.METHODS['V3-T0-D1']['display']} minus {L.METHODS[b]['display']}", n, repr(m_), repr(lo), repr(hi), ns, w, l])
         if g != "All-14":
             i0 = len(paper)
             v = {m: [L.group_mean(tabs[m], ss, n)[0] for n in show] for m in ("MAG-B", "V3-T0-D1")}
@@ -133,10 +135,13 @@ def table2():
             dd = [L.paired(tabs["V3-T0-D1"], tabs["MAG-B"], ss, n) for n in show]
             paper.append(["", "Δ (Ours − MAGICIAN) [95% CI]"] + [f"{L.fmt(d[0], sign=True)} [{L.fmt(d[1], sign=True)}, {L.fmt(d[2], sign=True)}]" for d in dd])
             for j in range(len(show)):
-                bold.add((i0 + (1 if v["V3-T0-D1"][j] > v["MAG-B"][j] else 0), j + 2))
+                a3, b3 = round(v["V3-T0-D1"][j], 3), round(v["MAG-B"][j], 3)
+                if a3 >= b3:
+                    bold.add((i0 + 1, j + 2))
+                if b3 >= a3:
+                    bold.add((i0, j + 2))
             rules.append(len(paper) - 1)
-    L.write_csv(os.path.join(out, "table2_splits.csv"), ["split", "n_scenes", "method_id", "method", "row_kind_or_metric"] + mets + ["n_scenes_paired", "scene_wins", "scene_losses"],
-                [r if r[4] == "value" else r[:5] + r[5:8] + ["", ""] + r[10:] for r in rows])
+    L.write_csv(os.path.join(out, "table2_splits.csv"), ["split", "n_scenes", "row_type", "method_id", "method", "metric", "value", "ci95_lo", "ci95_hi", "n_scenes_used", "scene_wins", "scene_losses"], rows)
     # split manifest (provenance of every scene)
     sm = []
     for s in L.SCENE_ORDER:
@@ -230,8 +235,8 @@ def table3():
     bold = set()
     if common:
         for j, n in enumerate(mets):
-            vals = [L.group_mean(tabs[m], common, n)[0] for m, _, _ in cells]
-            bold.add((int(np.argmax(vals)), j + 3))
+            vals = [round(L.group_mean(tabs[m], common, n)[0], 3) for m, _, _ in cells]
+            bold |= {(i, j + 3) for i, v in enumerate(vals) if v == max(vals)}
     n_note = [f"Scenes used: {label}. Same frozen V3-T0 checkpoint, simulator, candidates, noise keys, value_cov (eps 1 m, 1 m cells), lambda 0 in every row; only K and the planning depth change.",
               "Depth 1 = one-step value_cov averaged over the K samples (not the DistP1 score). K = 1 uses noise map 0 of the K = 4 set. Effects with scene-bootstrap CIs: table3_effects.csv."]
     RD.table(os.path.join(out, "table3"), ["Samples", "Plan depth", "Episodes"] + mets, paper, bold=bold, notes=n_note, col_w=[0.9, 1.25, 0.95] + [0.85] * len(mets), rules_after=[1],

@@ -8,6 +8,10 @@ visualization_manifest.csv so the choice can be audited):
   eligible   exactness guards true (4x grid hash and per-sample values equal the planner log; the next record is the executed pick),
              UNKNOWN rays >= 20 % of the 7,296 rays of the view, real in-range surface on >= 15 % of the UNKNOWN rays (something to
              compare with), back faces < 5 % of the executed view (camera not inside the mesh)
+             AMENDMENT 2026-11-10 05:40 (after the 14-scene start-pose audit manifest/start_pose_backface.csv showed that some
+             official starts, e.g. bannerman start 1, see 34 % back faces at t = 0): back faces must also be < 5 % in the current
+             view and in every already observed view at steps 0, 10, ..., t (the views P_t was built from). The amendment only
+             removes physically invalid states; the first selection (before the amendment) is kept in selection_v0.json.
   diversity  share of UNKNOWN rays whose hit / no-hit outcome differs between the 4 samples ("flip share")
   agreement  mean over the 4 samples of the share of UNKNOWN rays whose hit / no-hit equals the real in-range depth mask
   success    per split: among eligible states with flip share >= the median flip share of all eligible states, the highest agreement
@@ -48,7 +52,8 @@ def load_pool():
                 continue
             for r in map(json.loads, open(p)):
                 b = bf.get((r["start"], r["t"]))
-                r.update(split=sp, back_share_next=None if b is None else b["back_share_next"], sky_share_next=None if b is None else b["sky_share_next"])
+                r.update(split=sp, back_share_next=None if b is None else b["back_share_next"], sky_share_next=None if b is None else b["sky_share_next"],
+                         back_share_cur=None if b is None else b.get("back_share_cur"), back_share_hist_max=None if b is None else b.get("back_share_hist_max"))
                 why = []
                 if not (r["grid_hash_equal_log"] and r["values_equal_log"] and r["next_is_pick"]):
                     why.append("exactness guard failed")
@@ -60,6 +65,10 @@ def load_pool():
                     why.append("no back-face check")
                 elif b["back_share_next"] >= 0.05:
                     why.append("back faces >= 5 % (camera inside the mesh)")
+                elif b.get("back_share_hist_max") is None:
+                    why.append("no back-face check of the observed views")
+                elif max(b["back_share_cur"], b["back_share_hist_max"]) >= 0.05:
+                    why.append("back faces >= 5 % in an already observed view (map built from inside the mesh)")
                 r["eligible"], r["ineligible_reason"] = not why, "; ".join(why)
                 rows.append(r)
     return rows
@@ -166,7 +175,7 @@ def main():
     sel, med = select(rows)
     role_of = {(r["scene"], r["start"], r["t"]): f"{sp} / {ro}" for (sp, ro), r in sel.items()}
     hdr = ["scene", "split", "start", "t", "eligible", "ineligible_reason", "selected_as", "n_unknown", "unknown_share", "real_valid_share_on_unknown", "flip_share_on_unknown", "hit_agreement_on_unknown",
-           "median_abs_depth_err_on_unknown", "pred_hit_share_on_unknown", "back_share_next", "sky_share_next", "grid_hash_equal_log", "values_equal_log", "next_is_pick", "pick", "n_legal", "d1_score", "value_k"]
+           "median_abs_depth_err_on_unknown", "pred_hit_share_on_unknown", "back_share_next", "back_share_cur", "back_share_hist_max", "sky_share_next", "grid_hash_equal_log", "values_equal_log", "next_is_pick", "pick", "n_legal", "d1_score", "value_k"]
     L.write_csv(os.path.join(OUT, "visualization_manifest.csv"), hdr + ["selection_rule"],
                 [[r["scene"], r["split"], r["start"], r["t"], r["eligible"], r["ineligible_reason"], role_of.get((r["scene"], r["start"], r["t"]), "")] + [r.get(k) for k in hdr[7:]]
                  + [f"success: eligible, flip >= pool median {med:.4f}, max hit agreement; hard: eligible, min hit agreement (see fig4_plot.py docstring)"] for r in rows])

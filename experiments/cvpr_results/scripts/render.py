@@ -72,7 +72,8 @@ def table(base, header, rows, bold=(), notes=(), col_w=None, title=None, rules_a
 
 
 def tex(path, header, rows, bold=(), caption="", label="", notes=(), rules_after=(), colspec=None):
-    esc = lambda s: str(s).replace("%", r"\%").replace("&", r"\&").replace("_", r"\_").replace("—", "--").replace("−", "$-$").replace("×", r"$\times$").replace("Δ", r"$\Delta$").replace("†", r"$^{\dagger}$").replace("‡", r"$^{\ddagger}$")
+    import re
+    esc = lambda s: re.sub(r"(?<![\w$])-(?=\d)", "$-$", str(s)).replace("%", r"\%").replace("&", r"\&").replace("_", r"\_").replace("—", "--").replace("−", "$-$").replace("×", r"$\times$").replace("Δ", r"$\Delta$").replace("†", r"$^{\dagger}$").replace("‡", r"$^{\ddagger}$")
     L = [r"\begin{table}[t]", r"\centering", r"\small", r"\begin{tabular}{" + (colspec or ("l" + "c" * (len(header) - 1))) + "}", r"\toprule",
          " & ".join(esc(h) for h in header) + r" \\", r"\midrule"]
     for i, r in enumerate(rows):

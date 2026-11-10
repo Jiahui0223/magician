@@ -44,12 +44,13 @@ def panel_cov(ax, mc, ci, band, inset=True):
     ax.set_xlabel("Exploration step"); ax.set_ylabel("Surface coverage (official)")
     ax.grid(color="#E3E3E3", lw=0.5); ax.set_axisbelow(True)
     if inset:
-        ia = ax.inset_axes([0.47, 0.09, 0.50, 0.50])
+        ia = ax.inset_axes([0.535, 0.075, 0.44, 0.27])                 # lower right, below every full curve (Random Walk > 0.38 for x > 50)
         for m in [x for x in ORDER if x in mc]:
             st = RD.STYLE[m]
             ia.plot(np.arange(21), mc[m]["cov"][:21], color=st["color"], ls=st["ls"], lw=st["lw"] * 0.9)
         ia.set_xlim(0, 20); ia.set_xticks([0, 5, 10, 15, 20]); ia.set_ylim(0, max(float(mc[m]["cov"][20]) for m in mc) * 1.08)
-        ia.tick_params(labelsize=6.5, length=2); ia.grid(color="#E3E3E3", lw=0.4); ia.set_title("steps 0-20", fontsize=7, pad=2)
+        ia.tick_params(labelsize=6.0, length=2, pad=1.5); ia.grid(color="#E3E3E3", lw=0.4); ia.set_title("zoom: steps 0-20", fontsize=6.5, pad=1.5)
+        ia.set_yticks([0.0, 0.2, 0.4, 0.6])
         for sp in ("top", "right"):
             ia.spines[sp].set_visible(True)
         for sp in ia.spines.values():
@@ -116,8 +117,14 @@ def fig5():
         ax.plot(np.r_[ang, ang[0]], np.r_[v, v[0]], color=st["color"], ls=st["ls"], lw=st["lw"], marker=st["marker"], ms=3.2, label=st["label"])
         if m == "V3-T0-D1":
             ax.fill(np.r_[ang, ang[0]], np.r_[v, v[0]], color=st["color"], alpha=0.10, lw=0)
-    ax.set_ylim(0, 1.0); ax.set_yticks([0.2, 0.4, 0.6, 0.8, 1.0]); ax.set_yticklabels(["0.2", "0.4", "0.6", "0.8", "1.0"], fontsize=6.5, color="#555555")
-    ax.set_rlabel_position(360.0 / n / 2); ax.set_xticks(ang); ax.set_xticklabels([])      # radial tick labels between the first two axes
+    ax.set_ylim(0, 1.0); ax.set_yticks([0.2, 0.4, 0.6, 0.8, 1.0]); ax.set_yticklabels(["0.2", "0.4", "0.6", "0.8", "1.0"], fontsize=6.3, color="#555555")
+    # radial tick labels in the gap between the two neighbouring axes with the lowest plotted values (least overlap with the polygons)
+    vmax = [max(tab[m][s]["AUC@20"] for m in meth) for s in L.SCENE_ORDER]
+    gap = min(range(n), key=lambda i: max(vmax[i], vmax[(i + 1) % n]))
+    ax.set_rlabel_position(np.degrees((ang[gap] + np.pi / n)))
+    for t in ax.get_yticklabels():
+        t.set_bbox(dict(facecolor="white", edgecolor="none", alpha=0.85, pad=0.6))
+    ax.set_xticks(ang); ax.set_xticklabels([])
     ax.grid(color="#CFCFCF", lw=0.5); ax.spines["polar"].set_linewidth(0.6)
     for a, s in zip(ang, L.SCENE_ORDER):
         ha = "center" if abs(np.sin(a)) < 0.15 else ("left" if np.sin(a) > 0 else "right")

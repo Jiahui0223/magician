@@ -14,8 +14,8 @@
   ]
  },
  "n_states": 180,
- "n_eligible": 94,
- "median_flip_eligible": 0.04523026315789473,
+ "n_eligible": 83,
+ "median_flip_eligible": 0.04577850877192982,
  "selected": {
   "train/success": {
    "scene": "bannerman",
@@ -29,13 +29,13 @@
   },
   "train/hard": {
    "scene": "bannerman",
-   "start": 1,
-   "t": 0,
-   "unknown_share": 1.0,
-   "flip_share_on_unknown": 0.5213815789473685,
-   "hit_agreement_on_unknown": 0.20874451754385964,
-   "median_abs_depth_err_on_unknown": 20.047608613967896,
-   "back_share_next": 0.0
+   "start": 2,
+   "t": 30,
+   "unknown_share": 0.3892543859649123,
+   "flip_share_on_unknown": 0.016549295774647886,
+   "hit_agreement_on_unknown": 0.32931338028169016,
+   "median_abs_depth_err_on_unknown": 1.2901463508605957,
+   "back_share_next": 9.598185715731233e-05
   },
   "dev/success": {
    "scene": "pantheon",
@@ -55,7 +55,7 @@
    "flip_share_on_unknown": 0.03875278396436525,
    "hit_agreement_on_unknown": 0.23229398663697104,
    "median_abs_depth_err_on_unknown": 0.6693153381347656,
-   "back_share_next": 0.002032067161053419
+   "back_share_next": 0.0020406413823366165
   },
   "test/success": {
    "scene": "alhambra",
@@ -69,17 +69,17 @@
   },
   "test/hard": {
    "scene": "alhambra",
-   "start": 2,
-   "t": 40,
+   "start": 4,
+   "t": 20,
    "unknown_share": 1.0,
-   "flip_share_on_unknown": 0.004660087719298245,
-   "hit_agreement_on_unknown": 0.6524808114035088,
-   "median_abs_depth_err_on_unknown": 0.060343265533447266,
-   "back_share_next": 0.004992292262613773
+   "flip_share_on_unknown": 0.00918311403508772,
+   "hit_agreement_on_unknown": 0.6848958333333333,
+   "median_abs_depth_err_on_unknown": 0.08550024032592773,
+   "back_share_next": 0.0019125716062262654
   }
  },
  "main_figure": [
   "success: alhambra s3 t30",
-  "hard: bannerman s1 t0"
+  "hard: pantheon s1 t50"
  ]
 }

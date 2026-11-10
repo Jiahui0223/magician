@@ -77,12 +77,12 @@ def main():
           "| 划分 | 方法 | AUC@20 | AUC@50 | AUC@100 | Final |", "|---|---|---|---|---|---|"]
     for g in ("Train-6", "Dev-5", "Test-3", "Dev+Test-8"):
         for m in ("MAG-B", "V3-T0-D1"):
-            v = [r for r in t2 if r["split"] == g and r["method_id"] == m and r["row_kind_or_metric"] == "value"]
+            v = {r["metric"]: r for r in t2 if r["split"] == g and r["method_id"] == m and r["row_type"] == "scene_mean"}
             if v:
-                R.append(f"| {g} | {L.METHODS[m]['display']} | " + " | ".join(f3(v[0][n]) for n in ("AUC@20", "AUC@50", "AUC@100", "Final")) + " |")
-        d = {r["row_kind_or_metric"]: r for r in t2 if r["split"] == g and r["method_id"] == "V3-T0-D1 minus MAG-B"}
+                R.append(f"| {g} | {L.METHODS[m]['display']} | " + " | ".join(f3(v[n]["value"]) for n in ("AUC@20", "AUC@50", "AUC@100", "Final")) + " |")
+        d = {r["metric"]: r for r in t2 if r["split"] == g and r["method_id"] == "V3-T0-D1 minus MAG-B"}
         if d:
-            R.append(f"| {g} | Δ Ours − MAGICIAN [95% CI] | " + " | ".join(f"{f3(d[n]['AUC@20'], 1)} [{f3(d[n]['Cov@20'], 1)}, {f3(d[n]['AUC@50'], 1)}]" for n in ("AUC@20", "AUC@50", "AUC@100", "Final")) + " |")
+            R.append(f"| {g} | Δ Ours − MAGICIAN [95% CI]（胜 / 负场景） | " + " | ".join(f"{f3(d[n]['value'], 1)} [{f3(d[n]['ci95_lo'], 1)}, {f3(d[n]['ci95_hi'], 1)}] {d[n]['scene_wins']}/{d[n]['scene_losses']}" for n in ("AUC@20", "AUC@50", "AUC@100", "Final")) + " |")
     R += ["", "- 这些是 **T0 的留出场景**（T0 的训练与选模从未使用 Dev-5 / Test-3），不是\"两种方法都没见过的场景\"：MAGICIAN 用的 MACARONS 权重在 14 个场景中的 8 个上训练过（`split_manifest.csv` 逐场景列出）。",
           "- Test-3 对系统设计不是盲测：此前的规划器变体在 All-14（含 Test-3）上评过。Test-3 只有 3 个场景，CI 很宽。", ""]
     # Table 3
@@ -107,8 +107,16 @@ def main():
             if r["metric"] in ("AUC@20", "AUC@100", "Final"):
                 R.append(f"| {r['depth']} | {r['metric']} | {r['noise_maps']} | {' / '.join(f3(x) for x in r['all14_value_per_noise_map'].split(';'))} | {f3(r['mean_over_noise_maps'])} | {float(r['sd_over_noise_maps(ddof1)']):.4f} | {f3(r['K4_value'])} | "
                          f"{f3(r['K4_minus_mean_K1(scene-paired)'], 1)} [{f3(r['ci95_lo'], 1)}, {f3(r['ci95_hi'], 1)}] |")
+    pk = rc(os.path.join(L.FIG, "table3", "k1_noise_pairing.csv"))
+    pair_txt = "K = 1 用 K = 4 噪声组的第 0 张噪声图（同种子；bf16 批大小不同，所以不是逐位相同）。"
+    if pk:
+        v0 = [r for r in pk if r["noise_map"] == "0"]
+        pair_txt = (f"K = 1 用 K = 4 噪声组的第 0 张噪声图（同种子）。在 t = 0（各配置状态完全相同）的 {len(v0)} 个 (场景, 起点) 上，K = 1 的各候选一步价值与 K = 4 第 0 个样本的相对差：中位数 "
+                    f"{np.median([float(r['median_rel_diff_to_K4_sample_j']) for r in v0]):.4f}、最大 {max(float(r['max_rel_diff_to_K4_sample_j']) for r in v0):.3f}；K = 4 四个样本之间的相对离散度中位数 "
+                    f"{np.median([float(r['median_rel_spread_of_the_4_K4_samples']) for r in v0]):.3f}；最接近的样本就是第 0 个（允许并列）的占 {sum(int(r['closest_is_j(ties allowed)']) for r in v0)}/{len(v0)}；逐位相同 {sum(int(r['bitwise_equal']) for r in v0)}/{len(v0)}"
+                    "（bf16 下批大小不同造成舍入级差异）。明细 `fig/table3/k1_noise_pairing.csv`。")
     R += ["", "- 四格使用同一冻结 T0 checkpoint、模拟器、候选、噪声键、value_cov（eps 1.0、cell 1.0）、λ = 0、R10、Euler 10；深度 1 的分数是 value_cov 的样本均值，不是 DistP1。",
-          "- K = 1 用 K = 4 噪声组的第 0 张噪声图（同种子；bf16 批大小不同导致非逐位相同，t = 0 的相对差 ≤ 2.5%）。", ""]
+          "- " + pair_txt, ""]
     # Figures
     cm = rc(os.path.join(L.FIG, "fig3", "curve_methods.csv"))
     R += ["## Fig 3 — 覆盖曲线与累计 AUC", "", "路径：`fig/fig3/{fig3_combined.pdf, fig3_combined.png, coverage_curve.pdf, auc_curve.pdf, fig3_combined_ci.pdf, fig3_data.csv, curve_methods.csv}`", "",
@@ -133,6 +141,29 @@ def main():
             R.append(f"| {r['official_name']} | {r['split']} | " + " | ".join(f3(r[c]) for c in cols) + f" | {f3(r['delta_ours_minus_magician'], 1)} ± {float(r['delta_se_over_5_paired_starts']):.3f} | {r['starts_won_of_5']}/5 |")
         lose = [r["official_name"] for r in ps if float(r["delta_ours_minus_magician"]) < 0]
         R += ["", f"14 个轴统一 0–1 标尺，按冻结场景顺序；Ours 低于 MAGICIAN 的场景：{('、'.join(lose)) if lose else '无'}（没有隐藏）。", ""]
+    # benchmark audit: official start poses inside the mesh (sensitivity only; the protocol numbers above are unchanged)
+    sp = os.path.join(L.MAN, "start_pose_backface_summary.json")
+    if os.path.exists(sp):
+        S = json.load(open(sp))
+        bad = [tuple(x.split(":")) for x in S["start_pose_inside_mesh"]]
+        bad = {(a_, int(b_)) for a_, b_ in bad}
+        E = {m: L.load_manifest(m) for m in ("V3-T0-D1", "MAG-B")}
+        names = ["AUC@20", "AUC@50", "AUC@100", "Cov@20", "Final"]
+
+        def agg(m, drop):
+            return [float(np.mean([np.mean([L.metric(E[m][(s_, k)]["coverage_official"], n) for k in range(5) if (s_, k) not in drop]) for s_ in L.SCENE_ORDER])) for n in names]
+        R += ["## 基准审计：相机在网格内部的官方起点（敏感性分析，不替换上面的协议数值）", "", "路径：`manifest/start_pose_backface.csv`、`manifest/start_pose_backface_summary.json`（脚本 `scripts/audit_start_backface.py`）", "",
+              "对 14 个场景 × 5 个官方起点，在 V3-T0-D1 episode 的第 0 / 10 / 20 / 50 步位姿上渲染，统计看到网格**背面**的像素占比（相机在摄影测量网格内部或下方；模拟器的渲染器不剔除背面）。占比 ≥ 5% 的：", "",
+              "| 场景:起点 | 划分 | 背面占比 t = 0 / 10 / 20 / 50 |", "|---|---|---|"]
+        for k, v in S["flagged_any_step"].items():
+            sc, st = k.split(":")
+            R.append(f"| {k} | {L.SPLIT[sc]} | " + " / ".join(f"{v[str(t)]:.2f}" for t in (0, 10, 20, 50)) + " |")
+        R += ["", f"起点位姿本身（t = 0）在网格内的有 {len(bad)} 个：{'、'.join(S['start_pose_inside_mesh'])}。它们是 MAGICIAN 的官方起点，所有方法面对的完全相同，**本轮所有表格都保留它们**。去掉这 {len(bad)} 个起点后的对比（仅作敏感性参考）：", "",
+              "| 口径 | 方法 | AUC@20 | AUC@50 | AUC@100 | Cov@20 | Final |", "|---|---|---|---|---|---|---|"]
+        for lab, drop in (("全部 70 条（协议口径）", set()), (f"去掉 {len(bad)} 个网格内起点（66 条）", bad)):
+            a_, b_ = agg("V3-T0-D1", drop), agg("MAG-B", drop)
+            R += [f"| {lab} | Ours | " + " | ".join(f"{x:.3f}" for x in a_) + " |", f"| | MAGICIAN | " + " | ".join(f"{x:.3f}" for x in b_) + " |", f"| | Ours − MAGICIAN | " + " | ".join(f"{x - y:+.3f}" for x, y in zip(a_, b_)) + " |"]
+        R += ["", "结论不受这些起点影响。pantheon 起点 2 的起点位姿正常，但 V3-T0-D1 的轨迹在第 10 步后进入网格内部（背面占比 34–49%）。", ""]
     open(os.path.join(L.REP, "RESULTS.md"), "w").write("\n".join(R) + "\n")
     # ------------------------------------------------------------------------------------------------ MISSING
     M = [f"# MISSING — 尚缺的 episode 与可直接执行的下一步（生成于 {now}）", "", "| 方法 / 配置 | 完成 | 缺失 | 失败（放弃） | 状态 |", "|---|---|---|---|---|"]

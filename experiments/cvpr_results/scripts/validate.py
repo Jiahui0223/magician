@@ -115,10 +115,12 @@ def main():
     t2 = rows_csv(os.path.join(L.FIG, "table2", "table2_splits.csv"))
     worst = 0.0
     for r in t2:
-        if r["row_kind_or_metric"] == "value" and r["method_id"] in ("MAG-B", "V3-T0-D1"):
-            for n in ("AUC@20", "AUC@50", "AUC@100", "Final"):
-                worst = max(worst, abs(from_manifest(r["method_id"], L.GROUPS[r["split"]], n) - float(r[n])))
-    add(3, "Table 2 values == recomputation from the manifest; split sizes 6 / 5 / 3 / 8 from the registry", worst < 1e-12 and [len(L.GROUPS[g]) for g in ("Train-6", "Dev-5", "Test-3", "Dev+Test-8")] == [6, 5, 3, 8], f"max abs diff {worst:.1e}")
+        if r["row_type"] == "scene_mean":
+            worst = max(worst, abs(from_manifest(r["method_id"], L.GROUPS[r["split"]], r["metric"]) - float(r["value"])))
+        else:
+            a_, b_ = r["method_id"].split(" minus ")
+            worst = max(worst, abs(from_manifest(a_, L.GROUPS[r["split"]], r["metric"]) - from_manifest(b_, L.GROUPS[r["split"]], r["metric"]) - float(r["value"])))
+    add(3, "Table 2 values and paired differences == recomputation from the manifest; split sizes 6 / 5 / 3 / 8 from the registry", worst < 1e-12 and [len(L.GROUPS[g]) for g in ("Train-6", "Dev-5", "Test-3", "Dev+Test-8")] == [6, 5, 3, 8], f"max abs diff {worst:.1e}")
     add(3, "documentation of n scenes / n starts / formula / CI method", os.path.exists(os.path.join(L.MAN, "protocol.json")), "manifest/protocol.json")
     # ---------------------------------------------------------------- gate 4: Table 3
     kd = ["V3-T0-K1D1", "V3-T0-K4D1", "V3-T0-K1D2", "V3-T0-D1"]
@@ -141,6 +143,14 @@ def main():
             if not ok:
                 badk.append((m, k))
     add(4, "Table 3: every recorded episode ran the intended K / depth with the same T0 checkpoint, frozen policy files, value_cov parameters, lambda 0, R10, noise map 0", not badk, f"{sum(n_kd.values())} episodes checked, {len(badk)} mismatches")
+    pk = os.path.join(L.FIG, "table3", "k1_noise_pairing.csv")
+    if os.path.exists(pk) and rows_csv(pk):
+        v = rows_csv(pk)
+        ck = "closest_is_j(ties allowed)"
+        add(4, "Table 3: every K = 1 run used the intended noise map: planner handshake noise offset = j, and at t = 0 its per-candidate values are closest (ties allowed) to sample j of the K = 4 set",
+            all(r[ck] == "1" and r["handshake_noise_offset_is_j"] == "1" for r in v),
+            f"closest {sum(r[ck] == '1' for r in v)}/{len(v)} (of which ties {sum(r['tie_between_K4_samples'] == '1' for r in v)}), handshake {sum(r['handshake_noise_offset_is_j'] == '1' for r in v)}/{len(v)}; "
+            f"median relative difference {np.median([float(r['median_rel_diff_to_K4_sample_j']) for r in v]):.4f}")
     reg = os.path.join(L.OV, "logs", "regression_check.txt")
     add(4, "runner regression: K4 / depth 2 reproduces V3-T0-D1 and K4 / depth 1 (T1 weights) reproduces V3-H1 bitwise", os.path.exists(reg) and "REGRESSION PASS" in open(reg).read(), reg)
     # ---------------------------------------------------------------- gate 5: Fig. 4
@@ -163,7 +173,7 @@ def main():
         add(6, "Fig. 5: 14 scenes in the frozen order, values == manifest, one common 0-1 radial scale, no scene dropped", len(p) == 14 and [r["scene_id"] for r in p] == L.SCENE_ORDER and d < 1e-12
             and "set_ylim(0, 1.0)" in open(os.path.join(L.CV, "scripts", "make_figures.py")).read(), f"max abs diff {d:.1e}")
     # ---------------------------------------------------------------- gate 7: reproducibility
-    outs = sorted(glob.glob(os.path.join(L.FIG, "table*", "*")) + glob.glob(os.path.join(L.FIG, "fig3", "*")) + glob.glob(os.path.join(L.FIG, "fig5", "*")))
+    outs = sorted(p for p in glob.glob(os.path.join(L.FIG, "table*", "*")) + glob.glob(os.path.join(L.FIG, "fig3", "*")) + glob.glob(os.path.join(L.FIG, "fig5", "*")) if not p.endswith("k1_noise_pairing.csv"))
     before = {p: L.sha_file(p) for p in outs}
     for s in ("make_tables.py", "make_figures.py"):
         subprocess.run([PY, os.path.join(L.CV, "scripts", s)], capture_output=True, cwd=L.REPO)
