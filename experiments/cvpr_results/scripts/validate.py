@@ -135,6 +135,9 @@ def main():
             a_, b_ = r["method_id"].split(" minus ")
             worst = max(worst, abs(from_manifest(a_, L.GROUPS[r["split"]], r["metric"]) - from_manifest(b_, L.GROUPS[r["split"]], r["metric"]) - float(r["value"])))
     add(3, "Table 2 values and paired differences == recomputation from the manifest; split sizes 6 / 5 / 3 / 8 from the registry", worst < 1e-12 and [len(L.GROUPS[g]) for g in ("Train-6", "Dev-5", "Test-3", "Dev+Test-8")] == [6, 5, 3, 8], f"max abs diff {worst:.1e}")
+    t2v = rows_csv(os.path.join(L.FIG, "table2", "table2_v2.csv"))
+    w2 = max(abs(from_manifest(r["method_id"], L.GROUPS[r["split"]], k) - float(r[k])) for r in t2v for k in ("AUC@20", "AUC@50", "AUC@100", "Cov@20", "Cov@50", "Final"))
+    add(3, "Table 2 paper layout (table2_v2.csv: MAGICIAN vs Ours, 4 splits x 6 columns) == manifest recomputation", w2 < 1e-12 and len(t2v) == 8, f"{len(t2v)} rows, max abs diff {w2:.1e}")
     add(3, "documentation of n scenes / n starts / formula / CI method", os.path.exists(os.path.join(L.MAN, "protocol.json")), "manifest/protocol.json")
     # ---------------------------------------------------------------- gate 4: Table 3
     kd = ["V3-T0-K1D1", "V3-T0-K4D1", "V3-T0-K1D2", "V3-T0-D1"]

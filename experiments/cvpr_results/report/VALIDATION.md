@@ -1,4 +1,4 @@
-# VALIDATION — 自动质量关口（生成于 2026-11-10 15:58:34，git 8801598d8baa）
+# VALIDATION — 自动质量关口（生成于 2026-11-10 16:15:33，git d674bbbe6600）
 
 由 `experiments/cvpr_results/scripts/validate.py` 生成；每一项都从磁盘上的文件重新计算。PENDING = 相关运行尚未完成，不能判定，**不等于通过**。
 
@@ -20,6 +20,7 @@
 | 3 | Table 1: BLOCKED baselines are blank, no paper-reported number is inserted | **PASS** |  |
 | 3 | Table 1: methods with < 70 episodes show a dash (never a partial All-14 number) | **PASS** | partial now: [] |
 | 3 | Table 2 values and paired differences == recomputation from the manifest; split sizes 6 / 5 / 3 / 8 from the registry | **PASS** | max abs diff 2.8e-16 |
+| 3 | Table 2 paper layout (table2_v2.csv: MAGICIAN vs Ours, 4 splits x 6 columns) == manifest recomputation | **PASS** | 8 rows, max abs diff 0.0e+00 |
 | 3 | documentation of n scenes / n starts / formula / CI method | **PASS** | manifest/protocol.json |
 | 4 | Table 3: the four cells have the same 14 scenes x 5 starts | **PASS** | {'V3-T0-K1D1': 70, 'V3-T0-K4D1': 70, 'V3-T0-K1D2': 70, 'V3-T0-D1': 70} |
 | 4 | Table 3: every recorded episode ran the intended K / depth with the same T0 checkpoint, frozen policy files, value_cov parameters, lambda 0, R10, noise map 0 | **PASS** | 280 episodes checked, 0 mismatches |
@@ -29,9 +30,9 @@
 | 5 | Fig. 4: selected examples are eligible under the pre-declared rule, cover train / dev / test, include success and hard cases | **PASS** | ['train / success: bannerman s0 t0', 'train / hard: bannerman s2 t30', 'dev / hard: pantheon s1 t50', 'dev / success: pantheon s4 t20', 'test / success: alhambra s3 t30', 'test / hard: alhambra s4 t20'] |
 | 5 | Fig. 4: the four panels are the K = 4 samples of ONE state and ONE candidate (same stored arrays), one shared colour scale; the real depth is the next observation, read only for display | **PASS** | fig4_scan.py reads service records + planner logs only (no mesh / GT loader) |
 | 6 | Fig. 5: 14 scenes in the frozen order, values == manifest, one common 0-1 radial scale, no scene dropped | **PASS** | max abs diff 0.0e+00 |
-| 7 | re-running make_tables.py + make_figures.py reproduces every CSV / TeX / PDF / PNG byte-for-byte | **PASS** | 44 files, 0 differ [] |
+| 7 | re-running make_tables.py + make_figures.py reproduces every CSV / TeX / PDF / PNG byte-for-byte | **PASS** | 48 files, 0 differ [] |
 
-合计：PASS 26，FAIL 0，PENDING 0。
+合计：PASS 27，FAIL 0，PENDING 0。
 
 ## 复现命令
 

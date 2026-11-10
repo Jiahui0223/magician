@@ -8,6 +8,7 @@ set -e
 $PY $S/build_manifest.py
 $PY $S/make_tables.py
 $PY $S/make_table1_v2.py
+$PY $S/make_table2_v2.py
 $PY $S/table1_metric_profile.py
 $PY $S/make_figures.py
 $PY $S/table3/k1_pairing_check.py
