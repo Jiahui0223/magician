@@ -107,6 +107,20 @@ def main():
             worst = max(worst, abs(from_manifest(m, L.SCENE_ORDER, n) - float(t1full[m][n])))
             nchk += 1
     add(3, "Table 1 values == recomputation from manifest/episodes.csv (the immutable intermediate)", worst < 1e-12, f"{nchk} cells, max abs diff {worst:.1e}")
+    v2 = rows_csv(os.path.join(L.FIG, "table1", "table1_v2.csv"))
+    v2map = {"AUC@20 (up)": "AUC@20", "AUC@50 (up)": "AUC@50", "AUC@100 (up)": "AUC@100", "Coverage@20 (up)": "Cov@20", "Coverage@50 (up)": "Cov@50", "Final coverage = Coverage@100 (up)": "Final"}
+    disp = {L.METHODS[m]["display"]: m for m in L.TABLE1}
+    bad_v2, n_v2 = [], 0
+    for r in v2:
+        m = disp[r["Method"]]
+        for col, met in v2map.items():
+            if r["status"] == "COMPLETE":
+                n_v2 += 1
+                if r[col] != f"{from_manifest(m, L.SCENE_ORDER, met):.3f}":
+                    bad_v2.append((m, met))
+            elif r[col] != "":
+                bad_v2.append((m, met, "value for a non-complete method"))
+    add(3, "Table 1 paper layout (table1_v2.csv: AUC@20/50/100, Coverage@20/50, Final) == manifest recomputation rounded to 3 decimals; blocked rows empty", not bad_v2, f"{n_v2} cells, mismatches {bad_v2[:3]}")
     paper = rows_csv(os.path.join(L.FIG, "table1", "table1_paper.csv"))
     blk = [r for r in paper if r["Method"].startswith(("SCONE", "FisherRF"))]
     add(3, "Table 1: BLOCKED baselines are blank, no paper-reported number is inserted", all(all(r[c] == "—" for c in ("AUC@20", "AUC@50", "AUC@100", "Cov@20", "Final")) for r in blk) and len(blk) == 2)

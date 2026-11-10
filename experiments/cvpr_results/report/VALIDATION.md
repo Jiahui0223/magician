@@ -1,4 +1,4 @@
-# VALIDATION — 自动质量关口（生成于 2026-11-10 15:53:32，git 5d16124d9c18）
+# VALIDATION — 自动质量关口（生成于 2026-11-10 15:58:34，git 8801598d8baa）
 
 由 `experiments/cvpr_results/scripts/validate.py` 生成；每一项都从磁盘上的文件重新计算。PENDING = 相关运行尚未完成，不能判定，**不等于通过**。
 
@@ -16,6 +16,7 @@
 | 2 | V3-T0-D1: this library == the independent Table 1 aggregator (table1/results/per_model.csv) | **PASS** | max abs diff 2.22e-16 |
 | 2 | MAG-B: this library == the independent Table 1 aggregator (table1/results/per_model.csv) | **PASS** | max abs diff 2.22e-16 |
 | 3 | Table 1 values == recomputation from manifest/episodes.csv (the immutable intermediate) | **PASS** | 28 cells, max abs diff 0.0e+00 |
+| 3 | Table 1 paper layout (table1_v2.csv: AUC@20/50/100, Coverage@20/50, Final) == manifest recomputation rounded to 3 decimals; blocked rows empty | **PASS** | 24 cells, mismatches [] |
 | 3 | Table 1: BLOCKED baselines are blank, no paper-reported number is inserted | **PASS** |  |
 | 3 | Table 1: methods with < 70 episodes show a dash (never a partial All-14 number) | **PASS** | partial now: [] |
 | 3 | Table 2 values and paired differences == recomputation from the manifest; split sizes 6 / 5 / 3 / 8 from the registry | **PASS** | max abs diff 2.8e-16 |
@@ -30,7 +31,7 @@
 | 6 | Fig. 5: 14 scenes in the frozen order, values == manifest, one common 0-1 radial scale, no scene dropped | **PASS** | max abs diff 0.0e+00 |
 | 7 | re-running make_tables.py + make_figures.py reproduces every CSV / TeX / PDF / PNG byte-for-byte | **PASS** | 44 files, 0 differ [] |
 
-合计：PASS 25，FAIL 0，PENDING 0。
+合计：PASS 26，FAIL 0，PENDING 0。
 
 ## 复现命令
 
