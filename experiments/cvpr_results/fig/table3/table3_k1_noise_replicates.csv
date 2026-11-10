@@ -1,0 +1,1 @@
+depth,metric,n_noise_sets_complete,noise_maps,all14_value_per_noise_map,mean_over_noise_maps,sd_over_noise_maps(ddof1),min,max,K4_value,K4_minus_mean_K1(scene-paired),ci95_lo,ci95_hi

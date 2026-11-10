@@ -1,0 +1,129 @@
+{
+ "protocol_id": "table1-protocol-v1.0",
+ "protocol": "frozen M-protocol EpisodeSim (exp3b m_t6_sim), Macarons++ official settings grid and the 5 official start poses, C0 + 100 moves = 101 coverage values, legal actions = MAGICIAN get_valid_neighbors (unvisited first) + GT segment test in the simulator only, MAGICIAN official coverage (eps = 1.0 runtime units), replay-verified by task2 t25_out_cov.py",
+ "protocol_documents": [
+  "experiments/cvpr_results/table1/PROTOCOL.md",
+  "experiments/cvpr_results/table1/FROZEN_CONFIG.yaml",
+  "experiments/cvpr_results/protocol_audit/"
+ ],
+ "main_method": {
+  "id": "V3-T0-D1",
+  "checkpoint": "work_dirs/exp6_v3/task0_vae/checkpoints/final.pt",
+  "sha256": "7ed0ddd72bb91d1e8c6563f3192201c24a49fe862b49d2387ea8770915145ab6",
+  "xattn_enabled": false,
+  "K": 4,
+  "euler_steps": 10,
+  "planner": "D1 = frozen D-v1 policy d1 (depth 2, exhaustive, lambda_risk 0)",
+  "encoder_input": "D100 map",
+  "novelty_reference": "S10 observed points",
+  "latent_refresh": "R10 (steps 0, 10, ..., 90)"
+ },
+ "metrics": {
+  "curve": "C[0..100] official MAGICIAN coverage (may decrease; never cummax-ed or smoothed)",
+  "AUC@T": "trapezoid(C[0..T], dx = 1) / T (numpy.trapz; numpy.trapezoid is the same function in numpy >= 2)",
+  "Cov@T": "C[T]",
+  "Final": "C[100]",
+  "aggregation": "mean over the 5 starts of a scene, then unweighted mean over scenes",
+  "uncertainty": "paired scene-level bootstrap, 10,000 draws, seed 0, percentile 95 % interval (resampling unit = scene; 14 scenes, small sample)"
+ },
+ "paper_columns_preregistered": [
+  "AUC@20",
+  "AUC@50",
+  "AUC@100",
+  "Cov@20",
+  "Final"
+ ],
+ "paper_columns_source": "cvpr_overnight_experiment_plan.md section 3 (fixed before the new runs of 2026-11-10)",
+ "T_full": [
+  20,
+  34,
+  45,
+  50,
+  60,
+  78,
+  80,
+  90,
+  100
+ ],
+ "scene_order": [
+  "dunnottar",
+  "colosseum",
+  "bannerman",
+  "pantheon",
+  "redeemer",
+  "liberty",
+  "pisa",
+  "fushimi",
+  "alhambra",
+  "neuschwanstein",
+  "eiffel",
+  "bridge",
+  "barts",
+  "sestino_museum"
+ ],
+ "splits": {
+  "Train-6": [
+   "dunnottar",
+   "bannerman",
+   "redeemer",
+   "liberty",
+   "pisa",
+   "fushimi"
+  ],
+  "Dev-5": [
+   "colosseum",
+   "pantheon",
+   "eiffel",
+   "barts",
+   "sestino_museum"
+  ],
+  "Test-3": [
+   "alhambra",
+   "neuschwanstein",
+   "bridge"
+  ],
+  "Dev+Test-8": [
+   "colosseum",
+   "pantheon",
+   "eiffel",
+   "barts",
+   "sestino_museum",
+   "alhambra",
+   "neuschwanstein",
+   "bridge"
+  ],
+  "All-14": [
+   "dunnottar",
+   "colosseum",
+   "bannerman",
+   "pantheon",
+   "redeemer",
+   "liberty",
+   "pisa",
+   "fushimi",
+   "alhambra",
+   "neuschwanstein",
+   "eiffel",
+   "bridge",
+   "barts",
+   "sestino_museum"
+  ]
+ },
+ "starts": "settings.json start_positions[0..4] (official)",
+ "noise_key_template": "exp5-V2|{scene}|s{start}|rep0|t{t_r}|k{k}",
+ "table3": {
+  "config": "experiments/cvpr_results/scripts/table3/kd_config.yaml (KD-v1)",
+  "runner": "experiments/cvpr_results/scripts/table3/{sim_out_kd,kd_out_planner,kd_policy}.py",
+  "hashes": {
+   "kd_config.yaml": "84fb12e39192488556584550fafed7a5d7898250a9f585bd081409bed642bcc5",
+   "kd_policy.py": "3c61da691a5ee464c2c26ceffd891c08f280c171c54eed77b2653c84cb4c4b5a",
+   "kd_out_planner.py": "3bb1cc05c6d9d3af853577202100796730f694f560b8e615b92a08376d332fe6",
+   "sim_out_kd.py": "146ed02ae43c5e49127f487a0bbbda0df6bddc450b37770150b73add2a9e9442"
+  },
+  "frozen_d_config_sha256": "e53c230db866e821b55fc40c0030c5eff448d12cbddcb2fbee00b4044b43c0b3",
+  "frozen_d_policy_sha256": "c8418279771e787eaaa0404f421602c9b95851e67d14aed1f717690230e48ecb",
+  "frozen_h_policy_sha256": "ccfdf4af2783be3f1e7717bc644daf31a2fe994bcf312fdb4e4269ddf017a94a"
+ },
+ "git_head": "b8d65febc72b260e7cdd9aa2fcbc1058a8f75038",
+ "generated": "2026-11-10 05:20:53"
+}

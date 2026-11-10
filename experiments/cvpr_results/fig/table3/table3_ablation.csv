@@ -1,0 +1,5 @@
+method_id,K,planning_depth,n_completed,n_expected,n_scenes_complete,scenes_used,AUC@20,AUC@50,AUC@100,Cov@20,Final,planner_decision_s_per_step_shared_gpu
+V3-T0-K1D1,1,1,0,70,0,preliminary subset (0 of 14 scenes complete in all four cells),,,,,,
+V3-T0-K4D1,4,1,20,70,0,preliminary subset (0 of 14 scenes complete in all four cells),,,,,,2.9178297083377838
+V3-T0-K1D2,1,2,18,70,0,preliminary subset (0 of 14 scenes complete in all four cells),,,,,,3.848443285756641
+V3-T0-D1,4,2,70,70,14,preliminary subset (0 of 14 scenes complete in all four cells),,,,,,8.161821232318879

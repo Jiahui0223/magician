@@ -1,0 +1,19 @@
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{llcccccc}
+\toprule
+Samples & Plan depth & Episodes & AUC@20 & AUC@50 & AUC@100 & Cov@20 & Final \\
+\midrule
+K = 1 & 1 & 0/70 & -- & -- & -- & -- & -- \\
+K = 4 & 1 & 20/70 & -- & -- & -- & -- & -- \\
+\midrule
+K = 1 & 2 & 18/70 & -- & -- & -- & -- & -- \\
+K = 4 & 2 (Ours) & 70/70 & -- & -- & -- & -- & -- \\
+\bottomrule
+\end{tabular}
+\caption{K x planning-depth ablation on the frozen V3-T0 (preliminary subset (0 of 14 scenes complete in all four cells); scene-equal means).}
+\label{tab:kdepth}
+\end{table}
+% Scenes used: preliminary subset (0 of 14 scenes complete in all four cells). Same frozen V3-T0 checkpoint, simulator, candidates, noise keys, value_cov (eps 1 m, 1 m cells), lambda 0 in every row; only K and the planning depth change.
+% Depth 1 = one-step value_cov averaged over the K samples (not the DistP1 score). K = 1 uses noise map 0 of the K = 4 set. Effects with scene-bootstrap CIs: table3_effects.csv.

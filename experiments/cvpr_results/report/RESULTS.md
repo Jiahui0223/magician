@@ -1,0 +1,113 @@
+# RESULTS — CVPR overnight 2026-11-10（生成于 2026-11-10 05:23:33，git b8d65febc72b）
+
+由 `scripts/make_reports.py` 从生成的 CSV / manifest 自动汇总。所有数值 = 冻结协议（14 场景 × 5 官方起点 × 100 步，MAGICIAN 官方覆盖，场景等权）下的真实 episode；未跑满 70 条的方法不出现在 All-14 数值里。CI = 场景级配对 bootstrap 95%（重抽样单位 = 场景）。
+
+## Table 1 — Main benchmark（All-14）
+
+路径：`fig/table1/{table1.pdf, table1.png, table1.tex, table1_paper.csv, table1_all14_full.csv, table1_auc_cov_long.csv, table1_auc_wide.csv, table1_cov_wide.csv, table1_paired_ours_minus_baseline.csv, provenance.csv}`
+
+| 方法 | 来源 | 状态 | episode | AUC@20 | AUC@50 | AUC@100 | Cov@20 | Final |
+|---|---|---|---|---|---|---|---|---|
+| Random Walk | re-evaluated, adapted | PARTIAL | 24/70 | — | — | — | — | — |
+| SCONE | BLOCKED | BLOCKED | 0/70 | — | — | — | — | — |
+| MACARONS | re-evaluated, adapted | NOT_RUN | 0/70 | — | — | — | — | — |
+| FisherRF | BLOCKED | BLOCKED | 0/70 | — | — | — | — | — |
+| MAGICIAN (beam 10x10) | re-evaluated | COMPLETE | 70/70 | 0.307 | 0.544 | 0.711 | 0.537 | 0.906 |
+| Ours (V3-T0 + D1) | re-evaluated | COMPLETE | 70/70 | 0.420 | 0.633 | 0.763 | 0.646 | 0.911 |
+
+Ours − 基线（场景配对差，[95% CI]，胜 / 负场景数）：
+
+| 基线 | AUC@20 | AUC@50 | AUC@100 | Cov@20 | Final |
+|---|---|---|---|---|---|
+| MAGICIAN (beam 10x10) | +0.113 [+0.073, +0.155] 13/1 | +0.089 [+0.048, +0.132] 12/2 | +0.053 [+0.019, +0.091] 12/2 | +0.109 [+0.059, +0.158] 13/1 | +0.004 [-0.027, +0.032] 6/8 |
+
+- SCONE、FisherRF：**BLOCKED**（仓库内没有可在冻结协议下运行的实现，见 `MISSING.md`）；表中留空，未填入任何论文数字。
+- Random Walk、MACARONS 标 †（adapted）：在同一模拟器 / 起点 / 合法动作 / 官方覆盖下由 EXP3b 的冻结运行器运行，不是 MAGICIAN 论文作者的实现；MACARONS 与 MAGICIAN 使用同一份作者权重（在 14 个评测场景中的 8 个上训练过）。
+- 论文报告值（不同实现、论文只有 AUC@100 / Final）只在 `provenance.csv` 的参考列里。
+
+## Table 2 — T0 留出场景上的比较
+
+路径：`fig/table2/{table2.pdf, table2.png, table2.tex, table2_splits.csv, split_manifest.csv}`
+
+| 划分 | 方法 | AUC@20 | AUC@50 | AUC@100 | Final |
+|---|---|---|---|---|---|
+| Train-6 | MAGICIAN (beam 10x10) | 0.326 | 0.592 | 0.761 | 0.945 |
+| Train-6 | Ours (V3-T0 + D1) | 0.438 | 0.662 | 0.795 | 0.940 |
+| Train-6 | Δ Ours − MAGICIAN [95% CI] | +0.111 [—, +0.028] | +0.071 [—, +0.012] | +0.034 [—, +0.004] | -0.005 [—, -0.010] |
+| Dev-5 | MAGICIAN (beam 10x10) | 0.317 | 0.543 | 0.695 | 0.883 |
+| Dev-5 | Ours (V3-T0 + D1) | 0.439 | 0.645 | 0.760 | 0.889 |
+| Dev-5 | Δ Ours − MAGICIAN [95% CI] | +0.122 [—, +0.073] | +0.102 [—, +0.018] | +0.064 [—, -0.018] | +0.006 [—, -0.077] |
+| Test-3 | MAGICIAN (beam 10x10) | 0.252 | 0.452 | 0.638 | 0.867 |
+| Test-3 | Ours (V3-T0 + D1) | 0.355 | 0.557 | 0.707 | 0.888 |
+| Test-3 | Δ Ours − MAGICIAN [95% CI] | +0.103 [—, +0.044] | +0.105 [—, +0.058] | +0.070 [—, +0.045] | +0.021 [—, -0.005] |
+| Dev+Test-8 | MAGICIAN (beam 10x10) | 0.293 | 0.509 | 0.674 | 0.877 |
+| Dev+Test-8 | Ours (V3-T0 + D1) | 0.407 | 0.612 | 0.740 | 0.888 |
+| Dev+Test-8 | Δ Ours − MAGICIAN [95% CI] | +0.115 [—, +0.078] | +0.103 [—, +0.048] | +0.066 [—, +0.012] | +0.011 [—, -0.041] |
+
+- 这些是 **T0 的留出场景**（T0 的训练与选模从未使用 Dev-5 / Test-3），不是"两种方法都没见过的场景"：MAGICIAN 用的 MACARONS 权重在 14 个场景中的 8 个上训练过（`split_manifest.csv` 逐场景列出）。
+- Test-3 对系统设计不是盲测：此前的规划器变体在 All-14（含 Test-3）上评过。Test-3 只有 3 个场景，CI 很宽。
+
+## Table 3 — K × 规划深度（冻结 V3-T0）
+
+路径：`fig/table3/{table3.pdf, table3.png, table3.tex, table3_ablation.csv, table3_effects.csv, table3_k1_noise_replicates.csv, ablation_manifest.csv}`
+
+使用的场景：**preliminary subset (0 of 14 scenes complete in all four cells)**。
+
+| K | 深度 | episode | AUC@20 | AUC@50 | AUC@100 | Cov@20 | Final | 规划器每步决策秒数（共享 GPU 下实测） |
+|---|---|---|---|---|---|---|---|---|
+| 1 | 1 | 0/70 | — | — | — | — | — | — |
+| 4 | 1 | 20/70 | — | — | — | — | — | 2.918 |
+| 1 | 2 | 18/70 | — | — | — | — | — | 3.848 |
+| 4 | 2（主方法） | 70/70 | — | — | — | — | — | 8.162 |
+
+- 四格使用同一冻结 T0 checkpoint、模拟器、候选、噪声键、value_cov（eps 1.0、cell 1.0）、λ = 0、R10、Euler 10；深度 1 的分数是 value_cov 的样本均值，不是 DistP1。
+- K = 1 用 K = 4 噪声组的第 0 张噪声图（同种子；bf16 批大小不同导致非逐位相同，t = 0 的相对差 ≤ 2.5%）。
+
+## Fig 3 — 覆盖曲线与累计 AUC
+
+路径：`fig/fig3/{fig3_combined.pdf, fig3_combined.png, coverage_curve.pdf, auc_curve.pdf, fig3_combined_ci.pdf, fig3_data.csv, curve_methods.csv}`
+
+画出的方法（跑满 70 条的才画）：Random Walk（24/70，未画：PARTIAL）、SCONE（0/70，未画：BLOCKED）、MACARONS（0/70，未画：PARTIAL）、FisherRF（0/70，未画：BLOCKED）、MAGICIAN (beam 10x10)（70/70，已画）、Ours (V3-T0 + D1)（70/70，已画）。
+曲线是官方覆盖的场景等权平均，未做 cummax 或平滑；(b) 是 T = 1..100 的 AUC@T。`fig3_combined_ci` 带场景 bootstrap 95% 阴影（补充材料用）。
+
+## Fig 4 — 真实多假设深度
+
+路径：`fig/fig4/{hypothesis_depth.pdf, hypothesis_depth.png, hypothesis_depth_all.pdf, panels/, visualization_manifest.csv, selection.json}`
+
+候选池 180 个真实决策状态（每个划分 2 个场景 × 5 个起点 × 步 0 / 10 / … / 50），全部通过精确性校验（4× 网格哈希与每个样本的一步价值都等于规划器日志）；符合条件 94 个。按预先写在脚本里的规则选出：
+
+| 划分 / 类型 | 状态 | UNKNOWN 射线占比 | 样本间命中不一致占比 | 命中一致率（对真实深度） | 深度中位绝对误差 |
+|---|---|---|---|---|---|
+| train/success | bannerman 起点 0 步 0 | 1.00 | 0.046 | 0.988 | 3.97 |
+| train/hard | bannerman 起点 1 步 0 | 1.00 | 0.521 | 0.209 | 20.05 |
+| dev/success | pantheon 起点 4 步 20 | 0.20 | 0.050 | 0.971 | 11.74 |
+| dev/hard | pantheon 起点 1 步 50 | 0.31 | 0.039 | 0.232 | 0.67 |
+| test/success | alhambra 起点 3 步 30 | 0.45 | 0.048 | 0.976 | 1.50 |
+| test/hard | alhambra 起点 2 步 40 | 1.00 | 0.005 | 0.652 | 0.06 |
+
+主图 `hypothesis_depth` = success: alhambra s3 t30；hard: bannerman s1 t0；全部 6 个例子在 `hypothesis_depth_all` 和 `panels/`。
+k = 1..4 是同一模型的 4 个噪声样本（不是四种模型配置）；每个样本是沿候选视角射线解码出的首次命中深度，不是一个完整一致的 3D 世界。真实深度是执行后下一步的观测，只用于显示。
+
+## Fig 5 — 逐场景 AUC@20
+
+路径：`fig/fig5/{per_scene_radar.pdf, per_scene_radar.png, per_scene_delta.pdf, per_scene_delta.png, per_scene_auc20.csv}`
+
+| 场景 | 划分 | MAGICIAN (beam 10x10) | Ours (V3-T0 + D1) | Δ Ours − MAGICIAN（± 5 个配对起点的 SE） | 起点胜数 |
+|---|---|---|---|---|---|
+| Dunnottar Castle | train | 0.199 | 0.418 | +0.219 ± 0.065 | 5/5 |
+| Colosseum | dev | 0.351 | 0.434 | +0.083 ± 0.038 | 5/5 |
+| Bannerman Castle | train | 0.374 | 0.343 | -0.031 ± 0.031 | 2/5 |
+| Pantheon | dev | 0.189 | 0.230 | +0.041 ± 0.055 | 3/5 |
+| Christ the Redeemer | train | 0.301 | 0.570 | +0.270 ± 0.065 | 5/5 |
+| Statue of Liberty | train | 0.389 | 0.410 | +0.021 ± 0.031 | 3/5 |
+| Pisa Cathedral | train | 0.295 | 0.389 | +0.094 ± 0.025 | 5/5 |
+| Fushimi Castle | train | 0.401 | 0.496 | +0.095 ± 0.057 | 4/5 |
+| Alhambra Palace | test | 0.243 | 0.287 | +0.044 ± 0.081 | 3/5 |
+| Neuschwanstein Castle | test | 0.219 | 0.323 | +0.104 ± 0.045 | 4/5 |
+| Eiffel Tower | dev | 0.340 | 0.474 | +0.134 ± 0.048 | 5/5 |
+| Manhattan Bridge | test | 0.295 | 0.457 | +0.162 ± 0.008 | 5/5 |
+| Barts | dev | 0.415 | 0.604 | +0.189 ± 0.021 | 5/5 |
+| Sestino Museum | dev | 0.289 | 0.451 | +0.162 ± 0.051 | 5/5 |
+
+14 个轴统一 0–1 标尺，按冻结场景顺序；Ours 低于 MAGICIAN 的场景：Bannerman Castle（没有隐藏）。
+

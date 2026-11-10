@@ -1,0 +1,20 @@
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{lccccc}
+\toprule
+Method & AUC@20 & AUC@50 & AUC@100 & Cov@20 & Final \\
+\midrule
+Random Walk$^{\dagger}$ (24/70) & -- & -- & -- & -- & -- \\
+SCONE & -- & -- & -- & -- & -- \\
+MACARONS$^{\dagger}$ & -- & -- & -- & -- & -- \\
+FisherRF & -- & -- & -- & -- & -- \\
+MAGICIAN (beam 10x10) & 0.307 & 0.544 & 0.711 & 0.537 & 0.906 \\
+Ours (V3-T0 + D1) & \textbf{0.420} & \textbf{0.633} & \textbf{0.763} & \textbf{0.646} & \textbf{0.911} \\
+\bottomrule
+\end{tabular}
+\caption{Main benchmark on Macarons++ (All-14: 14 scenes x 5 starts, 100 steps, official coverage; scene-equal means). $^{\dagger}$ adapted implementation under the same frozen protocol; -- not available under this protocol.}
+\label{tab:main}
+\end{table}
+% All-14: 14 Macarons++ scenes x 5 official starts x 100 steps, official MAGICIAN coverage, scene-equal mean. Bold = best among the methods re-evaluated under this protocol.
+% † adapted implementation under the frozen protocol (see provenance.csv).  — = no runnable implementation under this protocol (BLOCKED) or not complete; paper-reported numbers are never mixed in.

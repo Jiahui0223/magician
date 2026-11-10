@@ -1,6 +1,6 @@
 # EXP6 V3 — 全局状态板（每次启动 / 结束一个运行就更新）
 
-**最近更新：2026-11-09 09:45（P13 XB ✅ COMPLETE：FINAL_REPORT.md（注意力排除、输入几何未丢信息、数据减半闭环不变、漏报 + 价值函数是剩余瓶颈）；P14 ✅ V3-T0-D1 = T1 + D1；gpu115 四卡空闲至 15:12，V3-T0-H0 待用户决定）**
+**最近更新：2026-11-10 05:25（P15 CVPR overnight：Table 3 三个缺失配置 + Random 基线闭环运行中（gpu114，job 3489889）；Table 1 / 2、Fig 3 / 4 / 5 首版已生成；MACARONS 与 K = 1 噪声复核待启动；详见 `experiments/cvpr_results/report/`）**
 标记：✅ 完成 · 🔄 正在跑 · ⏳ 等待（排队或依赖前项）· ❌ 失败（后面跟修复行）· ⬜ 未开始
 
 ## 0. 此刻在跑什么
@@ -226,4 +226,20 @@
 |---|---|---|---|---|
 | T1-T0D1 | 新行 `V3-T0-D1`：V3-T0（task0_vae final.pt，sha 7ed0ddd7…，无交叉注意力）+ 冻结 D1（与 V3-D1-H3-NORISK 同 d_policy / d_config），All-14 × 5 起点 = 70 条，官方覆盖重放核对后写入规范记录 | gpu115 4 卡，每卡 3 个 worker（dunnottar 单独先跑），`scripts/run_t0d1.sh` | `work_dirs/cvpr_results/table1/g3/logs/queue_gpu115_*.log`、`episodes/V3-T0-D1/` | ✅ 18:53 → 20:44，70 / 70，0 失败 0 重试，单条均 16.8 min（12 worker 并行），19.6 GPU-h。All-14：AUC@20 0.420 / Cov@20 0.646 / AUC@50 0.633 / AUC@100 0.763 / Final 0.911；对 T1 + D1 五项差均在 CI 内（AUC@20 −0.005 [−0.013, +0.003]）；对 MAG-B AUC@20 +0.113 [+0.073, +0.156]、Final +0.004 n.s. |
 | T1-T0D1-post | validate → aggregate → paper_tables refresh → README 变更日志 → 配对比较 | CPU | `table1/results/`、`paper_tables/`（172 + 441 项检查通过）、`table1/reports/V3_T0_D1_vs_T1_MAG.md`、`exp6_v3/figures/early_phase_vs_magician_t0.*`、`V3_T0_D1_MODEL_ARCHITECTURE.md` §7.2 | ✅ 20:50 |
+
+## P15 CVPR overnight（2026-11-10；`cvpr_overnight_experiment_plan.md`；产物 `experiments/cvpr_results/{fig,manifest,report,scripts}`）
+
+主方法固定为 V3-T0@40K + D1（无交叉注意力）。所有闭环在 gpu114 的分配 3489889（4 × L40S）内运行，走 Table 1 队列（闭环 → 官方覆盖重放 → 规范记录）。
+
+| 编号 | 内容 | 资源 | 日志 / 结果 | 状态 |
+|---|---|---|---|---|
+| O-0 | 预检查与审计：T0 sha / 无 xattn、70 + 70 条记录复算（T0 0.420 / 0.646 / 0.633 / 0.763 / 0.911；MAG 0.307 / 0.537 / 0.544 / 0.711 / 0.906）、基线可行性、Slurm 资源 | CPU | `cvpr_results/OVERNIGHT_AUDIT.md`、`OVERNIGHT_RUN_PLAN.md`、`manifest/` | ✅ 05:10 |
+| O-1 | Table 3 封装 KD-v1 + 回归：K4 深度 2 逐位复现 V3-T0-D1，K4 深度 1 + T1 逐位复现 V3-H1 | 4 卡各 1 条 | `work_dirs/cvpr_results/overnight_20261110/logs/regression_check.txt` | ✅ 04:43 PASS |
+| O-2 | Table 3 第一阶段：V3-T0-K4D1、V3-T0-K1D2、V3-T0-K1D1 各 70 条 | 10 worker | `table1/g3/logs/queue_gpu114_*.log`、`episodes/V3-T0-K*` | 🔄 04:43 起，约 0.9 条 / 分钟，预计 ~08:30 |
+| O-3 | Table 1 基线 Random Walk（adapted，70 条） | GPU 0 × 2 worker | `episodes/RANDOM` | 🔄 04:51 起，预计 ~06:20 |
+| O-4 | Table 1 基线 MACARONS（adapted，70 条） | 每卡 ≤ 2 worker | `episodes/MACARONS` | ⏳ 冒烟通过（逐位复现 T7a seed 0），第一阶段后启动 |
+| O-5 | K = 1 噪声复核（噪声图 1–3 × 深度 2 / 1，420 条，P2） | 同上 | `episodes/V3-T0-K1D*-N*` | ⏳ 窗口内只能完成一部分 |
+| O-6 | Fig 4：180 个状态的单状态前向 + 背面检查 + 按预先声明的规则选例 | GPU 1 / 2 / 3 空余显存 | `cvpr_results/fig/fig4/` | ✅ 05:18（6 个例子） |
+| O-7 | 汇总：Table 1 / 2 / 3、Fig 3 / 5、质量关口、报告 | CPU | `cvpr_results/{fig,report}`、`scripts/run_all.sh` | 🔄 首版完成（23 PASS / 1 PENDING），随新记录重跑 |
+| — | SCONE、FisherRF | — | `report/MISSING.md` | ⛔ BLOCKED（无可运行实现） |
 

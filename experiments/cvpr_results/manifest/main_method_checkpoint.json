@@ -1,0 +1,19 @@
+{
+ "path": "work_dirs/exp6_v3/task0_vae/checkpoints/final.pt",
+ "sha256": "7ed0ddd72bb91d1e8c6563f3192201c24a49fe862b49d2387ea8770915145ab6",
+ "sha256_expected": true,
+ "step": 40000,
+ "xattn_cfg": {
+  "enabled": false,
+  "heads": 4,
+  "budget": 512,
+  "n_freq": 8,
+  "fov_margin_deg": 10.0
+ },
+ "n_unet_xattn_keys": 0,
+ "flow": {
+  "x_ch": 2,
+  "euler_steps": 10,
+  "K": 4
+ }
+}

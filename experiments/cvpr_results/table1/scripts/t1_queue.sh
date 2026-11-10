@@ -13,11 +13,13 @@ g=$1; jf=$(readlink -f $2); host=$(hostname -s)
 mkdir -p $T1W/claims $T1W/logs $T1W/failed; cd $R
 export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 E2T=$R/work_dirs/exp5_future_view/task3_full_depth_p1/e2/training
-group_of() { case $1 in MAG-B|MAG-G|V2O) echo $1 ;; *) echo V2M ;; esac; }
+group_of() { case $1 in MAG-B|MAG-G|V2O) echo $1 ;; RANDOM) echo random ;; MACARONS) echo macarons ;; *) echo V2M ;; esac; }
 run_sim() {   # model scene start root
   local m=$1 s=$2 k=$3 root=$4
   case $m in
     MAG-B|MAG-G|V2O) $MG $EXP5/task2/scripts/t24_out_sim.py --group $m --scene $s --start $k --root $root ;;
+    RANDOM) $MG $X/exp3b_macaronspp_transfer/m_t7_sim.py --method random --scene $s --start $k --seed 0 --out $root ;;
+    MACARONS) $MG $X/exp3b_macaronspp_transfer/m_t7_macarons.py --scene $s --start $k --seed 0 --out $root ;;
     B0)  $MG $EXP5/task2/scripts/t24_out_sim.py --group V2M --scene $s --start $k --root $root ;;
     B2)  $MG $EXP5/task3_full_depth_p1/scripts/t33_out_sim.py --p1 b2 --group V2M --scene $s --start $k --root $root ;;
     B1)  $MG $EXP5/task3_full_depth_p1/scripts/t33_out_sim.py --p1 full --group V2M --scene $s --start $k --root $root ;;
@@ -35,6 +37,7 @@ run_sim() {   # model scene start root
     V3-H3) $MG $X/exp6_v3/H/scripts/sim_out_h.py --v3-ckpt $R/work_dirs/exp6_v3/task1_xattn/checkpoints/final.pt --policy h3 --group V2M --scene $s --start $k --root $root ;;
     V3-D1-H3-NORISK) $MG $X/exp6_v3/ablation_study/experiment_D_h3_lookahead/scripts/sim_out_d.py --v3-ckpt $R/work_dirs/exp6_v3/task1_xattn/checkpoints/final.pt --policy d1 --group V2M --scene $s --start $k --root $root ;;
     V3-T0-D1) $MG $X/exp6_v3/ablation_study/experiment_D_h3_lookahead/scripts/sim_out_d.py --v3-ckpt $R/work_dirs/exp6_v3/task0_vae/checkpoints/final.pt --policy d1 --group V2M --scene $s --start $k --root $root ;;
+    V3-T0-K[14]D[12]|V3-T0-K1D[12]-N[123]) local kd=${m#V3-T0-K} nn=0; [[ $m == *-N[123] ]] && nn=${m: -1}; $MG $X/cvpr_results/scripts/table3/sim_out_kd.py --v3-ckpt $R/work_dirs/exp6_v3/task0_vae/checkpoints/final.pt --k ${kd:0:1} --depth ${kd:2:1} --noise $nn --group V2M --scene $s --start $k --root $root ;;
     V3-D2-DEPTH3-B3) $MG $X/exp6_v3/ablation_study/experiment_D_h3_lookahead/scripts/sim_out_d.py --v3-ckpt $R/work_dirs/exp6_v3/task1_xattn/checkpoints/final.pt --policy d2 --group V2M --scene $s --start $k --root $root ;;
     V3-D3-DEPTH3-B5) $MG $X/exp6_v3/ablation_study/experiment_D_h3_lookahead/scripts/sim_out_d.py --v3-ckpt $R/work_dirs/exp6_v3/task1_xattn/checkpoints/final.pt --policy d3 --group V2M --scene $s --start $k --root $root ;;
     V3-D4-DEPTH4-B3) $MG $X/exp6_v3/ablation_study/experiment_D_h3_lookahead/scripts/sim_out_d.py --v3-ckpt $R/work_dirs/exp6_v3/task1_xattn/checkpoints/final.pt --policy d4 --group V2M --scene $s --start $k --root $root ;;

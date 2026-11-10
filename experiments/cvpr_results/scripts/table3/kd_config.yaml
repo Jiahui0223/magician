@@ -1,0 +1,16 @@
+# CVPR Table 3 (K x planning depth) -- protocol KD-v1, frozen 2026-11-10 04:50 before any KD episode.
+# Base: EXP6 V3 ablation D, protocol D-v1 (experiments/exp6_v3/ablation_study/experiment_D_h3_lookahead/configs/d_config.yaml).
+# Depth-2 rows run the FROZEN D-v1 file with policy d1 byte-for-byte (same config sha256 as the Table 1 rows V3-D1-H3-NORISK /
+# V3-T0-D1). Depth-1 rows run THIS file with policy depth1; it differs from D-v1 policy d1 only in `depth`.
+version: KD-v1
+model: {id: V3-T0, checkpoint: work_dirs/exp6_v3/task0_vae/checkpoints/final.pt, sha256: 7ed0ddd72bb91d1e8c6563f3192201c24a49fe862b49d2387ea8770915145ab6}
+pose_tables: /bsuscratch/jiahuizhang/projects/occupancy/seen2scene/work_dirs/exp6_v3/H/pose_tables
+inference: "same as D-v1 / Table 1 V3-T0-D1 (b2: D100 input + S10 band_dil, R10, Euler 10, frozen noise keys seed_key(scene, start, rep, t_r, k) shared by all candidates, simulator legal list, m_score.choose with the seeded fallback, 100 steps); K in {1, 4}: K = 1 uses the noise map k = 0 of the K = 4 set"
+value: {kind: cov, eps_cov: 1.0, cell_size: 1.0, novelty: hard}   # = D-v1 value (h_policy.value_cov)
+policies:
+  depth1: {depth: 1, beam: null, lambda_risk: 0.0, doc: "one-step: score(c1) = mean_k of the per-sample value_cov sum of c1 (D-v1 d_one_step with lambda 0); NOT the H0 DistP1"}
+  depth2: {depth: 2, beam: null, lambda_risk: 0.0, doc: "documentation only: depth-2 rows use D-v1 policy d1 from the frozen d_config.yaml"}
+search:
+  layer1: "all simulator-legal candidates c1 (no pruning)"
+  layer2: "depth 1: none (no second-layer view is predicted); depth 2: exactly D-v1"
+  c2_chunk: 16

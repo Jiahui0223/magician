@@ -17,7 +17,7 @@ T1 = os.path.dirname(HERE)
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(T1)))
 EPI = os.path.join(REPO, "work_dirs", "cvpr_results", "table1", "episodes")
 T1W = os.path.join(REPO, "work_dirs", "cvpr_results", "table1", "g3")
-GROUP = {"MAG-B": "MAG-B", "MAG-G": "MAG-G", "V2O": "V2O"}
+GROUP = {"MAG-B": "MAG-B", "MAG-G": "MAG-G", "V2O": "V2O", "RANDOM": "random", "MACARONS": "macarons"}
 
 
 def registries():

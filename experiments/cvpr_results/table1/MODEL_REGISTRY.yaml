@@ -627,6 +627,147 @@ models:
       command: |
         CUDA_VISIBLE_DEVICES=$G $MG experiments/exp6_v3/ablation_study/experiment_D_h3_lookahead/scripts/sim_out_d.py --v3-ckpt $R/work_dirs/exp6_v3/task0_vae/checkpoints/final.pt --policy d1 --group V2M --scene $S --start $K --root $T1W/closed_loop/outdoor/V3-T0-D1/V2M
     historical_outdoor: {reusable_episodes: 0}
+  - id: V3-T0-K4D1
+    label: "V3-T0 K4 depth1: one-step value_cov (mean of 4 samples)"
+    role: kd
+    status: READY
+    status_reason: 2026-11-10 CVPR Table 3（K × 规划深度，协议 KD-v1，cvpr_overnight_experiment_plan.md §5）：与 V3-T0-D1（= K4 / 深度 2）同一冻结 checkpoint、同一模拟器 / 候选 / 噪声键 / value_cov / 选择规则，只改 K 或规划深度。回归：K4 深度 2 逐位复现 V3-T0-D1 liberty_s0；K4 深度 1 + T1 权重逐位复现 V3-H1 liberty_s0（work_dirs/cvpr_results/overnight_20261110/regression）。首次运行
+    sha256: 7ed0ddd72bb91d1e8c6563f3192201c24a49fe862b49d2387ea8770915145ab6
+    checkpoint: work_dirs/exp6_v3/task0_vae/checkpoints/final.pt (V3-T0 EMA step 40000, xattn.enabled = false; same file as V3-T0-D1)
+    policy: {id: "kd K4 depth1 noise0", code: experiments/cvpr_results/scripts/table3/kd_policy.py (imports the frozen d_policy.py / h_policy.py read-only), config: "experiments/cvpr_results/scripts/table3/kd_config.yaml policy depth1 (KD-v1)", hashes: "规划器 stderr 的 D_POLICY / KD_POLICY 行；episode 的 planner_hello.planner.kd"}
+    inference: {p1_mode: b2, inference_density: D100, scoring_density: S10, refresh: R10, planner: "Greedy-NV + D value_cov, depth 1, lambda 0", K: 4, noise_map_offset: 0, euler_steps: 10, planning_region: 整个场景}
+    launch:
+      command: |
+        CUDA_VISIBLE_DEVICES=$G $MG experiments/cvpr_results/scripts/table3/sim_out_kd.py --v3-ckpt $R/work_dirs/exp6_v3/task0_vae/checkpoints/final.pt --k 4 --depth 1 --noise 0 --group V2M --scene $S --start $K --root $T1W/closed_loop/outdoor/V3-T0-K4D1/V2M
+    historical_outdoor: {reusable_episodes: 0}
+  - id: V3-T0-K1D2
+    label: "V3-T0 K1 depth2: two-step lookahead, single sample (noise map 0)"
+    role: kd
+    status: READY
+    status_reason: 2026-11-10 CVPR Table 3（K × 规划深度，协议 KD-v1，cvpr_overnight_experiment_plan.md §5）：与 V3-T0-D1（= K4 / 深度 2）同一冻结 checkpoint、同一模拟器 / 候选 / 噪声键 / value_cov / 选择规则，只改 K 或规划深度。回归：K4 深度 2 逐位复现 V3-T0-D1 liberty_s0；K4 深度 1 + T1 权重逐位复现 V3-H1 liberty_s0（work_dirs/cvpr_results/overnight_20261110/regression）。首次运行
+    sha256: 7ed0ddd72bb91d1e8c6563f3192201c24a49fe862b49d2387ea8770915145ab6
+    checkpoint: work_dirs/exp6_v3/task0_vae/checkpoints/final.pt (V3-T0 EMA step 40000, xattn.enabled = false; same file as V3-T0-D1)
+    policy: {id: "kd K1 depth2 noise0", code: experiments/cvpr_results/scripts/table3/kd_policy.py (imports the frozen d_policy.py / h_policy.py read-only), config: "experiment_D_h3_lookahead/configs/d_config.yaml policy d1 (frozen D-v1, byte-for-byte)", hashes: "规划器 stderr 的 D_POLICY / KD_POLICY 行；episode 的 planner_hello.planner.kd"}
+    inference: {p1_mode: b2, inference_density: D100, scoring_density: S10, refresh: R10, planner: "Greedy-NV + D value_cov, depth 2, lambda 0", K: 1, noise_map_offset: 0, euler_steps: 10, planning_region: 整个场景}
+    launch:
+      command: |
+        CUDA_VISIBLE_DEVICES=$G $MG experiments/cvpr_results/scripts/table3/sim_out_kd.py --v3-ckpt $R/work_dirs/exp6_v3/task0_vae/checkpoints/final.pt --k 1 --depth 2 --noise 0 --group V2M --scene $S --start $K --root $T1W/closed_loop/outdoor/V3-T0-K1D2/V2M
+    historical_outdoor: {reusable_episodes: 0}
+  - id: V3-T0-K1D1
+    label: "V3-T0 K1 depth1: one-step value_cov, single sample (noise map 0)"
+    role: kd
+    status: READY
+    status_reason: 2026-11-10 CVPR Table 3（K × 规划深度，协议 KD-v1，cvpr_overnight_experiment_plan.md §5）：与 V3-T0-D1（= K4 / 深度 2）同一冻结 checkpoint、同一模拟器 / 候选 / 噪声键 / value_cov / 选择规则，只改 K 或规划深度。回归：K4 深度 2 逐位复现 V3-T0-D1 liberty_s0；K4 深度 1 + T1 权重逐位复现 V3-H1 liberty_s0（work_dirs/cvpr_results/overnight_20261110/regression）。首次运行
+    sha256: 7ed0ddd72bb91d1e8c6563f3192201c24a49fe862b49d2387ea8770915145ab6
+    checkpoint: work_dirs/exp6_v3/task0_vae/checkpoints/final.pt (V3-T0 EMA step 40000, xattn.enabled = false; same file as V3-T0-D1)
+    policy: {id: "kd K1 depth1 noise0", code: experiments/cvpr_results/scripts/table3/kd_policy.py (imports the frozen d_policy.py / h_policy.py read-only), config: "experiments/cvpr_results/scripts/table3/kd_config.yaml policy depth1 (KD-v1)", hashes: "规划器 stderr 的 D_POLICY / KD_POLICY 行；episode 的 planner_hello.planner.kd"}
+    inference: {p1_mode: b2, inference_density: D100, scoring_density: S10, refresh: R10, planner: "Greedy-NV + D value_cov, depth 1, lambda 0", K: 1, noise_map_offset: 0, euler_steps: 10, planning_region: 整个场景}
+    launch:
+      command: |
+        CUDA_VISIBLE_DEVICES=$G $MG experiments/cvpr_results/scripts/table3/sim_out_kd.py --v3-ckpt $R/work_dirs/exp6_v3/task0_vae/checkpoints/final.pt --k 1 --depth 1 --noise 0 --group V2M --scene $S --start $K --root $T1W/closed_loop/outdoor/V3-T0-K1D1/V2M
+    historical_outdoor: {reusable_episodes: 0}
+  - id: V3-T0-K1D2-N1
+    label: "V3-T0 K1 depth2, noise map 1 (replicate)"
+    role: kd_noise
+    status: READY
+    status_reason: 2026-11-10 CVPR Table 3 的 K = 1 噪声复核（预先声明：使用 K = 4 噪声组的第 j 张噪声图，j = 1, 2, 3；不挑选）：除噪声图下标外与对应的 K1 行完全相同。首次运行
+    sha256: 7ed0ddd72bb91d1e8c6563f3192201c24a49fe862b49d2387ea8770915145ab6
+    checkpoint: work_dirs/exp6_v3/task0_vae/checkpoints/final.pt (V3-T0 EMA step 40000, xattn.enabled = false; same file as V3-T0-D1)
+    policy: {id: "kd K1 depth2 noise1", code: experiments/cvpr_results/scripts/table3/kd_policy.py (imports the frozen d_policy.py / h_policy.py read-only), config: "experiment_D_h3_lookahead/configs/d_config.yaml policy d1 (frozen D-v1, byte-for-byte)", hashes: "规划器 stderr 的 D_POLICY / KD_POLICY 行；episode 的 planner_hello.planner.kd"}
+    inference: {p1_mode: b2, inference_density: D100, scoring_density: S10, refresh: R10, planner: "Greedy-NV + D value_cov, depth 2, lambda 0", K: 1, noise_map_offset: 1, euler_steps: 10, planning_region: 整个场景}
+    launch:
+      command: |
+        CUDA_VISIBLE_DEVICES=$G $MG experiments/cvpr_results/scripts/table3/sim_out_kd.py --v3-ckpt $R/work_dirs/exp6_v3/task0_vae/checkpoints/final.pt --k 1 --depth 2 --noise 1 --group V2M --scene $S --start $K --root $T1W/closed_loop/outdoor/V3-T0-K1D2-N1/V2M
+    historical_outdoor: {reusable_episodes: 0}
+  - id: V3-T0-K1D2-N2
+    label: "V3-T0 K1 depth2, noise map 2 (replicate)"
+    role: kd_noise
+    status: READY
+    status_reason: 2026-11-10 CVPR Table 3 的 K = 1 噪声复核（预先声明：使用 K = 4 噪声组的第 j 张噪声图，j = 1, 2, 3；不挑选）：除噪声图下标外与对应的 K1 行完全相同。首次运行
+    sha256: 7ed0ddd72bb91d1e8c6563f3192201c24a49fe862b49d2387ea8770915145ab6
+    checkpoint: work_dirs/exp6_v3/task0_vae/checkpoints/final.pt (V3-T0 EMA step 40000, xattn.enabled = false; same file as V3-T0-D1)
+    policy: {id: "kd K1 depth2 noise2", code: experiments/cvpr_results/scripts/table3/kd_policy.py (imports the frozen d_policy.py / h_policy.py read-only), config: "experiment_D_h3_lookahead/configs/d_config.yaml policy d1 (frozen D-v1, byte-for-byte)", hashes: "规划器 stderr 的 D_POLICY / KD_POLICY 行；episode 的 planner_hello.planner.kd"}
+    inference: {p1_mode: b2, inference_density: D100, scoring_density: S10, refresh: R10, planner: "Greedy-NV + D value_cov, depth 2, lambda 0", K: 1, noise_map_offset: 2, euler_steps: 10, planning_region: 整个场景}
+    launch:
+      command: |
+        CUDA_VISIBLE_DEVICES=$G $MG experiments/cvpr_results/scripts/table3/sim_out_kd.py --v3-ckpt $R/work_dirs/exp6_v3/task0_vae/checkpoints/final.pt --k 1 --depth 2 --noise 2 --group V2M --scene $S --start $K --root $T1W/closed_loop/outdoor/V3-T0-K1D2-N2/V2M
+    historical_outdoor: {reusable_episodes: 0}
+  - id: V3-T0-K1D2-N3
+    label: "V3-T0 K1 depth2, noise map 3 (replicate)"
+    role: kd_noise
+    status: READY
+    status_reason: 2026-11-10 CVPR Table 3 的 K = 1 噪声复核（预先声明：使用 K = 4 噪声组的第 j 张噪声图，j = 1, 2, 3；不挑选）：除噪声图下标外与对应的 K1 行完全相同。首次运行
+    sha256: 7ed0ddd72bb91d1e8c6563f3192201c24a49fe862b49d2387ea8770915145ab6
+    checkpoint: work_dirs/exp6_v3/task0_vae/checkpoints/final.pt (V3-T0 EMA step 40000, xattn.enabled = false; same file as V3-T0-D1)
+    policy: {id: "kd K1 depth2 noise3", code: experiments/cvpr_results/scripts/table3/kd_policy.py (imports the frozen d_policy.py / h_policy.py read-only), config: "experiment_D_h3_lookahead/configs/d_config.yaml policy d1 (frozen D-v1, byte-for-byte)", hashes: "规划器 stderr 的 D_POLICY / KD_POLICY 行；episode 的 planner_hello.planner.kd"}
+    inference: {p1_mode: b2, inference_density: D100, scoring_density: S10, refresh: R10, planner: "Greedy-NV + D value_cov, depth 2, lambda 0", K: 1, noise_map_offset: 3, euler_steps: 10, planning_region: 整个场景}
+    launch:
+      command: |
+        CUDA_VISIBLE_DEVICES=$G $MG experiments/cvpr_results/scripts/table3/sim_out_kd.py --v3-ckpt $R/work_dirs/exp6_v3/task0_vae/checkpoints/final.pt --k 1 --depth 2 --noise 3 --group V2M --scene $S --start $K --root $T1W/closed_loop/outdoor/V3-T0-K1D2-N3/V2M
+    historical_outdoor: {reusable_episodes: 0}
+  - id: V3-T0-K1D1-N1
+    label: "V3-T0 K1 depth1, noise map 1 (replicate)"
+    role: kd_noise
+    status: READY
+    status_reason: 2026-11-10 CVPR Table 3 的 K = 1 噪声复核（预先声明：使用 K = 4 噪声组的第 j 张噪声图，j = 1, 2, 3；不挑选）：除噪声图下标外与对应的 K1 行完全相同。首次运行
+    sha256: 7ed0ddd72bb91d1e8c6563f3192201c24a49fe862b49d2387ea8770915145ab6
+    checkpoint: work_dirs/exp6_v3/task0_vae/checkpoints/final.pt (V3-T0 EMA step 40000, xattn.enabled = false; same file as V3-T0-D1)
+    policy: {id: "kd K1 depth1 noise1", code: experiments/cvpr_results/scripts/table3/kd_policy.py (imports the frozen d_policy.py / h_policy.py read-only), config: "experiments/cvpr_results/scripts/table3/kd_config.yaml policy depth1 (KD-v1)", hashes: "规划器 stderr 的 D_POLICY / KD_POLICY 行；episode 的 planner_hello.planner.kd"}
+    inference: {p1_mode: b2, inference_density: D100, scoring_density: S10, refresh: R10, planner: "Greedy-NV + D value_cov, depth 1, lambda 0", K: 1, noise_map_offset: 1, euler_steps: 10, planning_region: 整个场景}
+    launch:
+      command: |
+        CUDA_VISIBLE_DEVICES=$G $MG experiments/cvpr_results/scripts/table3/sim_out_kd.py --v3-ckpt $R/work_dirs/exp6_v3/task0_vae/checkpoints/final.pt --k 1 --depth 1 --noise 1 --group V2M --scene $S --start $K --root $T1W/closed_loop/outdoor/V3-T0-K1D1-N1/V2M
+    historical_outdoor: {reusable_episodes: 0}
+  - id: V3-T0-K1D1-N2
+    label: "V3-T0 K1 depth1, noise map 2 (replicate)"
+    role: kd_noise
+    status: READY
+    status_reason: 2026-11-10 CVPR Table 3 的 K = 1 噪声复核（预先声明：使用 K = 4 噪声组的第 j 张噪声图，j = 1, 2, 3；不挑选）：除噪声图下标外与对应的 K1 行完全相同。首次运行
+    sha256: 7ed0ddd72bb91d1e8c6563f3192201c24a49fe862b49d2387ea8770915145ab6
+    checkpoint: work_dirs/exp6_v3/task0_vae/checkpoints/final.pt (V3-T0 EMA step 40000, xattn.enabled = false; same file as V3-T0-D1)
+    policy: {id: "kd K1 depth1 noise2", code: experiments/cvpr_results/scripts/table3/kd_policy.py (imports the frozen d_policy.py / h_policy.py read-only), config: "experiments/cvpr_results/scripts/table3/kd_config.yaml policy depth1 (KD-v1)", hashes: "规划器 stderr 的 D_POLICY / KD_POLICY 行；episode 的 planner_hello.planner.kd"}
+    inference: {p1_mode: b2, inference_density: D100, scoring_density: S10, refresh: R10, planner: "Greedy-NV + D value_cov, depth 1, lambda 0", K: 1, noise_map_offset: 2, euler_steps: 10, planning_region: 整个场景}
+    launch:
+      command: |
+        CUDA_VISIBLE_DEVICES=$G $MG experiments/cvpr_results/scripts/table3/sim_out_kd.py --v3-ckpt $R/work_dirs/exp6_v3/task0_vae/checkpoints/final.pt --k 1 --depth 1 --noise 2 --group V2M --scene $S --start $K --root $T1W/closed_loop/outdoor/V3-T0-K1D1-N2/V2M
+    historical_outdoor: {reusable_episodes: 0}
+  - id: V3-T0-K1D1-N3
+    label: "V3-T0 K1 depth1, noise map 3 (replicate)"
+    role: kd_noise
+    status: READY
+    status_reason: 2026-11-10 CVPR Table 3 的 K = 1 噪声复核（预先声明：使用 K = 4 噪声组的第 j 张噪声图，j = 1, 2, 3；不挑选）：除噪声图下标外与对应的 K1 行完全相同。首次运行
+    sha256: 7ed0ddd72bb91d1e8c6563f3192201c24a49fe862b49d2387ea8770915145ab6
+    checkpoint: work_dirs/exp6_v3/task0_vae/checkpoints/final.pt (V3-T0 EMA step 40000, xattn.enabled = false; same file as V3-T0-D1)
+    policy: {id: "kd K1 depth1 noise3", code: experiments/cvpr_results/scripts/table3/kd_policy.py (imports the frozen d_policy.py / h_policy.py read-only), config: "experiments/cvpr_results/scripts/table3/kd_config.yaml policy depth1 (KD-v1)", hashes: "规划器 stderr 的 D_POLICY / KD_POLICY 行；episode 的 planner_hello.planner.kd"}
+    inference: {p1_mode: b2, inference_density: D100, scoring_density: S10, refresh: R10, planner: "Greedy-NV + D value_cov, depth 1, lambda 0", K: 1, noise_map_offset: 3, euler_steps: 10, planning_region: 整个场景}
+    launch:
+      command: |
+        CUDA_VISIBLE_DEVICES=$G $MG experiments/cvpr_results/scripts/table3/sim_out_kd.py --v3-ckpt $R/work_dirs/exp6_v3/task0_vae/checkpoints/final.pt --k 1 --depth 1 --noise 3 --group V2M --scene $S --start $K --root $T1W/closed_loop/outdoor/V3-T0-K1D1-N3/V2M
+    historical_outdoor: {reusable_episodes: 0}
+  - id: RANDOM
+    label: "Random Walk (uniform over the legal actions, seed 0; adapted)"
+    role: baseline
+    status: READY
+    status_reason: 2026-11-10 CVPR Table 1 基线。EXP3b 冻结的 "Uniform Random" 定义（m_t6_common.uniform_choice：对模拟器合法动作列表做带种子的均匀选择，seed 0），由 EXP3b T7 模拟器 m_t7_sim.py --method random 原样运行（同一 EpisodeSim、同一合法动作、同一官方覆盖）。不是 MAGICIAN 论文的 Random Walk 实现（上游 macarons/testers/random_planning.py 未发布），因此标注 adapted。回归：barts_s0 与 T7a 归档的 seed 0 记录逐位一致（work_dirs/cvpr_results/overnight_20261110/regression/RANDOM）
+    sha256: null
+    checkpoint: none (no model)
+    policy: {id: uniform_random, code: experiments/exp3b_macaronspp_transfer/m_t6_common.py uniform_choice (frozen EXP3b), seed: 0}
+    launch:
+      command: |
+        CUDA_VISIBLE_DEVICES=$G $MG experiments/exp3b_macaronspp_transfer/m_t7_sim.py --method random --scene $S --start $K --seed 0 --out $T1W/closed_loop/outdoor/RANDOM/random
+    historical_outdoor: {reusable_episodes: 0, note: "T7a attempt2 有 barts / pantheon / colosseum × 5 起点 × 3 种子（T7a 协议），未导入；本行全部重跑"}
+  - id: MACARONS
+    label: "MACARONS (trained_macarons.pth, EXP3b adapter-repaired tester, seed 0; adapted)"
+    role: baseline
+    status: READY
+    status_reason: 2026-11-10 CVPR Table 1 基线。EXP3b T7a 的 MACARONS 运行器 m_t7_macarons.py（冻结；适配修复 R1–R8，打分不变；与 MAGICIAN 同一权重 trained_macarons.pth、use_perfect_depth_map、同一 EpisodeSim 合法动作列表与官方覆盖）原样运行，seed 0。原生规划器有内部随机性（T7a 记为 describe-only，不要求逐位复现）。权重在我们 14 个评测场景中的 8 个上训练过（DATASET_AUDIT.md §MACARONS 划分）
+    sha256: 34c5247f13bedda08bb57e7e7e7a5baba53af6da7faf3d5f6bb57a27c2dbb59c
+    checkpoint: MAGICIAN weights trained_macarons.pth (MACARONS authors' weights, same file as MAG-B / MAG-G)
+    policy: {id: macarons_nbv, code: experiments/exp3b_macaronspp_transfer/m_t7_macarons.py (frozen EXP3b), seed: 0}
+    launch:
+      command: |
+        CUDA_VISIBLE_DEVICES=$G $MG experiments/exp3b_macaronspp_transfer/m_t7_macarons.py --scene $S --start $K --seed 0 --out $T1W/closed_loop/outdoor/MACARONS/macarons
+    historical_outdoor: {reusable_episodes: 0, note: "T7a attempt2 有 barts / pantheon / colosseum × 5 起点 × 3 种子（T7a 协议），未导入；本行全部重跑"}
   - id: V3-D2-DEPTH3-B3
     label: "V3-D2: V3-T1 + lookahead depth 3, beam 3"
     role: d
