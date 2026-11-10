@@ -1,0 +1,21 @@
+D_POLICY {"d_policy": "d1", "d_policy_file_sha256": "c8418279771e787eaaa0404f421602c9b95851e67d14aed1f717690230e48ecb", "h_policy_file_sha256": "ccfdf4af2783be3f1e7717bc644daf31a2fe994bcf312fdb4e4269ddf017a94a", "config_sha256": "e53c230db866e821b55fc40c0030c5eff448d12cbddcb2fbee00b4044b43c0b3", "config_version": "D-v1", "policy_cfg": {"depth": 2, "beam": null, "lambda_risk": 0.0, "doc": "D1_H3_NO_RISK: H3 with lambda 0", "kind": "cov", "eps_cov": 1.0, "cell_size": 1.0, "novelty": "hard", "c2_chunk": 16}}
+e3_pisa_s1 t=0 pts 40260 dom 1.000 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 3021 (<=1/64: 0) | unk boundary 52294 parent-obs 41960
+e3_pisa_s1 t=5 pts 514293 dom 0.934 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 25408 (<=1/64: 0) | unk boundary 65263 parent-obs 45684
+e3_pisa_s1 t=10 pts 944407 dom 0.894 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 34140 (<=1/64: 0) | unk boundary 92688 parent-obs 64403
+e3_pisa_s1 t=15 pts 1447039 dom 0.872 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 38813 (<=1/64: 0) | unk boundary 94770 parent-obs 64829
+e3_pisa_s1 t=20 pts 2030413 dom 0.811 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 47437 (<=1/64: 0) | unk boundary 100426 parent-obs 67248
+e3_pisa_s1 t=25 pts 2613957 dom 0.750 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 58901 (<=1/64: 0) | unk boundary 99646 parent-obs 66202
+e3_pisa_s1 t=30 pts 3197527 dom 0.723 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 66203 (<=1/64: 0) | unk boundary 91309 parent-obs 61453
+e3_pisa_s1 t=35 pts 3666959 dom 0.678 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 68853 (<=1/64: 0) | unk boundary 87136 parent-obs 58477
+e3_pisa_s1 t=40 pts 4250507 dom 0.661 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 69511 (<=1/64: 0) | unk boundary 87179 parent-obs 58337
+e3_pisa_s1 t=45 pts 4834060 dom 0.678 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 69963 (<=1/64: 0) | unk boundary 87511 parent-obs 58735
+e3_pisa_s1 t=50 pts 5417598 dom 0.693 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 70097 (<=1/64: 0) | unk boundary 86333 parent-obs 58074
+e3_pisa_s1 t=55 pts 6001162 dom 0.680 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 70148 (<=1/64: 0) | unk boundary 86264 parent-obs 58004
+e3_pisa_s1 t=60 pts 6584738 dom 0.682 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 70233 (<=1/64: 0) | unk boundary 86393 parent-obs 58043
+e3_pisa_s1 t=65 pts 7168333 dom 0.682 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 70540 (<=1/64: 0) | unk boundary 86523 parent-obs 58242
+e3_pisa_s1 t=70 pts 7735130 dom 0.688 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 70981 (<=1/64: 0) | unk boundary 86694 parent-obs 58290
+e3_pisa_s1 t=75 pts 8290005 dom 0.678 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 71396 (<=1/64: 0) | unk boundary 87038 parent-obs 58514
+e3_pisa_s1 t=80 pts 8830099 dom 0.653 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 71619 (<=1/64: 0) | unk boundary 86959 parent-obs 58502
+e3_pisa_s1 t=85 pts 9396884 dom 0.665 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 71973 (<=1/64: 0) | unk boundary 87415 parent-obs 58873
+e3_pisa_s1 t=90 pts 9926763 dom 0.674 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 72112 (<=1/64: 0) | unk boundary 86619 parent-obs 58357
+e3_pisa_s1 t=95 pts 10510161 dom 0.679 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 72480 (<=1/64: 0) | unk boundary 86668 parent-obs 58418

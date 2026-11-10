@@ -1,0 +1,21 @@
+D_POLICY {"d_policy": "d1", "d_policy_file_sha256": "c8418279771e787eaaa0404f421602c9b95851e67d14aed1f717690230e48ecb", "h_policy_file_sha256": "ccfdf4af2783be3f1e7717bc644daf31a2fe994bcf312fdb4e4269ddf017a94a", "config_sha256": "e53c230db866e821b55fc40c0030c5eff448d12cbddcb2fbee00b4044b43c0b3", "config_version": "D-v1", "policy_cfg": {"depth": 2, "beam": null, "lambda_risk": 0.0, "doc": "D1_H3_NO_RISK: H3 with lambda 0", "kind": "cov", "eps_cov": 1.0, "cell_size": 1.0, "novelty": "hard", "c2_chunk": 16}}
+conf_bannerman_s0 t=0 pts 109107 dom 1.000 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 57 (<=1/64: 0) | unk boundary 1914 parent-obs 1087
+conf_bannerman_s0 t=5 pts 665011 dom 0.996 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 6350 (<=1/64: 0) | unk boundary 35186 parent-obs 22025
+conf_bannerman_s0 t=10 pts 1091893 dom 0.991 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 16253 (<=1/64: 0) | unk boundary 69972 parent-obs 43927
+conf_bannerman_s0 t=15 pts 1497078 dom 0.978 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 24443 (<=1/64: 0) | unk boundary 78147 parent-obs 48529
+conf_bannerman_s0 t=20 pts 1930492 dom 0.959 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 33831 (<=1/64: 0) | unk boundary 80032 parent-obs 51118
+conf_bannerman_s0 t=25 pts 2460109 dom 0.953 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 46284 (<=1/64: 0) | unk boundary 90342 parent-obs 59234
+conf_bannerman_s0 t=30 pts 2957296 dom 0.912 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 52816 (<=1/64: 0) | unk boundary 70021 parent-obs 45386
+conf_bannerman_s0 t=35 pts 3494007 dom 0.907 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 56498 (<=1/64: 0) | unk boundary 66571 parent-obs 42842
+conf_bannerman_s0 t=40 pts 4053025 dom 0.910 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 58533 (<=1/64: 0) | unk boundary 64392 parent-obs 41420
+conf_bannerman_s0 t=45 pts 4421988 dom 0.915 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 59827 (<=1/64: 0) | unk boundary 57580 parent-obs 36433
+conf_bannerman_s0 t=50 pts 4766375 dom 0.908 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 64687 (<=1/64: 0) | unk boundary 53320 parent-obs 34182
+conf_bannerman_s0 t=55 pts 5063354 dom 0.884 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 69744 (<=1/64: 0) | unk boundary 50638 parent-obs 32388
+conf_bannerman_s0 t=60 pts 5535682 dom 0.876 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 73172 (<=1/64: 0) | unk boundary 48770 parent-obs 30925
+conf_bannerman_s0 t=65 pts 6066276 dom 0.875 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 75313 (<=1/64: 0) | unk boundary 46745 parent-obs 29537
+conf_bannerman_s0 t=70 pts 6543880 dom 0.866 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 77416 (<=1/64: 0) | unk boundary 43371 parent-obs 27294
+conf_bannerman_s0 t=75 pts 7031930 dom 0.865 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 79253 (<=1/64: 0) | unk boundary 42060 parent-obs 26262
+conf_bannerman_s0 t=80 pts 7496131 dom 0.853 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 80273 (<=1/64: 0) | unk boundary 36877 parent-obs 22729
+conf_bannerman_s0 t=85 pts 7824935 dom 0.851 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 80658 (<=1/64: 0) | unk boundary 34345 parent-obs 20851
+conf_bannerman_s0 t=90 pts 8358432 dom 0.844 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 81032 (<=1/64: 0) | unk boundary 34317 parent-obs 20828
+conf_bannerman_s0 t=95 pts 8915621 dom 0.818 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 81125 (<=1/64: 0) | unk boundary 34228 parent-obs 20712

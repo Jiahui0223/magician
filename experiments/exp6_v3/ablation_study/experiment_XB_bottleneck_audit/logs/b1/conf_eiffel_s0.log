@@ -1,0 +1,21 @@
+D_POLICY {"d_policy": "d1", "d_policy_file_sha256": "c8418279771e787eaaa0404f421602c9b95851e67d14aed1f717690230e48ecb", "h_policy_file_sha256": "ccfdf4af2783be3f1e7717bc644daf31a2fe994bcf312fdb4e4269ddf017a94a", "config_sha256": "e53c230db866e821b55fc40c0030c5eff448d12cbddcb2fbee00b4044b43c0b3", "config_version": "D-v1", "policy_cfg": {"depth": 2, "beam": null, "lambda_risk": 0.0, "doc": "D1_H3_NO_RISK: H3 with lambda 0", "kind": "cov", "eps_cov": 1.0, "cell_size": 1.0, "novelty": "hard", "c2_chunk": 16}}
+conf_eiffel_s0 t=0 pts 6194 dom 1.000 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 35 (<=1/64: 0) | unk boundary 1247 parent-obs 813
+conf_eiffel_s0 t=5 pts 88874 dom 0.899 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 1569 (<=1/64: 0) | unk boundary 8469 parent-obs 5802
+conf_eiffel_s0 t=10 pts 328033 dom 0.600 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 3251 (<=1/64: 0) | unk boundary 7020 parent-obs 4780
+conf_eiffel_s0 t=15 pts 515272 dom 0.560 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 4662 (<=1/64: 0) | unk boundary 6166 parent-obs 4465
+conf_eiffel_s0 t=20 pts 694169 dom 0.521 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 5124 (<=1/64: 0) | unk boundary 5709 parent-obs 4259
+conf_eiffel_s0 t=25 pts 956352 dom 0.510 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 5467 (<=1/64: 0) | unk boundary 5377 parent-obs 4107
+conf_eiffel_s0 t=30 pts 1293394 dom 0.467 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 5681 (<=1/64: 0) | unk boundary 5105 parent-obs 3965
+conf_eiffel_s0 t=35 pts 1835164 dom 0.446 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 5886 (<=1/64: 0) | unk boundary 4873 parent-obs 3816
+conf_eiffel_s0 t=40 pts 2257326 dom 0.473 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 6009 (<=1/64: 0) | unk boundary 4735 parent-obs 3716
+conf_eiffel_s0 t=45 pts 2748308 dom 0.541 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 6310 (<=1/64: 0) | unk boundary 4219 parent-obs 3347
+conf_eiffel_s0 t=50 pts 3070828 dom 0.577 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 6509 (<=1/64: 0) | unk boundary 3943 parent-obs 3087
+conf_eiffel_s0 t=55 pts 3397212 dom 0.614 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 6585 (<=1/64: 0) | unk boundary 3894 parent-obs 3046
+conf_eiffel_s0 t=60 pts 3804389 dom 0.650 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 6691 (<=1/64: 0) | unk boundary 3853 parent-obs 3005
+conf_eiffel_s0 t=65 pts 4190459 dom 0.664 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 6751 (<=1/64: 0) | unk boundary 3829 parent-obs 2981
+conf_eiffel_s0 t=70 pts 4369173 dom 0.676 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 6857 (<=1/64: 0) | unk boundary 3655 parent-obs 2816
+conf_eiffel_s0 t=75 pts 4631127 dom 0.694 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 6889 (<=1/64: 0) | unk boundary 3529 parent-obs 2716
+conf_eiffel_s0 t=80 pts 4881819 dom 0.699 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 6909 (<=1/64: 0) | unk boundary 3507 parent-obs 2698
+conf_eiffel_s0 t=85 pts 5166696 dom 0.710 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 6939 (<=1/64: 0) | unk boundary 3499 parent-obs 2690
+conf_eiffel_s0 t=90 pts 5519742 dom 0.712 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 6962 (<=1/64: 0) | unk boundary 3499 parent-obs 2690
+conf_eiffel_s0 t=95 pts 5876196 dom 0.706 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 6968 (<=1/64: 0) | unk boundary 3499 parent-obs 2690

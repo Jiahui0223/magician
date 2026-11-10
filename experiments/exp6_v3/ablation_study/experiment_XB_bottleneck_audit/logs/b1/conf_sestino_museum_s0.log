@@ -1,0 +1,21 @@
+D_POLICY {"d_policy": "d1", "d_policy_file_sha256": "c8418279771e787eaaa0404f421602c9b95851e67d14aed1f717690230e48ecb", "h_policy_file_sha256": "ccfdf4af2783be3f1e7717bc644daf31a2fe994bcf312fdb4e4269ddf017a94a", "config_sha256": "e53c230db866e821b55fc40c0030c5eff448d12cbddcb2fbee00b4044b43c0b3", "config_version": "D-v1", "policy_cfg": {"depth": 2, "beam": null, "lambda_risk": 0.0, "doc": "D1_H3_NO_RISK: H3 with lambda 0", "kind": "cov", "eps_cov": 1.0, "cell_size": 1.0, "novelty": "hard", "c2_chunk": 16}}
+conf_sestino_museum_s0 t=0 pts 116736 dom 1.000 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 208 (<=1/64: 0) | unk boundary 566 parent-obs 350
+conf_sestino_museum_s0 t=5 pts 700416 dom 0.999 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 48682 (<=1/64: 0) | unk boundary 86311 parent-obs 61652
+conf_sestino_museum_s0 t=10 pts 1284096 dom 0.981 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 69833 (<=1/64: 0) | unk boundary 202398 parent-obs 169383
+conf_sestino_museum_s0 t=15 pts 1867776 dom 0.954 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 127466 (<=1/64: 0) | unk boundary 169289 parent-obs 111264
+conf_sestino_museum_s0 t=20 pts 2451295 dom 0.954 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 178467 (<=1/64: 0) | unk boundary 221465 parent-obs 159901
+conf_sestino_museum_s0 t=25 pts 3033284 dom 0.960 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 204721 (<=1/64: 0) | unk boundary 204048 parent-obs 143585
+conf_sestino_museum_s0 t=30 pts 3605782 dom 0.961 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 220035 (<=1/64: 0) | unk boundary 171284 parent-obs 111706
+conf_sestino_museum_s0 t=35 pts 4145214 dom 0.958 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 223016 (<=1/64: 0) | unk boundary 166983 parent-obs 107984
+conf_sestino_museum_s0 t=40 pts 4684614 dom 0.963 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 225315 (<=1/64: 0) | unk boundary 165391 parent-obs 106937
+conf_sestino_museum_s0 t=45 pts 5217263 dom 0.966 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 228722 (<=1/64: 0) | unk boundary 163597 parent-obs 105561
+conf_sestino_museum_s0 t=50 pts 5799448 dom 0.969 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 229930 (<=1/64: 0) | unk boundary 162394 parent-obs 104583
+conf_sestino_museum_s0 t=55 pts 6145001 dom 0.970 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 231168 (<=1/64: 0) | unk boundary 163361 parent-obs 105323
+conf_sestino_museum_s0 t=60 pts 6621222 dom 0.973 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 231414 (<=1/64: 0) | unk boundary 163813 parent-obs 105671
+conf_sestino_museum_s0 t=65 pts 7204902 dom 0.975 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 231602 (<=1/64: 0) | unk boundary 163771 parent-obs 105623
+conf_sestino_museum_s0 t=70 pts 7632254 dom 0.976 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 231602 (<=1/64: 0) | unk boundary 164435 parent-obs 105979
+conf_sestino_museum_s0 t=75 pts 8119021 dom 0.976 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 231799 (<=1/64: 0) | unk boundary 165645 parent-obs 106974
+conf_sestino_museum_s0 t=80 pts 8702701 dom 0.978 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 231905 (<=1/64: 0) | unk boundary 165620 parent-obs 106950
+conf_sestino_museum_s0 t=85 pts 9286235 dom 0.979 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 231979 (<=1/64: 0) | unk boundary 165727 parent-obs 106984
+conf_sestino_museum_s0 t=90 pts 9869915 dom 0.980 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 232253 (<=1/64: 0) | unk boundary 165655 parent-obs 106907
+conf_sestino_museum_s0 t=95 pts 10453595 dom 0.981 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 232799 (<=1/64: 0) | unk boundary 165648 parent-obs 106734

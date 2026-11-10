@@ -1,0 +1,21 @@
+D_POLICY {"d_policy": "d1", "d_policy_file_sha256": "c8418279771e787eaaa0404f421602c9b95851e67d14aed1f717690230e48ecb", "h_policy_file_sha256": "ccfdf4af2783be3f1e7717bc644daf31a2fe994bcf312fdb4e4269ddf017a94a", "config_sha256": "e53c230db866e821b55fc40c0030c5eff448d12cbddcb2fbee00b4044b43c0b3", "config_version": "D-v1", "policy_cfg": {"depth": 2, "beam": null, "lambda_risk": 0.0, "doc": "D1_H3_NO_RISK: H3 with lambda 0", "kind": "cov", "eps_cov": 1.0, "cell_size": 1.0, "novelty": "hard", "c2_chunk": 16}}
+e3_colosseum_s0 t=0 pts 80581 dom 0.101 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 305 (<=1/64: 0) | unk boundary 8277 parent-obs 5317
+e3_colosseum_s0 t=5 pts 560462 dom 0.732 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 58876 (<=1/64: 0) | unk boundary 98303 parent-obs 64057
+e3_colosseum_s0 t=10 pts 1143998 dom 0.789 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 92477 (<=1/64: 0) | unk boundary 126080 parent-obs 83445
+e3_colosseum_s0 t=15 pts 1727630 dom 0.819 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 110143 (<=1/64: 0) | unk boundary 144240 parent-obs 94942
+e3_colosseum_s0 t=20 pts 2310910 dom 0.745 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 123020 (<=1/64: 0) | unk boundary 126985 parent-obs 81455
+e3_colosseum_s0 t=25 pts 2894222 dom 0.682 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 132548 (<=1/64: 0) | unk boundary 123765 parent-obs 79148
+e3_colosseum_s0 t=30 pts 3475849 dom 0.656 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 140494 (<=1/64: 0) | unk boundary 113343 parent-obs 71158
+e3_colosseum_s0 t=35 pts 4030983 dom 0.624 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 147747 (<=1/64: 0) | unk boundary 119942 parent-obs 78824
+e3_colosseum_s0 t=40 pts 4508538 dom 0.597 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 153771 (<=1/64: 0) | unk boundary 113655 parent-obs 70512
+e3_colosseum_s0 t=45 pts 4919103 dom 0.568 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 155094 (<=1/64: 0) | unk boundary 114803 parent-obs 72210
+e3_colosseum_s0 t=50 pts 5469666 dom 0.522 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 156474 (<=1/64: 0) | unk boundary 116805 parent-obs 75169
+e3_colosseum_s0 t=55 pts 6015485 dom 0.498 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 161651 (<=1/64: 0) | unk boundary 107124 parent-obs 67464
+e3_colosseum_s0 t=60 pts 6537526 dom 0.510 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 164826 (<=1/64: 0) | unk boundary 105818 parent-obs 65397
+e3_colosseum_s0 t=65 pts 7121099 dom 0.494 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 165049 (<=1/64: 0) | unk boundary 106901 parent-obs 66153
+e3_colosseum_s0 t=70 pts 7704097 dom 0.478 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 166584 (<=1/64: 0) | unk boundary 109007 parent-obs 67334
+e3_colosseum_s0 t=75 pts 8245784 dom 0.472 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 168867 (<=1/64: 0) | unk boundary 111538 parent-obs 68995
+e3_colosseum_s0 t=80 pts 8639142 dom 0.473 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 169592 (<=1/64: 0) | unk boundary 112337 parent-obs 69226
+e3_colosseum_s0 t=85 pts 9197066 dom 0.462 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 169968 (<=1/64: 0) | unk boundary 113601 parent-obs 70020
+e3_colosseum_s0 t=90 pts 9699054 dom 0.454 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 170093 (<=1/64: 0) | unk boundary 113913 parent-obs 70393
+e3_colosseum_s0 t=95 pts 10239523 dom 0.439 | S10 vox 1.000 D100 vox 1.000 4x 1.000 8x-obs 1.000 thin 0.000 | band cells 170146 (<=1/64: 0) | unk boundary 114190 parent-obs 70685

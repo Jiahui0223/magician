@@ -1,0 +1,14 @@
+D_POLICY {"d_policy": "d1", "d_policy_file_sha256": "c8418279771e787eaaa0404f421602c9b95851e67d14aed1f717690230e48ecb", "h_policy_file_sha256": "ccfdf4af2783be3f1e7717bc644daf31a2fe994bcf312fdb4e4269ddf017a94a", "config_sha256": "e53c230db866e821b55fc40c0030c5eff448d12cbddcb2fbee00b4044b43c0b3", "config_version": "D-v1", "policy_cfg": {"depth": 2, "beam": null, "lambda_risk": 0.0, "doc": "D1_H3_NO_RISK: H3 with lambda 0", "kind": "cov", "eps_cov": 1.0, "cell_size": 1.0, "novelty": "hard", "c2_chunk": 16}}
+/bsuscratch/jiahuizhang/projects/occupancy/seen2scene/seen2scene/v3/xa/xa_model.py:140: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  ck = torch.load(ckpt_path, map_location=device)
+g2_B0_pantheon_s0 t=0 reg 0.0e+00 41.1s
+g2_B0_pantheon_s0 t=5 reg 0.0e+00 31.3s
+g2_B0_pantheon_s0 t=10 reg 0.0e+00 26.1s
+g2_B0_pantheon_s0 t=15 reg 0.0e+00 17.8s
+g2_B0_pantheon_s0 t=20 reg 0.0e+00 23.3s
+g2_B0_pantheon_s0 t=25 reg 0.0e+00 19.0s
+g2_B0_pantheon_s0 t=50 reg 0.0e+00 32.2s
+g2_B0_pantheon_s0 t=55 reg 0.0e+00 19.7s
+g2_B0_pantheon_s0 t=80 reg 0.0e+00 19.0s
+g2_B0_pantheon_s0 t=85 reg 0.0e+00 22.6s
+DONE g2_B0_pantheon_s0 rows 10 656s

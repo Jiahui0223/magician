@@ -7,3 +7,11 @@ exit 0 indoor X7HyMhZNoso_L0_ogr_p30 gpu114 g0 313s 2026-11-08T16:49:34
 exit 0 indoor pLe4wQe7qrG_L0_ogr_p22 gpu114 g2 275s 2026-11-08T16:50:47
 exit 0 indoor x8F5xyUWy9e_L0_ogr_p19 gpu114 g3 335s 2026-11-08T16:52:32
 exit 0 indoor zsNo4HB9uLZ_L0_rnv_p16 gpu114 g1 313s 2026-11-08T16:54:15
+exit 0 explore g2_B0_barts_s0 gpu114 g0 1056s 2026-11-08T17:07:10
+exit 0 explore g2_B0_pantheon_s0 gpu114 g2 992s 2026-11-08T17:07:19
+exit 0 confirm conf_eiffel_s0 gpu114 g1 1627s 2026-11-08T17:21:23
+exit 0 explore e3_colosseum_s0 gpu114 g3 1863s 2026-11-08T17:23:35
+exit 0 confirm conf_bannerman_s0 gpu114 g2 1837s 2026-11-08T17:37:56
+exit 0 confirm conf_sestino_museum_s0 gpu114 g0 1959s 2026-11-08T17:39:49
+exit 0 confirm conf_liberty_s0 gpu114 g1 1578s 2026-11-08T17:47:41
+exit 0 explore e3_pisa_s1 gpu114 g3 1701s 2026-11-08T17:51:56
