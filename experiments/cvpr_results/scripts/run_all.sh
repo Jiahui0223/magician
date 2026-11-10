@@ -7,6 +7,8 @@ PY=/bsuscratch/jiahuizhang/envs/seen2scene/bin/python; S=experiments/cvpr_result
 set -e
 $PY $S/build_manifest.py
 $PY $S/make_tables.py
+$PY $S/make_table1_v2.py
+$PY $S/table1_metric_profile.py
 $PY $S/make_figures.py
 $PY $S/table3/k1_pairing_check.py
 ok=1; for s in bannerman redeemer colosseum pantheon alhambra neuschwanstein; do

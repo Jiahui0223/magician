@@ -1,0 +1,8 @@
+Method,status,AUC@20 (up),AUC@50 (up),AUC@100 (up),Coverage@20 (up),Final coverage = Coverage@100 (up)
+Random Walk,COMPLETE,0.144,0.248,0.353,0.226,0.517
+SCONE,BLOCKED,,,,,
+MACARONS,COMPLETE,0.352,0.540,0.660,0.538,0.810
+FisherRF,BLOCKED,,,,,
+MAGICIAN (beam 10x10),COMPLETE,0.307,0.544,0.711,0.537,0.906
+Ours (V3-T0 + D1),COMPLETE,0.420,0.633,0.763,0.646,0.911
+Delta vs. MAGICIAN (scene-paired),,"+0.113 [+0.073, +0.155]","+0.089 [+0.048, +0.132]","+0.053 [+0.019, +0.091]","+0.109 [+0.059, +0.158]","+0.004 [-0.027, +0.032]"

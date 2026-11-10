@@ -1,4 +1,4 @@
-# VALIDATION — 自动质量关口（生成于 2026-11-10 15:18:48，git f3007a09972e）
+# VALIDATION — 自动质量关口（生成于 2026-11-10 15:44:06，git 60230b300dd6）
 
 由 `experiments/cvpr_results/scripts/validate.py` 生成；每一项都从磁盘上的文件重新计算。PENDING = 相关运行尚未完成，不能判定，**不等于通过**。
 
@@ -28,7 +28,7 @@
 | 5 | Fig. 4: selected examples are eligible under the pre-declared rule, cover train / dev / test, include success and hard cases | **PASS** | ['train / success: bannerman s0 t0', 'train / hard: bannerman s2 t30', 'dev / hard: pantheon s1 t50', 'dev / success: pantheon s4 t20', 'test / success: alhambra s3 t30', 'test / hard: alhambra s4 t20'] |
 | 5 | Fig. 4: the four panels are the K = 4 samples of ONE state and ONE candidate (same stored arrays), one shared colour scale; the real depth is the next observation, read only for display | **PASS** | fig4_scan.py reads service records + planner logs only (no mesh / GT loader) |
 | 6 | Fig. 5: 14 scenes in the frozen order, values == manifest, one common 0-1 radial scale, no scene dropped | **PASS** | max abs diff 0.0e+00 |
-| 7 | re-running make_tables.py + make_figures.py reproduces every CSV / TeX / PDF / PNG byte-for-byte | **PASS** | 37 files, 0 differ [] |
+| 7 | re-running make_tables.py + make_figures.py reproduces every CSV / TeX / PDF / PNG byte-for-byte | **PASS** | 44 files, 0 differ [] |
 
 合计：PASS 25，FAIL 0，PENDING 0。
 
