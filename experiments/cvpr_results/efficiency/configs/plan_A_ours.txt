@@ -1,0 +1,16 @@
+OURS-K4D2 V3-T0-D1 barts 0 20 warmup
+OURS-K4D2 V3-T0-D1 dunnottar 0 100 runs
+OURS-K4D2 V3-T0-D1 bannerman 0 100 runs
+OURS-K4D2 V3-T0-D1 redeemer 0 100 runs
+OURS-K4D2 V3-T0-D1 pisa 0 100 runs
+OURS-K4D2 V3-T0-D1 alhambra 0 100 runs
+OURS-K4D2 V3-T0-D1 eiffel 0 100 runs
+OURS-K4D2 V3-T0-D1 barts 0 100 runs
+OURS-K4D2-PROF V3-T0-D1 redeemer 0 100 runs
+OURS-K4D2-PROF V3-T0-D1 eiffel 0 100 runs
+OURS-K1D1 V3-T0-D1 redeemer 0 100 runs
+OURS-K1D1 V3-T0-D1 eiffel 0 100 runs
+OURS-K4D1 V3-T0-D1 redeemer 0 100 runs
+OURS-K4D1 V3-T0-D1 eiffel 0 100 runs
+OURS-K1D2 V3-T0-D1 redeemer 0 100 runs
+OURS-K1D2 V3-T0-D1 eiffel 0 100 runs

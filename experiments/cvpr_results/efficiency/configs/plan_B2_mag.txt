@@ -1,0 +1,6 @@
+MAG-B V3-T0-D1 sestino_museum 0 10 warmup
+MAG-B V3-T0-D1 alhambra 0 100 runs
+MAG-B V3-T0-D1 eiffel 0 100 runs
+MAG-B V3-T0-D1 barts 0 100 runs
+MAG-B MAG-B eiffel 0 100 runs
+MAG-B MAG-B pisa 0 100 runs

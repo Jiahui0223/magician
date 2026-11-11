@@ -1,0 +1,13 @@
+threshold,method,episodes_reached,episodes_total,scenes_with_median,median_of_scene_medians,scene_medians
+0.5,RAYSCOUT,70,70,14,11.0,11;10;18;27;7;14;15;10;17;41;9;11;7;11
+0.5,MAGICIAN,68,70,14,15.5,21;15;14;29;16;12;20;10;20;31;13;15;14;19
+0.5,"paired (RAYSCOUT - MAGICIAN), both reached",68,70,,-4.0,"mean -6.35 steps; RAYSCOUT fewer in 47, equal 4, more 17; reached by RAYSCOUT only 2, by MAGICIAN only 0"
+0.7,RAYSCOUT,66,70,13,23.5,25;NA;28;63;14;22;27;22;43;60;17;16;12;18
+0.7,MAGICIAN,67,70,14,31.0,31;31;25;42;32;22;28;23;40;51;22;40;23;64
+0.7,"paired (RAYSCOUT - MAGICIAN), both reached",64,70,,-5.0,"mean -8.36 steps; RAYSCOUT fewer in 45, equal 2, more 17; reached by RAYSCOUT only 2, by MAGICIAN only 3"
+0.8,RAYSCOUT,64,70,13,31.0,43;NA;33;74;21;29;37;27;54;66;25;24;16;22
+0.8,MAGICIAN,66,70,14,40.5,40;42;32;55;34;32;41;35;56;57;30;42;28;67
+0.8,"paired (RAYSCOUT - MAGICIAN), both reached",63,70,,-4.0,"mean -5.94 steps; RAYSCOUT fewer in 39, equal 0, more 24; reached by RAYSCOUT only 1, by MAGICIAN only 3"
+0.9,RAYSCOUT,51,70,11,52.0,59;NA;80;NA;25;39;62;45;NA;76;45;40;21;29
+0.9,MAGICIAN,51,70,11,56.5,55;NA;57;NA;36;40;64;55;NA;68;56;55;42;93
+0.9,"paired (RAYSCOUT - MAGICIAN), both reached",49,70,,-7.0,"mean -6.78 steps; RAYSCOUT fewer in 34, equal 0, more 15; reached by RAYSCOUT only 2, by MAGICIAN only 2"

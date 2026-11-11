@@ -1,6 +1,6 @@
 # EXP6 V3 — 全局状态板（每次启动 / 结束一个运行就更新）
 
-**最近更新：2026-11-11 00:50（P16 EXP7：MP3D-150 ✅ 176/176 有效，Ours 在所有划分和指标上都高于 MAGICIAN；UAVScenes UAV-v0 Ours / Random 闭环 🔄 运行中，gpu114 4 卡；详见 `experiments/cvpr_results/exp7/report/`）**
+**最近更新：2026-11-11 03:45（P16 EXP7 ✅：MP3D-150 176/176、UAVScenes Ours/Random 120/120 均已同协议核对；P17 EXP8 效率基准 ✅：RAYSCOUT 单步决策 3.30 s vs MAGICIAN 5.96 s（同一组状态，L40S）；见 `experiments/cvpr_results/{exp7,efficiency}/report/`）**
 标记：✅ 完成 · 🔄 正在跑 · ⏳ 等待（排队或依赖前项）· ❌ 失败（后面跟修复行）· ⬜ 未开始
 
 ## 0. 此刻在跑什么
@@ -257,5 +257,13 @@ P15 结论（All-14，AUC@20 / AUC@50 / AUC@100 / Cov@20 / Final）：Ours 0.420
 | E7-3 | MP3D-150 完整闭环：OURS 44、MAG-B 34、RANDOM 34、OURS-H0 34 | Pool A 3489889 gpu114 8 worker + Pool B 3494056 gpu115 6 worker | `work_dirs/cvpr_results/exp7/logs/worker_*.log`、`episodes/mp3d150/raw/` | ✅ 11-11 00:40，146 / 146，0 失败；与复用的 30 条合计 176 / 176 有效（V1–V5）。ALL-22 Ours / MAGICIAN / Random：AUC@20 0.237 / 0.176 / 0.121，AUC@150 0.539 / 0.434 / 0.309，Final 0.699 / 0.540 / 0.436；Ours − MAGICIAN 的 Final 为 +0.159 [+0.114, +0.208]，22/22 层更高；HO-12 的 Final 为 +0.205；D1 − H0 的 AUC@150 为 +0.038 [+0.014, +0.062]。报告 `report/MP3D_150_RESULTS.md` |
 | E7-4 | UAVScenes 可行性（只用 CPU，下载约 166 MB，AMvalley） | CPU | `report/UAVSCENES_FEASIBILITY.md`、`uavscenes_inventory.csv` | ✅ 17:12：数据满足 GO-DEPTH；GO-NBV 未成立（缺 adapter，尺度/切块协议待定，估计 3–5 天）→ Pool B 转跑 MP3D |
 | E7-5 | UAVScenes UAV-v0 适配：转成 Macarons++ 格式的切块（1 单位 = 2 m，260 m 网格规则，6 块）、hook（E-M2 / z0 / 数据根目录）、相机预筛、起点、可见率 | gpu114 | `report/UAV_PROTOCOL.md`、`work_dirs/cvpr_results/exp7/uav_macpp/` | ✅ 5 / 6 块就绪（HKisland_00 的预筛仍在运行）；smoke 中 Ours / Random 均 rc 0 |
-| E7-6 | UAVScenes 闭环：6 块 × 10 起点 × {Ours, Random}，100 步 | gpu114 4 卡，每卡最多约 3 个 worker（`uav_fill.sh`） | `logs/uav_worker_*.log`、`episodes/uavscenes/raw/` | 🔄 23:16 起 |
+| E7-6 | UAVScenes 闭环：6 块 × 10 起点 × {Ours, Random}，100 步 | gpu114 4 卡，每卡最多 3 个 worker | `logs/uav_worker_*.log`、`episodes/uavscenes/raw/` | ✅ 11-11 02:15 完成 120 / 120；03:00 官方覆盖率重放 120 / 120 逐位相同。ALL-6：Ours AUC@20 / AUC@100 / Final 为 0.437 / 0.790 / 0.926，Random 为 0.195 / 0.342 / 0.453；配对 AUC@100 +0.447 [+0.412, +0.487]，60 / 60 对 Ours 更高。CLEAN-4：+0.435。⚠️ AMvalley_01 和 HKisland_00 上 Ours 有一部分步进入重建体下方（23.8% / 12.8%）。事故：zsh 生成的清单格式错误；旧 worker 遗留导致显存溢出，9 条续跑。报告 `report/UAVSCENES_RESULTS.md` |
+
+## P17 EXP8 — 计算效率基准（2026-11-11 01:40 起；任务书粘贴于对话；产物 `experiments/cvpr_results/efficiency/`）
+
+| 编号 | 内容 | 资源 | 日志 / 结果 | 状态 |
+|---|---|---|---|---|
+| E8-0 | 资源与代码审计、测量协议、参数量、阈值步数（CPU） | CPU | `report/RESOURCE_AUDIT.md`、`BENCHMARK_PROTOCOL.md`、`tables/model_params.json`、`tables/steps_to_threshold*.csv` | ✅ |
+| E8-1 | 离线重放 Table 1 真实轨迹：Ours K4D2 7 条，带计时器 2 条，R1–R3 各 2 条；MAGICIAN 在同 7 条 + 自身 2 条上 | sbatch 3494525（gpu117 GPU 1）、3494526（gpu117 GPU 2）、3494528（gpu116 GPU 0），均为 1 × L40S 独占，提交前确认不抢占 | `work_dirs/cvpr_results/efficiency/{runs,logs}` | ✅ 02:57 全部 COMPLETED；所有自身轨迹重放逐步与记录一致 |
+| E8-2 | 汇总、表 E1–E4、图 E1/E2、报告 | CPU | `tables/`、`figures/`、`report/FINAL_REPORT.md` | ✅ 03:35：决策延迟中位数 RAYSCOUT 3.30 s / MAGICIAN 5.96 s（1.81×，630 个配对状态中 619 个更快）；瓶颈为 Flow 采样（68.5%，其中 CDGR 第二层 57.8%）；GeoAnchor 摊销后 0.03%；K4/K1 = 1.85×（一步）/ 2.85×（CDGR）；峰值显存 RAYSCOUT 更高 |
 

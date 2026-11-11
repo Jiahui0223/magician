@@ -1,0 +1,62 @@
+{
+ "decision": {
+  "n_states": 630,
+  "trajectories": 7,
+  "rayscout_median": 3.300242304801941,
+  "magician_median": 5.961943030357361,
+  "rayscout_mean": 3.34927650217026,
+  "magician_mean": 5.78837907389989,
+  "ratio_of_medians": 1.8065167583854598,
+  "ratio_of_means": 1.728247599190196,
+  "per_trajectory_median_ratio": {
+   "alhambra_s0": 1.8082736314777048,
+   "bannerman_s0": 1.82794801792476,
+   "barts_s0": 1.4218999888139616,
+   "dunnottar_s0": 1.5349711117724616,
+   "eiffel_s0": 1.8418771260596989,
+   "pisa_s0": 1.867020588011529,
+   "redeemer_s0": 1.7622998385956556
+  },
+  "states_rayscout_faster": 619
+ },
+ "cycle": {
+  "n_states": 630,
+  "trajectories": 7,
+  "rayscout_median": 3.6700788736343384,
+  "magician_median": 6.179601788520813,
+  "rayscout_mean": 3.734492794672648,
+  "magician_mean": 6.056160025747996,
+  "ratio_of_medians": 1.6837790143734406,
+  "ratio_of_means": 1.6216820753777506,
+  "per_trajectory_median_ratio": {
+   "alhambra_s0": 1.6728970850025746,
+   "bannerman_s0": 1.6801473317957283,
+   "barts_s0": 1.6142650473398905,
+   "dunnottar_s0": 1.3911388824443538,
+   "eiffel_s0": 1.7259882652021343,
+   "pisa_s0": 1.6833359510214372,
+   "redeemer_s0": 1.630824582563177
+  },
+  "states_rayscout_faster": 621
+ },
+ "roundtrip": {
+  "n_states": 630,
+  "trajectories": 7,
+  "rayscout_median": 3.671328376978636,
+  "magician_median": 6.20270567573607,
+  "rayscout_mean": 3.736052260979537,
+  "magician_mean": 6.086114806418736,
+  "ratio_of_medians": 1.6894990147518925,
+  "ratio_of_means": 1.6290229315001732,
+  "per_trajectory_median_ratio": {
+   "alhambra_s0": 1.6852053835271568,
+   "bannerman_s0": 1.6814230242769959,
+   "barts_s0": 1.6218347688612147,
+   "dunnottar_s0": 1.4002466895006627,
+   "eiffel_s0": 1.7342107756229959,
+   "pisa_s0": 1.6849119839883373,
+   "redeemer_s0": 1.6317449423713215
+  },
+  "states_rayscout_faster": 621
+ }
+}

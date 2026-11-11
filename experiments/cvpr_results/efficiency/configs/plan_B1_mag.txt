@@ -1,0 +1,5 @@
+MAG-B V3-T0-D1 barts 0 10 warmup
+MAG-B V3-T0-D1 dunnottar 0 100 runs
+MAG-B V3-T0-D1 bannerman 0 100 runs
+MAG-B V3-T0-D1 redeemer 0 100 runs
+MAG-B V3-T0-D1 pisa 0 100 runs

@@ -1,0 +1,10 @@
+| Threshold | Method | Episodes reached | Median of scene medians (steps) | Steps × median decision latency (s) |
+|---|---|---|---|---|
+| 50% | RAYSCOUT | 70/70 | 11 | 36 (estimate) |
+| 50% | MAGICIAN | 68/70 | 15.5 | 92 (estimate) |
+| 70% | RAYSCOUT | 66/70 | 23.5 | 78 (estimate) |
+| 70% | MAGICIAN | 67/70 | 31 | 185 (estimate) |
+| 80% | RAYSCOUT | 64/70 | 31 | 102 (estimate) |
+| 80% | MAGICIAN | 66/70 | 40.5 | 241 (estimate) |
+| 90% | RAYSCOUT | 51/70 | 52 | 172 (estimate) |
+| 90% | MAGICIAN | 51/70 | 56.5 | 337 (estimate) |

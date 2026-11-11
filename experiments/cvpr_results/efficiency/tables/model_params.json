@@ -1,0 +1,20 @@
+{
+ "MAGICIAN": {
+  "total": 18072549,
+  "children": {
+   "depth": 14421892,
+   "scone": 3650657
+  },
+  "used_in_planning": "scone occupancy (compute_scene_occupancy_probability_field); depth module unused with GT depth"
+ },
+ "RAYSCOUT_V3-T0": {
+  "total": 23539622,
+  "by_module": {
+   "vae_enc": 559680,
+   "vae_dec": 585188,
+   "rays": 60864,
+   "unet": 22333890
+  },
+  "used_at_inference": 22954434
+ }
+}

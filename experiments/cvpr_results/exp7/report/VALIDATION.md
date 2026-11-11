@@ -21,4 +21,6 @@
 - **E-M2 规则：** 对 14 个 Macarons++ 场景逐一复现冻结表的 k_M 和窗口数（`uav_hooks.em2_rule`）。
 - **批量线段判定：** 每个切块抽查 300 条边，与官方 `line_segment_mesh_intersection` 的结果一致。
 - **smoke：** Ours 与 Random 在 uav_HKairport_00 起点 0 各跑 2 步，返回码均为 0。Ours 的 D1 生效：每步 `policy_s` 约 3.2 s，规划器显存峰值 8.8 GB。
-- 正式运行进行中。闭环全部结束后，再做与 Table 1 相同的官方覆盖率重放核对，并单独写入本节。
+- **官方覆盖率重放（2026-11-11 03:00）：** 120 / 120 条（Ours 60、Random 60）与闭环存储曲线逐位相同。使用 `scripts/uavscenes/uav_cov.py`，即 t25_out_cov 原样运行。
+- **显存溢出续跑：** 9 条 Ours 在显存溢出后从每步检查点续跑；续跑前模拟器会对已完成步做逐位重放核对。另有 4 条刚启动、还没完成任何一步的 HKisland episode 被我停掉，改到别的卡上重跑。
+- **头顶不开阔诊断（`results/uav_under_surface.csv`）：** AMvalley_01 和 HKisland_00 上，Ours 有相当比例的步进入重建体下方，所以另外报告 CLEAN-4（见 `UAVSCENES_RESULTS.md` §2）。
