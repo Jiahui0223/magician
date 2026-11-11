@@ -1,0 +1,15 @@
+[start] 2026-11-11T04:45:58-0700 host=gpu114
+/bsuscratch/jiahuizhang/envs/fisherrf/lib/python3.9/site-packages/diff_gaussian_rasterization/_C.cpython-39-x86_64-linux-gnu.so
+  cuobjdump --list-elf archs: sm_89 
+  cuobjdump --list-ptx: 
+  max GLIBC: GLIBC_2.14  max GLIBCXX: GLIBCXX_3.4.29  max CXXABI: CXXABI_1.3.13
+  ldd 'not found' (outside the env, torch libs resolve via python at import): libc10.so libtorch_cpu.so libtorch_python.so 
+/bsuscratch/jiahuizhang/envs/fisherrf/lib/python3.9/site-packages/simple_knn/_C.cpython-39-x86_64-linux-gnu.so
+  cuobjdump --list-elf archs: sm_89 
+  cuobjdump --list-ptx: 
+  max GLIBC: GLIBC_2.14  max GLIBCXX: GLIBCXX_3.4.29  max CXXABI: CXXABI_1.3.13
+  ldd 'not found' (outside the env, torch libs resolve via python at import): libc10.so libtorch_cpu.so libtorch_python.so 
+/bsuscratch/jiahuizhang/envs/fisherrf/lib/python3.9/site-packages/habitat_sim-0.2.4-py3.9-linux-x86_64.egg/habitat_sim/_ext/habitat_sim_bindings.cpython-39-x86_64-linux-gnu.so  ldd not found: 
+ldd: warning: you do not have execution permission for `/bsuscratch/jiahuizhang/envs/fisherrf/lib/python3.9/site-packages/_magnum.cpython-39-x86_64-linux-gnu.so'
+/bsuscratch/jiahuizhang/envs/fisherrf/lib/python3.9/site-packages/_magnum.cpython-39-x86_64-linux-gnu.so  ldd not found: 
+[end] 2026-11-11T04:45:58-0700

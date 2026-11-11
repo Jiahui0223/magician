@@ -1,0 +1,7 @@
+[start] 2026-11-11T04:46:06-0700
+conda list exit=0
+pip freeze exit=0
+No broken requirements found.
+pip check exit=0
+13G	/bsuscratch/jiahuizhang/envs/fisherrf
+[end] 2026-11-11T04:46:15-0700

@@ -1,0 +1,13 @@
+[start] 2026-11-11T04:39:42-0700 host=gpu114
++ /bsuscratch/jiahuizhang/envs/fisherrf/bin/python -m pip install --progress-bar off --no-deps habitat-lab==0.2.420230405 habitat-baselines==0.2.420230405
+Collecting habitat-lab==0.2.420230405
+  Using cached habitat_lab-0.2.420230405-py3-none-any.whl.metadata (4.0 kB)
+Collecting habitat-baselines==0.2.420230405
+  Using cached habitat_baselines-0.2.420230405-py3-none-any.whl.metadata (6.2 kB)
+Downloading habitat_lab-0.2.420230405-py3-none-any.whl (366 kB)
+Downloading habitat_baselines-0.2.420230405-py3-none-any.whl (193 kB)
+Installing collected packages: habitat-lab, habitat-baselines
+Successfully installed habitat-baselines-0.2.420230405 habitat-lab-0.2.420230405
++ rc=0
++ set +x
+[end] 2026-11-11T04:39:45-0700 exit=0

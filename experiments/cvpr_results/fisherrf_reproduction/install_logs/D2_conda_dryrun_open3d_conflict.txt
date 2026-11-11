@@ -1,0 +1,158 @@
+The following specifications were found to be incompatible with each other:
+
+Output in format: Requested package -> Available versions
+
+Package ca-certificates conflicts for:
+pip -> ca-certificates[version='>=2026.10.19']
+python=3.9 -> openssl[version='>=3.5.0,<4.0a0'] -> ca-certificates[version='>=2026.10.19']
+
+Package libpng conflicts for:
+open3d=0.18.0 -> qt6-main[version='>=6.7.3,<6.9.0a0'] -> libpng[version='>=1.6.37,<1.7.0a0|>=1.6.38,<1.7.0a0|>=1.6.39,<1.7.0a0|>=1.6.46,<1.7.0a0|>=1.6.47,<1.7.0a0|>=1.6.49,<1.7.0a0|>=1.6.54,<1.7.0a0|>=1.6.58,<1.7.0a0']
+open3d=0.18.0 -> libpng[version='>=1.6.43,<1.7.0a0|>=1.6.44,<1.7.0a0']
+
+Package pyparsing conflicts for:
+habitat-sim==0.2.4=py3.9_headless_linux_f179b584bcd713c5a2a998132211e2cae881d6d1 -> matplotlib -> pyparsing
+wheel -> packaging[version='>=20.2'] -> pyparsing[version='<3,>=2.0.2|>=2.0.2,!=3.0.5|>=2.0.2,<3|>=2.0.2']
+
+Package libgcc-ng conflicts for:
+open3d=0.18.0 -> libgcc-ng[version='>=12|>=13']
+gcc_linux-64=11 -> gcc_impl_linux-64=11.4.0 -> libgcc-ng[version='>=11.1.0|>=11.2.0|>=11.3.0|>=11.4.0']
+wheel -> python[version='>=3.10'] -> libgcc-ng[version='>=10.3.0|>=12|>=9.4.0|>=9.3.0|>=7.5.0|>=7.3.0|>=4.9']
+setuptools=68.2.2 -> python[version='>=3.7'] -> libgcc-ng[version='>=10.3.0|>=12|>=9.4.0|>=9.3.0|>=7.5.0|>=7.3.0|>=4.9']
+python=3.9 -> libgcc-ng[version='>=10.3.0|>=12|>=9.4.0|>=9.3.0|>=7.5.0']
+python=3.9 -> bzip2[version='>=1.0.8,<2.0a0'] -> libgcc-ng[version='11.4.0|11.4.0|11.4.0|11.4.0|11.4.0|11.4.0|12.3.0|12.3.0|12.3.0|12.3.0|12.3.0|12.3.0|12.4.0|13.2.0|13.2.0|13.2.0|13.2.0|13.2.0|13.2.0|13.3.0|14.1.0|>=13|>=7.3.0|>=4.9',build='h77fa898_8|h77fa898_10|h77fa898_11|h77fa898_12|h77fa898_13|h77fa898_8|h77fa898_9|h77fa898_10|h77fa898_11|h77fa898_13|h77fa898_8|h77fa898_9|h77fa898_10|h77fa898_11|h77fa898_13|h77fa898_0|h77fa898_12|h77fa898_0|h77fa898_12|h77fa898_9']
+habitat-sim==0.2.4=py3.9_headless_linux_f179b584bcd713c5a2a998132211e2cae881d6d1 -> libxcb[version='>=1.13,<1.14.0a0'] -> libgcc-ng[version='>=10.3.0|>=12|>=4.9|>=7.3.0|>=9.3.0|>=9.4.0|>=7.5.0|>=13']
+open3d=0.18.0 -> glew[version='>=2.1.0,<2.2.0a0'] -> libgcc-ng[version='12.3.0|12.3.0|12.3.0|12.3.0|12.3.0|12.3.0|12.4.0|13.2.0|13.2.0|13.2.0|13.2.0|13.2.0|13.2.0|13.3.0|14.1.0|>=10.3.0|>=7.3.0|>=9.3.0|>=7.5.0|>=9.4.0|>=4.9',build='h77fa898_8|h77fa898_9|h77fa898_10|h77fa898_11|h77fa898_13|h77fa898_8|h77fa898_9|h77fa898_10|h77fa898_11|h77fa898_13|h77fa898_0|h77fa898_12|h77fa898_0|h77fa898_12']
+pip -> python[version='>=3.11,<3.13.0a0'] -> libgcc-ng[version='>=10.3.0|>=12|>=9.4.0|>=9.3.0|>=7.5.0|>=7.3.0|>=4.9']
+
+Package libxcb conflicts for:
+open3d=0.18.0 -> qt6-main[version='>=6.7.3,<6.9.0a0'] -> libxcb[version='>=1.15,<1.16.0a0|>=1.16,<1.17.0a0|>=1.16,<2.0.0a0']
+open3d=0.18.0 -> libxcb[version='>=1.17.0,<2.0a0']
+
+Package libmpdec conflicts for:
+pip -> python[version='>=3.13.0a0'] -> libmpdec[version='>=4.0.0,<5.0a0']
+wheel -> python[version='>=3.10'] -> libmpdec[version='>=4.0.0,<5.0a0']
+open3d=0.18.0 -> python[version='>=3.13,<3.14.0a0'] -> libmpdec[version='>=4.0.0,<5.0a0']
+setuptools=68.2.2 -> python[version='>=3.7'] -> libmpdec[version='>=4.0.0,<5.0a0']
+
+Package tzdata conflicts for:
+gxx_linux-64=11 -> sysroot_linux-64 -> tzdata
+gcc_linux-64=11 -> sysroot_linux-64 -> tzdata
+pip -> python[version='>=3.13.0a0'] -> tzdata
+sysroot_linux-64=2.17 -> tzdata
+habitat-sim==0.2.4=py3.9_headless_linux_f179b584bcd713c5a2a998132211e2cae881d6d1 -> python[version='>=3.9,<3.10.0a0'] -> tzdata
+wheel -> python[version='>=3.10'] -> tzdata
+python=3.9 -> tzdata
+setuptools=68.2.2 -> python[version='>=3.7'] -> tzdata
+open3d=0.18.0 -> python[version='>=3.9,<3.10.0a0'] -> tzdata
+
+Package libjpeg-turbo conflicts for:
+open3d=0.18.0 -> libjpeg-turbo[version='>=3.0.0,<4.0a0']
+open3d=0.18.0 -> qt6-main[version='>=6.7.3,<6.9.0a0'] -> libjpeg-turbo[version='>=2.1.5.1,<3.0a0|>=3.1.0,<4.0a0|>=3.1.2,<4.0a0|>=3.2.0,<4.0a0']
+
+Package wheel conflicts for:
+wheel
+pip -> wheel
+python=3.9 -> pip -> wheel
+
+Package pypy3.6 conflicts for:
+pip -> setuptools -> pypy3.6[version='7.3.0.*|7.3.1.*|7.3.2.*|7.3.3.*|>=7.3.1|>=7.3.2|>=7.3.3']
+habitat-sim==0.2.4=py3.9_headless_linux_f179b584bcd713c5a2a998132211e2cae881d6d1 -> matplotlib -> pypy3.6[version='>=7.3.1|>=7.3.2|>=7.3.3']
+wheel -> python[version='!=3.0,!=3.1,!=3.2,!=3.3,!=3.4'] -> pypy3.6[version='7.3.0.*|7.3.1.*|7.3.2.*|7.3.3.*|>=7.3.3|>=7.3.2|>=7.3.1']
+open3d=0.18.0 -> numpy -> pypy3.6[version='>=7.3.1|>=7.3.2|>=7.3.3']
+
+Package zstd conflicts for:
+wheel -> python[version='>=3.10'] -> zstd[version='>=1.5.7,<1.6.0a0']
+setuptools=68.2.2 -> python[version='>=3.7'] -> zstd[version='>=1.5.7,<1.6.0a0']
+open3d=0.18.0 -> libcurl[version='>=8.10.1,<9.0a0'] -> zstd[version='>=1.5.5,<1.6.0a0|>=1.5.6,<1.6.0a0|>=1.5.7,<1.6.0a0']
+python=3.9 -> ld_impl_linux-64[version='>=2.36.1'] -> zstd[version='>=1.5.7,<1.6.0a0']
+pip -> python[version='>=3.13.0a0'] -> zstd[version='>=1.5.7,<1.6.0a0']
+
+Package python conflicts for:
+python=3.9
+setuptools=68.2.2 -> python[version='>=3.7']
+habitat-sim==0.2.4=py3.9_headless_linux_f179b584bcd713c5a2a998132211e2cae881d6d1 -> python[version='>=3.9,<3.10.0a0']
+habitat-sim==0.2.4=py3.9_headless_linux_f179b584bcd713c5a2a998132211e2cae881d6d1 -> attrs[version='>=19.1.0'] -> python[version='2.7.*|3.5.*|3.6.*|>=2.7,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*|>=3.10|>=3.9|>=3.7|>=3.6|>=3.5|>=3.11|>=3.4|>=3|3.4.*|>=3.8,<3.9.0a0|>=2.7,<2.8.0a0|>=3.6,<3.7.0a0|>=3.7,<3.8.0a0|>=3.14,<3.15.0a0|>=3.11,<3.12.0a0|>=3.15.0rc2,<3.16.0a0|>=3.13,<3.14.0a0|>=3.12,<3.13.0a0|>=3.10,<3.11.0a0|>=3.14.0rc2,<3.15.0a0|>=3.13.0rc2,<3.14.0a0|>=3.5,<3.6.0a0|>=3.13.0rc3,<3.14.0a0|>=3.13.0rc1,<3.14.0a0|>=3.12.0rc3,<3.13.0a0|3.9.*|>=3.15,<3.16.0a0|>=2.7']
+pip -> python[version='2.7.*|3.5.*|3.6.*|>=2.7,<2.8.0a0|>=3.8,<3.9.0a0|>=3|>=3.10,<3.13.0a0|>=3.11,<3.13.0a0|>=3.13.0a0|>=3.9,<3.13.0a0|>=3.8,<3.13.0a0|>=3.8|>=3.7|>=3.6|>=3.6,<3.7.0a0|>=3.7,<3.8.0a0|>=3.5,<3.6.0a0|3.4.*']
+wheel -> python[version='!=3.0,!=3.1,!=3.2,!=3.3,!=3.4|>=3.10|>=3.9|>=3.8|>=3.7|2.7.*|>=3.6|>=3.8,<3.9.0a0|>=3.6,<3.7.0a0|>=2.7,<2.8.0a0|>=3.7,<3.8.0a0|>=3.5,<3.6.0a0|3.6.*|3.5.*|2.7.*|3.4.*']
+wheel -> packaging[version='>=20.2'] -> python[version='>=2.7|>=3.6|>=3.11|>=3.9,<3.10.0a0|>=3.10,<3.11.0a0|>=3.11,<3.12.0a0']
+pip -> setuptools -> python[version='!=3.0,!=3.1,!=3.2,!=3.3,!=3.4|>=3.10,<3.11.0a0|>=3.10|>=3.11|>=3.9|>=3.9,<3.10.0a0|>=3.11,<3.12.0a0|2.7.*|>=3.6']
+
+Package sysroot_linux-64 conflicts for:
+sysroot_linux-64=2.17
+gxx_linux-64=11 -> sysroot_linux-64
+gcc_linux-64=11 -> sysroot_linux-64
+
+Package six conflicts for:
+wheel -> packaging[version='>=20.2'] -> six
+open3d=0.18.0 -> plotly -> six==1.15.0
+
+Package packaging conflicts for:
+open3d=0.18.0 -> plotly -> packaging
+pip -> wheel -> packaging[version='>=20.2|>=24.0']
+wheel -> packaging[version='>=20.2|>=24.0']
+
+Package _openmp_mutex conflicts for:
+open3d=0.18.0 -> _openmp_mutex[version='>=4.5']
+python=3.9 -> libgcc[version='>=13'] -> _openmp_mutex[version='>=4.5']
+habitat-sim==0.2.4=py3.9_headless_linux_f179b584bcd713c5a2a998132211e2cae881d6d1 -> numba -> _openmp_mutex[version='>=4.5']
+
+Package gcc_linux-64 conflicts for:
+gxx_linux-64=11 -> gcc_linux-64[version='11.1.0|11.1.0|11.2.0|11.2.0|11.2.0|11.2.0|11.2.0|11.2.0|11.2.0|11.2.0|11.2.0|11.2.0|11.3.0|11.3.0|11.3.0|11.3.0|11.4.0',build='h97fdae6_0|h97fdae6_1|h39a9532_1|h39a9532_2|h39a9532_9|h39a9532_10|he6f903b_10|he6f903b_11|he6f903b_13|ha077dfb_4|ha077dfb_3|h0f0c6b6_3|hfd045f2_2|hfd045f2_1|hfd045f2_0|he6f903b_12|h39a9532_8|h39a9532_7|h39a9532_6|h39a9532_5|h39a9532_4|h39a9532_3']
+gcc_linux-64=11
+
+Package libgomp conflicts for:
+open3d=0.18.0 -> _openmp_mutex[version='>=4.5'] -> libgomp[version='>=7.3.0|>=7.5.0']
+gcc_linux-64=11 -> gcc_impl_linux-64=11.4.0 -> libgomp[version='>=11.1.0|>=11.2.0|>=11.3.0|>=11.4.0']
+
+Package _python_rc conflicts for:
+wheel -> python[version='>=3.10'] -> _python_rc
+pip -> python[version='>=3.13.0a0'] -> _python_rc
+setuptools=68.2.2 -> python[version='>=3.7'] -> _python_rc
+
+Package certifi conflicts for:
+wheel -> setuptools -> certifi[version='>=2016.09|>=2016.9.26']
+pip -> setuptools -> certifi[version='>=2016.09|>=2016.9.26']
+
+Package pypy3.8 conflicts for:
+open3d=0.18.0 -> numpy -> pypy3.8[version='7.3.11.*|>=7.3.11|>=7.3.9|>=7.3.8|7.3.9.*|7.3.8.*']
+wheel -> python[version='>=3.8'] -> pypy3.8[version='7.3.11.*|7.3.9.*|7.3.8.*|>=7.3.9|>=7.3.8']
+setuptools=68.2.2 -> python[version='>=3.7'] -> pypy3.8[version='7.3.11.*|7.3.9.*|7.3.8.*']
+habitat-sim==0.2.4=py3.9_headless_linux_f179b584bcd713c5a2a998132211e2cae881d6d1 -> matplotlib -> pypy3.8[version='>=7.3.11|>=7.3.9|>=7.3.8']
+pip -> setuptools -> pypy3.8[version='7.3.11.*|>=7.3.8|>=7.3.9|7.3.9.*|7.3.8.*']
+
+Package libstdcxx-ng conflicts for:
+open3d=0.18.0 -> glew[version='>=2.1.0,<2.2.0a0'] -> libstdcxx-ng[version='>=10.3.0|>=7.3.0|>=9.3.0|>=9.4.0|>=4.9|>=7.5.0']
+open3d=0.18.0 -> libstdcxx-ng[version='>=12|>=13']
+
+Package libgfortran conflicts for:
+open3d=0.18.0 -> liblapacke[version='>=3.9.0,<4.0a0'] -> libgfortran[version='>=3.0']
+habitat-sim==0.2.4=py3.9_headless_linux_f179b584bcd713c5a2a998132211e2cae881d6d1 -> numpy[version='>=1.13'] -> libgfortran[version='>=3.0']
+
+Package libstdcxx conflicts for:
+open3d=0.18.0 -> assimp[version='>=5.4.3,<5.4.4.0a0'] -> libstdcxx[version='12.4.0|12.4.0|13.3.0|13.3.0|13.4.0|13.4.0|13.4.0|13.4.0|13.4.0|13.4.0|13.4.0|13.4.0|13.4.0|13.4.0|13.4.0|13.4.0|13.4.0|13.4.0|13.4.0|14.1.0|14.2.0|14.2.0|14.3.0|14.3.0|14.3.0|14.3.0|14.3.0|14.3.0|14.3.0|14.3.0|14.3.0|14.3.0|14.3.0|14.3.0|14.3.0|14.3.0|14.3.0|14.4.0|14.4.0|14.4.0|14.4.0|14.4.0|14.4.0|14.4.0|14.4.0|15.1.0|15.1.0|15.1.0|15.1.0|15.2.0|15.2.0|15.2.0|15.2.0|15.2.0|15.2.0|15.2.0|15.2.0|15.2.0|15.2.0|15.2.0|15.2.0|15.3.0|15.3.0|15.3.0|15.3.0|15.3.0|15.3.0|15.3.0|15.3.0|16.1.0|16.1.0|16.1.0|16.1.0|16.2.0|16.2.0|16.2.0|16.2.0|>=14|>=15',build='h8f9b012_3|h8f9b012_4|h8f9b012_6|h8f9b012_7|h934c35e_12|h934c35e_14|h934c35e_15|h934c35e_16|h934c35e_17|h934c35e_18|h8f9b012_4|h8f9b012_5|h8f9b012_7|h934c35e_12|h934c35e_14|h934c35e_15|h934c35e_16|h934c35e_17|h934c35e_18|h934c35e_19|h934c35e_2|h934c35e_4|h934c35e_5|h934c35e_6|h934c35e_7|h8f9b012_3|h8f9b012_4|h8f9b012_5|h8f9b012_7|h934c35e_12|h934c35e_13|h934c35e_14|h934c35e_15|h934c35e_17|h934c35e_18|h934c35e_19|h934c35e_2|h934c35e_4|h934c35e_5|h934c35e_6|h934c35e_7|h934c35e_0|h934c35e_1|h934c35e_2|h934c35e_4|h934c35e_5|h934c35e_6|h934c35e_7|h934c35e_3|h934c35e_3|h934c35e_1|h934c35e_0|h934c35e_20|h934c35e_16|h8f9b012_6|h8f9b012_5|h8f9b012_2|h934c35e_3|h934c35e_1|h934c35e_0|h934c35e_20|h934c35e_13|h8f9b012_6|h8f9b012_3|h8f9b012_2|h8f9b012_2|hc0a3c3a_1|hc0a3c3a_1|h934c35e_20|h934c35e_19|h934c35e_13|h8f9b012_5|h8f9b012_2|h8f9b012_2|hc0a3c3a_1|h8f9b012_2|hc0a3c3a_1']
+open3d=0.18.0 -> libstdcxx[version='>=13']
+
+Package expat conflicts for:
+open3d=0.18.0 -> vtk-base=[build=qt*] -> expat[version='>=2.4.1,<3.0a0|>=2.4.4,<3.0a0|>=2.4.7,<3.0a0|>=2.4.8,<3.0a0|>=2.4.9,<3.0a0|>=2.5.0,<3.0a0']
+python=3.9 -> pypy3.9=7.3.15 -> expat[version='>=2.4.7,<3.0a0|>=2.4.8,<3.0a0|>=2.4.9,<3.0a0|>=2.5.0,<3.0a0']The following specifications were found to be incompatible with your system:
+
+  - feature:/linux-64::__glibc==2.17=0
+  - feature:/linux-64::__unix==0=0
+  - feature:|@/linux-64::__glibc==2.17=0
+  - feature:|@/linux-64::__unix==0=0
+  - gcc_linux-64=11 -> sysroot_linux-64 -> __glibc[version='>=2.28|>=2.34|>=2.39']
+  - gxx_linux-64=11 -> sysroot_linux-64 -> __glibc[version='>=2.28|>=2.34|>=2.39']
+  - habitat-sim==0.2.4=py3.9_headless_linux_f179b584bcd713c5a2a998132211e2cae881d6d1 -> numba -> __glibc[version='>=2.17,<3.0.a0']
+  - habitat-sim==0.2.4=py3.9_headless_linux_f179b584bcd713c5a2a998132211e2cae881d6d1 -> tqdm -> __unix
+  - habitat-sim==0.2.4=py3.9_headless_linux_f179b584bcd713c5a2a998132211e2cae881d6d1 -> tqdm -> __win
+  - pip -> ca-certificates[version='>=2026.10.19'] -> __unix
+  - pip -> ca-certificates[version='>=2026.10.19'] -> __win
+  - pip -> python[version='>=3.13.0a0'] -> __glibc[version='>=2.17,<3.0.a0']
+  - python=3.9 -> __glibc[version='>=2.17,<3.0.a0']
+  - setuptools=68.2.2 -> python[version='>=3.7'] -> __glibc[version='>=2.17,<3.0.a0']
+  - wheel -> python[version='>=3.10'] -> __glibc[version='>=2.17,<3.0.a0']
+
+Your installed version is: not available
+
+Note that strict channel priority may have removed packages required for satisfiability.

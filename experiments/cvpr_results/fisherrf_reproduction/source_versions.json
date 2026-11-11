@@ -1,0 +1,83 @@
+{
+  "stage": "F0 (code audit + environment preparation, CPU only)",
+  "created": "2026-11-11",
+  "clone_root": "/bsuhome/jiahuizhang/scratch/projects/occupancy/FisherRF",
+  "git_client": "git 1.8.3.1 (CentOS 7 system git)",
+  "repos": {
+    "FisherRF": {
+      "url": "https://github.com/JiangWenPL/FisherRF",
+      "path": "/bsuhome/jiahuizhang/scratch/projects/occupancy/FisherRF/FisherRF",
+      "branch": "main",
+      "commit": "b74732812b295189f230a192418375f56cec3bd6",
+      "commit_date": "2024-12-26 14:51:40 -0500",
+      "commit_subject": "Update README.md (#23)",
+      "license_file": "LICENSE.md (Gaussian-Splatting License, Inria / MPII, non-commercial research use)",
+      "github_license_field": "NOASSERTION",
+      "submodules": {
+        "submodules/diff-gaussian-rasterization": {
+          "url": "https://github.com/graphdeco-inria/diff-gaussian-rasterization",
+          "commit": "59f5f77e3ddbac3ed9db93ec2cfe99ed6c5d121d",
+          "resolved": true
+        },
+        "submodules/diff-gaussian-rasterization/third_party/glm": {
+          "url": "https://github.com/g-truc/glm.git",
+          "commit": "5c46b9c07008ae65cb81ab79cd677ecc1934b903",
+          "resolved": true
+        },
+        "submodules/simple-knn": {
+          "url": "https://gitlab.inria.fr/bkerbl/simple-knn.git",
+          "commit": "44f764299fa305faf6ec5ebd99939e0508331503",
+          "resolved": true
+        },
+        "diff/third_party/glm": {
+          "url": "https://github.com/g-truc/glm.git",
+          "commit": "4eb3fe1d7d8fd407cc7ccfa801a0311bb7dd281c",
+          "resolved": true
+        }
+      },
+      "role": "NeRF-synthetic / Mip-NeRF360 active view selection + uncertainty (not the active-mapping experiment)"
+    },
+    "FisherRF-active-mapping": {
+      "url": "https://github.com/JiangWenPL/FisherRF-active-mapping",
+      "path": "/bsuhome/jiahuizhang/scratch/projects/occupancy/FisherRF/FisherRF-active-mapping",
+      "branch": "main",
+      "commit": "8b196cd22b1f4030f205778ad14b23fbd796c3b7",
+      "commit_date": "2024-12-27 20:49:55 -0500",
+      "commit_subject": "Update README.md",
+      "license_file": "none at repo root (thirdparty/diff-gaussian-rasterization-modified/LICENSE.md and thirdparty/simple-knn/LICENSE.md = Inria Gaussian-Splatting License)",
+      "github_license_field": null,
+      "submodules": {
+        "thirdparty/diff-gaussian-rasterization-modified/third_party/glm": {
+          "url": "https://github.com/g-truc/glm.git",
+          "commit": "33b4a621a697a305bc3a7610d290677b96beb181",
+          "resolved": true
+        },
+        "thirdparty/simple-knn": {
+          "url_in_gitmodules": "https://gitlab.inria.fr/bkerbl/simple-knn",
+          "commit": "86710c2d4b46680c02301765dd79e465819c8f19",
+          "resolved": true,
+          "note": "git clone --recursive failed for this URL (HTTP 422 with git 1.8.3.1); resolved by `git clone https://gitlab.inria.fr/bkerbl/simple-knn.git thirdparty/simple-knn && git checkout 86710c2d...` -- same pinned commit, no tracked file modified; `git submodule status` reports the pinned commit"
+        }
+      },
+      "vendored_not_submodule": "thirdparty/diff-gaussian-rasterization-modified (tracked tree; README says it is graphdeco 59f5f77 + Luiten depth rendering; FisherRF adds backward_power / squared-gradient accumulation)",
+      "role": "active mapping experiment (Habitat, Gibson / HM3D): the FisherRF scorer we need"
+    }
+  },
+  "clean_status": "git status --porcelain empty for both clones after cloning (no file modified)",
+  "environment": {
+    "path": "/bsuscratch/jiahuizhang/envs/fisherrf",
+    "name": "fisherrf",
+    "created": "2026-11-11T04:25:57-0700 .. 04:46:15-0700 on gpu114 (CPU only)",
+    "python": "3.9.23 (conda-forge)",
+    "torch": "2.2.2+cu118 / torchvision 0.17.2+cu118 (pip, official environment.yml pin)",
+    "habitat": "habitat-sim 0.2.4 py3.9_headless_linux_f179b584 (aihabitat), habitat-lab 0.2.420230405, habitat-baselines 0.2.420230405 (pip --no-deps)",
+    "cuda_extensions": "diff_gaussian_rasterization (FisherRF modified, backward_power) + simple_knn, built from copies in <env>/_build with nvcc 11.8.89 (module cuda11.8/toolkit/11.8.0) + conda gxx 11.4 / sysroot 2.17, TORCH_CUDA_ARCH_LIST=8.9 (SASS sm_89 only)",
+    "blockers": [
+      "open3d not installable (conda conflict with habitat-sim 0.2.4; pip wheels need glibc>=2.27) -> `import models.SLAM.gaussian` fails"
+    ],
+    "exports": [
+      "env_fisherrf_conda_list.txt",
+      "env_fisherrf_pip_freeze.txt"
+    ]
+  }
+}

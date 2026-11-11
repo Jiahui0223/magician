@@ -1,0 +1,55 @@
+[start] 2026-11-11T04:44:51-0700 host=gpu114 CUDA_VISIBLE_DEVICES=''
+== 1. extensions + torch
+python 3.9.23 | torch 2.2.2+cu118 cuda 11.8 | torchvision 0.17.2+cu118 | cuda.is_available() False (expected False: CUDA_VISIBLE_DEVICES empty)
+diff_gaussian_rasterization: /bsuscratch/jiahuizhang/envs/fisherrf/lib/python3.9/site-packages/diff_gaussian_rasterization/__init__.py
+  _C: /bsuscratch/jiahuizhang/envs/fisherrf/lib/python3.9/site-packages/diff_gaussian_rasterization/_C.cpython-39-x86_64-linux-gnu.so | symbols: ['mark_visible', 'rasterize_gaussians', 'rasterize_gaussians_backward']
+  GaussianRasterizer(raster_settings, backward_power=...): True
+simple_knn._C: /bsuscratch/jiahuizhang/envs/fisherrf/lib/python3.9/site-packages/simple_knn/_C.cpython-39-x86_64-linux-gnu.so | symbols: ['distCUDA2']
+== 2. sm arch + glibc of compiled .so
+ls: cannot access /cm/local/apps/environment-modules/4.4.0//init/profile.sh/lib/python3.9/site-packages/diff_gaussian_rasterization/_C*.so: Not a directory
+ls: cannot access /cm/local/apps/environment-modules/4.4.0//init/profile.sh/lib/python3.9/site-packages/simple_knn/_C*.so: Not a directory
+== 3. habitat / other deps
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+habitat_sim 0.2.4 | habitat 0.2.4 | habitat_baselines 0.2.4
+  gym              0.23.0
+  hydra            1.3.2
+  omegaconf        2.3.0
+  cv2              4.9.0
+  yacs             ?
+  einops           0.7.0
+  kornia           0.7.3
+  torchmetrics     1.3.2
+  tensorboardX     2.6.2.2
+  wandb            0.16.6
+  rich             ?
+  sklearn          1.4.2
+  matplotlib       3.5.3
+  IPython          8.18.1
+  yaml             6.0.1
+  pytorch_msssim   ?
+  lpips            ?
+  plyfile          ?
+  quaternion       2023.0.4
+  numba            0.60.0
+  scipy            1.13.1
+  imageio          2.37.0
+  numpy            1.26.4
+  open3d: IMPORT FAILED -> ModuleNotFoundError No module named 'open3d'
+== 4. official FisherRF modules (from the untouched clone, no bytecode written)
+/bsuhome/jiahuizhang/scratch/projects/occupancy/FisherRF/FisherRF-active-mapping/test_utils.py:115: SyntaxWarning: "is" with a literal. Did you mean "=="?
+  latest_checkpoint =  None if (len(checkpoint_list) is 0) else checkpoint_list[-1]
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+Downloading: "https://download.pytorch.org/models/alexnet-owt-7be5be79.pth" to /bsuscratch/jiahuizhang/cache/torch/hub/checkpoints/alexnet-owt-7be5be79.pth
+  import OK   models.SLAM.utils.recon_helpers
+  import OK   models.SLAM.utils.slam_external
+  import OK   models.SLAM.utils.slam_helpers
+  0%|          | 0.00/233M [00:00<?, ?B/s]  0%|          | 528k/233M [00:00<00:45, 5.38MB/s]  3%|▎         | 6.84M/233M [00:00<00:05, 41.1MB/s]  8%|▊         | 17.9M/233M [00:00<00:02, 75.4MB/s] 12%|█▏        | 29.1M/233M [00:00<00:02, 91.7MB/s] 17%|█▋        | 40.2M/233M [00:00<00:02, 101MB/s]  22%|██▏       | 51.3M/233M [00:00<00:01, 106MB/s] 27%|██▋       | 62.0M/233M [00:00<00:01, 108MB/s] 31%|███▏      | 72.9M/233M [00:00<00:01, 110MB/s] 36%|███▌      | 83.6M/233M [00:00<00:01, 110MB/s] 41%|████      | 94.7M/233M [00:01<00:01, 112MB/s] 45%|████▌     | 106M/233M [00:01<00:01, 113MB/s]  50%|█████     | 117M/233M [00:01<00:01, 114MB/s] 55%|█████▍    | 128M/233M [00:01<00:00, 114MB/s] 60%|█████▉    | 139M/233M [00:01<00:00, 115MB/s] 64%|██████▍   | 150M/233M [00:01<00:00, 115MB/s] 69%|██████▉   | 161M/233M [00:01<00:00, 116MB/s] 74%|███████▍  | 172M/233M [00:01<00:00, 116MB/s] 79%|███████▊  | 183M/233M [00:01<00:00, 116MB/s] 83%|████████▎ | 194M/233M [00:01<00:00, 116MB/s] 88%|████████▊ | 206M/233M [00:02<00:00, 116MB/s] 93%|█████████▎| 217M/233M [00:02<00:00, 116MB/s] 98%|█████████▊| 228M/233M [00:02<00:00, 116MB/s]100%|██████████| 233M/233M [00:02<00:00, 109MB/s]
+  import FAIL models.SLAM.utils.eval_helpers -> RuntimeError No CUDA GPUs are available
+  import FAIL models.SLAM.gaussian -> ModuleNotFoundError No module named 'open3d'
+  import OK   planning.astar
+  import FAIL tester -> ModuleNotFoundError No module named 'open3d'
+[end] 2026-11-11T04:45:23-0700

@@ -1,6 +1,6 @@
 # EXP6 V3 — 全局状态板（每次启动 / 结束一个运行就更新）
 
-**最近更新：2026-11-11 03:45（P16 EXP7 ✅：MP3D-150 176/176、UAVScenes Ours/Random 120/120 均已同协议核对；P17 EXP8 效率基准 ✅：RAYSCOUT 单步决策 3.30 s vs MAGICIAN 5.96 s（同一组状态，L40S）；见 `experiments/cvpr_results/{exp7,efficiency}/report/`）**
+**最近更新：2026-11-11 06:20（P17 EXP8-MP3D ✅：室内决策延迟 RAYSCOUT 3.57 s vs MAGICIAN 4.56 s，含地图更新的周期均值 RAYSCOUT 更慢 5.12 vs 4.74；Table 2 + Fig 3 双面板 ✅；P16 UAV：MAGICIAN v0 与 UAV-v1 🔄；P18 FisherRF：F0 / F1 ✅，校准 🔄）**
 标记：✅ 完成 · 🔄 正在跑 · ⏳ 等待（排队或依赖前项）· ❌ 失败（后面跟修复行）· ⬜ 未开始
 
 ## 0. 此刻在跑什么
@@ -266,4 +266,14 @@ P15 结论（All-14，AUC@20 / AUC@50 / AUC@100 / Cov@20 / Final）：Ours 0.420
 | E8-0 | 资源与代码审计、测量协议、参数量、阈值步数（CPU） | CPU | `report/RESOURCE_AUDIT.md`、`BENCHMARK_PROTOCOL.md`、`tables/model_params.json`、`tables/steps_to_threshold*.csv` | ✅ |
 | E8-1 | 离线重放 Table 1 真实轨迹：Ours K4D2 7 条，带计时器 2 条，R1–R3 各 2 条；MAGICIAN 在同 7 条 + 自身 2 条上 | sbatch 3494525（gpu117 GPU 1）、3494526（gpu117 GPU 2）、3494528（gpu116 GPU 0），均为 1 × L40S 独占，提交前确认不抢占 | `work_dirs/cvpr_results/efficiency/{runs,logs}` | ✅ 02:57 全部 COMPLETED；所有自身轨迹重放逐步与记录一致 |
 | E8-2 | 汇总、表 E1–E4、图 E1/E2、报告 | CPU | `tables/`、`figures/`、`report/FINAL_REPORT.md` | ✅ 03:35：决策延迟中位数 RAYSCOUT 3.30 s / MAGICIAN 5.96 s（1.81×，630 个配对状态中 619 个更快）；瓶颈为 Flow 采样（68.5%，其中 CDGR 第二层 57.8%）；GeoAnchor 摊销后 0.03%；K4/K1 = 1.85×（一步）/ 2.85×（CDGR）；峰值显存 RAYSCOUT 更高 |
+| E8-3 | MP3D 室内效率：8 条轨迹 × 150 步重放，Ours 带计时器 8 条、不带计时器 2 条；MAGICIAN 8 条 | sbatch 3494639（gpu112）、3494640 / 3494642（gpu113），独占 L40S | `work_dirs/cvpr_results/efficiency/runs_in`、`report/MP3D_RUNTIME.md`、`tables/T2_indoor_outdoor.*` | ✅ 06:05：决策延迟中位数 3.57 vs 4.56 s（1.28×，921 / 1120 个状态更快，Z6MF 上 0.94）；周期均值 5.12 vs 4.74 s（区域刷新时重建地图，P95 17.6 s）；显存 17.2 vs 1.2 GB；重放选择 150 / 150 一致 |
+| E8-4 | Figure 3 双面板（室外 Table 1 曲线 + 室内 MP3D-150 曲线，bootstrap 带） | CPU | `experiments/cvpr_results/fig/fig3/fig3_dual.*` | ✅ |
+
+## P18 FisherRF 复现（2026-11-11 起；产物 `experiments/cvpr_results/fisherrf_reproduction/`；源码 `/bsuhome/jiahuizhang/scratch/projects/occupancy/FisherRF/`；环境 `/bsuscratch/jiahuizhang/envs/fisherrf`）
+
+| 编号 | 内容 | 资源 | 日志 / 结果 | 状态 |
+|---|---|---|---|---|
+| F0 | 审计（FisherRF b7473281，active-mapping 8b196cd2）；建 `fisherrf` 环境（用户授权；torch 2.2.2+cu118，habitat-sim 0.2.4，CUDA 扩展用 sm_89 编译）；open3d 用桩模块（`o3d_knn` 从未被调用） | CPU | `SOURCE_AUDIT.md`、`ENVIRONMENT.md`、`PROTOCOL_ADAPTATION.md` | ✅ |
+| F1 | 适配器（官方 GaussianSLAM、pose_eval EIG，统一的 legal 候选，RGB 旁路文件）；smoke：室外 barts 10 步 + 室内 Z6MF 10 步 | gpu114 GPU 3 | `SMOKE_TEST.md`、`work_dirs/cvpr_results/fisherrf_reproduction/smoke` | ✅ PASS（官方覆盖率逐位相同；EIG 独立重算）；D12（官方 init 位姿 bug → 改用 docstring 语义）、D13（无有效深度帧 → 跳过建图，无地图时用种子随机）为默认决定 |
+| F1-cal | 完整长度校准：室外 pisa s0 100 步 + dunnottar s1 10 步（D13 检查）；室内 Z6MF L0 S6 150 步 | sbatch 3495338（gpu117）、3495340（gpu113） | `logs/sbatch_frf_calib_*` | 🔄 05:19 起 |
 

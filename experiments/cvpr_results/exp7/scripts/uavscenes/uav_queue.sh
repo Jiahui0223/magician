@@ -1,5 +1,5 @@
 #!/bin/bash
-# EXP7 UAVScenes queue worker (UAV-v0). One worker = one GPU slot; job list lines METHOD:SCENE:START (METHOD = OURS | RANDOM).
+# EXP7 UAVScenes queue worker (UAV-v0). One worker = one GPU slot; job list lines METHOD:SCENE:START (METHOD = OURS | RANDOM | MAG-B).
 # mkdir claims (atomic across nodes), <= 3 tries, failed tries' partial outputs are left in place for inspection and the
 # simulator's own resume logic (per-step checkpoints) continues them; a finished episode is never overwritten.
 # Usage: bash uav_queue.sh GPU JOBLIST [POOL]
@@ -21,6 +21,7 @@ while read -r it; do
   case $m in
     OURS)   root=$EP/OURS/V2M; done_f=$root/episodes/ep_V2M_${s}_s${k}_r0.json ;;
     RANDOM) root=$EP/RANDOM/random; done_f=$root/episodes/ep_random_${s}_s${k}_r0.json ;;
+    MAG-B)  root=$EP/MAG-B/MAG-B; done_f=$root/episodes/ep_MAG-B_${s}_s${k}_r0.json ;;
     *) echo "unknown method $m" >> $WLOG; continue ;;
   esac
   [ -f $done_f ] && continue
