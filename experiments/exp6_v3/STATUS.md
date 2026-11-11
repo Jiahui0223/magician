@@ -1,6 +1,6 @@
 # EXP6 V3 — 全局状态板（每次启动 / 结束一个运行就更新）
 
-**最近更新：2026-11-10 17:35（P16 EXP7 🔄：MP3D-150 闭环在 Pool A 3489889 / gpu114 4 卡 + Pool B sbatch 3494056 / gpu115 3 卡运行；UAVScenes 可行性完成，GO-NBV 未成立；详见 `experiments/cvpr_results/exp7/report/`）**
+**最近更新：2026-11-11 00:50（P16 EXP7：MP3D-150 ✅ 176/176 有效，Ours 在所有划分和指标上都高于 MAGICIAN；UAVScenes UAV-v0 Ours / Random 闭环 🔄 运行中，gpu114 4 卡；详见 `experiments/cvpr_results/exp7/report/`）**
 标记：✅ 完成 · 🔄 正在跑 · ⏳ 等待（排队或依赖前项）· ❌ 失败（后面跟修复行）· ⬜ 未开始
 
 ## 0. 此刻在跑什么
@@ -254,6 +254,8 @@ P15 结论（All-14，AUC@20 / AUC@50 / AUC@100 / Cov@20 / Final）：Ours 0.420
 | E7-0 | 审计、22 层 D1 位姿表（与服务记录逐位一致，邻居规则一致）、室内 D1 封装 | gpu114 GPU 0 / 3 | `report/EXP7_AUDIT.md`、`scripts/check_mp3d_pose_tables.py` | ✅ 17:05 |
 | E7-1 | Round-1 smoke：oLBMNvg9in8_L1_S36 × 5 步 × 3 法 | gpu114 GPU 0–2 | `work_dirs/cvpr_results/exp7/smoke/` | ✅ 17:08，3 / 3 rc 0；MAG-B 与 Random 前缀和存档逐位相同 |
 | E7-2 | 复用的 30 条（MAG-B / RANDOM / OURS-H0 各 10）通过同协议验证 | CPU | `results/mp3d150_episodes.csv` | ✅ 17:25，30 / 30 VALID（C_obs 重放 \|d\| ≤ 1e-12） |
-| E7-3 | MP3D-150 完整闭环：OURS 44、MAG-B 34、RANDOM 34、OURS-H0 34 | Pool A 3489889 gpu114 8 worker + Pool B 3494056 gpu115 6 worker | `work_dirs/cvpr_results/exp7/logs/worker_*.log`、`episodes/mp3d150/raw/` | 🔄 17:12 起，预计约 20:00 |
+| E7-3 | MP3D-150 完整闭环：OURS 44、MAG-B 34、RANDOM 34、OURS-H0 34 | Pool A 3489889 gpu114 8 worker + Pool B 3494056 gpu115 6 worker | `work_dirs/cvpr_results/exp7/logs/worker_*.log`、`episodes/mp3d150/raw/` | ✅ 11-11 00:40，146 / 146，0 失败；与复用的 30 条合计 176 / 176 有效（V1–V5）。ALL-22 Ours / MAGICIAN / Random：AUC@20 0.237 / 0.176 / 0.121，AUC@150 0.539 / 0.434 / 0.309，Final 0.699 / 0.540 / 0.436；Ours − MAGICIAN 的 Final 为 +0.159 [+0.114, +0.208]，22/22 层更高；HO-12 的 Final 为 +0.205；D1 − H0 的 AUC@150 为 +0.038 [+0.014, +0.062]。报告 `report/MP3D_150_RESULTS.md` |
 | E7-4 | UAVScenes 可行性（只用 CPU，下载约 166 MB，AMvalley） | CPU | `report/UAVSCENES_FEASIBILITY.md`、`uavscenes_inventory.csv` | ✅ 17:12：数据满足 GO-DEPTH；GO-NBV 未成立（缺 adapter，尺度/切块协议待定，估计 3–5 天）→ Pool B 转跑 MP3D |
+| E7-5 | UAVScenes UAV-v0 适配：转成 Macarons++ 格式的切块（1 单位 = 2 m，260 m 网格规则，6 块）、hook（E-M2 / z0 / 数据根目录）、相机预筛、起点、可见率 | gpu114 | `report/UAV_PROTOCOL.md`、`work_dirs/cvpr_results/exp7/uav_macpp/` | ✅ 5 / 6 块就绪（HKisland_00 的预筛仍在运行）；smoke 中 Ours / Random 均 rc 0 |
+| E7-6 | UAVScenes 闭环：6 块 × 10 起点 × {Ours, Random}，100 步 | gpu114 4 卡，每卡最多约 3 个 worker（`uav_fill.sh`） | `logs/uav_worker_*.log`、`episodes/uavscenes/raw/` | 🔄 23:16 起 |
 
