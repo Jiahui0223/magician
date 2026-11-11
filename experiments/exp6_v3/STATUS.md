@@ -1,6 +1,6 @@
 # EXP6 V3 — 全局状态板（每次启动 / 结束一个运行就更新）
 
-**最近更新：2026-11-10 15:25（P15 CVPR overnight ✅ 完成：Table 1 / 2 / 3、Fig 3 / 4 / 5 全部由真实 episode 生成，1,050 条记录，25 项质量关口全部 PASS；SCONE / FisherRF 为 BLOCKED；详见 `experiments/cvpr_results/report/`）**
+**最近更新：2026-11-10 17:35（P16 EXP7 🔄：MP3D-150 闭环在 Pool A 3489889 / gpu114 4 卡 + Pool B sbatch 3494056 / gpu115 3 卡运行；UAVScenes 可行性完成，GO-NBV 未成立；详见 `experiments/cvpr_results/exp7/report/`）**
 标记：✅ 完成 · 🔄 正在跑 · ⏳ 等待（排队或依赖前项）· ❌ 失败（后面跟修复行）· ⬜ 未开始
 
 ## 0. 此刻在跑什么
@@ -244,4 +244,16 @@
 | — | SCONE、FisherRF | — | `report/MISSING.md` | ⛔ BLOCKED（无可运行实现） |
 
 P15 结论（All-14，AUC@20 / AUC@50 / AUC@100 / Cov@20 / Final）：Ours 0.420 / 0.633 / 0.763 / 0.646 / 0.911；MAGICIAN 0.307 / 0.544 / 0.711 / 0.537 / 0.906；MACARONS† 0.352 / 0.540 / 0.660 / 0.538 / 0.810；Random† 0.144 / 0.248 / 0.353 / 0.226 / 0.517。Table 3：规划深度 1 → 2 主效应 AUC@100 +0.021 [+0.014, +0.029]（13 / 1 场景），K 1 → 4 主效应 +0.005 [−0.001, +0.009]（CI 含 0），交互 n.s.。事故：05:25 我的 MACARONS 显存测试占满 GPU 2，53 次 episode 启动失败后自动重试成功，无数据损失。
+
+## P16 EXP7 — MP3D-150 + UAVScenes（2026-11-10 起；任务书 `docs/tasks/cvpr_mp3d_UAVScenes_PARALLEL_EXECUTION.md`；产物 `experiments/cvpr_results/exp7/`）
+
+主方法冻结为 V3-T0@40K + D1。MP3D 协议：T0.12 网格，150 步，C_obs。冻结清单 `manifests/mp3d150_manifest.csv`，22 层 × 2 起点 = 44 条，其中 HO-12 为 24 条、VALSEL-10 为 20 条、T2-5 为 10 条。审计见 `report/EXP7_AUDIT.md`。
+
+| 编号 | 内容 | 资源 | 日志 / 结果 | 状态 |
+|---|---|---|---|---|
+| E7-0 | 审计、22 层 D1 位姿表（与服务记录逐位一致，邻居规则一致）、室内 D1 封装 | gpu114 GPU 0 / 3 | `report/EXP7_AUDIT.md`、`scripts/check_mp3d_pose_tables.py` | ✅ 17:05 |
+| E7-1 | Round-1 smoke：oLBMNvg9in8_L1_S36 × 5 步 × 3 法 | gpu114 GPU 0–2 | `work_dirs/cvpr_results/exp7/smoke/` | ✅ 17:08，3 / 3 rc 0；MAG-B 与 Random 前缀和存档逐位相同 |
+| E7-2 | 复用的 30 条（MAG-B / RANDOM / OURS-H0 各 10）通过同协议验证 | CPU | `results/mp3d150_episodes.csv` | ✅ 17:25，30 / 30 VALID（C_obs 重放 \|d\| ≤ 1e-12） |
+| E7-3 | MP3D-150 完整闭环：OURS 44、MAG-B 34、RANDOM 34、OURS-H0 34 | Pool A 3489889 gpu114 8 worker + Pool B 3494056 gpu115 6 worker | `work_dirs/cvpr_results/exp7/logs/worker_*.log`、`episodes/mp3d150/raw/` | 🔄 17:12 起，预计约 20:00 |
+| E7-4 | UAVScenes 可行性（只用 CPU，下载约 166 MB，AMvalley） | CPU | `report/UAVSCENES_FEASIBILITY.md`、`uavscenes_inventory.csv` | ✅ 17:12：数据满足 GO-DEPTH；GO-NBV 未成立（缺 adapter，尺度/切块协议待定，估计 3–5 天）→ Pool B 转跑 MP3D |
 

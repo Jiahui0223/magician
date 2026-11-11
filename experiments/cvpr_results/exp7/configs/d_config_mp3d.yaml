@@ -1,0 +1,23 @@
+# EXP7 MP3D copy of experiments/exp6_v3/ablation_study/experiment_D_h3_lookahead/configs/d_config.yaml (D-v1). Only pose_tables differs; policy d1 unchanged.
+# EXP6 V3 / ablation_study / experiment D -- H3 lookahead extensions (protocol D-v1, frozen 2026-11-04 before any D episode)
+version: D-v1
+model: {id: V3-T1, checkpoint: work_dirs/exp6_v3/task1_xattn/checkpoints/final.pt, sha256: 639c9d3ae3f3c069dc0399dc4cdd44102be2bf20e70d666a6a529c6affc62bdb}   # frozen; never a Y checkpoint
+reference: {H3: "experiments/exp6_v3/H (protocol H-v1, read-only); Table 1 row V3-H3"}
+pose_tables: /bsuscratch/jiahuizhang/projects/occupancy/seen2scene/work_dirs/cvpr_results/exp7/pose_tables   # EXP7: MP3D T0.12 grid tables (the only field changed vs D-v1)
+inference: "same as H-v1 / Table 1 V3 (b2: D100 input + S10 band_dil, R10, K 4, Euler 10, frozen noise keys shared by all candidates, simulator legal list, m_score.choose, 100 steps)"
+value: {kind: cov, eps_cov: 1.0, cell_size: 1.0, novelty: hard}   # = H1 / H3 per-sample value (h_policy.value_cov)
+policies:
+  d0ref: {depth: 2, beam: null, lambda_risk: 0.25, doc: "regression only: must reproduce H3 (V3-H3) bitwise"}
+  d1: {depth: 2, beam: null, lambda_risk: 0.0, doc: "D1_H3_NO_RISK: H3 with lambda 0"}
+  d2: {depth: 3, beam: 3, lambda_risk: 0.0, doc: "D2_DEPTH3_BEAM3"}
+  d3: {depth: 3, beam: 5, lambda_risk: 0.0, doc: "D3_DEPTH3_BEAM5"}
+  d4: {depth: 4, beam: 3, lambda_risk: 0.0, doc: "D4_DEPTH4_BEAM3 (optional)"}
+search:
+  layer1: "all simulator-legal candidates c1 (no pruning)"
+  layer2: "settings-grid neighbours of c1 (get_neighboring_poses), unvisited first with history + path poses counted visited, path poses excluded, segment crossing the known D100 surface band dropped; exhaustive (= H3)"
+  deeper: "per root c1: keep the top-`beam` paths of the previous layer by Q (ties: generation order), expand each with the same neighbour rule"
+  value_of_path: "per sample k: union of the novel cells of all poses of the path (max weight per cell); Q = mean_k - lambda std_k (ddof 0)"
+  score_c1: "max over all paths of root c1 at the deepest layer reached (a path that cannot be extended keeps its last Q); no layer-2 child -> the one-step Q of c1"
+  samples: "sample k of every pose uses noise map k of the step (frozen keys) -> paths pair sample k across poses (Monte-Carlo pairing)"
+  cache: "predictions of a pose computed once per step (same features h, same noise) and reused by every path"
+  c2_chunk: 16
