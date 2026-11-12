@@ -24,9 +24,12 @@ for td in sorted(glob.glob(os.path.join(W7, "uav_macpp", "uav_*"))):
     idx = np.stack(np.meshgrid(*[np.arange(k) for k in n], indexing="ij"), -1).reshape(-1, 3)
     X = lo + (0.5 + idx) * (hi - lo) / n
     under = dict(zip(map(tuple, idx), seg_blocked_batch(tm.ray, X, X + np.array([0.0, 1000.0, 0.0]))))
-    for m, grp, pre in (("OURS", "V2M", "V2M"), ("RANDOM", "random", "random")):
+    for m, grp, pre in (("OURS", "V2M", "V2M"), ("RANDOM", "random", "random"), ("MAG-B", "MAG-B", "MAG-B")):
         for k in range(10):
-            ep = json.load(open(os.path.join(W7, "episodes", "uavscenes", "raw", m, grp, "episodes", f"ep_{pre}_{tile}_s{k}_r0.json")))
+            pth = os.path.join(W7, "episodes", "uavscenes", "raw", m, grp, "episodes", f"ep_{pre}_{tile}_s{k}_r0.json")
+            if not os.path.exists(pth):
+                continue
+            ep = json.load(open(pth))
             keys = ep.get("executed_keys") or [s["pose_key"] for s in ep["steps"]]
             pos = [tuple(json.loads(x)[:3]) for x in keys]
             u = [under[p] for p in pos]
@@ -35,6 +38,8 @@ for td in sorted(glob.glob(os.path.join(W7, "uav_macpp", "uav_*"))):
 with open(os.path.join(R, "experiments", "cvpr_results", "exp7", "results", "uav_under_surface.csv"), "w", newline="") as f:
     w = csv.DictWriter(f, fieldnames=list(rows[0])); w.writeheader(); w.writerows(rows)
 for t in sorted({r["tile"] for r in rows}):
-    for m in ("OURS", "RANDOM"):
+    for m in ("OURS", "RANDOM", "MAG-B"):
         s = [r for r in rows if r["tile"] == t and r["method"] == m]
+        if not s:
+            continue
         print(t, m, "mean fraction %.3f, episodes with any %d/10, starts under %d" % (np.mean([r["fraction"] for r in s]), sum(r["under_surface_steps"] > 0 for r in s), sum(r["start_under"] for r in s)))

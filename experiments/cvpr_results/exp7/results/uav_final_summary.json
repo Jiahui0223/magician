@@ -1,0 +1,454 @@
+{
+ "UAV-final": {
+  "rows": [
+   {
+    "set": "UAV-final",
+    "method": "Random Walk",
+    "tiles": "6/6",
+    "AUC@20": 0.202,
+    "AUC@50": 0.2831,
+    "AUC@100": 0.3615,
+    "Cov@20": 0.274,
+    "Cov@50": 0.3855,
+    "Final": 0.481
+   },
+   {
+    "set": "UAV-final",
+    "method": "MAGICIAN",
+    "tiles": "6/6",
+    "AUC@20": 0.3128,
+    "AUC@50": 0.4819,
+    "AUC@100": 0.6676,
+    "Cov@20": 0.4524,
+    "Cov@50": 0.7403,
+    "Final": 0.9015
+   },
+   {
+    "set": "UAV-final",
+    "method": "Ours",
+    "tiles": "6/6",
+    "AUC@20": 0.4446,
+    "AUC@50": 0.6672,
+    "AUC@100": 0.7937,
+    "Cov@20": 0.6904,
+    "Cov@50": 0.8844,
+    "Final": 0.9333
+   }
+  ],
+  "pairs": {
+   "Ours - MAGICIAN": {
+    "AUC@20": {
+     "mean": 0.13179807164830284,
+     "ci95": [
+      0.10660147749541866,
+      0.15215110117165387
+     ],
+     "tiles_higher": 6,
+     "episodes_higher": 56,
+     "episodes": 60
+    },
+    "AUC@50": {
+     "mean": 0.1853086836495883,
+     "ci95": [
+      0.15174507550937386,
+      0.21916353133179448
+     ],
+     "tiles_higher": 6,
+     "episodes_higher": 58,
+     "episodes": 60
+    },
+    "AUC@100": {
+     "mean": 0.12609086274166406,
+     "ci95": [
+      0.10772346896805103,
+      0.1449171483381105
+     ],
+     "tiles_higher": 6,
+     "episodes_higher": 58,
+     "episodes": 60
+    },
+    "Cov@20": {
+     "mean": 0.2380375391249212,
+     "ci95": [
+      0.17556545817546745,
+      0.29616832141780014
+     ],
+     "tiles_higher": 6,
+     "episodes_higher": 57,
+     "episodes": 60
+    },
+    "Cov@50": {
+     "mean": 0.14411108104205014,
+     "ci95": [
+      0.10789529737036874,
+      0.18256175584640752
+     ],
+     "tiles_higher": 6,
+     "episodes_higher": 53,
+     "episodes": 60
+    },
+    "Final": {
+     "mean": 0.03187274114767554,
+     "ci95": [
+      0.0181362781495578,
+      0.04560920414579328
+     ],
+     "tiles_higher": 6,
+     "episodes_higher": 56,
+     "episodes": 60
+    }
+   },
+   "Ours - Random Walk": {
+    "AUC@20": {
+     "mean": 0.24264732988101342,
+     "ci95": [
+      0.20826347318556085,
+      0.2759385906558512
+     ],
+     "tiles_higher": 6,
+     "episodes_higher": 60,
+     "episodes": 60
+    },
+    "AUC@50": {
+     "mean": 0.38415048529224105,
+     "ci95": [
+      0.3501662613973802,
+      0.4169252682427684
+     ],
+     "tiles_higher": 6,
+     "episodes_higher": 60,
+     "episodes": 60
+    },
+    "AUC@100": {
+     "mean": 0.43216474401255045,
+     "ci95": [
+      0.40493590566250554,
+      0.45890839561501284
+     ],
+     "tiles_higher": 6,
+     "episodes_higher": 60,
+     "episodes": 60
+    },
+    "Cov@20": {
+     "mean": 0.41637575025192025,
+     "ci95": [
+      0.35488810245159935,
+      0.47374215937121433
+     ],
+     "tiles_higher": 6,
+     "episodes_higher": 60,
+     "episodes": 60
+    },
+    "Cov@50": {
+     "mean": 0.49889820193210815,
+     "ci95": [
+      0.4622234639966687,
+      0.5339334747165589
+     ],
+     "tiles_higher": 6,
+     "episodes_higher": 60,
+     "episodes": 60
+    },
+    "Final": {
+     "mean": 0.4523110740005684,
+     "ci95": [
+      0.4005600624133528,
+      0.5054583761760644
+     ],
+     "tiles_higher": 6,
+     "episodes_higher": 60,
+     "episodes": 60
+    }
+   },
+   "MAGICIAN - Random Walk": {
+    "AUC@20": {
+     "mean": 0.11084925823271057,
+     "ci95": [
+      0.08944588892030053,
+      0.1322526275451206
+     ],
+     "tiles_higher": 6,
+     "episodes_higher": 55,
+     "episodes": 60
+    },
+    "AUC@50": {
+     "mean": 0.19884180164265272,
+     "ci95": [
+      0.17273647734516837,
+      0.22497110434004772
+     ],
+     "tiles_higher": 6,
+     "episodes_higher": 57,
+     "episodes": 60
+    },
+    "AUC@100": {
+     "mean": 0.3060738812708863,
+     "ci95": [
+      0.2657776876201876,
+      0.34124921614318593
+     ],
+     "tiles_higher": 6,
+     "episodes_higher": 58,
+     "episodes": 60
+    },
+    "Cov@20": {
+     "mean": 0.178338211126999,
+     "ci95": [
+      0.13894092513725856,
+      0.2132435607281354
+     ],
+     "tiles_higher": 6,
+     "episodes_higher": 54,
+     "episodes": 60
+    },
+    "Cov@50": {
+     "mean": 0.354787120890058,
+     "ci95": [
+      0.2894570103625209,
+      0.40569612251736115
+     ],
+     "tiles_higher": 6,
+     "episodes_higher": 57,
+     "episodes": 60
+    },
+    "Final": {
+     "mean": 0.4204383328528929,
+     "ci95": [
+      0.3692281295850202,
+      0.4664292962977316
+     ],
+     "tiles_higher": 6,
+     "episodes_higher": 60,
+     "episodes": 60
+    }
+   }
+  },
+  "invalid_or_missing": []
+ },
+ "UAV-v0-all": {
+  "rows": [
+   {
+    "set": "UAV-v0-all",
+    "method": "Random Walk",
+    "tiles": "6/6",
+    "AUC@20": 0.1951,
+    "AUC@50": 0.2713,
+    "AUC@100": 0.3423,
+    "Cov@20": 0.2677,
+    "Cov@50": 0.3688,
+    "Final": 0.4529
+   },
+   {
+    "set": "UAV-v0-all",
+    "method": "MAGICIAN",
+    "tiles": "6/6",
+    "AUC@20": 0.293,
+    "AUC@50": 0.469,
+    "AUC@100": 0.6565,
+    "Cov@20": 0.4292,
+    "Cov@50": 0.7262,
+    "Final": 0.8958
+   },
+   {
+    "set": "UAV-v0-all",
+    "method": "Ours",
+    "tiles": "6/6",
+    "AUC@20": 0.437,
+    "AUC@50": 0.6634,
+    "AUC@100": 0.7897,
+    "Cov@20": 0.6835,
+    "Cov@50": 0.8843,
+    "Final": 0.9261
+   }
+  ],
+  "pairs": {
+   "Ours - MAGICIAN": {
+    "AUC@20": {
+     "mean": 0.14401483671285106,
+     "ci95": [
+      0.12364726138419102,
+      0.16361075826204696
+     ],
+     "tiles_higher": 6,
+     "episodes_higher": 59,
+     "episodes": 60
+    },
+    "AUC@50": {
+     "mean": 0.19443468897936655,
+     "ci95": [
+      0.16570277207413944,
+      0.22507038808217397
+     ],
+     "tiles_higher": 6,
+     "episodes_higher": 60,
+     "episodes": 60
+    },
+    "AUC@100": {
+     "mean": 0.13314632356585251,
+     "ci95": [
+      0.11401116982095694,
+      0.15318120502973812
+     ],
+     "tiles_higher": 6,
+     "episodes_higher": 59,
+     "episodes": 60
+    },
+    "Cov@20": {
+     "mean": 0.2543220637632608,
+     "ci95": [
+      0.21384187161244475,
+      0.30046517056426314
+     ],
+     "tiles_higher": 6,
+     "episodes_higher": 60,
+     "episodes": 60
+    },
+    "Cov@50": {
+     "mean": 0.15811847738473025,
+     "ci95": [
+      0.11578845150576299,
+      0.19986807766106834
+     ],
+     "tiles_higher": 6,
+     "episodes_higher": 55,
+     "episodes": 60
+    },
+    "Final": {
+     "mean": 0.030248821888236205,
+     "ci95": [
+      0.015933087447305445,
+      0.0447844418477382
+     ],
+     "tiles_higher": 6,
+     "episodes_higher": 54,
+     "episodes": 60
+    }
+   },
+   "Ours - Random Walk": {
+    "AUC@20": {
+     "mean": 0.2418228661082502,
+     "ci95": [
+      0.20276591990511195,
+      0.2792855320172916
+     ],
+     "tiles_higher": 6,
+     "episodes_higher": 60,
+     "episodes": 60
+    },
+    "AUC@50": {
+     "mean": 0.3920686370355418,
+     "ci95": [
+      0.3571244639952733,
+      0.4218028775600011
+     ],
+     "tiles_higher": 6,
+     "episodes_higher": 60,
+     "episodes": 60
+    },
+    "AUC@100": {
+     "mean": 0.4473427109050058,
+     "ci95": [
+      0.41194896049531177,
+      0.4870294421084517
+     ],
+     "tiles_higher": 6,
+     "episodes_higher": 60,
+     "episodes": 60
+    },
+    "Cov@20": {
+     "mean": 0.41579137328607385,
+     "ci95": [
+      0.35488817735028066,
+      0.4711316038536496
+     ],
+     "tiles_higher": 6,
+     "episodes_higher": 60,
+     "episodes": 60
+    },
+    "Cov@50": {
+     "mean": 0.5154997138121962,
+     "ci95": [
+      0.4707858393059489,
+      0.5739767682818975
+     ],
+     "tiles_higher": 6,
+     "episodes_higher": 60,
+     "episodes": 60
+    },
+    "Final": {
+     "mean": 0.4731567555214046,
+     "ci95": [
+      0.40890959589528236,
+      0.5590019545611642
+     ],
+     "tiles_higher": 6,
+     "episodes_higher": 60,
+     "episodes": 60
+    }
+   },
+   "MAGICIAN - Random Walk": {
+    "AUC@20": {
+     "mean": 0.09780802939539916,
+     "ci95": [
+      0.07776774766434104,
+      0.11912209684436974
+     ],
+     "tiles_higher": 6,
+     "episodes_higher": 57,
+     "episodes": 60
+    },
+    "AUC@50": {
+     "mean": 0.1976339480561753,
+     "ci95": [
+      0.17227384544500454,
+      0.22310139030913523
+     ],
+     "tiles_higher": 6,
+     "episodes_higher": 59,
+     "episodes": 60
+    },
+    "AUC@100": {
+     "mean": 0.3141963873391533,
+     "ci95": [
+      0.2782210705417833,
+      0.3520338751708949
+     ],
+     "tiles_higher": 6,
+     "episodes_higher": 59,
+     "episodes": 60
+    },
+    "Cov@20": {
+     "mean": 0.1614693095228131,
+     "ci95": [
+      0.12737628971802503,
+      0.19584694164754468
+     ],
+     "tiles_higher": 6,
+     "episodes_higher": 54,
+     "episodes": 60
+    },
+    "Cov@50": {
+     "mean": 0.35738123642746583,
+     "ci95": [
+      0.3001150605284974,
+      0.40207330799599794
+     ],
+     "tiles_higher": 6,
+     "episodes_higher": 57,
+     "episodes": 60
+    },
+    "Final": {
+     "mean": 0.4429079336331685,
+     "ci95": [
+      0.38565047801080193,
+      0.5178027095118368
+     ],
+     "tiles_higher": 6,
+     "episodes_higher": 60,
+     "episodes": 60
+    }
+   }
+  },
+  "invalid_or_missing": []
+ }
+}
