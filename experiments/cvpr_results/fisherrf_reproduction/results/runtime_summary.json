@@ -1,0 +1,42 @@
+{
+ "outdoor dedicated (pisa_s0)": {
+  "selection (score) s": "n 90 mean 0.270 med 0.238 p95 0.451",
+  "3DGS map update s": "n 90 mean 1.201 med 1.140 p95 1.697",
+  "of which official PNG writes s": "n 90 mean 0.385 med 0.359 p95 0.558",
+  "map update + selection s": "n 90 mean 1.472 med 1.372 p95 2.153",
+  "core incl. record load s": "n 90 mean 1.481 med 1.381 p95 2.164",
+  "n_gauss_end_median": 53786.0,
+  "peak_alloc_gb_max": 0.3235201835632324,
+  "n_legal_mean": 6.677777777777778
+ },
+ "indoor dedicated (Z6MFQCViBuw_L0_S6)": {
+  "selection (score) s": "n 140 mean 0.402 med 0.360 p95 0.744",
+  "3DGS map update s": "n 140 mean 1.056 med 1.033 p95 1.331",
+  "of which official PNG writes s": "n 140 mean 0.371 med 0.355 p95 0.500",
+  "map update + selection s": "n 140 mean 1.458 med 1.410 p95 2.066",
+  "core incl. record load s": "n 140 mean 1.463 med 1.415 p95 2.071",
+  "n_gauss_end_median": 95958.0,
+  "peak_alloc_gb_max": 0.40606069564819336,
+  "n_legal_mean": 8.3
+ },
+ "outdoor shared 4/GPU (all 70)": {
+  "selection (score) s": "n 6300 mean 1.016 med 0.977 p95 2.215",
+  "3DGS map update s": "n 6300 mean 2.528 med 2.910 p95 3.836",
+  "of which official PNG writes s": "n 6300 mean 0.383 med 0.421 p95 0.618",
+  "map update + selection s": "n 6300 mean 3.544 med 3.960 p95 5.941",
+  "core incl. record load s": "n 6300 mean 3.558 med 3.974 p95 5.957",
+  "n_gauss_end_median": 67159.0,
+  "peak_alloc_gb_max": 0.39394283294677734,
+  "n_legal_mean": 6.580317460317461
+ },
+ "indoor shared 4/GPU (all 44)": {
+  "selection (score) s": "n 6160 mean 1.856 med 1.864 p95 3.436",
+  "3DGS map update s": "n 6160 mean 3.272 med 3.612 p95 4.060",
+  "of which official PNG writes s": "n 6160 mean 0.456 med 0.446 p95 0.639",
+  "map update + selection s": "n 6160 mean 5.128 med 5.413 p95 7.339",
+  "core incl. record load s": "n 6160 mean 5.140 med 5.428 p95 7.356",
+  "n_gauss_end_median": 113057.0,
+  "peak_alloc_gb_max": 0.5183753967285156,
+  "n_legal_mean": 7.2625
+ }
+}

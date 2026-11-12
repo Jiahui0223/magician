@@ -247,7 +247,7 @@ def main():
         info = {"t": t, "rgb_mean": float(rgb.mean()), "rgb_float_minmax": [float(z["rgb_float_min"]), float(z["rgb_float_max"])],
                 "depth_valid_frac": float(valid.mean()), "mask_frac": float(mk.mean()),
                 "depth_out_of_range_frac": float((mk & (zb >= SENSOR_RANGE)).mean()), "pose_selfcheck_err": pose_err}
-        before = map_stats() if slam.initialize else {"n_gauss": 0}
+        before = map_stats() if slam.initialize else {"n_gauss": 0, "n_keyframes": 0, "n_logscale_neg_inf": 0, "n_nonfinite_means": 0, "n_nonfinite_other": 0}
         t0 = time.perf_counter()
         has_depth = bool(valid.any())
         info["skipped_no_valid_depth"] = not has_depth                                  # D13: no valid pixel -> no map update
@@ -269,7 +269,7 @@ def main():
             slam.track_rgbd(color_t, depth_t, w2c_t)
         torch.cuda.synchronize()
         t_map = time.perf_counter() - t0
-        after = map_stats() if slam.initialize else {"n_gauss": 0}
+        after = map_stats() if slam.initialize else {"n_gauss": 0, "n_keyframes": 0, "n_logscale_neg_inf": 0, "n_nonfinite_means": 0, "n_nonfinite_other": 0}
         t0 = time.perf_counter()
         info["render_check"] = render_check(w2c_t, color_t.permute(2, 0, 1).float() / 255, depth_t) if slam.initialize else {"valid_px": 0}
         torch.cuda.synchronize()

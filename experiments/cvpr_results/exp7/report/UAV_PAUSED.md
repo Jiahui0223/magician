@@ -30,22 +30,24 @@
   | 切块 | 评价器 GT 可见率 | 原值（settings） |
   |---|---|---|
   | AMvalley_01_v1 | **0.9607**（各起点 0.959–0.962） | 0.8638 |
-  | AMtown_11、AMtown_12、HKisland_00_v1、HKairport_00 | 暂停时仍在计算，跑完自动写出 json | — |
+  | AMtown_11、AMtown_12、HKisland_00_v1、HKairport_00 | ❌ 17:41 按 PID 停止，未写出 json。FisherRF 试点结束时它们已跑 57–95 min；与 FisherRF 共用 GPU 时变慢，且在 GPU 3 上显存峰值约 42 GB，造成 FisherRF 几次 OOM | — |
   | HKairport_01、AMvalley_01、HKisland_00 | 未开始 | — |
 
-  先查看 json 是否已存在。
+  **共 7 块待算。** 脚本没有进度日志；单卡独占时 AMvalley_01_v1 用了 37.5 min。较大的切块显存可能到 40 GB 以上，所以每张卡只跑 1 个，不要与其他任务共卡。
 - **还没写的部分：** 在 `uav_final.py` 中加入按 `visibility_official.json` 换算的版本，即增加 `--norm evaluator` 选项，输出与冻结协议表并列的第二张表。之后更新 `UAVSCENES_RESULTS.md`。
 
 ## 3. 重跑命令（gpu114，magician 环境；每块切块约 35–40 min，单卡独占时）
 ```bash
 cd /bsuscratch/jiahuizhang/projects/occupancy/seen2scene
-# 只补缺的切块（已有 visibility_official.json 的会被重算，所以只传缺的）：
+# 只补缺的切块（已有 visibility_official.json 的会被重算，所以只传缺的）；暂停时缺 7 块：
 for t in uav_AMtown_11 uav_AMtown_12 uav_HKisland_00_v1 uav_HKairport_00 uav_HKairport_01 uav_AMvalley_01 uav_HKisland_00; do
   [ -f work_dirs/cvpr_results/exp7/uav_macpp/$t/visibility_official.json ] || echo "missing $t"; done
 # 每张卡一条链，顺序跑传入的切块（日志 work_dirs/cvpr_results/exp7/logs/uav_visoff_<tile>.log）：
-setsid nohup bash experiments/cvpr_results/exp7/scripts/uavscenes/uav_visoff_chain.sh 0 uav_HKairport_01 > /dev/null 2>&1 < /dev/null &
-setsid nohup bash experiments/cvpr_results/exp7/scripts/uavscenes/uav_visoff_chain.sh 1 uav_AMvalley_01 > /dev/null 2>&1 < /dev/null &
-setsid nohup bash experiments/cvpr_results/exp7/scripts/uavscenes/uav_visoff_chain.sh 2 uav_HKisland_00 > /dev/null 2>&1 < /dev/null &
+setsid nohup bash experiments/cvpr_results/exp7/scripts/uavscenes/uav_visoff_chain.sh 0 uav_HKisland_00_v1 uav_HKairport_00 > /dev/null 2>&1 < /dev/null &
+setsid nohup bash experiments/cvpr_results/exp7/scripts/uavscenes/uav_visoff_chain.sh 1 uav_AMtown_11 uav_HKairport_01 > /dev/null 2>&1 < /dev/null &
+setsid nohup bash experiments/cvpr_results/exp7/scripts/uavscenes/uav_visoff_chain.sh 2 uav_AMtown_12 uav_AMvalley_01 > /dev/null 2>&1 < /dev/null &
+setsid nohup bash experiments/cvpr_results/exp7/scripts/uavscenes/uav_visoff_chain.sh 3 uav_HKisland_00 > /dev/null 2>&1 < /dev/null &
+# 4 卡独占时约 1.5 h（每块约 40 min）
 # 单块手动运行：
 MACARONS_PLUSPLUS_ROOT=$PWD/work_dirs/cvpr_results/exp7/uav_macpp CUDA_VISIBLE_DEVICES=0 env -u LD_PRELOAD -u PYTHONPATH \
   /bsuscratch/jiahuizhang/envs/magician/bin/python -I experiments/cvpr_results/exp7/scripts/uavscenes/uav_visibility_official.py uav_HKairport_01

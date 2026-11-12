@@ -11,7 +11,7 @@ seeded observation, MAGICIAN-style coverage, per-step checkpoint), with two in-m
      record itself (m_common.SERVICE_KEYS_*) is unchanged.
 Planner child: fisherrf_planner.py in the fisherrf env (/bsuscratch/jiahuizhang/envs/fisherrf).
 Usage: python fisherrf_sim_out.py --scene S --start K [--moves N] --root DIR [--init-pose tester|docstring]
-       [--verify-every K]     (CUDA_VISIBLE_DEVICES chooses the GPU of both processes)
+       [--verify-every K] [--planner fisherrf_planner.py|fisherrf_full_planner.py]   (CUDA_VISIBLE_DEVICES: GPU of both)
 """
 import os
 import subprocess
@@ -63,7 +63,7 @@ class Planner(T6S.PlannerClient):
     def __init__(self, a, resume_t, err_path):
         tg = LC.tag(a.exp, a.scene, a.start, a.rep)
         D = LC.dirs(a.root, tg)
-        cmd = [FISHERRF_PYTHON, "-B", "-s", os.path.join(HERE, "fisherrf_planner.py"), "--scene", a.scene,
+        cmd = [FISHERRF_PYTHON, "-B", "-s", os.path.join(HERE, os.environ["FRF_PLANNER"]), "--scene", a.scene,
                "--start", str(a.start), "--svc-dir", D["svc"], "--log", os.path.join(D["plog"], f"pl_{tg}.steps.jsonl"),
                "--workdir", os.path.join(a.root, "planner_work"), "--resume-t", str(resume_t),
                "--init-pose", os.environ["FRF_INIT_POSE"], "--verify-every", os.environ["FRF_VERIFY_EVERY"]]
@@ -85,7 +85,8 @@ class Planner(T6S.PlannerClient):
 
 
 if __name__ == "__main__":
-    opts = {"--init-pose": ("FRF_INIT_POSE", "tester"), "--verify-every": ("FRF_VERIFY_EVERY", "0")}
+    opts = {"--init-pose": ("FRF_INIT_POSE", "tester"), "--verify-every": ("FRF_VERIFY_EVERY", "0"),
+            "--planner": ("FRF_PLANNER", "fisherrf_planner.py")}      # F1b: --planner fisherrf_full_planner.py
     for flag, (env, default) in opts.items():
         os.environ[env] = default
         if flag in sys.argv:

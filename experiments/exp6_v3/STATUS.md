@@ -1,6 +1,6 @@
 # EXP6 V3 — 全局状态板（每次启动 / 结束一个运行就更新）
 
-**最近更新：2026-11-11 17:25（用户决定：P16 UAV 与 P18 FisherRF ⏸ 暂停，让出 GPU 给主线，空闲时一次性补完。UAV 240/240 闭环 + 重放 ✅，UAV-final Ours / MAGICIAN / Random AUC@100 0.794 / 0.668 / 0.361，归一化修正 🟡（`exp7/report/UAV_PAUSED.md`）；FisherRF D3a 70 + 44 ✅ 但只算消融，FisherRF-full v3 试点 15 条跑完即停（`fisherrf_reproduction/FISHERRF_FULL_PAUSED.md`））**
+**最近更新：2026-11-11 17:25（用户决定：P16 UAV 与 P18 FisherRF ⏸ 暂停，让出 GPU 给主线，空闲时一次性补完。UAV 240/240 闭环 + 重放 ✅，UAV-final Ours / MAGICIAN / Random AUC@100 0.794 / 0.668 / 0.361，归一化修正 🟡（`exp7/report/UAV_PAUSED.md`）；FisherRF D3a 70 + 44 ✅ 但只算消融，FisherRF-full v3 试点 15/15 完成，3 场景 AUC@100 0.491 vs 论文 0.633，未复现，已停（`fisherrf_reproduction/PILOT_FULL.md`、`FISHERRF_FULL_PAUSED.md`）；17:41 gpu114 4 卡已全部空出）**
 标记：✅ 完成 · 🔄 正在跑 · ⏳ 等待（排队或依赖前项）· ❌ 失败（后面跟修复行）· ⬜ 未开始
 
 ## 0. 此刻在跑什么
@@ -259,7 +259,7 @@ P15 结论（All-14，AUC@20 / AUC@50 / AUC@100 / Cov@20 / Final）：Ours 0.420
 | E7-5 | UAVScenes UAV-v0 适配：转成 Macarons++ 格式的切块（1 单位 = 2 m，260 m 网格规则，6 块）、hook（E-M2 / z0 / 数据根目录）、相机预筛、起点、可见率 | gpu114 | `report/UAV_PROTOCOL.md`、`work_dirs/cvpr_results/exp7/uav_macpp/` | ✅ 5 / 6 块就绪（HKisland_00 的预筛仍在运行）；smoke 中 Ours / Random 均 rc 0 |
 | E7-6 | UAVScenes 闭环：6 块 × 10 起点 × {Ours, Random}，100 步 | gpu114 4 卡，每卡最多 3 个 worker | `logs/uav_worker_*.log`、`episodes/uavscenes/raw/` | ✅ 11-11 02:15 完成 120 / 120；03:00 官方覆盖率重放 120 / 120 逐位相同。ALL-6：Ours AUC@20 / AUC@100 / Final 为 0.437 / 0.790 / 0.926，Random 为 0.195 / 0.342 / 0.453；配对 AUC@100 +0.447 [+0.412, +0.487]，60 / 60 对 Ours 更高。CLEAN-4：+0.435。⚠️ AMvalley_01 和 HKisland_00 上 Ours 有一部分步进入重建体下方（23.8% / 12.8%）。事故：zsh 生成的清单格式错误；旧 worker 遗留导致显存溢出，9 条续跑。报告 `report/UAVSCENES_RESULTS.md` |
 | E7-7 | UAVScenes 加 MAGICIAN beam（v0 6 块 × 10）和 UAV-v1（AMvalley_01 / HKisland_00 封洞：射线检测空洞 + 相机柱裂缝，塞子面 + 侧壁）× 3 种方法 × 10 | gpu114 4 卡 | `episodes/uavscenes/raw/`、`results/uav_final_summary.md`、`fig/uavscenes/` | ✅ 11-11 15:00：240 / 240 条闭环，重放逐位相同；v1 地表下步数 0。UAV-final（CLEAN-4 + 2 块 v1）Ours / MAGICIAN / Random：AUC@20 0.445 / 0.313 / 0.202，AUC@100 0.794 / 0.668 / 0.361，Final 0.933 / 0.901 / 0.481；Ours − MAGICIAN 的 AUC@100 为 +0.126 [+0.108, +0.145]，6/6 块。报告 `report/UAVSCENES_RESULTS.md` §4 |
-| E7-8 | 归一化修正：v1 覆盖率 > 1（AMvalley_01_v1 最高 1.039）← 可见率按面积采样，评价器 GT 按格截断；`uav_visibility_official.py` 用评价器 GT 重算 | gpu114 | `uav_macpp/<tile>/visibility_official.json`、`report/UAV_PAUSED.md` | ⏸ 11-11 17:20 暂停：AMvalley_01_v1 = 0.9607（原 0.8638）；4 块计算中，跑完即止；HKairport_01 / AMvalley_01 / HKisland_00 未开始；换算表未写 |
+| E7-8 | 归一化修正：v1 覆盖率 > 1（AMvalley_01_v1 最高 1.039）← 可见率按面积采样，评价器 GT 按格截断；`uav_visibility_official.py` 用评价器 GT 重算 | gpu114 | `uav_macpp/<tile>/visibility_official.json`、`report/UAV_PAUSED.md` | ⏸ 11-11 17:41 暂停：只完成 AMvalley_01_v1 = 0.9607（原 0.8638）；另外 4 块算到一半按 PID 停止，共 7 块待算（独占 4 卡约 1.5 h）；换算表未写 |
 
 ## P17 EXP8 — 计算效率基准（2026-11-11 01:40 起；任务书粘贴于对话；产物 `experiments/cvpr_results/efficiency/`）
 
@@ -279,5 +279,5 @@ P15 结论（All-14，AUC@20 / AUC@50 / AUC@100 / Cov@20 / Final）：Ours 0.420
 | F1 | 适配器（官方 GaussianSLAM、pose_eval EIG，统一的 legal 候选，RGB 旁路文件）；smoke：室外 barts 10 步 + 室内 Z6MF 10 步 | gpu114 GPU 3 | `SMOKE_TEST.md`、`work_dirs/cvpr_results/fisherrf_reproduction/smoke` | ✅ PASS（官方覆盖率逐位相同；EIG 独立重算）；D12（官方 init 位姿 bug → 改用 docstring 语义）、D13（无有效深度帧 → 跳过建图，无地图时用种子随机）为默认决定 |
 | F1-cal | 完整长度校准：室外 pisa s0 100 步 + dunnottar s1 10 步（D13 检查）；室内 Z6MF L0 S6 150 步 | sbatch 3495338（gpu117）、3495340（gpu113） | `logs/sbatch_frf_calib_*` | ✅ |
 | F2 / F3（D3a） | 全量闭环：Macarons++ All-14 × 5（70 条）+ MP3D-150（44 条），候选为相邻一步的合法动作 | sbatch 3495366 / 3495368 / 3495370（每卡 4 个进程）+ 重放 3495384 | `results/summary.json`、`OUTDOOR_RESULTS.md`、`INDOOR_RESULTS.md`、`RUNTIME_RESULTS.md` | ✅ 70/70 重放逐位，44/44 V1–V4。室外 AUC@100 0.301 / Final 0.439（< Random 0.353 / 0.517）；室内 AUC@150 0.233。**只算消融（FisherRF-score-1step）**：缺官方 frontier 目标和路径评估，论文 Table 2 为 0.546 / 0.786 |
-| F1b | FisherRF-full：按 MAGICIAN 论文的做法加回 frontier 目标（256 个候选 → 前 20）、网格最短路、官方路径得分（均值 EIG + 30 × 终点 EIG）；v1 → v2 → v3（路径服从环境的 legal 规则） | gpu114 4 卡（与 E7-8 共用） | `work_dirs/cvpr_results/fisherrf_reproduction/full/`、`PILOT_FULL.md`、`FISHERRF_FULL_PAUSED.md` | ⏸ 试点 3 场景 × 5 起点（v3）跑完即停。中期结果明显低于论文：v3 dunnottar 平均 0.27（论文 0.500）；室内版本未实现 |
+| F1b | FisherRF-full：按 MAGICIAN 论文的做法加回 frontier 目标（256 个候选 → 前 20）、网格最短路、官方路径得分（均值 EIG + 30 × 终点 EIG）；v1 → v2 → v3（路径服从环境的 legal 规则） | gpu114 4 卡（与 E7-8 共用） | `work_dirs/cvpr_results/fisherrf_reproduction/full/`、`PILOT_FULL.md`、`FISHERRF_FULL_PAUSED.md` | ⏸ 17:35 试点 v3 15/15 条完成，重放逐位相同后暂停。3 场景平均 AUC@100 0.491 / Final 0.678（论文 0.633 / 0.854）：barts 0.753 / 0.987（论文 0.673 / 0.878），redeemer 0.448 / 0.590（0.727 / 0.876），dunnottar 0.272 / 0.458（0.500 / 0.809）→ **未复现**。诊断：3D frontier 选中的是近场大壳，目标只有 1.6–5 步远；不可达时原地转向；开局无深度。下一步候选 F1c（MAGICIAN 式全局位姿采样，只跑了 1 条冒烟）、候选可达性过滤，均未运行。室内版本未实现 |
 

@@ -220,3 +220,57 @@ FisherRF 中有几处使用绝对单位：
   - 检查 §3.1 的位姿自检、RGB 与深度对齐、渲染与观测的 PSNR。
 - **F2**：Dev 子集的闭环。
 - **F3**：outdoor 14×5、indoor 22×2 的全量运行，接入 Table 1 / EXP7 的同协议主表。
+
+---
+
+## F1b · FisherRF-full：官方规划循环在 Macarons++ 位姿网格上的适配（2026-11-11）
+
+**用户决定**：保留 FisherRF 的 frontier 目标和路径评估。目标是复现 MAGICIAN 论文 Table 2 的 FisherRF 行（15 场景 AUC 0.546 / Final 0.786）。D3a（只对一步邻居打分）只作为消融。
+实现：`scripts/fisherrf_full_planner.py`，用 `fisherrf_sim_out.py --planner fisherrf_full_planner.py` 运行。
+
+**参考依据**
+- MAGICIAN 论文脚注："We adapt the released FisherRF code to outdoor scenes by modifying its frontier selection and adjusting its action space"；正文："selects viewpoints along the frontier and generates a set of shortest paths from the current pose. It then evaluates these paths using Fisher Information"。
+- MAGICIAN 仓库的历史提交 e4e08fe：
+  - `macarons/testers/fish_planning.py` 并**不计算 Fisher 信息**。它在整个位姿空间采样 300 个位姿，用 MACARONS 的覆盖增益打分，再在位姿网格的位置上用 Dijkstra 规划路径，用 GT 网格做碰撞检测，然后沿路径行进。
+  - `frontier_planning.py` 中实际生效的代码用的是 GT 表面点，不能放在规划端；被注释掉的设计是：proxy 点的三态占据（未知 / 空 / 占据，由深度 carving 得到）→ 采样朝向未知点的位姿 → 在位姿网格位置上做 Dijkstra（与占据点做碰撞检测）。
+  - 我们只采用这个三维结构：三维占据、在网格位置上求最短路、动作空间换成 settings 网格。**打分全部来自 FisherRF 官方代码**，没有用 MACARONS 增益，也没有用 GT。
+
+**不变的部分**：官方 GaussianSLAM 每步 `track_rgbd`（60 次迭代）、官方 `pose_eval`（λ = 0.1）、D12（docstring init）、D13、RGB 旁路文件、open() 守卫、尺度 s = 7。
+**规划端输入**：只有当前步的服务记录、RGB 旁路文件，以及该场景的 settings.json（相机网格和场景盒，守卫安装前读一次；MAGICIAN 规划器也读这个文件）。
+
+| 官方（`AM/` = FisherRF-active-mapping 8b196cd） | 本适配 | 说明 |
+|---|---|---|
+| 主循环：动作队列为空才重规划（`tester.py:337-386`） | 队列为空，或队首位姿不在仿真器的 legal 列表中时，重规划 | legal 列表是执行动作的唯一依据 |
+| 无路径时转一次、`expansion += 1`；`expansion > 10` 抛 `NoFrontierError`，episode 结束（`tester.py:344-371, 535`） | 转一次方位角（azim + 1，不合法则 −1，再不行用种子随机）；`expansion > 10` 记事件后重置为 1，**继续跑满 100 步** | 协议要求固定步数 |
+| 撞墙卡住：标障碍，清空队列（`tester.py:497-518`） | 当前位姿的官方邻居中，未访问却不在 legal 列表里的（GT 线段检测失败）→ 记为封锁边 | 仿真器先保留全部未访问邻居（`get_valid_neighbors`），再做 GT 检测，所以这一推断成立；只用 legal 列表这一观测 |
+| `update_occ_map`（`astar.py:114-211`）：2D 三通道累加（未知先验 1 / 占据 ×100 / 射线上的空闲 = 1），逐格归一化后 argmax；高度窗 [0.1, 1.3] m；深度 < `pcd_far_distance` = 7 m；下采样 4 | 同一累加器放在 **3D 体素**上，并列时归为未知，与官方 argmax 一致；不加高度窗；`pcd_far_distance` = 7 FR 单位；**用全部像素的射线** | 2D 投影会把下采样 4 的射线压密，3D 中要用全分辨率才有相当的密度 |
+| 栅格 `cell_size` = 0.05 m（yaml `explore.cell_size`） | 体素 0.05 FR = 0.35 runtime；范围为场景盒 ∪ 相机盒 | 与 MAGICIAN 的 800k proxy 点密度量级相同（barts 约 0.33） |
+| `build_connected_freespace`（`astar.py:213-259`）：去掉高斯 > 25 的格、3×3 开运算、取最大连通域 | 去掉高斯 > 25 的体素、3×3×3 开运算、取最大 26 连通域 | 3D 推广 |
+| `build_frontiers`（`astar.py:307-410`）：frontier = dilate(free) − free ∩ unknown，连通域面积 > 10，"combined" = count / (平均距离 + 20) | 同样的定义和打分，换成 26 连通、体素距离；centering 取簇均值 | — |
+| `generate_candidate`（`astar.py:704-746`）：K = 256，在半径 [0.5, 1.0 × expansion] m 的水平环上，相机高度固定，只有 yaw 且朝向中心；腐蚀空闲（10×10）过滤，当腐蚀后像素数 > 40 时才启用（`astar.py:575-594`），没有候选则 expansion × 1.5 | 256 个点放在三维球壳上，半径 [0.5, 1.0 × expansion] FR；**吸附到最近的 settings 网格位置**，俯仰 / 方位取最接近"朝向中心"的网格角度；去重后再打分。过滤用 11³ 腐蚀；**只有当腐蚀空闲中至少有一个网格位置时才启用**（同时要求腐蚀后体素数 > 40），扩张循环最多 30 次 | 动作空间的适配：自由飞行相机没有"高度"，所以用球壳代替水平环 |
+| 没有 frontier 时，在腐蚀空闲中随机取 1/4 的格子、随机 yaw（`astar.py:471-526, 597-603`） | 位置落在（腐蚀）空闲体素中的网格位置取 1/4，朝向随机 | — |
+| `pose_eval`，取 top-20（`astar.py:615-662`） | 官方 `slam.pose_eval`，取 top-20 | — |
+| `setup_start` + A*（`astar.py:261-305, 749-`）：障碍 = 占据格（膨胀 3×3）+ 高斯 > 50 的格，未知视为空闲；起点格置空 | **v3：在 5D 位姿图上做 BFS 最短路**（单位代价，即 Dijkstra）。邻接为官方 `get_neighboring_poses`（沿一个位置轴 ±1，或沿一个角度档 ±1）；平移需要线段畅通，旋转总是可行；**已执行过的位姿不可经过**，除非当前位姿的所有邻居都已执行过。（v2 只在位置上做 BFS，再补转向，见下文）边与障碍体素相交则不可走；障碍 = 占据体素（3³ 膨胀）+ 高斯 > 50 的体素，未知视为空闲；还要排除封锁边。**膨胀之后，把每个已执行相机位置周围 5³ 的体素清空** | 与 MAGICIAN 被注释掉的 frontier 设计一致（`generate_Dijkstra_path` 在位置网格上，与占据点做碰撞） |
+| `action_planning`（`tester.py:904-1030`）：前进 0.05 m / 转 5°，最多 `planning_queue_size` = 30 个动作；终点转向目标 yaw；动作序列相同的路径去重 | 动作 = 沿路径逐格平移（朝向不变），再逐档转俯仰、方位到目标（方位走较短方向）；最多 30 个；相同序列去重 | 我们的网格可以在任意轴上平移而不必转向 |
+| `plan_best_path`（`tester.py:763-893`）：最多 21 条路径；每个动作调一次 `compute_Hessian`；point_EIG = log Σ H/(H_path + `H_reg_lambda` = 1e-6)；每 `acc_H_train_every` = 5 个动作累加一次；pose_EIG = log det(I) = 0；总分 = total/len + `path_end_weight` = 30 × final_EIG；final_EIG 来自**排好序的 EIGs 与有效路径的 zip** | 公式和常量完全相同，从官方 cfg 读取，官方函数直接调用；**保留官方 zip 的错位**：某个目标没有路径时，后面路径配到的是排序列表中下一个 EIG | 官方 bug 照原样保留 |
+| 空路径（目标就是当前位姿）：`total / len(curr_action)` 会除以 0（官方会崩溃） | 跳过空路径 | 避免崩溃 |
+| 随机数：全局 torch / numpy | 候选采样用 sha256("fisherrf-full\|scene\|start\|t\|expansion") 的 numpy RNG | 只换随机源，便于复现 |
+
+**每次重规划记录**：原因、frontier 统计（free / unknown / occ 体素数、簇数、所选簇大小和距离、中心）、候选（采样数、去重数、是否启用过滤）、top-20 的 EIG、路径（可达位置数、每条长度）、路径 EIG 的总分和 Hessian 次数、最优目标和路径长度，以及各阶段计时（synchronize 后的 frontier / candidates / pose_eval / paths / path_eig）。
+
+**v1 试跑发现的两处修正（2026-11-11 16:20，v1 的 8 条 episode 已中止并移到 `full/_aborted_v1/`，不计入结果）**
+1. **起点被围死**（`n_reachable_positions = 1`）。
+   - 原因：官方 `get_pointcloud` 用 max-pool 后的 mask，深度却取 4×4 块左上像素。看到天空时，左上像素深度为 0 的块会在相机中心生成零尺度高斯。
+   - 后果：高斯 > 50 的障碍规则再加 3³ 膨胀，把相机四周全部封住。
+   - 修正：官方把机器人所在的 3×3 格设为空闲（`astar.py:125`），并在膨胀后清空起点格（`astar.py:290`）。3D 推广为：清空所有已执行位置周围 5³ 的体素。
+2. **腐蚀空闲过滤永远满足不了**。
+   - 官方的扩张循环（`astar.py:575-594`）在 2D 中，环半径变大后总能落进腐蚀空闲区。
+   - 在稀疏的 3D 网格上，可能根本没有网格位置位于腐蚀空闲中，扩张多少次都满足不了。
+   - 修正：只有当至少一个网格位置位于腐蚀空闲中时才启用过滤；启用后扩张循环一定能结束。
+3. **v3：路径必须服从环境的动作规则**（2026-11-11 16:50，v2 的结果保留在 `full/outdoor/closed_loop/` 作为记录，不计入结论）。
+   - 现象：v2 在 redeemer s0 / s1 上分别有 26 次和 53 次 `first_move_not_legal_turn`，表现为原地转圈、重规划后再转圈。
+   - 原因：仿真器的 legal 列表在还有未执行邻居时，不提供已执行过的位姿（`get_valid_neighbors`）。v2 的路径常常以"保持朝向平移到一个已执行位姿"开头，这一步不合法。
+   - 修正：在 5D 位姿图上规划，并排除已执行位姿。这相当于官方 A* 在机器人自身的动作空间里规划；规划端知道这条环境规则，也知道自己的执行历史。
+4. **F1c 变体（只做过 20 步冒烟，没有试跑；2026-11-11 暂停）**。
+   - 设 `FRF_FRONTIER_MODE=magician` 时，frontier 和候选环节换成 MAGICIAN e4e08fe 中 `sample_valid_poses_in_space_for_frontier` 的设计：在整个位姿空间均匀采 256 个位姿，保留位置未被占据、且视野（传感器量程内）含未知体素的；未知体素用规划端自己的，最多抽样 5 万个。
+   - 之后仍用官方 `pose_eval` 取 top-20；路径和路径 EIG 与 v3 相同。默认（不设这个变量）就是 v3。
