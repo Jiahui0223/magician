@@ -1,0 +1,35 @@
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{llcccccc}
+\toprule
+Tile & Method & AUC@20 & AUC@50 & AUC@100 & Cov@20 & Cov@50 & Final \\
+\midrule
+AMtown-11 & Random Walk & 0.207 & 0.279 & 0.372 & 0.276 & 0.401 & 0.510 \\
+AMtown-11 & MAGICIAN & 0.348 & 0.518 & 0.717 & 0.473 & 0.805 & 0.938 \\
+AMtown-11 & Ours & 0.504 & 0.728 & 0.831 & 0.774 & 0.913 & 0.945 \\
+\midrule
+AMtown-12 & Random Walk & 0.244 & 0.312 & 0.372 & 0.315 & 0.383 & 0.480 \\
+AMtown-12 & MAGICIAN & 0.333 & 0.473 & 0.662 & 0.441 & 0.710 & 0.918 \\
+AMtown-12 & Ours & 0.490 & 0.720 & 0.825 & 0.779 & 0.911 & 0.934 \\
+\midrule
+HKairport-00 & Random Walk & 0.133 & 0.216 & 0.293 & 0.201 & 0.328 & 0.403 \\
+HKairport-00 & MAGICIAN & 0.238 & 0.449 & 0.631 & 0.425 & 0.740 & 0.841 \\
+HKairport-00 & Ours & 0.388 & 0.601 & 0.737 & 0.627 & 0.830 & 0.894 \\
+\midrule
+HKairport-01 & Random Walk & 0.196 & 0.270 & 0.327 & 0.279 & 0.342 & 0.420 \\
+HKairport-01 & MAGICIAN & 0.267 & 0.429 & 0.604 & 0.380 & 0.687 & 0.812 \\
+HKairport-01 & Ours & 0.382 & 0.585 & 0.709 & 0.580 & 0.799 & 0.846 \\
+\midrule
+AMvalley-01$^{\dagger}$ & Random Walk & 0.268 & 0.396 & 0.488 & 0.366 & 0.537 & 0.615 \\
+AMvalley-01$^{\dagger}$ & MAGICIAN & 0.400 & 0.546 & 0.691 & 0.552 & 0.729 & 0.899 \\
+AMvalley-01$^{\dagger}$ & Ours & 0.523 & 0.743 & 0.835 & 0.797 & 0.922 & 0.927 \\
+\midrule
+HKisland-00$^{\dagger}$ & Random Walk & 0.129 & 0.175 & 0.253 & 0.159 & 0.254 & 0.374 \\
+HKisland-00$^{\dagger}$ & MAGICIAN & 0.237 & 0.400 & 0.600 & 0.366 & 0.664 & 0.866 \\
+HKisland-00$^{\dagger}$ & Ours & 0.310 & 0.523 & 0.705 & 0.478 & 0.798 & 0.915 \\
+\bottomrule
+\end{tabular}
+\caption{UAVScenes per tile (10 starts each). $^{\dagger}$ UAV-v1 tile: mesh holes sealed so that no reachable camera position lies under the reconstructed surface.}
+\label{tab:uavscenes_tiles}
+\end{table}

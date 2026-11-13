@@ -1,0 +1,19 @@
+comparison,metric,mean,ci95_lo,ci95_hi,tiles_higher,episodes_higher
+Ours - MAGICIAN,AUC@20,+0.1290,+0.1026,+0.1498,6/6,56/60
+Ours - MAGICIAN,AUC@50,+0.1808,+0.1485,+0.2146,6/6,58/60
+Ours - MAGICIAN,AUC@100,+0.1227,+0.1067,+0.1416,6/6,58/60
+Ours - MAGICIAN,Cov@20,+0.2327,+0.1724,+0.2911,6/6,57/60
+Ours - MAGICIAN,Cov@50,+0.1396,+0.1070,+0.1736,6/6,53/60
+Ours - MAGICIAN,Final,+0.0310,+0.0176,+0.0444,6/6,56/60
+Ours - Random Walk,AUC@20,+0.2367,+0.2052,+0.2676,6/6,60/60
+Ours - Random Walk,AUC@50,+0.3754,+0.3421,+0.4117,6/6,60/60
+Ours - Random Walk,AUC@100,+0.4228,+0.3865,+0.4532,6/6,60/60
+Ours - Random Walk,Cov@20,+0.4062,+0.3484,+0.4624,6/6,60/60
+Ours - Random Walk,Cov@50,+0.4882,+0.4421,+0.5265,6/6,60/60
+Ours - Random Walk,Final,+0.4430,+0.3828,+0.4959,6/6,60/60
+MAGICIAN - Random Walk,AUC@20,+0.1077,+0.0886,+0.1266,6/6,55/60
+MAGICIAN - Random Walk,AUC@50,+0.1946,+0.1665,+0.2227,6/6,57/60
+MAGICIAN - Random Walk,AUC@100,+0.3001,+0.2536,+0.3354,6/6,58/60
+MAGICIAN - Random Walk,Cov@20,+0.1735,+0.1357,+0.2067,6/6,54/60
+MAGICIAN - Random Walk,Cov@50,+0.3486,+0.2771,+0.3993,6/6,57/60
+MAGICIAN - Random Walk,Final,+0.4120,+0.3533,+0.4561,6/6,60/60

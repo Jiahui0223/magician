@@ -66,7 +66,12 @@ def positions(tile, method, start, version):
     n = np.asarray([st["pose_l"], st["pose_w"], st["pose_h"]])
     P = np.asarray([json.loads(k)[:3] for k in keys], float)
     X = lo + (0.5 + P) * (hi - lo) / n
-    return X, np.asarray(e["coverage"], float)
+    c = np.asarray(e["coverage"], float)
+    vo = os.path.join(W7, "uav_macpp", td, "visibility_official.json")     # evaluator-GT normalisation (2026-11-12), as the paper table
+    if os.path.exists(vo):
+        v = json.load(open(vo))
+        c = c * v["visibility_ratio_settings"] / v["starts"][str(start)]["ratio"]
+    return X, c
 
 
 def draw_tile(ax, tile, start, version, legend=True):
