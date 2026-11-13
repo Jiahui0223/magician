@@ -1,6 +1,6 @@
 # EXP6 V3 — 全局状态板（每次启动 / 结束一个运行就更新）
 
-**最近更新：2026-11-13（P18 FisherRF 独立审查 ✅：没有实现 bug，差距在设计层面，即 EIG 在本协议下没有覆盖增益信号；建议正文引用论文数值、本复现放附录 → 等用户决定。UAV 论文表已保存在 `fig/table_uav/`）**
+**最近更新：2026-11-13（P19 Experiment U 生成分歧 NBV 启动：Phase A–D（审计、指标定义冻结、固定状态诊断）+ smoke 🔄，Phase E 闭环待 D 通过后入队；完整对比表 `fig/compare_full/` ✅；UAV 表 `fig/table_uav/` ✅）**
 标记：✅ 完成 · 🔄 正在跑 · ⏳ 等待（排队或依赖前项）· ❌ 失败（后面跟修复行）· ⬜ 未开始
 
 ## 0. 此刻在跑什么
@@ -283,4 +283,12 @@ P15 结论（All-14，AUC@20 / AUC@50 / AUC@100 / Cov@20 / Final）：Ours 0.420
 | F1b-r | 恢复（11-12 19:25）：预先登记两个变体 v4（官方 frontier + 可达性过滤，对应官方 `gaussian.py:1244-1257`）和 f1c4（MAGICIAN 式全局位姿采样 + 过滤），各 3 场景 × 5 试点；只走共享队列 | 共享队列 | `full/outdoor/closed_loop_{v4,f1c4}/` | ✅ 20:48 试点 30 / 30，重放全部逐位相同。3 场景平均 AUC@20 / AUC@100 / Final：v3 0.207 / 0.491 / 0.678，**v4** 0.207 / 0.492 / 0.661（过滤几乎不起作用），**f1c4** 0.181 / 0.510 / 0.722（论文 0.633 / 0.854）。f1c4 逐场景：dunnottar 0.319（论文 0.500）、redeemer 0.553（0.727）、barts 0.659（0.673）。按预先登记的规则选 f1c4 |
 | F1b-full | f1c4 全量 Macarons++ 14 × 5（复用试点 15 条，新增 55 条）+ 官方回放 | 共享队列 8 卡 | `full/outdoor/closed_loop_f1c4/`；`frf_full_collect.py --tag full14_f1c4` | ✅ 21:51 70 / 70 条，重放全部逐位相同。All-14：AUC@20 / AUC@100 / Final 0.145 / 0.367 / 0.543（论文 — / 0.541 / 0.766）；− Random +0.014 [−0.023, +0.048]；− MAG −0.344；逐场景与论文相关系数 0.71，2/14 个场景在 ±0.05 以内 → **未复现**。`FINAL_REPORT.md` §0、`results/full14_f1c4_table.md`。MP3D 室内版未实现 |
 | F-audit | 独立审查（11-13 起，用户要求）：A 对照官方代码逐项审查（位姿 / 内参 / 尺度 / 深度 / GaussianSLAM 配置 / EIG）；B 在线 3DGS 地图质量；C 固定状态下 EIG 与真实覆盖增益的排序是否一致；D 行为对比 MAGICIAN；E 在官方原生基准上运行的可行性（不下载数据） | 共享队列（`frfaudit_*`，约 4 GPU-h） | `fisherrf_reproduction/AUDIT.md`、`work_dirs/cvpr_results/fisherrf_reproduction/audit/` | ✅ 约 0.8 GPU-h：没有改变结论的 bug；固定状态下 EIG 的 Top-1 不比随机好（合法邻居 0.27 vs 0.84 pp；视野内未观测体素数为 2.85，oracle 3.27）；f1c4 没有用未观测体素数排序；巨型高斯、幽灵高斯、占据规则是次要问题。建议引用论文数值单独分组，本复现放附录；备选为 frontier 优先的适配版（约 15 GPU-h）→ 等用户决定 |
+
+## P19 Experiment U — Generative Disagreement for NBV（2026-11-13 起；任务书 `ablation_study/experiment_U_generative_disagreement/TASK_BOOK.md`）
+
+| 编号 | 内容 | 资源 | 日志 / 结果 | 状态 |
+|---|---|---|---|---|
+| U-A/B/C | 现有管线审计（8 个问题）；U1 / U2 / U3 定义与归一化规则、C1、U-best 选择规则、U4 可行性，均在闭环前冻结于 U0；独立的规划器适配层 | CPU | `reports/U0_PIPELINE_AUDIT.md` | 🔄 |
+| U-D | 固定状态诊断：复用已有状态池和 GT oracle，回答任务书 §5 的 6 个问题，产出排序图和分歧可视化 | 共享队列（`expU_*`，约 8 GPU-h，含 smoke） | `reports/U1_FIXED_STATE_ANALYSIS.md` | 🔄 |
+| U-E | 闭环 All-14 × 5 × {C1, U1, U2, U3, (U4)}；D1 行复用 Table 1 | 共享队列 | — | ⏳ 等 D 通过 |
 
