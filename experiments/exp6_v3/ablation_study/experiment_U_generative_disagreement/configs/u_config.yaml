@@ -1,0 +1,31 @@
+# Experiment U -- Generative Disagreement for NBV. Protocol U-v1, FROZEN 2026-11-13 before any Experiment U model run
+# (fixed-state or closed loop). Changing anything below after the first run requires a new version + a deviation entry in README.md.
+# Base: protocol D-v1 (experiment_D_h3_lookahead/configs/d_config.yaml) and KD-v1 (cvpr_results/scripts/table3/kd_config.yaml).
+# Every policy runs the FROZEN d_policy.install path (h_policy.value_cov per view, frozen score_state, m_score.choose); only the
+# per-candidate score written into out["distp1"] (and the lookahead depth) differs.
+version: U-v1
+model: {id: V3-T0@40K, checkpoint: work_dirs/exp6_v3/task0_vae/checkpoints/final.pt, sha256: 7ed0ddd72bb91d1e8c6563f3192201c24a49fe862b49d2387ea8770915145ab6}
+pose_tables: /bsuscratch/jiahuizhang/projects/occupancy/seen2scene/work_dirs/exp6_v3/H/pose_tables
+inference: "same as D-v1 / Table 1 V3-T0-D1 (b2: D100 input + S10 band_dil, R10 encoder refresh, K 4, Euler 10, frozen noise keys seed_key(scene, start, rep, t_r, k) shared by all candidates, simulator legal list, m_score.choose with the seeded all-zero fallback, 100 moves)"
+value: {kind: cov, eps_cov: 1.0, cell_size: 1.0, novelty: hard}   # = D-v1 per-sample coverage value (h_policy.value_cov); computed for every policy (C1 score, logged)
+policies:
+  # all policies: depth 1 = no second-layer view is predicted (kd_policy._lookahead_depth1 semantics); lambda 0
+  c1: {depth: 1, beam: null, lambda_risk: 0.0, score: c1, doc: "C1 = D1's one-step coverage value: mean_k sum of value_cov weights (= KD-v1 depth1 = archived V3-T0-K4D1)"}
+  u1: {depth: 1, beam: null, lambda_risk: 0.0, score: u1, doc: "U1 hit disagreement (definition below), one-step"}
+  u2: {depth: 1, beam: null, lambda_risk: 0.0, score: u2, doc: "U2 first-hit depth disagreement, one-step"}
+  u3: {depth: 1, beam: null, lambda_risk: 0.0, score: u3, doc: "U3 geometric surface disagreement, one-step"}
+metrics:
+  rays: "R_c = {r : pr.n_u[r] > 0 and pr.valid[r]} over the 7,296 unpadded scoring rays of candidate c (M.unpad_rays already removed the 64 x 14 padding columns); n_u > 0 = the ray marches (before t_known, within t_cap, in the grid) through >= 1 UNKNOWN in-domain P1 sample"
+  hit: "h_r^(k) = hit_u[k, r] of geometry.decode = (b_hat > 0) & (y_hat < 1) & (n_u > 0): sample k decodes a surface on an UNKNOWN sample of ray r. Rays not in R_c never count."
+  u1: "U1(c) = mean_{r in R_c} 4 p_r (1 - p_r), p_r = mean_k h_r^(k); |R_c| = 0 -> 0"
+  u2: "U2(c) = mean_{r in R2_c} Var_{ddof=1}{ t_rt^(k) : h_r^(k) = 1 }, R2_c = {r in R_c : sum_k h_r^(k) >= 2}, t_rt = decoded ray distance x k_M (runtime units = official coverage units; = variance of the back-projected 3D points along the ray); no-hit samples never enter; |R2_c| = 0 -> 0"
+  u2_rel_offline: "diagnostic only (never a planner score): same with the UNKNOWN-arc coordinate s = clamp((y_hat + 1) / 2, 0, 1 - 1e-6) instead of t_rt; also logged: mean hit distance of R2_c rays and mean coefficient of variation"
+  u3: "S_c^(k) = set of 1.0-runtime-unit cells (h_policy.value_cov cell grid / keys, cell_size 1.0) containing >= 1 back-projected point o + t^(k) d of a ray r in R_c with h_r^(k) = 1 (generated UNKNOWN-surface hits only; known-surface t_known hits and no-hit rays excluded; no novelty filter, no w(z) weight); V_c = union_k S_c^(k); p_v = (1/K) sum_k 1[v in S_c^(k)]; U3(c) = (1/|V_c|) sum_{v in V_c} 4 p_v (1 - p_v); |V_c| = 0 -> 0"
+  u3_normalisation: "FROZEN: mean over the union of predicted cells (intensive, in [0, 1]); the extensive sum, |V_c|, cells with p_v = 1, mean pairwise Jaccard and the cross-hypothesis Chamfer distance are logged as diagnostics only"
+  choice: "m_score.choose(scores, scene, start, t): argmax, ties -> lowest index, max == 0 -> seeded MC.fallback_choice (frozen, identical for all policies)"
+u_best_rule: "pre-registered, decided on the Phase D fixed-state pool only (Experiment F pool, 755 outdoor states, Dev-5 + Train scenes, no Test-3), never on closed-loop numbers: U-best = argmax over {U1, U2, U3} of the scene-equal mean official one-step coverage gain (pp) of the candidate that m_score.choose picks from the metric; exact tie -> U1 < U2 < U3 order (first)"
+u4_rule: "pre-registered: a JOINT two-step disagreement on shared cells is defined only if, on the Phase D pool, the same-noise-index cell agreement between a root c1 and its D1 children c2 (on cells predicted by both views) exceeds the cross-index agreement with scene-bootstrap 95 % CI lower bound > 0 AND ratio same / cross >= 1.25. Otherwise U4 = NOT DEFINED (no joint cells); a per-view two-step heuristic may only be run as a separately labelled heuristic after user approval"
+search:
+  layer1: "all simulator-legal candidates c1 (no pruning)"
+  layer2: "none (depth 1)"
+  c2_chunk: 16

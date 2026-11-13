@@ -1,0 +1,34 @@
+{
+ "regression": {
+  "n_states": 755,
+  "keys_eq_F": 755,
+  "paths_eq_F": 755,
+  "d1_bitwise_T4V2_T0": 755,
+  "d1_ref_missing": 0,
+  "c1_equals_meanV1k": 755
+ },
+ "u_best": {
+  "rule": "argmax scene-equal mean official one-step gain (pp) of the choose() pick on the 755-state pool; exact tie -> U1 < U2 < U3",
+  "values": {
+   "U1": 0.5680366984988999,
+   "U2": 0.7039426929944554,
+   "U3": 0.5821298281324228
+  },
+  "U_best": "U2"
+ },
+ "u4": {
+  "same_index_agreement": 0.34941532290255467,
+  "cross_index_agreement": 0.3179752842796629,
+  "diff": 0.03144003862289182,
+  "ci": [
+   0.023469326822568977,
+   0.04066740737674436
+  ],
+  "ratio": 1.098875730842149,
+  "scenes_same_gt_cross": 10,
+  "scenes": 10,
+  "PASS": false,
+  "n_paths": 39212,
+  "pooled_overlap_cells": 5602043.0
+ }
+}
