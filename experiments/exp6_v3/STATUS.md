@@ -1,6 +1,6 @@
 # EXP6 V3 — 全局状态板（每次启动 / 结束一个运行就更新）
 
-**最近更新：2026-11-12 21:55（P16 UAV 归一化修正 ✅：评价器 GT 可见率，UAV-final Ours / MAGICIAN / Random AUC@100 0.773 / 0.651 / 0.351，最高覆盖率 ≤ 0.955；8 块全部算完（22:18），共享队列已空。P18 FisherRF-full f1c4 全量 All-14 ✅：AUC@100 0.367 / Final 0.543，论文 0.541 / 0.766 → 未复现，与 Random 无显著差别；CVPR 表格写法待用户决定）**
+**最近更新：2026-11-13（UAV 论文表已保存 `experiments/cvpr_results/fig/table_uav/`，即评价器 GT 归一化后的 UAV-final：Ours / MAGICIAN / Random AUC@100 0.773 / 0.651 / 0.351；P18 FisherRF：用户要求先审查再决定方向，独立审查 🔄，只做小诊断，走共享队列，输出 `fisherrf_reproduction/AUDIT.md`）**
 标记：✅ 完成 · 🔄 正在跑 · ⏳ 等待（排队或依赖前项）· ❌ 失败（后面跟修复行）· ⬜ 未开始
 
 ## 0. 此刻在跑什么
@@ -282,4 +282,5 @@ P15 结论（All-14，AUC@20 / AUC@50 / AUC@100 / Cov@20 / Final）：Ours 0.420
 | F1b | FisherRF-full：按 MAGICIAN 论文的做法加回 frontier 目标（256 个候选 → 前 20）、网格最短路、官方路径得分（均值 EIG + 30 × 终点 EIG）；v1 → v2 → v3（路径服从环境的 legal 规则） | gpu114 4 卡（与 E7-8 共用） | `work_dirs/cvpr_results/fisherrf_reproduction/full/`、`PILOT_FULL.md`、`FISHERRF_FULL_PAUSED.md` | ⏸ 17:35 试点 v3 15/15 条完成，重放逐位相同后暂停。3 场景平均 AUC@100 0.491 / Final 0.678（论文 0.633 / 0.854）：barts 0.753 / 0.987（论文 0.673 / 0.878），redeemer 0.448 / 0.590（0.727 / 0.876），dunnottar 0.272 / 0.458（0.500 / 0.809）→ **未复现**。诊断：3D frontier 选中的是近场大壳，目标只有 1.6–5 步远；不可达时原地转向；开局无深度。下一步候选 F1c（MAGICIAN 式全局位姿采样，只跑了 1 条冒烟）、候选可达性过滤，均未运行。室内版本未实现 |
 | F1b-r | 恢复（11-12 19:25）：预先登记两个变体 v4（官方 frontier + 可达性过滤，对应官方 `gaussian.py:1244-1257`）和 f1c4（MAGICIAN 式全局位姿采样 + 过滤），各 3 场景 × 5 试点；只走共享队列 | 共享队列 | `full/outdoor/closed_loop_{v4,f1c4}/` | ✅ 20:48 试点 30 / 30，重放全部逐位相同。3 场景平均 AUC@20 / AUC@100 / Final：v3 0.207 / 0.491 / 0.678，**v4** 0.207 / 0.492 / 0.661（过滤几乎不起作用），**f1c4** 0.181 / 0.510 / 0.722（论文 0.633 / 0.854）。f1c4 逐场景：dunnottar 0.319（论文 0.500）、redeemer 0.553（0.727）、barts 0.659（0.673）。按预先登记的规则选 f1c4 |
 | F1b-full | f1c4 全量 Macarons++ 14 × 5（复用试点 15 条，新增 55 条）+ 官方回放 | 共享队列 8 卡 | `full/outdoor/closed_loop_f1c4/`；`frf_full_collect.py --tag full14_f1c4` | ✅ 21:51 70 / 70 条，重放全部逐位相同。All-14：AUC@20 / AUC@100 / Final 0.145 / 0.367 / 0.543（论文 — / 0.541 / 0.766）；− Random +0.014 [−0.023, +0.048]；− MAG −0.344；逐场景与论文相关系数 0.71，2/14 个场景在 ±0.05 以内 → **未复现**。`FINAL_REPORT.md` §0、`results/full14_f1c4_table.md`。MP3D 室内版未实现 |
+| F-audit | 独立审查（11-13 起，用户要求）：A 对照官方代码逐项审查（位姿 / 内参 / 尺度 / 深度 / GaussianSLAM 配置 / EIG）；B 在线 3DGS 地图质量；C 固定状态下 EIG 与真实覆盖增益的排序是否一致；D 行为对比 MAGICIAN；E 在官方原生基准上运行的可行性（不下载数据） | 共享队列（`frfaudit_*`，约 4 GPU-h） | `fisherrf_reproduction/AUDIT.md`、`work_dirs/cvpr_results/fisherrf_reproduction/audit/` | 🔄 |
 
