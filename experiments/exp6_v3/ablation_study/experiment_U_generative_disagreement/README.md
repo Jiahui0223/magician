@@ -12,7 +12,8 @@ V3-T0 生成的是**视角条件化的首次命中深度假设**，不是完整�
 | C 实现 | ✅ 规划器适配层 + 冒烟 | `scripts/u_policy.py`、`u_metrics.py`、`u_out_planner.py`、`sim_out_u.py`、`u_out_cov.py` |
 | D 固定状态诊断 | ✅ 755 状态，回归 755/755 逐位；U-best = U2；U4 规则 FAIL（未定义）；三个 U 都显著不如 C1 | `reports/U1_FIXED_STATE_ANALYSIS.md`；`scripts/u_fixed.py`、`u_analyze_fixed.py`、`u_fig_cases.py`；结果 `results/fixed/`，图 `figures/` |
 | 冒烟 | ✅ C1 / U1 / U2 / U3 各 15 步（liberty s0），C1 与归档 V3-T0-K4D1 逐位一致 | `work_dirs/exp6_v3/experiment_U/smoke/*/result.json` |
-| E 全闭环 | **未启动**（已准备：任务生成器、单 episode 任务、汇总脚本） | `scripts/make_queue_tasks.py`、`u_episode.sh`、`u_collect.py` |
+| E 全闭环 | ✅ U1 / U2 / U3 各 70/70（05:57–07:36，0 失败，回放 210/210 逐位一致）；三个 U 在 AUC@20 / AUC@100 上都 0/14 场景优于 C1 | `results/closed_loop/`、`figures/U1_coverage_curves.png`、`U1b_coverage_curves_with_random.png` |
+| 最终报告 | ✅ | `reports/EXPERIMENT_U_FINAL_REPORT.md` |
 
 ## 目录
 | 路径 | 内容 |
@@ -43,7 +44,7 @@ V3-T0@40K 权重（sha `7ed0ddd7…`）、VAE / 射线编码器 / U-Net、K = 4�
 - 2026-11-13 05:55 Phase D 汇总：`u_analyze_fixed.py`、`u_fig_cases.py`；图例选例规则 C 在第一稿选中全 0 退化状态后加了“oracle 最大值 > 0 且 U-best 非全 0”的条件（只影响图，不影响任何数字）。U-best = U2（预注册规则）；U4 规则 FAIL（同 / 不同编号一致度 0.349 / 0.318，比值 1.10 < 1.25）→ U4 未定义。
 - GPU 用量（Phase D + 冒烟 + 测试，含中止的第 1 次运行）≈ 3.5 GPU-h，全部经共享队列（任务名 `expU_*`）。
 
-## Phase E 启动方式（准备好，未启动；需用户批准）
+## Phase E 启动方式（2026-11-13 05:58 已由协调者按此执行）
 ```bash
 cd /bsuscratch/jiahuizhang/projects/occupancy/seen2scene
 PY=/bsuscratch/jiahuizhang/envs/seen2scene/bin/python
@@ -57,3 +58,10 @@ $PY $S/u_collect.py --policies u1,u2,u3                    # 任何时候都可�
 ```
 - 一个任务 = 一条 100 步 episode + 官方覆盖回放；已完成（回放逐位一致、101 个值）的 episode 跳过；`mkdir` 原子认领；未完成的部分结果移到 `_failed/<policy>_<scene>_s<k>_try<n>` 后重跑（最多 3 次）。
 - 成本估计：一步策略每条 ≈ 5.6 min 闭环（归档 V3-T0-K4D1 在共享 GPU 上的实测均值）+ 1.3 min 回放 ≈ 6.9 min → 每个策略 70 条 ≈ 8 GPU-h；U1 + U2 + U3 ≈ 24 GPU-h，8 张卡约 3 h。dunnottar 规划器峰值约 30 GB，队列本来就是一卡一任务。
+
+## 变更日志（续）
+- 2026-11-13 05:58 协调者用 `make_queue_tasks.py` 入队 Phase E（U1 / U2 / U3 × All-14 × 5 起点 = 210 条）；07:36 全部完成，0 失败；代码为提交 `a4ed5a8`（之后 `scripts/`、`configs/` 无改动；210 条规划器日志的 config / u_policy / u_metrics sha 一致）。
+- 2026-11-13 协调者运行 `u_collect.py --policies u1,u2,u3`（rc 0，问题 0）→ `results/closed_loop/`、`figures/U1_coverage_curves.png`。
+- 2026-11-13 新增 `scripts/u_final_extras.py`（只读 CPU 分析：Random 参照、逐场景表、规划器行为、早期曲线、Figure U1b）→ `results/closed_loop/final_extras.json`、`per_scene_with_random.csv`、`figures/U1b_coverage_curves_with_random.png`；不改动任何已有结果。
+- 2026-11-13 写 `reports/EXPERIMENT_U_FINAL_REPORT.md`（任务书 §10 的 12 项）。结论：分歧不优于覆盖；U-best（U2）− C1：AUC@20 −0.141、AUC@100 −0.168、Final −0.109（场景 CI 均不含 0）；固定状态诊断准确预测了闭环排序。
+

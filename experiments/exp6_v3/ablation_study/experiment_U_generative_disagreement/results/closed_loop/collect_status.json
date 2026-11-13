@@ -1,0 +1,45 @@
+{
+ "status": {
+  "D1": {
+   "episodes": 70,
+   "complete_scenes": 14
+  },
+  "C1": {
+   "episodes": 70,
+   "complete_scenes": 14
+  },
+  "u1": {
+   "episodes": 70,
+   "complete_scenes": 14
+  },
+  "u2": {
+   "episodes": 70,
+   "complete_scenes": 14
+  },
+  "u3": {
+   "episodes": 70,
+   "complete_scenes": 14
+  }
+ },
+ "problems": [],
+ "planner": {
+  "u1": {
+   "steps": 7000,
+   "decision_s_mean": 1.1554814591067177,
+   "decision_s_median": 1.0633140802383423,
+   "fallback_steps": 60
+  },
+  "u2": {
+   "steps": 7000,
+   "decision_s_mean": 1.168773753098079,
+   "decision_s_median": 1.0864883661270142,
+   "fallback_steps": 262
+  },
+  "u3": {
+   "steps": 7000,
+   "decision_s_mean": 1.1864460602828435,
+   "decision_s_median": 1.1063820123672485,
+   "fallback_steps": 47
+  }
+ }
+}
