@@ -36,6 +36,7 @@ Planner inputs: service record + RGB side file of the current step, the scene's 
 read once before the guard is installed; the same file every MAGICIAN planner reads). Nothing else.
 """
 import argparse
+import collections
 import hashlib
 import json
 import math
@@ -375,6 +376,7 @@ def main():
         return sorted(out), dict(info, mode="frontier", final_expansion=exp / 1.5)
 
     FRONTIER_MODE = os.environ.get("FRF_FRONTIER_MODE", "official")
+    REACH_FILTER = os.environ.get("FRF_REACH_FILTER", "0") == "1"           # opt-in (v4 / f1c4); default off = v3 / F1c
     assert FRONTIER_MODE in ("official", "magician"), FRONTIER_MODE
     ALL_POSES = np.array([(i, j, k, e, z) for i in range(grid.n[0]) for j in range(grid.n[1]) for k in range(grid.n[2])
                           for e in range(grid.n_theta) for z in range(grid.n_azim)], dtype=np.int64)
@@ -413,7 +415,7 @@ def main():
         return [p for _, p in out], {"mode": "magician_pose_space", "n_sampled": K, "n_unknown_used": int(len(U)),
                                      "n_kept": len(out), "max_unknown_in_fov": out[0][0] if out else 0}
 
-    def paths_to(cur, goals, blocked, gc, visited, visited5):
+    def reach_graph(cur, blocked, gc, visited, visited5):
         """BFS on the 5D pose graph (official moves), obstacles = dilated occupied + Gaussian-dense voxels; unknown = free."""
         lab = acc.argmax(0)
         obst = dilate((lab == 1) | (gc > OFF["obst_gauss_thresh"])).cpu().numpy()
@@ -462,22 +464,38 @@ def main():
                     prev[w] = u
                     nxt.append(w)
             frontier = nxt
+        return {"prev": prev, "obst": obst, "cur3": cur3, "cur5": cur5, "allow_visited": allow_visited, "visited5": visited5,
+                "info": {"n_reachable_poses": len(prev), "allow_visited": allow_visited, "n_seg_checked": len(seg_cache),
+                         "n_obst_vox": int(obst.sum())}}
+
+    def goal_reachable(G, g):
+        """None if goal pose g can be reached on the graph, else the reason (astar.planning: goal occupied / no path)."""
+        g = tuple(int(x) for x in g)
+        qg = np.floor((grid.position(g[:3]) - lo) / VOX).astype(int)
+        if np.all(qg >= 0) and np.all(qg < DIMS) and G["obst"][qg[0], qg[1], qg[2]] and g[:3] != G["cur3"]:
+            return "obstacle"
+        if g not in G["prev"]:
+            return "executed" if (g in G["visited5"] and not G["allow_visited"]) else "unreachable"
+        return None
+
+    def paths_from(G, goals):
         out = []
         for g in goals:
             g = tuple(int(x) for x in g)
-            g3 = g[:3]
-            qg = np.floor((grid.position(g3) - lo) / VOX).astype(int)
-            if (np.all(qg >= 0) and np.all(qg < DIMS) and obst[qg[0], qg[1], qg[2]] and g3 != cur3) or g not in prev:
+            if goal_reachable(G, g) is not None:
                 out.append(None)                                               # astar.planning: goal occupied / unreachable
                 continue
             acts = []
             x = g
-            while x != cur5:
+            while x != G["cur5"]:
                 acts.append(x)
-                x = prev[x]
+                x = G["prev"][x]
             acts.reverse()
             out.append(acts[:OFF["planning_queue_size"]])
-        return out, {"n_reachable_poses": len(prev), "allow_visited": allow_visited, "n_seg_checked": len(seg_cache), "n_obst_vox": int(obst.sum())}
+        return out, dict(G["info"])
+
+    def paths_to(cur, goals, blocked, gc, visited, visited5):
+        return paths_from(reach_graph(cur, blocked, gc, visited, visited5), goals)
 
     def plan_best_path(cur, expansion, t, blocked, visited, visited5):
         """global_planning (frontier -> 256 candidates -> pose_eval -> top 20) + action_planning + plan_best_path."""
@@ -501,6 +519,19 @@ def main():
         torch.cuda.synchronize()
         T["candidates_s"] = time.perf_counter() - t0
         info = {"frontier": finfo, "cand": dict(cinfo, n_unique=len(cands))}
+        G = None
+        if REACH_FILTER and cands:
+            # GaussianSLAM.global_planning (gaussian.py:1244-1257) scores a candidate only if
+            # follower.pathfinder.is_navigable(target) and a path is found (find_path); here on the 5D pose graph:
+            # not executed (environment action rule), position not an obstacle voxel, BFS-reachable from the current pose.
+            t0 = time.perf_counter()
+            G = reach_graph(cur, blocked, gc, visited, visited5)
+            why = collections.Counter(goal_reachable(G, c) for c in cands)
+            n_before = len(cands)
+            cands = [c for c in cands if goal_reachable(G, c) is None]
+            T["reach_filter_s"] = time.perf_counter() - t0
+            info["cand"]["reach_filter"] = {"n_before": n_before, "n_after": len(cands), "drop_executed": why.get("executed", 0),
+                                            "drop_obstacle": why.get("obstacle", 0), "drop_unreachable": why.get("unreachable", 0)}
         if not cands:
             return None, info, T
         torch.cuda.synchronize()
@@ -516,7 +547,9 @@ def main():
         EIGs = sc_np[order]
         info["top_eig"] = [float(x) for x in EIGs]
         t0 = time.perf_counter()
-        acts_all, pinfo = paths_to(cur, goals, blocked, gc, visited, visited5)
+        if G is None:
+            G = reach_graph(cur, blocked, gc, visited, visited5)            # same graph as the filter (map unchanged by pose_eval)
+        acts_all, pinfo = paths_from(G, goals)
         T["paths_s"] = time.perf_counter() - t0
         valid, path_actions = [], []
         for g, acts in zip(goals, acts_all):                                   # tester.py:1026-1029 (dedupe identical)
@@ -686,7 +719,7 @@ def main():
     g = FP.Guard(svc_dir).install()
     hello = {"ready": True, "resume_t": 0,
              "info": {"method": "FisherRF-full (official FisherRF-active-mapping core + planning loop on the settings grid)",
-                      "am_commit": FP.AM_COMMIT, "yaml": FP.AM_YAML, "overrides": over, "official_planning": OFF, "frontier_mode": FRONTIER_MODE,
+                      "am_commit": FP.AM_COMMIT, "yaml": FP.AM_YAML, "overrides": over, "official_planning": OFF, "frontier_mode": FRONTIER_MODE, "reach_filter": REACH_FILTER,
                       "scale_s": s_unit, "init_pose": a.init_pose, "seed": seed, "voxel_rt": VOX, "voxel_dims": DIMS,
                       "voxel_lo": lo.tolist(), "grid_n": grid.n.tolist(), "n_theta": grid.n_theta, "n_azim": grid.n_azim,
                       "open3d": "stub " + open3d.__file__, "torch": torch.__version__, "gpu": torch.cuda.get_device_name(dev)}}

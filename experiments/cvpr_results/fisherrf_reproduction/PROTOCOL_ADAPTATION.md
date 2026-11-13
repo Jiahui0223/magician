@@ -274,3 +274,17 @@ FisherRF 中有几处使用绝对单位：
 4. **F1c 变体（只做过 20 步冒烟，没有试跑；2026-11-11 暂停）**。
    - 设 `FRF_FRONTIER_MODE=magician` 时，frontier 和候选环节换成 MAGICIAN e4e08fe 中 `sample_valid_poses_in_space_for_frontier` 的设计：在整个位姿空间均匀采 256 个位姿，保留位置未被占据、且视野（传感器量程内）含未知体素的；未知体素用规划端自己的，最多抽样 5 万个。
    - 之后仍用官方 `pose_eval` 取 top-20；路径和路径 EIG 与 v3 相同。默认（不设这个变量）就是 v3。
+5. **v4 / f1c4：打分前的可达性过滤**（2026-11-12，用户恢复后的预注册变体；用 `FRF_REACH_FILTER=1` 开启，默认关闭，所以 v3 / F1c 仍可原样复现）。
+   - 官方依据：`GaussianSLAM.global_planning`（`AM/models/SLAM/gaussian.py:1244-1257`）只对"`follower.pathfinder.is_navigable(target_pos)` 为真、且 `follower.find_path(target_pos)` 能找到路径"的候选计算 Hessian 和 EIG，其余候选跳过。
+   - 本适配在 5D 位姿图上做同样的检查，在 `pose_eval` **之前**丢掉三类候选：
+     - 已执行的位姿：环境动作规则，除非当前位姿的所有邻居都已执行；
+     - 位置落在障碍体素上（膨胀后的占据体素，或高斯 > 50 的体素）；
+     - 从当前位姿 BFS 不可达。
+   - BFS 图与 v3 求路径用的是同一个，每次重规划只建一次（`reach_graph`），之后的 top-20 路径也从它取出。
+   - 打分（`pose_eval`，λ = 0.1）、top-20、路径 EIG 的公式与常量、主循环都**不变**。
+   - 日志：每次重规划的 `info.cand.reach_filter` 记录 `n_before`、`n_after`、`drop_executed`、`drop_obstacle`、`drop_unreachable`。
+   - 动机：v3 中 top-20 全部不可达，于是转一次（redeemer s2 55 次，s0 19 次），见 `PILOT_FULL.md` §4。
+   - 两个预注册变体：
+     - **v4** = v3 的官方 frontier 模式 + 可达性过滤，输出根 `full/outdoor/closed_loop_v4/`；
+     - **f1c4** = `FRF_FRONTIER_MODE=magician` + 可达性过滤，输出根 `full/outdoor/closed_loop_f1c4/`。
+   - 两者都通过共享 GPU 队列（`work_dirs/cvpr_results/gpu_queue`）运行，任务由 `scripts/frf_queue_tasks.py` 生成。

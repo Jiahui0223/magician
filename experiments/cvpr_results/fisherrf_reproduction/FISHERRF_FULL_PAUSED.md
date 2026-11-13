@@ -119,3 +119,37 @@ ps -eo pid,args | awk '$2=="bash" && $3 ~ /frf_full_queue2?\.sh$/'
 2. **与论文的差距**：机制和候选方案见 `PILOT_FULL.md` §5、§6。其中 F1c（MAGICIAN 式全局位姿采样）已实现，只做过 20 步冒烟。
 3. **D12 和 D13** 的处理已在 `SMOKE_TEST.md` 和 `PROTOCOL_ADAPTATION.md` 中定下，恢复时不需要再改。
 4. 运行中曾遇到另一个实验的进程在 GPU 0 或 GPU 3 上涨到 35–44 GB。恢复前先看 `nvidia-smi`，**避开显存紧张的卡**。
+
+## 6. 2026-11-12 恢复：v4 / f1c4（通过共享 GPU 队列运行）
+
+- **新增**：
+  - 可达性过滤 `FRF_REACH_FILTER=1`，对应官方 `gaussian.py:1244-1257`，说明见 `PROTOCOL_ADAPTATION.md` F1b 第 5 条；
+  - 任务生成器 `scripts/frf_queue_tasks.py`：每条 episode 生成一个任务 = 闭环 + 官方回放；metrics 已存在、或同名任务在 pending / running / done 中的，一律跳过；任务内部用 mkdir 加锁。
+- **只用共享队列** `work_dirs/cvpr_results/gpu_queue`：worker 脚本是 `experiments/cvpr_results/scripts/gpu_queue_worker.sh`，gpu114 和 gpu115 上各 4 个 worker，每张 GPU 同时只跑一个任务。**不直接起 GPU 进程，不用 Slurm。**
+- **冒烟**（2026-11-12 19:28–19:32，gpu115 GPU 1，redeemer s1，20 步）：两个变体都是 rc = 0、回放逐位一致、过滤器开启。
+  - f1c4：cov@20 0.4061；
+  - v4：cov@20 0.2184；
+  - 前 20 步中过滤器都没有丢掉任何候选（n_before = n_after）。
+  - 输出在 `full/outdoor/smoke_{v4,f1c4}/`。
+- **已入队**：试跑 2 × 15 条（dunnottar / redeemer / barts × 起点 0–4，100 步），任务名为 `frf_v4_*` 和 `frf_f1c4_*`，输出根分别为 `full/outdoor/closed_loop_v4/` 和 `full/outdoor/closed_loop_f1c4/`。
+  - 每条 episode 的日志：`full/logs/queue_<variant>/`；任务日志：`gpu_queue/logs/<任务名>.log`。
+  - 中途失败的 episode 移到 `full/_failed_<variant>/`；任务的 mkdir 锁在 `full/jobs/qclaims_<variant>/`。
+  - 任务被硬杀时锁会残留，需要手动删。
+
+```bash
+S=/bsuscratch/jiahuizhang/projects/occupancy/seen2scene/experiments/cvpr_results/fisherrf_reproduction/scripts
+F=/bsuscratch/jiahuizhang/projects/occupancy/seen2scene/work_dirs/cvpr_results/fisherrf_reproduction/full
+PY=/bsuscratch/jiahuizhang/envs/fisherrf/bin/python
+# 试跑入队（已执行；重复执行不会产生重复任务）
+$PY -B $S/frf_queue_tasks.py --variant v4   --joblist $F/jobs/pilot_joblist.txt
+$PY -B $S/frf_queue_tasks.py --variant f1c4 --joblist $F/jobs/pilot_joblist.txt
+# 全量 14×5（等用户决定；试跑过的 15 条有 metrics，会被自动跳过，每个变体新增 55 条）
+$PY -B $S/frf_queue_tasks.py --variant v4   --joblist $F/jobs/full14_joblist.txt
+$PY -B $S/frf_queue_tasks.py --variant f1c4 --joblist $F/jobs/full14_joblist.txt
+# 失败任务重新入队
+$PY -B $S/frf_queue_tasks.py --variant v4 --joblist $F/jobs/pilot_joblist.txt --retry-failed
+# 汇总（只用 CPU）
+$PY -B $S/frf_full_collect.py --root $F/outdoor/closed_loop_v4   --tag pilot_v4
+$PY -B $S/frf_full_collect.py --root $F/outdoor/closed_loop_f1c4 --tag pilot_f1c4
+# 全量汇总时加：--scenes alhambra bannerman barts bridge colosseum dunnottar eiffel fushimi liberty neuschwanstein pantheon pisa redeemer sestino_museum --tag full14_v4（或 full14_f1c4）
+```

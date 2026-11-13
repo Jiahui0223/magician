@@ -12,6 +12,7 @@ Ours - Random Walk: AUC@20 +0.243 [+0.208, +0.276] (tiles 6/6, episodes 60/60); 
 MAGICIAN - Random Walk: AUC@20 +0.111 [+0.089, +0.132] (tiles 6/6, episodes 55/60); AUC@100 +0.306 [+0.266, +0.341] (tiles 6/6, episodes 58/60); Final +0.420 [+0.369, +0.466] (tiles 6/6, episodes 60/60)
 
 invalid / missing: []
+max coverage after normalisation (settings): uav_AMtown_11 0.955, uav_AMtown_12 0.947, uav_HKairport_00 0.908, uav_HKairport_01 0.859, uav_AMvalley_01_v1 1.039, uav_HKisland_00_v1 0.981
 
 ### UAV-v0-all
 | Method | tiles | AUC@20 | AUC@50 | AUC@100 | Cov@20 | Cov@50 | Final |
@@ -27,4 +28,5 @@ Ours - Random Walk: AUC@20 +0.242 [+0.203, +0.279] (tiles 6/6, episodes 60/60); 
 MAGICIAN - Random Walk: AUC@20 +0.098 [+0.078, +0.119] (tiles 6/6, episodes 57/60); AUC@100 +0.314 [+0.278, +0.352] (tiles 6/6, episodes 59/60); Final +0.443 [+0.386, +0.518] (tiles 6/6, episodes 60/60)
 
 invalid / missing: []
+max coverage after normalisation (settings): uav_AMtown_11 0.955, uav_AMtown_12 0.947, uav_AMvalley_01 0.998, uav_HKairport_00 0.908, uav_HKairport_01 0.859, uav_HKisland_00 0.989
 

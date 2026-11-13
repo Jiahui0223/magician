@@ -4,7 +4,13 @@
                0.4 % on AMtown_12) + AMvalley_01_v1, HKisland_00_v1 (UAV-v1: holes sealed, 0 under-surface positions reachable)
   UAV-v0-all = the six v0 tiles (record of the first run; AMvalley_01 / HKisland_00 are affected by the mesh-hole problem)
 Metrics on the official coverage C[0..100]: AUC@20 / 50 / 100, Cov@20 / 50, Final = C[100]; tile-equal means of the 10-start means;
-paired tile bootstrap (10,000, seed 0) and per-episode win counts (same tile / start). Outputs results/uav_final_*.csv|md|json."""
+paired tile bootstrap (10,000, seed 0) and per-episode win counts (same tile / start). Outputs results/uav_final_*.csv|md|json.
+--norm settings  (default, frozen protocol): official coverage as stored (normalised by settings.json visibility_ratio).
+--norm evaluator (2026-11-12): official coverage x visibility_ratio_settings / ratio_k, ratio_k = visible fraction of the evaluator's own
+                 GT points of start k (uav_visibility_official.py -> <tile>/visibility_official.json). Same constant for every method on a
+                 tile / start, so rankings and paired signs cannot change; removes coverage > 1 on the sealed v1 tiles. Outputs
+                 results/uav_final_evalnorm_*."""
+import argparse
 import csv
 import json
 import os
@@ -25,9 +31,21 @@ def met(c):
     return dict(zip(K, [np.trapz(c[:21]) / 20, np.trapz(c[:51]) / 50, np.trapz(c[:101]) / 100, c[20], c[50], c[100]]))
 
 
+NORM = "settings"
+
+
+def scale(tile, k):
+    if NORM == "settings":
+        return 1.0
+    v = json.load(open(os.path.join(R, "work_dirs", "cvpr_results", "exp7", "uav_macpp", tile, "visibility_official.json")))
+    return v["visibility_ratio_settings"] / v["starts"][str(k)]["ratio"]
+
+
 def load(tile, m):
     grp, pre, _ = M[m]
     out, bad = {}, []
+    if NORM == "evaluator" and not os.path.exists(os.path.join(R, "work_dirs", "cvpr_results", "exp7", "uav_macpp", tile, "visibility_official.json")):
+        return out, [(k, "no_visibility_official") for k in range(10)]
     for k in range(10):
         ep = os.path.join(W7, "raw", m, grp, "episodes", f"ep_{pre}_{tile}_s{k}_r0.json")
         mt = os.path.join(W7, "metrics", m, grp, f"{grp}_{tile}_s{k}_r0.json")
@@ -38,7 +56,7 @@ def load(tile, m):
         if not (json.load(open(mt)).get("official_equal_stored") is True and len(c) == 101):
             bad.append((k, "replay"))
             continue
-        out[k] = met(c)
+        out[k] = met(np.asarray(c, float) * scale(tile, k))
     return out, bad
 
 
@@ -67,21 +85,27 @@ def table(tiles, name):
 
 
 def main():
+    global NORM
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--norm", choices=["settings", "evaluator"], default="settings")
+    NORM = ap.parse_args().norm
+    pre = "uav_final_" if NORM == "settings" else "uav_final_evalnorm_"
     os.makedirs(OUT, exist_ok=True)
     allres = {}
     md = []
     for tiles, name in ((FINAL, "UAV-final"), (V0, "UAV-v0-all")):
         rows, pairs, per_tile, bad = table(tiles, name)
         allres[name] = {"rows": rows, "pairs": pairs, "invalid_or_missing": bad}
-        with open(os.path.join(OUT, f"uav_final_{name}_per_tile.csv"), "w", newline="") as f:
+        with open(os.path.join(OUT, f"{pre}{name}_per_tile.csv"), "w", newline="") as f:
             w = csv.DictWriter(f, fieldnames=list(per_tile[0])); w.writeheader(); w.writerows(per_tile)
         md.append(f"### {name}\n| Method | tiles | " + " | ".join(K) + " |\n|---|---|" + "---|" * len(K))
         md += [f"| {r['method']} | {r['tiles']} | " + " | ".join(f"{r[k]:.3f}" for k in K) + " |" for r in rows]
         for p, v in pairs.items():
             md.append(f"\n{p}: " + "; ".join(f"{k} {v[k]['mean']:+.3f} [{v[k]['ci95'][0]:+.3f}, {v[k]['ci95'][1]:+.3f}] (tiles {v[k]['tiles_higher']}/{len(tiles)}, episodes {v[k]['episodes_higher']}/{v[k]['episodes']})" for k in ("AUC@20", "AUC@100", "Final")))
-        md.append(f"\ninvalid / missing: {bad}\n")
-    json.dump(allres, open(os.path.join(OUT, "uav_final_summary.json"), "w"), indent=1)
-    open(os.path.join(OUT, "uav_final_summary.md"), "w").write("\n".join(md) + "\n")
+        md.append(f"\ninvalid / missing: {bad}")
+        md.append(f"max coverage after normalisation ({NORM}): " + ", ".join(f"{t} {max(max(json.load(open(os.path.join(W7, 'raw', m, M[m][0], 'episodes', f'ep_{M[m][1]}_{t}_s{k}_r0.json')))['coverage']) * scale(t, k) for m in M for k in range(10)):.3f}" for t in tiles if not any(b[0] == t for b in bad)) + "\n")
+    json.dump(allres, open(os.path.join(OUT, f"{pre}summary.json"), "w"), indent=1)
+    open(os.path.join(OUT, f"{pre}summary.md"), "w").write("\n".join(md) + "\n")
     print("\n".join(md))
 
 
