@@ -288,7 +288,7 @@ P15 结论（All-14，AUC@20 / AUC@50 / AUC@100 / Cov@20 / Final）：Ours 0.420
 
 | 编号 | 内容 | 资源 | 日志 / 结果 | 状态 |
 |---|---|---|---|---|
-| U-A/B/C | 现有管线审计（8 个问题）；U1 / U2 / U3 定义与归一化规则、C1、U-best 选择规则、U4 可行性，均在闭环前冻结于 U0；独立的规划器适配层 | CPU | `reports/U0_PIPELINE_AUDIT.md` | 🔄 |
-| U-D | 固定状态诊断：复用已有状态池和 GT oracle，回答任务书 §5 的 6 个问题，产出排序图和分歧可视化 | 共享队列（`expU_*`，约 8 GPU-h，含 smoke） | `reports/U1_FIXED_STATE_ANALYSIS.md` | 🔄 |
-| U-E | 闭环 All-14 × 5 × {C1, U1, U2, U3, (U4)}；D1 行复用 Table 1 | 共享队列 | — | ⏳ 等 D 通过 |
+| U-A/B/C | 现有管线审计（8 个问题）；U1 / U2 / U3 定义与归一化规则、C1、U-best 选择规则、U4 可行性，均在闭环前冻结于 U0；独立的规划器适配层 | CPU | `reports/U0_PIPELINE_AUDIT.md`，`configs/u_config.yaml`（sha 8a62ffec） | ✅ 11-13：C1 = 已归档的 Table 3 行 V3-T0-K4D1（适配层逐位复现）；U4 不定义（同编号与不同编号的跨视角一致度之比为 1.10，低于 1.25） |
+| U-D | 固定状态诊断：复用已有状态池和 GT oracle，回答任务书 §5 的 6 个问题，产出排序图和分歧可视化 | 共享队列（`expU_*`，约 3.5 GPU-h，含 smoke） | `reports/U1_FIXED_STATE_ANALYSIS.md` | ✅ Experiment F 的 755 个状态，D1 755/755 逐位相同。所选候选的官方增益（pp）：D1 1.131、C1 1.116、U1 0.568、U2 0.704、U3 0.582（随机 0.477）；各 U − C1 在 0/10 个场景更好；U-best = U2；U3 的求和版本只是覆盖面积的代理（与预测单元数的相关系数 0.97） |
+| U-E | 闭环 All-14 × 5 × {U1, U2, U3}，共 210 条；C1 复用 V3-T0-K4D1，D1 复用 V3-T0-D1 | 共享队列 8 卡（`expU_e_*`，约 24 GPU-h） | `work_dirs/exp6_v3/experiment_U/`；`u_collect.py` | 🔄 05:58 入队，预计约 09:00 跑完 |
 
