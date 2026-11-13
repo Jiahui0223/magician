@@ -230,406 +230,225 @@
    {
     "set": "UAV-v0-all",
     "method": "Random Walk",
-    "tiles": "5/6",
-    "AUC@20": 0.208,
-    "AUC@50": 0.2903,
-    "AUC@100": 0.3664,
-    "Cov@20": 0.2876,
-    "Cov@50": 0.3953,
-    "Final": 0.4837
+    "tiles": "6/6",
+    "AUC@20": 0.1951,
+    "AUC@50": 0.2713,
+    "AUC@100": 0.3423,
+    "Cov@20": 0.2677,
+    "Cov@50": 0.3688,
+    "Final": 0.4529
    },
    {
     "set": "UAV-v0-all",
     "method": "MAGICIAN",
-    "tiles": "5/6",
-    "AUC@20": 0.3123,
-    "AUC@50": 0.485,
-    "AUC@100": 0.6667,
-    "Cov@20": 0.4538,
-    "Cov@50": 0.7403,
-    "Final": 0.8926
+    "tiles": "6/6",
+    "AUC@20": 0.2929,
+    "AUC@50": 0.4689,
+    "AUC@100": 0.6565,
+    "Cov@20": 0.4292,
+    "Cov@50": 0.7262,
+    "Final": 0.8958
    },
    {
     "set": "UAV-v0-all",
     "method": "Ours",
-    "tiles": "5/6",
-    "AUC@20": 0.4638,
-    "AUC@50": 0.6845,
-    "AUC@100": 0.7967,
-    "Cov@20": 0.7197,
-    "Cov@50": 0.8848,
-    "Final": 0.918
+    "tiles": "6/6",
+    "AUC@20": 0.437,
+    "AUC@50": 0.6634,
+    "AUC@100": 0.7896,
+    "Cov@20": 0.6835,
+    "Cov@50": 0.8843,
+    "Final": 0.926
    }
   ],
   "pairs": {
    "Ours - MAGICIAN": {
     "AUC@20": {
-     "mean": 0.15147946154083275,
+     "mean": 0.14400906963215823,
      "ci95": [
-      0.13146735812756663,
-      0.16898965207139308
+      0.12364149430349815,
+      0.16359531470123898
      ],
-     "tiles_higher": 5,
-     "episodes_higher": 50,
-     "episodes": 50
+     "tiles_higher": 6,
+     "episodes_higher": 59,
+     "episodes": 60
     },
     "AUC@50": {
-     "mean": 0.19955130879733501,
+     "mean": 0.19442596436919649,
      "ci95": [
-      0.16508132685143423,
-      0.23402129074323583
+      0.16570097941427916,
+      0.225038601402171
      ],
-     "tiles_higher": 5,
-     "episodes_higher": 50,
-     "episodes": 50
+     "tiles_higher": 6,
+     "episodes_higher": 60,
+     "episodes": 60
     },
     "AUC@100": {
-     "mean": 0.1300482621275157,
+     "mean": 0.13314058663963904,
      "ci95": [
-      0.10709152626872462,
-      0.1530049979863068
+      0.11400997342397982,
+      0.15316549513886357
      ],
-     "tiles_higher": 5,
-     "episodes_higher": 49,
-     "episodes": 50
+     "tiles_higher": 6,
+     "episodes_higher": 59,
+     "episodes": 60
     },
     "Cov@20": {
-     "mean": 0.26592817621379117,
+     "mean": 0.2543101145771212,
      "ci95": [
-      0.21861569847782492,
-      0.31324065394975753
+      0.2138399456224723,
+      0.3004324082711871
      ],
-     "tiles_higher": 5,
-     "episodes_higher": 50,
-     "episodes": 50
+     "tiles_higher": 6,
+     "episodes_higher": 60,
+     "episodes": 60
     },
     "Cov@50": {
-     "mean": 0.14450036671096525,
+     "mean": 0.158111451192072,
      "ci95": [
-      0.10157975543140077,
-      0.18742097799052973
+      0.11578047689168441,
+      0.19986186307594359
      ],
-     "tiles_higher": 5,
-     "episodes_higher": 45,
-     "episodes": 50
+     "tiles_higher": 6,
+     "episodes_higher": 55,
+     "episodes": 60
     },
     "Final": {
-     "mean": 0.025370794674290396,
+     "mean": 0.03024816097437925,
      "ci95": [
-      0.012388331043082568,
-      0.04151640924199582
+      0.01593206083930032,
+      0.044784266792861106
      ],
-     "tiles_higher": 5,
-     "episodes_higher": 47,
-     "episodes": 50
+     "tiles_higher": 6,
+     "episodes_higher": 54,
+     "episodes": 60
     }
    },
    "Ours - Random Walk": {
     "AUC@20": {
-     "mean": 0.2557597548615632,
+     "mean": 0.24181383977587764,
      "ci95": [
-      0.21978426402215914,
-      0.28786256479406575
+      0.20275654222336711,
+      0.27926995450423076
      ],
-     "tiles_higher": 5,
-     "episodes_higher": 50,
-     "episodes": 50
+     "tiles_higher": 6,
+     "episodes_higher": 60,
+     "episodes": 60
     },
     "AUC@50": {
-     "mean": 0.3942292415526804,
+     "mean": 0.3920537930160217,
      "ci95": [
-      0.35344819670768873,
-      0.4280636603264981
+      0.3570967095027582,
+      0.42180031273621293
      ],
-     "tiles_higher": 5,
-     "episodes_higher": 50,
-     "episodes": 50
+     "tiles_higher": 6,
+     "episodes_higher": 60,
+     "episodes": 60
     },
     "AUC@100": {
-     "mean": 0.43030423972970955,
+     "mean": 0.4473261729745619,
      "ci95": [
-      0.40266320249020077,
-      0.4534216486912916
+      0.41193231634827865,
+      0.4870150930426292
      ],
-     "tiles_higher": 5,
-     "episodes_higher": 50,
-     "episodes": 50
+     "tiles_higher": 6,
+     "episodes_higher": 60,
+     "episodes": 60
     },
     "Cov@20": {
-     "mean": 0.4320716377225753,
+     "mean": 0.4157745132047523,
      "ci95": [
-      0.36499696878723764,
-      0.48081451676674475
+      0.35485645044827685,
+      0.47111688137685587
      ],
-     "tiles_higher": 5,
-     "episodes_higher": 50,
-     "episodes": 50
+     "tiles_higher": 6,
+     "episodes_higher": 60,
+     "episodes": 60
     },
     "Cov@50": {
-     "mean": 0.4895100511048522,
+     "mean": 0.5154803764363368,
      "ci95": [
-      0.46257309983685113,
-      0.516402468520862
+      0.47078223443961714,
+      0.5739711804785551
      ],
-     "tiles_higher": 5,
-     "episodes_higher": 50,
-     "episodes": 50
+     "tiles_higher": 6,
+     "episodes_higher": 60,
+     "episodes": 60
     },
     "Final": {
-     "mean": 0.4342448674858884,
+     "mean": 0.4731400511486519,
      "ci95": [
-      0.3976536162964213,
-      0.46665881144049
+      0.4089080630152262,
+      0.5589996114703882
      ],
-     "tiles_higher": 5,
-     "episodes_higher": 50,
-     "episodes": 50
+     "tiles_higher": 6,
+     "episodes_higher": 60,
+     "episodes": 60
     }
    },
    "MAGICIAN - Random Walk": {
     "AUC@20": {
-     "mean": 0.1042802933207305,
+     "mean": 0.09780477014371941,
      "ci95": [
-      0.08475172507945225,
-      0.12535407495265863
+      0.07776442994701975,
+      0.11912164166729748
      ],
-     "tiles_higher": 5,
-     "episodes_higher": 48,
-     "episodes": 50
+     "tiles_higher": 6,
+     "episodes_higher": 57,
+     "episodes": 60
     },
     "AUC@50": {
-     "mean": 0.1946779327553454,
+     "mean": 0.19762782864682524,
      "ci95": [
-      0.16424040757756223,
-      0.22511545793312862
+      0.17226322433200592,
+      0.22309386170046022
      ],
-     "tiles_higher": 5,
-     "episodes_higher": 49,
-     "episodes": 50
+     "tiles_higher": 6,
+     "episodes_higher": 59,
+     "episodes": 60
     },
     "AUC@100": {
-     "mean": 0.30025597760219386,
+     "mean": 0.31418558633492283,
      "ci95": [
-      0.2690186296160449,
-      0.3314933255883428
+      0.2782015305188256,
+      0.35203228450476204
      ],
-     "tiles_higher": 5,
-     "episodes_higher": 49,
-     "episodes": 50
+     "tiles_higher": 6,
+     "episodes_higher": 59,
+     "episodes": 60
     },
     "Cov@20": {
-     "mean": 0.1661434615087841,
+     "mean": 0.16146439862763107,
      "ci95": [
-      0.12556927454724778,
-      0.20481707800293866
+      0.12737208603310649,
+      0.1958443934032609
      ],
-     "tiles_higher": 5,
-     "episodes_higher": 45,
-     "episodes": 50
+     "tiles_higher": 6,
+     "episodes_higher": 54,
+     "episodes": 60
     },
     "Cov@50": {
-     "mean": 0.3450096843938869,
+     "mean": 0.35736892524426467,
      "ci95": [
-      0.2896932609500159,
-      0.3955400055678829
+      0.30010356060300547,
+      0.40207003009054926
      ],
-     "tiles_higher": 5,
-     "episodes_higher": 47,
-     "episodes": 50
+     "tiles_higher": 6,
+     "episodes_higher": 57,
+     "episodes": 60
     },
     "Final": {
-     "mean": 0.40887407281159815,
+     "mean": 0.4428918901742727,
      "ci95": [
-      0.37514372146228747,
-      0.43597547609570125
+      0.3856344345519062,
+      0.5177742471158601
      ],
-     "tiles_higher": 5,
-     "episodes_higher": 50,
-     "episodes": 50
+     "tiles_higher": 6,
+     "episodes_higher": 60,
+     "episodes": 60
     }
    }
   },
-  "invalid_or_missing": [
-   [
-    "uav_HKisland_00",
-    "RANDOM",
-    0,
-    "no_visibility_official"
-   ],
-   [
-    "uav_HKisland_00",
-    "RANDOM",
-    1,
-    "no_visibility_official"
-   ],
-   [
-    "uav_HKisland_00",
-    "RANDOM",
-    2,
-    "no_visibility_official"
-   ],
-   [
-    "uav_HKisland_00",
-    "RANDOM",
-    3,
-    "no_visibility_official"
-   ],
-   [
-    "uav_HKisland_00",
-    "RANDOM",
-    4,
-    "no_visibility_official"
-   ],
-   [
-    "uav_HKisland_00",
-    "RANDOM",
-    5,
-    "no_visibility_official"
-   ],
-   [
-    "uav_HKisland_00",
-    "RANDOM",
-    6,
-    "no_visibility_official"
-   ],
-   [
-    "uav_HKisland_00",
-    "RANDOM",
-    7,
-    "no_visibility_official"
-   ],
-   [
-    "uav_HKisland_00",
-    "RANDOM",
-    8,
-    "no_visibility_official"
-   ],
-   [
-    "uav_HKisland_00",
-    "RANDOM",
-    9,
-    "no_visibility_official"
-   ],
-   [
-    "uav_HKisland_00",
-    "MAG-B",
-    0,
-    "no_visibility_official"
-   ],
-   [
-    "uav_HKisland_00",
-    "MAG-B",
-    1,
-    "no_visibility_official"
-   ],
-   [
-    "uav_HKisland_00",
-    "MAG-B",
-    2,
-    "no_visibility_official"
-   ],
-   [
-    "uav_HKisland_00",
-    "MAG-B",
-    3,
-    "no_visibility_official"
-   ],
-   [
-    "uav_HKisland_00",
-    "MAG-B",
-    4,
-    "no_visibility_official"
-   ],
-   [
-    "uav_HKisland_00",
-    "MAG-B",
-    5,
-    "no_visibility_official"
-   ],
-   [
-    "uav_HKisland_00",
-    "MAG-B",
-    6,
-    "no_visibility_official"
-   ],
-   [
-    "uav_HKisland_00",
-    "MAG-B",
-    7,
-    "no_visibility_official"
-   ],
-   [
-    "uav_HKisland_00",
-    "MAG-B",
-    8,
-    "no_visibility_official"
-   ],
-   [
-    "uav_HKisland_00",
-    "MAG-B",
-    9,
-    "no_visibility_official"
-   ],
-   [
-    "uav_HKisland_00",
-    "OURS",
-    0,
-    "no_visibility_official"
-   ],
-   [
-    "uav_HKisland_00",
-    "OURS",
-    1,
-    "no_visibility_official"
-   ],
-   [
-    "uav_HKisland_00",
-    "OURS",
-    2,
-    "no_visibility_official"
-   ],
-   [
-    "uav_HKisland_00",
-    "OURS",
-    3,
-    "no_visibility_official"
-   ],
-   [
-    "uav_HKisland_00",
-    "OURS",
-    4,
-    "no_visibility_official"
-   ],
-   [
-    "uav_HKisland_00",
-    "OURS",
-    5,
-    "no_visibility_official"
-   ],
-   [
-    "uav_HKisland_00",
-    "OURS",
-    6,
-    "no_visibility_official"
-   ],
-   [
-    "uav_HKisland_00",
-    "OURS",
-    7,
-    "no_visibility_official"
-   ],
-   [
-    "uav_HKisland_00",
-    "OURS",
-    8,
-    "no_visibility_official"
-   ],
-   [
-    "uav_HKisland_00",
-    "OURS",
-    9,
-    "no_visibility_official"
-   ]
-  ]
+  "invalid_or_missing": []
  }
 }

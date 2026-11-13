@@ -144,4 +144,6 @@
 | Ours − Random | +0.237 [+0.205, +0.268] | +0.423 [+0.386, +0.453]，60/60 | +0.443 [+0.383, +0.496]，60/60 |
 | MAGICIAN − Random | +0.108 | +0.300 | +0.412 |
 
-文件：`results/uav_final_evalnorm_summary.{md,json}`、`results/uav_final_evalnorm_UAV-final_per_tile.csv`。冻结协议的版本（§4，`uav_final_summary.*`）保留作记录。
+**UAV-v0-all（记录表，6 块 v0）：** 6 块 v0 切块的评价器 GT 可见率都约等于 1.0（HKisland_00 在 22:18 算完，耗时 174 min），所以数值与 §4 相同：Ours / MAGICIAN / Random 的 AUC@100 为 0.790 / 0.656 / 0.342。
+
+文件：`results/uav_final_evalnorm_summary.{md,json}`、`results/uav_final_evalnorm_*_per_tile.csv`。冻结协议的版本（§4，`uav_final_summary.*`）保留作记录。
