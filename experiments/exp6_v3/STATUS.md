@@ -1,6 +1,6 @@
 # EXP6 V3 — 全局状态板（每次启动 / 结束一个运行就更新）
 
-**最近更新：2026-11-13 08:00（P19 Experiment U ✅：生成分歧不如预期覆盖，三种分歧在一步前瞻下对 C1 都是 0/14 个场景占优，前 20 步也没有优势，与固定状态诊断的预测一致；CVPR 建议只加一行预注册的 U2）**
+**最近更新：2026-11-14（论文改名为 Seen2Map。P18 FisherRF-full 室内 MP3D 实现 + 44 条 🔄；P20 EXP9-SCONE（`experiments/cvpr_results/scone_baseline/`）Phase A–C 🔄，Phase D 全量等 FisherRF 室内跑完后再入队）**
 标记：✅ 完成 · 🔄 正在跑 · ⏳ 等待（排队或依赖前项）· ❌ 失败（后面跟修复行）· ⬜ 未开始
 
 ## 0. 此刻在跑什么
@@ -283,6 +283,7 @@ P15 结论（All-14，AUC@20 / AUC@50 / AUC@100 / Cov@20 / Final）：Ours 0.420
 | F1b-r | 恢复（11-12 19:25）：预先登记两个变体 v4（官方 frontier + 可达性过滤，对应官方 `gaussian.py:1244-1257`）和 f1c4（MAGICIAN 式全局位姿采样 + 过滤），各 3 场景 × 5 试点；只走共享队列 | 共享队列 | `full/outdoor/closed_loop_{v4,f1c4}/` | ✅ 20:48 试点 30 / 30，重放全部逐位相同。3 场景平均 AUC@20 / AUC@100 / Final：v3 0.207 / 0.491 / 0.678，**v4** 0.207 / 0.492 / 0.661（过滤几乎不起作用），**f1c4** 0.181 / 0.510 / 0.722（论文 0.633 / 0.854）。f1c4 逐场景：dunnottar 0.319（论文 0.500）、redeemer 0.553（0.727）、barts 0.659（0.673）。按预先登记的规则选 f1c4 |
 | F1b-full | f1c4 全量 Macarons++ 14 × 5（复用试点 15 条，新增 55 条）+ 官方回放 | 共享队列 8 卡 | `full/outdoor/closed_loop_f1c4/`；`frf_full_collect.py --tag full14_f1c4` | ✅ 21:51 70 / 70 条，重放全部逐位相同。All-14：AUC@20 / AUC@100 / Final 0.145 / 0.367 / 0.543（论文 — / 0.541 / 0.766）；− Random +0.014 [−0.023, +0.048]；− MAG −0.344；逐场景与论文相关系数 0.71，2/14 个场景在 ±0.05 以内 → **未复现**。`FINAL_REPORT.md` §0、`results/full14_f1c4_table.md`。MP3D 室内版未实现 |
 | F-audit | 独立审查（11-13 起，用户要求）：A 对照官方代码逐项审查（位姿 / 内参 / 尺度 / 深度 / GaussianSLAM 配置 / EIG）；B 在线 3DGS 地图质量；C 固定状态下 EIG 与真实覆盖增益的排序是否一致；D 行为对比 MAGICIAN；E 在官方原生基准上运行的可行性（不下载数据） | 共享队列（`frfaudit_*`，约 4 GPU-h） | `fisherrf_reproduction/AUDIT.md`、`work_dirs/cvpr_results/fisherrf_reproduction/audit/` | ✅ 约 0.8 GPU-h：没有改变结论的 bug；固定状态下 EIG 的 Top-1 不比随机好（合法邻居 0.27 vs 0.84 pp；视野内未观测体素数为 2.85，oracle 3.27）；f1c4 没有用未观测体素数排序；巨型高斯、幽灵高斯、占据规则是次要问题。建议引用论文数值单独分组，本复现放附录；备选为 frontier 优先的适配版（约 15 GPU-h）→ 等用户决定 |
+| F-indoor | FisherRF-full（f1c4，与室外冻结的同一变体）在 MP3D-150 室内：室内适配（相机网格取自 scene card、室内俯仰 / 方位、svc 命名）+ smoke + 44 条 + V1–V4 验证 + 汇总 | 共享队列（`frf_in_*`） | `work_dirs/cvpr_results/fisherrf_reproduction/full/indoor/`、`results/indoor_full_f1c4_*` | 🔄 11-14 起 |
 
 ## P19 Experiment U — Generative Disagreement for NBV（2026-11-13 起；任务书 `ablation_study/experiment_U_generative_disagreement/TASK_BOOK.md`）
 
@@ -291,4 +292,26 @@ P15 结论（All-14，AUC@20 / AUC@50 / AUC@100 / Cov@20 / Final）：Ours 0.420
 | U-A/B/C | 现有管线审计（8 个问题）；U1 / U2 / U3 定义与归一化规则、C1、U-best 选择规则、U4 可行性，均在闭环前冻结于 U0；独立的规划器适配层 | CPU | `reports/U0_PIPELINE_AUDIT.md`，`configs/u_config.yaml`（sha 8a62ffec） | ✅ 11-13：C1 = 已归档的 Table 3 行 V3-T0-K4D1（适配层逐位复现）；U4 不定义（同编号与不同编号的跨视角一致度之比为 1.10，低于 1.25） |
 | U-D | 固定状态诊断：复用已有状态池和 GT oracle，回答任务书 §5 的 6 个问题，产出排序图和分歧可视化 | 共享队列（`expU_*`，约 3.5 GPU-h，含 smoke） | `reports/U1_FIXED_STATE_ANALYSIS.md` | ✅ Experiment F 的 755 个状态，D1 755/755 逐位相同。所选候选的官方增益（pp）：D1 1.131、C1 1.116、U1 0.568、U2 0.704、U3 0.582（随机 0.477）；各 U − C1 在 0/10 个场景更好；U-best = U2；U3 的求和版本只是覆盖面积的代理（与预测单元数的相关系数 0.97） |
 | U-E | 闭环 All-14 × 5 × {U1, U2, U3}，共 210 条；C1 复用 V3-T0-K4D1，D1 复用 V3-T0-D1 | 共享队列 8 卡（`expU_e_*`，约 24 GPU-h） | `work_dirs/exp6_v3/experiment_U/`；`u_collect.py` | ✅ 07:36 共 210 / 210 条，0 失败，回放核对通过。All-14 的 AUC@20 / AUC@100 / Final：D1 0.420 / 0.763 / 0.911，C1 0.399 / 0.740 / 0.889，U1 0.203 / 0.438 / 0.611，U2 0.258 / 0.571 / 0.780，U3 0.173 / 0.424 / 0.610（Random 0.144 / 0.353 / 0.517）。U2 − C1 的 AUC@20 为 −0.141 [−0.170, −0.116]，0/14 个场景占优；三种分歧策略对 D1 和 C1 都是 0/14。最终报告 `reports/EXPERIMENT_U_FINAL_REPORT.md` |
+
+
+## P20 Fig. 1 teaser（2026-11-13 起；产物 `experiments/cvpr_results/fig/fig1/`，说明见其中 `README.md`）
+
+| 编号 | 内容 | 资源 | 日志 / 结果 | 状态 |
+|---|---|---|---|---|
+| T1-v1–v3.4 | Redeemer s3（V3-T0-D1）真实渲染 + 轨迹带 + 右图想象深度；v3 起左图按首次观测步上色；v3.4 / v3.4b 为 4 色分段 + 单反相机模型 + 特写虚线视锥 | gpu114 1 卡，轻量光栅化 | `layout/fig1_teaser_v{1,2,21,22,3,33,34,34b}.*` | ✅ 用户选 v3.4b 为基础；问题：Redeemer s3 到第 20 步已看到 98.4%，几乎全蓝 |
+| T1-v3.5 | 换场景：65 个起点按 0–20 / 21–50 / 51–70 / 71–100 的面积占比筛选（`f1_screen_skin.py`，不含 Neuschwanstein），只保留我们 AUC ≥ MAGICIAN 的起点；Pantheon s1 / Dunnottar s2 / Alhambra s1 三张完整 teaser（回放 t = 0–20 共 61 步与闭环日志逐位一致；Dunnottar t0/t1 无观测点，无回放） | gpu114 4 卡，约 0.5 GPU-h | `layout/fig1_teaser_v35_{pantheon,dunnottar,alhambra}.*`，`work_dirs/cvpr_results/figs/fig1/screen/` | ✅ 11-14：面积占比 Pantheon 36/30/33/0.5%，Dunnottar 45/10/35/8%，Alhambra 43/36/17/0.1% → 用户选 Alhambra |
+| T1-v3.6 | Alhambra s1：蒙皮颜色取自轨迹渐变（段内第 0 / 42 / 63 / 92 步的轨迹色）；图例改为共用步数轴的累积面积图 + 轨迹渐变 + 按比例色块；Step 1–4 读图标签 | CPU | `layout/fig1_teaser_v36{,_bars}.*`，`scripts/f1_compose_v36.py` | ✅ 11-14 → 用户否决（配色对比差、卡片字多、胶囊不协调） |
+| T1-v3.7 | 回到 v3.5 风格：蒙皮保留高对比四色，改轨迹渐变去配合（f1_palette.py），主图相机按新渐变重渲染；Step 1–4 用 v3.5 的字体（金棕色前缀 + 半透明框）；可选不带文字的累积小图 | gpu114 1 卡（相机层）+ CPU | `layout/fig1_teaser_v37{,_chart}.*`，`scripts/f1_compose_v37.py` | ✅ 11-14 → 用户：相机太少（缺蓝色）、图例要透明 |
+| T1-v3.8 | 主图相机 8 台（第 10 / 16 / 30 / 42 / 55 / 60 / 85 / 100 步，每色 2 台）；图例去掉白底卡片（`--card 0`），文字加细白描边 | gpu114 1 卡（相机层）+ CPU | `layout/fig1_teaser_v38.*` | ✅ 11-14 → 用户满意，要在图例中间加 AUC 式曲线图 |
+| T1-v3.9 | 图例中间加透明底覆盖率曲线图（白描边、无文字）：v3.9 竖切（按步数段切 AUC，蓝 / 绿 / 黄 / 橙红 = 5.8 / 17.4 / 18.8 / 27.8%）；v3.9b 横向叠层（按首次看到的时段分层，39.3 / 22.2 / 7.9 / 0.0%，与场景颜色比例一致） | CPU | `layout/fig1_teaser_v39{,b}.*` | ✅ 11-14 → 用户选 v3.9b，重新生成为 `fig1_teaser_v39_final.*`（定稿） |
+| T1-V4 | 拼贴版试验：只放左图效果的 4 个场景（Alhambra s1 / Pantheon s1 / Dunnottar s2 / Redeemer s0），S 形曲线 + 波浪线分割；每格按自身比例单独取景渲染，按颜色轮流挑相机（每色至少 1 台）；共用透明图例；v4 白天空 / v4b 浅灰蓝天空 | gpu114 4 卡（渲染 + 蒙皮 + 相机层，约 0.2 GPU-h）+ CPU | `layout/fig1_teaser_v4{,b}.*`，`scripts/f1_{v4_layout,v4_pick,compose_v4}.py` | ✅ 11-14 → 用户：S 形分割太生硬，要按场景自由排版 |
+| T1-V4.1 | 浮岛拼贴：5 个场景（Dunnottar s2 / Alhambra s1 / Pantheon s1 / Eiffel s2 / Redeemer s0）按地标周围裁成浮岛（只影响显示），按形状自由摆放并允许遮挡，加投影与浅天空背景；共用透明图例 | gpu114 4 卡（约 0.2 GPU-h）+ CPU | `layout/fig1_teaser_v41.*`，`scripts/f1_compose_v41.py` | ✅ 11-14 → 用户：太散，要紧凑 |
+| T1-V4.2 | 紧凑拼贴：5 块铺满整页，统一微斜的直线分割；视角改为蓝色占多数（0–20 步占 58–72%，仍有其他颜色），只用我们 AUC ≥ MAGICIAN 的起点；浅天空、透明图例 | gpu114 4 卡（约 0.2 GPU-h）+ CPU | `layout/fig1_teaser_v42.*`，`scripts/f1_{v42_layout,compose_v42}.py` | ✅ 11-14 → 等用户反馈 |
+
+## P20 EXP9-SCONE — SCONE 基线（2026-11-14 起；任务书 `experiments/cvpr_results/scone_baseline/TASK_BOOK.md`；与已有的 `exp9_ablation_qualitative` 区分）
+
+| 编号 | 内容 | 资源 | 日志 / 结果 | 状态 |
+|---|---|---|---|---|
+| S-A/B/C | 审计官方 SCONE / MACARONS 代码与权重，写实施计划；接入室外 Macarons++ 与室内 MP3D-150；室内外各一条短轨迹 smoke | CPU + 共享队列（`scone_*`） | `scone_baseline/AUDIT_AND_PLAN.md`、`PROTOCOL_ADAPTATION.md`、`SMOKE_TEST.md` | 🔄 |
+| S-D | 全量：室外 70 条 + 室内 44 条，逐步覆盖率、动作和运行时间，支持中断后恢复 | 共享队列 | — | ⏳ 等 S-C 和 FisherRF 室内完成 |
 
