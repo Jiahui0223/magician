@@ -1,6 +1,6 @@
 # EXP6 V3 — 全局状态板（每次启动 / 结束一个运行就更新）
 
-**最近更新：2026-11-14 17:15（P18 FisherRF-full 室内 ✅：ALL-22 AUC@150 0.339 / Final 0.490；P20 EXP9-SCONE Phase A–C ✅（官方预训练权重，零样本），Phase D 共 114 条 🔄，17:07 入队，预计约 20:00 跑完）**
+**最近更新：2026-11-14 18:55（P20 EXP9-SCONE ✅：室外 AUC@100 0.520 / Final 0.629，论文 0.535 / 0.673；室内 AUC@150 0.442 / Final 0.559；`fig/compare_full_v2/` 加入 SCONE 和 FisherRF-full 室内；P18 FisherRF-full 室内 ✅）**
 标记：✅ 完成 · 🔄 正在跑 · ⏳ 等待（排队或依赖前项）· ❌ 失败（后面跟修复行）· ⬜ 未开始
 
 ## 0. 此刻在跑什么
@@ -313,7 +313,7 @@ P15 结论（All-14，AUC@20 / AUC@50 / AUC@100 / Cov@20 / Final）：Ours 0.420
 | 编号 | 内容 | 资源 | 日志 / 结果 | 状态 |
 |---|---|---|---|---|
 | S-A/B/C | 审计官方 SCONE / MACARONS 代码与权重，写实施计划；接入室外 Macarons++ 与室内 MP3D-150；室内外各一条短轨迹 smoke | CPU + 共享队列（`scone_*`） | `scone_baseline/AUDIT_AND_PLAN.md`、`PROTOCOL_ADAPTATION.md`、`SMOKE_TEST.md` | ✅ 用官方预训练权重（MACARONS Google Drive：`pretrained_scone_occ.pth` sha 257674e1…，`pretrained_scone_vis.pth` sha 72c9bfdc…；只在 ShapeNet 上训练，零样本），不需要重训。原版保留：SconeOcc / SconeVis、proxy carving、MC 覆盖增益、对直接邻居的贪心 argmax；适配：统一的合法动作列表、GT 深度量程 70、不给 RGB（与 MACARONS 行相同）。smoke 室外 colosseum s0、室内 oLBMNvg9in8_L1 S36 各 20 步，G1–G9 全部通过 |
-| S-D | 全量：室外 70 条 + 室内 44 条，逐步覆盖率、动作和运行时间，支持中断后恢复 | 共享队列 8 卡（`scone_d_*`，约 21–24 GPU-h） | `work_dirs/cvpr_results/scone_baseline/` | 🔄 11-14 17:07 入队（114 个任务），预计约 3 h |
+| S-D | 全量：室外 70 条 + 室内 44 条，逐步覆盖率、动作和运行时间，支持中断后恢复 | 共享队列 8 卡（`scone_d_*`） | `scone_baseline/FINAL_REPORT.md`、`fig/compare_full_v2/` | ✅ 18:36 共 114/114，0 失败；室外 70/70 官方重放逐位一致，室内 44/44 验证通过。室外 All-14 AUC@20 / AUC@100 / Final 0.308 / 0.520 / 0.629（论文 SCONE 为 — / 0.535 / 0.673）；室内 ALL-22 AUC@20 / AUC@150 / Final 0.224 / 0.442 / 0.559。Ours − SCONE：室外 AUC@100 +0.244（14/14），室内 AUC@150 +0.098（20/22）。尚未登记进 Table 1 流水线（manifest） |
 
 
 ## P21 论文图表优化（2026-11-14 起）
@@ -322,3 +322,7 @@ P15 结论（All-14，AUC@20 / AUC@50 / AUC@100 / Cov@20 / Final）：Ours 0.420
 |---|---|---|---|---|
 | F3-v3 | Fig. 3 新版：改用 6 个所有方法训练时都没见过的场景（alhambra、neuschwanstein、eiffel、bridge、barts、sestino_museum）。我们的 Train-6 是 MAGICIAN / MACARONS 训练用 8 个场景的子集，所以"双方都没见过"="MAGICIAN 没见过"。样式与 v2 相同，置信带为按场景 bootstrap（6 个场景，较宽）。用 All-14 重算时均值与 v2 逐点一致，置信带差 ≤ 0.002（抽样顺序不同） | CPU | `fig/fig3/fig3_v3.{png,pdf}`、`fig3_v3_excel_data.csv`，`scripts/make_fig3_v3.py` | ✅ 11-14：未见 6 个场景上 Ours − MAGICIAN 的 AUC@20 为 +0.132 [+0.094, +0.166]（6/0），AUC@100 为 +0.097 [+0.056, +0.160]（6/0），Final 为 +0.029 [−0.001, +0.068]（4/2）；All-14 依次为 +0.113 / +0.053 / +0.004 → 等用户决定正文用哪一版 |
 | T4-early | Table 4 闭环前期指标（只读已有 70 × 3 条记录，未重跑）：AUC@10 / AUC@20 / Cov@20 / AUC@50，All-14 与 Unseen-6 | CPU | 对话内输出（cvpr_lib 场景配对 bootstrap） | ✅ 11-14：All-14 的 AUC@20 为 Full 0.420 / Explicit-only 0.420 / Latent-only 0.384（−0.036 [−0.058, −0.015]，11/14 场景更差）/ MAGICIAN 0.307；去掉 latent 对前期无影响（0.000），只影响 Final（−0.014）；Unseen-6 结论相同（Latent-only AUC@20 −0.045） |
+| T4-align | 用户质疑 Table 4 的两个消融臂没有对齐。核对结果：三臂都用 R10（`exp5_future_view/task1/scripts/v2_planner.py:146-195`，latent h 只在第 0、10、…、90 步重新编码，显式几何每步重建）。因此 Latent-only 最多滞后 9 步（每步只有 x_τ 掩码给出的 UNKNOWN 集合是新的），而 Explicit-only 每步都是最新的。固定状态评估（`ct_fixed.py:205`）也只在 t % 10 == 0 时编码，755 个状态中 382 个（t % 10 == 5）用的是 5 步前的 latent。latent 每次编码约 0.05 s；训练时用了 Δ ≤ 9 的滞后增强，所以每步编码仍在训练分布内，不需要重训 | CPU（只读核对） | 对话内 | ✅ 11-14 核对完；对齐实验 T4-R1 方案已提出，等用户批准。gpu114 现在被另一会话的 SCONE baseline 占满，不抢 |
+| T4-R1 | Table 4 对齐实验（用户批准，只做室外）：latent 每步按当前地图重新编码（`t4r1_out_planner.py` 包装 D1 的 score_state；噪声与种子保持 R10，其余不变）。闭环：Latent-only-LR1 70 条 + Full-LR1 70 条 + Explicit-only-LR1 复用验证 2 条；之后重算室外固定状态（Dev-5 + Train）。冒烟：T0 liberty_s0 前 3 步与 V3-T0-D1 逐位一致，第 0 步新 h = 刷新 h，第 1–2 步不同；每次编码 0.01–0.02 s | gpu115 GPU0（作业 3497835 内，setsid，`t4r1_chain.sh`）；空闲卡自动加 worker（gpu114 上 setsid `t4r1_watch.sh`，只在连续两次检查都没有进程的卡上启动）。GPU1–3 和 gpu114 当前被 SCONE baseline 占用 | `work_dirs/cvpr_results/exp9_ablation_qualitative/logs/t4r1_chain.log`，`work_dirs/cvpr_results/table1/g3/logs/queue_*.log` | ▶ 11-14 17:23 启动；只用 1 张卡时预计约 13–14 h，有空闲卡会更快 |
+| T4-R1-fixed | 室外固定状态重算（每个状态用当时的地图编码 latent，噪声不变）：confirm（Dev-5，18 组）+ explore（Train，36 组），共 54 组，三个模型 T0 / T4E / T4L，输出组 `lr1`（原 `main` 组不动）。回归（conf_bannerman_s0，t ≤ 15）：t = 0、10 三个模型逐位相同；t = 5、15 时 Explicit-only 逐位相同，Full / Latent-only 的打分改变——符合预期 | 空闲卡自动启动（`t4r1_watch_fixed.sh`，最多 3 个 worker，gpu115 GPU1–3 / gpu114） | `work_dirs/cvpr_results/exp9_ablation_qualitative/table4/fixed/logs/worker_chain_lr1.log` | ▶ 11-14 17:36 等待空闲卡 |
+| F3-v3-text | Fig. 3 v3 的精确数据与文字说明（只读已有记录）：关键步覆盖率、AUC、配对差、达到各覆盖率所需步数、逐场景结果、英文图注和正文建议 | CPU | `fig/fig3/fig3_v3_numbers.md` | ✅ 11-14：每一步都领先 MAGICIAN / MACARONS（无交叉）；80% 覆盖 34 vs 57 步；第 62 步达到 MAGICIAN 的最终覆盖 0.901；最大差距 +0.169（第 18 步）；Final +0.029 [−0.001, +0.068]，不显著 |
