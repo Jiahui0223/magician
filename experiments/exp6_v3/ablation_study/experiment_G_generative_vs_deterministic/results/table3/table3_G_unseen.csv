@@ -1,0 +1,16 @@
+group,arm,AUC@20,AUC@50,AUC@100,Final
+All-14,D0,0.4355,0.6434,0.7651,0.8999
+All-14,G1,0.4195,0.6313,0.7564,0.9000
+All-14,G4,0.4205,0.6334,0.7635,0.9107
+All-14,G0,0.3987,0.6219,0.7524,0.8996
+All-14,MAGICIAN,0.3071,0.5441,0.7108,0.9063
+Dev+Test-8 (unseen by D0 / G),D0,0.4236,0.6248,0.7443,0.8750
+Dev+Test-8 (unseen by D0 / G),G1,0.4128,0.6175,0.7370,0.8731
+Dev+Test-8 (unseen by D0 / G),G4,0.4074,0.6116,0.7400,0.8884
+Dev+Test-8 (unseen by D0 / G),G0,0.3853,0.6013,0.7310,0.8826
+Dev+Test-8 (unseen by D0 / G),MAGICIAN,0.2926,0.5085,0.6736,0.8770
+Unseen-6 (no method trained on),D0,0.4461,0.6599,0.7839,0.9152
+Unseen-6 (no method trained on),G1,0.4376,0.6598,0.7785,0.9072
+Unseen-6 (no method trained on),G4,0.4325,0.6523,0.7833,0.9304
+Unseen-6 (no method trained on),G0,0.4106,0.6426,0.7763,0.9297
+Unseen-6 (no method trained on),MAGICIAN,0.3000,0.5158,0.6862,0.9010
