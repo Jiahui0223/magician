@@ -1,6 +1,6 @@
 # EXP6 V3 — 全局状态板（每次启动 / 结束一个运行就更新）
 
-**最近更新：2026-11-14（论文改名为 Seen2Map。P18 FisherRF-full 室内 MP3D 实现 + 44 条 🔄；P20 EXP9-SCONE（`experiments/cvpr_results/scone_baseline/`）Phase A–C 🔄，Phase D 全量等 FisherRF 室内跑完后再入队）**
+**最近更新：2026-11-14 17:15（P18 FisherRF-full 室内 ✅：ALL-22 AUC@150 0.339 / Final 0.490；P20 EXP9-SCONE Phase A–C ✅（官方预训练权重，零样本），Phase D 共 114 条 🔄，17:07 入队，预计约 20:00 跑完）**
 标记：✅ 完成 · 🔄 正在跑 · ⏳ 等待（排队或依赖前项）· ❌ 失败（后面跟修复行）· ⬜ 未开始
 
 ## 0. 此刻在跑什么
@@ -283,7 +283,7 @@ P15 结论（All-14，AUC@20 / AUC@50 / AUC@100 / Cov@20 / Final）：Ours 0.420
 | F1b-r | 恢复（11-12 19:25）：预先登记两个变体 v4（官方 frontier + 可达性过滤，对应官方 `gaussian.py:1244-1257`）和 f1c4（MAGICIAN 式全局位姿采样 + 过滤），各 3 场景 × 5 试点；只走共享队列 | 共享队列 | `full/outdoor/closed_loop_{v4,f1c4}/` | ✅ 20:48 试点 30 / 30，重放全部逐位相同。3 场景平均 AUC@20 / AUC@100 / Final：v3 0.207 / 0.491 / 0.678，**v4** 0.207 / 0.492 / 0.661（过滤几乎不起作用），**f1c4** 0.181 / 0.510 / 0.722（论文 0.633 / 0.854）。f1c4 逐场景：dunnottar 0.319（论文 0.500）、redeemer 0.553（0.727）、barts 0.659（0.673）。按预先登记的规则选 f1c4 |
 | F1b-full | f1c4 全量 Macarons++ 14 × 5（复用试点 15 条，新增 55 条）+ 官方回放 | 共享队列 8 卡 | `full/outdoor/closed_loop_f1c4/`；`frf_full_collect.py --tag full14_f1c4` | ✅ 21:51 70 / 70 条，重放全部逐位相同。All-14：AUC@20 / AUC@100 / Final 0.145 / 0.367 / 0.543（论文 — / 0.541 / 0.766）；− Random +0.014 [−0.023, +0.048]；− MAG −0.344；逐场景与论文相关系数 0.71，2/14 个场景在 ±0.05 以内 → **未复现**。`FINAL_REPORT.md` §0、`results/full14_f1c4_table.md`。MP3D 室内版未实现 |
 | F-audit | 独立审查（11-13 起，用户要求）：A 对照官方代码逐项审查（位姿 / 内参 / 尺度 / 深度 / GaussianSLAM 配置 / EIG）；B 在线 3DGS 地图质量；C 固定状态下 EIG 与真实覆盖增益的排序是否一致；D 行为对比 MAGICIAN；E 在官方原生基准上运行的可行性（不下载数据） | 共享队列（`frfaudit_*`，约 4 GPU-h） | `fisherrf_reproduction/AUDIT.md`、`work_dirs/cvpr_results/fisherrf_reproduction/audit/` | ✅ 约 0.8 GPU-h：没有改变结论的 bug；固定状态下 EIG 的 Top-1 不比随机好（合法邻居 0.27 vs 0.84 pp；视野内未观测体素数为 2.85，oracle 3.27）；f1c4 没有用未观测体素数排序；巨型高斯、幽灵高斯、占据规则是次要问题。建议引用论文数值单独分组，本复现放附录；备选为 frontier 优先的适配版（约 15 GPU-h）→ 等用户决定 |
-| F-indoor | FisherRF-full（f1c4，与室外冻结的同一变体）在 MP3D-150 室内：室内适配（相机网格取自 scene card、室内俯仰 / 方位、svc 命名）+ smoke + 44 条 + V1–V4 验证 + 汇总 | 共享队列（`frf_in_*`） | `work_dirs/cvpr_results/fisherrf_reproduction/full/indoor/`、`results/indoor_full_f1c4_*` | 🔄 11-14 起 |
+| F-indoor | FisherRF-full（f1c4，与室外冻结的同一变体）在 MP3D-150 室内：室内适配（相机网格取自 scene card、室内俯仰 / 方位、svc 命名）+ smoke + 44 条 + V1–V4 验证 + 汇总 | 共享队列（`frf_in_*`） | `work_dirs/cvpr_results/fisherrf_reproduction/full/indoor/`、`results/indoor_full_f1c4_*` | ✅ 17:05 共 44/44 条，V1–V4 和同起点全部通过。ALL-22 的 AUC@20 / AUC@150 / Final 为 0.110 / 0.339 / 0.490；HO-12 0.237 / 0.353，VALSEL-10 0.460 / 0.655。− Random：Final +0.055 [+0.018, +0.089]；− MAG-B：AUC@150 −0.095；− Ours：AUC@150 −0.201。冻结规划器只新增了 `--rt-tol`（室外默认值不变，已做回归核对） |
 
 ## P19 Experiment U — Generative Disagreement for NBV（2026-11-13 起；任务书 `ablation_study/experiment_U_generative_disagreement/TASK_BOOK.md`）
 
