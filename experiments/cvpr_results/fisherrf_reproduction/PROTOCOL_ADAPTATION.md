@@ -288,3 +288,25 @@ FisherRF 中有几处使用绝对单位：
      - **v4** = v3 的官方 frontier 模式 + 可达性过滤，输出根 `full/outdoor/closed_loop_v4/`；
      - **f1c4** = `FRF_FRONTIER_MODE=magician` + 可达性过滤，输出根 `full/outdoor/closed_loop_f1c4/`。
    - 两者都通过共享 GPU 队列（`work_dirs/cvpr_results/gpu_queue`）运行，任务由 `scripts/frf_queue_tasks.py` 生成。
+
+---
+
+## F1c-in · FisherRF-full（f1c4）的 MP3D-150 室内适配（2026-11-14）
+
+**原则**：室内与室外用**同一个冻结变体 f1c4**（`FRF_FRONTIER_MODE=magician`、`FRF_REACH_FILTER=1`、D12 docstring init、`--verify-every 0`），不调参，也不做审查（`AUDIT.md`）建议的任何修改（例如改用"视野内未知体素数"排序）。只做协议必需的室内适配，逐条列在下面。
+**冻结文件**：`fisherrf_planner.py`（sha256 前 16 位 774af49bfdbc914f）、`fisherrf_sim_in.py`（afcc905406dca325）、`fisherrf_sim_out.py`（a0437b45198ce6c8）一行未改。`fisherrf_full_planner.py` 只加了一个命令行参数 `--rt-tol`（默认 1e-3 = 原来写死的值，见 I9；sha256 由 79aaf6b9b7aefbf7 变为 5fd5d12c5aaed6c0，diff 只有 2 行）；室外命令不传这个参数，所以室外代码路径不变。另用一条室外冒烟核对（队列任务 `frf_in_0smoke_outdoor_rttol_barts_s0`，barts s0，5 步，默认参数，比对脚本 `scripts/frf_rttol_outdoor_check.py`）：执行位姿、每步 pick / fallback / 重规划 / 最优目标 / 候选数、覆盖率与已存储的 `closed_loop_f1c4/barts_s0` 完全相同；高斯数与 top EIG 只有 R1 级别的浮点差（9326 vs 9336，215.7 vs 216.3）。其余室内改动全部放在两个新的薄包装里。
+
+| # | 室内需要什么 | 做法 | 依据 / 核对 |
+|---|---|---|---|
+| I1 | 规划端的 settings（相机网格 + 场景盒）。室外读 `Macarons++/<scene>/settings.json`，室内没有这个文件 | 新包装 `scripts/fisherrf_full_planner_in.py`：由该层的 scene card 构造 settings，和 EXP7 / T0.12 室内 MAGICIAN 规划器用的**完全相同**（`magician_planner_grid.py:51-53`）：`scene = station_env.settings_dict(card)["scene"]`（card 的楼层盒，官方单位 = runtime / 10），`camera = grid_env.settings_camera(grid_def(card))`。写到 `<episode>/planner_settings/<level>/settings.json`，再把冻结规划器的模块常量 `DATA` 指过去，然后原样调用 `fisherrf_full_planner.main()`。在守卫安装前读一次，和室外 settings.json 一样 | card 只含楼层盒、地面、天花板高度，不含 GT 几何（`grid_env.py` 文档）；MAGICIAN 室内规划器读的也是它 |
+| I2 | `PoseGrid` 的室内网格：位置数取自 card，俯仰 5 档（−60…60°）、方位 8 档 | `PoseGrid` 代码不变，从 I1 的 camera 块读出 `pose_l / pose_w / pose_h`、`pose_n_theta = 5`、`pose_n_azim = 8` | CPU 核对 4 个楼层：位置与 `grid_env.position` 的差 ≤ 3e-14，角度逐档相等，`neighbours` 与 `grid_env.neighbours` 完全相同；运行时冻结规划器每步把网格 R / T 与仿真器的 legal R / T 比较（阈值 1e-3），冒烟实测 ≤ 8.2e-5 |
+| I3 | 占据体素网格的范围 | 不变：场景盒 ∪ 相机盒。室内相机盒在楼层盒之内，所以就是楼层盒。体素 0.05 FR = 0.35 runtime = **5 cm**，`pcd_far_distance` 7 FR = **7 m**，与官方 Habitat 设置在米制下完全一致（s = 7 室内正好是米） | 最大楼层 QUCTc6BB5sX_L1 为 586 × 67 × 914 ≈ 36M 体素，位姿图最大 Z6MFQCViBuw_L0 为 33 × 4 × 24 × 40 = 126,720 个位姿 |
+| I4 | scene 名、记录的 scene_key、种子 | `--scene` 传楼层键（如 `Z6MFQCViBuw_L0`），记录的 scene_key 是 `<楼层键>/<起点>`，冻结规划器的检查原样通过；所有种子 sha256(...\|<楼层键>\|<起点>\|...) 自动随之确定 | 与 D3a 室内的 seed 前缀一致 |
+| I5 | 服务记录名 `svc_t{t}.npz` | 不需要改：规划器打开的是仿真端每步发来的路径；FisherRF-full 不支持续跑，所以不需要文件名模式 | — |
+| I6 | 传感器、深度单位、内参、RGB | 不变。室内用同一个冻结传感器（456 × 256、fov 60、zbuf 为 z 深度、量程 70 runtime = 10 m、−1 = 无命中），所以 D6 内参 221.703 / 227.5 / 127.5、D11 量程外置 0、s = 7 原样适用。RGB 用 D3a 室内同一份纹理渲染（`fisherrf_sim_in.TexturedRGB`，atlas 4、环境光 0.85），每步核对纹理渲染的 zbuf 与传感器 zbuf 逐位相同 | D3a 室内 44 / 44 通过 V1–V4，用的是同一套常数和同一个 RGB 通道；冒烟中 16 / 16 帧 zbuf 差为 0 |
+| I7 | 仿真端 | 新包装 `scripts/fisherrf_full_sim_in.py`：把 `fisherrf_sim_in.py` 当模块导入（不改），只换子进程为 `fisherrf_full_planner_in.py`，组名 `FisherRF-full`；`t23_in_sim.main` 原样运行（T0.12 网格、起点吸附、官方邻居、GT 单线段合法性、10% 采样种子、C_obs 评测器）。f1c4 的两个环境变量在仿真端和规划端都断言 | 输出 `full/indoor/closed_loop_f1c4/FisherRF-full/<level>_S<start>/` |
+| I8 | 步数 | 150 步（MP3D-150 协议），其余主循环规则（队首不在 legal 列表时重规划、无路径时转一次方位角、`expansion > 10` 记事件后重置、封锁边推断）不变 | — |
+| I9 | 网格位姿自检的容差 | 冻结规划器每步把自己的网格 R / T（float64 名义位姿）和仿真器给的 legal R / T 比较，原来写死 `> 1e-3` 即报错。仿真器用 MAGICIAN `get_camera_RT`（float32，`look_at_view_transform(eye = X, at = X + ray)`），`at − eye` 的抵消误差与坐标大小成正比：|ΔR| ≈ 4e-8·\|X\|、\|ΔT\| ≈ 1.1e-5·\|X\|。室外坐标小（70 条中最大 5.4e-4），室内坐标到约 250 runtime（36 m），超过 1e-3。新增 `--rt-tol`（默认 1e-3，室外不变），室内由仿真包装传 **1e-2**。规划器自己的位姿计算（float64 名义网格）与室外完全相同，这个容差只决定是否报错，不影响任何决策 | 首批任务中 5 条在 t = 2–51 因 1.18e-3 – 1.43e-3 报错（Z6MFQCViBuw_L0_S17、2azQ1b91cZZ_L0_S60 / S179、X7HyMhZNoso_L0_S65 / S67；`gpu_queue/failed/frf_in_f1c4_{01,04,05,06,07}_*`，半成品移到 `full/_failed_in_f1c4/`），改后从 t = 0 重跑完成。另有 7 条在改动前启动、用未改动的文件（容差 1e-3）跑完且未触发。全量 44 条的最大差 2.3e-3（5 条 > 1e-3）。用 D3a 室内 44 条轨迹的全部 legal 记录离线核对：R 最大差 8.2e-6，T 最大差 2.3e-3（4 条 > 1e-3，坐标 \|X\| 165–216）。约定错误（错一档角度或一格位置）造成的差是 0.1 以上（R）或数个 runtime 单位（T），1e-2 仍能检出 |
+
+**GT 边界不变**：GT 网格、纹理渲染、单线段合法性、C_obs 只在仿真端和评测端；规划端只拿到 svc 记录、RGB 旁路文件和由 card 推出的 settings（守卫原样）。
+**验证**（`scripts/frf_in_validate.py`，每条 episode 的队列任务内执行）：V1 151 个值；V2 用冻结评测缓存从存储的 10% 采样点重放 C_obs，逐位相同；V3 每步动作在该步记录的 legal 列表中；V4 起点与 EXP7 OURS 记录相同；另外原样调用 EXP7 `collect_mp3d150.validate`，要求全部通过且与上面结论一致；V6 planner_info 中变体为 f1c4；V7 规划端守卫无拒绝、RGB/zbuf 逐位一致。

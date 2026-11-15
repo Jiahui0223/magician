@@ -125,6 +125,7 @@ def main():
     ap.add_argument("--map-iters", type=int, default=60)
     ap.add_argument("--init-pose", choices=["tester", "docstring"], default="docstring")
     ap.add_argument("--verify-every", type=int, default=0)        # accepted for CLI compatibility; unused here
+    ap.add_argument("--rt-tol", type=float, default=1e-3)         # grid-vs-simulator R / T self-check (indoor F1c-in I9: 1e-2)
     a = ap.parse_args()
     if a.resume_t:
         raise SystemExit("FisherRF-full: resume is not supported (episodes are re-run from t = 0, risk R1)")
@@ -629,7 +630,7 @@ def main():
         for j, L in enumerate(legal):                                          # numpy grid R, T == simulator R, T
             R, Tt = grid.RT(L)
             rt_checked["max_err"] = max(rt_checked["max_err"], float(np.abs(R - rec["legal_R"][j]).max()), float(np.abs(Tt - rec["legal_T"][j]).max()))
-        if rt_checked["max_err"] > 1e-3:
+        if rt_checked["max_err"] > a.rt_tol:
             raise RuntimeError(f"grid R/T differ from the simulator's: {rt_checked['max_err']}")
         color_t = torch.from_numpy(rgb).to(dev)
         depth_t = torch.from_numpy(depth).to(dev).reshape(1, FP.H_IMG, FP.W_IMG)

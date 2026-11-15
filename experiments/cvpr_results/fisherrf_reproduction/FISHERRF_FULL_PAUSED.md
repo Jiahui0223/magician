@@ -17,7 +17,7 @@
 
 | 文件 | sha256 前 16 位 | 作用 |
 |---|---|---|
-| `fisherrf_full_planner.py` | fbcb4774cd6b6715 | **FisherRF-full 规划子进程**，即 v3：官方 GaussianSLAM、`pose_eval`、官方规划循环，3D / 网格适配见 `PROTOCOL_ADAPTATION.md` F1b。`FRF_FRONTIER_MODE` 不设或为 `official` 时就是 v3；设为 `magician` 时是 F1c 变体，**只做过 20 步冒烟** |
+| `fisherrf_full_planner.py` | fbcb4774cd6b6715（2026-11-12 加可达性过滤后 79aaf6b9b7aefbf7；2026-11-14 加 `--rt-tol` 后 5fd5d12c5aaed6c0） | **FisherRF-full 规划子进程**，即 v3：官方 GaussianSLAM、`pose_eval`、官方规划循环，3D / 网格适配见 `PROTOCOL_ADAPTATION.md` F1b。`FRF_FRONTIER_MODE` 不设或为 `official` 时就是 v3；设为 `magician` 时是 F1c 变体，**只做过 20 步冒烟** |
 | `fisherrf_planner.py` | 774af49bfdbc914f | D3a 规划器（只对一步邻居打分），已完成的消融结果，**冻结** |
 | `fisherrf_sim_out.py` | a0437b45198ce6c8 | Macarons++ 仿真包装：冻结的 t24 → v2_sim → m_t6_sim 链，加 RGB 旁路文件。`--planner fisherrf_full_planner.py` 选 FisherRF-full；不带此选项时是 D3a |
 | `fisherrf_out_cov.py` | 8500dd4751dc489f | 官方覆盖率回放，即 Table 1 的 t25 流程，必须与存储曲线逐位一致 |
@@ -153,3 +153,34 @@ $PY -B $S/frf_full_collect.py --root $F/outdoor/closed_loop_v4   --tag pilot_v4
 $PY -B $S/frf_full_collect.py --root $F/outdoor/closed_loop_f1c4 --tag pilot_f1c4
 # 全量汇总时加：--scenes alhambra bannerman barts bridge colosseum dunnottar eiffel fushimi liberty neuschwanstein pantheon pisa redeemer sestino_museum --tag full14_v4（或 full14_f1c4）
 ```
+
+## 7. 2026-11-14：室内 MP3D-150 的 FisherRF-full（f1c4）
+
+- **实现**（适配见 `PROTOCOL_ADAPTATION.md` F1c-in；`fisherrf_full_planner.py` 只新增参数 `--rt-tol`（默认 1e-3，室外不变，sha256 前 16 位 5fd5d12c5aaed6c0），其余冻结文件一行未改）：
+  - `scripts/fisherrf_full_planner_in.py`：规划端薄包装，由 scene card 构造 settings 后原样调用 `fisherrf_full_planner.main()`；
+  - `scripts/fisherrf_full_sim_in.py`：仿真端薄包装（导入 `fisherrf_sim_in.py`，只换子进程），组名 `FisherRF-full`；
+  - `scripts/frf_in_validate.py`：逐条验证（V1–V3、EXP7 `collect_mp3d150.validate`、V4 同起点、V6 变体、V7 守卫与 RGB），写 `<episode>/validation.json`；
+  - `scripts/frf_in_queue_tasks.py`：任务生成器（EXP7 manifest 的 44 条 OURS 行；任务 = 闭环 + 验证；按网格大小从大到小编号）；
+  - `scripts/frf_in_collect.py`：汇总（只用 CPU）。
+- **输出**：`full/indoor/closed_loop_f1c4/FisherRF-full/<level>_S<start>/`；冒烟 `full/indoor/smoke_f1c4/`；每条 episode 的日志 `full/logs/queue_in_f1c4[_smoke]/`；中途失败的 episode 移到 `full/_failed_in_f1c4/`；mkdir 锁 `full/jobs/qclaims_in_f1c4[_smoke]/<tag>`（任务被硬杀时会残留，要手动删）。
+- **恢复 / 重跑命令**（仓库根目录；只用共享队列，不直接起 GPU 进程，不用 Slurm）：
+
+```bash
+S=/bsuscratch/jiahuizhang/projects/occupancy/seen2scene/experiments/cvpr_results/fisherrf_reproduction/scripts
+PY=/bsuscratch/jiahuizhang/envs/fisherrf/bin/python
+# 冒烟（1 层 × 1 起点 × 15 步，已执行）
+$PY -B $S/frf_in_queue_tasks.py --smoke --only Z6MFQCViBuw_L0_S6 --moves 15
+# 全量 44 条（已执行；已验证通过、或同名任务在 pending / running / done 中的会被跳过）
+$PY -B $S/frf_in_queue_tasks.py
+# 失败任务重新入队（先确认对应的 qclaims_in_f1c4/<tag> 锁已不存在）
+$PY -B $S/frf_in_queue_tasks.py --retry-failed
+# 单条补跑：--only <level>_S<start>
+# 汇总（只用 CPU）
+$PY -B $S/frf_in_collect.py      # -> results/indoor_full_f1c4_{episodes.csv,summary.json}
+```
+
+- **运行记录（2026-11-14 16:19–17:05，gpu114 + gpu115 共享队列）**：
+  - 冒烟 `frf_in_0smoke_f1c4_Z6MFQCViBuw_L0_S6`（15 步）rc = 0，验证全部通过，起点与 EXP7 Ours 相同。
+  - 全量首批中 5 条因网格位姿自检容差（I9）报错；为此 `fisherrf_full_planner.py` 新增 `--rt-tol`（默认 1e-3，室外不变），室内仿真包装传 1e-2。处理期间把未开始的任务暂移出 pending（`full/jobs/hold_in_f1c4/`，已移回并删除该目录），失败任务用 `--retry-failed` 重新入队。
+  - 室外回归任务 `frf_in_0smoke_outdoor_rttol_barts_s0`：闭环 rc = 0；任务 rc = 2 是比对脚本自身的 bug（`planner_hello` 是列表），修正后在 CPU 上重跑比对，通过（`full/outdoor/smoke_f1c4_rttol/barts_s0/rttol_regression.json`）。
+  - 结果：44 / 44 有效，`results/indoor_full_f1c4_{episodes.csv,summary.json}`，见 `INDOOR_RESULTS.md` 末节。
