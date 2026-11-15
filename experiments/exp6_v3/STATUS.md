@@ -1,6 +1,6 @@
 # EXP6 V3 — 全局状态板（每次启动 / 结束一个运行就更新）
 
-**最近更新：2026-11-15 15:50（P21 Experiment G ✅：D0 确定性头的 AUC@20 / AUC@100 / Final 为 0.436 / 0.765 / 0.900，G4 Ours 为 0.420 / 0.763 / 0.911；D0 ≈ G4（AUC@100 +0.002，CI 含 0），D0 > G1（+0.009）；按预注册措辞，不能把胜过 MAGICIAN 归因于生成建模。报告 `reports/EXPERIMENT_G_FINAL_REPORT.md`）**
+**最近更新：2026-11-15 16:30（P21 Experiment G ✅；G2 启动：用户批准第 1–5 项，均在冻结的 G2_PROTOCOL 下进行——概率预测质量、按 GT 定义的模糊度分层、闭环时间曲线、可视化、室内 MP3D 闭环 D0 + G1 各 44 条）**
 标记：✅ 完成 · 🔄 正在跑 · ⏳ 等待（排队或依赖前项）· ❌ 失败（后面跟修复行）· ⬜ 未开始
 
 ## 0. 此刻在跑什么
@@ -313,7 +313,8 @@ P15 结论（All-14，AUC@20 / AUC@50 / AUC@100 / Cov@20 / Final）：Ours 0.420
 | T1-V4.5 | 核对相机朝向：镜头方向 = 执行位姿 R 的第 3 列，每台相机该步观测到的表面点 100% 在镜头前方，实现正确；镜头朝向读者的相机站在物体背面往回看。只改挑哪些步，不转、不移相机：每个颜色段第 1 台选最不朝向读者的步，第 2 台只选侧向或背向的步（face ≤ 0.3）。Redeemer 改为 14 / 37 / 55 / 57 / 85 / 87，Eiffel 改为 2 / 6 / 23 / 59 / 61 / 75 / 83，Dunnottar、Pantheon 也有小改动，Alhambra 不变 | gpu115 1 卡（相机层，约 0.01 GPU-h）+ CPU | `layout/fig1_teaser_v45.*`，`scripts/f1_compose_v45.py`，`v45_cams.json` | ✅ 11-15 → 用户：可以；Dunnottar 视角太平，稍抬高但不要拉远 |
 | T1-V4.6 | Dunnottar s2 只改仰角，距离、方位、裁切不变。试了 28° / 32° / 36° 同距离和 32° 稍近，采用 28°：城堡更清楚，四色相机都在，路径不被裁掉；32° 留作备选 v46h（黄色段被裁出画面）。相机按 V4.5 规则重挑（18 / 33 / 35 / 60 / 88 / 90），其余 4 块不变 | gpu115 4 卡（渲染 + 蒙皮约 5 分钟，相机层）+ CPU | `layout/fig1_teaser_v46{,h}.*`，`scripts/f1_compose_v46.py`，`v46_dun.sh` | ✅ 11-15 → 用户：角度还是一般，再俯瞰一点 |
 | T1-V4.7 | Dunnottar s2 仰角 42°，距离、方位、裁切不变；目标点朝读者水平移 12 个单位，崖下轨迹不被裁掉。先出 8 张半尺寸预览（36–55°），再完整渲染 36 / 42 / 48°，采用 42°，36°（v47a）和 48°（v47c）留作备选。标签移开绿色轨迹。相机按 V4.5 规则重挑（9 / 16 / 22 / 30 / 60 / 88 / 90），其余 4 块不变 | gpu115 4 卡（预览 + 渲染 + 蒙皮约 8 分钟，相机层）+ CPU | `layout/fig1_teaser_v47{,a,c}.*`，`scripts/f1_compose_v47.py`，`v47_preview.sh`，`v47_dun.sh` | ✅ 11-15 → 用户补充：要的是 Dunnottar 放大右上角城堡、蓝色别太多；Alhambra 蓝色稍少 |
-| T1-V4.8 | 新脚本 `f1_view_search.py`：批量视角下精确计算首次看到步数的颜色占比，与 f1_skin 同法，参考视角逐位一致。Dunnottar 搜索 157 个视角：近现在方位角时蓝色 ≥ 0.64，采用 180° / 25° / margin 0.34、目标点在城堡与西崖之间，蓝 0.781 → 0.588，四色都有。Alhambra 搜索 48 个视角，采用 60° / 25° / margin 0.65，蓝 0.668 → 0.583，黄 0.246。参照 Pantheon 蓝 0.584。备选 v48ad / v48be。相机按 V4.5 规则重挑，C / D / E 不变 | gpu115 4 卡（搜索约 6 分钟，6 个完整渲染 + 蒙皮，相机层）+ CPU | `layout/fig1_teaser_v48{,ad,be}.*`，`scripts/f1_{view_search,compose_v48}.py`，`search/*.csv` | ✅ 11-15 → 等用户反馈 |
+| T1-V4.8 | 新脚本 `f1_view_search.py`：批量视角下精确计算首次看到步数的颜色占比，与 f1_skin 同法，参考视角逐位一致。Dunnottar 搜索 157 个视角：近现在方位角时蓝色 ≥ 0.64，采用 180° / 25° / margin 0.34、目标点在城堡与西崖之间，蓝 0.781 → 0.588，四色都有。Alhambra 搜索 48 个视角，采用 60° / 25° / margin 0.65，蓝 0.668 → 0.583，黄 0.246。参照 Pantheon 蓝 0.584。备选 v48ad / v48be。相机按 V4.5 规则重挑，C / D / E 不变 | gpu115 4 卡（搜索约 6 分钟，6 个完整渲染 + 蒙皮，相机层）+ CPU | `layout/fig1_teaser_v48{,ad,be}.*`，`scripts/f1_{view_search,compose_v48}.py`，`search/*.csv` | ✅ 11-15 → 用户选 v48ad（Alhambra v48a + Dunnottar v48d），要求统一地名位置、改图例文字 |
+| T1-V4.9 | v48ad 排版微调：5 个地名统一放在各自图块右上角（右边缘离右侧分割线 0.07 英寸，基线在顶边下 0.17 英寸）；图例第二项改为 "Newly Covered Surfaces (Steps)"，图例移到 Alhambra 左上角。渲染和相机都不变 | CPU | `layout/fig1_teaser_v49.*`，`scripts/f1_compose_v49.py` | ✅ 11-15 → 等用户反馈 |
 
 ## P20 EXP9-SCONE — SCONE 基线（2026-11-14 起；任务书 `experiments/cvpr_results/scone_baseline/TASK_BOOK.md`；与已有的 `exp9_ablation_qualitative` 区分）
 
@@ -349,4 +350,4 @@ P15 结论（All-14，AUC@20 / AUC@50 / AUC@100 / Cov@20 / Final）：Ours 0.420
 | G-B | D0 正式训练 40K 步（world 4，与 V3-T0 相同；`train_d0_chain.sh`，崩溃时从 ckpt_last 续跑 ≤ 4 次） | gpu114 GPU 0–3（分配 3517076） | `work_dirs/exp6_v3/experiment_G/d0/logs/{train,chain}.log`、`d0/runs/main/` | 🔄 22:14:57 起（chain pid 36296，torchrun 36323，ranks 36369–36372）；第 300 步 loss 0.750，1.32–1.40 s/步（T0 1.35），32.5 GB/卡；预计 11-15 约 14:10（±30 min） |
 | G-C | 固定状态：D0 / G0 / G1 / G4，755 个状态（`post_train.sh fixed` → `expG_c_fixed_w1..8`；汇总 `g_analyze_fixed.py`） | 共享队列（gpu115，`expG_*`） | `work_dirs/exp6_v3/experiment_G/fixed/` | ⏳ 已准备，等 D0 训练 |
 | G-D | 闭环：D0 与诊断行 G0 All-14 × 5 × 100 步（`post_train.sh closed` → 140 个 `expG_d_*`）；G1 / G4 复用 Table 3 / Table 1；`g_collect.py` 输出 Table 3 | 共享队列 | `work_dirs/exp6_v3/experiment_G/closed_loop/`、`results/table3/` | ⏳ 已准备，等 D0 训练 |
-
+| G2 | 寻找生成式的真实优势（用户 11-15 批准第 1–5 项）：(1) 概率预测质量（energy score / CRPS、命中比、校准、AUROC / AP、离散度–误差关系）；(2) 按 GT / 观测定义的模糊度分层；(3) 闭环时间曲线和交叉点；(4) 按预定规则选图的可视化；(5) 室内 MP3D 闭环 D0 + G1 各 44 条，G4 复用 EXP7 OURS。指标和分层看结果前冻结，结果不论好坏如实报告 | CPU + 共享队列（`expG2_*`） | `reports/G2_PROTOCOL.md`、`results/g2/`、`figures/g2/` | 🔄 |
