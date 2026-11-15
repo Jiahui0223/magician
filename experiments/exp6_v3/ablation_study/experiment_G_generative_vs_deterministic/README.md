@@ -1,0 +1,31 @@
+# Experiment G — Generative vs Deterministic
+
+任务书原文：`TASK_BOOK.md`。问题：其余全部相同时，生成式（flow）是否优于确定性占据预测？关键新结果是确定性 U-Net **D0**；G1（Table 3 `V3-T0-K1D2`）与 G4（Table 1 `V3-T0-D1`）复用存档，G0（V3-T0 权重 + 零噪声解码）只作诊断。
+
+冻结协议：`reports/G0_PROTOCOL.md`（G-v1，sha256 `4aa44592ce8e3bf5b33243d7ba8273a91f7102746c7169871be5be20d8d0c5be`，2026-11-14 21:54，在任何 D0 训练步之前）。
+
+## 当前状态（2026-11-14）
+| 阶段 | 状态 | 文件 |
+|---|---|---|
+| G-A 审计 + 冻结协议 | ✅ | `reports/G0_PROTOCOL.md`、`logs/EVENTS.md` |
+| G-A 实现 | ✅ 只在本目录 `scripts/`；`seen2scene/` 与其他实验文件未改 | `scripts/d0_head.py`、`train_g.py` 等 |
+| G-A 校验 (a)–(d) | 见 `logs/EVENTS.md` | `work_dirs/exp6_v3/experiment_G/checks/` |
+| G-B D0 训练 40K | 见 STATUS | `work_dirs/exp6_v3/experiment_G/d0/` |
+| G-C 固定状态 | ⏳ 已准备（`post_train.sh fixed`） | `scripts/g_fixed.py`、`g_fixed_worker.sh`、`g_analyze_fixed.py` |
+| G-D 闭环 + Table 3 | ⏳ 已准备（`post_train.sh closed`） | `scripts/g_episode.sh`、`sim_out_g.py`、`g_out_planner.py`、`g_out_cov.py`、`g_collect.py` |
+
+## 目录
+| 路径 | 内容 |
+|---|---|
+| `scripts/d0_head.py` | D0 / G0 的全部函数：`det_forward`、`det_terms`（替换 `fm_terms`）、`det_per_view_loss`、`det_sample`（替换 `v3.model.sample`）、`DetPredictor`、`ZeroNoisePredictor`、`load(mode)` |
+| `scripts/train_g.py`、`run_train.sh` | 训练入口（`--head det` 只在模块层面替换 4 个函数；`--head flow` 不替换任何东西）与 4 卡启动器（环境同 `shared/train_arm.sh`） |
+| `scripts/test_d0_unit.py` | 单元测试（b） |
+| `scripts/check_train_vs_t0.py` | 与存档 V3-T0 运行对比（a: flag-off 逐位；d: D0 第 1 步 rec / kl 逐位等） |
+| `scripts/g_out_planner.py`、`sim_out_g.py`、`g_out_cov.py`、`g_episode.sh` | 闭环：Table 3 的 K = 1 + D1 路径 + `--g-mode flow|g0|d0`；官方覆盖回放；单 episode 队列任务（幂等、原子认领、≤ 3 次） |
+| `scripts/g_smoke.sh`、`g_smoke_check.py` | 闭环 smoke / 回归（G1R 必须逐位复现 V3-T0-K1D2） |
+| `scripts/g_fixed.py`、`g_fixed_worker.sh`、`g_analyze_fixed.py` | 755 状态固定状态评估（CT / U 回放链，四行同一进程）与汇总 |
+| `scripts/g_select_final.py`、`post_train.sh`、`make_queue_tasks.py`、`g_collect.py` | 训练后：冻结规则选模 → 检查 → 入队 → Table 3（csv / md / tex，配对 CI vs G4 与 G1，分组） |
+| `work_dirs/exp6_v3/experiment_G/` | 大文件：`d0/{runs/main,logs,checkpoints}`、`checks/`、`smoke/`、`fixed/`、`closed_loop/<ARM>/<scene>_s<k>/` |
+
+## 变更日志
+- 2026-11-14 21:45 审计；21:54 冻结 G-v1；实现与校验见 `logs/EVENTS.md`。

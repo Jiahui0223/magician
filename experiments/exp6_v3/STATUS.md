@@ -1,6 +1,6 @@
 # EXP6 V3 — 全局状态板（每次启动 / 结束一个运行就更新）
 
-**最近更新：2026-11-14 21:50（P21 Experiment G 生成式 vs 确定性启动：冻结 D0 定义 → 实现 + 校验 → gpu114 4 卡训练 D0 40K 步（约 16 h）→ 固定状态 → 闭环 → Table 3；P20 SCONE ✅，P18 FisherRF 室内 ✅）**
+**最近更新：2026-11-14 22:20（P21 Experiment G：协议 G-v1 冻结（sha `4aa44592…`）、实现 + 校验 (a)–(d) 通过；D0 正式训练 22:14:57 起在 gpu114 GPU 0–3（分配 3517076），预计 11-15 约 14:10 结束；之后固定状态 → 闭环 → Table 3；P20 SCONE ✅，P18 FisherRF 室内 ✅）**
 标记：✅ 完成 · 🔄 正在跑 · ⏳ 等待（排队或依赖前项）· ❌ 失败（后面跟修复行）· ⬜ 未开始
 
 ## 0. 此刻在跑什么
@@ -336,8 +336,8 @@ P15 结论（All-14，AUC@20 / AUC@50 / AUC@100 / Cov@20 / Final）：Ours 0.420
 
 | 编号 | 内容 | 资源 | 日志 / 结果 | 状态 |
 |---|---|---|---|---|
-| G-A | 审计；冻结 D0 定义（同一 V3Model / 配置 / 数据 / 40K 步，只把 flow 头换成一次前向回归）和 G0 诊断行；flag 控制的最小改动；校验：flag 关闭时与原代码逐位一致、D0 单元测试、训练 smoke、闭环 smoke | CPU + gpu114 | `reports/G0_PROTOCOL.md` | 🔄 |
-| G-B | D0 训练 40K 步（world 4，与 V3-T0 相同） | gpu114 GPU 0–3（分配 3517076） | `work_dirs/exp6_v3/experiment_G/` | ⏳ |
-| G-C | 固定状态：D0 / G0 / G1 / G4，755 个状态，比较预测质量和视角排序 | 共享队列（gpu115，`expG_*`） | — | ⏳ |
-| G-D | 闭环：D0（以及诊断行 G0）All-14 × 5；G1 和 G4 复用 Table 3 / Table 1 的结果；输出 Table 3 | 共享队列 | — | ⏳ |
+| G-A | 审计；冻结协议 G-v1（`reports/G0_PROTOCOL.md`，sha `4aa44592…`，21:54）；实现只在 `experiment_G…/scripts/`（`seen2scene/` 未改）；校验：(a) flag 关闭 4 卡 50 步 → 第 0 步评估 + 第 1 步日志与存档 V3-T0 逐位相同；闭环 G1R 10 步与存档 V3-T0-K1D2 逐位相同；(b) 单元测试 18/18；(c) D0 评估字段与 T0 相同；(d) D0 smoke 300 步：第 1 步 rec / kl 与 T0 逐位相同、损失 2.68 → 0.75；G0 闭环 smoke 通过 | CPU + gpu114 + 队列 | `logs/EVENTS.md`、`work_dirs/exp6_v3/experiment_G/checks/` | ✅（D0 闭环 smoke / 固定状态测试在队列中） |
+| G-B | D0 正式训练 40K 步（world 4，与 V3-T0 相同；`train_d0_chain.sh`，崩溃时从 ckpt_last 续跑 ≤ 4 次） | gpu114 GPU 0–3（分配 3517076） | `work_dirs/exp6_v3/experiment_G/d0/logs/{train,chain}.log`、`d0/runs/main/` | 🔄 22:14:57 起（chain pid 36296，torchrun 36323，ranks 36369–36372）；第 300 步 loss 0.750，1.32–1.40 s/步（T0 1.35），32.5 GB/卡；预计 11-15 约 14:10（±30 min） |
+| G-C | 固定状态：D0 / G0 / G1 / G4，755 个状态（`post_train.sh fixed` → `expG_c_fixed_w1..8`；汇总 `g_analyze_fixed.py`） | 共享队列（gpu115，`expG_*`） | `work_dirs/exp6_v3/experiment_G/fixed/` | ⏳ 已准备，等 D0 训练 |
+| G-D | 闭环：D0 与诊断行 G0 All-14 × 5 × 100 步（`post_train.sh closed` → 140 个 `expG_d_*`）；G1 / G4 复用 Table 3 / Table 1；`g_collect.py` 输出 Table 3 | 共享队列 | `work_dirs/exp6_v3/experiment_G/closed_loop/`、`results/table3/` | ⏳ 已准备，等 D0 训练 |
 
