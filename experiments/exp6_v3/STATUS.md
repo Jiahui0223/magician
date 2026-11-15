@@ -312,6 +312,13 @@ P15 结论（All-14，AUC@20 / AUC@50 / AUC@100 / Cov@20 / Final）：Ours 0.420
 
 | 编号 | 内容 | 资源 | 日志 / 结果 | 状态 |
 |---|---|---|---|---|
-| S-A/B/C | 审计官方 SCONE / MACARONS 代码与权重，写实施计划；接入室外 Macarons++ 与室内 MP3D-150；室内外各一条短轨迹 smoke | CPU + 共享队列（`scone_*`） | `scone_baseline/AUDIT_AND_PLAN.md`、`PROTOCOL_ADAPTATION.md`、`SMOKE_TEST.md` | 🔄 |
-| S-D | 全量：室外 70 条 + 室内 44 条，逐步覆盖率、动作和运行时间，支持中断后恢复 | 共享队列 | — | ⏳ 等 S-C 和 FisherRF 室内完成 |
+| S-A/B/C | 审计官方 SCONE / MACARONS 代码与权重，写实施计划；接入室外 Macarons++ 与室内 MP3D-150；室内外各一条短轨迹 smoke | CPU + 共享队列（`scone_*`） | `scone_baseline/AUDIT_AND_PLAN.md`、`PROTOCOL_ADAPTATION.md`、`SMOKE_TEST.md` | ✅ 用官方预训练权重（MACARONS Google Drive：`pretrained_scone_occ.pth` sha 257674e1…，`pretrained_scone_vis.pth` sha 72c9bfdc…；只在 ShapeNet 上训练，零样本），不需要重训。原版保留：SconeOcc / SconeVis、proxy carving、MC 覆盖增益、对直接邻居的贪心 argmax；适配：统一的合法动作列表、GT 深度量程 70、不给 RGB（与 MACARONS 行相同）。smoke 室外 colosseum s0、室内 oLBMNvg9in8_L1 S36 各 20 步，G1–G9 全部通过 |
+| S-D | 全量：室外 70 条 + 室内 44 条，逐步覆盖率、动作和运行时间，支持中断后恢复 | 共享队列 8 卡（`scone_d_*`，约 21–24 GPU-h） | `work_dirs/cvpr_results/scone_baseline/` | 🔄 11-14 17:07 入队（114 个任务），预计约 3 h |
 
+
+## P21 论文图表优化（2026-11-14 起）
+
+| 编号 | 内容 | 资源 | 日志 / 结果 | 状态 |
+|---|---|---|---|---|
+| F3-v3 | Fig. 3 新版：改用 6 个所有方法训练时都没见过的场景（alhambra、neuschwanstein、eiffel、bridge、barts、sestino_museum）。我们的 Train-6 是 MAGICIAN / MACARONS 训练用 8 个场景的子集，所以"双方都没见过"="MAGICIAN 没见过"。样式与 v2 相同，置信带为按场景 bootstrap（6 个场景，较宽）。用 All-14 重算时均值与 v2 逐点一致，置信带差 ≤ 0.002（抽样顺序不同） | CPU | `fig/fig3/fig3_v3.{png,pdf}`、`fig3_v3_excel_data.csv`，`scripts/make_fig3_v3.py` | ✅ 11-14：未见 6 个场景上 Ours − MAGICIAN 的 AUC@20 为 +0.132 [+0.094, +0.166]（6/0），AUC@100 为 +0.097 [+0.056, +0.160]（6/0），Final 为 +0.029 [−0.001, +0.068]（4/2）；All-14 依次为 +0.113 / +0.053 / +0.004 → 等用户决定正文用哪一版 |
+| T4-early | Table 4 闭环前期指标（只读已有 70 × 3 条记录，未重跑）：AUC@10 / AUC@20 / Cov@20 / AUC@50，All-14 与 Unseen-6 | CPU | 对话内输出（cvpr_lib 场景配对 bootstrap） | ✅ 11-14：All-14 的 AUC@20 为 Full 0.420 / Explicit-only 0.420 / Latent-only 0.384（−0.036 [−0.058, −0.015]，11/14 场景更差）/ MAGICIAN 0.307；去掉 latent 对前期无影响（0.000），只影响 Final（−0.014）；Unseen-6 结论相同（Latent-only AUC@20 −0.045） |
