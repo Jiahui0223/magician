@@ -1,6 +1,6 @@
 # EXP6 V3 — 全局状态板（每次启动 / 结束一个运行就更新）
 
-**最近更新：2026-11-14 18:55（P20 EXP9-SCONE ✅：室外 AUC@100 0.520 / Final 0.629，论文 0.535 / 0.673；室内 AUC@150 0.442 / Final 0.559；`fig/compare_full_v2/` 加入 SCONE 和 FisherRF-full 室内；P18 FisherRF-full 室内 ✅）**
+**最近更新：2026-11-14 21:50（P21 Experiment G 生成式 vs 确定性启动：冻结 D0 定义 → 实现 + 校验 → gpu114 4 卡训练 D0 40K 步（约 16 h）→ 固定状态 → 闭环 → Table 3；P20 SCONE ✅，P18 FisherRF 室内 ✅）**
 标记：✅ 完成 · 🔄 正在跑 · ⏳ 等待（排队或依赖前项）· ❌ 失败（后面跟修复行）· ⬜ 未开始
 
 ## 0. 此刻在跑什么
@@ -326,3 +326,18 @@ P15 结论（All-14，AUC@20 / AUC@50 / AUC@100 / Cov@20 / Final）：Ours 0.420
 | T4-R1 | Table 4 对齐实验（用户批准，只做室外）：latent 每步按当前地图重新编码（`t4r1_out_planner.py` 包装 D1 的 score_state；噪声与种子保持 R10，其余不变）。闭环：Latent-only-LR1 70 条 + Full-LR1 70 条 + Explicit-only-LR1 复用验证 2 条；之后重算室外固定状态（Dev-5 + Train）。冒烟：T0 liberty_s0 前 3 步与 V3-T0-D1 逐位一致，第 0 步新 h = 刷新 h，第 1–2 步不同；每次编码 0.01–0.02 s | gpu115 GPU0（作业 3497835 内，setsid，`t4r1_chain.sh`）；空闲卡自动加 worker（gpu114 上 setsid `t4r1_watch.sh`，只在连续两次检查都没有进程的卡上启动）。GPU1–3 和 gpu114 当前被 SCONE baseline 占用 | `work_dirs/cvpr_results/exp9_ablation_qualitative/logs/t4r1_chain.log`，`work_dirs/cvpr_results/table1/g3/logs/queue_*.log` | ▶ 11-14 17:23 启动；只用 1 张卡时预计约 13–14 h，有空闲卡会更快 |
 | T4-R1-fixed | 室外固定状态重算（每个状态用当时的地图编码 latent，噪声不变）：confirm（Dev-5，18 组）+ explore（Train，36 组），共 54 组，三个模型 T0 / T4E / T4L，输出组 `lr1`（原 `main` 组不动）。回归（conf_bannerman_s0，t ≤ 15）：t = 0、10 三个模型逐位相同；t = 5、15 时 Explicit-only 逐位相同，Full / Latent-only 的打分改变——符合预期 | 空闲卡自动启动（`t4r1_watch_fixed.sh`，最多 3 个 worker，gpu115 GPU1–3 / gpu114） | `work_dirs/cvpr_results/exp9_ablation_qualitative/table4/fixed/logs/worker_chain_lr1.log` | ▶ 11-14 17:36 等待空闲卡 |
 | F3-v3-text | Fig. 3 v3 的精确数据与文字说明（只读已有记录）：关键步覆盖率、AUC、配对差、达到各覆盖率所需步数、逐场景结果、英文图注和正文建议 | CPU | `fig/fig3/fig3_v3_numbers.md` | ✅ 11-14：每一步都领先 MAGICIAN / MACARONS（无交叉）；80% 覆盖 34 vs 57 步；第 62 步达到 MAGICIAN 的最终覆盖 0.901；最大差距 +0.169（第 18 步）；Final +0.029 [−0.001, +0.068]，不显著 |
+| T4-R1 进度 | 11-14 19:10：Explicit-only 复用验证 2/2 通过（liberty_s0、eiffel_s2 的执行动作和覆盖率与原记录逐位相同，原 70 条可直接沿用）；Latent-only-LR1 9/70，Full-LR1 0/70；固定状态约 8/54 组。修复：守护脚本远程检查在 0 个进程时误判为忙（`grep -c` 退出码 1 导致输出 "0\n99"），gpu115 GPU1–3 空出后没被接手；已修好并重启闭环守护脚本，19:07 接上 gpu115 GPU1–3 | 8 卡：gpu115 GPU0（3 个闭环 worker）+ GPU1–3（各 2 个），gpu114 GPU1–2（各 2 个闭环 worker）+ GPU0 / GPU3（固定状态各 1 个） | 同上 | ▶ 预计闭环约 22:30 完成（Full-LR1 的 5 条 dunnottar 只能在 gpu115 GPU0 上逐条单独跑，是最后的瓶颈），固定状态约 21:00–21:30 |
+| T4-R1 进度 | 11-14 19:35：Latent-only-LR1 闭环 33/70（另 13 条在跑），Full-LR1 0/70，固定状态 22/54 组（confirm 18/18 完成），无失败。初步（只作参考）：① 已完成的 33 条闭环与原 R10 同起点配对比较，Latent-only 的 AUC@20 为 0.388 → 0.405（+0.017，22 条更好 / 11 条更差），AUC@100 为 0.735 → 0.750（+0.015），Final 为 0.898 → 0.897；同一批起点上与 Explicit-only 的差距，AUC@20 从 −0.033 缩到 −0.016，AUC@100 从 −0.019 缩到 −0.004。② Dev-5 已完成的 200 个相同状态（其中 100 个 t % 10 == 5 受影响）：Latent-only 的 Brier 0.175 → 0.165、ES 10.3 → 9.9、Regret 0.229 → 0.191，但仍远差于 Explicit-only（0.082 / 5.04 / 0.132，不变）；Full 的 Brier 0.085 → 0.084、ES 4.94 → 4.71、Regret 0.125 → 0.138 | 8 卡 | 同上 | ▶ 预计固定状态约 21:00，闭环约 22:00–22:30，Table 4 V3 约 23:00 |
+| T4-R1 决定 | 11-14：用户同意不做"显式通道每 10 步更新"的反向对照。理由：两边都每步更新已经完全对齐，也与实际系统一致；显式通道与未知掩码、解码共用同一次投影，训练时只对 latent 做过滞后增强，显式滞后属于分布外输入。Table 4 V3 主体用 LR1 三行，原 R10 的 Latent-only / Full 作为参照行 | — | — | 继续当前运行 |
+| T4-R1 恢复 | 11-14 约 20:35–21:05：gpu114 的 vscode 作业 3489889 断开，该节点上的闭环 helper（GPU1–2）、固定状态 worker（GPU0 / GPU3）和守护脚本全部中断；gpu115（作业 3497835）上的 worker 不受影响。21:05 新 vscode 作业 3517076：Latent-only-LR1 70/70 已完成，Full-LR1 43/70，固定状态 52/54。按队列规则释放 4 条中断的 Full-LR1（bridge s2、liberty s1、pisa s2、sestino_museum s2；残留输出移到 `g3/failed/*_try1`，记入 `requeue.log`，从头重跑），以及 2 个固定状态认领（g2_B2_pantheon_s3 / s4，移到 `fixed/claims/stale_gpu114_20261114/`）。重启：固定状态 worker 在 gpu114 GPU2–3，闭环守护脚本 21:08 接上 gpu114 GPU0–1 | gpu115 GPU0–3（闭环 9 个 worker）+ gpu114 GPU0–1（闭环各 2 个）+ GPU2–3（固定状态） | 同上 | ▶ 预计约 22:00 全部完成 |
+| T4-R1 完成 | 11-14 21:33 全部完成：Latent-only-LR1 70/70，Full-LR1 70/70，固定状态 54/54；检查 6/6 PASS。Table 4 V3：`fig/table4/table4_v3.*`（`make_table4_v3.py`），报告 `exp9_ablation_qualitative/reports/04_TABLE4_RESULTS.md` §8。对齐后 All-14 闭环 Latent-only ≈ Explicit-only（AUC@100 −0.001，V2 为 −0.021）；预测上显式仍关键（Brier +91%，ES +86%）；Unseen-6 上显式仍领先（AUC@100 +0.018，0/6）；Full 每步与每 10 步闭环基本一致（AUC@100 +0.001） | 共约 4 h 墙钟（gpu115 4 卡 + gpu114） | 同上 | ✅ 等用户决定论文用 V3 |
+
+## P21 Experiment G — Generative vs Deterministic（2026-11-14 起；`ablation_study/experiment_G_generative_vs_deterministic/TASK_BOOK.md`）
+
+| 编号 | 内容 | 资源 | 日志 / 结果 | 状态 |
+|---|---|---|---|---|
+| G-A | 审计；冻结 D0 定义（同一 V3Model / 配置 / 数据 / 40K 步，只把 flow 头换成一次前向回归）和 G0 诊断行；flag 控制的最小改动；校验：flag 关闭时与原代码逐位一致、D0 单元测试、训练 smoke、闭环 smoke | CPU + gpu114 | `reports/G0_PROTOCOL.md` | 🔄 |
+| G-B | D0 训练 40K 步（world 4，与 V3-T0 相同） | gpu114 GPU 0–3（分配 3517076） | `work_dirs/exp6_v3/experiment_G/` | ⏳ |
+| G-C | 固定状态：D0 / G0 / G1 / G4，755 个状态，比较预测质量和视角排序 | 共享队列（gpu115，`expG_*`） | — | ⏳ |
+| G-D | 闭环：D0（以及诊断行 G0）All-14 × 5；G1 和 G4 复用 Table 3 / Table 1 的结果；输出 Table 3 | 共享队列 | — | ⏳ |
+
