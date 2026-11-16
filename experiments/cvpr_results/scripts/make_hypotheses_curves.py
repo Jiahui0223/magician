@@ -3,7 +3,8 @@ average of 4 samples (b, y), average of 4 samples (depth), Ours (4 hypotheses + 
 Curves from experiment_G.../scripts/g3_collect.outdoor() (validated loader; scene = mean of 5 official starts; group = scene-equal mean).
 Left panel: steps 0-100; right panel: zoom on steps 50-100. Band = 95 % scene-bootstrap CI of the mean, drawn for Ours only (five
 overlapping bands are unreadable). Groups: Unseen-6 (main, matches the compact table) and All-14 (supplementary).
-Outputs fig/table_hypotheses/curves_{unseen6,all14}.{pdf,png} and curves_{unseen6,all14}.csv (mean curves)."""
+Outputs fig/table5/table5_{v1,v2}_curves_{unseen6,all14}.{pdf,png,csv} (mean curves). v1 = as first delivered (single sample = noise map 0);
+v2 = Table 5 v2 alignment (single sample = mean over noise maps 0-3, the maps the 4-hypothesis rows use; paper row names)."""
 import os
 import sys
 
@@ -18,7 +19,7 @@ sys.path.insert(0, os.path.join(R, "experiments", "exp6_v3", "ablation_study", "
 import g3_collect as G3  # noqa: E402
 
 plt = RD.plt
-OUT = os.path.join(L.FIG, "table_hypotheses")
+OUT = os.path.join(L.FIG, "table5")
 GROUPS = {"unseen6": ("Unseen-6 scenes (no method trained on them)", ["alhambra", "neuschwanstein", "eiffel", "bridge", "barts", "sestino_museum"]),
           "all14": ("All 14 Macarons++ scenes", list(L.SCENE_ORDER))}
 # fixed categorical order (Okabe-Ito, colour-blind safe) + line style / marker as a second encoding; Ours = the paper's orange
@@ -28,12 +29,29 @@ ARMS = [("D0", "Deterministic U-Net", dict(color="#0072B2", ls="--", marker="s")
         ("MDEPTH", "Average of 4 samples (depth)", dict(color="#56B4E9", ls=(0, (5, 1.5)), marker="D")),
         ("G4", "Ours: 4 hypotheses + CDGR", dict(color=RD.STYLE["V3-T0-D1"]["color"], ls="-", marker="o"))]
 
+V2_NAMES = {"D0": "Deterministic", "G1": "Single sample", "MRAW": "Mean (b, y)", "MDEPTH": "Mean depth", "G4": "Seen2Map (Ours)"}
+G1_REPS = ["V3-T0-K1D2", "V3-T0-K1D2-N1", "V3-T0-K1D2-N2", "V3-T0-K1D2-N3"]          # K = 1 + CDGR on noise maps 0, 1, 2, 3
 
-def main():
-    os.makedirs(OUT, exist_ok=True)
+
+def load(version):
+    """v1: G3 loader as is. v2: single-sample curve = per-episode mean over noise maps 0-3 (rule of Table 3 v4 / Table 5 v2)."""
     _, curves = G3.outdoor()
+    if version == "v1":
+        return curves, ARMS
+    reps = [L.load_manifest(m) for m in G1_REPS]
+    curves["G1"] = {s: np.mean([np.mean([E[(s, k)]["coverage_official"] for k in range(L.N_START)], 0) for E in reps], 0)
+                    for s in L.SCENE_ORDER}
+    return curves, [(a, V2_NAMES[a], st) for a, _, st in ARMS]
+
+
+V2NOTE = {"v1": "", "v2": "\nSingle sample = mean over noise maps 0-3 (the maps of the 4-hypothesis rows)."}
+
+
+def main(version="v1"):
+    os.makedirs(OUT, exist_ok=True)
+    curves, arms = load(version)
     for gk, (gtitle, scenes) in GROUPS.items():
-        Y = {a: np.stack([np.asarray(curves[a][s], float) for s in scenes]) for a, _, _ in ARMS}
+        Y = {a: np.stack([np.asarray(curves[a][s], float) for s in scenes]) for a, _, _ in arms}
         mean = {a: Y[a].mean(0) for a in Y}
         idx = np.random.default_rng(0).integers(0, len(scenes), (10000, len(scenes)))
         b = Y["G4"][idx].mean(1)
@@ -42,8 +60,8 @@ def main():
         fig, axs = plt.subplots(1, 2, figsize=(7.0, 2.75), gridspec_kw={"width_ratios": [1.15, 1]})
         for ax, (x0, x1) in zip(axs, ((0, 100), (50, 100))):
             if x1 - x0 == 100:                                       # band only on the full panel (scene spread, not method difference)
-                ax.fill_between(x[x0:x1 + 1], lo[x0:x1 + 1], hi[x0:x1 + 1], color=ARMS[-1][2]["color"], alpha=0.13, lw=0)
-            for a, name, st in ARMS:
+                ax.fill_between(x[x0:x1 + 1], lo[x0:x1 + 1], hi[x0:x1 + 1], color=arms[-1][2]["color"], alpha=0.13, lw=0)
+            for a, name, st in arms:
                 ours = a == "G4"
                 ax.plot(x[x0:x1 + 1], mean[a][x0:x1 + 1], color=st["color"], ls=st["ls"], lw=2.2 if ours else 1.3,
                         marker=st["marker"], markevery=10 if x1 - x0 == 100 else 5, ms=4.5 if ours else 3.4,
@@ -53,19 +71,19 @@ def main():
             ax.set_xlabel("exploration step")
         axs[0].set_ylim(0, 1.0)
         axs[0].set_ylabel("coverage")
-        lo_z = min(mean[a][50] for a, _, _ in ARMS) - 0.01
-        hi_z = max(mean[a][x].max() for a, _, _ in ARMS for x in [slice(50, 101)]) + 0.006
+        lo_z = min(mean[a][50] for a, _, _ in arms) - 0.01
+        hi_z = max(mean[a][x].max() for a, _, _ in arms for x in [slice(50, 101)]) + 0.006
         axs[1].set_ylim(lo_z, hi_z)
         axs[0].set_title(f"{gtitle}: steps 0–100", fontsize=8.5)
         axs[1].set_title("zoom: steps 50–100", fontsize=8.5)
         gap = (hi_z - lo_z) * 0.055                               # de-overlap the final-value labels (keep order, minimum spacing)
-        order = sorted(ARMS, key=lambda r: mean[r[0]][100])
+        order = sorted(arms, key=lambda r: mean[r[0]][100])
         ypos, prev = {}, -1e9
         for a, _, _ in order:
             ypos[a] = max(mean[a][100], prev + gap)
             prev = ypos[a]
         shift = max(0.0, ypos[order[-1][0]] - (hi_z - gap / 2))
-        for a, name, st in ARMS:                                   # final values at the right edge of the zoom (text ink, not series colour)
+        for a, name, st in arms:                                   # final values at the right edge of the zoom (text ink, not series colour)
             axs[1].annotate(f"{mean[a][100]:.3f}", xy=(100, mean[a][100]), xytext=(103.5, ypos[a] - shift), textcoords="data",
                             fontsize=6.8, va="center", color="#222222", fontweight="bold" if a == "G4" else "normal",
                             annotation_clip=False, arrowprops=dict(arrowstyle="-", color=st["color"], lw=0.6, shrinkA=0, shrinkB=0))
@@ -73,23 +91,23 @@ def main():
         fig.legend(h, lb, loc="upper center", ncol=3, fontsize=7.2, bbox_to_anchor=(0.5, 1.13), handlelength=2.6)
         fig.text(0.5, -0.03, f"Macarons++, {len(scenes)} scenes x 5 official starts, official coverage, scene-equal mean. Same network, data, "
                  "CDGR planner and protocol for every curve. Band (left): 95% scene-bootstrap CI of Ours, i.e. scene spread; method differences "
-                 "are tested pairwise in the table.", ha="center", fontsize=6.6, color="#444444")
+                 "are tested pairwise in the table." + V2NOTE[version], ha="center", fontsize=6.6, color="#444444")
         fig.tight_layout()
-        RD.save(fig, os.path.join(OUT, f"curves_{gk}"))
-        L.write_csv(os.path.join(OUT, f"curves_{gk}.csv"), ["step"] + [n for _, n, _ in ARMS] + ["Ours ci95_lo", "Ours ci95_hi"],
-                    [[t] + [f"{mean[a][t]:.5f}" for a, _, _ in ARMS] + [f"{lo[t]:.5f}", f"{hi[t]:.5f}"] for t in range(101)])
-        print(gk, {n: round(float(mean[a][100]), 3) for a, n, _ in ARMS})
+        RD.save(fig, os.path.join(OUT, f"table5_{version}_curves_{gk}"))
+        L.write_csv(os.path.join(OUT, f"table5_{version}_curves_{gk}.csv"), ["step"] + [n for _, n, _ in arms] + ["Ours ci95_lo", "Ours ci95_hi"],
+                    [[t] + [f"{mean[a][t]:.5f}" for a, _, _ in arms] + [f"{lo[t]:.5f}", f"{hi[t]:.5f}"] for t in range(101)])
+        print(gk, {n: round(float(mean[a][100]), 3) for a, n, _ in arms})
 
 
 if __name__ == "__main__":
-    main()
+    main(sys.argv[1] if len(sys.argv) > 1 else "v1")
 
 
-def three_panel(group="unseen6"):
+def three_panel(group="unseen6", version="v1"):
     """Variant requested 2026-11-16: full 0-100 | zoom 0-40 | zoom 50-100 (Unseen-6). Same data and styling; end-value labels in both zooms."""
-    _, curves = G3.outdoor()
+    curves, arms = load(version)
     gtitle, scenes = GROUPS[group]
-    Y = {a: np.stack([np.asarray(curves[a][s], float) for s in scenes]) for a, _, _ in ARMS}
+    Y = {a: np.stack([np.asarray(curves[a][s], float) for s in scenes]) for a, _, _ in arms}
     mean = {a: Y[a].mean(0) for a in Y}
     idx = np.random.default_rng(0).integers(0, len(scenes), (10000, len(scenes)))
     b = Y["G4"][idx].mean(1)
@@ -99,8 +117,8 @@ def three_panel(group="unseen6"):
     spans = ((0, 100, "steps 0–100"), (10, 40, "zoom: steps 10–40"), (50, 100, "zoom: steps 50–100"))
     for ax, (x0, x1, ttl) in zip(axs, spans):
         if (x0, x1) == (0, 100):
-            ax.fill_between(x, lo, hi, color=ARMS[-1][2]["color"], alpha=0.13, lw=0)
-        for a, name, st in ARMS:
+            ax.fill_between(x, lo, hi, color=arms[-1][2]["color"], alpha=0.13, lw=0)
+        for a, name, st in arms:
             ours = a == "G4"
             ax.plot(x[x0:x1 + 1], mean[a][x0:x1 + 1], color=st["color"], ls=st["ls"], lw=2.2 if ours else 1.3, marker=st["marker"],
                     markevery=10 if x1 - x0 >= 100 else 5, ms=4.5 if ours else 3.4, markeredgecolor="white", markeredgewidth=0.6,
@@ -113,19 +131,19 @@ def three_panel(group="unseen6"):
         ax.set_xlabel("exploration step")
         ax.set_title(ttl, fontsize=8.5)
         if (x0, x1) != (0, 100):
-            vmin = min(mean[a][x0:x1 + 1].min() for a, _, _ in ARMS) if x0 > 0 else 0.0
-            vmax = max(mean[a][x0:x1 + 1].max() for a, _, _ in ARMS)
+            vmin = min(mean[a][x0:x1 + 1].min() for a, _, _ in arms) if x0 > 0 else 0.0
+            vmax = max(mean[a][x0:x1 + 1].max() for a, _, _ in arms)
             pad = (vmax - vmin) * 0.04
             ax.set_ylim(vmin - (pad if x0 > 0 else 0), vmax + pad)
             gap = (vmax - vmin + 2 * pad) * 0.07
-            order = sorted(ARMS, key=lambda r: mean[r[0]][x1])
+            order = sorted(arms, key=lambda r: mean[r[0]][x1])
             ypos, prev = {}, -1e9
             for a, _, _ in order:
                 ypos[a] = max(mean[a][x1], prev + gap)
                 prev = ypos[a]
             shift = max(0.0, ypos[order[-1][0]] - (vmax + pad - gap / 2))
             dx = (x1 - x0) * 0.07
-            for a, name, st in ARMS:
+            for a, name, st in arms:
                 ax.annotate(f"{mean[a][x1]:.3f}", xy=(x1, mean[a][x1]), xytext=(x1 + dx, ypos[a] - shift), textcoords="data", fontsize=6.6,
                             va="center", color="#222222", fontweight="bold" if a == "G4" else "normal", annotation_clip=False,
                             arrowprops=dict(arrowstyle="-", color=st["color"], lw=0.6, shrinkA=0, shrinkB=0))
@@ -135,7 +153,7 @@ def three_panel(group="unseen6"):
     fig.legend(h, lb, loc="upper center", ncol=5, fontsize=7.0, bbox_to_anchor=(0.5, 1.07), handlelength=2.6)
     fig.text(0.5, -0.03, f"{gtitle}: Macarons++, {len(scenes)} scenes x 5 official starts, official coverage, scene-equal mean. Same network, "
              "data, CDGR planner and protocol for every curve. Band (left): 95% scene-bootstrap CI of Ours (scene spread); values at the right "
-             "edge of each zoom = coverage at its last step.", ha="center", fontsize=6.4, color="#444444")
+             "edge of each zoom = coverage at its last step." + V2NOTE[version], ha="center", fontsize=6.4, color="#444444")
     fig.tight_layout(w_pad=2.2)
-    RD.save(fig, os.path.join(OUT, f"curves_{group}_3panel"))
-    print({n: (round(float(mean[a][20]), 3), round(float(mean[a][40]), 3)) for a, n, _ in ARMS})
+    RD.save(fig, os.path.join(OUT, f"table5_{version}_curves_{group}_3panel"))
+    print({n: (round(float(mean[a][20]), 3), round(float(mean[a][40]), 3)) for a, n, _ in arms})
