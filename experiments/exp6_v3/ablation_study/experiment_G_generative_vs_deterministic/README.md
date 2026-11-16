@@ -29,3 +29,12 @@
 
 ## 变更日志
 - 2026-11-14 21:45 审计；21:54 冻结 G-v1；实现与校验见 `logs/EVENTS.md`。
+
+## G2 后续（2026-11-15 起；冻结协议 `reports/G2_PROTOCOL.md`，sha256 `83dd7436…`）
+| 项 | 脚本 | 结果 |
+|---|---|---|
+| 1–2 概率质量 + 歧义分层 | `g2_prob.py`（VALSEL-in / S-c-out，与 eval.jsonl 逐位回归）、`g2_pool.py`（755 状态 F-pool）、`g2_analyze.py` | `results/g2/G2_ITEMS12.md`、`item1_summary.csv`、`item2_strata.csv`、`g2_items12.json`；`figures/g2/{reliability,spread_skill}.*` |
+| 3 闭环时间分析 | `g2_temporal.py` | `results/g2/temporal/`、`figures/g2/temporal_diff.*` |
+| 4 定性图 | `g2_figs.py`（预先声明的 GT-only 选图规则） | `figures/g2/qualitative_*`、`results/g2/qualitative_selection.json` |
+| 5 室内 MP3D-150 | `g_in_planner.py`、`sim_in_g.py`、`g_in_episode.sh`、`g2_in_smoke_check.py`、`g2_indoor_collect.py`；入队 `g2_queue.py` | `results/g2/indoor/` |
+- 大文件：`work_dirs/exp6_v3/experiment_G/g2/{prob,pool,indoor,indoor_smoke,test}/`。

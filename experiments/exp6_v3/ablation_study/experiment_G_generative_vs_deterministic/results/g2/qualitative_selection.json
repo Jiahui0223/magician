@@ -1,0 +1,42 @@
+{
+ "rule": "seed-0 permutation of (tag, t) order, stable sort by GT-only score A desc, <= 1 state per scene, N = 4",
+ "n_candidates": 739,
+ "selected": [
+  {
+   "tag": "conf_sestino_museum_s2",
+   "t": 10,
+   "scene": "sestino_museum",
+   "score": 3320
+  },
+  {
+   "tag": "g2_B2_colosseum_s2",
+   "t": 10,
+   "scene": "colosseum",
+   "score": 2994
+  },
+  {
+   "tag": "g2_B0_pantheon_s1",
+   "t": 0,
+   "scene": "pantheon",
+   "score": 1665
+  },
+  {
+   "tag": "g2_B0_barts_s4",
+   "t": 0,
+   "scene": "barts",
+   "score": 1651
+  }
+ ],
+ "top10_scores": [
+  3320,
+  2994,
+  2944,
+  2709,
+  2527,
+  2473,
+  2309,
+  2309,
+  2216,
+  2201
+ ]
+}
