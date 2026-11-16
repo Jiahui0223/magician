@@ -1,0 +1,6 @@
+Prediction strategy,Energy score,Cov@100
+Deterministic,7.15†,0.915†
+Single sample,8.57†,0.919
+"Mean (b, y)",7.47†,0.922
+Mean depth,7.25†,0.921
+Seen2Map (Ours),4.93,0.930
