@@ -35,3 +35,27 @@
 ## 配套图（可选，同一叙事）
 - `exp6_v3/ablation_study/experiment_G_generative_vs_deterministic/figures/g2/temporal_diff.png`：单图做法前期略快，Ours 在约第 55–66 步之后反超，后期补全更完整。
 - `.../figures/g3/averaging_vs_samples.png`：平均会产生约 15% 的"悬空表面"。这张图的选图规则偏向失败案例，只作示意。
+
+---
+## 紧凑版（2026-11-16，只用 Unseen-6）
+由 `scripts/make_hypotheses_unseen6.py` 生成。曲线复用 G3 已校验的加载器；脚本会断言 AUC@20 / AUC@100 / Final 与 G3 最终表一致。Unseen-6 = 所有方法都没训练过的 6 个场景（alhambra、neuschwanstein、eiffel、bridge、barts、sestino_museum）× 5 个官方起点。
+
+**表格**（`unseen6_table.{png,pdf,tex,csv,md}`）：
+
+| Prediction / combination | Hypotheses to planner | AUC@20 | Cov@20 | AUC@100 | Final |
+|---|---|---|---|---|---|
+| Deterministic U-Net | 1 (regressed mean) | **0.446** | 0.694 | **0.784** | 0.915† |
+| Single generated sample | 1 | 0.438 | **0.700** | 0.778 | 0.907† |
+| Average of 4 samples (b, y) | 4 → 1 | 0.435 | 0.693 | **0.784** | 0.922 |
+| Average of 4 samples (depth) | 4 → 1 | 0.422 | 0.679 | **0.784** | 0.921 |
+| **Ours: 4 hypotheses + CDGR** | 4 | 0.432 | 0.676 | 0.783 | **0.930** |
+
+† 表示与 Ours 的配对差 95% CI 不含 0。早期两列（AUC@20 / Cov@20）和 AUC@100 中，所有变体与 Ours 的差异都**不显著**；Final 上 Ours 最高，对 D0（−0.015）和单样本（−0.023）的差异显著。
+
+**图**：
+- `unseen6_figure.{png,pdf}`（推荐）：左右两个面板分别是 Final 和 AUC@100 上"变体 − Ours"的配对差，橙线为 Ours，括号内为该变体的绝对值。左图所有变体都在橙线左侧（Final 都低于 Ours），右图都落在 0 附近（效率持平）。
+- `unseen6_figure_absolute.{png,pdf}`：绝对值加场景点。场景之间的差异远大于方法之间的差异，所以不推荐放进论文。
+
+**可写**：在未见场景上，多假设 + CDGR 的最终覆盖最高（0.930）；把假设压成一张图的做法都更低（−0.008 到 −0.023），对确定性和单样本的差距显著。探索效率持平（AUC@100 的差异在 ±0.005 以内）。
+
+**不可写**：多假设在早期（AUC@20 / Cov@20）更好。表中早期最高的是 D0 和单样本，只是差异不显著。
