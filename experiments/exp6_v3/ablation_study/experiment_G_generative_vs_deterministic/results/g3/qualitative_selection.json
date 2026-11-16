@@ -1,0 +1,35 @@
+{
+ "rule": "seed-0 permutation of (tag, t), stable sort by M-depth floating count desc, <= 1 per scene, N = 4 (illustrative: failure-mode selection)",
+ "n_candidates": 755,
+ "selected": [
+  {
+   "tag": "g2_B0_pantheon_s2",
+   "t": 0,
+   "scene": "pantheon",
+   "score": 6165
+  },
+  {
+   "tag": "conf_bannerman_s0",
+   "t": 0,
+   "scene": "bannerman",
+   "score": 2970
+  },
+  {
+   "tag": "g2_B0_barts_s4",
+   "t": 5,
+   "scene": "barts",
+   "score": 2538
+  },
+  {
+   "tag": "e3_colosseum_s0",
+   "t": 5,
+   "scene": "colosseum",
+   "score": 1916
+  }
+ ],
+ "score_quantiles": {
+  "0.5": 34.0,
+  "0.9": 556.6000000000003,
+  "0.99": 2087.9000000000005
+ }
+}

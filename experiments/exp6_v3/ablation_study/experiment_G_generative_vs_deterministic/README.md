@@ -38,3 +38,13 @@
 | 4 定性图 | `g2_figs.py`（预先声明的 GT-only 选图规则） | `figures/g2/qualitative_*`、`results/g2/qualitative_selection.json` |
 | 5 室内 MP3D-150 | `g_in_planner.py`、`sim_in_g.py`、`g_in_episode.sh`、`g2_in_smoke_check.py`、`g2_indoor_collect.py`；入队 `g2_queue.py` | `results/g2/indoor/` |
 - 大文件：`work_dirs/exp6_v3/experiment_G/g2/{prob,pool,indoor,indoor_smoke,test}/`。
+
+## G3 后续（2026-11-15 起；冻结协议 `reports/G3_PROTOCOL.md`，sha256 `34f5002b…`）
+Ours（G4）vs 把 K = 4 个生成样本合成一张图（M-raw：平均 (b, y) 后解码；M-depth：≥ 2/4 投票 + 命中深度平均），再经 K = 1 交给同一个 D1。
+| 项 | 脚本 | 结果 |
+|---|---|---|
+| 合并钩子 + 闭环 | `m_combine.py`、`g3_out_planner.py`、`sim_out_g3.py`、`g3_episode.sh`、`g3_in_planner.py`、`sim_in_g3.py`、`g3_in_episode.sh`、`g3_queue.py` | `work_dirs/exp6_v3/experiment_G/g3/{closed_loop,indoor}/` |
+| 校验 | `test_m_combine.py`、`g3_smoke_check.py` | `work_dirs/.../g3/{checks,smoke}/` |
+| 固定状态 | `g3_fixed.py`、`g3_analyze_fixed.py` | `results/g3/fixed_table.*` |
+| 最终表 + 时间曲线 | `g3_collect.py` | `results/g3/final_table_{outdoor,indoor}.{md,csv,tex}`、`G3_TABLES.md`、`figures/g3/temporal_vs_g4.*` |
+| 定性图 | `g3_figs.py` | `figures/g3/averaging_*` |

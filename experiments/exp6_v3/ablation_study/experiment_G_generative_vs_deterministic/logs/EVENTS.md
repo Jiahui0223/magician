@@ -29,3 +29,15 @@
 - 2026-11-15 17:06 起室内 88 个 episode 开始执行（8 卡）；K = 1 远快于 EXP7 OURS（最长的层 6 分钟走到约 100 步）。
 - 2026-11-15 17:16 前 4 个完成的室内 episode（TbHJrupSAjP_L1 S112 / S114、x8F5xyUWy9e_L0 S28）用 `g2_indoor_collect.py` 试验证：V1–V5、同起点、G_MODE / K = 1 全部通过（试运行输出在 `work_dirs/.../g2/test/indoor_partial/`，不计入结果）。每条约 8–9 分钟（EXP7 OURS 同层记录的墙钟 2.9 h 是 K = 4 且当时 GPU 共享）。
 - 2026-11-15 17:22 启动分离的守护脚本 `scripts/g2_stop_g114x_when_drained.sh`（pid 51026）：队列中不再有待执行的 `expG2_*` 时 touch `STOP_g114x_gpu0..3`，只做这一件事。此时 8/88 完成，72 个待执行。
+
+## G3（用户 2026-11-15 批准：Ours vs 把 K = 4 个生成图取平均，两种平均，室外 + 室内）
+- 2026-11-15 18:58:50 冻结 `reports/G3_PROTOCOL.md`（G3-v1，sha256 `34f5002b25c78868380f835747f66744f153f2abba721d095b54cb5f09da7303`），在 G3 的任何计算之前。
+- 2026-11-15 18:59 实现：`scripts/m_combine.py`（噪声钩子 + score_state 钩子，装在 D1 之前；raw / depth / off）、`g3_out_planner.py`、`sim_out_g3.py`、`g3_episode.sh`、`g3_in_planner.py`、`sim_in_g3.py`、`g3_in_episode.sh`、`g3_smoke_check.py`、`g3_queue.py`、`g3_fixed.py`、`g3_analyze_fixed.py`、`g3_collect.py`、`g3_figs.py`、`test_m_combine.py`。冻结文件未改。
+- 2026-11-15 18:59 单元测试 8/8 通过（≥ 2/4 规则、2-2 平局算命中、只对命中样本取平均、单个命中回填 t_known、M-raw 的均值与解码规则；`work_dirs/.../g3/checks/unit_m_combine.json`）。
+- 2026-11-15 19:00 gpu114 重新启动 4 个临时 worker（g114x，pid 23562 / 23564 / 23568 / 23573）。
+- 2026-11-15 19:01 冒烟 6/6 通过：室外 G4R（钩子关闭、K = 4）liberty s0 10 步，与存档 V3-T0-D1 的分数 / 选择 / 执行位姿 / 覆盖前缀逐位相同；室内 G4RIN（EU6Fwq7SyZv_L0 S34）与 EXP7 OURS 逐位相同；M-raw / M-depth 室外（官方回放一致）与室内各 10 步正常，G3_MODE 行与 K = 1 已确认。
+- 2026-11-15 19:02 固定状态功能测试（conf_liberty_s0，t ≤ 5）通过：G4 的 D1 分数与 Table 4 T0 行逐位相同；M 行内部的 4 个样本与 G4 的样本逐位相同；G4 / G1 / D0 的 D1 分数与 Experiment G 固定状态行逐位相同。
+- 2026-11-15 19:01:52 入队 228 个闭环任务（室外 `expG3_c_*` 140 个，室内 `expG3_d_in_*` 88 个）；19:02:45 入队 8 个固定状态 worker（`expG3_b_fixed_w1..8`）。
+- 2026-11-15 19:45 固定状态完成（`expG3_b_fixed_w1..8`）：755/755 个状态五行齐全；G4 的 D1 分数与 Table 4 T0 行逐位相同 755/755；M 行内部的 4 个样本与 G4 的样本逐位相同 1510/1510。`g3_analyze_fixed.py` → `results/g3/fixed_table.*`；`g3_figs.py` → `figures/g3/averaging_*`（选图规则冻结，选中 pantheon t0、bannerman t0、barts t5、colosseum t5；深度色标取 GT 的 2–98 百分位，超出范围的预测被截到两端）。
+- 2026-11-15 19:45 闭环：室外完成 7 个、待执行 213 个、0 失败（19:02–19:45 有 8 卡被固定状态任务占用）；已完成的 dunnottar episode 官方回放一致。预计 11-16 约 00:00–00:30 全部完成。
+- 2026-11-15 19:07 启动分离守护 `scripts/g3_stop_g114x_when_drained.sh`（pid 33706）：没有待执行的 `expG3_*` 任务时 touch `STOP_g114x_gpu0..3`。
