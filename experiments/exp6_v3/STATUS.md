@@ -1,6 +1,6 @@
 # EXP6 V3 — 全局状态板（每次启动 / 结束一个运行就更新）
 
-**最近更新：2026-11-15 18:50（P21 G2 ✅：生成式模型是更好的分布预测器（ES / CRPS 好 20–28%，表面数量校准），后期反超；确定性模型的命中概率更好；室内 Final G4 +0.037（CI 刚碰到 0）。下一步：用户提出 Ours vs 平均 4 张生成深度图的对照实验）**
+**最近更新：2026-11-15 19:00（P21 G3 启动：Ours（K=4 各自打分 + D1 聚合）vs 平均 4 张生成图（M-raw：直接平均 (b, y)；M-depth：多数票 + 命中深度平均），室外 140 条 + 室内 88 条 + 固定状态 + 悬空表面率；重点是最终表格）**
 标记：✅ 完成 · 🔄 正在跑 · ⏳ 等待（排队或依赖前项）· ❌ 失败（后面跟修复行）· ⬜ 未开始
 
 ## 0. 此刻在跑什么
@@ -351,3 +351,4 @@ P15 结论（All-14，AUC@20 / AUC@50 / AUC@100 / Cov@20 / Final）：Ours 0.420
 | G-C | 固定状态：D0 / G0 / G1 / G4，755 个状态（`post_train.sh fixed` → `expG_c_fixed_w1..8`；汇总 `g_analyze_fixed.py`） | 共享队列（gpu115，`expG_*`） | `work_dirs/exp6_v3/experiment_G/fixed/` | ⏳ 已准备，等 D0 训练 |
 | G-D | 闭环：D0 与诊断行 G0 All-14 × 5 × 100 步（`post_train.sh closed` → 140 个 `expG_d_*`）；G1 / G4 复用 Table 3 / Table 1；`g_collect.py` 输出 Table 3 | 共享队列 | `work_dirs/exp6_v3/experiment_G/closed_loop/`、`results/table3/` | ⏳ 已准备，等 D0 训练 |
 | G2 | 寻找生成式的真实优势（用户 11-15 批准第 1–5 项）：(1) 概率预测质量（energy score / CRPS、命中比、校准、AUROC / AP、离散度–误差关系）；(2) 按 GT / 观测定义的模糊度分层；(3) 闭环时间曲线和交叉点；(4) 按预定规则选图的可视化；(5) 室内 MP3D 闭环 D0 + G1 各 44 条，G4 复用 EXP7 OURS。指标和分层看结果前冻结，结果不论好坏如实报告 | CPU + 共享队列（`expG2_*`） | `reports/G2_PROTOCOL.md`、`results/g2/`、`figures/g2/` | 🔄 协议 G2-v1 16:39 冻结（sha `83dd7436…`）；第 1–4 项 ✅（`results/g2/G2_ITEMS12.md`、`temporal/`、`figures/g2/`；H1 支持：G4 的 CRPS / fair ES 在三个集都优于 D0；但 D0 的 soft Brier / log-loss / ECE / AUROC / AP 全部更好）；第 5 项：冒烟 ✅，88 个 episode 17:06 起在 8 卡上执行（K = 1 远快于 EXP7 OURS），17:22 已完成 8 个且全部有效，预计 11-15 约 18:00–18:30 完成；收尾 `g2_indoor_collect.py`；gpu114 临时 worker 由 `g2_stop_g114x_when_drained.sh`（pid 51026）在队列排空后停止 |
+| G3 | Ours vs 平均 4 张生成深度图（用户 11-15 批准）：M-raw、M-depth 两种平均方式，只改样本组合方式；主比较为 M-depth vs G4 的 AUC@100（室外）和 AUC@150（室内）；另做固定状态、悬空表面率、最终表格和时间曲线 | 共享队列（`expG3_*`） | `reports/G3_PROTOCOL.md`、`results/g3/`、`figures/g3/` | 🔄 |
