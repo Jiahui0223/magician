@@ -2,7 +2,32 @@
 
 本目录原名 `fig/table_hypotheses/`，2026-11-16 按用户要求改名为 `fig/table5/`。旧文件统一加 `table5_v1` 前缀，用 git mv 改名，并已核对旧脚本仍能逐字节复现这些文件。
 
-**论文用 v2**：`table5_v2.{png,pdf,tex,csv,md}`，由 `scripts/make_table5_v2.py` 生成，请勿手改。
+**论文用 v3**：`table5_v3.{png,pdf,tex,csv,md}`，由 `scripts/make_table5_v3.py` 生成，请勿手改。v2 保留不动。
+
+---
+## v3（2026-11-16，只放 coverage + 预测分布指标，不放 AUC）
+数据、行、对齐方式、统计方法都与 v2 相同。脚本会断言每个数值都等于 `table5_v2_metric_panel.csv` 中的对应值。
+
+| Prediction strategy | CRPS ↓ | Energy score ↓ | Cov@80 ↑ | Cov@100 ↑ |
+|---|---|---|---|---|
+| Deterministic | 6.77† | 7.15† | 0.912 | 0.915† |
+| Single sample | 8.54† | 8.57† | 0.910† | 0.919 |
+| Mean (b, y) | 7.29† | 7.47† | 0.913 | 0.922 |
+| Mean depth | 7.35† | 7.25† | 0.914† | 0.921 |
+| **Seen2Map (Ours)** | **5.07** | **4.93** | **0.925** | **0.930** |
+
+**选列说明**：用户要求只放 coverage、不放 AUC，并挑选能支持论点的指标。这张表只讲两件事：预测分布更准（CRPS / ES）和后期覆盖更完整（Cov@80 / Cov@100）。
+
+**没放的列**：前期覆盖 Cov@20 和 Cov@50。这两列上 Ours 分别是 0.676 和 0.872，**数值最低**，但与各行的差异都不显著。为此图注**必须**保留这句：
+> Early coverage is comparable across rows (Cov@20 / Cov@50 differences to Seen2Map not significant; full time course in the supplementary).
+
+补充材料中要放 `table5_v3_full.*`（六列，含 Cov@20 和 Cov@50）或 v2 的覆盖曲线。去掉这句图注会构成选择性报告。
+
+**写作约束**
+- Cov@80 只对 Single sample 和 Mean depth 显著。
+- Cov@100 只对 Deterministic 显著。
+
+这两列都写"最高"，不写"显著最高"。其余约束同 v2。
 
 ---
 ## v2（2026-11-16，只用 Unseen-6）
