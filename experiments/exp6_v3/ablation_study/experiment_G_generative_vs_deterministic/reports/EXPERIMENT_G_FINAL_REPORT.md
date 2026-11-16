@@ -79,3 +79,28 @@ Macarons++ All-14 × 5 个官方起点 × 100 步，官方覆盖，场景等权�
 | 固定状态 | `results/fixed/fixed_summary.{md,csv,json}` |
 | 代码 | `scripts/`：`d0_head.py`、`train_g.py`、`train_d0_chain.sh`、`g_select_final.py`、`check_train_vs_t0.py`、`g_fixed.py`、`g_analyze_fixed.py`、`make_queue_tasks.py`、`g_collect.py`、`post_train.sh` |
 | 权重与原始数据 | `work_dirs/exp6_v3/experiment_G/`（`d0/checkpoints/final.pt` = EMA @40K，`d0/runs/main/`、`closed_loop/`、`fixed/`、`checks/`） |
+
+## 6. G2 补充分析（2026-11-15；协议 `reports/G2_PROTOCOL.md`，G2-v1，sha256 `83dd7436…`，在任何 G2 计算之前冻结）
+详细结果：`results/g2/G2_ITEMS12.md`、`results/g2/temporal/temporal_summary.md`、`results/g2/indoor/G2_INDOOR.md`；图：`figures/g2/`。
+
+1. **概率预测质量**
+   - 在 VALSEL-in、S-c-out、F-pool 三个评估集上，G4 都显著优于 D0：
+     - fair ES 低 1.81–2.38；
+     - CRPS 低 0.60–1.28；
+     - hit_ratio 更接近 1：G4 为 1.006 / 0.969 / 0.926，D0 为 0.887 / 0.925 / 0.865。
+   - G4 的 spread–skill 相关 ρ 为 0.94–0.96；D0 没有不确定性输出。
+   - **不利结果**：在命中概率上，D0 的 Brier、log-loss、ECE、AUROC、AP 全部显著更好；单个 G1 样本在所有指标上都差于 D0。
+2. **按 GT 定义的歧义分层**：ΔCRPS 的绝对值在高歧义层更大（A、C、D 三种分层支持，B 分层不确定）；但相对比例约 12–20%，并不随歧义增长（这项相对比例是事后计算的）。
+3. **闭环时间曲线**：D0 前期领先；G4 在第 55 步（All-14）或第 65–66 步（Dev+Test-8 / Unseen-6）之后反超。在 Dev+Test-8 上，后半程 C[100] − C[50] 的差 −0.025 [−0.049, −0.003] 显著。
+4. **可视化**：`figures/g2/qualitative_g2.*` 是按冻结规则选出的 4 个状态。前两个呈椒盐状，不适合放论文；是否换选图规则需要用户决定（换了就是事后偏离）。
+5. **室内 MP3D-150 闭环**：D0 和 G1 各 44 条，全部有效；G4 = EXP7 OURS。
+
+   ALL-22 的 AUC@20 / AUC@150 / Final：
+
+   | 方法 | AUC@20 | AUC@150 | Final |
+   |---|---|---|---|
+   | D0 | 0.244 | 0.533 | 0.663 |
+   | G1 | 0.233 | 0.518 | 0.669 |
+   | G4 | 0.237 | 0.539 | 0.699 |
+
+   G4 − D0：AUC@150 +0.007 [−0.016, +0.028]，Final +0.037 [−0.003, +0.083]（G4 在 14/22 个楼层更高）；HO-12 上 Final +0.064 [−0.001, +0.137]。G4 − G1：AUC@150 +0.022 [+0.005, +0.038]（显著）。预注册的 H5（生成式在室内的优势更大）判定为**不确定**。方向与室外一致：确定性头前期略快，生成式 K = 4 的最终覆盖更高，但室内的 CI 刚好碰到 0。
