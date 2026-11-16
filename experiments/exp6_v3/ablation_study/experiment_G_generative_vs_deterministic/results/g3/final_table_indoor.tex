@@ -1,0 +1,11 @@
+\begin{tabular}{llcccccc}
+\toprule
+Method & Combination of $K$ samples & $K$ & AUC@20 & AUC@50 & AUC@100 & AUC@150 & Final \\
+\midrule
+D0 & -- (deterministic, one forward) & 1 & 0.244 & 0.369 & 0.477 & 0.533 & 0.663 \\
+G1 & single sample (noise map 0) & 1 & 0.233 & 0.351 & 0.456 & 0.518 & 0.669 \\
+M-raw & average (b, y) of the 4 samples, then decode & 4 $\to$ 1 & 0.234 & 0.359 & 0.470 & 0.536 & 0.699 \\
+M-depth & decode each, $\ge$ 2/4 vote, mean hit depth & 4 $\to$ 1 & 0.236 & 0.363 & 0.469 & 0.534 & 0.687 \\
+Ours (G4) & score each sample, aggregate in D1 (Ours) & 4 & 0.237 & 0.360 & 0.471 & 0.539 & 0.699 \\
+\bottomrule
+\end{tabular}
