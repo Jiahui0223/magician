@@ -1,0 +1,367 @@
+{
+ "az": 270.0,
+ "el": 50.0,
+ "scores": {
+  "0/20": {
+   "gt_px": 3943,
+   "l0_exactly_one": 1274,
+   "l0_mag_only": 439,
+   "l0_ours_only": 835,
+   "silhouette_exactly_one": 852,
+   "probe_px": [
+    121,
+    169
+   ]
+  },
+  "45/20": {
+   "gt_px": 4507,
+   "l0_exactly_one": 1790,
+   "l0_mag_only": 215,
+   "l0_ours_only": 1575,
+   "silhouette_exactly_one": 1024,
+   "probe_px": [
+    121,
+    169
+   ]
+  },
+  "90/20": {
+   "gt_px": 4061,
+   "l0_exactly_one": 1725,
+   "l0_mag_only": 65,
+   "l0_ours_only": 1660,
+   "silhouette_exactly_one": 975,
+   "probe_px": [
+    121,
+    169
+   ]
+  },
+  "135/20": {
+   "gt_px": 4438,
+   "l0_exactly_one": 1491,
+   "l0_mag_only": 66,
+   "l0_ours_only": 1425,
+   "silhouette_exactly_one": 1189,
+   "probe_px": [
+    121,
+    169
+   ]
+  },
+  "180/20": {
+   "gt_px": 4226,
+   "l0_exactly_one": 983,
+   "l0_mag_only": 279,
+   "l0_ours_only": 704,
+   "silhouette_exactly_one": 836,
+   "probe_px": [
+    121,
+    169
+   ]
+  },
+  "225/20": {
+   "gt_px": 4442,
+   "l0_exactly_one": 1460,
+   "l0_mag_only": 971,
+   "l0_ours_only": 489,
+   "silhouette_exactly_one": 866,
+   "probe_px": [
+    121,
+    169
+   ]
+  },
+  "270/20": {
+   "gt_px": 4047,
+   "l0_exactly_one": 1620,
+   "l0_mag_only": 1286,
+   "l0_ours_only": 334,
+   "silhouette_exactly_one": 922,
+   "probe_px": [
+    121,
+    169
+   ]
+  },
+  "315/20": {
+   "gt_px": 4450,
+   "l0_exactly_one": 1721,
+   "l0_mag_only": 1056,
+   "l0_ours_only": 665,
+   "silhouette_exactly_one": 1264,
+   "probe_px": [
+    121,
+    169
+   ]
+  },
+  "0/35": {
+   "gt_px": 5376,
+   "l0_exactly_one": 1704,
+   "l0_mag_only": 654,
+   "l0_ours_only": 1050,
+   "silhouette_exactly_one": 1070,
+   "probe_px": [
+    121,
+    169
+   ]
+  },
+  "45/35": {
+   "gt_px": 5196,
+   "l0_exactly_one": 1916,
+   "l0_mag_only": 258,
+   "l0_ours_only": 1658,
+   "silhouette_exactly_one": 989,
+   "probe_px": [
+    121,
+    169
+   ]
+  },
+  "90/35": {
+   "gt_px": 5383,
+   "l0_exactly_one": 1951,
+   "l0_mag_only": 104,
+   "l0_ours_only": 1847,
+   "silhouette_exactly_one": 971,
+   "probe_px": [
+    121,
+    169
+   ]
+  },
+  "135/35": {
+   "gt_px": 5130,
+   "l0_exactly_one": 1523,
+   "l0_mag_only": 89,
+   "l0_ours_only": 1434,
+   "silhouette_exactly_one": 1053,
+   "probe_px": [
+    121,
+    169
+   ]
+  },
+  "180/35": {
+   "gt_px": 5510,
+   "l0_exactly_one": 1203,
+   "l0_mag_only": 429,
+   "l0_ours_only": 774,
+   "silhouette_exactly_one": 935,
+   "probe_px": [
+    121,
+    169
+   ]
+  },
+  "225/35": {
+   "gt_px": 5091,
+   "l0_exactly_one": 1616,
+   "l0_mag_only": 1119,
+   "l0_ours_only": 497,
+   "silhouette_exactly_one": 843,
+   "probe_px": [
+    121,
+    169
+   ]
+  },
+  "270/35": {
+   "gt_px": 5410,
+   "l0_exactly_one": 2035,
+   "l0_mag_only": 1560,
+   "l0_ours_only": 475,
+   "silhouette_exactly_one": 1156,
+   "probe_px": [
+    121,
+    169
+   ]
+  },
+  "315/35": {
+   "gt_px": 5091,
+   "l0_exactly_one": 1952,
+   "l0_mag_only": 1182,
+   "l0_ours_only": 770,
+   "silhouette_exactly_one": 1273,
+   "probe_px": [
+    121,
+    169
+   ]
+  },
+  "0/50": {
+   "gt_px": 7681,
+   "l0_exactly_one": 2365,
+   "l0_mag_only": 969,
+   "l0_ours_only": 1396,
+   "silhouette_exactly_one": 1337,
+   "probe_px": [
+    121,
+    169
+   ]
+  },
+  "45/50": {
+   "gt_px": 6556,
+   "l0_exactly_one": 2166,
+   "l0_mag_only": 337,
+   "l0_ours_only": 1829,
+   "silhouette_exactly_one": 1021,
+   "probe_px": [
+    122,
+    169
+   ]
+  },
+  "90/50": {
+   "gt_px": 7673,
+   "l0_exactly_one": 2322,
+   "l0_mag_only": 174,
+   "l0_ours_only": 2148,
+   "silhouette_exactly_one": 1067,
+   "probe_px": [
+    121,
+    169
+   ]
+  },
+  "135/50": {
+   "gt_px": 6256,
+   "l0_exactly_one": 1599,
+   "l0_mag_only": 129,
+   "l0_ours_only": 1470,
+   "silhouette_exactly_one": 948,
+   "probe_px": [
+    124,
+    165
+   ]
+  },
+  "180/50": {
+   "gt_px": 7785,
+   "l0_exactly_one": 1723,
+   "l0_mag_only": 750,
+   "l0_ours_only": 973,
+   "silhouette_exactly_one": 1156,
+   "probe_px": [
+    121,
+    169
+   ]
+  },
+  "225/50": {
+   "gt_px": 6395,
+   "l0_exactly_one": 1812,
+   "l0_mag_only": 1297,
+   "l0_ours_only": 515,
+   "silhouette_exactly_one": 849,
+   "probe_px": [
+    122,
+    167
+   ]
+  },
+  "270/50": {
+   "gt_px": 7904,
+   "l0_exactly_one": 2699,
+   "l0_mag_only": 1969,
+   "l0_ours_only": 730,
+   "silhouette_exactly_one": 1522,
+   "probe_px": [
+    121,
+    169
+   ]
+  },
+  "315/50": {
+   "gt_px": 6129,
+   "l0_exactly_one": 2231,
+   "l0_mag_only": 1334,
+   "l0_ours_only": 897,
+   "silhouette_exactly_one": 1281,
+   "probe_px": [
+    124,
+    164
+   ]
+  }
+ },
+ "aspect": 1.4,
+ "aspect_unclamped": 1.665352032191403,
+ "v3_rule_view": "270/35",
+ "azimuth_rule": "v4: argmax over az {0..315 step 45} x el {20, 35, 50} of #probe pixels whose visible surface point is observed by exactly one method; ties -> el 35, then smallest az",
+ "center": [
+  1.891744613647461,
+  44.686798095703125,
+  -0.23082923889160156
+ ],
+ "camera": {
+  "azimuth_deg": 270.0,
+  "elevation_deg": 50.0,
+  "eye_distance": 227.61207580566406,
+  "look_at": [
+   1.891744613647461,
+   44.686798095703125,
+   -0.23082923889160156
+  ],
+  "world_units_per_output_px": 0.04335861079530732,
+  "ortho_min_x": -28.03134187916618,
+  "ortho_max_x": 28.03134187916618,
+  "ortho_min_y": -36.478050558365396,
+  "ortho_max_y": 19.584633199966962,
+  "znear": 189.49911499023438,
+  "zfar": 278.06842041015625,
+  "R": [
+   [
+    0.0,
+    0.7660444974899292,
+    0.6427876353263855
+   ],
+   [
+    0.0,
+    0.6427876353263855,
+    -0.7660444974899292
+   ],
+   [
+    -1.0,
+    0.0,
+    0.0
+   ]
+  ],
+  "T": [
+   -0.23082923889160156,
+   -30.17327880859375,
+   260.628173828125
+  ],
+  "tiling_check": {
+   "tile_px": 128,
+   "max_tile_projection_offset_px": 0.0054931640625,
+   "share_px_other_face_tile_vs_half_tile": 0.0005523641011677682
+  },
+  "layer0_vs_plain_render": {
+   "rule": "layer 0 of the K-layer tiles vs the 1-layer tiled render (same tiles)",
+   "share_px_other_face": 9.875859167683111e-05
+  },
+  "overlay_check": {
+   "n_points_tested": 2039,
+   "n_projected_inside": 2039,
+   "n_depth_match_eps": 899,
+   "depth_match_share_of_inside": 0.4409024119377136
+  },
+  "azimuth_rule_score": "union_observed_px",
+  "natural_aspect": 1.665352032191403,
+  "panel_aspect": 1.4,
+  "panel_px": [
+   431,
+   603
+  ],
+  "render_px": [
+   1293,
+   1809
+  ],
+  "supersampling": 3,
+  "k_layers": 48,
+  "bbox_screen_px": [
+   124.26123046875,
+   1168.73876953125,
+   34.78857421875,
+   1774.2115478515625
+  ],
+  "cull_backfaces": false,
+  "projection": "orthographic (FoVOrthographicCameras)",
+  "layer_points": {
+   "n_layer_points": 4628459,
+   "share_beyond_tau": 0.0046693726788980955
+  },
+  "share_gt_pixels_all_k_layers_filled": 0.0,
+  "gpu_peak_gb": 1.87634688,
+  "wall_s": 5.906083106994629
+ },
+ "pixel_share_of_gt_pixels": {
+  "gt": 1.0,
+  "mag": 0.8347648383546294,
+  "ours": 0.9228134257084185
+ },
+ "mesh_sha256": "fcbf08c0e224ebf2c844f558dbc1c095dbce00d852078632c839515d40075896"
+}

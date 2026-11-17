@@ -1,0 +1,168 @@
+{
+ "az": 180,
+ "el": 60.0,
+ "scores": {
+  "0": {
+   "union_observed_px": 2748,
+   "gt_fill_px": 11205,
+   "probe_px": [
+    137,
+    150
+   ]
+  },
+  "45": {
+   "union_observed_px": 1717,
+   "gt_fill_px": 6770,
+   "probe_px": [
+    148,
+    138
+   ]
+  },
+  "90": {
+   "union_observed_px": 2990,
+   "gt_fill_px": 10952,
+   "probe_px": [
+    160,
+    128
+   ]
+  },
+  "135": {
+   "union_observed_px": 1988,
+   "gt_fill_px": 6731,
+   "probe_px": [
+    150,
+    137
+   ]
+  },
+  "180": {
+   "union_observed_px": 3427,
+   "gt_fill_px": 10890,
+   "probe_px": [
+    136,
+    150
+   ]
+  },
+  "225": {
+   "union_observed_px": 2088,
+   "gt_fill_px": 6793,
+   "probe_px": [
+    148,
+    138
+   ]
+  },
+  "270": {
+   "union_observed_px": 3113,
+   "gt_fill_px": 11182,
+   "probe_px": [
+    159,
+    129
+   ]
+  },
+  "315": {
+   "union_observed_px": 1767,
+   "gt_fill_px": 7000,
+   "probe_px": [
+    150,
+    136
+   ]
+  }
+ },
+ "aspect": 1.1002121274698744,
+ "aspect_unclamped": 1.1002121274698744,
+ "azimuth_rule": "v2/v3 indoor (unchanged): argmax #GT-render pixels observed by MAGICIAN or Ours, el 60",
+ "center": [
+  8.122540473937988,
+  47.662879943847656,
+  4.872367858886719
+ ],
+ "camera": {
+  "azimuth_deg": 180.0,
+  "elevation_deg": 60.0,
+  "eye_distance": 209.48756408691406,
+  "look_at": [
+   8.122540473937988,
+   47.662879943847656,
+   4.872367858886719
+  ],
+  "world_units_per_output_px": 0.042326043493266234,
+  "ortho_min_x": -34.792007751464844,
+  "ortho_max_x": 34.792007751464844,
+  "ortho_min_y": -35.093494720458985,
+  "ortho_max_y": 34.4905207824707,
+  "znear": 183.26356506347656,
+  "zfar": 234.7648468017578,
+  "R": [
+   [
+    1.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0,
+    0.5000000596046448,
+    -0.8660253882408142
+   ],
+   [
+    -0.0,
+    0.8660253882408142,
+    0.5000000596046448
+   ]
+  ],
+  "T": [
+   -8.122540473937988,
+   -28.051048278808594,
+   248.32864379882812
+  ],
+  "tiling_check": {
+   "tile_px": 128,
+   "max_tile_projection_offset_px": 0.00018310546875,
+   "rule_v4": "in-tile sampled points",
+   "max_tile_projection_offset_px_all_points": 0.00762939453125,
+   "share_px_other_face_tile_vs_half_tile": 5.716214673157083e-06
+  },
+  "layer0_vs_plain_render": {
+   "rule": "layer 0 of the K-layer tiles vs the 1-layer tiled render (same tiles)",
+   "share_px_other_face": 0.0
+  },
+  "overlay_check": {
+   "n_points_tested": 1462,
+   "n_projected_inside": 1462,
+   "n_depth_match_eps": 661,
+   "depth_match_share_of_inside": 0.4521203935146332
+  },
+  "azimuth_rule_score": "union_observed_px",
+  "natural_aspect": 1.1002121274698744,
+  "panel_aspect": 1.1002121274698744,
+  "panel_px": [
+   548,
+   603
+  ],
+  "render_px": [
+   1644,
+   1809
+  ],
+  "supersampling": 3,
+  "k_layers": 48,
+  "bbox_screen_px": [
+   31.61541748046875,
+   1612.384521484375,
+   34.9091796875,
+   1774.0908203125
+  ],
+  "cull_backfaces": true,
+  "projection": "orthographic (FoVOrthographicCameras)",
+  "layer_points": {
+   "n_layer_points": 2089462,
+   "share_beyond_tau": 0.0
+  },
+  "share_gt_pixels_all_k_layers_filled": 0.0,
+  "gpu_peak_gb": 0.293843456,
+  "wall_s": 10.501774787902832
+ },
+ "pixel_share_of_gt_pixels": {
+  "gt": 1.0,
+  "mag": 0.2136936567729413,
+  "ours": 0.3043330959476184
+ },
+ "mesh_sha256": "ca1b265923b8e37c9e2486bc6e3636142b014adb5cbfa71275b78154ac20872b"
+}

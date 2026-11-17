@@ -1,0 +1,52 @@
+case,domain,scene,group,start,split,cov20_magician,cov20_ours,delta,rank_in_pool,pool_median_delta,rank_in_group,group_median_delta
+outdoor_alhambra_s0,outdoor,alhambra,alhambra,0,test,0.5569,0.5707,0.0138,24/27,0.1780,3/4,0.0571
+outdoor_alhambra_s1,outdoor,alhambra,alhambra,1,test,0.0105,0.5347,0.5242,1/27,0.1780,1/4,0.0571
+outdoor_alhambra_s3,outdoor,alhambra,alhambra,3,test,0.5715,0.3249,-0.2466,27/27,0.1780,4/4,0.0571
+outdoor_alhambra_s4,outdoor,alhambra,alhambra,4,test,0.4955,0.5958,0.1003,19/27,0.1780,2/4,0.0571
+outdoor_barts_s0,outdoor,barts,barts,0,dev,0.5353,0.8896,0.3543,4/27,0.1780,1/5,0.2594
+outdoor_barts_s1,outdoor,barts,barts,1,dev,0.5827,0.6946,0.1119,17/27,0.1780,5/5,0.2594
+outdoor_barts_s2,outdoor,barts,barts,2,dev,0.6275,0.8869,0.2594,9/27,0.1780,3/5,0.2594
+outdoor_barts_s3,outdoor,barts,barts,3,dev,0.6685,0.9289,0.2604,8/27,0.1780,2/5,0.2594
+outdoor_barts_s4,outdoor,barts,barts,4,dev,0.7676,0.9763,0.2087,11/27,0.1780,4/5,0.2594
+outdoor_bridge_s0,outdoor,bridge,bridge,0,test,0.6704,0.7701,0.0997,20/27,0.1780,4/5,0.1780
+outdoor_bridge_s1,outdoor,bridge,bridge,1,test,0.7867,0.7855,-0.0012,25/27,0.1780,5/5,0.1780
+outdoor_bridge_s2,outdoor,bridge,bridge,2,test,0.4372,0.7188,0.2817,7/27,0.1780,1/5,0.1780
+outdoor_bridge_s3,outdoor,bridge,bridge,3,test,0.4612,0.6392,0.1780,14/27,0.1780,3/5,0.1780
+outdoor_bridge_s4,outdoor,bridge,bridge,4,test,0.5863,0.7703,0.1840,12/27,0.1780,2/5,0.1780
+outdoor_eiffel_s0,outdoor,eiffel,eiffel,0,dev,0.2965,0.7021,0.4056,3/27,0.1780,1/5,0.0923
+outdoor_eiffel_s1,outdoor,eiffel,eiffel,1,dev,0.7085,0.7743,0.0658,22/27,0.1780,4/5,0.0923
+outdoor_eiffel_s2,outdoor,eiffel,eiffel,2,dev,0.5885,0.6809,0.0923,21/27,0.1780,3/5,0.0923
+outdoor_eiffel_s3,outdoor,eiffel,eiffel,3,dev,0.6372,0.7604,0.1232,16/27,0.1780,2/5,0.0923
+outdoor_eiffel_s4,outdoor,eiffel,eiffel,4,dev,0.7145,0.7782,0.0637,23/27,0.1780,5/5,0.0923
+outdoor_neuschwanstein_s0,outdoor,neuschwanstein,neuschwanstein,0,test,0.3882,0.4926,0.1044,18/27,0.1780,3/3,0.1715
+outdoor_neuschwanstein_s1,outdoor,neuschwanstein,neuschwanstein,1,test,0.4385,0.6100,0.1715,15/27,0.1780,2/3,0.1715
+outdoor_neuschwanstein_s3,outdoor,neuschwanstein,neuschwanstein,3,test,0.4476,0.6286,0.1810,13/27,0.1780,1/3,0.1715
+outdoor_sestino_museum_s0,outdoor,sestino_museum,sestino_museum,0,dev,0.7479,0.5179,-0.2300,26/27,0.1780,5/5,0.2966
+outdoor_sestino_museum_s1,outdoor,sestino_museum,sestino_museum,1,dev,0.5338,0.8304,0.2966,6/27,0.1780,3/5,0.2966
+outdoor_sestino_museum_s2,outdoor,sestino_museum,sestino_museum,2,dev,0.5950,0.8239,0.2289,10/27,0.1780,4/5,0.2966
+outdoor_sestino_museum_s3,outdoor,sestino_museum,sestino_museum,3,dev,0.3522,0.7806,0.4285,2/27,0.1780,1/5,0.2966
+outdoor_sestino_museum_s4,outdoor,sestino_museum,sestino_museum,4,dev,0.2873,0.6352,0.3478,5/27,0.1780,2/5,0.2966
+indoor_2azQ1b91cZZ_L0_S60,indoor,2azQ1b91cZZ_L0,2azQ1b91cZZ,60,HO (task2_subset=1),0.0546,0.0601,0.0054,19/24,0.0375,4/4,0.0260
+indoor_2azQ1b91cZZ_L0_S179,indoor,2azQ1b91cZZ_L0,2azQ1b91cZZ,179,HO (task2_subset=1),0.1123,0.1518,0.0395,12/24,0.0375,2/4,0.0260
+indoor_2azQ1b91cZZ_L1_S53,indoor,2azQ1b91cZZ_L1,2azQ1b91cZZ,53,HO (task2_subset=0),0.1729,0.1854,0.0124,16/24,0.0375,3/4,0.0260
+indoor_2azQ1b91cZZ_L1_S74,indoor,2azQ1b91cZZ_L1,2azQ1b91cZZ,74,HO (task2_subset=0),0.1770,0.2218,0.0448,8/24,0.0375,1/4,0.0260
+indoor_QUCTc6BB5sX_L0_S31,indoor,QUCTc6BB5sX_L0,QUCTc6BB5sX,31,HO (task2_subset=0),0.3240,0.2410,-0.0830,24/24,0.0375,4/4,-0.0027
+indoor_QUCTc6BB5sX_L0_S95,indoor,QUCTc6BB5sX_L0,QUCTc6BB5sX,95,HO (task2_subset=0),0.1995,0.2039,0.0045,20/24,0.0375,2/4,-0.0027
+indoor_QUCTc6BB5sX_L1_S34,indoor,QUCTc6BB5sX_L1,QUCTc6BB5sX,34,HO (task2_subset=1),0.0749,0.0651,-0.0098,22/24,0.0375,3/4,-0.0027
+indoor_QUCTc6BB5sX_L1_S135,indoor,QUCTc6BB5sX_L1,QUCTc6BB5sX,135,HO (task2_subset=1),0.0588,0.0784,0.0196,15/24,0.0375,1/4,-0.0027
+indoor_TbHJrupSAjP_L0_S21,indoor,TbHJrupSAjP_L0,TbHJrupSAjP,21,HO (task2_subset=0),0.3072,0.2621,-0.0451,23/24,0.0375,6/6,0.0178
+indoor_TbHJrupSAjP_L0_S53,indoor,TbHJrupSAjP_L0,TbHJrupSAjP,53,HO (task2_subset=0),0.1600,0.1680,0.0080,17/24,0.0375,4/6,0.0178
+indoor_TbHJrupSAjP_L1_S112,indoor,TbHJrupSAjP_L1,TbHJrupSAjP,112,HO (task2_subset=1),0.2483,0.2900,0.0418,9/24,0.0375,2/6,0.0178
+indoor_TbHJrupSAjP_L1_S114,indoor,TbHJrupSAjP_L1,TbHJrupSAjP,114,HO (task2_subset=1),0.2895,0.2853,-0.0042,21/24,0.0375,5/6,0.0178
+indoor_TbHJrupSAjP_L2_S2,indoor,TbHJrupSAjP_L2,TbHJrupSAjP,2,HO (task2_subset=0),0.1627,0.1903,0.0276,14/24,0.0375,3/6,0.0178
+indoor_TbHJrupSAjP_L2_S86,indoor,TbHJrupSAjP_L2,TbHJrupSAjP,86,HO (task2_subset=0),0.1537,0.2377,0.0840,3/24,0.0375,1/6,0.0178
+indoor_Z6MFQCViBuw_L0_S6,indoor,Z6MFQCViBuw_L0,Z6MFQCViBuw,6,HO (task2_subset=1),0.1037,0.1441,0.0404,11/24,0.0375,2/2,0.0450
+indoor_Z6MFQCViBuw_L0_S17,indoor,Z6MFQCViBuw_L0,Z6MFQCViBuw,17,HO (task2_subset=1),0.0748,0.1243,0.0495,7/24,0.0375,1/2,0.0450
+indoor_oLBMNvg9in8_L0_S12,indoor,oLBMNvg9in8_L0,oLBMNvg9in8,12,HO (task2_subset=0),0.1973,0.2527,0.0554,6/24,0.0375,5/8,0.0658
+indoor_oLBMNvg9in8_L0_S51,indoor,oLBMNvg9in8_L0,oLBMNvg9in8,51,HO (task2_subset=0),0.1970,0.2762,0.0792,4/24,0.0375,3/8,0.0658
+indoor_oLBMNvg9in8_L1_S36,indoor,oLBMNvg9in8_L1,oLBMNvg9in8,36,HO (task2_subset=1),0.3358,0.3766,0.0408,10/24,0.0375,6/8,0.0658
+indoor_oLBMNvg9in8_L1_S78,indoor,oLBMNvg9in8_L1,oLBMNvg9in8,78,HO (task2_subset=1),0.3008,0.3772,0.0763,5/24,0.0375,4/8,0.0658
+indoor_oLBMNvg9in8_L2_S50,indoor,oLBMNvg9in8_L2,oLBMNvg9in8,50,HO (task2_subset=0),0.2561,0.2916,0.0355,13/24,0.0375,7/8,0.0658
+indoor_oLBMNvg9in8_L2_S95,indoor,oLBMNvg9in8_L2,oLBMNvg9in8,95,HO (task2_subset=0),0.0445,0.1292,0.0847,2/24,0.0375,2/8,0.0658
+indoor_oLBMNvg9in8_L3_S8,indoor,oLBMNvg9in8_L3,oLBMNvg9in8,8,HO (task2_subset=0),0.2010,0.2863,0.0852,1/24,0.0375,1/8,0.0658
+indoor_oLBMNvg9in8_L3_S56,indoor,oLBMNvg9in8_L3,oLBMNvg9in8,56,HO (task2_subset=0),0.2128,0.2194,0.0065,18/24,0.0375,8/8,0.0658
