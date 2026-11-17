@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="32.4pt" height="44.784pt" viewBox="0 0 32.4 44.784" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>EXP9 fig4_v4_colorbars_hires.py</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 44.784 
+L 32.4 44.784 
+L 32.4 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 4.32 40.464 
+L 8.64 40.464 
+L 8.64 4.32 
+L 4.32 4.32 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <image xlink:href="data:image/png;base64,
+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" id="imagea682eecfbe" transform="scale(1 -1) translate(0 -36.12)" x="4.32" y="-4.32" width="4.32" height="36.12"/>
+   <g id="matplotlib.axis_1"/>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m58fecc7419" d="M 0 0 
+L 1.5 0 
+" style="stroke: #000000; stroke-width: 0.4"/>
+      </defs>
+      <g>
+       <use xlink:href="#m58fecc7419" x="8.64" y="39.755294" style="stroke: #000000; stroke-width: 0.4"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 5.3px; font-family: 'STIXGeneral'; text-anchor: start" x="11.14" y="41.565161" transform="rotate(-0 11.14 41.565161)">20</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m58fecc7419" x="8.64" y="25.581176" style="stroke: #000000; stroke-width: 0.4"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 5.3px; font-family: 'STIXGeneral'; text-anchor: start" x="11.14" y="27.391044" transform="rotate(-0 11.14 27.391044)">40</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#m58fecc7419" x="8.64" y="11.407059" style="stroke: #000000; stroke-width: 0.4"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 5.3px; font-family: 'STIXGeneral'; text-anchor: start" x="11.14" y="13.216926" transform="rotate(-0 11.14 13.216926)">60</text>
+     </g>
+    </g>
+    <g id="text_4">
+     <text style="font-size: 5.3px; font-family: 'STIXGeneral'" transform="translate(21.559734 28.280383) rotate(-90)">depth</text>
+     <text style="font-size: 5.3px; font-family: 'STIXGeneral'" transform="translate(26.148748 35.859797) rotate(-90)">(scene units)</text>
+    </g>
+   </g>
+   <g id="LineCollection_1"/>
+   <g id="patch_3">
+    <path d="M 4.32 40.464 
+L 6.48 40.464 
+L 8.64 40.464 
+L 8.64 4.32 
+L 6.48 4.32 
+L 4.32 4.32 
+L 4.32 40.464 
+z
+" style="fill: none; stroke: #000000; stroke-width: 0.4; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+  </g>
+ </g>
+</svg>

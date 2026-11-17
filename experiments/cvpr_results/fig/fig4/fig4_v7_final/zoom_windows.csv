@@ -1,0 +1,4 @@
+row,case,win_row0,win_col0,win_h,win_w,disagreeing_unknown_rays,win_gt_hit_share,win_unknown_share,rule
+row1_neuschwanstein,outdoor_neuschwanstein_s3_t0,38,53,21,38,156,1.0000,1.0000,v6 (= v5 + >= 30 % real surface)
+row2_colosseum,outdoor_colosseum_s3_t0,21,5,21,38,492,0.4875,1.0000,v6 (= v5 + >= 30 % real surface) ; v5 window unchanged
+row3_QUCTc6BB5sX_L1,indoor_QUCTc6BB5sX_L1_S34_t40,34,69,21,38,225,0.9987,0.8534,v6 (= v5 + >= 30 % real surface) ; v5 window unchanged
